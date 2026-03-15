@@ -1,2 +1,3 @@
 # limbus-news-archive
-wip
+
+An unofficial archive of Limbus Company news and update notices, organized for easy browsing and search.
