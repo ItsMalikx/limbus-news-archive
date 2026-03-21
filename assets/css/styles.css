@@ -14,11 +14,11 @@
 
 html[data-theme="dark"] {
   --bg: #181818;
-  --bg-elev: #1f1f1f;
-  --bg-elev-2: #313131;
+  --bg-elev: #1c1c1c;
+  --bg-elev-2: #212121;
   --text: #cccccc;
-  --text-soft: #9d9d9d;
-  --text-muted: #6e7681;
+  --text-soft: #a8a8a8;
+  --text-muted: #7d7d7d;
   --line: #2b2b2b;
   --line-strong: #3c3c3c;
   --shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
