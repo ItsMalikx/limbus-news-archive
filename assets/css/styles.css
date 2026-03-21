@@ -12,7 +12,9 @@
   --transition: 180ms ease;
 }
 
-html[data-theme="dark"] {
+/* Original Dark Mode */
+
+/* html[data-theme="dark"] {
   --bg: #0d0d0d;
   --bg-elev: #141414;
   --bg-elev-2: #181818;
@@ -21,6 +23,19 @@ html[data-theme="dark"] {
   --text-muted: #a2a2a2;
   --line: rgba(255, 255, 255, 0.08);
   --line-strong: rgba(255, 255, 255, 0.12);
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+} */
+
+/* New Dark Mode */
+html[data-theme="dark"] {
+  --bg: #181818;
+  --bg-elev: #1c1c1c;
+  --bg-elev-2: #212121;
+  --text: #cccccc;
+  --text-soft: #a8a8a8;
+  --text-muted: #7d7d7d;
+  --line: #2b2b2b;
+  --line-strong: #3c3c3c;
   --shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
 }
 
