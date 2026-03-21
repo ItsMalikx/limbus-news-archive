@@ -8,9 +8,17 @@ export function escapeHtml(str = "") {
 }
 
 export function stripHtml(html = "") {
+  const spacedHtml = html
+    .replace(/<br\s*\/?>/gi, " ")
+    .replace(/<\/p>/gi, " ")
+    .replace(/<\/h[1-6]>/gi, " ")
+    .replace(/<\/li>/gi, " ");
+
   const temp = document.createElement("div");
-  temp.innerHTML = html;
-  return temp.textContent || temp.innerText || "";
+  temp.innerHTML = spacedHtml;
+  const rawText = temp.textContent || temp.innerText || "";
+
+  return rawText.replace(/\s\s+/g, " ").trim();
 }
 
 export function getQueryParam(name) {
