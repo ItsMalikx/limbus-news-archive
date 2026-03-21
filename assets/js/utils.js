@@ -87,30 +87,36 @@ function convertPlainTextNoticeToHtml(text) {
   while (i < lines.length) {
     const line = lines[i].trim();
 
+    // Skip empty lines
     if (!line) {
       i += 1;
       continue;
     }
 
-    const next = lines[i + 1]?.trim() ?? "";
-
-    if (/^-{3,}$/.test(next)) {
-      blocks.push(`<h2>${escapeHtml(line)}</h2>`);
-      i += 2;
+    // 1. Detect Dividers: If the line is just 3 or more dashes
+    if (/^-{3,}$/.test(line)) {
+      blocks.push(`<hr>`);
+      i += 1;
       continue;
     }
 
+    // 2. Detect Paragraphs: Collect lines until an empty line or a divider is hit
     const paragraphLines = [];
-    while (i < lines.length && lines[i].trim() !== "") {
+    while (
+      i < lines.length && 
+      lines[i].trim() !== "" && 
+      !/^-{3,}$/.test(lines[i].trim())
+    ) {
       paragraphLines.push(lines[i]);
       i += 1;
     }
 
-    const paragraph = paragraphLines
-      .map((part) => escapeHtml(part))
-      .join("<br>");
-
-    blocks.push(`<p>${paragraph}</p>`);
+    if (paragraphLines.length > 0) {
+      const paragraph = paragraphLines
+        .map((part) => escapeHtml(part))
+        .join("<br>");
+      blocks.push(`<p>${paragraph}</p>`);
+    }
   }
 
   return blocks.join("");
