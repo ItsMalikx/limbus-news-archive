@@ -36,8 +36,8 @@ function buildArticleMarkup(notice) {
 }
 
 function setPagination(notices, currentIndex) {
-  const prev = notices[currentIndex - 1];
-  const next = notices[currentIndex + 1];
+  const next = notices[currentIndex - 1]; 
+  const prev = notices[currentIndex + 1];
 
   if (prev) {
     prevNotice.href = buildNoticeUrl(prev.id);
@@ -66,11 +66,11 @@ function initKeyboardNavigation(notices, currentIndex) {
       return;
     }
 
-    if (event.key === "ArrowLeft" && notices[currentIndex - 1]) {
+    if (event.key === "ArrowRight" && notices[currentIndex - 1]) {
       window.location.href = buildNoticeUrl(notices[currentIndex - 1].id);
     }
 
-    if (event.key === "ArrowRight" && notices[currentIndex + 1]) {
+    if (event.key === "ArrowLeft" && notices[currentIndex + 1]) {
       window.location.href = buildNoticeUrl(notices[currentIndex + 1].id);
     }
   });
