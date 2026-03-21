@@ -54,7 +54,7 @@ export function initThemeToggle(buttonId = "themeToggle") {
   const button = document.getElementById(buttonId);
   if (!button) return;
 
-  button.textContent = initial === "dark" ? "🌙" : "☀️";
+  button.textContent = initial === "dark" ? "☾" : "☀︎";
 
   button.addEventListener("click", () => {
     const current = document.documentElement.getAttribute("data-theme") || "dark";
@@ -62,7 +62,7 @@ export function initThemeToggle(buttonId = "themeToggle") {
 
     applyTheme(next);
     saveTheme(next);
-    button.textContent = next === "dark" ? "🌙" : "☀️";
+    button.textContent = next === "dark" ? "☾" : "☀︎";
   });
 }
 
