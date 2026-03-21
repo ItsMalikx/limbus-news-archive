@@ -46,7 +46,7 @@ export function initThemeToggle(buttonId = "themeToggle") {
   const button = document.getElementById(buttonId);
   if (!button) return;
 
-  button.textContent = initial === "dark" ? "☾" : "☀︎";
+  button.textContent = initial === "dark" ? "🌙" : "☀️";
 
   button.addEventListener("click", () => {
     const current = document.documentElement.getAttribute("data-theme") || "dark";
@@ -54,7 +54,7 @@ export function initThemeToggle(buttonId = "themeToggle") {
 
     applyTheme(next);
     saveTheme(next);
-    button.textContent = next === "dark" ? "☾" : "☀︎";
+    button.textContent = next === "dark" ? "🌙" : "☀️";
   });
 }
 
@@ -71,10 +71,11 @@ export async function fetchNotices(url) {
 }
 
 function looksLikeRealHtml(content) {
-  return /<\/?(p|br|hr|ul|ol|li|strong|em|blockquote|h1|h2|h3|h4|h5|h6)\b/i.test(content);
+  // Only triggers if it sees actual tag structures like <p> or <br/>
+  return /<(p|br|hr|ul|ol|li|strong|em|blockquote|h1|h2|h3|h4|h5|h6)\b[^>]*>/i.test(content);
 }
 
-function convertPlainTextNoticeToHtml(text) {
+function convertPlainTextNoticeToHtml(text, noticeTitle = "") {
   const normalized = String(text)
     .replace(/\r\n/g, "\n")
     .replace(/\r/g, "\n")
@@ -87,26 +88,36 @@ function convertPlainTextNoticeToHtml(text) {
   while (i < lines.length) {
     const line = lines[i].trim();
 
-    // Skip empty lines
     if (!line) {
       i += 1;
       continue;
     }
 
-    // 1. Detect Dividers: If the line is just 3 or more dashes
-    if (/^-{3,}$/.test(line)) {
-      blocks.push(`<hr>`);
-      i += 1;
+    const next = lines[i + 1]?.trim() ?? "";
+    const isHeaderUnderline = /^-{3,}$/.test(next);
+
+    if (isHeaderUnderline) {
+      // Check if this is the title of the notice repeated at the very top
+      // If it is, we skip it because notice.js already renders the title + divider
+      const isFirstBlock = blocks.length === 0;
+      const matchesTitle = line.toLowerCase() === noticeTitle.toLowerCase();
+
+      if (!(isFirstBlock && matchesTitle)) {
+        blocks.push(`<h2>${escapeHtml(line)}</h2><hr>`);
+      }
+      
+      i += 2; // Skip the text line and the underline line
       continue;
     }
 
-    // 2. Detect Paragraphs: Collect lines until an empty line or a divider is hit
+    // Standard paragraph logic
     const paragraphLines = [];
-    while (
-      i < lines.length && 
-      lines[i].trim() !== "" && 
-      !/^-{3,}$/.test(lines[i].trim())
-    ) {
+    while (i < lines.length) {
+      const currentLine = lines[i].trim();
+      if (currentLine === "") break;
+      // Also break if the NEXT line is a header underline
+      if (lines[i+1] && /^-{3,}$/.test(lines[i+1].trim())) break;
+
       paragraphLines.push(lines[i]);
       i += 1;
     }
@@ -125,14 +136,15 @@ function convertPlainTextNoticeToHtml(text) {
 export function normalizeNotice(notice = {}) {
   const rawContent = notice.content || "";
   const textContent = String(rawContent);
+  const title = notice.title || `Untitled Notice ${notice.id ?? ""}`;
 
   const content = looksLikeRealHtml(textContent)
     ? textContent
-    : convertPlainTextNoticeToHtml(textContent);
+    : convertPlainTextNoticeToHtml(textContent, title);
 
   return {
     id: notice.id,
-    title: notice.title || `Untitled Notice ${notice.id ?? ""}`,
+    title: title,
     date: notice.date || "",
     category: notice.category || "Uncategorized",
     tags: Array.isArray(notice.tags) ? notice.tags : [],
