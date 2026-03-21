@@ -88,7 +88,15 @@ function convertPlainTextNoticeToHtml(text, noticeTitle = "") {
   while (i < lines.length) {
     const line = lines[i].trim();
 
+    // Skip empty lines
     if (!line) {
+      i += 1;
+      continue;
+    }
+
+    // NEW: If the very first thing we find is a separator line (---), skip it.
+    // This removes the "leftover" underline from the raw title block.
+    if (blocks.length === 0 && /^-{3,}$/.test(line)) {
       i += 1;
       continue;
     }
@@ -97,25 +105,23 @@ function convertPlainTextNoticeToHtml(text, noticeTitle = "") {
     const isHeaderUnderline = /^-{3,}$/.test(next);
 
     if (isHeaderUnderline) {
-      // Check if this is the title of the notice repeated at the very top
-      // If it is, we skip it because notice.js already renders the title + divider
-      const isFirstBlock = blocks.length === 0;
+      // Check if this is the notice title repeated at the top
       const matchesTitle = line.toLowerCase() === noticeTitle.toLowerCase();
-
-      if (!(isFirstBlock && matchesTitle)) {
+      
+      // Only add header if it's NOT the title (deduplication)
+      if (!matchesTitle) {
         blocks.push(`<h2>${escapeHtml(line)}</h2><hr>`);
       }
       
-      i += 2; // Skip the text line and the underline line
+      i += 2; // Skip both the text and the underline
       continue;
     }
 
-    // Standard paragraph logic
+    // Paragraph logic
     const paragraphLines = [];
     while (i < lines.length) {
       const currentLine = lines[i].trim();
       if (currentLine === "") break;
-      // Also break if the NEXT line is a header underline
       if (lines[i+1] && /^-{3,}$/.test(lines[i+1].trim())) break;
 
       paragraphLines.push(lines[i]);
