@@ -452,7 +452,23 @@ code {
     line-height: 1.7;
   }
 
+  /* --- FIX START --- */
   .notice-pagination {
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: row !important; /* Force side-by-side */
+    gap: 10px !important;
+    margin-top: 24px;
+    padding-top: 16px;
   }
+
+  .notice-pagination__link {
+    flex: 1 !important; /* Make both buttons equal width */
+    width: 50%;
+    font-size: 0.85rem; /* Smaller text to ensure it fits */
+    padding: 12px 4px !important;
+    text-align: center;
+    white-space: nowrap; /* Prevent text from wrapping inside the button */
+    justify-content: center;
+  }
+  /* --- FIX END --- */
 }
