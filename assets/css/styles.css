@@ -453,6 +453,13 @@ code {
   }
 
   .notice-pagination {
-    flex-direction: column;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .notice-pagination__link {
+    flex: 1; /* Makes each button take up exactly half the width */
+    padding: 0.8rem 0.5rem; /* Slightly reduces side padding to fit text on small screens */
+    font-size: 0.95rem;
   }
 }
