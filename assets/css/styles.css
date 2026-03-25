@@ -381,12 +381,17 @@ code {
 }
 
 .notice-pagination {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
   border-top: 1px solid var(--line);
   margin-top: 32px;
   padding-top: 20px;
+}
+
+.notice-pagination__desktop,
+.notice-pagination__mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 .notice-pagination__link {
@@ -394,16 +399,47 @@ code {
   align-items: center;
   justify-content: center;
   min-height: 44px;
+  min-width: 44px;
   color: var(--text);
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 0.8rem 1rem;
+  padding: 0 16px;
   background: var(--bg-elev-2);
+  font-weight: 500;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  white-space: nowrap;
+}
+
+a.notice-pagination__link {
+  cursor: pointer;
+}
+
+a.notice-pagination__link:hover:not(.active) {
+  background: var(--line);
+}
+
+.notice-pagination__link.active {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+  pointer-events: none;
 }
 
 .notice-pagination__link[aria-disabled="true"] {
   pointer-events: none;
   opacity: 0.45;
+}
+
+.notice-pagination__info {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.notice-pagination__mobile {
+  display: none;
 }
 
 .error-page {
@@ -452,23 +488,20 @@ code {
     line-height: 1.7;
   }
 
-  /* --- FIX START --- */
-  .notice-pagination {
-    display: flex !important;
-    flex-direction: row !important; /* Force side-by-side */
-    gap: 10px !important;
-    margin-top: 24px;
-    padding-top: 16px;
+  /* --- Pagination Fix --- */
+  .notice-pagination__desktop {
+    display: none;
+  }
+
+  .notice-pagination__mobile {
+    display: flex;
+    gap: 10px;
   }
 
   .notice-pagination__link {
-    flex: 1 !important; /* Make both buttons equal width */
-    width: 50%;
-    font-size: 0.85rem; /* Smaller text to ensure it fits */
-    padding: 12px 4px !important;
-    text-align: center;
-    white-space: nowrap; /* Prevent text from wrapping inside the button */
-    justify-content: center;
+    font-size: 0.9rem;
+    padding: 0 12px;
+    min-height: 40px;
+    min-width: 0;
   }
-  /* --- FIX END --- */
 }
