@@ -106,7 +106,6 @@ function applyFilters() {
 
 const debouncedApplyFilters = debounce(applyFilters, 100);
 
-// Infinite Scroll Observer
 function initObserver() {
   if (!loadSentinel) return;
 
