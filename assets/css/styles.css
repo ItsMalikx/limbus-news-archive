@@ -271,7 +271,7 @@ code {
 
 .notice-list {
   display: grid;
-  gap: 14px;
+  gap: 18px;
 }
 
 .notice-card {
@@ -285,15 +285,43 @@ code {
   border-color: var(--line-strong);
 }
 
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.tag-pill {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--line);
+  color: var(--text-soft);
+  line-height: 1;
+}
+
 .notice-card__title {
-  margin: 0;
-  font-size: 1.15rem;
+  margin: 0 0 4px;
+  font-size: 1.2rem;
   letter-spacing: -0.025em;
   line-height: 1.35;
 }
 
+.notice-card__date {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
 .notice-card__summary {
-  margin: 12px 0 0;
+  margin: 0;
   color: var(--text-soft);
   line-height: 1.7;
 }
@@ -323,10 +351,16 @@ code {
 }
 
 .notice-inline-title {
-  margin: 0;
+  margin: 0 0 8px;
   font-size: clamp(1.7rem, 3vw, 2.4rem);
   line-height: 1.15;
   letter-spacing: -0.03em;
+}
+
+.notice-date {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .notice-title-divider {
@@ -503,42 +537,5 @@ a.notice-pagination__link:hover:not(.active) {
     padding: 0 12px;
     min-height: 40px;
     min-width: 0;
-  }
-
-  .tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-
-  .tag-pill {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 4px 10px;
-    border-radius: 6px;
-    background: var(--bg-elev-2);
-    border: 1px solid var(--line-strong);
-    color: var(--text-soft);
-    line-height: 1.2;
-  }
-
-  .notice-card__date, .notice-date {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-top: 8px;
-  }
-
-  .notice-card__title {
-    margin: 0;
-    font-size: 1.15rem;
-    letter-spacing: -0.025em;
-    line-height: 1.35;
   }
 }
