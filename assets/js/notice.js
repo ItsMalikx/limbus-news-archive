@@ -1,4 +1,4 @@
-import { SITE_CONFIG } from "./config.js";
+import { SITE_CONFIG, TAG_COLORS } from "./config.js";
 import {
   buildNoticeUrl,
   fetchNotices,
@@ -28,8 +28,15 @@ function renderNotFound() {
 }
 
 function buildArticleMarkup(notice) {
+  const tagToSlug = (tag) => tag.toLowerCase().replace(/\s+/g, '-');
+
   const tagsHtml = notice.tags && notice.tags.length > 0
-    ? `<div class="tag-list">${notice.tags.map(tag => `<span class="tag-pill">${escapeHtml(tag)}</span>`).join("")}</div>`
+    ? `<div class="tag-list">${notice.tags.map(tag => {
+        const slug = tagToSlug(tag);
+        const color = TAG_COLORS[slug];
+        const style = color ? `style="--tag-color: ${color}"` : "";
+        return `<span class="tag-pill" ${style}>${escapeHtml(tag)}</span>`;
+      }).join("")}</div>`
     : "";
 
   const dateHtml = notice.date

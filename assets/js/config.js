@@ -4,3 +4,14 @@ export const SITE_CONFIG = {
   pageSize: 50,
   maxIndexedContentLength: 12000
 };
+
+// Defines the border/text color for each tag. The background is a lighter mix of this color.
+export const TAG_COLORS = {
+  "refraction-railway": "#FF7A00", // Orange
+  "walpurgis-night": "#93F205",    // Lime Green
+  "mirror-dungeon": "#A855F7",     // Purple
+  "update": "#3B82F6",             // Blue
+  "bug-fix": "#F59E0B",            // Amber
+  "notice": "#06B6D4",             // Cyan
+  "announcement": "#6B7280"        // Gray
+};
