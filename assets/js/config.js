@@ -9,9 +9,9 @@ export const SITE_CONFIG = {
 export const TAG_COLORS = {
   "refraction-railway": "#FF7300", // Orange
   "walpurgis-night": "#93F205",    // Lime Green
-  "mirror-dungeon": "#A855F7",     // Purple
+  "mirror-dungeon": "#9300DB",     // Purple
   "update": "#F8C200",             // Yellow
-  "bug-fix": "#3B82F6",            // Blue
-  "notice": "#06B6D4",             // Cyan
-  "announcement": "#6B7280"        // Gray
+  "bug-fix": "#0049D3",            // Blue
+  "notice": "#0DC1EB",             // Cyan
+  "announcement": "#A16B3B"        // Brown
 };
