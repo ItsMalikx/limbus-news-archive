@@ -2,7 +2,6 @@
   --bg: #dedede;
   --bg-elev: #e3e3e3;
   --bg-elev-2: #e8e8e8;
-  /* Darkened Light-mode text slightly to pass WCAG Accessibility contrast */
   --text: #1a1a1a;
   --text-soft: #404040;
   --text-muted: #595959;
@@ -72,6 +71,12 @@ code {
 
 .site-shell {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.archive-layout, .notice-layout {
+  flex-grow: 1;
 }
 
 .topbar {
@@ -102,7 +107,7 @@ code {
 .brand__mark {
   width: 18px;
   height: 18px;
-  background: var(--text);
+  background-color: var(--text);
   -webkit-mask: url("../icons/brand-mark.svg") no-repeat center / contain;
   mask: url("../icons/brand-mark.svg") no-repeat center / contain;
 }
@@ -473,6 +478,7 @@ a.notice-pagination__link:hover:not(.active) {
   display: grid;
   place-content: center;
   gap: 16px;
+  text-align: center; /* Center align error page content */
 }
 
 .reveal {
@@ -486,6 +492,37 @@ a.notice-pagination__link:hover:not(.active) {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* --- Utilities --- */
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* --- Footer --- */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 30px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  background: color-mix(in srgb, var(--bg) 60%, transparent);
+}
+
+.footer-link {
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.footer-link:hover {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 @media (max-width: 720px) {
