@@ -53,7 +53,7 @@ function renderNoticeCard(notice) {
 
   article.innerHTML = `
     ${tagsHtml}
-    <h3 class="notice-card__title">${escapeHtml(notice.title)}</h3>
+    <h2 class="notice-card__title">${escapeHtml(notice.title)}</h2>
     ${dateHtml}
     <p class="notice-card__summary">${escapeHtml(excerpt(notice))}</p>
   `;
