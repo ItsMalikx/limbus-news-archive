@@ -10,21 +10,40 @@
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon-light.svg" media="(prefers-color-scheme: light)">
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon-dark.svg" media="(prefers-color-scheme: dark)">
   <link rel="stylesheet" href="assets/css/styles.css" />
-</head>
-<body>
-  <main class="container-narrow error-page">
-    <p class="eyebrow">404</p>
-    <h1 class="hero-title">Page not found</h1>
-    <p class="hero-copy">The page you requested could not be found.</p>
-    <a class="btn" href="index.html">Return to archive</a>
-  </main>
-  <footer class="site-footer">
-    <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-      <div>
-        <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
+</head><body>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="topbar__inner container-wide">
+        <a class="brand" href="index.html">
+          <span class="brand__mark"></span>
+          <span class="brand__text">Limbus Company News Archive</span>
+        </a>
+
+        <nav class="topbar__actions" aria-label="Site actions">
+          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
+        </nav>
       </div>
-      <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
-    </div>
-  </footer>
+    </header>
+
+    <main class="container-narrow error-layout reveal">
+      <h1 class="hero-title" style="font-size: clamp(4rem, 8vw, 6rem); margin-bottom: 0.5rem;">404</h1>
+      <p class="intro-block" style="margin-bottom: 2rem;">The page you're looking for doesn't exist or has been moved.</p>
+      <a href="index.html" class="text-link">← Return to Archive</a>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
+        <div>
+          <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
+        </div>
+        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module">
+    import { initThemeToggle } from './assets/js/utils.js';
+    initThemeToggle();
+  </script>
 </body>
 </html>
