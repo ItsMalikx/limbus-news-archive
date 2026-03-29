@@ -100,10 +100,11 @@ code {
 }
 
 .brand__mark {
-  width: 14px;
-  height: 14px;
-  border-radius: 999px;
+  width: 18px;
+  height: 18px;
   background: var(--text);
+  -webkit-mask: url("../icons/brand-mark.svg") no-repeat center / contain;
+  mask: url("../icons/brand-mark.svg") no-repeat center / contain;
 }
 
 .brand__text {
