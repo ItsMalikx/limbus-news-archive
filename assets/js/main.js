@@ -7,7 +7,8 @@ import {
   sortNotices,
   stripHtml,
   debounce,
-  escapeHtml
+  escapeHtml,
+  formatDate
 } from "./utils.js";
 import { buildSearchIndex, filterNotices } from "./search.js";
 
@@ -35,8 +36,18 @@ function renderNoticeCard(notice) {
   article.className = "notice-card reveal";
   article.href = buildNoticeUrl(notice.id);
 
+  const tagsHtml = notice.tags && notice.tags.length > 0
+    ? `<div class="tag-list">${notice.tags.map(tag => `<span class="tag-pill">${escapeHtml(tag)}</span>`).join("")}</div>`
+    : "";
+
+  const dateHtml = notice.date
+    ? `<div class="notice-card__date">${escapeHtml(formatDate(notice.date))}</div>`
+    : "";
+
   article.innerHTML = `
+    ${tagsHtml}
     <h3 class="notice-card__title">${escapeHtml(notice.title)}</h3>
+    ${dateHtml}
     <p class="notice-card__summary">${escapeHtml(excerpt(notice))}</p>
   `;
 

@@ -6,7 +6,8 @@ import {
   initThemeToggle,
   normalizeNotice,
   sortNotices,
-  escapeHtml
+  escapeHtml,
+  formatDate
 } from "./utils.js";
 
 const noticeContent = document.getElementById("noticeContent");
@@ -27,9 +28,19 @@ function renderNotFound() {
 }
 
 function buildArticleMarkup(notice) {
+  const tagsHtml = notice.tags && notice.tags.length > 0
+    ? `<div class="tag-list">${notice.tags.map(tag => `<span class="tag-pill">${escapeHtml(tag)}</span>`).join("")}</div>`
+    : "";
+
+  const dateHtml = notice.date
+    ? `<div class="notice-date">${escapeHtml(formatDate(notice.date))}</div>`
+    : "";
+
   return `
     <div class="notice-title-block">
+      ${tagsHtml}
       <h1 class="notice-inline-title">${escapeHtml(notice.title)}</h1>
+      ${dateHtml}
       <hr class="notice-title-divider" />
     </div>
     ${notice.content}
@@ -41,29 +52,19 @@ function setPagination(notices, currentIndex) {
   if (!paginationContainer) return;
 
   const total = notices.length;
-  
-  // Chronological page number (1-based index where the topmost/newest notice is Page 1)
   const currentP = currentIndex + 1;
-
-  // Previous Page is a newer notice (lower index)
   const prevNotice = notices[currentIndex - 1]; 
-  
-  // Next Page is an older notice (higher index)
   const nextNotice = notices[currentIndex + 1]; 
 
   // --- Desktop Pagination Logic ---
   let pagesToShow = [];
   if (total <= 5) {
-    // If there are 5 or fewer pages, just show all of them
     for (let i = 1; i <= total; i++) pagesToShow.push(i);
   } else if (currentP <= 3) {
-    // At the beginning, show the first 5 pages
     pagesToShow = [1, 2, 3, 4, 5];
   } else if (currentP >= total - 2) {
-    // At the end, show the last 5 pages
     pagesToShow = [total - 4, total - 3, total - 2, total - 1, total];
   } else {
-    // In the middle, show a spread of 5 pages centered on the current one
     pagesToShow = [currentP - 2, currentP - 1, currentP, currentP + 1, currentP + 2];
   }
 
@@ -76,7 +77,6 @@ function setPagination(notices, currentIndex) {
 
   // Numbered Buttons
   pagesToShow.forEach(p => {
-    // Convert 1-based page number back to 0-based array index to retrieve the correct ID
     const noticeIndex = p - 1;
     if (p === currentP) {
       desktopHtml += `<span class="notice-pagination__link active" aria-current="page">${p}</span>`;
@@ -95,7 +95,7 @@ function setPagination(notices, currentIndex) {
   let mobileHtml = '<div class="notice-pagination__mobile">';
   
   // Prev Button
-  mobileHtml += prevNotice
+  mobileHtml += mobileHtml += prevNotice
     ? `<a class="notice-pagination__link" href="${buildNoticeUrl(prevNotice.id)}">← Prev</a>`
     : `<span class="notice-pagination__link" aria-disabled="true">← Prev</span>`;
 
@@ -108,7 +108,6 @@ function setPagination(notices, currentIndex) {
     : `<span class="notice-pagination__link" aria-disabled="true">Next →</span>`;
   mobileHtml += '</div>';
 
-  // Render both versions to the DOM
   paginationContainer.innerHTML = desktopHtml + mobileHtml;
 }
 
@@ -117,11 +116,9 @@ function initKeyboardNavigation(notices, currentIndex) {
     if (event.target && ["INPUT", "TEXTAREA", "SELECT"].includes(event.target.tagName)) {
       return;
     }
-    // Arrow Left -> Previous Page (Newer notice, lower index)
     if (event.key === "ArrowLeft" && notices[currentIndex - 1]) {
       window.location.href = buildNoticeUrl(notices[currentIndex - 1].id);
     }
-    // Arrow Right -> Next Page (Older notice, higher index)
     if (event.key === "ArrowRight" && notices[currentIndex + 1]) {
       window.location.href = buildNoticeUrl(notices[currentIndex + 1].id);
     }

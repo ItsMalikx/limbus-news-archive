@@ -7,6 +7,20 @@ export function escapeHtml(str = "") {
     .replace(/'/g, "&#039;");
 }
 
+export function formatDate(dateString) {
+  if (!dateString) return "";
+  const parts = dateString.split("-");
+  if (parts.length === 3) {
+    const date = new Date(parts[0], parts[1] - 1, parts[2]);
+    return new Intl.DateTimeFormat('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    }).format(date);
+  }
+  return dateString;
+}
+
 export function stripHtml(html = "") {
   const spacedHtml = html
     .replace(/<br\s*\/?>/gi, " ")
@@ -79,7 +93,6 @@ export async function fetchNotices(url) {
 }
 
 function looksLikeRealHtml(content) {
-  // Only triggers if it sees actual tag structures like <p> or <br/>
   return /<(p|br|hr|ul|ol|li|strong|em|blockquote|h1|h2|h3|h4|h5|h6)\b[^>]*>/i.test(content);
 }
 
@@ -96,14 +109,11 @@ function convertPlainTextNoticeToHtml(text, noticeTitle = "") {
   while (i < lines.length) {
     const line = lines[i].trim();
 
-    // Skip empty lines
     if (!line) {
       i += 1;
       continue;
     }
 
-    // NEW: If the very first thing we find is a separator line (---), skip it.
-    // This removes the "leftover" underline from the raw title block.
     if (blocks.length === 0 && /^-{3,}$/.test(line)) {
       i += 1;
       continue;
@@ -113,19 +123,14 @@ function convertPlainTextNoticeToHtml(text, noticeTitle = "") {
     const isHeaderUnderline = /^-{3,}$/.test(next);
 
     if (isHeaderUnderline) {
-      // Check if this is the notice title repeated at the top
       const matchesTitle = line.toLowerCase() === noticeTitle.toLowerCase();
-      
-      // Only add header if it's NOT the title (deduplication)
       if (!matchesTitle) {
         blocks.push(`<h2>${escapeHtml(line)}</h2><hr>`);
       }
-      
-      i += 2; // Skip both the text and the underline
+      i += 2;
       continue;
     }
 
-    // Paragraph logic
     const paragraphLines = [];
     while (i < lines.length) {
       const currentLine = lines[i].trim();

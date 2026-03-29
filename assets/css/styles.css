@@ -504,4 +504,41 @@ a.notice-pagination__link:hover:not(.active) {
     min-height: 40px;
     min-width: 0;
   }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .tag-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--bg-elev-2);
+    border: 1px solid var(--line-strong);
+    color: var(--text-soft);
+    line-height: 1.2;
+  }
+
+  .notice-card__date, .notice-date {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 8px;
+  }
+
+  .notice-card__title {
+    margin: 0;
+    font-size: 1.15rem;
+    letter-spacing: -0.025em;
+    line-height: 1.35;
+  }
 }
