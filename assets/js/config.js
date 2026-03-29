@@ -10,8 +10,8 @@ export const TAG_COLORS = {
   "refraction-railway": "#FF7A00", // Orange
   "walpurgis-night": "#93F205",    // Lime Green
   "mirror-dungeon": "#A855F7",     // Purple
-  "update": "#3B82F6",             // Blue
-  "bug-fix": "#F59E0B",            // Amber
+  "update": "#F2B807",             // Blue
+  "bug-fix": "#3B82F6",            // Amber
   "notice": "#06B6D4",             // Cyan
   "announcement": "#6B7280"        // Gray
 };
