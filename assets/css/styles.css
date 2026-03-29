@@ -285,7 +285,6 @@ main {
   border-radius: 50px;
   line-height: 1.2;
 
-  /* WCAG Fix: Mix with 80% black to ensure legibility on light background */
   color: color-mix(in srgb, var(--tag-color) 20%, #000000);
   border: 1.5px solid color-mix(in srgb, var(--tag-color) 20%, #000000);
   background: var(--tag-color);
@@ -525,7 +524,6 @@ a.notice-pagination__link:hover:not(.active) {
   }
 }
 
-/* --- Utilities --- */
 .flex-col {
   display: flex;
   flex-direction: column;
@@ -535,7 +533,6 @@ a.notice-pagination__link:hover:not(.active) {
   color: var(--text-muted);
 }
 
-/* --- Footer --- */
 .site-footer {
   border-top: 1px solid var(--line);
   padding: 30px 0;

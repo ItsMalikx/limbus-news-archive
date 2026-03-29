@@ -63,7 +63,6 @@ function setPagination(notices, currentIndex) {
   const prevNotice = notices[currentIndex - 1]; 
   const nextNotice = notices[currentIndex + 1]; 
 
-  // --- Desktop Pagination Logic ---
   let pagesToShow = [];
   if (total <= 5) {
     for (let i = 1; i <= total; i++) pagesToShow.push(i);
@@ -77,12 +76,10 @@ function setPagination(notices, currentIndex) {
 
   let desktopHtml = '<div class="notice-pagination__desktop">';
   
-  // Prev Button
   desktopHtml += prevNotice
     ? `<a class="notice-pagination__link" href="${buildNoticeUrl(prevNotice.id)}">← Prev</a>`
     : `<span class="notice-pagination__link" aria-disabled="true">← Prev</span>`;
 
-  // Numbered Buttons
   pagesToShow.forEach(p => {
     const noticeIndex = p - 1;
     if (p === currentP) {
@@ -92,24 +89,19 @@ function setPagination(notices, currentIndex) {
     }
   });
 
-  // Next Button
   desktopHtml += nextNotice
     ? `<a class="notice-pagination__link" href="${buildNoticeUrl(nextNotice.id)}">Next →</a>`
     : `<span class="notice-pagination__link" aria-disabled="true">Next →</span>`;
   desktopHtml += '</div>';
 
-  // --- Mobile Pagination Logic ---
   let mobileHtml = '<div class="notice-pagination__mobile">';
   
-  // Prev Button
   mobileHtml += mobileHtml += prevNotice
     ? `<a class="notice-pagination__link" href="${buildNoticeUrl(prevNotice.id)}">← Prev</a>`
     : `<span class="notice-pagination__link" aria-disabled="true">← Prev</span>`;
 
-  // Informational Text "X of Y"
   mobileHtml += `<span class="notice-pagination__info">${currentP} of ${total}</span>`;
 
-  // Next Button
   mobileHtml += nextNotice
     ? `<a class="notice-pagination__link" href="${buildNoticeUrl(nextNotice.id)}">Next →</a>`
     : `<span class="notice-pagination__link" aria-disabled="true">Next →</span>`;
