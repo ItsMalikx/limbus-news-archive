@@ -7,6 +7,7 @@
   <meta name="description" content="A searchable archive of Limbus Company notices." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="assets/css/styles.css" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
   <link rel="stylesheet" href="assets/css/styles.css" />
@@ -42,6 +43,9 @@
         </div>
 
         <div id="noticeList" class="notice-list" aria-live="polite"></div>
+        
+        <!-- Infinite Scroll Sentinel -->
+        <div id="loadSentinel" style="height: 1px; width: 100%; margin-top: 20px;"></div>
       </section>
     </main>
   </div>
