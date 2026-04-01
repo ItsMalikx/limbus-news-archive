@@ -1,4 +1,4 @@
-# The Limbus Company News Archive
+# Limbus News Archive
 
 A clean, searchable archive of official Limbus Company notices.
 
