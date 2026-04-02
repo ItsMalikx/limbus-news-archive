@@ -1,5 +1,16 @@
 [
   {
+    "id": 570,
+    "title": "Notice: Ver. 1.102.0 Known Issues",
+    "date": "2026-04-02",
+    "tags": [
+      "Mirror Dungeon",
+      "Update",
+      "Bug Fix"
+    ],
+    "content": "Hello, this is Project Moon.\n\nWe would like to inform you about the known issues identified after the Apr. 2nd, 2026 Scheduled Update.\n\nPlease continue reading for more information.\n\n[ Issues identified after the Apr. 2nd Scheduled Update ]\n\n▶ An issue where the game becomes unresponsive when using a Skill while equipped with \"The Princess of La Manchaland Rodion\" Façade\n\n▶ (KR Only) Fixed an issue where a Hidden Mirror Dungeon Theme Pack's name appears as \"UNKNOWN\"\n\n▶ An issue where, under specific conditions, the effects of the E.G.O Gift \"Sharp Needle & Thread\" do not properly activate\n\n※ The above issues will be resolved with the Apr. 9th Scheduled Update.\n※ Please refrain from projecting \"The Princess of La Manchaland Rodion\" Façade until this issue is resolved with the Apr. 9th Scheduled Update.\n\nWe sincerely apologize for the inconvenience."
+  },
+  {
     "id": 569,
     "title": "2026, Apr. 2nd Scheduled Update Notice",
     "date": "2026-04-01",
