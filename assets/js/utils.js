@@ -178,9 +178,11 @@ export function sortNotices(notices, mode) {
 
   switch (mode) {
     case "date-asc":
-      return items.sort((a, b) => String(a.date).localeCompare(String(b.date)));
+      // Sort strictly by ID ascending (Oldest first)
+      return items.sort((a, b) => Number(a.id) - Number(b.id));
     case "date-desc":
-      return items.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+      // Sort strictly by ID descending (Newest first)
+      return items.sort((a, b) => Number(b.id) - Number(a.id));
     case "id-asc":
       return items.sort((a, b) => Number(a.id) - Number(b.id));
     case "id-desc":
@@ -190,7 +192,8 @@ export function sortNotices(notices, mode) {
     case "title-asc":
       return items.sort((a, b) => a.title.localeCompare(b.title));
     default:
-      return items.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+      // Default to Newest first based on ID
+      return items.sort((a, b) => Number(b.id) - Number(a.id));
   }
 }
 
