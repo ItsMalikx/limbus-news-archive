@@ -169,6 +169,7 @@ export function normalizeNotice(notice = {}) {
     tags: Array.isArray(notice.tags) ? notice.tags : [],
     summary: notice.summary || "",
     content,
+    plainContent: stripHtml(content),
     toc: notice.toc !== false
   };
 }
@@ -178,10 +179,8 @@ export function sortNotices(notices, mode) {
 
   switch (mode) {
     case "date-asc":
-      // Sort strictly by ID ascending (Oldest first)
       return items.sort((a, b) => Number(a.id) - Number(b.id));
     case "date-desc":
-      // Sort strictly by ID descending (Newest first)
       return items.sort((a, b) => Number(b.id) - Number(a.id));
     case "id-asc":
       return items.sort((a, b) => Number(a.id) - Number(b.id));
@@ -192,11 +191,25 @@ export function sortNotices(notices, mode) {
     case "title-asc":
       return items.sort((a, b) => a.title.localeCompare(b.title));
     default:
-      // Default to Newest first based on ID
       return items.sort((a, b) => Number(b.id) - Number(a.id));
   }
 }
 
 export function buildNoticeUrl(id) {
   return `notice.html?id=${encodeURIComponent(id)}`;
+}
+
+export function hexToRgb(hex) {
+  if (!hex) return { r: 255, g: 255, b: 255 };
+  const clean = hex.replace("#", "");
+  const normalized = clean.length === 3 ? clean.split("").map(c => c + c).join("") : clean;
+  const bigint = parseInt(normalized, 16);
+  return { r: (bigint >> 16) & 255, g: (bigint >> 8) & 255, b: bigint & 255 };
+}
+
+export function getContrastColor(hex) {
+  if (!hex || !hex.startsWith('#')) return '#ffffff';
+  const { r, g, b } = hexToRgb(hex);
+  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  return brightness > 150 ? "#111111" : "#ffffff";
 }
