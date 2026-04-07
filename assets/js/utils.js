@@ -200,3 +200,41 @@ export function sortNotices(notices, mode) {
 export function buildNoticeUrl(id) {
   return `notice.html?id=${encodeURIComponent(id)}`;
 }
+
+export function normalizeNotice(notice = {}) {
+  const rawContent = notice.content || "";
+  const textContent = String(rawContent);
+  const title = notice.title || `Untitled Notice ${notice.id ?? ""}`;
+
+  const content = looksLikeRealHtml(textContent)
+    ? textContent
+    : convertPlainTextNoticeToHtml(textContent, title);
+
+  return {
+    id: notice.id,
+    title: title,
+    date: notice.date || "",
+    category: notice.category || "Uncategorized",
+    tags: Array.isArray(notice.tags) ? notice.tags : [],
+    summary: notice.summary || "",
+    content,
+    plainContent: stripHtml(content), // Stored for the search.js engine
+    toc: notice.toc !== false
+  };
+}
+
+export function hexToRgb(hex) {
+  if (!hex) return { r: 255, g: 255, b: 255 };
+  const clean = hex.replace("#", "");
+  const normalized = clean.length === 3 ? clean.split("").map(c => c + c).join("") : clean;
+  const bigint = parseInt(normalized, 16);
+  return { r: (bigint >> 16) & 255, g: (bigint >> 8) & 255, b: bigint & 255 };
+}
+
+// Determines if text should be black or white based on the dynamic pill background color
+export function getContrastColor(hex) {
+  if (!hex || !hex.startsWith('#')) return '#ffffff';
+  const { r, g, b } = hexToRgb(hex);
+  const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+  return brightness > 150 ? "#111111" : "#ffffff";
+}

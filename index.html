@@ -1,3 +1,4 @@
+--- START OF FILE index.html ---
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -36,7 +37,65 @@
 
           <div class="archive-controls">
             <div class="search-block">
-              <input id="searchInput" class="input" type="search" placeholder="Search" autocomplete="off" />
+              <!-- Search & Filter Toggle Row -->
+              <div class="search-row">
+                <input id="searchInput" class="input" type="search" placeholder="Search" autocomplete="off" />
+                <button id="filterToggle" class="icon-btn filter-toggle-btn" type="button" aria-label="Toggle Filters" aria-expanded="false">
+                  <img src="assets/icons/filter-button.svg" alt="" aria-hidden="true" style="width: 20px; height: 20px;" />
+                </button>
+              </div>
+
+              <!-- Expanding Filter Panel -->
+              <div id="filterPanel" class="filter-panel" aria-hidden="true">
+                <div id="filterPanelInner" class="filter-panel__inner">
+                  <div class="filter-panel__content">
+                    
+                    <div class="filter-section">
+                      <h3 class="filter-section__title">Search In</h3>
+                      <div class="filter-pills" id="scopePills">
+                        <button type="button" class="filter-pill scope-pill active" data-scope="title">Title</button>
+                        <button type="button" class="filter-pill scope-pill active" data-scope="content">Content</button>
+                      </div>
+                    </div>
+
+                    <div class="filter-section">
+                      <h3 class="filter-section__title">Date Period</h3>
+                      <div class="date-range-container">
+                        <input class="input date-input" id="startDate" type="text" readonly placeholder="MM/DD/YYYY" />
+                        <span class="date-separator">-</span>
+                        <input class="input date-input" id="endDate" type="text" readonly placeholder="MM/DD/YYYY" />
+                        
+                        <!-- Custom Calendar Dropdown -->
+                        <div id="calendarDropdown" class="calendar-popup" style="display: none;">
+                          <div class="calendar-header">
+                            <button type="button" id="calPrevYear" class="cal-nav">&laquo;</button>
+                            <button type="button" id="calPrevMonth" class="cal-nav">&lsaquo;</button>
+                            <select id="calMonthSelect" class="cal-select"></select>
+                            <select id="calYearSelect" class="cal-select"></select>
+                            <button type="button" id="calNextMonth" class="cal-nav">&rsaquo;</button>
+                            <button type="button" id="calNextYear" class="cal-nav">&raquo;</button>
+                          </div>
+                          <div class="calendar-grid-header">
+                            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+                          </div>
+                          <div id="calendarDays" class="calendar-grid-days"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="filter-section">
+                      <h3 class="filter-section__title">Tags</h3>
+                      <div class="filter-pills" id="tagPills"></div>
+                    </div>
+
+                    <div class="filter-panel__footer">
+                      <button id="clearFiltersBtn" class="filter-pill clear-pill" type="button">Clear Filters</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
               <p class="section-subtitle archive-results" id="resultsSummary">Loading results...</p>
             </div>
           </div>
@@ -61,3 +120,4 @@
   <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
+--- START OF FILE index.html ---
