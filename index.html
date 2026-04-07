@@ -36,68 +36,7 @@
 
           <div class="archive-controls">
             <div class="search-block">
-              <div class="search-row">
-                <div class="search-input-wrap">
-                  <input id="searchInput" class="input" type="search" placeholder="Search notices..." autocomplete="off" />
-                </div>
-                <button id="filterToggle" class="filter-toggle icon-btn" type="button" aria-expanded="false" aria-label="Toggle filters">
-                  <img src="assets/icons/filter-button.svg" alt="Filters" aria-hidden="true" style="width: 18px; height: 18px;">
-                </button>
-              </div>
-
-              <div id="filterPanel" class="filter-panel" aria-hidden="true">
-                <div id="filterPanelInner" class="filter-panel-inner">
-                  <div class="filter-content">
-                    <div class="filter-grid">
-                      <section class="filter-section">
-                        <h2>Search In</h2>
-                        <div class="pill-row" id="scopePills">
-                          <button type="button" class="pill scope-pill active" data-scope="title">Title</button>
-                          <button type="button" class="pill scope-pill active" data-scope="content">Content</button>
-                        </div>
-                      </section>
-
-                      <section class="filter-section">
-                        <h2>Date Period</h2>
-                        <div class="date-range">
-                          <div class="date-input-wrap">
-                            <input id="startDate" class="date-input" type="text" readonly placeholder="Start Date" />
-                          </div>
-                          <div class="date-separator">-</div>
-                          <div class="date-input-wrap">
-                            <input id="endDate" class="date-input" type="text" readonly placeholder="End Date" />
-                          </div>
-
-                          <div id="calendarDropdown" class="calendar-dropdown" style="display: none;">
-                            <div class="calendar-header">
-                              <button type="button" id="calPrevYear" class="cal-nav-btn">&laquo;</button>
-                              <button type="button" id="calPrevMonth" class="cal-nav-btn">&lsaquo;</button>
-                              <select id="calMonthSelect" class="cal-select"></select>
-                              <select id="calYearSelect" class="cal-select"></select>
-                              <button type="button" id="calNextMonth" class="cal-nav-btn">&rsaquo;</button>
-                              <button type="button" id="calNextYear" class="cal-nav-btn">&raquo;</button>
-                            </div>
-                            <div class="calendar-grid-header">
-                              <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
-                            </div>
-                            <div id="calendarDays" class="calendar-days"></div>
-                          </div>
-                        </div>
-                      </section>
-
-                      <section class="filter-section">
-                        <h2>Tags</h2>
-                        <div class="pill-row tag-pill-container" id="tagPills"></div>
-                      </section>
-
-                      <div class="filter-actions">
-                        <button id="clearFilters" class="pill clear-pill" type="button">Clear Filters</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+              <input id="searchInput" class="input" type="search" placeholder="Search" autocomplete="off" />
               <p class="section-subtitle archive-results" id="resultsSummary">Loading results...</p>
             </div>
           </div>
