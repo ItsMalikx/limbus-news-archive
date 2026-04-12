@@ -1,5 +1,5 @@
 # Limbus News Archive
-
+2
 A clean, searchable, and accessible archive of official Limbus Company notices.
 
 This project is live at: [lcna.whosmalikx.com](https://lcna.whosmalikx.com)
