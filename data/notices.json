@@ -1,5 +1,38 @@
 [
   {
+    "id": 584,
+    "title": "Notice: Ver. 1.104.0 Known Issues Hotfix ETA",
+    "date": "2026-04-30",
+    "tags": [
+      "Update",
+      "Bug Fix",
+      "Notice"
+    ],
+    "content": "Hello, this is Project Moon.\n\nWe would like to inform you about the known issues identified after the Apr. 30th Scheduled Update, and the ETA for a Hotfix that addresses them.\n\nPlease continue reading for more information.\n\n[ To be Hotfixed ]\n\n▶ An issue in \"Reflectrial][lairtcelfeR\" where, if the boss unit has entered Phase 2, the game fails to respond when battle is resumed with the subsequent Team Loadout\n\n[ Issue Cause ]\n- With Ver. 1.104.0 Update, the \"Docent\" Trait Keyword, which was missing in the previous version, was added to the affected boss unit. An erroneous logic in this process caused the game to become unresponsive after the boss entered a new phase.\n※ Relevant Bug Fix: Fixed an issue where a specific Keyword was missing from Phase 2 of the boss unit appearing in \"Chapter 9.5 - Twining Threads\"\n\n[ Issue Fix ]\n- The \"Docent\" Trait Keyword on the boss unit will be removed via a hotfix as a temporary solution to the progression blocker issue.\n※ Please note that the bugged logic will be corrected with the next Scheduled Update.\n\n▶ An issue where, in the Nocturnal Sweeping BokGak Reward Exchange menu, a certain reward item is shown and exchanged in incorrect numbers and rates\n※ Relevant Item: [Season 7] Egoshard Crate\n: This issue was fixed on 4/30 14:03(KST), and will now yield 5 Egoshard Crates instead. The displayed number in the Reward Exchange menu will also be updated once the hotfix is deployed.\n\n※ For Managers who have exchanged the item between 4/30 12:00 ~ 4/30 14:03, please note that we will be providing the correct amount of the said reward item in the future based on its mismatched quantity.\nWe will share further details regarding this matter at a later date.\n\n[ Hotfix ETA ]\n- 4.30 (Thu) 17:00 (KST)\n- There may be a 10-minute delay.\n\n※ The Hotfix will be deployed upon restarting the game, and does not require a separate client update. However, please note that additional in-game downloads may occur.\n\n[Ver. 1.104.0 Known Issues Compensation]\n- Content : Lunacy x500\n- Recipients : All users whose game accounts were created before May 7th, 2026, 10:00 AM (KST)\n- When : After Apr. 30th (Thu), 2026, 19:00 (KST)\n- Can be claimed once per account\n\nError Compensation can be claimed until May 7th (Thu), 2026, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)\n\nWe sincerely apologize for the inconvenience."
+  },
+  {
+    "id": 583,
+    "title": "Known Issues after 4/30 Scheduled Update",
+    "date": "2026-04-30",
+    "tags": [
+      "Update",
+      "Bug Fix",
+      "Notice"
+    ],
+    "content": "Hello, this is Project Moon.\n\nWe would like to inform you of known issues identified in Ver. 1.104.0, updated on April 30th.\nPlease refer below for more information.\n\n[ Known Issues ]\n▶ An issue in \"Reflectrial][lairtcelfeR\" where, if the boss unit has entered Phase 2, the game fails to respond when battle is resumed with the subsequent Team Loadout\n※ We are currently investigating the cause of this issue.\nWe will provide additional details via a separate notice once we have determined the cause and the means of resolving this issue.\n\n▶ An issue where, in the Nocturnal Sweeping BokGak Reward Exchange menu, a certain reward item is shown and exchanged in incorrect numbers and rates\n※ Relevant Item: [Season 7] Egoshard Crate\n\nA temporary measure has been implemented after 4/30 14:03. (KST)\nPlease note that even though the item's exchange rate is shown as \"x1\" in the UI text, you will receive 5 crates upon exchanging it.\n\n※ For Managers who have exchanged the item between 4/30 12:00 ~ 4/30 14:03, please note that we will be providing the correct amount of the said reward item in the future based on its mismatched quantity.\n\nWe sincerely apologize for the inconvenience."
+  },
+  {
+    "id": 582,
+    "title": "Notice: An Issue in \"Reflectrial][lairtcelfeR\" after the 4/30 Scheduled Update",
+    "date": "2026-04-29",
+    "tags": [
+      "Update",
+      "Bug Fix",
+      "Notice"
+    ],
+    "content": "Hello, this is Project Moon.\n\nFollowing the Scheduled Update on April 30, 2026, we have identified an issue where content planned for the next update is being displayed on the \"Reflectrial][lairtcelfeR\" screen.\n\nThis issue occurred because placeholder resources for content under development was included for the update.\nPlease note that selecting the relevant UI opens a separate screen that, in the current version, displays an uninteractable UI with white images.\n\nWe apologize for the inconvenience."
+  },
+  {
     "id": 581,
     "title": "2026, Apr. 30th Scheduled Update Notice",
     "date": "2026-04-29",
