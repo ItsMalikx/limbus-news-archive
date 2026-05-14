@@ -1,5 +1,47 @@
 [
   {
+    "id": 591,
+    "title": "Notice: Rollback of the 5/14 Hotfix",
+    "date": "2026-05-14",
+    "tags": [
+      "Update",
+      "Notice"
+    ],
+    "content": "Hello, this is Project Moon.\n\nThe hotfix that was applied on May 14, 2026 will be rolled back.\nWe would like to provide the schedule and details of the rollback.\n\nPlease refer below for more information.\n\n[ Elements to be Rolled Back ]\n▶ The Mirror World reclassification for the Identity Story of Blade of the House of Spiders Ryōshū\n※ The rollback will only apply to the item listed above. No other content will be changed.\n\n[ Hotfix Schedule ]\n- 5.14 (Thu), 21:00 (KST)\n- Please note that there may be a delay of approximately 10 minutes.\n\n※ The hotfix will be applied without a version update upon reconnecting to the game.\nPlease note that additional download may occur when the hotfix is deployed.\n\nWe sincerely apologize for the inconvenience caused."
+  },
+  {
+    "id": 590,
+    "title": "Apology for Mirror World in Blade of the House of Spiders Ryōshū ID Story",
+    "date": "2026-05-14",
+    "tags": [
+      "Update",
+      "Bug Fix",
+      "Notice"
+    ],
+    "content": "Hello, this is Jihoon Kim, Director of Project Moon.\n\nThis notice is meant as an apology, as well as an explanation regarding the Mirror World separation issue in the Identity Story for Blade of the House of Spiders Ryōshū.\n\nAllow me to begin by saying that, in the initial design stage, the story of Season Highlight Identity for Ryōshū was set in the same Mirror World as the other House of Spiders Nursefather and Apprentice Identities.\n\nInternal discussions have been ongoing about whether we should completely separate the two Mirror Worlds and develop their stories independently. During this process, communication between the implementation team and the scenario team was not made clear enough.\n\nIn the concluding stage, as I was writing the flavor text, I had decided to group Blade of the House of Spiders Ryōshū and the other Nursefather and Apprentice Identities into the same World. This was conveyed to the scenario team, but not to the implementation team. As a result, the Mirror Worlds grouping was recognized as a bug, and a hotfix was applied to separate the Mirror Worlds in the Identity Stories:\n\n1. Highlight Identity of Ryōshū and the other House of Spiders Identities were initially set to be in the same World\n2. During the early part of Chapter 9, while designing and developing Highlight Ryōshū, a brief discussion took place regarding the feasibility of making her story part of a different World from that of the other House of Spiders Identities\n3. With the release of House of Spiders Nursefather and Apprentice Identities, I naturally came to think that Highlight Ryōshū’s Identity Story should be set in the same world. The Identity Story and the flavor texts, then, were written with that consideration in mind.\n4. The process described in Point no. 3 happened gradually, and it was not decisively shared with the implementation team\n5. Following today's Scheduled Update, the implementation team saw that the Mirror Worlds of Highlight Ryōshū and the other House of Spiders Identities had been grouped together, and corrected it through a subsequent hotfix\n\nTwo issues occurred through this series of events, and we plan to fix them.\nFirst - Information was not aligned across teams during the design and integration process between the Highlight Identity's Story and the other Identity Stories\nSecond - It is simply that I should have confirmed and approved important plot-related elements.\n\nThe company and teams have grown in scale since their founding, and so has the scope-and-division of tasks. As the director, it is my duty to properly recognize which parts I need to check or confirm through the end, and which parts are to be entrusted to the teams. I regret to say that my failure to do so has led to the current issue.\n\nWords couldn't describe how sorry I am that, due to this issue, users who had been closely following the tragic or unexpected plots of the Sinners across their myriad Mirror Worlds were made to feel as though an engaging plot element had been abruptly discarded.\n\nBoth the teams and I will seriously reflect on the two issues mentioned above and pay closer attention so that they do not happen again.\n\nI am truly sorry that this issue occurred on what should have been a fun and exciting release day for Ryōshū's Highlight Identity.\n\nWe will continue to be mindful so that the plot and setting of the universe-building can be better coordinated to make the game and story experience more immersive. We will also further reinforce our communication system.\n\nOnce again, I sincerely apologize.\n\n-------------------------\n\n[Compensation for Mirror World Division Issue in the Identity Story of Blade of the House of Spiders Ryōshū]\n- Content : Lunacy x1300\n- Recipients : All users whose game accounts were created before May 28, 2026, 10:00 (KST)\n- When : After May 14th, 2026 (Thu) 21:00 (KST)\n- Can be claimed once per account\n\nMaintenance compensation can be obtained through your in-game mailbox until May 28, 2026, Thursday, 10:00 KST (Mail claim period: 7 days)."
+  },
+  {
+    "id": 589,
+    "title": "Notice: Version 1.105.0 Hotfix Schedule",
+    "date": "2026-05-14",
+    "tags": [
+      "Update",
+      "Bug Fix",
+      "Notice"
+    ],
+    "content": "Hello, this is Project Moon.\n\nWe would like to inform you of the hotfix schedule and details regarding an issue identified after the May 14th, 2026 Scheduled Update.\n\nPlease refer below for more information.\n\n[ Issues Addressed via Hotfix ]\n▶ Separation of Identity Story Category for \"Blade of the House of Spiders Ryōshū\"\n※ Identity Story grouping for \"Blade of the House of Spiders Ryōshū\" will be adjusted, as it was applied differently from the original intended design.\n\n[ Hotfix Schedule ]\n- 5.14 (Thu) 17:30 (KST)\n- Please note that there may be a delay of approximately 10 minutes.\n\n※ The hotfix will be applied without a version update upon reconnecting to the game.\nPlease note that additional download may occur when the hotfix is deployed.\n\nWe sincerely apologize for the inconvenience caused."
+  },
+  {
+    "id": 588,
+    "title": "Notice: Regarding Delayed Availability of the 1.105.0 Version Update on iOS",
+    "date": "2026-05-13",
+    "tags": [
+      "Update",
+      "Notice"
+    ],
+    "content": "Hello, this is Project Moon.\n\nWe have identified that the 1.105.0 update on the iOS App Store was slightly delayed and became available at 12:35 (KST).\n\nPlease note that the update can now be completed normally, and access to the game is now functional.\n\nWe sincerely apologize for the inconvenience."
+  },
+  {
     "id": 587,
     "title": "2026, May 14th Scheduled Update Notice",
     "date": "2026-05-13",
