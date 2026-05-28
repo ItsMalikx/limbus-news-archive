@@ -1,5 +1,70 @@
 [
   {
+    "id": 601,
+    "title": "(Steam) Notice: Version Update for Progression-blocking Issues in Ver. 1.106.0",
+    "date": "2026-05-28",
+    "tags": [
+      "Refraction Railway",
+      "Mirror Dungeon",
+      "Update"
+    ],
+    "content": "Hello, this is Project Moon.\n\nVer. 1.106.1 that fixes the known issues identified in Ver. 1.106.0, updated May 28th, will be deployed soon.\n\nThis update will be deployed to Steam first.\n\nAs mobile platforms (AOS, iOS) require the update to go through each respective market review, the update cannot be deployed immediately in the case of mobile environment.\n\nUntil the update is applied on the AOS and iOS platforms, we would like to ask our mobile users to access the game on Steam if possible.\n\nWe will inform you via a separate notice as soon as updates become available on each AOS and iOS platform.\n\nPlease refer below for more information.\n\n[Issues to be Fixed with the Ver. 1.106.1 Update]\n\n▶ (Steam) Fixed an issue where resolution settings could not be freely changed in Windowed Mode\n\n▶ Fixed an issue where, under certain conditions in Refraction Railway Line 6, the turn count would loop and pass indefinitely, blocking battle progression\n\n▶ Fixed an issue where, in Refraction Railway Line 6, the game would stop responding during battle animations when The House of Spiders: The Index Nursefather Yi Sang uses Furioso-Replica against a certain enemy\n\n▶ Fixed an issue where, after the update, the game would stutter at various points\n- Moving between nodes in the Mirror Dungeon\n- Making choices and running Skill checks in Mirror Dungeon Choice Events\n- Making purchases in Mirror Dungeon shops\n- Selecting Combat Encounters and viewing the pre-battle enemy info UI (Refraction Railway, Story Combat Encounters, Mirror Dungeon Combat Encounters, etc.)\n\n[Version Update Schedule]\n- 5.28 (Thu), after 23:00 (KST)\n- There may be a delay of approximately 10 minutes.\n\n※ Once the update has been applied normally, the version number displayed at the bottom right of the title screen will show 1.106.1.\n\nAdditionally, regarding the issue on AOS where \"a black screen appears upon launching Limbus Company, blocking game launch\", we are currently working to resolve the problem as quickly as possible.\n\nWe sincerely apologize for the inconvenience."
+  },
+  {
+    "id": 600,
+    "title": "Notice: Stuttering Issue Following Ver. 1.106.0 Update",
+    "date": "2026-05-28",
+    "tags": [
+      "Refraction Railway",
+      "Mirror Dungeon",
+      "Update"
+    ],
+    "content": "Hello, this is Project Moon.\n\nWe have identified an issue where, following the May 28th, 2026 Scheduled Update, persistent stuttering issues are observed in-game.\n\n[ Suspected Cause ]\nWith the Ver. 1.106.0 Update, the game development engine has changed, and some of the preexisting system that converts Limbus Company characters' Skills, Coins, and Buff effects may have become incompatible with the updated game engine, causing the stuttering issue.\n\nPrimary sources of stuttering reports have been identified in the following areas:\n- Moving between nodes in the Mirror Dungeon\n- Making choices and running Skill checks in Mirror Dungeon Choice Events\n- Making purchases in Mirror Dungeon shops\n- Selecting Combat Encounters and viewing the pre-battle enemy info UI (Refraction Railway, Story Combat Encounters, Mirror Dungeon Combat Encounters, etc.)\n\n[ Issue Fix ]\nWe have identified, in areas affected by stuttering, the specific logic that requires optimization. We have made the necessary corrections and are currently running tests to ensure its stability.\n\n[Fix Schedule]\nWe are working to deploy a version that resolves the stuttering issue as part of the Jun. 4th Scheduled Update.\nIf the work is completed sooner, we will deploy the fix on the Steam platform first, as it does not require a separate review process.\n\nWe sincerely apologize for the inconvenience."
+  },
+  {
+    "id": 599,
+    "title": "Notice: Ver. 1.106.0 Known Issues and Hotfix ETA",
+    "date": "2026-05-28",
+    "tags": [
+      "Refraction Railway",
+      "Update",
+      "Bug Fix"
+    ],
+    "content": "※ (26/5/28 20:45) Additional known issues have been confirmed and added to the list:\n\nHello, this is Project Moon.\n\nWe would like to inform you about the known issues identified after the May 28th, 2026 Scheduled Update, and the ETA for a Hotfix that addresses some of them.\n\nPlease continue reading for more information.\n\n[ To-be Hotfixed ]\n\n▶ Fixed an issue where \"Sinnerlings' Chicken-scratch Farewells\" item does not show up in the players' inventory\n※ This fix will make the item, which is still in your accounts but hidden from the inventory display, visible again.\n\n▶ (EN Only) Fixed an issue where the update caused Canto 1~2 re-translations and miscellaneous typo fixes to be reverted\n\n▶ Fixed an incorrect description for a Skill of an enemy in Refraction Railway Line 6\n※ Relevant Skill : The Descending Pin\n- Before : [Clash Win] Spawn \"Flower-burying Pin\" next turn\n- After : [On Use] Spawn \"Flower-burying Pin\" next turn\n※ This effect is working as intended; this is a Skill description-only fix.\n\n▶ Fixed an issue where an incorrect image was used for the \"Identity Deployment Limits\" page of the Refraction Railway tutorial\n\n[ Hotfix ETA ]\n- May 28th (Thu) 19:30\n- There may be a 10 minute delay.\n\n※ The Hotfix will be deployed upon restarting the game, and does not require a separate client update. However, please note that additional in-game downloads may occur.\n\n[ Additional Issues Still Being Investigated ]\n▶ (Steam) An issue where the game's resolution cannot be freely adjusted\n\n▶ An issue where, in Refraction Railway Line 6, certain triggers could cause the turns to pass indefinitely, causing the battle to become unresponsive\n\n▶ An issue where, in Refraction Railway Line 6, The House of Spiders: The Index Nursefather Yi Sang using Furioso-Replica on a certain enemy could cause the game to become unresponsive mid-animation\n\n▶ An issue where Limbus Company's App icon appears differently\n\n▶ (AOS) An issue where a black screen appears upon launching Limbus Company, blocking game launch\n※ We are constantly monitoring and investigating this issue.\n※ Once the cause of this issue has been identified and resolved, we will inform you via a future notice.\n\n(added 2026. 05. 28, 20:45 KST)\n▶ An issue where, in Refraction Railway Line 6, allied units that were defeated in Section 1 are unable to be deployed in Section 5, and are not judged as being in a defeated state\n\n▶ An issue where, when the Keyword \"Rising Fever\" of \"The House of Spiders: The Middle Nursefather Outis\" is at 0 Stack, and \"Time to Unpack!\" cannot be used in that turn and is used in the following turn, \"Rising Fever\" cannot be gained normally and is instead gained at the next Turn Start\n※ Please note that in order to avoid affecting the difficulty of the Refraction Railway, \"The House of Spiders: The Middle Nursefather Outis Peccatulum Invidiae\" will still gain \"Rising Fever\" at Turn Start.\n\n[5/28 Scheduled Update Error Compensation]\n- Content : Lunacy x1300\n- Recipients : All users whose game accounts were created before Jun. 4th, 2026, 10:00 (KST)\n- When : After May 28th, 2026 (Thu) 21:00 (KST)\n- Can be claimed once per account\n\nMaintenance compensation can be obtained through your in-game mailbox until Jun. 4th, 2026, Thursday, 10:00 KST (Mail claim period: 7 days).\n\nWe sincerely apologize for the inconvenience."
+  },
+  {
+    "id": 598,
+    "title": "Notice: Korean App Store Package Price Adjustment and Sales Resumption",
+    "date": "2026-05-28",
+    "tags": [
+      "Update",
+      "Bug Fix",
+      "Notice"
+    ],
+    "content": "Hello, this is Project Moon.\n\nThe previously announced price adjustment for the package products has now been completed.\nPlease note that sales have resumed, and we would like to inform you of the follow-up measures.\n\nPlease refer below for more information.\n\n[ App Store Package Sales Resumption ]\nSales resumption time: May 28th (Thu), around 15:40 (KST)\n\n※ If you are unable to make a purchase, please completely close the game application and restart it. Purchases should proceed normally afterward.\n\n[ Follow-up Measures Regarding App Store Price Adjustment ]\nWe plan to provide Paid Lunacy equivalent to the price difference for Managers who purchased the affected packages in Korean Won (KRW) before the price adjustment was applied.\n\n- Eligible Recipients: Managers who purchased the affected packages in KRW by May 28th, 15:00\n- Compensation Details: Paid Lunacy will be provided in an amount equivalent to the price difference of the packages affected by the pricing error.\n- Date of Distribution: Jun. 4th Scheduled Update\n\n※ We had initially planned to issue refunds for the affected packages; however, on iOS, payment authorization is delegated to the platform, and the game company cannot process refunds arbitrarily.\nWe deeply apologize that, due to this issue, we have no choice but to provide a Paid Lunacy compensation, based on the price difference.\n\nIf you would prefer a monetary refund instead of Paid Lunacy, please contact Apple Customer Support via the link below to proceed.\nPlease note that relevant purchased packages will be withdrawn from your account if a refund is processed.\n\n- iOS Customer Support\nhttps://reportaproblem.apple.com/\n\n[ Paid Lunacy Compensation by Package (to be distributed) ]\n※ The amounts below have been calculated based on the KRW price, using the most price-efficient Lunacy package (Lunacy Hoard) as the reference.\nBased on this calculation method, 100 KRW is converted to approximately 7.58 Paid Lunacy, with decimals rounded up.\n\n1. Packages\n: Weekly Extraction Pack - 84 Paid Lunacy\n: Weekly Extraction Ticket Pack I - 84 Paid Lunacy\n: Weekly Enkephalin Pack - 84 Paid Lunacy\n: Monthly Extraction Pack - 228 Paid Lunacy\n\n2. Growth\n: Weekly Thread Pack - 84 Paid Lunacy\n: Monthly Training Pack II - 834 Paid Lunacy\n\n3. Lunacy (including first-time purchases)\n: Lunacy Bouquet - 152 Paid Lunacy\n: Lunacy Crate - 455 Paid Lunacy\n: Lunacy Cluster - 834 Paid Lunacy\n: Lunacy Hoard - 1,365 Paid Lunacy\n: Monthly Lunacy Supply - 84 Paid Lunacy\n\nWe sincerely apologize for the inconvenience caused by the package pricing error."
+  },
+  {
+    "id": 597,
+    "title": "Notice: Korean App Store Package Price Error and Temporary Sales Suspension",
+    "date": "2026-05-28",
+    "tags": [
+      "Bug Fix",
+      "Notice"
+    ],
+    "content": "Hello. This is Project Moon.\n\nAs of May 28th, 2026, 00:00 (KST), the prices of packages sold on the Korean App Store have increased.\nIn order to adjust the prices of the affected packages, sales of certain packages will be temporarily suspended.\n\nAt present, we are using the US Dollar (USD) as the base currency for in-app purchases.\nIn accordance with Apple's policy, package prices for Korean Won (KRW) payments were automatically increased on May 28th due to price equalization with the base currency.\n\nFor the affected packages, we plan to resume sales after adjusting the KRW prices on the App Store to match the package prices on Steam and Android.\n\nWe will proceed with this correction as quickly as possible.\nOnce the correction is complete, we will provide another notice outlining the follow-up measures.\n\nPlease refer below for more information.\n\n[ Temporary Sales Suspension of Certain App Store Packages ]\n※ Sales suspension time: May 28th (Thu), around 14:50 (KST)\n\n※ List of packages whose sales will be suspended\n1. Packages\n: Weekly Extraction Pack\n: Weekly Extraction Ticket Pack I\n: Weekly Enkephalin Pack\n: Monthly Extraction Pack\n\n2. Growth\n: Weekly Thread Pack\n: Monthly Training Pack II\n\n3. Lunacy (including first-time purchases)\n: Lunacy Bouquet\n: Lunacy Crate\n: Lunacy Cluster\n: Lunacy Hoard\n: Monthly Lunacy Supply\n\n※ The exact time at which package sales are suspended may vary depending on the device.\nIf a package still appears available for purchase after the sales suspension begins, please refrain from purchasing it.\n\nWe sincerely apologize for the inconvenience."
+  },
+  {
+    "id": 596,
+    "title": "Notice: Known Issues After the May 28th, 2026 Scheduled Update",
+    "date": "2026-05-27",
+    "tags": [
+      "Mirror Dungeon",
+      "Update",
+      "Bug Fix"
+    ],
+    "content": "Hello, this is Project Moon.\n\nWe would like to inform you about the known issues identified after the May 28th, 2026 Scheduled Update.\n\nThe following issues are currently being investigated, and we will share further information, such as causes, fixes, or Hotfix ETA, in a future notice.\n\nPlease continue reading for more information.\n\n[ Known Issues ]\n▶ (AOS) An issue where Limbus Company's App icon appears differently\n※ This issue was caused by AOS icon settings missing in the Unity engine update process.\n\n▶ (Steam) An issue where the game's resolution cannot be freely adjusted\n\n▶ An issue where \"Sinnerlings' Chicken-scratch Farewells\" item does not show up in the players' inventory\n※ Please note that the item is not lost and is still in your accounts, only hidden from the inventory display.\n\n▶ An issue where certain interactions such as viewing Stage info, accessing Mirror Dungeon Shops, or entering Choice Events could cause the game to lag briefly\n\n▶ (AOS) An issue where a black screen appears upon launching Limbus Company, blocking game launch\n※ For Managers experiencing this issue, please submit an inquiry to the Customer Support email address below along with your device information. We will collect the information and investigate the issue as quickly as possible.\n\n[Customer Support]\nlimbussupport@projmoon.com\n\n[Required Information]\n- Device currently in use:\n- OS version:\n\nWe sincerely apologize for the inconvenience."
+  },
+  {
     "id": 595,
     "title": "2026, May 28th Scheduled Update Notice",
     "date": "2026-05-27",
