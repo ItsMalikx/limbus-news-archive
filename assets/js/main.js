@@ -1,145 +1,122 @@
 import { SITE_CONFIG, TAG_COLORS } from "./config.js";
 import {
-  buildNoticeUrl,
-  fetchNotices,
-  initThemeToggle,
-  normalizeNotice,
-  sortNotices,
-  stripHtml,
-  debounce,
-  escapeHtml,
-  formatDate
+  buildNoticeUrl, fetchNotices, initThemeToggle, normalizeNotice, sortNotices,
+  stripHtml, debounce, escapeHtml, formatDate
 } from "./utils.js";
 import { buildSearchIndex, filterNotices } from "./search.js";
 
 const noticeList = document.getElementById("noticeList");
 const searchInput = document.getElementById("searchInput");
 const resultsSummary = document.getElementById("resultsSummary");
-const loadSentinel = document.getElementById("loadSentinel");
-
-initThemeToggle();
-
+const navigation = [...document.querySelectorAll('[aria-label="Archive pages"]')];
+const archivePage = Number(noticeList.dataset.archivePage) || 1;
+const pageSize = Number(noticeList.dataset.pageSize) || SITE_CONFIG.pageSize || 50;
 let allNotices = [];
 let searchIndex = [];
-let currentSorted = [];
-let currentPage = 1;
-const PAGE_SIZE = SITE_CONFIG.pageSize || 50;
 
-function excerpt(notice) {
-  const summary = notice.summary?.trim();
-  if (summary) return summary;
-
-  const plain = stripHtml(notice.content).trim();
-  if (!plain) return "No preview available.";
-
-  return plain.slice(0, 220).trim() + (plain.length > 220 ? "..." : "");
-}
+try { initThemeToggle(); } catch (error) { console.warn("Theme preference unavailable", error); }
 
 function renderNoticeCard(notice) {
   const article = document.createElement("a");
-  article.className = "notice-card reveal";
+  article.className = "notice-card";
   article.href = buildNoticeUrl(notice.id);
-
-  const tagToSlug = (tag) => tag.toLowerCase().replace(/\s+/g, '-');
-
-  const tagsHtml = notice.tags && notice.tags.length > 0
-    ? `<div class="tag-list">${notice.tags.map(tag => {
-        const slug = tagToSlug(tag);
-        const color = TAG_COLORS[slug];
-        const style = color ? `style="--tag-color: ${color}"` : "";
-        return `<span class="tag-pill" ${style}>${escapeHtml(tag)}</span>`;
-      }).join("")}</div>`
-    : "";
-
-  const dateHtml = notice.date
-    ? `<div class="notice-card__date">${escapeHtml(formatDate(notice.date))}</div>`
-    : "";
-
+  const tags = notice.tags.map(tag => {
+    const color = TAG_COLORS[tag.toLowerCase().replace(/\s+/g, "-")];
+    return `<span class="tag-pill" ${color ? `style="--tag-color: ${color}"` : ""}>${escapeHtml(tag)}</span>`;
+  }).join("");
+  const plain = notice.summary?.trim() || stripHtml(notice.content).trim();
+  const summary = plain.slice(0, 220) + (plain.length > 220 ? "…" : "");
   article.innerHTML = `
-    ${tagsHtml}
+    <div class="tag-list">${tags}</div>
     <h2 class="notice-card__title">${escapeHtml(notice.title)}</h2>
-    ${dateHtml}
-    <p class="notice-card__summary">${escapeHtml(excerpt(notice))}</p>
-  `;
-
+    ${notice.date ? `<div class="notice-card__date">${escapeHtml(formatDate(notice.date))}</div>` : ""}
+    <p class="notice-card__summary">${escapeHtml(summary)}</p>`;
   return article;
 }
 
-function renderChunk(notices, page, append = false) {
-  if (!append) {
-    noticeList.innerHTML = "";
-    if (!notices.length) {
-      noticeList.innerHTML = `
-        <div class="empty-card">
-          <h3 class="section-title">No notices matched your search.</h3>
-          <p class="section-subtitle">Try adjusting the search terms.</p>
-        </div>
-      `;
-      return;
-    }
-  }
-
-  const start = (page - 1) * PAGE_SIZE;
-  const end = page * PAGE_SIZE;
-  const chunk = notices.slice(start, end);
-
-  if (chunk.length === 0) return;
-
-  const fragment = document.createDocumentFragment();
-  chunk.forEach((notice) => fragment.appendChild(renderNoticeCard(notice)));
-  noticeList.appendChild(fragment);
+function pageUrl(page, query) {
+  if (!query) return page === 1 ? "/" : `/archive/${page}/`;
+  const url = new URL(window.location.href);
+  url.search = "";
+  url.searchParams.set("q", query);
+  if (page > 1) url.searchParams.set("page", String(page));
+  return url.pathname + url.search;
 }
 
-function updateStats(filtered) {
-  resultsSummary.textContent = `${filtered.length} result${filtered.length === 1 ? "" : "s"}`;
-}
-
-function applyFilters() {
-  const query = searchInput.value || "";
+function renderFromLocation() {
+  const params = new URLSearchParams(window.location.search);
+  const query = (params.get("q") || "").trim();
+  searchInput.value = query;
   const filtered = filterNotices(allNotices, searchIndex, query);
-  currentSorted = sortNotices(filtered, "date-desc");
+  const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const requested = query ? Number(params.get("page") || 1) : archivePage;
+  const page = Math.min(pages, Math.max(1, Number.isSafeInteger(requested) ? requested : 1));
+  const fragment = document.createDocumentFragment();
+  filtered.slice((page - 1) * pageSize, page * pageSize)
+    .forEach(notice => fragment.appendChild(renderNoticeCard(notice)));
+  noticeList.replaceChildren(fragment);
+  if (!filtered.length) {
+    noticeList.innerHTML = '<div class="empty-card"><h2 class="section-title">No notices matched your search.</h2><p>Try adjusting the search terms.</p></div>';
+  }
+  resultsSummary.textContent = filtered.length
+    ? `${filtered.length} ${query ? "results" : "notices"} · Page ${page} of ${pages}`
+    : "0 results";
 
-  currentPage = 1;
-  renderChunk(currentSorted, currentPage, false);
-  updateStats(currentSorted);
+  for (const nav of navigation) {
+    const links = document.createDocumentFragment();
+    for (let target = 1; target <= pages; target++) {
+      const link = document.createElement("a");
+      link.className = "notice-pagination__link";
+      link.href = pageUrl(target, query);
+      link.textContent = String(target);
+      if (target === page) {
+        link.className += " active";
+        link.setAttribute("aria-current", "page");
+      }
+      if (query) link.dataset.searchPage = String(target);
+      links.appendChild(link);
+    }
+    nav.replaceChildren(links);
+    nav.hidden = filtered.length === 0;
+    nav.style.display = filtered.length ? "flex" : "none";
+  }
 }
 
-const debouncedApplyFilters = debounce(applyFilters, 100);
-
-function initObserver() {
-  if (!loadSentinel || !("IntersectionObserver" in window)) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      if (currentPage * PAGE_SIZE < currentSorted.length) {
-        currentPage++;
-        renderChunk(currentSorted, currentPage, true);
-      }
-    }
-  }, { rootMargin: "200px" });
-
-  observer.observe(loadSentinel);
+function applySearch() {
+  const url = new URL(window.location.href);
+  const query = searchInput.value.trim();
+  if (query) url.searchParams.set("q", query);
+  else url.searchParams.delete("q");
+  url.searchParams.delete("page");
+  window.history.replaceState(null, "", url.pathname + url.search);
+  renderFromLocation();
 }
 
 async function init() {
+  searchInput.value = new URLSearchParams(window.location.search).get("q") || "";
+  searchInput.disabled = true;
   try {
     const raw = await fetchNotices(SITE_CONFIG.dataUrl);
-    allNotices = raw.map(normalizeNotice);
-    currentSorted = sortNotices(allNotices, "date-desc");
+    allNotices = sortNotices(raw.map(normalizeNotice), "date-desc");
     searchIndex = buildSearchIndex(allNotices);
-
-    currentPage = 1;
-    renderChunk(currentSorted, currentPage, false);
-    updateStats(currentSorted);
-    initObserver();
-
-    if (searchInput) {
-      searchInput.addEventListener("input", debouncedApplyFilters);
+    renderFromLocation();
+    searchInput.disabled = false;
+    searchInput.addEventListener("input", debounce(applySearch, 100));
+    window.addEventListener("popstate", renderFromLocation);
+    for (const nav of navigation) {
+      nav.addEventListener("click", event => {
+        const link = event.target.closest("a[data-search-page]");
+        if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        window.history.pushState(null, "", link.href);
+        renderFromLocation();
+        navigation[0]?.scrollIntoView({ block: "start" });
+      });
     }
   } catch (error) {
     console.error(error);
-    // Keep server-rendered links usable if the data request fails.
-    if (resultsSummary) resultsSummary.textContent = "Search is temporarily unavailable. Browse the archive below.";
+    // Static cards and page links remain usable when the search data cannot load.
+    resultsSummary.textContent = "Search is temporarily unavailable. Browse the archive below.";
   }
 }
 
