@@ -581,3 +581,14 @@ a.notice-pagination__link:hover:not(.active) {
     min-width: 0;
   }
 }
+/* Keep article navigation at the outer edges, including single-link pages. */
+#noticePagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+#noticePagination > a[rel="next"] {
+  margin-left: auto;
+}
