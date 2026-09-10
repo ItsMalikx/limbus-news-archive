@@ -110,7 +110,7 @@ async function init() {
         event.preventDefault();
         window.history.pushState(null, "", link.href);
         renderFromLocation();
-        navigation[0]?.scrollIntoView({ block: "start" });
+        noticeList.scrollIntoView({ block: "start" });
       });
     }
   } catch (error) {
