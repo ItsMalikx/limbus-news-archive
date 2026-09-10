@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notice: July 31st Ver 1.83.0 Known Issues &amp; Subsequent Measures | Limbus Company News Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+<link rel="canonical" href="https://lcna.whosmalikx.com/notices/441/">
+<meta name="description" content="Hello, this is Project Moon. In this notice, we would like to inform you about the causes and our measures toward issues that have been identified, in addition ">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="topbar__inner container-wide">
+        <a class="brand" href="/">
+          <span class="brand__mark"></span>
+          <span class="brand__text">Limbus Company News Archive</span>
+        </a>
+
+        <nav class="topbar__actions" aria-label="Site actions">
+          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container-wide notice-layout">
+      <article class="article-panel reveal">
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: July 31st Ver 1.83.0 Known Issues &amp; Subsequent Measures</h1><div class="notice-date"><time datetime="2025-07-31">2025-07-31</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+<p>In this notice, we would like to inform you about the causes and our measures toward issues that have been identified, in addition to the softlocking issue in our previous notice. With it, we would also like to inform you regarding our new client update.</p>
+<p>► An issue where the game softlocks in certain Encounters</p>
+<p>[ Cause ]<br>This issue was a side effect of fixing the issue where the targeting mechanism for Skills with the [Indiscriminate] trait did not work properly, the fix for which was deployed with today&#x27;s Scheduled Update.</p>
+<p>The side effect was that, when an enemy target uses a [Indiscriminate] Skill in Focused Encounters, we observed an abnormal legnthening of the targeting time, which caused the game to softlock.</p>
+<p>[ Solution ]<br>We have identified the exact logic that was causing the issue,<br>and have tracked and corrected the cause of the error to properly address it.</p>
+<p>[ Subsequent Measures ]<br>We will be adding a logic to preemptively detect other logics that are taking abnormally long to calculate.</p>
+<p>► An issue where certain effects of the E.G.O Gift Omnivibro-octovecti-bell did not work properly<br>※ Relevant effect : extend the Tremor - Superposition on target at Turn End to the next turn</p>
+<p>[ Cause ]<br>In Focused Encounters, the E.G.O Gift should have applied to each part of enemies, but it was applying Tremor - Superposition to the enemies themselves, which caused the relevant effects to not trigger.</p>
+<p>[ Solution ]<br>We have adjusted the code so that the E.G.O Gift&#x27;s effects apply to each part instead of the enemy itself in Focused Encounters.</p>
+<p>[ Subsequent Measures ]<br>Going forward, we will be including an additional testing step to ensure that E.G.O Gift effects are applying to each Part in Focused Encounters, so that this issue won&#x27;t occur again.</p>
+<p>► New Client Deployment ETA</p>
+<p>A new Client version(1.83.1) with fixes for the above issues will be deployed.</p>
+<p>STEAM: The update will be deployed around 19:00 (KST).<br>iOS, Android: As Client updates need to go through the review process of each respective marketplaces, we will inform you again of the update schedule once the reviews are complete.</p>
+<p>We sincerely apologize for the inconvenience.</p>
+<p>[7/31 Scheduled Update Error Compensation]<br>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 Aug. 7th, 2025 (KST)<br>- When : After July 31st, 2025 (Thu) 20:00 (KST)<br>- Can be claimed once per account</p></div>
+
+        <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"><a class="notice-pagination__link" rel="prev" href="/notices/442/">← Newer</a><a class="notice-pagination__link" href="/">Archive</a><a class="notice-pagination__link" rel="next" href="/notices/440/">Older →</a></nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
+        <div>
+          <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
+        </div>
+        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/assets/js/static.js"></script>
+</body>
+</html>

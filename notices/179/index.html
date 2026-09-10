@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[Emergency Notice] Notice : Issues after Jan. 11th Scheduled Update | Limbus Company News Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+<link rel="canonical" href="https://lcna.whosmalikx.com/notices/179/">
+<meta name="description" content="Hello, this is Project Moon. We would like to inform you about the issues that have been identified after the Jan. 11th Scheduled Update, and our subsequent mea">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="topbar__inner container-wide">
+        <a class="brand" href="/">
+          <span class="brand__mark"></span>
+          <span class="brand__text">Limbus Company News Archive</span>
+        </a>
+
+        <nav class="topbar__actions" aria-label="Site actions">
+          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container-wide notice-layout">
+      <article class="article-panel reveal">
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">[Emergency Notice] Notice : Issues after Jan. 11th Scheduled Update</h1><div class="notice-date"><time datetime="2024-01-10">2024-01-10</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.<br>We would like to inform you about the issues that have been identified after the Jan. 11th Scheduled Update, and our subsequent measures regarding them.</p>
+<p>1. An issue where the game freezes in certain Focused Encounters</p>
+<p>[Issue Details]<br>- (Focused Encounter) When an enemy that is scheduled to attack is killed, the game freezes.<br>(Ambling Pearl, Shock Centipede, Doomsday Calendar, King Trash Crab, Skin Prophet, Become Strong? Genuinely?, Pink Shoes, etc etc)</p>
+<p>[Cause]<br>- In order to optimize, we deleted several unnecessary logs from the game. However, in the process, we mistakenly deleted logs that were still being used by the game as well.</p>
+<p>[Solution]<br>- Corrected the code so that the deleted logs are not used.<br>- Temporary Solution: For combat encounters with summoned units, kill all summoned units first. Defeat the Boss unit when it&#x27;s the only remaining enemy in the stage.</p>
+<p>2. An issue where using the skip battle function in the Thread &amp; EXP Luxcavations caused UI to glitch</p>
+<p>[Issue Details]<br>- This issue can be reproduced by going straight to the Luxcavations and choosing to skip battle immediately after starting the game. (results screen only displays white images)<br>- After this issue occurs, the Main UI of the game, such as Window or Drive will not function properly.<br>- Using the skip battle function after completing other encounters normally does not cause this issue, and the Main UI of the game will function normally.</p>
+<p>[Cause]<br>- This issue occurred because viewing the encounter result screen without a single deployed unit (like in skipped battles) did not properly load the data.<br>- This is a side effect of programming in The 2nd Walpurgis Night encounter result screen.</p>
+<p>[Solution]<br>- We have corrected the code that caused this issue to occur.</p>
+<p>The above two issues require a client build to be corrected.<br>We will work as fast as we can to correct the issue, prepare the build, and submit it so that you can play our game without these issues.</p>
+<p>We will update the game immediately on STEAM,</p>
+<p>but iOS and Android require us to submit the build for review first. We will inform you with an additional notice as soon as we pass the review and the new versions are made available to those platforms.</p>
+<p>We are also currently investigating the below issues.<br>We will inform you of the solutions and the subsequent measures regarding them as soon as we identify their causes.</p>
+<p>[Issues currently under investigation]<br>- An issue where completing a Luxcavation stage after clearing &#x27;The Dawn of Green&#x27; encounter causes the game UI to overlap<br>- An issue where Lobotomy E.G.O::Magic Bullet Outis&#x27; lines do not match up with her voice lines<br>- An issue where the new Identities&#x27; Illustrations are unavailable under the &#x27;Walpurgis Night&#x27; tag in the Player Ticket UI</p>
+<p>We sincerely apologize for causing a disturbance to your enjoyment of our game.</p>
+<p>[Jan. 11th Scheduled Update Error Compensation]<br>- Compensation : Lunacy x1300<br>- Recipients : All users whose accounts were created before Jan. 25th 2024 10:00<br>- Can be claimed once per account<br>- When : Before the end of day on Jan. 11th 2024 (KST)</p></div>
+
+        <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"><a class="notice-pagination__link" rel="prev" href="/notices/180/">← Newer</a><a class="notice-pagination__link" href="/">Archive</a><a class="notice-pagination__link" rel="next" href="/notices/178/">Older →</a></nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
+        <div>
+          <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
+        </div>
+        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/assets/js/static.js"></script>
+</body>
+</html>

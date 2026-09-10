@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elaboration and Planned Measures for the Refraction Railway Payout Issue | Limbus Company News Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+<link rel="canonical" href="https://lcna.whosmalikx.com/notices/63/">
+<meta name="description" content="------------------------------------------------------------------------ Good evening. This is Project Moon. We must apologize once again for upsetting our dear">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="topbar__inner container-wide">
+        <a class="brand" href="/">
+          <span class="brand__mark"></span>
+          <span class="brand__text">Limbus Company News Archive</span>
+        </a>
+
+        <nav class="topbar__actions" aria-label="Site actions">
+          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container-wide notice-layout">
+      <article class="article-panel reveal">
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="refraction-railway">Refraction Railway</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Elaboration and Planned Measures for the Refraction Railway Payout Issue</h1><div class="notice-date"><time datetime="2023-05-08">2023-05-08</time></div><hr class="notice-title-divider"></div><p>------------------------------------------------------------------------</p>
+<p>Good evening. This is Project Moon.</p>
+<p>We must apologize once again for upsetting our dear managers with the Refraction Railway reward payout issue. Although a similar error previously occurred with the in-game mail system, we&#x27;ve failed to prevent another currency-related issue. We can only offer our deepest apologies for these mistakes and ask for you to muster whatever patience and understanding you may have.</p>
+<p>Our previous announcement did not explain the issue and plans for future improvement and standards in enough detail. As such, we would like to provide a deeper elaboration on the incident, a resolution to the Refraction Railway error compensation, and a further explanation of how we might handle similar issues in the future.</p>
+<p>Elaboration and Planned Measures for the Refraction Railway Payout Issue<br>------------------------------------------------------------------------</p>
+<p>Elaboration<br>-----------</p>
+<p>We would like to share the exact circumstances in which the Refraction Railway reward payout duplication occurred. We created a method to send unclaimed rewards in bulk to a user&#x27;s mailbox once Refraction Railway Line 1&#x27;s operating period closes, given that they spent the necessary Enkephalin Modules.</p>
+<p>While programming this method, certain portions were written to combine various rewards of the same type (e.g. Thread, EXP Tickets, Extraction Tickets, etc.) into single lump sums to prevent UI clutter and lists of extreme sizes.</p>
+<p>However, due to programming oversight, the number of items from a single stage could unintentionally be changed to the number of the *lump sum* of said items, resulting in duplication. The game servers keep the reward table updated with the proper source data and numbers at irregular intervals, however, when there are several data requests at the same time the table cannot be updated and the reward combination is inserted into whatever&#x27;s missing.</p>
+<p>Thus, the reward table was missing updates to ensure a fair payout to all users, and duplication incidents occurred.</p>
+<p>This issue has been corrected as per our previous notice regarding it.</p>
+<p>For items received via the mail system, we programmed a method to log everything that is sent, which allows us to take action on erroneous compensation or in-app purchases. However, for gameplay rewards such as those received from the Refraction Railway, we do not have a similar function to track this data. Regretfully, this means that it is impossible for us to rectify the reward payout issue and balance user accounts.</p>
+<p>Elaboration and Planned Measures for the Refraction Railway Payout Issue<br>------------------------------------------------------------------------</p>
+<p>Future Measures<br>---------------</p>
+<p>Please read our plans for how we will handle similar issues. Moving forward, we will ensure that even the process of receiving gameplay rewards is monitored and logged closely. (E.g. Time of Acquisition, Item Type, Quantity, Usage after Acquisition, etc.)</p>
+<p>To resolve future issues, we plan to create a system that will compare the original reward data with the items on the user&#x27;s account to revoke any duplicate items. We will also take additional steps when reviewing our programming and implementation to prevent such issues in the first place.</p>
+<p>We apologize and are also working toward addressing the other issues and errors currently being reported.</p></div>
+
+        <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"><a class="notice-pagination__link" rel="prev" href="/notices/64/">← Newer</a><a class="notice-pagination__link" href="/">Archive</a><a class="notice-pagination__link" rel="next" href="/notices/62/">Older →</a></nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
+        <div>
+          <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
+        </div>
+        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/assets/js/static.js"></script>
+</body>
+</html>

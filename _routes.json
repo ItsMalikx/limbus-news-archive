@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "include": [
+    "/notice",
+    "/notice/",
+    "/notice.html",
+    "/404",
+    "/404.html"
+  ],
+  "exclude": []
+}
