@@ -13,10 +13,10 @@ or chronology is corrected.
 Run these commands from the adjacent `limbus-news-pipeline` directory:
 
 ```powershell
-python pipeline.py build
-python pipeline.py check
-python pipeline.py deploy --dry-run
-python pipeline.py deploy
+python scripts/pipeline.py build
+python scripts/pipeline.py check
+python scripts/pipeline.py deploy --dry-run
+python scripts/pipeline.py deploy
 ```
 
 The last command transfers the **complete validated release** into this checkout
@@ -31,7 +31,7 @@ and `_routes.json`. Advanced-mode Workers must be supported by your deployment m
 After publishing, run this from the pipeline:
 
 ```powershell
-python audit_site.py z_Output/site --live
+python scripts/audit_site.py z_Output/site --live
 ```
 
 Submit `/sitemap.xml` in Search Console and review its affected URL examples.
