@@ -43,10 +43,10 @@ function pageUrl(page, query) {
   return url.pathname + url.search;
 }
 
-function renderFromLocation() {
+function renderFromLocation({ syncInput = true } = {}) {
   const params = new URLSearchParams(window.location.search);
   const query = (params.get("q") || "").trim();
-  searchInput.value = query;
+  if (syncInput) searchInput.value = query;
   const filtered = filterNotices(allNotices, searchIndex, query);
   const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
   const requested = query ? Number(params.get("page") || 1) : archivePage;
@@ -89,7 +89,8 @@ function applySearch() {
   else url.searchParams.delete("q");
   url.searchParams.delete("page");
   window.history.replaceState(null, "", url.pathname + url.search);
-  renderFromLocation();
+  // Preserve the typed text and caret; normalize only the search query.
+  renderFromLocation({ syncInput: false });
 }
 
 async function init() {
