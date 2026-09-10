@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026, Jun. 18th Scheduled Update Notice | Limbus Company News Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+<link rel="canonical" href="https://lcna.whosmalikx.com/notices/613/">
+<meta name="description" content="--------------------------------------- Greetings, Dear Manager. The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Jun. 18th, 20">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="topbar__inner container-wide">
+        <a class="brand" href="/">
+          <span class="brand__mark"></span>
+          <span class="brand__text">Limbus Company News Archive</span>
+        </a>
+
+        <nav class="topbar__actions" aria-label="Site actions">
+          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container-wide notice-layout">
+      <article class="article-panel reveal">
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">2026, Jun. 18th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-06-17">2026-06-17</time></div><hr class="notice-title-divider"></div><p>---------------------------------------</p>
+<p>Greetings, Dear Manager.</p>
+<p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Jun. 18th, 2026 (KST).</p>
+<p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
+<p>Please refer below for details about the update.</p>
+<p>Issue Mitigation for Crashing Issues Upon Combat Entry on Certain Devices<br>-------------------------------------------------------------------------</p>
+<p>Following the Unity version update on May 28th, 2026, we have identified a persistent issue on certain devices in which the game would crash upon entering combat.</p>
+<p>After working with Unity&#x27;s technical support team, we have identified that this issue may occur on some devices that meet the following conditions:<br>1. Devices equipped with Mali-G57 or Mali-G68 series GPUs<br>2. Devices where the Graphics API is set to &quot;Vulkan&quot; upon app launch<br>3. Devices where a specific Shader Compilation occurs when entering combat</p>
+<p>We have confirmed that the crash is caused by an unidentified internal logic issue during GPU processing for the device environments listed above. To mitigate this issue, we will implement a filtering adjustment as part of the Jun. 18th Scheduled Update.</p>
+<p>※ Work Details<br>The logic will be modified so that the Graphics API runs on &quot;GLES&quot; instead of &quot;Vulkan&quot; upon app launch for devices equipped with Mali-G57 or Mali-G68 series GPUs.<br>To quickly identify the cause of any related issues that may occur afterward, we will procure more test devices on which the crashing issue has occurred.</p>
+<p>Furthermore, although the claim period for the &quot;5/28 Scheduled Update Error&quot; compensation was extended to Jun. 18th as previously announced on Jun. 1st, we believe there may be Managers who have yet to claim the compensation. As such, the claim period for this compensation has been extended by one additional week (until Jun. 25th).</p>
+<p>► Extension of the 5/28 Scheduled Update Error Compensation Period<br>- Before: Claimable until Jun. 18th, 2026 10:00 (KST)<br>- After: Claim Period extended to Jun. 25th, 2026 10:00 (KST)</p>
+<p>As for the measures outlined in our previous notice, we will provide a separate follow-up notice once all related issues have been fully resolved and the game can be played normally.</p>
+<p>We sincerely apologize for the inconvenience caused by the delay in determining the cause of the issue.</p>
+<p>New Content<br>-----------</p>
+<p>1. New Content: Reflectrial][lairtcelfeR - Mnestic Experience<br>※ Please refer to the relevant Steam notice for further details.</p>
+<p>Bug Fixes &amp; Improvements<br>------------------------</p>
+<p>► Fixed an issue where certain Skills of the Identity &#x27;LCD OSIR Team Ishmael&#x27; would sometimes not activate<br>→ Affected Case 1 : Skill 1 &#x27;Rending Arts&#x27; - &#x27;[On Use] Gain +2 Poise Count&#x27; (Uptie 2 &amp; 3)<br>→ Affected Case 2 : Skill 2-2 &#x27;To Claim Their Bones&#x27; - &#x27;This Skill does not trigger Defense Skills&#x27; (After Uptie 2)<br>→ Affected Case 3 : Skill 3-2 &#x27;Even the Balance - Lucent Rippling Flame&#x27; - &#x27;This Skill does not trigger Defense Skills &#x27; (Uptie 4)<br>※ Regarding cases involving &#x27;To Claim Their Bones&#x27; and &#x27;Even the Balance - Lucent Rippling Flame&#x27;: While these Skills did not trigger Clashable Defense Skills as intended, we had identified an issue where they would trigger non-Clashable Defense Skills.</p>
+<p>► Fixed an issue where &#x27;LCD OSIR Team Ishmael&#x27; Keyword &#x27;Bearing of a Salsu&#x27; did not work as intended<br>→ Relevant Effect : Lose 1 Stack when an allied Blade Lineage Identity is defeated<br>- Before : The Keyword would lose 1 Stack even when a non-Blade Lineage Identity was defeated<br>- After : The Keyword will now lose 1 Stack only when a Blade Lineage Identity is defeated, as described</p>
+<p>► Fixed an issue where &#x27;Prisoner Transport Arrangements&#x27; Keyword, used by &#x27;S Corp. Ch&#x27;unokkun Hong Lu&#x27;, did not behave as described<br>→ Relevant Effect : On Hit against enemies that have Trussed [Hong Lu], inflict 1 Bleed and gain 1 Poise (2 Skills per turn)<br>- Before : This effect triggered only when &#x27;&#x27;the Coin confirmed to strike the first hit&#x27;&#x27;, hit.<br>- After : The effect will trigger every time a Coin hits, as described</p>
+<p>► Fixed an issue where, when losing a certain combat Encounter while &#x27;LCE E.G.O:: AEDD Gregor&#x27; has &#x27;Self-charge&#x27;, the unit would survive with 1 remaining HP instead of being defeated</p>
+<p>► Fixed issues where 2 Identities, &#x27;LCE E.G.O::Ardor Blossom Star Faust&#x27; and &#x27;The House of Spiders: The Middle Nursefather Outis&#x27;, would have certain visual effects incorrectly applied<br>→ Relevant Effect 1 : An issue where certain effects would not render as intended<br>→ Relevant Effect 2 : An issue where, in &#x27;Timekilling Time&#x27; Stages, color-changing effects would not apply when hovering over the affected Identities with a cursor</p>
+<p>► Applied level adjustments to certain enemies featured in combat Encounters of Ch. 9.5 &#x27;Mnestic Experience&#x27;<br>- Before : Level 60<br>- After : Level 50<br>※ This change has been applied for story-related reasons. To maintain a consistent gameplay experience for our managers, however, additional adjustments to Offense Level and Defense Level will be applied.</p>
+<p>► Fixed an issue where, when enemy roster changes during combat Encounters of Ch. 9.5 &#x27;Mnestic Experience&#x27;, the switched enemies&#x27; identification codes and Risk Levels would appear incorrectly</p>
+<p>► Adjusted Passives for certain enemies appearing in the boss Encounter of Ch. 9.5 &#x27;Mnestic Experience&#x27; to be unlocked for viewing as soon as they enter the Encounter</p>
+<p>► Fixed an issue where, when using the continue function in main story Dungeons of the Fathoms, the Identities&#x27; HP would not fully heal</p>
+<p>► Reordered descriptions for the E.G.O Gift &#x27;The Book of the Homeland Swordplay&#x27;<br>- Before<br>Turn Start: Activates when there are 3 or more Blade Lineage Identities (only counts Identities on the field at Encounter Start)<br>Combat Start: Apply 1 Sword of the Homeland - Striking on allied Blade Lineage Identities that have equipped Wrath or Pride Skills<br>Count 1 non-Blade Lineage S Corp. Identity with the earliest Deployment order as a Blade Lineage Identity and apply Sword of the Homeland - Striking on it every turn<br>- After<br>Count 1 non-Blade Lineage S Corp. Identity with the earliest Deployment order as a Blade Lineage Identity and apply Sword of the Homeland - Striking on it every turn<br>Turn Start: Activates when there are 3 or more Blade Lineage Identities (only counts Identities on the field at Encounter Start)<br>- Combat Start: Apply 1 Sword of the Homeland - Striking on allied Blade Lineage Identities that have equipped Wrath or Pride Skills<br>※ This E.G.O Gift is working as intended, and this correction is only meant to alleviate potential confusion caused by the way the effects were ordered.</p>
+<p>► Fixed an issue where certain cinematic effects would not trigger in certain Encounters of Main Story Stage 5-36</p>
+<p>► Fixed a post-Unity engine version upgrade issue where MeshRenderer texture would not load for certain Stages and E.G.O cinematics<br>→ Relevant Stages : Missing VFX in Main Story 4-54 and 9-50<br>→ Relevant E.G.O : Great Trichiliocosm Yi Sang</p>
+<p>► Fixed an issue where certain UI Animations in the Drive menu would not trigger</p>
+<p>► Fixed an issue where the Identity Uptie 3 Spine Illustration animations would load incorrectly on screens with 17:9 or wider landscape aspect ratios</p>
+<p>► Fixed an issue where, in the tutorial Encounter about Passive, the Passive highlighted by the tutorial would be mismatched with the actual Passive</p>
+<p>Known Issues<br>------------</p>
+<p>► An issue where, when entering &#x27;Reflectrial][lairtcelfeR&#x27; immediately after starting the game application, the enemies&#x27; Observation Logs would be locked even when they have been unlocked in different Encounters</p>
+<p>6/18 Scheduled Update Error Compensation<br>----------------------------------------</p>
+<p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before Jun. 25th, 2026, 10:00 AM (KST)<br>- When : After Jun. 18th (Thu), 2026, 12:00 (KST)<br>- Can be claimed once per account</p>
+<p>Relevant Compensation can be claimed until Jun. 25th (Thu), 2026, 10:00 (KST) via the in-game Mailbox (mail available for 7 days).</p>
+<p>Maintenance &amp; Application Update Compensation<br>---------------------------------------------</p>
+<p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before Jun. 25th, 2026, 10:00 AM (KST)<br>- When : After Jun. 18th (Thu), 2026, 12:00 (KST)<br>- Can be claimed once per account</p>
+<p>Relevant Compensation can be claimed until Jun. 25th (Thu), 2026, 10:00 (KST) via the in-game Mailbox (mail available for 7 days).</p>
+<p>Notes<br>-----</p>
+<p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on its status. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
+<p>Thank you.</p></div>
+
+        <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"><a class="notice-pagination__link" rel="prev" href="/notices/614/">← Newer</a><a class="notice-pagination__link" href="/">Archive</a><a class="notice-pagination__link" rel="next" href="/notices/612/">Older →</a></nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
+        <div>
+          <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
+        </div>
+        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/assets/js/static.js"></script>
+</body>
+</html>

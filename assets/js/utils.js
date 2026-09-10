@@ -81,9 +81,7 @@ export function initThemeToggle(buttonId = "themeToggle") {
 }
 
 export async function fetchNotices(url) {
-  const response = await fetch(`${url}?v=${Date.now()}`, {
-    cache: "no-store"
-  });
+  const response = await fetch(url, { cache: "no-cache" });
 
   if (!response.ok) {
     throw new Error(`Failed to fetch notices: ${response.status}`);
@@ -157,11 +155,10 @@ export function normalizeNotice(notice = {}) {
   const textContent = String(rawContent);
   const title = notice.title || `Untitled Notice ${notice.id ?? ""}`;
 
-  const content = looksLikeRealHtml(textContent)
-    ? textContent
-    : convertPlainTextNoticeToHtml(textContent, title);
+  const content = convertPlainTextNoticeToHtml(textContent, title);
 
   return {
+    ...notice,
     id: notice.id,
     title: title,
     date: notice.date || "",
@@ -173,30 +170,25 @@ export function normalizeNotice(notice = {}) {
   };
 }
 
-export function sortNotices(notices, mode) {
-  const items = [...notices];
-
-  switch (mode) {
-    case "date-asc":
-      // Sort strictly by ID ascending (Oldest first)
-      return items.sort((a, b) => Number(a.id) - Number(b.id));
-    case "date-desc":
-      // Sort strictly by ID descending (Newest first)
-      return items.sort((a, b) => Number(b.id) - Number(a.id));
-    case "id-asc":
-      return items.sort((a, b) => Number(a.id) - Number(b.id));
-    case "id-desc":
-      return items.sort((a, b) => Number(b.id) - Number(a.id));
-    case "title-desc":
-      return items.sort((a, b) => b.title.localeCompare(a.title));
-    case "title-asc":
-      return items.sort((a, b) => a.title.localeCompare(b.title));
-    default:
-      // Default to Newest first based on ID
-      return items.sort((a, b) => Number(b.id) - Number(a.id));
-  }
+export function sortNotices(notices, mode = "date-desc") {
+  const compareDate = (a, b) => {
+    if (!a.date && b.date) return 1;
+    if (a.date && !b.date) return -1;
+    const comparison = (a.date || "").localeCompare(b.date || "") ||
+      Number(a.order ?? a.id) - Number(b.order ?? b.id) || Number(a.id) - Number(b.id);
+    return mode === "date-asc" ? comparison : -comparison;
+  };
+  return [...notices].sort((a, b) => {
+    switch (mode) {
+      case "id-asc": return Number(a.id) - Number(b.id);
+      case "id-desc": return Number(b.id) - Number(a.id);
+      case "title-asc": return a.title.localeCompare(b.title) || Number(a.id) - Number(b.id);
+      case "title-desc": return b.title.localeCompare(a.title) || Number(b.id) - Number(a.id);
+      default: return compareDate(a, b);
+    }
+  });
 }
 
 export function buildNoticeUrl(id) {
-  return `notice.html?id=${encodeURIComponent(id)}`;
+  return `/notices/${encodeURIComponent(id)}/`;
 }

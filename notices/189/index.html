@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notice: Identified an Issue where the RR3 Record Displays 0 Total Turns | Limbus Company News Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/styles.css" />
+<link rel="canonical" href="https://lcna.whosmalikx.com/notices/189/">
+<meta name="description" content="Hello, this is Project Moon. We have identified and corrected an issue where the Refraction Railway 3 Combat Encounter Clear Turns displays &#x27;0 Clear Turns&#x27;. The">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="topbar__inner container-wide">
+        <a class="brand" href="/">
+          <span class="brand__mark"></span>
+          <span class="brand__text">Limbus Company News Archive</span>
+        </a>
+
+        <nav class="topbar__actions" aria-label="Site actions">
+          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container-wide notice-layout">
+      <article class="article-panel reveal">
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="refraction-railway">Refraction Railway</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: Identified an Issue where the RR3 Record Displays 0 Total Turns</h1><div class="notice-date"><time datetime="2024-02-01">2024-02-01</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+<p>We have identified and corrected an issue where the Refraction Railway 3 Combat Encounter Clear Turns displays &#x27;0 Clear Turns&#x27;.</p>
+<p>The error in the game server logic was fixed on Feb. 2nd at 2:30 (KST), and the fix has been applied without updating the app.</p>
+<p>This issue occurred because the Refraction Railway Clear Records were abnormally saved, and reflected the incorrect value (0) on the in-game UI.<br>We still have the logs of your actual Clear Records, so affected accounts&#x27; Turn Counts and records displayed on decorative Banners will be changed to reflect the actual Clear Records.</p>
+<p>Please refer to the information below for more details.</p>
+<p>Issue<br>- Refraction Railway Line 3 Combat Encounter Clear Record displays 0 Total Turns<br>- Upon clearing the Terminus, the 0 turn Clear Record is displayed on the obtained decorative Banners.</p>
+<p>Cause<br>- Rarely, upon entering the Rest Stations, the incorrect Combat Encounter IDs were sent to the servers, which meant that &#x27;0 Total Turns&#x27; record was displayed instead</p>
+<p>Solution<br>- Validation test logic added<br>- Preventative measure added: If a similar issue occurs, the server error code will be displayed</p>
+<p>Future Measures<br>- The actual Clear Total Turns is still saved in the logs<br>- We will verify the logs of each affected account and reflect the actual Clear Total Turns to displays and decorative Banners</p>
+<p>We sincerely apologize for the inconvenience.</p></div>
+
+        <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"><a class="notice-pagination__link" rel="prev" href="/notices/190/">← Newer</a><a class="notice-pagination__link" href="/">Archive</a><a class="notice-pagination__link" rel="next" href="/notices/188/">Older →</a></nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
+        <div>
+          <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
+        </div>
+        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/assets/js/static.js"></script>
+</body>
+</html>

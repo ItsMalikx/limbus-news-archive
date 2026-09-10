@@ -107,7 +107,7 @@ function applyFilters() {
 const debouncedApplyFilters = debounce(applyFilters, 100);
 
 function initObserver() {
-  if (!loadSentinel) return;
+  if (!loadSentinel || !("IntersectionObserver" in window)) return;
 
   const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
@@ -138,13 +138,8 @@ async function init() {
     }
   } catch (error) {
     console.error(error);
-    noticeList.innerHTML = `
-      <div class="empty-card">
-        <h3 class="section-title">Could not load notices.</h3>
-        <p class="section-subtitle">Check that <code>data/notices.json</code> exists and is valid JSON.</p>
-      </div>
-    `;
-    if (resultsSummary) resultsSummary.textContent = "Load failed";
+    // Keep server-rendered links usable if the data request fails.
+    if (resultsSummary) resultsSummary.textContent = "Search is temporarily unavailable. Browse the archive below.";
   }
 }
 

@@ -7,7 +7,7 @@ export function buildSearchIndex(notices) {
       notice.title,
       notice.summary,
       ...(notice.tags || []),
-      stripHtml(notice.content).slice(0, SITE_CONFIG.maxIndexedContentLength)
+      stripHtml(notice.content)
     ]
       .join(" \n ")
       .toLowerCase();
