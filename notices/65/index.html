@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>May 18th Scheduled Update Notice</title>
@@ -29,10 +32,9 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="refraction-railway">Refraction Railway</span></div><h1 class="notice-inline-title">May 18th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-05-15">May 15, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #FF7300">Refraction Railway</span></div><h1 class="notice-inline-title">May 18th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-05-15">May 15, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter maintenance from 10:00 [AM] through 12:00 [PM] on May 18th, 2023 (KST) for system optimizations and content updates.<br>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance beings so that no data is lost.<br>Refer below for details about the update.</p>
-<p>Update Content</p>
-<hr>
+<h2 class="notice-section-heading">Update Content</h2><hr class="notice-section-divider">
 <p>1. New Target Extraction: [E.G.O Target Extraction: Dimension Shredder for Yi Sang &amp; Hong Lu]<br>(May 18 12:00 ~ Jun 1 05:59 (KST))</p>
 <p>Extraction rates increase for the following E.G.O:<br>- E.G.O [HE]: Dimension Shredder for Yi Sang, Dimension Shredder for Hong Lu</p>
 <p>2. Sinner Target Extraction: [Faust]<br>(May 18 12:00 ~ Jun 1 05:59 (KST))</p>
@@ -42,23 +44,21 @@
 <p>- E.G.O [HE]: Dimension Shredder for Yi Sang, Dimension Shredder for Hong Lu</p>
 <p>4. Ending Events</p>
 <p>The following events will end with the May 18th scheduled update.</p>
-<p>[Refraction Railway Line 1]</p>
+<h3 class="notice-subsection-heading">[Refraction Railway Line 1]</h3>
 <p>- The lowest total turn count that players have recorded will be etched on their account&#x27;s banner.<br>- Rewards from the Lost &amp; Found will be lost if you have not spent Enkephalin Modules to gain access to it, so please make sure to unlock it in time.<br>- If you have gained access to the Lost &amp; Found, unclaimed rewards will be sent through the in-game mail system.</p>
-<p>[Hell&#x27;s Chicken]</p>
+<h3 class="notice-subsection-heading">[Hell&#x27;s Chicken]</h3>
 <p>- You will no longer be able to gain Bongy Plushies after the event is over.<br>- Coupon Trade-in is open until May 25, 09:59 (KST), so please make sure to redeem the rewards in time.<br>- The Hell&#x27;s Chicken stages will be placed into Main Story after the event is over.</p>
 <p>5. End of Pre-registration Rewards Distribution</p>
 <p>The pre-registration rewards are available to claim for players whose accounts were created before 06:00 May 18th, 2023 (KST).<br>The sent rewards are stored in the mailbox for up to 30 days.<br>You will not be able to receive them afterwards, so please note this information.</p>
-<p>&lt;Pre-registration Rewards&gt;</p>
+<h3 class="notice-subsection-heading">&lt;Pre-registration Rewards&gt;</h3>
 <p>- 100,000 Registrations: 250 Lunacy<br>- 110,000 Registrations: Enkephalin Box x2<br>- 120,000 Registrations: 400 Lunacy<br>- 130,000 Registrations: Enkephalin Box x3<br>- 150,000 Registrations: 3★ Blade Lineage Yi Sang<br>- 180,000 Registrations: Enkephalin Box x5</p>
 <p>6. Bug Fixes and Improvements</p>
 <p>- Fixed an issue where normal skills could appear and be used during E.G.O Corrosion<br>- Fixed an issue where the clear turns for Refraction Railway were displayed on the banner item on the acquisition pop-up<br>- Fixed an issue where Ebony Queen&#x27;s Apple constantly generated skill slots with &quot;Shared Pain&quot;<br>- Forfeiting or losing an Abnormality encounter in dungeons now updates the Abnormality&#x27;s info in the encyclopedia<br>- Fixed an issue where the HP recovery of R.B. Sous-chef Gregor&#x27;s skill &quot;Butcher Viand&quot; applied to enemies<br>- Fixed an issue where the total damage display for a skill could be omitted depending on the resistance (The damage calculation itself had no issue.)<br>- Fixed the name of LCB Sinner Hong Lu&#x27;s defense skill being incorrectly applied<br>- Adjusted the brightness of the button showing the reward redemption status for Roll Call<br>- Improved the Roll Call UI to reflect the server time<br>- Improved visibility for the button to change artwork for support Identities<br>- Fixed the &quot;Lunacy&quot; text being omitted from daily one-time extraction in the English version<br>- Set unlock conditions for accessing the mini-episodes in Detour Tales: &lt;Unlocked after clearing 3.5-9&gt;</p>
 <p>- UI Improvements for Dante&#x27;s Notes</p>
 <p>1) Set unlock conditions for accessing Dante&#x27;s Notes: Unlocked after clearing 3.5-9<br>2) Changed the category UI<br>Before: Number of subcategories included in a category shown to the right<br>After: &quot;Expand/shrink&quot; button shown to the right of categories with subcategories (Using the button shows the subcategories included in the category.)<br>3) Changed font for better readability<br>4) Fixed an issue where the direction of the arrow flipped if Dante&#x27;s Notes had too many categories</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content: Lunacy x300<br>- Recipients: Every user whose game account was created before 09:59 May 25th, 2023 (KST)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on its status. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

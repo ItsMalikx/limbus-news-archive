@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026, Apr. 23rd Scheduled Update Notice</title>
@@ -29,23 +32,20 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="mirror-dungeon">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span></div><h1 class="notice-inline-title">2026, Apr. 23rd Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-04-22">April 22, 2026</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">2026, Apr. 23rd Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-04-22">April 22, 2026</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Apr. 23rd, 2026 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<p>New Feature</p>
-<hr>
+<h2 class="notice-section-heading">New Feature</h2><hr class="notice-section-divider">
 <p>1. Luxcavation Consecutive Battle Update<br>A new Consecutive Battle feature has been added to the Luxcavation Dungeon, allowing repeated runs or skips.</p>
 <p>- The Consecutive Battle UI will appear at the top of each Luxcavation UI upon clearing them for the first time.<br>- You may set up to 10 Consecutive Battles.<br>- Enkephalin Modules will be consumed according to the number of runs completed.<br>※ Consecutive Battles are only available for Luxcavation Dungeons cleared at least once.<br>※ Daily bonus rewards for Thread Luxcavation can only be obtained up to 3 times per day, even when using the Consecutive Battle feature.<br>※ When losing or forfeiting the battle during Consecutive Battles, Enkephalin Modules used and Rewards yielded will be based on the current number of runs completed.<br>※ Additional details can be checked via the Settings button during Consecutive Battle.</p>
 <p>&lt;New Content&gt; - Reflectrial][lairtcelFeR<br>※ Please refer to the Steam notice for more details.</p>
-<p>Abnormality Classification Code Adjustments</p>
-<hr>
+<h2 class="notice-section-heading">Abnormality Classification Code Adjustments</h2><hr class="notice-section-divider">
 <p>Baba Yaga<br>- Before : F-05-10-18<br>- After : F-02-10-18</p>
 <p>kqe-1j-23<br>- Before : O-06-20-02<br>- After : O-05-20-02</p>
 <p>Steam Transport Machine<br>- Before : O-06-21-16<br>- After : O-05-21-16</p>
 <p>Erroneous Abnormality Classification Codes have been uncovered and rectified. Investigations revealed that the issue was caused by a mistake made by DD, an employee of the LCE Information Team, while transcribing Risk Levels and Classifications entries.</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► Changed the timing of Enkephalin Module consumption in Luxcavations<br>- Before : Daily Bonus &amp; Modules were consumed upon entering Luxcavations<br>- After : Daily Bonus &amp; Modules are now consumed upon exiting Luxcavations</p>
 <p>► Adjusted the in-game calculation logic so that Skills with &quot;use Coin X an additional time&quot; used by certain Identities or enemies are reflected in the Win Rate &amp; Damage forecasts<br>- Identities whose Win Rate &amp; Damage forecasts are affected : Shi South Section 5 Ishmael (Skill 2), The Ring Fauvist Student Meursault (Skill 3)<br>- Identities whose Damage forecast is affected : Kurokumo Clan Wakashu Hong Lu (Skill 2)<br>※ Win Rate forecasts will now take additional Skill Coin uses into their calculation.</p>
 <p>► Fixed an issue where, in the Mirror Dungeon, owning the E.G.O Gift &quot;Universal Instinct&quot; without any The Ring-faction Identities in your Team could cause the battle to be unresponsive</p>
@@ -53,11 +53,15 @@
 <p>(2) Skill : Finishing Touch, 3rd Coin effect<br>- Before : &quot;[On Hit] Inflict 2 Sinking&quot; inflicted 3 Sinking<br>- After : The ability now inflicts 2 Sinking, as described</p>
 <p>► Fixed an issue where Clash Win Rate calculation would not be affected when a boss unit from Chapter 9.5 - &#x27;Twining Threads&#x27; used a certain Skill<br>※ Relevant Skill effect : If the main target has Palette Vibrante, Clash Power +6</p>
 <p>► Fixed an issue where, in the Mirror Dungeon Theme Pack - &#x27;Twining Threads&#x27;, if the boss unit&#x27;s phase change occurs due to an E.G.O Gift that deals damage at Turn End, the phase change animation plays again the next turn</p>
-<p>[ Cause ]<br>- When the enemy&#x27;s HP hits the point where the phase change occurs, the phase change effect triggers at Turn End<br>- The E.G.O Gifts&#x27; Turn End effects activate after the Skill effects expire, which means that they trigger the phase change again in the next turn</p>
-<p>[ Issue Fix ]<br>- Adjusted the effects so that the phase change trigger could be properly relayed even after E.G.O Gifts&#x27; &quot;deal damage at Turn End&quot; effect triggers</p>
+<h3 class="notice-subsection-heading">[ Cause ]</h3>
+<p>- When the enemy&#x27;s HP hits the point where the phase change occurs, the phase change effect triggers at Turn End<br>- The E.G.O Gifts&#x27; Turn End effects activate after the Skill effects expire, which means that they trigger the phase change again in the next turn</p>
+<h3 class="notice-subsection-heading">[ Issue Fix ]</h3>
+<p>- Adjusted the effects so that the phase change trigger could be properly relayed even after E.G.O Gifts&#x27; &quot;deal damage at Turn End&quot; effect triggers</p>
 <p>► Fixed an issue where the Abnormality &quot;You Want To Get Beat? Hurtily?&quot; can be killed even when its Surgery Stack is not at 5</p>
-<p>[ Cause ]<br>- There is an invisible code within the &quot;Surgery&quot; status effect so that, when the &quot;Surgery&quot; status adjusts the unit&#x27;s max HP, current HP is automatically adjusted proportional to the Max HP changes (rounding off to the nearest whole number).<br>- Mirror Dungeon has an effect that reduces the units&#x27; max HP by Floor.<br>- When &quot;Surgery&quot; Stack goes from 3 to 4, it interacts with the &quot;reduce max HP&quot; effect of the Mirror Dungeon, reducing the unit&#x27;s max HP by more than 50%<br>- In this process, if the current HP before max HP adjustment was 1, rounding off to the whole number reduces the unit&#x27;s HP to 0, killing the unit</p>
-<p>[ Issue Fix ]<br>- Added a minimum HP cap so that when the unit&#x27;s Current HP is adjusted due to the &quot;Surgery&quot; effect, the minimum HP is fixed at 1</p>
+<h3 class="notice-subsection-heading">[ Cause ]</h3>
+<p>- There is an invisible code within the &quot;Surgery&quot; status effect so that, when the &quot;Surgery&quot; status adjusts the unit&#x27;s max HP, current HP is automatically adjusted proportional to the Max HP changes (rounding off to the nearest whole number).<br>- Mirror Dungeon has an effect that reduces the units&#x27; max HP by Floor.<br>- When &quot;Surgery&quot; Stack goes from 3 to 4, it interacts with the &quot;reduce max HP&quot; effect of the Mirror Dungeon, reducing the unit&#x27;s max HP by more than 50%<br>- In this process, if the current HP before max HP adjustment was 1, rounding off to the whole number reduces the unit&#x27;s HP to 0, killing the unit</p>
+<h3 class="notice-subsection-heading">[ Issue Fix ]</h3>
+<p>- Added a minimum HP cap so that when the unit&#x27;s Current HP is adjusted due to the &quot;Surgery&quot; effect, the minimum HP is fixed at 1</p>
 <p>► Fixed an issue where, when a boss unit appearing in Chapter 9.5 - &#x27;Twining Threads&#x27; and Theme Pack - &#x27;Twining Threads&#x27; uses a certain Skill, certain typography UI do not load properly</p>
 <p>► Fixed certain awkward phrasing display in the Abnormality Choice Event for &quot;kqe-1j-23&quot;</p>
 <p>► Fixed an issue where a certain Hidden Boss featured in Mirror Dungeon EXTREME Theme Packs is missing voiceovers under specific conditions</p>
@@ -81,12 +85,10 @@
 <p>2) Status Effects</p>
 <p>- The One Who Grips Faust : Fanatic<br>- N Corp. E.G.O::Contempt, Awe Ryōshū : Contempt, Gaze<br>- The Lord of Hongyuan Hong Lu : Lordsguard<br>- Wild Hunt Heathcliff : Impending Ruin<br>- Kurokumo Clan Captain Ishmael : Battle Ready<br>- The Princess of La Manchaland : Festive Fever<br>- Cinq South Section 4 Director Sinclair : Declared Duel - Sinclair<br>- The Middle Little Brother Sinclair : Vendetta Mark<br>- Wuthering Heights Chief Butler Outis : Echoes of the Manor<br>- LCA Udjat Vanguard Team 3 Leader Outis : Sheut Fracture<br>- Twinhook Pirates First Mate Gregor : Unjust Enrichment<br>- Lobotomy E.G.O::Lamp Gregor : Dazzle<br>- Other : Time Moratorium, Assist Defense</p>
 <p>※ Please note that gradual clarification of descriptions will continue in future updates.</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before Apr. 30th, 2026, 10:00 AM (KST)<br>- When : After Apr. 23rd (Thu), 2026, 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Apr. 30th (Thu), 2026, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

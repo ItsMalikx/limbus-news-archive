@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Additional Issues identified post Dec. 14th Update; Error Fix ETA</title>
@@ -29,14 +32,17 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="mirror-dungeon">Mirror Dungeon</span></div><h1 class="notice-inline-title">Additional Issues identified post Dec. 14th Update; Error Fix ETA</h1><div class="notice-date"><time datetime="2023-12-13">December 13, 2023</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span></div><h1 class="notice-inline-title">Additional Issues identified post Dec. 14th Update; Error Fix ETA</h1><div class="notice-date"><time datetime="2023-12-13">December 13, 2023</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>After the Dec. 14th, 12:00 (KST) Scheduled Update, we have identified the following issues. We are currently investigating and fixing the issues.</p>
-<p>&lt;Critical Issues Identified So Far&gt;</p>
-<p>[Can be corrected via Hotfix - ETA 3 Hours]<br>- An issue where entering Mirror Dungeon #3 Floor 3 Boss room would sometimes soft-lock the game, making it impossible to progress<br>- An issue where the music for a certain Mirror Dungeon #3 encounter does not play</p>
-<p>[Cannot be corrected via Hotfix - Requires client build &amp; review]<br>- An issue where Identities could not be deployed after selecting Support units</p>
-<p>[Additional issue currently under investigation]<br>- An issue where, upon clearing a certain Canto IV Story Dungeon Encounter, a server error (Error code 75221) would occur</p>
+<h2 class="notice-section-heading">&lt;Critical Issues Identified So Far&gt;</h2>
+<h3 class="notice-subsection-heading">[Can be corrected via Hotfix - ETA 3 Hours]</h3>
+<p>- An issue where entering Mirror Dungeon #3 Floor 3 Boss room would sometimes soft-lock the game, making it impossible to progress<br>- An issue where the music for a certain Mirror Dungeon #3 encounter does not play</p>
+<h3 class="notice-subsection-heading">[Cannot be corrected via Hotfix - Requires client build &amp; review]</h3>
+<p>- An issue where Identities could not be deployed after selecting Support units</p>
+<h3 class="notice-subsection-heading">[Additional issue currently under investigation]</h3>
+<p>- An issue where, upon clearing a certain Canto IV Story Dungeon Encounter, a server error (Error code 75221) would occur</p>
 <p>We will post another notice with details regarding the error fixes and hotfixes.<br>We apologize for these issues that prevent you from playing our new content.</p>
-<p>[Regarding difficulty &amp; Play experience]</p>
+<h3 class="notice-subsection-heading">[Regarding difficulty &amp; Play experience]</h3>
 <p>We are constantly collecting Mirror Dungeon #3&#x27;s difficulty data such as average clear time.<br>We are also taking into account your opinions and feedback. We are conducting an internal discussion and tests to optimize the experience.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Dawn Office Fixer Sinclair Additional Positive Adjustments</title>
@@ -29,21 +32,20 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: Dawn Office Fixer Sinclair Additional Positive Adjustments</h1><div class="notice-date"><time datetime="2024-05-02">May 2, 2024</time></div><hr class="notice-title-divider"></div><p>Hello. This is Kim Jihoon, director at Project Moon.<br>I apologize for causing you disappointment with our new Identity, which many of you have been looking forward to.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: Dawn Office Fixer Sinclair Additional Positive Adjustments</h1><div class="notice-date"><time datetime="2024-05-02">May 2, 2024</time></div><hr class="notice-title-divider"></div><p>Hello. This is Kim Jihoon, director at Project Moon.<br>I apologize for causing you disappointment with our new Identity, which many of you have been looking forward to.</p>
 <p>We plan to introduce additional buffs to the character.<br>Please refer to the information below.<br>Because the following changes require a Client build and a platform review, they will be applied with the May 9th Scheduled Update.</p>
-<p>Adjustments</p>
-<hr>
+<h2 class="notice-section-heading">Adjustments</h2><hr class="notice-section-divider">
 <p>1) Dawn Office Fixer Sinclair: SP Consumption value for ‘Unstable Shell of Ego’ Passive will be adjusted.</p>
-<p>[Before]</p>
+<h3 class="notice-subsection-heading">[Before]</h3>
 <p>Turn Start: at 45 SP, consume 35 SP<br>to enter the Volatile E.G.O::Waxen Pinion state.<br>Or if 2+ allies are defeated in a single turn,<br>and if this unit’s SP isn’t at -45 at Turn End, reset SP to 10;<br>then, enter the Volatile E.G.O::Waxen Pinion state</p>
-<p>[After]</p>
+<h3 class="notice-subsection-heading">[After]</h3>
 <p>Turn Start: at 40+ SP, consume 20 SP<br>to enter the Volatile E.G.O::Waxen Pinion state.</p>
 <p>Or if 2+ allies are defeated in a single turn,<br>and if this unit’s SP isn’t at -45 at Turn End, reset SP to 20;<br>then, enter the Volatile E.G.O::Waxen Pinion state.</p>
 <p>If both conditions are met at the same time,<br>whichever condition that results in a higher SP goes into effect.</p>
 <p>2) Dawn Office Fixer Sinclair: ‘Stigma Workshop Weaponry/Passion’ Passive activation condition will be adjusted.</p>
-<p>[Before]</p>
+<h3 class="notice-subsection-heading">[Before]</h3>
 <p>3x Wrath Res.</p>
-<p>[After]</p>
+<h3 class="notice-subsection-heading">[After]</h3>
 <p>5x Wrath Owned</p>
 <p>The above changes cannot be applied with a hotfix; it must go through a Client build &amp; review, which takes a week to process. We initially attempted to make it so that SP ‘resets’ to 20 at 40+ SP instead of dropping to 10 at 45, but that particular change could not be done via a hotfix, and had to go through a Client build; so that function could not be implemented immediately.</p>
 <p>Because a client build is necessary to make adjustments to that function anyway, we intend to change the internal mechanics so that instead of SP getting ‘reset’ to 20, it will instead ‘consume’ 20 SP.</p>

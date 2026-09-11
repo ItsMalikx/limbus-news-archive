@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026, Jun. 4th Scheduled Update Notice</title>
@@ -29,26 +32,22 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="refraction-railway">Refraction Railway</span><span class="tag-pill" data-tag="mirror-dungeon">Mirror Dungeon</span></div><h1 class="notice-inline-title">2026, Jun. 4th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-06-03">June 3, 2026</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #FF7300">Refraction Railway</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span></div><h1 class="notice-inline-title">2026, Jun. 4th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-06-03">June 3, 2026</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Jun. 4th, 2026 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<p>Korean App Store Price Adjustment Difference Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Korean App Store Price Adjustment Difference Compensation</h2><hr class="notice-section-divider">
 <p>Paid Lunacy equivalent to the KRW price difference caused by unadjusted Package prices will be given out to Managers who have purchased the affected Packages between May 27th, 2026, 23:00 ~ May 28th, 2026, 15:00 (KST).</p>
 <p>Please refer to the following notice for more information.</p>
 <p>[Posted 26/5/28] - Notice: Korean App Store Package Price Adjustment and Sales Resumption</p>
-<p>New Content</p>
-<hr>
+<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
 <p>1. In-combat Speech Bubble option added<br>An option to view speech bubbles of allied Sinners&#x27; voicelines will be added.</p>
 <p>※ This option can be turned on or off via Settings - General - In-Combat Dialogue Subtitles &quot;On/Off&quot;</p>
-<p>Major Changes</p>
-<hr>
+<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
 <p>※ The following function was updated with the May 28th, 2026 Scheduled Update. However, as it was missing from the respective Scheduled Update Notice, it has been included in this notice.</p>
 <p>1. Luxcavation Consecutive Battle UI has been updated.<br>- In-game UI has been changed to allow for easier user interaction for setting the number of consecutive battles between 1~10.<br>- The number of consecutive battles can now be adjusted by increments of 1. Press + to increase it by 1, and - to reduce it by 1.<br>- Select the number at the center to input the number of consecutive battles you would like to enter for Luxcavation.</p>
 <p>※ Inputting a number greater than 10 will automatically adjust the number to 10.</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► Fixed an issue where, when the Keyword &quot;Rising Fever&quot; of &quot;The House of Spiders: The Middle Nursefather Outis&quot; is at 0 Stack, and &quot;Time to Unpack!&quot; cannot be used in that turn and is used in the following turn, &quot;Rising Fever&quot; cannot be gained normally and is instead gained at the next Turn Start<br>※ Please note that in order to avoid affecting the difficulty of the Refraction Railway, &quot;The House of Spiders: The Middle Nursefather Outis Peccatulum Invidiae&quot; will still gain &quot;Rising Fever&quot; at Turn Start.</p>
 <p>► Fixed an issue where the description of an effect regarding The House of Spiders: The Middle Apprentice Ishmael was missing from the &quot;String Severence&quot; Keyword of the &quot;Saikai&quot; Passive effect of The Blade of the House of Spiders Ryōshū<br>- Before: Inflict 1 additional Burn Potency using Base Skills<br>- After: &quot;Defense Level +2&quot; and inflict 1 additional Burn Potency using Base Skills<br>※ Please note that The Blade of the House of Spiders Ryōshū&#x27;s Passive, &quot;Saikai&quot;, is already functioning as intended. Only the text omission will be fixed.</p>
 <p>► Fixed an issue where, when E.G.O Corrosion occurs at the timing when a Skill Slot is increased by the &quot;Saikai&quot; Passive effect of The Blade of the House of Spiders Ryōshū, the E.G.O Corrosion-related Skill generated in that Skill Slot would remain even on the turn after E.G.O Corrosion ended</p>
@@ -63,15 +62,12 @@
 <p>► Fixed an issue where the damage statistics screen, viewable from the results window after combat ends, would display values higher than the actual amount of damage dealt during battle<br>※ This issue occurred because, with the Nov. 6th, 2025 Scheduled Update, internal system optimization was applied to the damage calculation method for damage caused by buffs. However, this optimization had also resulted in an issue where damage from buff effects was recorded multiple times. With this fix, damage caused by buffs will no longer be recorded multiple times in the statistics logic.</p>
 <p>► Adjusted the floors on which certain Theme Packs appear in the Mirror Dungeon Hard Difficulty of the Mirror of Names and Spiders<br>※ Relevant Theme Packs: LCB Regular Check-up, Nocturnal Sweeping<br>- Before: Floor 5<br>- After: Floors 4 and 5<br>※ Please note the adjustment is limited only to the number of floors in Hard Difficulty where the said Theme Pack may appear.</p>
 <p>► (Steam) Fixed an issue where the Settings UI for Settings - Graphics - Resolution would not function properly during combat</p>
-<p>Known Issues</p>
-<hr>
+<h2 class="notice-section-heading">Known Issues</h2><hr class="notice-section-divider">
 <p>► An issue where some SD Standing resources are displayed abnormally in certain combat stages</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before Jun. 11th, 2026 10:00 AM (KST)<br>- When : After Jun. 4th (Thu), 2026, 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Relevant Compensation can be claimed until Jun. 11th (Thu), 2026, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

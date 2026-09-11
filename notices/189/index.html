@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Identified an Issue where the RR3 Record Displays 0 Total Turns</title>
@@ -29,7 +32,7 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="refraction-railway">Refraction Railway</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: Identified an Issue where the RR3 Record Displays 0 Total Turns</h1><div class="notice-date"><time datetime="2024-02-01">February 1, 2024</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #FF7300">Refraction Railway</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: Identified an Issue where the RR3 Record Displays 0 Total Turns</h1><div class="notice-date"><time datetime="2024-02-01">February 1, 2024</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We have identified and corrected an issue where the Refraction Railway 3 Combat Encounter Clear Turns displays &#x27;0 Clear Turns&#x27;.</p>
 <p>The error in the game server logic was fixed on Feb. 2nd at 2:30 (KST), and the fix has been applied without updating the app.</p>
 <p>This issue occurred because the Refraction Railway Clear Records were abnormally saved, and reflected the incorrect value (0) on the in-game UI.<br>We still have the logs of your actual Clear Records, so affected accounts&#x27; Turn Counts and records displayed on decorative Banners will be changed to reflect the actual Clear Records.</p>

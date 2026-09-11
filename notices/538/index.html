@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Known Issues after the Feb. 12th Scheduled Update</title>
@@ -29,15 +32,19 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Known Issues after the Feb. 12th Scheduled Update</h1><div class="notice-date"><time datetime="2026-02-12">February 12, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Known Issues after the Feb. 12th Scheduled Update</h1><div class="notice-date"><time datetime="2026-02-12">February 12, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>Following the Feb. 12th Scheduled Update, we have identified an issue where game progression may be blocked under certain conditions when progressing through Stage 3-22.</p>
 <p>Please continue reading for more details.</p>
-<p>[ Issue Details ]<br>► When the E.G.O Gift &quot;Sniggering Tongue&quot;, which can be obtained in Stage 3-22, is in the inventory, Attacks may fail to trigger following a Clash, blocking game progression</p>
-<p>[ Cause of the Issue ]<br>► In the process of implementing optimization for game logic related to effect typography, &quot;Sniggering Tongue&quot; E.G.O Gift, which was programmed with an exception logic, caused this issue.</p>
-<p>[ Issue Fix ]<br>► To make changes to the game&#x27;s code, we must go through reviews and updates from each respective store; this makes deploying an immediate fix to the issue difficult.</p>
+<h2 class="notice-section-heading">[ Issue Details ]</h2>
+<p>► When the E.G.O Gift &quot;Sniggering Tongue&quot;, which can be obtained in Stage 3-22, is in the inventory, Attacks may fail to trigger following a Clash, blocking game progression</p>
+<h3 class="notice-subsection-heading">[ Cause of the Issue ]</h3>
+<p>► In the process of implementing optimization for game logic related to effect typography, &quot;Sniggering Tongue&quot; E.G.O Gift, which was programmed with an exception logic, caused this issue.</p>
+<h3 class="notice-subsection-heading">[ Issue Fix ]</h3>
+<p>► To make changes to the game&#x27;s code, we must go through reviews and updates from each respective store; this makes deploying an immediate fix to the issue difficult.</p>
 <p>► Instead, we will be deploying a hotfix to temporarily prevent this E.G.O Gift from being obtained.<br>If you have already acquired this E.G.O Gift, we will remove it from your inventory of E.G.O Gifts upon restarting the game after the Hotfix deployment.</p>
 <p>► Later, with the Feb. 19th Scheduled Update, we will be implementing additional corrections to the code to ensure this E.G.O Gift behaves correctly.</p>
-<p>[ Hotfix Schedule ]<br>- 2026. 02. 12 17:45(KST)<br>- This fix was deployed without a Hotfix download or a new version update.</p>
+<h3 class="notice-subsection-heading">[ Hotfix Schedule ]</h3>
+<p>- 2026. 02. 12 17:45(KST)<br>- This fix was deployed without a Hotfix download or a new version update.</p>
 <p>We sincerely apologize for the inconvenience.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Ver. 1.90.0 - Download Pop-up Issue Identified</title>
@@ -29,12 +32,15 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: Ver. 1.90.0 - Download Pop-up Issue Identified</h1><div class="notice-date"><time datetime="2025-11-09">November 9, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: Ver. 1.90.0 - Download Pop-up Issue Identified</h1><div class="notice-date"><time datetime="2025-11-09">November 9, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>Over the weekend, we identified an issue where access to the game could be interrupted due to the issue where the download pop-up window appears repeatedly.</p>
 <p>This issue has been resolved now; please continue reading for more information.</p>
-<p>[ Issue ]<br>- An issue where the pop-up window requiring the player to download the game kept appearing</p>
-<p>[ Cause ]<br>- An unintended file adjustment occurred to Ver. 1.90.0 resource management review process while preparing for next week&#x27;s update</p>
-<p>[ Resolution ]<br>- Reverted the file in question in the resource management review process</p>
+<h2 class="notice-section-heading">[ Issue ]</h2>
+<p>- An issue where the pop-up window requiring the player to download the game kept appearing</p>
+<h3 class="notice-subsection-heading">[ Cause ]</h3>
+<p>- An unintended file adjustment occurred to Ver. 1.90.0 resource management review process while preparing for next week&#x27;s update</p>
+<h3 class="notice-subsection-heading">[ Resolution ]</h3>
+<p>- Reverted the file in question in the resource management review process</p>
 <p>For managers still experiencing this issue, please attempt the following:<br>1. Run Limbus Company<br>2. Proceed with 8.1kb resource download<br>※ If the game won&#x27;t proceed even after the download has completed in the download screen, please try closing and restarting the game.</p>
 <p>We sincerely apologize for causing this issue over the weekend.</p></div>
 

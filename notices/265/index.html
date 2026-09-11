@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice : Issues Identified in Aug. 8th Scheduled Update</title>
@@ -29,10 +32,11 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice : Issues Identified in Aug. 8th Scheduled Update</h1><div class="notice-date"><time datetime="2024-08-08">August 8, 2024</time></div><hr class="notice-title-divider"></div><p>```[Notice : Issues Identified in Aug. 8th Scheduled Update]</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice : Issues Identified in Aug. 8th Scheduled Update</h1><div class="notice-date"><time datetime="2024-08-08">August 8, 2024</time></div><hr class="notice-title-divider"></div><p>```[Notice : Issues Identified in Aug. 8th Scheduled Update]</p>
 <p>Hello, this is Project Moon.</p>
 <p>The following are issues that have been identified in the Aug. 8th Scheduled Update.</p>
-<p>&lt;List&gt;<br>1. An issue where the game softlocks at Stage 5-18<br>- Cause: A logic error occurred as we were improving the game&#x27;s functionalities to be able to use multiple kinds of scripts for Stage mechanics and event cutscenes<br>- Fix: Fixed via correcting the logic error</p>
+<h2 class="notice-section-heading">&lt;List&gt;</h2>
+<p>1. An issue where the game softlocks at Stage 5-18<br>- Cause: A logic error occurred as we were improving the game&#x27;s functionalities to be able to use multiple kinds of scripts for Stage mechanics and event cutscenes<br>- Fix: Fixed via correcting the logic error</p>
 <p>2. An issue where defeating every enemy at once under a specific condition in a Mirror Dungeon - Chain Battle causes the Encounter to end in a defeat, making it unable to proceed to the next Stage<br>- Cause: In Chain Battles, defeating an enemy by using an E.G.O Gift that deals damage &quot;At Turn End&quot; caused a logic activation order error<br>- Fix: Fixed via correcting the logic error</p>
 <p>3. An issue where substituted Backup units do not gain additional Skill Slots in Regular Encounters Chain Battles<br>- Cause: Backup Units were set only to work within &quot;Focused Encounters&quot;, so functionalities not present in Focused Encounters did not activate in Regular Encounters<br>- Fix: Added a logic to make sure that Backup Units gained additional Slots as well</p>
 <p>4. An issue where VFX for the Passive of an enemy appearing in 6.5-2 lingers even after the Passive ends<br>- Cause: The VFX deactivation logic upon Passive End did not exist<br>- Fix: Added a deactivation logic for the VFX upon Passive End</p>
@@ -40,7 +44,8 @@
 <p>6. An issue where translations for the text in the popup window for &#x27;Clear Selection&#x27; option in the Loadout Menu are not applied<br>- Cause: Localization data was not linked to the build<br>- Fix: Linked the localization data to the build</p>
 <p>Future Measures<br>- We will maintain a list of content types that could cause side effects in the future when attempting to improve the game systems, and add further proofreading procedures to maintain them properly<br>- We will separate such game system improvements and adjustments from new content updates so that new content updates won&#x27;t be affected by possible issues from those changes</p>
 <p>A new Client Version(1.54.1) with fixes for the above issues will be deployed.<br>Please understand that iOS and Android platforms require a platform review, so they will take longer to deploy than the STEAM version of the game.<br>We will inform you via an additional notice of the ETA for the new version of the game.</p>
-<p>[Aug. 8th Scheduled Update Error Compensation]<br>- Compensation : Lunacy x 300<br>- Recipients: All users whose accounts were created before Aug. 15th, 2024 10:00<br>- Can be claimed once per account<br>- When : Can be claimed after 2024.8.8 (KST) 16:00</p></div>
+<h3 class="notice-subsection-heading">[Aug. 8th Scheduled Update Error Compensation]</h3>
+<p>- Compensation : Lunacy x 300<br>- Recipients: All users whose accounts were created before Aug. 15th, 2024 10:00<br>- Can be claimed once per account<br>- When : Can be claimed after 2024.8.8 (KST) 16:00</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>

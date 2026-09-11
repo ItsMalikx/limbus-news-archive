@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Known Issues After Ver. 1.94.0 Hotfix</title>
@@ -29,11 +32,14 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: Known Issues After Ver. 1.94.0 Hotfix</h1><div class="notice-date"><time datetime="2025-12-31">December 31, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: Known Issues After Ver. 1.94.0 Hotfix</h1><div class="notice-date"><time datetime="2025-12-31">December 31, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>After deploying a Hotfix on Dec. 31st, 2025, 16:10 (KST) to address some of the previously identified issues in Dec. 31st Scheduled Update,<br>We have identified additional issues regarding game progression.</p>
-<p>[ The Issue]<br>► The game becomes inaccessible after the 16:10 Hotfix</p>
-<p>[ Sequence of actions that may trigger this issue ]<br>1. While playing the game, the download pop-up appears and the player is returned to the title screen.<br>2. The player downloads the update from the title screen.<br>3. The player is returned to the &quot;Window&quot; tab.<br>4. Various in-game resources such as &quot;Team Loadout,&quot; &quot;Combat&quot; become glitched, causing the game to become softlocked</p>
-<p>[Temporary Workaround]<br>The game can be played normally upon closing the application completely and restarting.<br>Please restart the game if you have experienced the issues above.</p>
+<h2 class="notice-section-heading">[ The Issue]</h2>
+<p>► The game becomes inaccessible after the 16:10 Hotfix</p>
+<h3 class="notice-subsection-heading">[ Sequence of actions that may trigger this issue ]</h3>
+<p>1. While playing the game, the download pop-up appears and the player is returned to the title screen.<br>2. The player downloads the update from the title screen.<br>3. The player is returned to the &quot;Window&quot; tab.<br>4. Various in-game resources such as &quot;Team Loadout,&quot; &quot;Combat&quot; become glitched, causing the game to become softlocked</p>
+<h3 class="notice-subsection-heading">[Temporary Workaround]</h3>
+<p>The game can be played normally upon closing the application completely and restarting.<br>Please restart the game if you have experienced the issues above.</p>
 <p>We are currently in the middle of identifying the causes of the issue and resolving them.<br>Details will be shared via a separate notice.</p>
 <p>We sincerely apologize for the inconvenience.</p></div>
 

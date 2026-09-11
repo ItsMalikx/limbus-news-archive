@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026, May 7th Scheduled Update Notice</title>
@@ -29,21 +32,20 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">2026, May 7th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-05-06">May 6, 2026</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">2026, May 7th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-05-06">May 6, 2026</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on May 7th, 2026 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<p>New Content</p>
-<hr>
+<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
 <p>1. Permanent Content - Reflectrial][lairtcelfeR<br>※ Please refer to our Steam announcement for more information.</p>
-<p>Major Changes</p>
-<hr>
+<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
 <p>1. The UI layout of the &quot;Drive&quot; Window will be partially changed.<br>- The &quot;Reflectrial][lairtcelfeR&quot; menu button will be added.</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► (Steam) Fixed an issue where, in Mirror Dungeons, if The Middle Big Brother Heathcliff is included in the Team and present on the battlefield, the battle may become unresponsive after an effect of the E.G.O Gift &quot;Sorrowful Exhale&quot; activates<br>※ Relevant Identity Passive Effect : If an enemy attacked any of The Middle-faction allies including this unit, use &quot;Kicking&quot; on the said enemy as an Unopposed Attack at Attack End of the said enemy&#x27;s Skill (once per turn)<br>※ Relevant E.G.O Gift Effect : deal +80% damage on Critical Hit (once per Encounter, except E.G.O Skills)</p>
-<p>[ Cause ]<br>- &quot;The Middle Big Brother Heathcliff&quot; Combat Passive effect activating at Turn Start in the same turn as the second effect of the E.G.O Gift &quot;Sorrowful Exhale&quot; caused a critical system error, causing the game to become unresponsive.</p>
-<p>[ Issue Fix ]<br>- We have applied a logic fix to the game client to resolve this issue.</p>
+<h3 class="notice-subsection-heading">[ Cause ]</h3>
+<p>- &quot;The Middle Big Brother Heathcliff&quot; Combat Passive effect activating at Turn Start in the same turn as the second effect of the E.G.O Gift &quot;Sorrowful Exhale&quot; caused a critical system error, causing the game to become unresponsive.</p>
+<h3 class="notice-subsection-heading">[ Issue Fix ]</h3>
+<p>- We have applied a logic fix to the game client to resolve this issue.</p>
 <p>※ As mobile platforms require each client update to undergo a market review, it is difficult for us to apply this fix with the May 7th Scheduled Update.</p>
 <p>※ Please note that this issue will be resolved on May 14th for mobile platforms. We would like to ask the Managers playing on mobile platforms to refrain from using the affected Identity and E.G.O Gift in the meantime.</p>
 <p>We sincerely apologize for the inconvenience.</p>
@@ -51,20 +53,20 @@
 <p>► (KR, JP Only) Fixed some awkward phrasing in The Middle Big Brother Heathcliff&#x27;s Identity Story</p>
 <p>► Fixed a texture error in the effect displayed when using the Awakening Skill of the E.G.O &quot;Tears of the Tarnished Blood Hong Lu&quot;</p>
 <p>► Fixed an issue where battle against the Abnormality Doomsday Calendar could fail to proceed to the next phase after a specific part was &quot;Severed&quot;</p>
-<p>[ Issue Cause ]<br>- During the implementation of the final battle of Chapter 7, the modified code recognized the severed Parts as unbroken Parts.<br>- Doomsday Calendar transitions to the next phase when it has no unbroken Parts, or when its HP falls below a certain percentage.<br>- If a Part was destroyed before the HP condition was met, the next phase would not start, causing turns to pass indefinitely.</p>
-<p>[ Issue Fix ]<br>- Adjusted the code that identifies broken Parts as unbroken Parts</p>
+<h3 class="notice-subsection-heading">[ Issue Cause ]</h3>
+<p>- During the implementation of the final battle of Chapter 7, the modified code recognized the severed Parts as unbroken Parts.<br>- Doomsday Calendar transitions to the next phase when it has no unbroken Parts, or when its HP falls below a certain percentage.<br>- If a Part was destroyed before the HP condition was met, the next phase would not start, causing turns to pass indefinitely.</p>
+<h3 class="notice-subsection-heading">[ Issue Fix ]</h3>
+<p>- Adjusted the code that identifies broken Parts as unbroken Parts</p>
 <p>► Fixed an issue in Luxcavations where, when setting two or more consecutive battles, the battle could be treated as won if the remaining Sinners on the battlefield are unable to act due to a certain status effect</p>
 <p>► Added the &quot;Hard Difficulty-exclusive E.G.O Gift&quot; label to certain E.G.O Gifts on the Fusion Recipe screen in Mirror Dungeon (14 E.G.O Gifts)<br>※ Relevant E.G.O Gifts: Mask of the Parade, Miniature Ferris Wheel, Pure-white Canvas, Average Artwork, Exquisite Artwork, Red Necktie, Uniform - Liu Assoc., Town-protecting Harpoon, Cetacean Heart, The End of all Evil, W Corp. Standard Issue Cap, Cleanup Agent Gear Set C, Broken Violin, A Small, Lovely Violin</p>
 <p>► Fixed an issue where, in Reflectrial][lairtcelfeR, if the enemy is not defeated while using the third Team Loadout, the difficulty image above the boss unit&#x27;s name on the battle result screen would appear white</p>
 <p>► Fixed an issue in Main Story 4-48 where the background would not change if accumulated damage caused a phase transition before the enemy unit&#x27;s background-changing cinematic could be activated</p>
 <p>► (EN Only) Fixed a common error found in Skill and Passive descriptions<br>- Before : an other ally<br>- After : another ally</p>
 <p>► (KR Only) Updated the description for the E.G.O Gift Ancient Effigy to remove an unnecessarily tagged Keyword</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before May 14th, 2026, 10:00 AM (KST)<br>- When : After May 7th (Thu), 2026, 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until May 14th (Thu), 2026, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

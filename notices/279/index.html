@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Upcoming measures to the softlocking issue after Sep. 12th Scheduled Update</title>
@@ -29,16 +32,19 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Upcoming measures to the softlocking issue after Sep. 12th Scheduled Update</h1><div class="notice-date"><time datetime="2024-09-12">September 12, 2024</time></div><hr class="notice-title-divider"></div><p>[Upcoming measures to the softlocking issue after Sep. 12th Scheduled Update]</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Upcoming measures to the softlocking issue after Sep. 12th Scheduled Update</h1><div class="notice-date"><time datetime="2024-09-12">September 12, 2024</time></div><hr class="notice-title-divider"></div><h2 class="notice-section-heading">[Upcoming measures to the softlocking issue after Sep. 12th Scheduled Update]</h2>
 <p>Hello, this is Project Moon.</p>
 <p>We would like to inform you the cause and our measure to fix the softlocking issue that occurred after Sep. 12th Scheduled Update.</p>
-<p>[Cause]<br>We added a new combat system logic to the game for a new functionality of our upcoming Identity(Devyat’ North Rodion).<br>As we were making UI adjustments to the combat view, we neglected to include the specific logic for Panicked characters.<br>This caused an issue where the dashboard would become unresponsive in the Chaining phase, softlocking the game.</p>
-<p>[Solution]<br>We have identified where the logic error occurred, and we are currently investigating our work history to make a precise fix for its causes.<br>When preparing for a new combat mechanic in upcoming materials, we will now make sure to separate the new logic from preexisting logic so that no softlocking issues can occur again due to similar causes.</p>
+<h3 class="notice-subsection-heading">[Cause]</h3>
+<p>We added a new combat system logic to the game for a new functionality of our upcoming Identity(Devyat’ North Rodion).<br>As we were making UI adjustments to the combat view, we neglected to include the specific logic for Panicked characters.<br>This caused an issue where the dashboard would become unresponsive in the Chaining phase, softlocking the game.</p>
+<h3 class="notice-subsection-heading">[Solution]</h3>
+<p>We have identified where the logic error occurred, and we are currently investigating our work history to make a precise fix for its causes.<br>When preparing for a new combat mechanic in upcoming materials, we will now make sure to separate the new logic from preexisting logic so that no softlocking issues can occur again due to similar causes.</p>
 <p>We are preparing to deploy a new Client version(1.56.2) with fixes for the above issues.</p>
 <p>The fix will be deployed to the STEAM platform as soon as the build is complete.<br>Because iOS and Android platforms require a review period, please understand that they will be deployed at a later time than the STEAM platform.</p>
 <p>We will inform you via an additional notice as soon as we have a more concrete timeframe for the new version deployment.</p>
 <p>We sincerely apologize for the inconvenience.</p>
-<p>[Sep. 12th Scheduled Update Error Compensation]<br>- Compensation : Lunacy x1300<br>- Recipients : All users whose accounts were created before Sep. 19th 10:00<br>- When : After Sep. 12th 2024(THU), 18:00(KST)<br>- Can be claimed once per account</p></div>
+<h3 class="notice-subsection-heading">[Sep. 12th Scheduled Update Error Compensation]</h3>
+<p>- Compensation : Lunacy x1300<br>- Recipients : All users whose accounts were created before Sep. 19th 10:00<br>- When : After Sep. 12th 2024(THU), 18:00(KST)<br>- Can be claimed once per account</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2025, Apr. 3rd Scheduled Update Notice</title>
@@ -29,32 +32,28 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="mirror-dungeon">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span></div><h1 class="notice-inline-title">2025, Apr. 3rd Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-03-31">March 31, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">2025, Apr. 3rd Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-03-31">March 31, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Apr. 3rd, 2025 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<p>New Content</p>
-<hr>
+<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
 <p>1. New Target Extraction [The Middle Little Brother Sinclair] (25/04/03 12:00 ~ 04/17 10:00 (KST))<br>The following Identity will have increased odds of extraction.<br>- 3★ : The Middle Little Brother Sinclair</p>
 <p>※ The Middle Little Brother Sinclair is a Standard Fare Identity.</p>
 <p>2. Target Extraction [Don Quixote] (25/04/03 12:00 ~ 04/17 10:00 (KST))<br>The following Identities and E.G.O will have increased odds of extraction.<br>- E.G.O [HE] : Telepole Don Quixote<br>- E.G.O [TETH] : Wishing Cairn Don Quixote, Lifetime Stew Don Quixote<br>- 3★ : Cinq East Section 3 Don Quixote, Manager of La Manchaland Don Quixote, T Corp. Class 3 Collection Staff Don Quixote, The Middle Little Sister Don Quixote, Cinq South Section 5 Director Don Quixote, W Corp. L3 Cleanup Agent Don Quixote<br>- 2★ : Blade Lineage Salsu Don Quixote, N Corp. Mittelhammer Don Quixote, Shi South Section 5 Director Don Quixote<br>- 1★ : LCB Sinner Don Quixote</p>
 <p>3. New Identity Added<br>The following Identity has been added to the list of extractable Identities.<br>- 3★ : The Middle Little Brother Sinclair</p>
 <p>4. New Packages<br>1 new limited package will be added to the game with the 2025. 4. 3 (KST) Scheduled Update.</p>
 <p>► Identity Growth Pack<br>- Contents : Takeoff Module - ID Uptie x 1, Identity Training Ticket IV x 50, Identity Training Ticket III x 20<br>- Price : ￦33,000 / $21.99 / ¥3,000<br>- Purchase : Can be purchased once<br>- Purchasable Period : 25. 4. 3 12:00 ~ 4. 17 10:00 (KST)</p>
-<p>Major Changes</p>
-<hr>
+<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
 <p>1. Manager Ticket Deco Sorting Options expanded<br>New Ticket Deco Sorting Conditions have been changed &amp; added.</p>
 <p>※ Introduction Phrases &amp; Words : Sorting Options Changed<br>- Before : Default / Alphabetical / Recent<br>- After : Claim Date(previously &#x27;Recent&#x27;) / Release Date / Alphabetical</p>
 <p>※ Banners : new sorting options—Claim Date, Release Date sorting options added<br>※ Border1, Border2, E.G.O Bg : Claim Date, Release Date sorting options added</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► Fixed an issue where Cinq East Section 3 Don Quixote&#x27;s Defense Skill effect does not activate after the first evade<br>※ Relevant Effect: If this unit&#x27;s Speed is faster than the target&#x27;s, gain +1 Coin Power for every 2 Speed difference (max 2)</p>
 <p>► Adjusted the description for The Middle Little Sister Don Quixote&#x27;s Counter Skill &#x27;Multifold Retribution&#x27;<br>- Before: [Combat Start] If at 6+ Envy A-Reson including this Skill, use &#x27;A Just Vengeance&#x27; as Counter.<br>- After: [Combat Start] At 6+ sum of Envy A-Resons.(does not need to be consecutive), use &#x27;A Just Vengeance&#x27; as Counter.<br>※ As this Identity has been out for a while, we decided that the way her Counter Skill currently functions has been solidified as how this character is supposed to function. Also, adjusting the functions to match the description means that this Identity will be weakened. Taking this into account, we intend to make an exception this time to change the description to match the function, as opposed to our usual policy(of changing the function to match the description).</p>
 <p>► Fixed an issue where, in Stage 7.5-25, a certain Skill cannot be clashed against<br>※ Relevant Skill: Night in the Backstreets</p>
 <p>► Fixed an issue where, when the Enkephalin Module recharge pop-up window appears when attempting to claim the rewards in the Lost &amp; Found menu of Refraction Railway, the UI malfunctioned under certain circumstances</p>
 <p>► Fixed an issue where a choice hint text does not match the actual results in a Choice Event present in the Mirror of the Dreaming Theme Pack - Nocturnal Sweeping<br>- Before: Run a Gluttony &amp; Pride Advantage check to gain a Rupture E.G.O Gift.<br>- After: Run a Gluttony &amp; Pride Advantage check to gain a Keywordless E.G.O Gift.</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► Added a bonus modifier to Identities from a certain faction in a Choice Event present in the Mirror of the Dreaming Theme Pack - Nocturnal Sweeping</p>
 <p>► Disabled a certain Announcer from activating in Stage 6-41 as it would be awkward for them to be an announcer in that Stage</p>
 <p>► Adjusted the name &amp; icon of an effect used by The Middle enemies<br>- Before: Vendetta Mark<br>- After: The Middle&#x27;s Vendetta Mark</p>
@@ -63,12 +62,10 @@
 <p>► Fixed an issue where volumes for certain sounds could not be adjusted in Stage 7.5-25</p>
 <p>► (EN Only) Fixed an issue where the Identity Story for Heishou Pack - Mao Branch Outis used an incorrect terminology<br>- Before: Reverse-jointed<br>- After: Digitigrade</p>
 <p>► (EN Only) Standardization work for inconsistent wordings in Skill descriptions in progress</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content: Lunacy x300<br>- Recipients: all users whose game accounts were created before 10:00 Apr. 10th, 2025 (KST)<br>- When: After Apr. 3rd (Thu) 2025, 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Apr. 10th (Thu) 2025, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

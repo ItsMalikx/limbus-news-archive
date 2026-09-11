@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026, Jun. 25th Scheduled Update Notice</title>
@@ -29,23 +32,20 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">2026, Jun. 25th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-06-24">June 24, 2026</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">2026, Jun. 25th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-06-24">June 24, 2026</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Jun. 25th, 2026 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<p>New Content</p>
-<hr>
+<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
 <p>1. New Identity Target Extraction [The House of Spiders: The Thumb Nursefather Rodion &amp; Apprentice Heathcliff] (6/25 12:00 ~ 7/9 10:00 (KST))<br>The following Identities will have increased odds of extraction:<br>- 3★ : The House of Spiders: The Thumb Nursefather Rodion, The House of Spiders: The Thumb Apprentice Heathcliff<br>※ The House of Spiders: The Thumb Nursefather Rodion and The House of Spiders: The Thumb Apprentice Heathcliff are Season 7 Identities.</p>
 <p>2. Target Extraction [Outis] (6/25 12:00 ~ 7/9 10:00 (KST))<br>The following Identities and E.G.O will have increased odds of extraction:<br>- E.G.O [HE] : Dimension Shredder Outis, Holiday Outis<br>- E.G.O [TETH] : Ya Śūnyatā Tad Rūpam Outis<br>- 3★ : The House of Spiders: The Middle Nursefather Outis, LCA Udjat Vanguard Team 3 Leader Outis, T Corp. Class 3 VDCU Staff Outis, Heishou Pack - Mao Branch Outis, The Barber of La Manchaland Outis, W Corp. L3 Cleanup Captain Outis, Wuthering Heights Chief Butler Outis, Molar Office Fixer Outis, Seven South Section 6 Director Outis<br>- 2★ : The Ring Pointillist Student Outis, Cinq South Section 4 Outis, G Corp. Head Manager Outis, Blade Lineage Salsu Outis<br>- 1★ : LCB Sinner Outis</p>
 <p>3. New Identities Added<br>The following Identities will be added to the list of extractable Identities.<br>- 3★ : The House of Spiders: The Thumb Nursefather Rodion, The House of Spiders: The Thumb Apprentice Heathcliff</p>
 <p>4. New Packages<br>2 new limited packages will be added to the game with the Jun. 25th, 2026 (KST) Scheduled Update.</p>
 <p>► Target Extraction Pack<br>- Contents : Decaextraction Ticket x 4<br>- Price : ₩33,000 / $21.99 / ¥3,000<br>- Can be purchased once<br>- Purchasable Period : 26. 6. 25 12:00 ~ 7. 9 10:00 (KST)</p>
 <p>► Identity Growth Pack<br>- Contents : Takeoff Module - ID Uptie x 1, Identity Training Ticket IV x 80, Identity Training Ticket III x 20<br>- Price : ₩33,000 / $21.99 / ¥3,000<br>- Can be purchased twice<br>- Purchasable Period : 26. 6. 25 12:00 ~ 7. 9 10:00 (KST)</p>
-<p>Major Changes</p>
-<hr>
+<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
 <p>1. A feature allowing Managers to freely rearrange the order of Team Presets will be added.<br>- You can change the order of the &quot;Teams&quot; Presets by pressing and holding a Preset name in the Team list, then moving it to the desired position.</p>
-<p>Bug Fixes and Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes and Improvements</h2><hr class="notice-section-divider">
 <p>► Additional fix for crashes upon entering battles on certain devices<br>※ The system has been adjusted so that devices equipped with Mali-G610, Mali-G710, and Mali-G715 series GPUs run on &quot;GLES&quot; instead of &quot;Vulkan&quot; for the Graphics API upon game launch.<br>※ Should this issue persist on your device even after the Jun. 25th Scheduled Update, please provide your device model name, OS version, and other relevant details to our Customer Support so that we may further check the affected GPU.</p>
 <p>► Fixed an issue where the Skill 2 &quot;Amoral Enactment&quot; of &quot;The One Who Shall Grip Sinclair&quot; at Uptie Tier 2 would function differently from intended<br>- Before: The Power value of Coin 1 was applied as -1<br>- After: The Power value of Coin 1 has been corrected to -3 to match the text</p>
 <p>► (Steam) Fixed an issue where the size of the in-game cursor icon could vary depending on the custom resolution set by the user</p>
@@ -60,15 +60,12 @@
 <p>► Fixed an issue where SD Spine motions would not function smoothly when hovering the cursor over an enemy Skill Slot on the combat screen</p>
 <p>► Fixed an issue where SD motions would display differently from intended when hovering the cursor over certain Skills used by the boss unit appearing in Chapter 9.5 &quot;Twining Threads&quot;</p>
 <p>► Fixed an issue where portrait images would display abnormally when Passives are activated in certain situations during combat</p>
-<p>Known Issues</p>
-<hr>
+<h2 class="notice-section-heading">Known Issues</h2><hr class="notice-section-divider">
 <p>► An issue where some resources for &quot;The Thumb&quot; Identities are implemented unnaturally<br>※ This is not an issue affecting the units&#x27; performance, but rather an issue where certain visual elements have been implemented differently from the intended setting.<br>※ We will provide a more detailed explanation once the issue has been resolved.</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before Jul. 2nd, 2026, 10:00 AM (KST)<br>- When : After Jun. 25th (Thu), 2026, 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Relevant Compensation can be claimed until Jul. 2nd (Thu), 2026, 10:00 (KST) via the in-game Mailbox (mail available for 7 days).</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

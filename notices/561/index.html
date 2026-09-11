@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Refraction Railway Line 5 Buff Error &amp; Temp. Closure</title>
@@ -29,12 +32,14 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="refraction-railway">Refraction Railway</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span></div><h1 class="notice-inline-title">Notice: Refraction Railway Line 5 Buff Error &amp; Temp. Closure</h1><div class="notice-date"><time datetime="2026-03-16">March 16, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #FF7300">Refraction Railway</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span></div><h1 class="notice-inline-title">Notice: Refraction Railway Line 5 Buff Error &amp; Temp. Closure</h1><div class="notice-date"><time datetime="2026-03-16">March 16, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We have identified an issue where a certain buff effect in Refraction Railway Line 5 began to work differently from its description after Mar. 12th (Thu) 12:00 (KST) Scheduled Update.</p>
 <p>To address this issue, we will be temporarily closing Refraction Railway Line 5(RR5 henceforth), reverting certain clear records, and taking appropriate future measures.<br>Please continue reading for more information.</p>
 <p>We sincerely apologize for the Inconvenience.</p>
-<p>[ Issue ]<br>- An issue where the RR5 buff effect &quot;The Lone Gunman&quot; applies to all Identities<br>※ Relevant Effect : Raise Min &amp; Max Speed values for the #1 Deployed Identity by 1. The said unit loses a Skill 1, but gains a Skill 3</p>
-<p>[ Cause ]<br>- This issue is a side effect of addressing an issue where, when certain buffs that increase or reduce per-rank Skill reserve are applied, certain Identities&#x27; unique Skills could be shown to have more than 0 copies</p>
+<h2 class="notice-section-heading">[ Issue ]</h2>
+<p>- An issue where the RR5 buff effect &quot;The Lone Gunman&quot; applies to all Identities<br>※ Relevant Effect : Raise Min &amp; Max Speed values for the #1 Deployed Identity by 1. The said unit loses a Skill 1, but gains a Skill 3</p>
+<h3 class="notice-subsection-heading">[ Cause ]</h3>
+<p>- This issue is a side effect of addressing an issue where, when certain buffs that increase or reduce per-rank Skill reserve are applied, certain Identities&#x27; unique Skills could be shown to have more than 0 copies</p>
 <p>※ We have identified an issue regarding buff effects that change the per-rank Skill reserve.<br>This issue affects 4 following effects: &quot;Training Team Captain&quot;, &quot;Ready to Fire&quot;, &quot;Welfare Team Captain&quot; and &quot;The Lone Gunman&quot;.</p>
 <p>These buffs all have an effect that increases or decreases the number of copies for each Skill rank. Initially, the Skill reserve changing effects were applied based on the &quot;order&quot; of Skills owned by each Identity, not by the &quot;rank&quot; of each Skill.</p>
 <p>This caused certain Skills that become available only upon meeting certain conditions, which are supposed to show &quot;0 copies&quot; in the UI, to show more than 0 copies while this effect is active.</p>
@@ -43,21 +48,25 @@
 <p>1. Omission from &quot;Bug Fixes &amp; Improvements&quot; List<br>: We failed to notify our Managers through the update notice about how this issue is to be fixed.<br>: The cause of this omission was that, due to a misstep, the list containing this particular update specification was not included in the announcement specification. As a result, the QA process was not properly undertaken for this change.</p>
 <p>We sincerely apologize for the confusion this has caused to our Managers.</p>
 <p>2. Error in the Application Scope of the &quot;The Lone Gunman&quot; Buff<br>: An error occurred in the effect application scope of &quot;The Lone Gunman&quot; buff while fixing the issue.</p>
-<p>&lt; Before the Mar. 12th, 2026 Update &gt;<br>- Effect applied only to the #1 Deployed Identity</p>
-<p>&lt; After the Mar. 12th, 2026 update &gt;<br>- Effect applied to all allies</p>
+<h3 class="notice-subsection-heading">&lt; Before the Mar. 12th, 2026 Update &gt;</h3>
+<p>- Effect applied only to the #1 Deployed Identity</p>
+<h3 class="notice-subsection-heading">&lt; After the Mar. 12th, 2026 update &gt;</h3>
+<p>- Effect applied to all allies</p>
 <p>: Although cross-verification was carried out between our developers during the process of fixing the &quot;The Lone Gunman&quot; buff effect, we failed to identify that the Deployment order-checking logic, which was previously applied, was omitted. We mistakenly determined that the fix was functioning correctly, which led to this issue.</p>
 <p>: This issue will be addressed so that the buff functions as it did prior to the Mar. 12th Update.</p>
-<p>[Future Measures]</p>
+<h3 class="notice-subsection-heading">[Future Measures]</h3>
 <p>To prevent similar issues, we will strengthen the following 3 procedures:</p>
 <p>1. When modifying preexisting specifications already released in the live version of the game, we will ensure that changes are shared with the person-in-charge of each team and keep the changes recorded in the update log.</p>
 <p>2. We will perform cross-checks to ensure update logs are properly recorded.</p>
 <p>3. When modifying existing code, we will use tools that allow comparison with the unchanged version to further verify any changes applied.</p>
-<p>[Refraction Railway Line 5 Temp. Closure]<br>- When : After 2026.03.16 21:40(KST)<br>- Re-opening : After 2026.03.19 Scheduled Update</p>
-<p>[ Refraction Railway Line 5 Clear Records to be Rolled Back ]</p>
+<h3 class="notice-subsection-heading">[Refraction Railway Line 5 Temp. Closure]</h3>
+<p>- When : After 2026.03.16 21:40(KST)<br>- Re-opening : After 2026.03.19 Scheduled Update</p>
+<h3 class="notice-subsection-heading">[ Refraction Railway Line 5 Clear Records to be Rolled Back ]</h3>
 <p>- When : With 2026.03.19 Scheduled Update<br>- Rollback Users : Users who have cleared Refraction Railway Line 5 after selecting &quot;The Lone Gunman&quot; buff after the 2026.03.12 Scheduled Update.</p>
 <p>※ We are currently investigating the clear records to verify the scope of affected users.<br>※ Even if it takes time, we promise an accurate investigation, and will share a detailed rollback plan with a future notice.</p>
 <p>Once again, we apologize for the inconvenience.<br>We will take greater care so that no same issue occurs again.</p>
-<p>[Refraction Railway Line 5 Error Compensation]<br>Content: Lunacy x500<br>Recipients : All users whose game accounts were created before 10:00 Mar. 26th, 2026 (KST)<br>When : After Mar. 16th, 2026 (Thu) 22:00 (KST)<br>Can be claimed once per account</p>
+<h3 class="notice-subsection-heading">[Refraction Railway Line 5 Error Compensation]</h3>
+<p>Content: Lunacy x500<br>Recipients : All users whose game accounts were created before 10:00 Mar. 26th, 2026 (KST)<br>When : After Mar. 16th, 2026 (Thu) 22:00 (KST)<br>Can be claimed once per account</p>
 <p>Error Compensation can be claimed until Mar. 26th (Thu) 2026, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

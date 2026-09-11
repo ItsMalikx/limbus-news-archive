@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Issues Identified in the Oct. 17th Scheduled Update</title>
@@ -29,20 +32,25 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: Issues Identified in the Oct. 17th Scheduled Update</h1><div class="notice-date"><time datetime="2024-10-17">October 17, 2024</time></div><hr class="notice-title-divider"></div><p>[Notice: Issues Identified in the Oct. 17th Scheduled Update]</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: Issues Identified in the Oct. 17th Scheduled Update</h1><div class="notice-date"><time datetime="2024-10-17">October 17, 2024</time></div><hr class="notice-title-divider"></div><h2 class="notice-section-heading">[Notice: Issues Identified in the Oct. 17th Scheduled Update]</h2>
 <p>Greetings, dear manager.<br>We have identified the following issues in our October 17th Scheduled Update.</p>
 <p>1. An issue where the game may get softlocked during the battle in Stage 7-26</p>
 <p>7-26 We have identified an issue where the game has a chance to softlock in Stage 7-26.<br>Please refer to the following for more information.</p>
-<p>[Conditions]<br>- May occur in Clashes against a special enemy that appears only in Stage 7-26.<br>- There is approxiatemly 20% chance that your character will freeze during a Clash, softlocking the game.<br>- This issue is localized entirely within this single stage.</p>
-<p>[Cause]<br>We created a specialized clash script only for that combat Encounter Stage.<br>However, there was a logic error in that script tied to a specific animation, which causes the softlocking issue.</p>
+<h3 class="notice-subsection-heading">[Conditions]</h3>
+<p>- May occur in Clashes against a special enemy that appears only in Stage 7-26.<br>- There is approxiatemly 20% chance that your character will freeze during a Clash, softlocking the game.<br>- This issue is localized entirely within this single stage.</p>
+<h3 class="notice-subsection-heading">[Cause]</h3>
+<p>We created a specialized clash script only for that combat Encounter Stage.<br>However, there was a logic error in that script tied to a specific animation, which causes the softlocking issue.</p>
 <p>You can lower the chance of triggering this issue by minimizing the number of clashes in the Stage(by targeting only a single enemy Skill Slot with all of your Skills, for example)<br>If the game softlocks, please select the gear wheel icon on the top right corner of the screen and select &#x27;Give Up&#x27; to exit the stage. Then, you should be able to either retry the stage or access other content of the game.</p>
-<p>[Solution and our future measures]<br>We identified the problem logic and corrected the issue.<br>We plan to add additional logic for exception cases so that no soft locking issue may occur due to similar cutscene logic issues(such as the next animation not loading for a certain amount of time).</p>
+<h3 class="notice-subsection-heading">[Solution and our future measures]</h3>
+<p>We identified the problem logic and corrected the issue.<br>We plan to add additional logic for exception cases so that no soft locking issue may occur due to similar cutscene logic issues(such as the next animation not loading for a certain amount of time).</p>
 <p>However, as our current goal is to focus on the stability of the content for the next part of the chapter,<br>we kindly ask for your understanding that the fix for this issue will be deployed with our next Scheduled Update, Canto 7 (Part 3).</p>
 <p>2. Notice: Oct. 17th Scheduled Update Error Hotfix</p>
 <p>We will deploy a Hotfix for the following issues by 17:00 today.<br>Hotfixes can be deployed without a separate client update, and can be applied by restarting the game. However, please note that additional downloads may occur.</p>
-<p>&lt;List&gt;<br>► Fixed an issue where &#x27;The Barber of La Manchaland Outis&#x27; Skill 3&#x27;s &quot;[On Use] If the target has 5+ Bleed, Coin Power +1&quot; works up to &quot;Coin Power +2&quot;<br>► (EN Only) Fixed an issue where Faust&#x27;s Lasso E.G.O Corrosion Skill Threadspinning Tier 4 has an issue where &quot;(max 2)&quot; was missing from &quot;Coin Power +1 for ever 7 Rupture on the target (max 2)&quot;<br>► (KR Only) Fixed typos in &#x27;The Barber of La Manchaland Outis&#x27; self-introduction lines &amp; voice lines<br>► (JP Only) Fixed an issue where a certain character&#x27;s Skill Keyword was mislabeled as &quot;Poise&quot; instead of &quot;Rupture&quot;<br>► Updated the BGM for Stage 7-34 with a more recent version of the song</p>
+<h3 class="notice-subsection-heading">&lt;List&gt;</h3>
+<p>► Fixed an issue where &#x27;The Barber of La Manchaland Outis&#x27; Skill 3&#x27;s &quot;[On Use] If the target has 5+ Bleed, Coin Power +1&quot; works up to &quot;Coin Power +2&quot;<br>► (EN Only) Fixed an issue where Faust&#x27;s Lasso E.G.O Corrosion Skill Threadspinning Tier 4 has an issue where &quot;(max 2)&quot; was missing from &quot;Coin Power +1 for ever 7 Rupture on the target (max 2)&quot;<br>► (KR Only) Fixed typos in &#x27;The Barber of La Manchaland Outis&#x27; self-introduction lines &amp; voice lines<br>► (JP Only) Fixed an issue where a certain character&#x27;s Skill Keyword was mislabeled as &quot;Poise&quot; instead of &quot;Rupture&quot;<br>► Updated the BGM for Stage 7-34 with a more recent version of the song</p>
 <p>We sincerely apologize for the issues, including the game softlocking issue mentioned above.</p>
-<p>[Oct. 17th Scheduled Update Error Compensation]<br>- Compensation: Lunacy x500<br>- Recipients: All users whose accounts were created before Oct. 24th 2024, 10:00<br>- When: After Oct. 17th 2024(THU), 17:00 (KST)<br>- Can be claimed once per account</p>
+<h3 class="notice-subsection-heading">[Oct. 17th Scheduled Update Error Compensation]</h3>
+<p>- Compensation: Lunacy x500<br>- Recipients: All users whose accounts were created before Oct. 24th 2024, 10:00<br>- When: After Oct. 17th 2024(THU), 17:00 (KST)<br>- Can be claimed once per account</p>
 <p>This error compensation can be claimed until Oct. 24th (Thu) 2024, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

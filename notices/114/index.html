@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice : Server-side issue Regarding Enkephalin Returns Post Force-quit</title>
@@ -29,21 +32,21 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span><span class="tag-pill" data-tag="update">Update</span></div><h1 class="notice-inline-title">Notice : Server-side issue Regarding Enkephalin Returns Post Force-quit</h1><div class="notice-date"><time datetime="2023-08-30">August 30, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span></div><h1 class="notice-inline-title">Notice : Server-side issue Regarding Enkephalin Returns Post Force-quit</h1><div class="notice-date"><time datetime="2023-08-30">August 30, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, dear Manager.</p>
 <p>An issue with returning consumed Enkephalin when the user force-quits an encounter has been identified following the Aug. 10th Update. We will retrieve the Enkephalin Modules that were distributed erroneously, and return the lost Enkephalin via the in-game Mailboxes.</p>
 <p>All affected Managers have been identified after a thorough analysis of in-game logs.</p>
 <p>Please note that Managers unaffected by this issue will not receive the withdrawal and return notifications in their mailboxes. For further information on this matter, please refer to the details below.</p>
-<p>&lt;Issue Details&gt;</p>
+<h2 class="notice-section-heading">&lt;Issue Details&gt;</h2>
 <p>- Issue : Upon force-quitting an encounter, 1 Enkephalin module was returned to the players instead of consumed Enkephalin(= required Enkephalin -1) for that encounter</p>
 <p>- Cause : An error with the server-side logic of the game caused users to receive 1 Enkephalin module instead of the resource(Enkephalin) that was spent.</p>
 <p>- Solution : The logic causing the issue has been corrected (As of August 25th)</p>
-<p>&lt;Enkephalin Module Withdrawals &amp; Enkephalin Returns&gt;<br>- Withdrawals and Returns : After Sep. 07th Update</p>
+<h3 class="notice-subsection-heading">&lt;Enkephalin Module Withdrawals &amp; Enkephalin Returns&gt;</h3>
+<p>- Withdrawals and Returns : After Sep. 07th Update</p>
 <p>- Withdrawals : Enkephalin modules given due to this issue will be withdrawn from the user’s inventory, and the number of modules withdrawn will be notified to the affected users via the Mailbox.</p>
 <p>- Returns : Enkephalin that has not been returned due to this issue will be sent to the affected users via the Mailbox (Enkephalin acquired via the Mailbox can exceed 999 capacity)</p>
 <p>※ If the amount of Enkephalin modules withdrawn exceeds the amount currently owned, the remaining balance can go negative.<br>※ No Enkephalin will be returned for stages that don&#x27;t require Enkephalin, such as the Tutorial stages.</p>
 <p>We sincerely apologize for causing a disturbance to your enjoyment of the game. All Managers will be given the following compensation. Please refer to below for further details.</p>
-<p>Compensation for the Server-side Issue Correction</p>
-<hr>
+<h2 class="notice-section-heading">Compensation for the Server-side Issue Correction</h2><hr class="notice-section-divider">
 <p>- Compensation : Lunacy x300, Enkephalin module x5<br>- Recipients : Every user whose game account was created before 09:59 Sep. 21st, 2023 (KST)<br>- Can be redeemed once per account<br>- Date : After Aug. 30th (Wed) 18:00 (KST)</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

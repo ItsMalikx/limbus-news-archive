@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Issues Identified After the May 23rd Scheduled Update</title>
@@ -29,9 +32,9 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="refraction-railway">Refraction Railway</span></div><h1 class="notice-inline-title">Issues Identified After the May 23rd Scheduled Update</h1><div class="notice-date"><time datetime="2024-05-23">May 23, 2024</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #FF7300">Refraction Railway</span></div><h1 class="notice-inline-title">Issues Identified After the May 23rd Scheduled Update</h1><div class="notice-date"><time datetime="2024-05-23">May 23, 2024</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>Below are issues that have been identified after the May 23rd Scheduled Update.</p>
-<p>&lt;List&gt;</p>
+<h2 class="notice-section-heading">&lt;List&gt;</h2>
 <p>1. An issue where choosing the ‘Retry Stage’ option in the Refraction Railway caused the E.G.O resource upon entry and E.G.O resource upon ‘Retry Stage’ to be added together<br>(Please refer to [Notice: Refraction Railway Line 3 Error &amp; Temporary Closure] announcement for more information)</p>
 <p>2. An issue where entering an Encounter with -45 SP does not cause the character to Panic or Corrode</p>
 <p>3. An issue where an incorrect text was displayed in the popup for the ‘Clear all Caches’ in the Login Scene</p>

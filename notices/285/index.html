@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>[Notice: Issues Identified in Sep. 19th Scheduled Update]</title>
@@ -29,7 +32,7 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">[Notice: Issues Identified in Sep. 19th Scheduled Update]</h1><div class="notice-date"><time datetime="2024-09-19">September 19, 2024</time></div><hr class="notice-title-divider"></div><p>[Issues identified in the Sep. 19th Scheduled Update]</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">[Notice: Issues Identified in Sep. 19th Scheduled Update]</h1><div class="notice-date"><time datetime="2024-09-19">September 19, 2024</time></div><hr class="notice-title-divider"></div><h2 class="notice-section-heading">[Issues identified in the Sep. 19th Scheduled Update]</h2>
 <p>Hello,<br>This is Project Moon.</p>
 <p>The following are issues that have been identified in the Sep. 19th Scheduled Update(version 1.57.0)<br>They will be corrected via a future scheduled update, and we will inform you via a Scheduled Update Notice as soon as they are corrected.</p>
 <p>1. An issue where, in a Main Story Chaptter 5 Boss fight, turns would infinitely grow without letting the players or the enemies take any action<br>Cause: This was a side effect that occurred as we were developing a new system, and it occurred in this update. This occurs when the turn where the ‘Assisted Defense’ was used, but if a certain enemy was defeated by effects such as “Burn” in the same turn.<br>Solution: We corrected the logic in the corresponding boss pattern.</p>
@@ -38,7 +41,8 @@
 <p>4. An issue where, after Evading an attack, if 2+ allies would Evade an enemy’s AOE attack, the game would softlock<br>Cause: There was an error in the preexisting system. We assume that this issue occurred sometime before this current update. It occurs when 2+ allies who can reuse their Evade Skills after successfully evading once are targeted by AOE attacks.<br>Solution: We identified the problematic Evade Reuse logic, and we resolved it by correcting the said logic.</p>
 <p>We will now track our development history and share them to set a more concrete testing perimeter so that developing a new system won’t cause such side effects.</p>
 <p>We sincerely apologize for the inconvenience.</p>
-<p>[Sep. 19th Scheduled Update Error Compensation]<br>- Compensation : Lunacy x300<br>- Recipients : All users whose accounts were created before Sep. 26th, 2024 10:00<br>- When : After Sep. 19th (THU), 22:30 (KST)<br>- Can be claimed once per account</p>
+<h3 class="notice-subsection-heading">[Sep. 19th Scheduled Update Error Compensation]</h3>
+<p>- Compensation : Lunacy x300<br>- Recipients : All users whose accounts were created before Sep. 26th, 2024 10:00<br>- When : After Sep. 19th (THU), 22:30 (KST)<br>- Can be claimed once per account</p>
 <p>Error Compensation can be claimed until Sep. 26th (Thu) 2024, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

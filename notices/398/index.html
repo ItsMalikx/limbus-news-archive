@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Version 1.77.0 Error Hotfix</title>
@@ -29,12 +32,13 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: Version 1.77.0 Error Hotfix</h1><div class="notice-date"><time datetime="2025-05-22">May 22, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: Version 1.77.0 Error Hotfix</h1><div class="notice-date"><time datetime="2025-05-22">May 22, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>We would like to inform you that fixes for certain issues from our post-1.77.0 Known Issues notice<br>in Main Story Canto 8 - &lt;Part 2&gt; will be deployed via a hotfix.</p>
 <p>The Hotfix will be deployed without a separate client update,<br>but please note that additional downloads may occur once it is complete.</p>
-<p>[Known Issues]</p>
+<h2 class="notice-section-heading">[Known Issues]</h2>
 <p>► Skill text errors for a certain enemy Skill in Stage 8-20<br>- Before: Inflict Rupture On Hit with the first Coin, inflict Deathrite[Wane] On Hit with the second Coin<br>- After: Inflict Rupture and Deathrite[Wane] On Hit with the first Coin<br>※ This is a text-only change; currently, the effects are working as written in the changed description.</p>
-<p>[Deployment ETA]<br>- 5.22(THU) 23:00(KST)<br>- There may be a 10-minute margin of error to the ETA.</p>
+<h3 class="notice-subsection-heading">[Deployment ETA]</h3>
+<p>- 5.22(THU) 23:00(KST)<br>- There may be a 10-minute margin of error to the ETA.</p>
 <p>We sincerely apologize for the inconvenience.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

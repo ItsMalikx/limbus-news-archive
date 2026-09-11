@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026, Feb. 26th Scheduled Update Notice</title>
@@ -29,12 +32,11 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="mirror-dungeon">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span></div><h1 class="notice-inline-title">2026, Feb. 26th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-02-25">February 25, 2026</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">2026, Feb. 26th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-02-25">February 25, 2026</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Feb. 26th, 2026 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<p>New Content</p>
-<hr>
+<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
 <p>1. User Interface Design Update Part 1</p>
 <p>Part 1 of the update that enables &quot;Dark Mode&quot; UI option will be applied to the game. Certain UI elements will be changed as well.</p>
 <p>※ Select the UI change icon to enter the menu to switch between Default Mode and Dark Mode.</p>
@@ -61,19 +63,18 @@
 <p>- Contents : Decaextraction Ticket x5<br>- Price : ₩33,000 / $21.99 / ¥3,000<br>- Purchase : Can be purchased only once<br>- Purchasable Period : 26. 2. 26 12:00 ~ 3. 26 10:00 (KST)</p>
 <p>► 3rd Anniversary Commemorative ID Growth Pack</p>
 <p>- Contents : Identity Training Ticket IV x200, Takeoff Module - ID Uptie x2<br>- Price : ₩55,000 / $41.99 / ¥6,000<br>- Purchase : Can be purchased only once<br>- Purchasable Period : 26. 2. 26 12:00 ~ 3. 26 10:00 (KST)</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► Fixed an issue where &#x27;The House of Spiders: The Index Nursefather Yi Sang&#x27; did not affect ally positioning even when the Identity&#x27;s Speed increased via the &#x27;Indulgence in Prescripts&#x27; effect.</p>
 <p>► Fixed certain effect errors related to the keyword &#x27;Charge Barrier&#x27;</p>
 <p>※ Relevant Effect: Gain (Charge Barrier # x n) Shield</p>
 <p>- Before: Upon activation of &#x27;Gain Charge Barrier next turn&#x27; effect, the Shield-gaining effect would apply in both the current turn and the next turn<br>- After: Upon activation of &#x27;Gain Charge Barrier next turn&#x27; effect, the Shield-gaining effect will now apply only in the next turn</p>
-<p>[Cause of the Issue]</p>
+<h3 class="notice-subsection-heading">[Cause of the Issue]</h3>
 <p>With the Nov. 13th, 2025 Update, we had deployed an optimization that improves how in-battle effect summary UI is displayed.</p>
 <p>However, an error occurred in the process of deploying that optimization, where some of the logic that refers to the pre- and post-keyword applications mid-battle erroneously used the information of the next turn instead of the current turn.</p>
-<p>[Areas Affected by the Issue]</p>
+<h3 class="notice-subsection-heading">[Areas Affected by the Issue]</h3>
 <p>The issue may arise when the effect-gaining activation timing for &quot;a certain effect activates when gaining/losing a status effect keyword&quot; triggers &quot;next turn&quot;.</p>
 <p>So far, the only confirmed case of this issue is the &#x27;Gain Charge Barrier next turn&#x27; effect for &#x27;W Corp. L2 Cleanup Agent Hong Lu&#x27;.</p>
-<p>[Issue Fix]</p>
+<h3 class="notice-subsection-heading">[Issue Fix]</h3>
 <p>We have made adjustments so that the logic that refers to the pre- and post-keyword application uses the information of the current turn in battle.</p>
 <p>► Fixed an issue where the Coin effect of Uptie 4 Defense Skill for &#x27;The Middle Little Brother Meursault&#x27; functioned differently from its description</p>
 <p>※ Relevant Effect: [On Hit] Inflict 1 Bleed</p>
@@ -94,15 +95,12 @@
 <p>- Before: &quot;Attack End&quot; and &quot;After Attack&quot; were used interchangeably<br>- After: The text will now be standardized into &quot;Attack End&quot;</p>
 <p>※ [Excluding forced Staggers]</p>
 <p>- Before: &quot;unless it&#x27;s a forced Stagger&quot; and &quot;excluding forced Staggers&quot; were used interchangeably<br>- After: The text will now be standardized into &quot;excluding forced Staggers&quot;</p>
-<p>Known Issue</p>
-<hr>
+<h2 class="notice-section-heading">Known Issue</h2><hr class="notice-section-divider">
 <p>► An issue where the Charge Barrier effect visual briefly appears upon the third Coin hit of Skill 3 for &#x27;W Corp. L2 Cleanup Agent Hong Lu&#x27;</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 Mar. 5th, 2026 (KST)<br>- When : After Feb. 26th, 2026 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Mar. 5th (Thu) 2026, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

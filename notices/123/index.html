@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Emergency Maintenance Notice (3)</title>
@@ -29,15 +32,16 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="refraction-railway">Refraction Railway</span></div><h1 class="notice-inline-title">Emergency Maintenance Notice (3)</h1><div class="notice-date"><time datetime="2023-09-15">September 15, 2023</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #FF7300">Refraction Railway</span></div><h1 class="notice-inline-title">Emergency Maintenance Notice (3)</h1><div class="notice-date"><time datetime="2023-09-15">September 15, 2023</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>Currently, there is an issue in the game where Slash, Pierce, and Blunt DMG Up and Down effects are applied tenfold. This issue may cause certain Identities and E.G.O to deal abnormal amounts of damage.</p>
 <p>Unless this issue is immediately addressed, We decided that the records between Managers who were affected by this issue and Managers who were not may differ.</p>
 <p>Therefore, we plan to conduct an emergency maintenance, temporarily pause the Refraction Railway, and make a correction to this issue. We will inform you of the detailed fixes and the error compensations once we have completed the maintenance.</p>
 <p>We sincerely apologize for causing disturbance to your enjoyment of our game.</p>
-<p>Emergency Maintenance Period</p>
-<hr>
-<p>[Time]<br>After 2023.09.15 18:30(KST) (End time undecided)</p>
-<p>[Reason]<br>Temporary pause to Refraction Railway, deploying fix to Slash, Pierce, and Blunt DMG Up and Down Issue</p></div>
+<h2 class="notice-section-heading">Emergency Maintenance Period</h2><hr class="notice-section-divider">
+<h3 class="notice-subsection-heading">[Time]</h3>
+<p>After 2023.09.15 18:30(KST) (End time undecided)</p>
+<h3 class="notice-subsection-heading">[Reason]</h3>
+<p>Temporary pause to Refraction Railway, deploying fix to Slash, Pierce, and Blunt DMG Up and Down Issue</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>

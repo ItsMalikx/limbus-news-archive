@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Missing Story Error</title>
@@ -29,18 +32,15 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span><span class="tag-pill" data-tag="update">Update</span></div><h1 class="notice-inline-title">Notice: Missing Story Error</h1><div class="notice-date"><time datetime="2023-12-11">December 11, 2023</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span></div><h1 class="notice-inline-title">Notice: Missing Story Error</h1><div class="notice-date"><time datetime="2023-12-11">December 11, 2023</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We have identified an issue where, in the Story Dungeon at 5-36, the story cutscene 5-55 does not play.<br>We have identified the cause of the issue and have corrected it. However, deploying the fix requires a client build - and will be deployed with the next week&#x27;s Scheduled Update.</p>
-<p>Cause</p>
-<hr>
+<h2 class="notice-section-heading">Cause</h2><hr class="notice-section-divider">
 <p>Playing the story does not activate automatically in every rooms of a Dungeon; it is something that must be manually added to each respective rooms that play Story cutscenes.</p>
 <p>A new type of room was added in the Canto V Story Dungeon, which moves the player to the next Floor without triggering any specific event. However, the function that plays a Story cutscene was missing, which meant that we failed to check if that relevant Story cutscene was working as intended.</p>
-<p>Solution</p>
-<hr>
+<h2 class="notice-section-heading">Solution</h2><hr class="notice-section-divider">
 <p>We have manually added a function to play a Story cutscene to the new type of room that moves to the next Floor without triggering any specific event.</p>
 <p>We sincerely apologize for this mistake and for causing a disturbance to your enjoyment of our game.<br>As it is a very important part of our game, we will more carefully proofread and test it in our development process.</p>
-<p>5-55 Missing Story Error Compensation</p>
-<hr>
+<h2 class="notice-section-heading">5-55 Missing Story Error Compensation</h2><hr class="notice-section-divider">
 <p>- Compensation : Lunacy x300<br>- Recipients : All users whose accounts were created before Dec. 21st 2023, 10:00<br>- Can be claimed once per account<br>- When : Can be claimed after Dec. 14th 2023, 12:00 (KST)</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

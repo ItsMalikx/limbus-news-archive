@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Improvements, Known Issues, and Hotfix for Ver. 1.96.0</title>
@@ -29,10 +32,10 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span></div><h1 class="notice-inline-title">Notice: Improvements, Known Issues, and Hotfix for Ver. 1.96.0</h1><div class="notice-date"><time datetime="2026-01-15">January 15, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span></div><h1 class="notice-inline-title">Notice: Improvements, Known Issues, and Hotfix for Ver. 1.96.0</h1><div class="notice-date"><time datetime="2026-01-15">January 15, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We would like to inform you about the additional fixes deployed with the Jan. 15th, 2026 Scheduled Update, as well as some of the known issues that will be addressed via a hotfix.</p>
 <p>Please continue reading for more information.</p>
-<p>[ Additional Fixes Deployed with the 1/15 Update ]</p>
+<h2 class="notice-section-heading">[ Additional Fixes Deployed with the 1/15 Update ]</h2>
 <p>※ The following changes were applied through the Jan. 15th Scheduled Update.</p>
 <p>► Fixed an issue where, if the game&#x27;s FPS was set to 60 or Auto, the voiceline of certain Main Story Chapters did not automatically proceed after the credit roll.<br>Affected Main Story chapters: Chapter 3, Chapter 4, Chapter 7, and Chapter 8</p>
 <p>► Fixed an issue where certain touch input areas did not function properly when The Index Proxy - Effloresced E.G.O::Procuration Don Quixote&#x27;s Uptie illustration was set on the lobby screen</p>
@@ -40,14 +43,15 @@
 <p>► Fixed an issue where, under certain conditions while progressing the Main Story, the story could be manually skipped when the Golden Bough Resonance animation played</p>
 <p>► Adjusted the UI so that Chapter 9&#x27;s banner is highlighted after Chapter 8.5 - Spring Cultivation is cleared for the first time</p>
 <p>► Fixed an issue where a sepia-toned background was displayed instead of black-and-white in The Lord of Hongyuan Hong Lu&#x27;s Identity Uptie Story</p>
-<p>[ To-be Hotfixed ]</p>
+<h3 class="notice-subsection-heading">[ To-be Hotfixed ]</h3>
 <p>► (EN Only) Fixed an issue where, under certain circumstances, the translations for Yi Sang and Ryōshū&#x27;s &quot;Great Trichiliocosm&quot; E.G.O Passives did not load</p>
 <p>► (JP Only) Fixed an issue where, in Main Story Stage 9-42, the voicelines and scenes did not match</p>
 <p>► (EN Only) Shortened the new Keyword in Ryōshū&#x27;s new E.G.O &quot;Great Trichiliocosm&quot; E.G.O<br>- Before : Deal more damage on Critical Hit<br>- After : Crit DMG Up</p>
 <p>► (JP Only) An issue where an unintended Keyword highlight occurs for a certain enemy&#x27;s Skill description<br>※ Relevant Skill : Grueling Battle</p>
-<p>[ Hotfix ETA ]<br>- 1.15(THU) 19:30(KST)<br>- There may be a 10-minute delay from the ETA.</p>
+<h3 class="notice-subsection-heading">[ Hotfix ETA ]</h3>
+<p>- 1.15(THU) 19:30(KST)<br>- There may be a 10-minute delay from the ETA.</p>
 <p>※ Hotfixes are applied upon restarting the game without a separate client update.<br>Please note that additional downloads may occur.</p>
-<p>[ Post-Jan. 15th Scheduled Update Known Issues ]</p>
+<h3 class="notice-subsection-heading">[ Post-Jan. 15th Scheduled Update Known Issues ]</h3>
 <p>※ We are currently investigating the following issues, and will inform you via a separate update notice once they are resolved.</p>
 <p>► An issue where, in a certain Encounter, if Sinners are all killed at the same time as the enemies are, the Sinners&#x27; corpse sprites are used in the following victory cutscene</p>
 <p>► An issue where, for Ryōshū&#x27;s &quot;Great Trichiliocosm&quot; E.G.O, damage dealt against Shield HP does not count toward gaining the effect &quot;Entangled Life&quot;</p>

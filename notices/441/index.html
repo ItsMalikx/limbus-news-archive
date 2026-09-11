@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: July 31st Ver 1.83.0 Known Issues &amp; Subsequent Measures</title>
@@ -29,22 +32,29 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: July 31st Ver 1.83.0 Known Issues &amp; Subsequent Measures</h1><div class="notice-date"><time datetime="2025-07-31">July 31, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: July 31st Ver 1.83.0 Known Issues &amp; Subsequent Measures</h1><div class="notice-date"><time datetime="2025-07-31">July 31, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>In this notice, we would like to inform you about the causes and our measures toward issues that have been identified, in addition to the softlocking issue in our previous notice. With it, we would also like to inform you regarding our new client update.</p>
 <p>► An issue where the game softlocks in certain Encounters</p>
-<p>[ Cause ]<br>This issue was a side effect of fixing the issue where the targeting mechanism for Skills with the [Indiscriminate] trait did not work properly, the fix for which was deployed with today&#x27;s Scheduled Update.</p>
+<h2 class="notice-section-heading">[ Cause ]</h2>
+<p>This issue was a side effect of fixing the issue where the targeting mechanism for Skills with the [Indiscriminate] trait did not work properly, the fix for which was deployed with today&#x27;s Scheduled Update.</p>
 <p>The side effect was that, when an enemy target uses a [Indiscriminate] Skill in Focused Encounters, we observed an abnormal legnthening of the targeting time, which caused the game to softlock.</p>
-<p>[ Solution ]<br>We have identified the exact logic that was causing the issue,<br>and have tracked and corrected the cause of the error to properly address it.</p>
-<p>[ Subsequent Measures ]<br>We will be adding a logic to preemptively detect other logics that are taking abnormally long to calculate.</p>
+<h3 class="notice-subsection-heading">[ Solution ]</h3>
+<p>We have identified the exact logic that was causing the issue,<br>and have tracked and corrected the cause of the error to properly address it.</p>
+<h3 class="notice-subsection-heading">[ Subsequent Measures ]</h3>
+<p>We will be adding a logic to preemptively detect other logics that are taking abnormally long to calculate.</p>
 <p>► An issue where certain effects of the E.G.O Gift Omnivibro-octovecti-bell did not work properly<br>※ Relevant effect : extend the Tremor - Superposition on target at Turn End to the next turn</p>
-<p>[ Cause ]<br>In Focused Encounters, the E.G.O Gift should have applied to each part of enemies, but it was applying Tremor - Superposition to the enemies themselves, which caused the relevant effects to not trigger.</p>
-<p>[ Solution ]<br>We have adjusted the code so that the E.G.O Gift&#x27;s effects apply to each part instead of the enemy itself in Focused Encounters.</p>
-<p>[ Subsequent Measures ]<br>Going forward, we will be including an additional testing step to ensure that E.G.O Gift effects are applying to each Part in Focused Encounters, so that this issue won&#x27;t occur again.</p>
+<h3 class="notice-subsection-heading">[ Cause ]</h3>
+<p>In Focused Encounters, the E.G.O Gift should have applied to each part of enemies, but it was applying Tremor - Superposition to the enemies themselves, which caused the relevant effects to not trigger.</p>
+<h3 class="notice-subsection-heading">[ Solution ]</h3>
+<p>We have adjusted the code so that the E.G.O Gift&#x27;s effects apply to each part instead of the enemy itself in Focused Encounters.</p>
+<h3 class="notice-subsection-heading">[ Subsequent Measures ]</h3>
+<p>Going forward, we will be including an additional testing step to ensure that E.G.O Gift effects are applying to each Part in Focused Encounters, so that this issue won&#x27;t occur again.</p>
 <p>► New Client Deployment ETA</p>
 <p>A new Client version(1.83.1) with fixes for the above issues will be deployed.</p>
 <p>STEAM: The update will be deployed around 19:00 (KST).<br>iOS, Android: As Client updates need to go through the review process of each respective marketplaces, we will inform you again of the update schedule once the reviews are complete.</p>
 <p>We sincerely apologize for the inconvenience.</p>
-<p>[7/31 Scheduled Update Error Compensation]<br>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 Aug. 7th, 2025 (KST)<br>- When : After July 31st, 2025 (Thu) 20:00 (KST)<br>- Can be claimed once per account</p></div>
+<h3 class="notice-subsection-heading">[7/31 Scheduled Update Error Compensation]</h3>
+<p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 Aug. 7th, 2025 (KST)<br>- When : After July 31st, 2025 (Thu) 20:00 (KST)<br>- Can be claimed once per account</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>

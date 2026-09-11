@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2025, Sep. 4th Scheduled Update Notice</title>
@@ -29,12 +32,11 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="mirror-dungeon">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span></div><h1 class="notice-inline-title">2025, Sep. 4th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-09-01">September 1, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">2025, Sep. 4th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-09-01">September 1, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Sep. 4th, 2025 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<p>New Content</p>
-<hr>
+<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
 <p>1. New Mirror Dungeon Content [Parallel Superposition EXTREME]<br>※ Please refer to the Steam Announcements page for more information.</p>
 <p>※ For the Mirror of Immortality Parallel Superposition EXTREME implementation, Mirror Dungeon entry will be blocked for the following period: 2025. 09. 04 06:00 ~ 10:00 (KST)</p>
 <p>Please note this information for your gameplay plans.</p>
@@ -44,16 +46,17 @@
 <p>※ Up to 1000 Projection Rate can be obtained every week by playing through the Mirror Dungeon.</p>
 <p>※ The Weekly Projection Rate Cap&#x27;s reset period is the same as the reset period for Weekly Bonuses.</p>
 <p>※ Please note that playing through the Mirror Dungeon prior to Sep. 4th Scheduled Update and claiming the rewards after the Sep. 4th Scheduled Update will not yield any Weekly Projection Rewards.</p>
-<p>Notice: Mirror Dungeon Achievement Projection Rate Adjustments</p>
-<hr>
+<h2 class="notice-section-heading">Notice: Mirror Dungeon Achievement Projection Rate Adjustments</h2><hr class="notice-section-divider">
 <p>As shared in an earlier notice, Ver. 1.84.0, updated Aug. 14th (THU), had an issue where certain Achievements were counted double.<br>To address the issue, the following Achievement Progress &amp; Achievement Reward (Projection Rate) adjustments will be deployed.</p>
-<p>[Records Under Adjustment]<br>- Any progress made between 8/14(THU) 12:00 ~ 8/18(MON) 21:00 (KST)</p>
-<p>[Adjusted Achievements]<br>- Clear Mirror Dungeon at Floor 5 or higher X time(s)<br>- Clear Mirror Dungeon at Floor 5 or higher X time(s) - every floor has to be in Hard Difficulty</p>
-<p>[Adjustments]<br>- Progresses that were double-counted during the above period will be adjusted to count just once.<br>- If this issue caused an Achievement to be completed, it may be reverted to an incomplete state after the adjustment and have its clear rewards (Achievement Projection Rate) withdrawn.</p>
+<h3 class="notice-subsection-heading">[Records Under Adjustment]</h3>
+<p>- Any progress made between 8/14(THU) 12:00 ~ 8/18(MON) 21:00 (KST)</p>
+<h3 class="notice-subsection-heading">[Adjusted Achievements]</h3>
+<p>- Clear Mirror Dungeon at Floor 5 or higher X time(s)<br>- Clear Mirror Dungeon at Floor 5 or higher X time(s) - every floor has to be in Hard Difficulty</p>
+<h3 class="notice-subsection-heading">[Adjustments]</h3>
+<p>- Progresses that were double-counted during the above period will be adjusted to count just once.<br>- If this issue caused an Achievement to be completed, it may be reverted to an incomplete state after the adjustment and have its clear rewards (Achievement Projection Rate) withdrawn.</p>
 <p>※ With this adjustment, only the Achievement completion check &amp; Clear Rewards (Achievement Projection Rate) will be adjusted.</p>
 <p>※ Projection Rate Rewards will be withdrawn at a later date. We will share a more detailed schedule via a future notice.</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► (iOS) An issue where Kurokumo Clan Wakashu Ryoshu&#x27;s Skill 3 &quot;Lenticular Swirl&quot; Skill animation causes an issue where the combat phase no longer progresses</p>
 <p>► Fixed an issue where the Coin Effect &quot;Final Coin deals +X% damage&quot; does not activate<br>※ Affected Identities: Kurokumo Clan Wakashu Heathcliff&#x27;s Skill 3, Cinq South Section 3 Meursault&#x27;s Skill 3<br>※ This issue was caused as a side effect of creating a separate logic for internal testing purposes after the July 10th Scheduled Update.</p>
 <p>► Fixed an issue where clearing &quot;Long Battle&quot; Theme Packs in Floor 5 or Floor 10 did not raise Identities&#x27; levels</p>
@@ -72,16 +75,13 @@
 <p>► Erased unnecessary parentheses in the introduction phrase unlocked by obtaining Heishou Pack - You Branch Sinclair</p>
 <p>► (JP Only) Fixed an issue where Ch. 8.5 had missing translations</p>
 <p>► (JP Only) Fixed an issue where certain combo descriptions were missing the &quot;%&quot; marker in the Ch. 8.5 Cultivation minigame</p>
-<p>Known Issues</p>
-<hr>
+<h2 class="notice-section-heading">Known Issues</h2><hr class="notice-section-divider">
 <p>► An issue where, in the node selection screen of Mirror Dungeons, changes in allied units&#x27; max HP do not properly update in the UI</p>
 <p>※ This is a UI-only issue; the changed max HP were properly updated.</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 Sep. 11th, 2025 (KST)<br>- When : After Sep. 4th, 2025 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Sep. 11th, (Thu) 2025, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 
