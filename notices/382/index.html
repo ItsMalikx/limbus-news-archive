@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Additional Notice: Regarding Game Inaccessibility on Certain Devices</title>
@@ -29,16 +32,20 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Additional Notice: Regarding Game Inaccessibility on Certain Devices</h1><div class="notice-date"><time datetime="2025-04-30">April 30, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Additional Notice: Regarding Game Inaccessibility on Certain Devices</h1><div class="notice-date"><time datetime="2025-04-30">April 30, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We have identified an issue where, after the Apr. 30th Scheduled Update (Ver. 1.75.0), certain devices are unable to access the game.</p>
 <p>We have identified the cause of this issue, and we are in the process of fixing it.</p>
 <p>However, the fix for the problematic internal logic requires a client build and a submission to the marketplace,<br>so it cannot be immediately deployed via a hotfix.</p>
 <p>Please understand that the fix will be deployed via our next version (Ver. 1.75.1) update.</p>
 <p>We would like to ask managers experiencing this issue to access the game via a different device or Steam for now.<br>We sincerely apologize for this connection issue.</p>
-<p>[Issue]<br>- An issue where, after the 2025.04.30 Update, certain devices are unable to access the game due to instances of additional in-game downloads</p>
-<p>[Cause]<br>- This is a side effect that occurred while deploying optimizations to the localization text download system<br>- The error occurs when the game attempts to save the localization texts in file directories that are prohibited in certain devices</p>
-<p>[Solution]<br>- Adjusted the file directory to save to a specific Limbus Company app directory</p>
-<p>[Future Measures]<br>- Add more devices to the list of our internal testing devices to identify and prevent device-specific issues from occurring</p>
+<h2 class="notice-section-heading">[Issue]</h2>
+<p>- An issue where, after the 2025.04.30 Update, certain devices are unable to access the game due to instances of additional in-game downloads</p>
+<h3 class="notice-subsection-heading">[Cause]</h3>
+<p>- This is a side effect that occurred while deploying optimizations to the localization text download system<br>- The error occurs when the game attempts to save the localization texts in file directories that are prohibited in certain devices</p>
+<h3 class="notice-subsection-heading">[Solution]</h3>
+<p>- Adjusted the file directory to save to a specific Limbus Company app directory</p>
+<h3 class="notice-subsection-heading">[Future Measures]</h3>
+<p>- Add more devices to the list of our internal testing devices to identify and prevent device-specific issues from occurring</p>
 <p>We once again sincerely apologize for this inconvenience.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

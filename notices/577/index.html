@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Additional Known Issues &amp; Hotfix after 1.103.0 Update</title>
@@ -29,10 +32,10 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="mirror-dungeon">Mirror Dungeon</span></div><h1 class="notice-inline-title">Notice: Additional Known Issues &amp; Hotfix after 1.103.0 Update</h1><div class="notice-date"><time datetime="2026-04-16">April 16, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span></div><h1 class="notice-inline-title">Notice: Additional Known Issues &amp; Hotfix after 1.103.0 Update</h1><div class="notice-date"><time datetime="2026-04-16">April 16, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We would like to inform you of known issues that have been identified following the Apr. 16, 2026, Scheduled Update, along with an additional hotfix schedule.</p>
 <p>Please refer below for more information.</p>
-<p>[ Known Issues after Apr. 16th Scheduled Update ]</p>
+<h2 class="notice-section-heading">[ Known Issues after Apr. 16th Scheduled Update ]</h2>
 <p>▶ An issue where the battle cinematic of a boss entity in the Mirror Dungeon Theme Pack &quot;Twining Threads&quot; is triggered twice</p>
 <p>▶ An issue where certain enemy SD sprites in Chapter 9.5 &quot;Twining Threads&quot; have incorrect pivot alignment</p>
 <p>▶ An issue where enemy information is completely displayed on some Stage entry screens in Chapter 9.5 &quot;Twining Threads&quot; even when said enemy units have not been encountered before</p>
@@ -40,7 +43,7 @@
 <p>: Cause of the Issue<br>- A logic exception error that occurs during the activation of the first effect of the E.G.O Gift &quot;Universal Instinct&quot; when no The Ring-faction Identities are present on the field</p>
 <p>: Issue Fix<br>- A supplementary exception-handling logic will be added to the effect-activation code of this E.G.O Gift</p>
 <p>We ask for the Managers&#x27; kind understanding that this hotfix is only a temporary measure. A full issue resolution is queued for the next Scheduled Update due to required build changes and store review processes.</p>
-<p>[ Issues to be Resolved via a Hotfix ]</p>
+<h3 class="notice-subsection-heading">[ Issues to be Resolved via a Hotfix ]</h3>
 <p>▶ Fixed an issue where, in Canto 8, a certain character&#x27;s standing sprite loads incorrectly</p>
 <p>▶ Disabled certain effects from activating as a temporary solution to the &quot;Universal Instinct&#x27; E.G.O Gift error<br>※ Relevant effect : Turn End: Randomly apply 1 Stack of a random Affinity&#x27;s Damage Up next turn to (# of enemies with Bleed) The Ring-faction Identities (once per Identity per turn; in Focused Encounters, Parts)</p>
 <p>▶ Fixed an issue where, in certain Stages of Chapter 9.5 &quot;Twining Threads,&quot; information for certain first-time enemies is unlocked</p>
@@ -52,7 +55,8 @@
 <p>※ In the initial design phase, the affected enemy&#x27;s level was set to 66 to align with the plot narrative of the game. However, in the process of inputting unit data, its level was accidentally set to 60.<br>In order to prevent this issue from clashing with the story narrative, we have re-adjusted the unit&#x27;s level back to 66.</p>
 <p>This change was made primarily to reflect the story. In order to minimize its impact on our users&#x27; gameplay experience, we have lowered the Offense Level of some of the unit&#x27;s Skills in order to compensate for the increased Clash Power that results from the boss enemy unit&#x27;s level adjustment.</p>
 <p>We apologize for the confusion caused by the unit&#x27;s inconsistent level setting.</p>
-<p>[ Hotfix ETA ]<br>- 4.16(Thu) 19:30(KST)<br>- There may be a 10-minute delay.</p>
+<h3 class="notice-subsection-heading">[ Hotfix ETA ]</h3>
+<p>- 4.16(Thu) 19:30(KST)<br>- There may be a 10-minute delay.</p>
 <p>※ The Hotfix will be deployed upon restarting the game, and does not require a separate client update. However, please note that additional in-game downloads may occur.</p>
 <p>We sincerely apologize for the inconvenience.</p></div>
 

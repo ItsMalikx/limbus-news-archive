@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Additional Notice on certain Skills with &quot;Damage +M% for every N Keyword&quot; effect</title>
@@ -29,14 +32,17 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Additional Notice on certain Skills with &quot;Damage +M% for every N Keyword&quot; effect</h1><div class="notice-date"><time datetime="2025-10-28">October 28, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Additional Notice on certain Skills with &quot;Damage +M% for every N Keyword&quot; effect</h1><div class="notice-date"><time datetime="2025-10-28">October 28, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>Following up on the Notice released on Oct. 27 2025, we have identified another issue regarding Skills used by Identities and enemies where &quot;Damage +M% for every N Keyword&quot; is applied real-time.</p>
 <p>To fix this error, the Skill tag &quot;On Use&quot; will be deleted for the affected Skill effect as we have detailed in the previous Notice to correctly reflect its current behavior.</p>
 <p>Please continue reading for more information.</p>
-<p>[Additional Skill Affected by the Error]<br>※ Identity: Lobotomy E.G.O::In the Name of Love and Hate Don Quixote<br>※ Skill: Reversed Beats / Reversed Arcana Slave</p>
+<h2 class="notice-section-heading">[Additional Skill Affected by the Error]</h2>
+<p>※ Identity: Lobotomy E.G.O::In the Name of Love and Hate Don Quixote<br>※ Skill: Reversed Beats / Reversed Arcana Slave</p>
 <p>Currently, the additional damage of this Skill is calculated based on Love/Hate (Charge) Potency on self upon use.<br>Although there are no follow-up effects that cause this Skill to consume Love/Hate, the Charge count on self may be consumed due to other outside reasons and trigger the passive effect where damage output increases due to gaining Love/Hate Potency every time this unit consumes cumulative Love/Hate Count in the Encounter.</p>
-<p>[Bug Fix]<br>- Before : [On Use] Deal +30% damage for every Love/Hate on self (max 150%)<br>- After : Deal +30% damage for every Love/Hate on self (max 150%)</p>
-<p>[Issue Fix Date]<br>- October 30th (Thu), 2025 Scheduled Update</p>
+<h3 class="notice-subsection-heading">[Bug Fix]</h3>
+<p>- Before : [On Use] Deal +30% damage for every Love/Hate on self (max 150%)<br>- After : Deal +30% damage for every Love/Hate on self (max 150%)</p>
+<h3 class="notice-subsection-heading">[Issue Fix Date]</h3>
+<p>- October 30th (Thu), 2025 Scheduled Update</p>
 <p>Once again, we sincerely apologize for the inconvenience.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

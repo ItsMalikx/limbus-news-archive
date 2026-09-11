@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2025, July 3rd Scheduled Update Notice</title>
@@ -29,12 +32,11 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">2025, July 3rd Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-06-30">June 30, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">2025, July 3rd Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-06-30">June 30, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on July 3rd, 2025 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<p>New Content</p>
-<hr>
+<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
 <p>1. New Target Extraction [N Corp. E.G.O::Fell Bullet Yi Sang] (7/3 12:00 ~ 7/17 10:00 (KST))<br>The following Identity will have increased odds of extraction.<br>- 3★ : N Corp. E.G.O::Fell Bullet Yi Sang</p>
 <p>※ N Corp. E.G.O::Fell Bullet Yi Sang is a Season 6 Identity.</p>
 <p>2. New Identity Added<br>The following Identity is added to the list of extractable Identities.<br>- 3★ : N Corp. E.G.O::Fell Bullet Yi Sang</p>
@@ -43,11 +45,9 @@
 <p>► Target Extraction Pack<br>- Contents : Decaextraction Ticket x 4<br>- Price : ￦33,000 / $21.99 / ¥3,000<br>- Can be purchased once<br>- Purchasable Period : 25. 7. 3 12:00 ~ 7. 17 10:00 (KST)</p>
 <p>► Identity Growth Pack<br>- Contents : Takeoff Module - ID Uptie x 1, Identity Training Ticket IV x 60, Identity Training Ticket III x 30<br>- Price : ￦33,000 / $21.99 / ¥3,000<br>- Can be purchased once<br>- Purchasable Period : 25. 7. 3 12:00 ~ 7. 17 10:00 (KST)</p>
 <p>5. New Content - Mirror of Immortality<br>※ Please refer to the Steam Announcements page for more information.<br>※ Mirror of the Dreaming Achievements progress and rewards will become unavailable when Mirror of Immortality is updated. Please take note of this information to claim your rewards BEFORE the July 3rd Scheduled Maintenance.</p>
-<p>Team Loadout Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Team Loadout Improvements</h2><hr class="notice-section-divider">
 <p>► Several improvements to the Team Loadout UI has been added.<br>- A menu to view and deploy from the full list of Identities and E.G.O has been added.<br>- The ability to view unobtained Identities and E.G.O has been added.<br>- The &quot;Reset&quot; button to revert your current Team loadout to Base Identities &amp; E.G.O has been added.<br>- &quot;Team Loadout Code&quot; function to save and load your equipped Identities, E.G.O, and Deployment order by copying and pasting team codes has been added.<br>- An overview menu for the total amount of obtainable E.G.O resources from Identities and the total amount of E.G.O expenditure from E.G.O has been added.<br>- Announcer voicelines can now be viewed from the list of Announcers.<br>- Now, each E.G.O&#x27;s rarity can be viewed from their icons.<br>※ Please note that additional changes and improvements Team Loadout will be deployed in the future.</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► Fixed an issue where Dead Rabbits Boss Meursault&#x27;s Support Passive&#x27;s &quot;Offense Level Down&quot; effect was applied at an incorrect timing<br>- Before: The &quot;inflict Offense Level Down&quot; part of &quot;When 1 ally with the fastest Speed hits an enemy with X+ Rupture, inflict Offense Level Down&quot; was inflicted next turn.<br>- After: Inflicts the above effect this turn, as written<br>※ The effect will be adjusted to fit the text and inflict this turn instead of next turn, as we have done thus far.</p>
 <p>► Fixed an issue where Lobotomy E.G.O::Magic Bullet Outis&#x27;s Combat Passive does not activate<br>※ This issue started with the May 29th Scheduled Update; it was caused by adjustments made to the in-game system to add the new Sapling of Light mechanism.</p>
 <p>► Fixed an issue where Skills with &quot;[Tails Hit] Inflict (status effect)&quot; conditionals did not count toward &quot;This Gift activates when X or more Identities have Attack Skills that apply (status effect)&quot; E.G.O Gift conditionals<br>※ This issue started with the Jan. 30th Scheduled Update; it was caused by adjustments made to certain status effect infliction conditionals.<br>※ The &quot;[Tails Hit] Inflict (status effect)&quot; conditional was working properly; this fix only concerns their inclusion in E.G.O Gift conditionals.</p>
@@ -59,17 +59,14 @@
 <p>► Fixed an issue where Clash Forecast UI in the middle-top part and the bottom of the screen for specific Skills with &quot;Prioritize...&quot; conditionals do not work properly when clashing against enemy Skill S</p>
 <p>► Fixed an issue where, if an Uptie 2 or lower Identity is Deployed as a Backup Unit, their Support Passive Tooltip loads a dummy text</p>
 <p>► Improved Dispenser E.G.O UI for the list of E.G.O</p>
-<p>Mirror of Immortality Preview Livestream Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Mirror of Immortality Preview Livestream Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x1000<br>- Recipients : All users whose game accounts were created before 10:00 July 24th, 2025 (KST)<br>- When : After June 27th, 2025 (Thu) 22:30 (KST)<br>- Can be claimed once per account</p>
 <p>Compensation can be claimed until July 24th, (Thu) 2025, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
 <p>※ The delivery for the contents of this compensation began on June 27th, 22:30.</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 July 10th, 2025 (KST)<br>- When : After July 3rd, 2025 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until July 10th, (Thu) 2025, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

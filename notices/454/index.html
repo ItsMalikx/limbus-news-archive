@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Known Issues Ver. 1.85.0 Updated Aug. 28th</title>
@@ -29,12 +32,15 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: Known Issues Ver. 1.85.0 Updated Aug. 28th</h1><div class="notice-date"><time datetime="2025-08-28">August 28, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: Known Issues Ver. 1.85.0 Updated Aug. 28th</h1><div class="notice-date"><time datetime="2025-08-28">August 28, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We would like to inform you about the issues that occurred in Version 1.85.0, updated Aug. 28th.</p>
 <p>Please continue reading for more information.</p>
-<p>[ Known Issues ]<br>- An issue where Kurokumo Clan Wakashu Ryoshu&#x27;s Skill 3 &quot;Lenticular Swirl&quot; animation does not work correctly, preventing game progression.</p>
-<p>[ Cause ]<br>- While working on multi-targeting attack cutscenes, we accidentally adjusted logic regarding &quot;Lenticular Rend&quot;.</p>
-<p>[ Solution ]<br>- Revert the &quot;Lenticular Rend&quot; Skill Logic</p>
+<h2 class="notice-section-heading">[ Known Issues ]</h2>
+<p>- An issue where Kurokumo Clan Wakashu Ryoshu&#x27;s Skill 3 &quot;Lenticular Swirl&quot; animation does not work correctly, preventing game progression.</p>
+<h3 class="notice-subsection-heading">[ Cause ]</h3>
+<p>- While working on multi-targeting attack cutscenes, we accidentally adjusted logic regarding &quot;Lenticular Rend&quot;.</p>
+<h3 class="notice-subsection-heading">[ Solution ]</h3>
+<p>- Revert the &quot;Lenticular Rend&quot; Skill Logic</p>
 <p>Please refrain from using the [Kurokumo Clan Wakashu Ryoshu] Identity until this issue is resolved.</p>
 <p>We&#x27;ll be sure to inform you via a future Notice as soon as this issue is resolved.</p>
 <p>We sincerely apologize for the inconvenience.</p></div>

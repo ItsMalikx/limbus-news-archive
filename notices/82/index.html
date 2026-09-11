@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>June 29th Scheduled Update Notice</title>
@@ -29,28 +32,24 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="mirror-dungeon">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span></div><h1 class="notice-inline-title">June 29th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-06-26">June 26, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">June 29th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-06-26">June 26, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter maintenance from 10:00 [AM] through 12:00 [PM] on June 29th, 2023 (KST) for system optimizations and content updates. Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost. Refer below for details about the update.</p>
-<p>Note</p>
-<hr>
+<h2 class="notice-section-heading">Note</h2><hr class="notice-section-divider">
 <p>The 2023 June 29th (KST) scheduled update will be performed between 10 AM and 12 PM, and parts of the changes to the Mirror Dungeons will apply after the scheduled update is completed.</p>
 <p>As such, Mirror Dungeon weekly bonus counts and expeditions in progress will reset when the update is complete on 12.</p>
 <p>You will not be able to claim rewards for expeditions from before 10 AM on June 29th once the reset takes place, so please make sure to claim the rewards before the maintenance.</p>
-<p>Update Contents</p>
-<hr>
+<h2 class="notice-section-heading">Update Contents</h2><hr class="notice-section-divider">
 <p>1. New Target Extraction:[Technology Liberation Alliance #3] (Jun 29 12:00 ~ Jul 13 09:59 (KST))<br>Extraction rates increase for the following Identities:<br>- 3★: K Corp. Class 3 Excision Staff Hong Lu<br>- 2★: Lobotomy E.G.O::Red Sheet Sinclair</p>
 <p>2. New E.G.O Target Extraction - [Red Eyes · Red Eyes (Open)] (Jun 29 12:00 ~ Jul 13 09:59 (KST))<br>Extraction rates increase for the following E.G.O:<br>- HE: Red Eyes (Open) for Ryoshu<br>- TETH: Red Eyes for Ryoshu</p>
 <p>3. Identity Target Extraction: [Sinclair] (Jun 29 12:00 ~ Jul 13 09:59 (KST))<br>Extraction rates increase for the following Identities:<br>- 3★: The One Who Shall Grip Sinclair, Blade Lineage Salsu Sinclair<br>- 2★: Lobotomy E.G.O::Red Sheet Sinclair, Jefe de Los Mariachis Sinclair, Zwei Section 6 Sinclair<br>- 1★: LCB Sinner Sinclair</p>
 <p>4. New Content: &lt;Mirror of Mirrors (Mirror Dungeon #2)&gt;</p>
 <p>Please refer to the notice linked below for more details on Mirrors of Mirrors (Mirror Dungeon #2).</p>
-<p>5. Major Changes</p>
-<hr>
+<h2 class="notice-section-heading">5. Major Changes</h2><hr class="notice-section-divider">
 <p>► Improvements for crashing during combat in mobile versions:<br>Adjusted resolution of character images on the combat screen and changed compression method of certain sprites</p>
 <p>► Adjusted banner image scale to better distinguish Main Story chapters (Ch. 1, 2, 3, 4) from others (Ch. 3.5)<br>(Main Story: 1     Others: 0.9)</p>
 <p>► Certain enemies no longer appear in the Mirror Dungeon</p>
 <p>► Lifted battle pass level display limitations<br>(Before: Displays only up to Level 60 → After: Can display levels that exceed 60)</p>
-<p>6. Bug Fixes and Improvements</p>
-<hr>
+<h2 class="notice-section-heading">6. Bug Fixes and Improvements</h2><hr class="notice-section-divider">
 <p>► Fixed the &quot;acquired&quot; sort filter for profile words and phrases not working properly<br>- The ones acquired before June 22nd will be sorted according to their release dates.</p>
 <p>► Fixed an inconsistency with the name of the Abnormality appearing in 4-54 (※ Only applies to the Korean version)</p>
 <p>► Stage 4-54 - Fixed the Haste not applying after passing the check for the Abnormality &#x27;So That No One Will Cry&#x27;</p>
@@ -58,19 +57,15 @@
 <p>► Fixed the level displayed on the detailed info screen not updating after an Identity levels up</p>
 <p>► Fixed an issue with the activation condition of the E.G.O Gift &#x27;Phantom Pain&#x27;<br>(Before: Activates with Gloom Resonance → After: Activates with Gloom Absolute Resonance)</p>
 <p>► Adjusted the activation condition for the status effect associated to the E.G.O AEDD for Gregor<br>(Old: Activates when hit by a &#x27;Pride&#x27; skill → New: Activates when hit by a &#x27;Gloom&#x27; skill)</p>
-<p>Notice on Issue with Sin Affinity Power Up/Down Status Effects</p>
-<hr>
+<h2 class="notice-section-heading">Notice on Issue with Sin Affinity Power Up/Down Status Effects</h2><hr class="notice-section-divider">
 <p>An issue where certain status effects that increase or decrease Power for a Sin Affinity can increase or decrease damage to abnormal degrees will be fixed with the June 29th update.</p>
 <p>Currently, &#x27;Wrath/Sloth Power Up/Down&#x27; status effects are increasing or decreasing the damage by N * 100% rather than increasing or decreasing the Power by N.</p>
 <p>The list of affected skills is as follows:<br>- Capote for Meursault<br>- Sunshower for Yi Sang</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x500<br>- Date : Some time after scheduled maintenance on Jun 29 (Thu) (KST)<br>- Can be redeemed once per account<br>- You can claim the item through the in-game mail system until 2023 Jul 6 09:59 (KST). (Mail Validity Period: 7 days)</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 09:59 June 29th, 2023 (KST)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on its status. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

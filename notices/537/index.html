@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: An issue where game progression is blocked when using &quot;Continue&quot;</title>
@@ -29,13 +32,17 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: An issue where game progression is blocked when using &quot;Continue&quot;</h1><div class="notice-date"><time datetime="2026-02-11">February 11, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: An issue where game progression is blocked when using &quot;Continue&quot;</h1><div class="notice-date"><time datetime="2026-02-11">February 11, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>Following the Feb. 5th Scheduled Update, we have identified an issue where, if the Stage Continue function is used when Lobotomy E.G.O::Lamp Gregor is on the battlefield, the battle may not proceed normally afterward.</p>
 <p>Please continue reading for more information.</p>
-<p>[Issue Details]<br>► If the Stage Continue function is used when Lobotomy E.G.O::Lamp Gregor is on the battlefield and all allies are defeated, the battle may fail to proceed normally afterward</p>
-<p>[Cause of the Issue]<br>► This issue occurs due to an exception logic not applying during the processing of certain Identity effect animations</p>
-<p>[Issue Fix]<br>► The exception logic process will be improved so that battles can proceed normally after using Stage Continue function</p>
-<p>[Issue Fix Schedule]<br>► This issue is scheduled to be fixed with the Feb. 19 update.</p>
+<h2 class="notice-section-heading">[Issue Details]</h2>
+<p>► If the Stage Continue function is used when Lobotomy E.G.O::Lamp Gregor is on the battlefield and all allies are defeated, the battle may fail to proceed normally afterward</p>
+<h3 class="notice-subsection-heading">[Cause of the Issue]</h3>
+<p>► This issue occurs due to an exception logic not applying during the processing of certain Identity effect animations</p>
+<h3 class="notice-subsection-heading">[Issue Fix]</h3>
+<p>► The exception logic process will be improved so that battles can proceed normally after using Stage Continue function</p>
+<h3 class="notice-subsection-heading">[Issue Fix Schedule]</h3>
+<p>► This issue is scheduled to be fixed with the Feb. 19 update.</p>
 <p>We kindly ask for your understanding that, until the issue is resolved with the Feb. 19 update, Managers refrain from using the Stage Continue function when the Identity concerned is on the battlefield if possible.</p>
 <p>We sincerely apologize for the inconvenience.</p></div>
 

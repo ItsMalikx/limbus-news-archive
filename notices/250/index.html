@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>June 27th Scheduled Update Notice</title>
@@ -29,23 +32,20 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="mirror-dungeon">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span></div><h1 class="notice-inline-title">June 27th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2024-06-24">June 24, 2024</time></div><hr class="notice-title-divider"></div><p>Greetings, dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">June 27th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2024-06-24">June 24, 2024</time></div><hr class="notice-title-divider"></div><p>Greetings, dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Jun. 27th, 2024 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<p>New Content</p>
-<hr>
+<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
 <p>1. New Target Extraction [New Target Extraction: T Corp. Class 3 Collection Staff Don Quixote &amp; Class 2 Collection Staff Rodion] (Jun. 27th 12:00 ~ Jul. 11th 10:00 (KST))<br>Extraction rate increases for the following Identities.<br>- 3★ : T Corp. Class 3 Collection Staff Don Quixote<br>- 2★ : T Corp. Class 2 Collection Staff Rodion</p>
 <p>2. [Target Extraction: Yi Sang] (Jun. 27th 12:00 ~ Jul. 11th 10:00 (KST))<br>Extraction rate increases for the following Identities and E.G.O.<br>- E.G.O [HE] : Dimension Shredder Yi Sang<br>- E.G.O [TETH] : Wishing Cairn Yi Sang<br>- 3★ : The Ring Pointillist Student Yi Sang, W Corp. L3 Cleanup Agent Yi Sang, Effloresced E.G.O::Spicebush Yi Sang, Blade Lineage Salsu Yi Sang<br>- 2★ : Dieci South Section 4 Yi Sang, The Pequod First Mate Yi Sang, Seven South Section 6 Yi Sang<br>- 1★ : LCB Sinner Yi Sang</p>
 <p>3. New Identities Added<br>The following Identities have been added to the list of extractable Identities &amp; E.G.O.<br>- 3★ : T Corp. Class 3 Collection Staff Don Quixote<br>- 2★ : T Corp. Class 2 Collection Staff Rodion</p>
-<p>Notice: &quot;Target Extraction: (Sinner Name)&quot; extraction list changes</p>
-<hr>
+<h2 class="notice-section-heading">Notice: &quot;Target Extraction: (Sinner Name)&quot; extraction list changes</h2><hr class="notice-section-divider">
 <p>Starting with the Jul. 11th Target Extraction, the Event Identities &amp; E.G.O from previous Seasons (excluding the immediately preceding Season) will be added to the extraction list and the Yisang exchange list.</p>
 <p>► Affected Extractions<br>- Target Extraction: [Yi Sang]<br>- Target Extraction: [Faust]<br>- Target Extraction: [Don Quixote]<br>- Target Extraction: [Ryōshū]<br>- Target Extraction: [Meursault]<br>- Target Extraction: [Hong Lu]<br>- Target Extraction: [Heathcliff]<br>- Target Extraction: [Ishmael]<br>- Target Extraction: [Rodion]<br>- Target Extraction: [Sinclair]<br>- Target Extraction: [Outis]<br>- Target Extraction: [Gregor]</p>
 <p>※ Please note that this change does not apply to extractions not listed above.</p>
 <p>※ Please note that this change does not apply to the &#x27;Target Extraction: [Yi Sang]&#x27; starting with the Jun. 27th (KST) Scheduled Update.</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► Added variations of the &quot;Borrowed Time&quot; buff name depending on its user<br>※ Because buffs used by these units shared the same name but not the effect, we decided to differentiate them to avoid confusion.<br>- Enemies in Canto IV: Borrowed Time of the Fathoms<br>- Enemies in Intervallo IV-1: T Corp. Borrowed Time</p>
 <p>► Addressed the issue where there was a delay when skipping through Choice Event texts</p>
 <p>► Fixed an issue where, in the list of Mirror Dungeon Starter Buffs - Active Effects, the description would sometimes go over the description box UI</p>
@@ -56,17 +56,14 @@
 <p>► Fixed an issue where certain enemies had incorrect names in Intervallo IV-1<br>- Before : T Corp. Class 2 Admin Staff<br>- After : T Corp. Class 2 Collection Staff</p>
 <p>► (EN Only) Fixed a typo where, in the description for the Mirror Dungeon Starter Buff &#x27;Katabatic Wind&#x27;, the description said &quot;Charnge&quot; instead of &quot;Charge&quot;</p>
 <p>► (EN Only) Fixed an issue where &#x27;스택&#x27; and &#x27;횟수&#x27; were both translated to &#x27;Count&#x27; in the in-combat Buff viewing UI<br>- Before : 스택 was translated to &quot;Count&quot;<br>- After : 스택 is translated to &quot;Stack&quot;</p>
-<p>Issues identified after the Jun. 27th, 2024 Scheduled Update</p>
-<hr>
+<h2 class="notice-section-heading">Issues identified after the Jun. 27th, 2024 Scheduled Update</h2><hr class="notice-section-divider">
 <p>► An issue where certain damage types against enemies with the new debuff effect used by the upcoming T Corp. Identities makes it look as though the damage is applied instantly<br>※ This is a visual-only issue. The damage calculation works as written for that new debuff effect.</p>
 <p>The above issue will be addressed with a future Scheduled Update, and we will inform you via a Scheduled Update Notice as soon as it is corrected.</p>
 <p>We apologize for the inconvenience.</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 Jul. 4th, 2024 (KST)<br>- When : After Jun. 27th, 2024 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Jul. 4th (Thu) 2024, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

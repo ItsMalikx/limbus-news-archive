@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026, Jun. 18th Scheduled Update Notice</title>
@@ -29,12 +32,11 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">2026, Jun. 18th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-06-17">June 17, 2026</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">2026, Jun. 18th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-06-17">June 17, 2026</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Jun. 18th, 2026 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<p>Issue Mitigation for Crashing Issues Upon Combat Entry on Certain Devices</p>
-<hr>
+<h2 class="notice-section-heading">Issue Mitigation for Crashing Issues Upon Combat Entry on Certain Devices</h2><hr class="notice-section-divider">
 <p>Following the Unity version update on May 28th, 2026, we have identified a persistent issue on certain devices in which the game would crash upon entering combat.</p>
 <p>After working with Unity&#x27;s technical support team, we have identified that this issue may occur on some devices that meet the following conditions:<br>1. Devices equipped with Mali-G57 or Mali-G68 series GPUs<br>2. Devices where the Graphics API is set to &quot;Vulkan&quot; upon app launch<br>3. Devices where a specific Shader Compilation occurs when entering combat</p>
 <p>We have confirmed that the crash is caused by an unidentified internal logic issue during GPU processing for the device environments listed above. To mitigate this issue, we will implement a filtering adjustment as part of the Jun. 18th Scheduled Update.</p>
@@ -43,11 +45,9 @@
 <p>► Extension of the 5/28 Scheduled Update Error Compensation Period<br>- Before: Claimable until Jun. 18th, 2026 10:00 (KST)<br>- After: Claim Period extended to Jun. 25th, 2026 10:00 (KST)</p>
 <p>As for the measures outlined in our previous notice, we will provide a separate follow-up notice once all related issues have been fully resolved and the game can be played normally.</p>
 <p>We sincerely apologize for the inconvenience caused by the delay in determining the cause of the issue.</p>
-<p>New Content</p>
-<hr>
+<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
 <p>1. New Content: Reflectrial][lairtcelfeR - Mnestic Experience<br>※ Please refer to the relevant Steam notice for further details.</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► Fixed an issue where certain Skills of the Identity &#x27;LCD OSIR Team Ishmael&#x27; would sometimes not activate<br>→ Affected Case 1 : Skill 1 &#x27;Rending Arts&#x27; - &#x27;[On Use] Gain +2 Poise Count&#x27; (Uptie 2 &amp; 3)<br>→ Affected Case 2 : Skill 2-2 &#x27;To Claim Their Bones&#x27; - &#x27;This Skill does not trigger Defense Skills&#x27; (After Uptie 2)<br>→ Affected Case 3 : Skill 3-2 &#x27;Even the Balance - Lucent Rippling Flame&#x27; - &#x27;This Skill does not trigger Defense Skills &#x27; (Uptie 4)<br>※ Regarding cases involving &#x27;To Claim Their Bones&#x27; and &#x27;Even the Balance - Lucent Rippling Flame&#x27;: While these Skills did not trigger Clashable Defense Skills as intended, we had identified an issue where they would trigger non-Clashable Defense Skills.</p>
 <p>► Fixed an issue where &#x27;LCD OSIR Team Ishmael&#x27; Keyword &#x27;Bearing of a Salsu&#x27; did not work as intended<br>→ Relevant Effect : Lose 1 Stack when an allied Blade Lineage Identity is defeated<br>- Before : The Keyword would lose 1 Stack even when a non-Blade Lineage Identity was defeated<br>- After : The Keyword will now lose 1 Stack only when a Blade Lineage Identity is defeated, as described</p>
 <p>► Fixed an issue where &#x27;Prisoner Transport Arrangements&#x27; Keyword, used by &#x27;S Corp. Ch&#x27;unokkun Hong Lu&#x27;, did not behave as described<br>→ Relevant Effect : On Hit against enemies that have Trussed [Hong Lu], inflict 1 Bleed and gain 1 Poise (2 Skills per turn)<br>- Before : This effect triggered only when &#x27;&#x27;the Coin confirmed to strike the first hit&#x27;&#x27;, hit.<br>- After : The effect will trigger every time a Coin hits, as described</p>
@@ -63,19 +63,15 @@
 <p>► Fixed an issue where certain UI Animations in the Drive menu would not trigger</p>
 <p>► Fixed an issue where the Identity Uptie 3 Spine Illustration animations would load incorrectly on screens with 17:9 or wider landscape aspect ratios</p>
 <p>► Fixed an issue where, in the tutorial Encounter about Passive, the Passive highlighted by the tutorial would be mismatched with the actual Passive</p>
-<p>Known Issues</p>
-<hr>
+<h2 class="notice-section-heading">Known Issues</h2><hr class="notice-section-divider">
 <p>► An issue where, when entering &#x27;Reflectrial][lairtcelfeR&#x27; immediately after starting the game application, the enemies&#x27; Observation Logs would be locked even when they have been unlocked in different Encounters</p>
-<p>6/18 Scheduled Update Error Compensation</p>
-<hr>
+<h2 class="notice-section-heading">6/18 Scheduled Update Error Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before Jun. 25th, 2026, 10:00 AM (KST)<br>- When : After Jun. 18th (Thu), 2026, 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Relevant Compensation can be claimed until Jun. 25th (Thu), 2026, 10:00 (KST) via the in-game Mailbox (mail available for 7 days).</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before Jun. 25th, 2026, 10:00 AM (KST)<br>- When : After Jun. 18th (Thu), 2026, 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Relevant Compensation can be claimed until Jun. 25th (Thu), 2026, 10:00 (KST) via the in-game Mailbox (mail available for 7 days).</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on its status. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

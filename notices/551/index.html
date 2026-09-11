@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: The 8th Walpurgis Night Mission Issue</title>
@@ -29,10 +32,11 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="walpurgis-night">Walpurgis Night</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: The 8th Walpurgis Night Mission Issue</h1><div class="notice-date"><time datetime="2026-03-05">March 5, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="walpurgis-night" style="--tag-color: #93F205">Walpurgis Night</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: The 8th Walpurgis Night Mission Issue</h1><div class="notice-date"><time datetime="2026-03-05">March 5, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We identified an issue where a certain Mission&#x27;s conditions are incorrectly described in the 8th Walpurgis Night combat Encounter Mission, added in ver. 1.100.0, updated Mar. 5th.</p>
 <p>Please continue reading for more information.</p>
-<p>[ Issue Details ]<br>An issue where one of the 8th Walpurgis Night event missions has a description that does not match the actual completion conditions<br>※ Affected Mission : Complete Suppression after defeating 3+ enemies with a single Attack Skill</p>
+<h2 class="notice-section-heading">[ Issue Details ]</h2>
+<p>An issue where one of the 8th Walpurgis Night event missions has a description that does not match the actual completion conditions<br>※ Affected Mission : Complete Suppression after defeating 3+ enemies with a single Attack Skill</p>
 <p>We are investigating an issue where this mission isn&#x27;t properly logged and therefore cannot be completed, and will provide an additional notice regarding this issue as soon as its exact cause is identified.</p>
 <p>We sincerely apologize for the inconvenience.</p></div>
 

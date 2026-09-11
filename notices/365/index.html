@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2025, Mar. 27th Scheduled Update Notice</title>
@@ -29,16 +32,14 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="mirror-dungeon">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span></div><h1 class="notice-inline-title">2025, Mar. 27th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-03-24">March 24, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">2025, Mar. 27th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-03-24">March 24, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Mar. 27th, 2025 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<p>Major Changes</p>
-<hr>
+<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
 <p>1. (Steam) Added a [Restore Purchase] button in the Paid Items Shop pop-up window</p>
 <p>If a transaction failure occurs due to a Steam error, you can use this button to re-attempt to receive the item.<br>※ Purchase restoration time may vary depending on the user.</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► Fixed an issue where, in certain situations during the Mirror Dungeon run, Achievements could not be completed<br>※ At Floor 6 or higher in the Mirror Dungeon, win an Encounter after every ally except for one is dead (including Backup/Support Identities)<br>- Before: this Achievement could not be completed in Encounters triggered via Choice Events<br>- After: this Achievement can now be completed in Encounters triggered via Choice Events<br>※ Raise 1 enemy&#x27;s Tremor Potency to 99 (in Focused Encounters, a Part)<br>- Before: this Achievement could not be completed if the Tremor type was changed due to Amplitude Conversion<br>- After: this Achievement can now be completed even if the Tremor type was changed due to Amplitude Conversion</p>
 <p>► (EN, JP Only) Fixed an issue where the Unlock Conditions text for Theater - Detour Tales - &#x27;Nocturnal Sweeing&#x27; were missing</p>
 <p>► Improved Mirror Dungeon Shop E.G.O Gift list arrangement UI</p>
@@ -47,19 +48,16 @@
 <p>► Fixed an issue where the total damage counter for 2 or more Coins Corroded E.G.O Skill use scenes counted only part of the actual damage dealt<br>※ This is a visual-only issue; the actual damage output is not changed.</p>
 <p>► Addressed the issue where a boss enemy in Ch. 7.5 - &#x27;LCB Regular Check-up&#x27; could load an incorrect Sprite</p>
 <p>► Fixed an issue where the spotlight animations in Special Banner - LCB Regular Check-up loaded in incorrect places</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► Partially adjusted a line from Yi Sang in Stage 7.5-24 of Nocturnal Sweeping<br>- Before: There is an apt saying, oft invoked in my homeland. A fox may pretend to the throne—but only with the blessing of the tiger.<br>- After: There is an apt saying, oft invoked in the east. A fox may pretend to the throne—but only with the blessing of the tiger.</p>
 <p>► Fixed an issue where a part of The Barber of La Manchaland Outis&#x27; Support Passive was not working as intended<br>※ Relevant effect: 1 ally with the fastest Speed: if the enemy is killed After Attack, heal 10 HP (2 times per turn)<br>- Before: this effect actually activated three times per turn<br>- After: changed the effect to match the description - now it activates 2 times per turn, as written</p>
 <p>► (EN Only) Fixed an issue where certain Keywords in Seven South Section 4 Faust&#x27;s Combat Passives were replaced with Unknown</p>
 <p>► (KR Only) Addressed the issue where Keyword highlights in Skill/Passive descriptions of certain Identities and E.G.O were missing</p>
 <p>► Adjusted E.G.O Gift &#x27;Glyph of Glass Shards&#x27;<br>- Description: When clashing against targets with Deathrite[Haste], gain (Deathrite[Haste] on the target / 10) Coin Power instead (max 2)<br>- Actual effects: When clashing against targets with Deathrite[Haste], gain (Rupture on the target / 10) Clash Power instead (max 3)<br>※ The actual effects did not match the description, and since the actual effects were not the intended effects either, the E.G.O Gift will be changed as follows:<br>- New effects: When clashing against targets with Deathrite[Haste], gain (Rupture on the target / 10) Coin Power instead (max 2)</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content: Lunacy x300<br>- Recipients: all users whose game accounts were created before 10:00 Apr. 3rd, 2025 (KST)<br>- When: After Mar. 27th (Thu) 2025, 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Apr. 3rd (Thu) 2025, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

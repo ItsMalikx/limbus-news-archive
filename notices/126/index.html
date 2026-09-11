@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>September 21st Scheduled Update Notice</title>
@@ -29,21 +32,18 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="refraction-railway">Refraction Railway</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span></div><h1 class="notice-inline-title">September 21st Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-09-18">September 18, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #FF7300">Refraction Railway</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">September 21st Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-09-18">September 18, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter maintenance from 10:00 [AM] through 12:00 [PM] on September 21st, 2023 (KST) for system optimizations and content updates. Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost. Please refer below for details about the update.</p>
-<p>Update Contents</p>
-<hr>
+<h2 class="notice-section-heading">Update Contents</h2><hr class="notice-section-divider">
 <p>1. New Target Extraction - [New Target Extraction Dieci South Section 4 Rodion] (Sep. 21st 12:00 ~ Oct. 5th 09:59 (KST))<br>Extraction rate increases for the following identity:<br>- 3★ : Dieci South Section 4 Rodion</p>
 <p>2. New Identity Added<br>The following is added to the list of extractable Identities:<br>- 3★ : Dieci South Section 4 Rodion</p>
 <p>3. [Target Extraction: Gregor] will become available for a limited period. (Sep. 21st 12:00 ~ Oct. 5th 09:59 (KST))<br>The following Identities and E.G.O will have increased odds of extraction.<br>- E.G.O [TETH] : Lantern Gregor<br>- 3★ : Zwei South Section 4 Gregor, G Corp. Manager Corporal Gregor<br>- 2★ : Rosespanner Workshop Fixer Gregor, Liu South Section 6 Gregor<br>- 1★ : LCB Sinner Gregor</p>
-<p>Major Changes</p>
-<hr>
+<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
 <p>1. Texts Added to Refraction Railway Line 2 Progression Arrows</p>
 <p>2. In-combat E.G.O Selection UI Changes &amp; Improvements - 2<br>When hovering over, or after selecting an E.G.O to be equipped, the changing resistance values upon using the E.G.O will be displayed. The E.G.O equipping method will be changed accordingly.</p>
 <p>- Before : E.G.O Skills were equipped immediately after selection<br>- After : E.G.O Skills will be highlighted upon selection and will be equipped after selecting it again after the highlight</p>
 <p>※ Intent : To make the changing resistance information upon E.G.O use more easily accessible</p>
-<p>Future Updates</p>
-<hr>
+<h2 class="notice-section-heading">Future Updates</h2><hr class="notice-section-divider">
 <p>1. Special Attendance Check Event - Major Reward Identities Notice</p>
 <p>「Molar Office Fixer Outis」 and 「Molar Office Fixer Yi Sang」 can be obtained from the ongoing Special Attendance Check Event.</p>
 <p>The event runs from Sep. 7th 12:00 ~ Oct. 12th 05:59 (KST), and once the Event is over, the two Event Identities will be added to the Dispense menu with the Oct. 12th (KST) Update.</p>
@@ -56,14 +56,11 @@
 <p>Unlock Conditions : Clear Refraction Railway Line 2 with 5 or more Cycle Counts and under 150 Total Turns before the end of Season 2: Reminiscence. (Only records made AFTER Sep. 15th, 2023 20:15 (KST) will count toward unlocking this reward)</p>
 <p>- New Business Card Deco</p>
 <p>Unlock Conditions : Clear Refraction Railway Line 2 with 5 or more Cycle Counts and under 150 Total Turns before the end of Season 2: Reminiscence. (Only records made AFTER Sep. 15th, 2023 20:15 (KST) will count toward unlocking this reward)</p>
-<p>Bug Fixes and Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes and Improvements</h2><hr class="notice-section-divider">
 <p>· Fixed an issue where, on the mobile version of the game, SFX regarding the 4 newly added Abnormalities did not play<br>· Fixed an issue where W Corp. L3 Cleanup Agent Ryoshu and L2 Cleanup Agent Hong Lu&#x27;s Charge Barrier effect did not activate<br>· Fixed an issue with the application of &#x27;Blunt Power Up&#x27; in N Corp. Kleinhhammer Heathcliff&#x27;s Combat Passive &#x27;Bugger...&#x27;<br>Before : &#x27;Gain 1 [Blunt Power Up]&#x27; was applied as &#x27;Gain 1 [Blunt DMG Up]&#x27;<br>After : Changed the effect to &#x27;Gain 1 [Blunt Power Up]&#x27; to fit the text<br>· Added (Season 2 - EVENT) marker to Molar Office Fixer Outis and Molar Office Fixer Yi Sang<br>· Fixed an issue where, if a Sinner with a higher Speed takes a targeted Sinner whose Speed is lower than the targeting enemy&#x27;s Speed, the targeted Sinner was unable to clash against that Skill again<br>· Fixed an issue where certain effects that activate upon enemy death didn&#x27;t trigger when they were killed by Status Effect damages (ex: Burn, Rupture, etc)<br>· Fixed an issue where the Abnormality Choice effects did not apply even after succeeding for the Abnormality in the First Stop of Refraction Railway Line 2<br>· Fixed an issue where &#x27;Misplaced Past&#x27; effect activated at the incorrect timing; clarified the Passive description<br>· Fixed an issue where the Abnormality in Station #6 lacked Abnormality Risk Level and Code.<br>· Fixed an issue where the Abnormality in Station #6 lacked Abnormality Observation Logs.<br>· Fixed an issue with the activation of Abnormality Skill &#x27;High-voltage Electric Discharge&#x27; upon [On Use]<br>· Fixed an issue with the Abnormality in the Terminus where Abnormality Choice effects did not apply to summoned units that appeared after the Choice event was completed<br>· Fixed an issue in the Refraction Railway Line 2 where the ally [Resurrect] Keyword appeared as [Unknown]<br>· Fixed an issue where &#x27;Low Morale&#x27; or &#x27;Panic&#x27; effects did not trigger properly against enemies with SP values<br>· Fixed an issue where attempting to clash with &#x27;Cannot Clash&#x27; Skill still showed expected Clash values<br>· Stage - Enemy info viewing improvements<br>(1) Added a scroll function in case of multiple enemies<br>(2) Added a &#x27;close&#x27; button on the right<br>· Abnormality - Fixed an issue where Headless Ichthys did not use &#x27;Clotting&#x27; as a result of the Abnormality Choice<br>· Abnormality - Fixed an issue where Alleyway Watchdog did not use &#x27;Red Bolts&#x27; as a result of the Abnormality Choice<br>· Abnormality - Fixed an issue where one of the animations for So That No One Will Cry was missing</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content: 300 Lunacy<br>- Recipients: Every user whose game account was created before 09:59 Sep. 28th, 2023 (KST)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

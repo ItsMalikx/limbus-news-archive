@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>November 30th Scheduled Update Notice</title>
@@ -29,36 +32,30 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">November 30th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-11-27">November 27, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">November 30th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-11-27">November 27, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on November 30th, 2023 (KST).<br>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.<br>Please refer below for details about the update.</p>
-<p>Update Contents</p>
-<hr>
+<h2 class="notice-section-heading">Update Contents</h2><hr class="notice-section-divider">
 <p>1. [Target Extraction: Outis]<br>(Nov. 30th 12:00 ~ Dec. 14th 10:00 (KST))<br>The following E.G.O and Identities will have increased odds of extraction.<br>- E.G.O [Teth] Ya Śūnyatā Tad Rūpam<br>- 3★ : Seven South Section 6 Director Outis<br>- 2★ : G Corp. Head Manager Outis, Blade Lineage Cutthroat Outis<br>- 1★ : LCB Sinner Outis</p>
-<p>Update Contents</p>
-<hr>
+<h2 class="notice-section-heading">Update Contents</h2><hr class="notice-section-divider">
 <p>2. Gradual Main Story &amp; Battle Pass Updates</p>
 <p>► Main Story Canto 5-(Part 3) Unlocked<br>- Unlock Conditions : Clear 5-35</p>
 <p>► Season 3 Limbus Pass - Bon Voyage (Part 3) Unlocked<br>Battle Pass rewards from Lv.40 ~ Lv.120 will be unlocked.<br>Max Pass Level+ EX Rewards will be unlocked.</p>
 <p>In the process of working on Canto 5-(Part 3), we have made a few changes to the project settings and the way the existing resources are loaded. No apparent changes have been made, however, and the resources will appear as usual. Additional downloads will occur in addition to the newly added resources.<br>The download sizes for each platform are as follows:</p>
 <p>- iOS: ~2.4GB<br>- Android: ~3.2GB<br>- STEAM: ~3.2GB</p>
 <p>These changes will not make the game take up more size in your storage. Please note that in this process, old files will be deleted, and new files will replace them.<br>We apologize for the disturbance these changes may cause.</p>
-<p>Major Changes</p>
-<hr>
+<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
 <p>1. Detailed Skill Info UI summary option added<br>Before : Every activated buffs and effects will show<br>After : Show only 5 of the activated buffs and effects. If there are more than 5, only the number of additional activated effects will appear.</p>
 <p>- Intent : There was an issue before where, if too many buffs and effects were activated, they would clutter the screen and harm visual clarity. This made it difficult to focus on tide of the combat itself, so we have added an option to mitigate that issue.</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► Adjusted Story Dungeon Identity Choice display orders.<br>Now, Sinner portraits with chances will appear only after the Choice description text is displayed.</p>
 <p>※ We believed that it appeared awkward to show the chances before knowing what the descriptions were; so we have adjusted the display orders so that the portraits will appear after the descriptions.</p>
 <p>► Fixed an issue where toggling the &quot;Display detailed info UI in Combat Phase&quot; option off still showed remaining VFX</p>
 <p>► Fixed a certain enemy&#x27;s Skill effects for the Skill &quot;...&quot; from Canto V<br>- Before : Apply 4 Tremor<br>- After : Apply 4 Tremor Count</p>
 <p>► Updated the loading screen illustration that appears after clearing Main Story 5-35</p>
-<p>Known Issues after Nov. 30th Update</p>
-<hr>
+<h2 class="notice-section-heading">Known Issues after Nov. 30th Update</h2><hr class="notice-section-divider">
 <p>► An issue where, in the User Info-Company tab, Identity Select UI highlight VFX does not disappear</p>
 <p>► An issue where the Detailed Info UI during an Encounter sometimes displays misaligned images</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► Fixed typos in The Middle Little Sister Don Quixote&#x27;s Identity Story.</p>
 <p>► Ryōshū E.G.O: Red Eyes - Fixed an issue where it had an incorrect resistance value to &#x27;Lust&#x27; affinity<br>- Before : 0.75 (Endure)<br>- After : 0.5 (Ineff.)</p>
 <p>※ This E.G.O&#x27;s affinity resistance was applied as 0.75 instead of 0.5, which is the correct E.G.O affinity resistance value for TETH E.G.Os.</p>
@@ -69,11 +66,9 @@
 <p>► Fixed an issue in the Story Dungeons where, if the team is wiped at more than 0 SP, or if the player uses the in-game menu to return to the Save Point at more than 0 SP, SP did not reset to 0.</p>
 <p>► Deleted unused text from Choice Success rate displays<br>- Text : 5% Chance of Success</p>
 <p>※ We have identified that an outdated text from our development period for the Choice events still remained within the game.<br>Because the effect as written on that text is not being applied in the game, that text should have been deleted; but due to a miscommunication in our development process, that particular text was not erased. Thus, we have deleted it with this Update.<br>We apologize for letting this unused text be displayed in the game for so long.</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : 300 Lunacy<br>- Recipients : Every user whose game account was created before 10:00 Dec. 7th, 2023 (KST)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

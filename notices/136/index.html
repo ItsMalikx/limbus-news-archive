@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>October 19th Scheduled Update Notice</title>
@@ -29,55 +32,46 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="refraction-railway">Refraction Railway</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span></div><h1 class="notice-inline-title">October 19th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-10-16">October 16, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #FF7300">Refraction Railway</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">October 19th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-10-16">October 16, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter maintenance from 10:00 [AM] through 12:00 [PM] on October 19th, 2023 (KST) for system optimizations and content updates.<br>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.<br>Please refer below for details about the update.</p>
-<p>Update Contents</p>
-<hr>
+<h2 class="notice-section-heading">Update Contents</h2><hr class="notice-section-divider">
 <p>1. [Target Extraction: Rodion] (Oct. 19th 12:00 ~ Nov. 2nd 09:59 (KST))<br>The following Identities will have increased odds of extraction.<br>- 3★ : Dieci South Section 4 Rodion, Rosespanner Workshop Representative Rodion, Kurokumo Clan Wakashu Rodion<br>- 2★ : Zwei South Section 5 Rodion, N Corp. Mittelhammer Rodion, LCCB Assistant Manager Rodion<br>- 1★ : LCB Sinner Rodion</p>
-<p>Update Contents</p>
-<hr>
+<h2 class="notice-section-heading">Update Contents</h2><hr class="notice-section-divider">
 <p>2. Refraction Railway Line 2 additional rewards added<br>1 new decorative Banner and 1 new Ticket Deco will be added to the game.</p>
 <p>► 1 Decorative Banner<br>- Acquisition : After meeting the conditions, view the Refraction Railway results screen and it will immediately be added to your account.<br>- Conditions : Can be acquired after completing Line 2 at 5 or more Cycles and 150 or less Total Turns (The run for the record must have started after Sep. 15th, 2023) before the end of Season 2 : Reminiscence<br>※ If you have already met the conditions, it will be automatically added to your banner lists.</p>
 <p>► 1 Ticket Deco<br>- Acquisition : After meeting the conditions, claim it from the Lost &amp; Found<br>- Conditions : Can be acquired after completing Line 2 at 5 or more Cycles and 150 or less Total Turns (The run for the record must have started after Sep. 15th, 2023) before the end of Season 2 : Reminiscence</p>
 <p>3. A new Mini Episode &amp; new entries to Dante&#x27;s Notes<br>A new Mini Episode will be added to the game after the October 19th (KST) Update.<br>New entires will be added to Dante&#x27;s Notes every day for two weeks.<br>- Unlock conditions : Clear Main Story 4.5-11</p>
-<p>UI/UX Improvements</p>
-<hr>
+<h2 class="notice-section-heading">UI/UX Improvements</h2><hr class="notice-section-divider">
 <p>1. E.G.O Resource Changes Visibility Enhanced<br>Because it was difficult to see the E.G.O Resources reserves changes in an encounter, we have added a visual indicator to improve visibility.</p>
-<p>Major Changes</p>
-<hr>
+<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
 <p>1. Special VFX are added to Refraction Railway Line 2 Banners that must be acquired before the end of Season 2<br>- Applied to : 3 Decorative Banners and 1 Ticket Deco</p>
 <p>※ From the list of banners and deco, you can see that these have been labeled with the “EFFECT” tags.</p>
 <p>2. Changed order of application for conditional effects when 2 or more targets fit the effect conditions<br>Affected Effects: Skill/Coin effects, Passives, Buffs, Choices, and Enemy Skill Conditions</p>
 <p>- Between Allies : In the order they were selected from the Loadout menu<br>- Between Both Allies and Enemies : Selected Randomly<br>- Between Enemies : Selected Randomly</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>▷ Fixed an issue where the data regarding most recent loadout order did not update</p>
 <p>▷ Fixed an issue where, upon entering stages with a Main Story intro, Support Identities did not participate in the encounter</p>
 <p>▷ Fixed an issue where, upon stage entry, certain Support Passives applied to incorrect targets because the condition calculations happened before the speeds of the units were determined</p>
 <p>▷ Fixed an issue where Refraction Railway Line 2 Clear Total Turns appeared in overly large font sizes in “Add a Friend” and “Sent Requests” popups</p>
 <p>▷ Fixed an issue where making certain inputs in the Focused Encounter Chaining Phase could cause Skills to duplicate</p>
-<p>Known Issues</p>
-<hr>
+<h2 class="notice-section-heading">Known Issues</h2><hr class="notice-section-divider">
 <p>The following issues are currently being investigated.<br>Once these issues have been resolved, we will inform you with a more detailed explanation of the fixes via update notices in the future.</p>
 <p>▷ An issue where, when a Notice or a Dispenser popup would appear when the Banner was showing the red exclamation symbol in the Window&#x27;s User Banner section, the symbol would overlay on top of the popups</p>
 <p>▷ An issue where clash probabilities are incorrectly displayed in the Focused Encounters</p>
 <p>- After activating a Skill that is already matched with an enemy Skill, activate resonance with a different enemy; non-adjacent Skill and attempt to match with a different enemy; the game will recognize that as an Absolute Resonance, and display a value as though it is affected by an increased Offense Level</p>
 <p>- This issue is purely visual, and the actual values in combat are applied as intended.</p>
-<p>Known Issues</p>
-<hr>
+<h2 class="notice-section-heading">Known Issues</h2><hr class="notice-section-divider">
 <p>▷ An issue where the coin flip percentages for Abnormalities with SP were not recognized</p>
-<p>[Affected Enemies]<br>(1) Enemies from Refraction Railway Line 2 Station 4<br>(2) Enemy from Main Story Chapter 4 - 47<br>(3) Enemy from Main Story Chapter 4 - 48<br>(4) Enemy from Main Story Chapter 4 - 54</p>
+<h3 class="notice-subsection-heading">[Affected Enemies]</h3>
+<p>(1) Enemies from Refraction Railway Line 2 Station 4<br>(2) Enemy from Main Story Chapter 4 - 47<br>(3) Enemy from Main Story Chapter 4 - 48<br>(4) Enemy from Main Story Chapter 4 - 54</p>
 <p>※ Abnormality enemies with SP in the upcoming updates will be affected when this issue is fixed.</p>
 <p>Because we do not want to change the experience for our players up to this point, and because the enemies have been balanced based on the current coin percentages, changing the enemies&#x27; coin values may provide a different experience from what was presented so far.</p>
 <p>Therefore, currently existing Focused Encounter enemies with SP will not be affected by this update.</p>
-<p>Issues Identified After the Oct. 19th Update</p>
-<hr>
+<h2 class="notice-section-heading">Issues Identified After the Oct. 19th Update</h2><hr class="notice-section-divider">
 <p>▷ An issue where if, at the point in which the Mini Episode is updated, the player did not meet its unlock conditions, but met the conditions later and unlocked the Mini Episode, then watched the Mini Episode in the Theater, the Mini Episode would still play automatically upon startup.</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 09:59 Oct. 26th 2023 (KST)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on its status. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank You.</p></div>
 

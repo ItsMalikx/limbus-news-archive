@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Oct. 24th Progression Blocker Temporary Fix</title>
@@ -29,7 +32,7 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Oct. 24th Progression Blocker Temporary Fix</h1><div class="notice-date"><time datetime="2024-10-23">October 23, 2024</time></div><hr class="notice-title-divider"></div><p>We have identified the cause of the black screen progression blocker issue in all story dungeons that some of our players have been experiencing.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Oct. 24th Progression Blocker Temporary Fix</h1><div class="notice-date"><time datetime="2024-10-23">October 23, 2024</time></div><hr class="notice-title-divider"></div><p>We have identified the cause of the black screen progression blocker issue in all story dungeons that some of our players have been experiencing.</p>
 <p>Issue<br>- Occurs when slotting in a friend Support Unit upon entry to the Story Dungeon Stages for the first time<br>- Progressing through the Story Dungeon with the said loadout will cause the black screen progression blocker issue</p>
 <p>Cause<br>- In the progress of limiting the deployment of Don Quixote in all Story Dungeons, the logic to implement that interfered with the logic that deploys Friend Support Units, which caused the black screen progression blocker issue.<br>- Once it occurs, the user&#x27;s loadout data will be saved in an abnormal state, causing the issue to repeat even upon restarting the game.</p>
 <p>In order to play through the dungeon properly, please follow the below procedure.<br>- Upon first entry to the dungeon: please do not deploy a Friend Support Unit in your loadout.<br>- In the in-dungeon Checkpoints: please do not deploy a Friend Support Unit in your loadout.</p>

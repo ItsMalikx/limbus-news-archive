@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: An issue where in-game text loads in as &quot;Unknown&quot; after updates</title>
@@ -29,14 +32,17 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: An issue where in-game text loads in as &quot;Unknown&quot; after updates</h1><div class="notice-date"><time datetime="2025-11-05">November 5, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: An issue where in-game text loads in as &quot;Unknown&quot; after updates</h1><div class="notice-date"><time datetime="2025-11-05">November 5, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We have recently identified an issue where, after updates, texts in the in-game content load in as &quot;Unknown.&quot;</p>
 <p>Please continue reading to view further information regarding this issue and our future measures regarding it.</p>
-<p>[ Issue ]<br>- An issue where, after updates, texts in the newly updated content load in placeholder texts such as &quot;Unknown&quot; or &quot;RawDesc 없음&quot;.</p>
-<p>[ Cause &amp; Solution ]<br>- We have so far identified two issues that may cause this to happen.</p>
+<h2 class="notice-section-heading">[ Issue ]</h2>
+<p>- An issue where, after updates, texts in the newly updated content load in placeholder texts such as &quot;Unknown&quot; or &quot;RawDesc 없음&quot;.</p>
+<h3 class="notice-subsection-heading">[ Cause &amp; Solution ]</h3>
+<p>- We have so far identified two issues that may cause this to happen.</p>
 <p>1. (PC) If you are using the Custom Language Mod function, any text not present in the custom mod folder will load in as &quot;Unknown&quot; or &quot;RawDesc 없음&quot;(for new Identities or E.G.O descriptions).<br>: In this case, if the new content update texts are not yet present in your game folder, please disable the Custom Language mod and try again.</p>
 <p>2. (PC, Mobile) A resource download error could cause the text to load incorrectly.<br>: In this case, please close the game completely and start again. Click(or touch) the title screen to see if there are any remaining resources to be downloaded.</p>
-<p>[ Future Measures ]<br>- We will improve the in-game functionality so that, even if players are using the Custom Translation Mod, and even if the said mod does not yet have the updated text files, the in-game text would load in properly.<br>- We will review the resource download logic with greater detail to reduce the frequency of this issue.</p>
+<h3 class="notice-subsection-heading">[ Future Measures ]</h3>
+<p>- We will improve the in-game functionality so that, even if players are using the Custom Translation Mod, and even if the said mod does not yet have the updated text files, the in-game text would load in properly.<br>- We will review the resource download logic with greater detail to reduce the frequency of this issue.</p>
 <p>We sincerely apologize for the inconvenience.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

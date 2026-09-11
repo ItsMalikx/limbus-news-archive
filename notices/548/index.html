@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Details &amp; Measures Regarding an Upgrade Item Error</title>
@@ -29,15 +32,21 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: Details &amp; Measures Regarding an Upgrade Item Error</h1><div class="notice-date"><time datetime="2026-03-04">March 4, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: Details &amp; Measures Regarding an Upgrade Item Error</h1><div class="notice-date"><time datetime="2026-03-04">March 4, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>An issue was identified where, after the Feb. 19th Scheduled Update, using Takeoff Module - ID Uptie or Identity Takeoff Ticket (including ver. 2 and ver. 3) could cause the game to enhance an Identity that the user did not select.</p>
 <p>Please continue reading for more information regarding the issue and the recovery process for those affected.</p>
-<p>[ Issue ]<br>► An issue where, when using a Takeoff Module - ID Uptie or Identity Takeoff Ticket (including ver. 2 and ver. 3), there were rare cases where a different Identity than the selected Identity would be upgraded</p>
-<p>[ Issue Occurrence Date &amp; Affected Areas ]<br>► We have identified that the deployment of Feb. 19th, 2026&#x27;s Bug Fixes &amp; Improvements, which included the implementation of &quot;optimization code to prevent lagging issues when using Identity Takeoff Ticket,&quot; causes the issue to trigger when using Takeoff Module - ID Uptie and Identity Takeoff Ticket (including ver.2 and ver.3).</p>
-<p>[ Cause ]<br>► In order to alleviate the inconvenience caused by framerate drops that occurred when loading a full list of Identities to the in-game UI, we implemented an optimization code so that any slots that weren&#x27;t visible to the user were asynchronously loaded to the game.<br>However, once that optimization was implemented, selecting certain Identities could cause incorrect Identity data to be relayed, causing the game to select a different Identity than the one the user selected.</p>
-<p>[ Issue Fix ]<br>► As a temporary fix, we will roll back this optimization code deployment and prevent issues with selecting Identities. However, please note that frame rate drops may occur in the selection menu due to this rollback.<br>► An issue-free version of the optimization code will be deployed with the Mar. 12th (Thu) Scheduled Update.</p>
-<p>[ Fix Deployment ETA ]<br>- 2026. 03. 05 12:00(KST)<br>- This issue will be resolved via the Mar. 5th Scheduled Maintenance.</p>
-<p>[ Subsequent Measures ]<br>► If you have encountered this issue between Feb. 19th and Mar. 5th 10:00 (KST; issue fix date), please send the details of your issue to our customer service email with your UID, and we will assist with restoring your affected items and Identities.</p>
+<h2 class="notice-section-heading">[ Issue ]</h2>
+<p>► An issue where, when using a Takeoff Module - ID Uptie or Identity Takeoff Ticket (including ver. 2 and ver. 3), there were rare cases where a different Identity than the selected Identity would be upgraded</p>
+<h3 class="notice-subsection-heading">[ Issue Occurrence Date &amp; Affected Areas ]</h3>
+<p>► We have identified that the deployment of Feb. 19th, 2026&#x27;s Bug Fixes &amp; Improvements, which included the implementation of &quot;optimization code to prevent lagging issues when using Identity Takeoff Ticket,&quot; causes the issue to trigger when using Takeoff Module - ID Uptie and Identity Takeoff Ticket (including ver.2 and ver.3).</p>
+<h3 class="notice-subsection-heading">[ Cause ]</h3>
+<p>► In order to alleviate the inconvenience caused by framerate drops that occurred when loading a full list of Identities to the in-game UI, we implemented an optimization code so that any slots that weren&#x27;t visible to the user were asynchronously loaded to the game.<br>However, once that optimization was implemented, selecting certain Identities could cause incorrect Identity data to be relayed, causing the game to select a different Identity than the one the user selected.</p>
+<h3 class="notice-subsection-heading">[ Issue Fix ]</h3>
+<p>► As a temporary fix, we will roll back this optimization code deployment and prevent issues with selecting Identities. However, please note that frame rate drops may occur in the selection menu due to this rollback.<br>► An issue-free version of the optimization code will be deployed with the Mar. 12th (Thu) Scheduled Update.</p>
+<h3 class="notice-subsection-heading">[ Fix Deployment ETA ]</h3>
+<p>- 2026. 03. 05 12:00(KST)<br>- This issue will be resolved via the Mar. 5th Scheduled Maintenance.</p>
+<h3 class="notice-subsection-heading">[ Subsequent Measures ]</h3>
+<p>► If you have encountered this issue between Feb. 19th and Mar. 5th 10:00 (KST; issue fix date), please send the details of your issue to our customer service email with your UID, and we will assist with restoring your affected items and Identities.</p>
 <p>* Restoration Period : All Managers who have submitted a customer service email before Mar. 31st (Tue), 18:00 (KST)<br>* Restoration Recipients : All Managers who have used Takeoff Module - ID Uptie or Identity Takeoff Ticket between Feb. 19th 12:00 (KST) ~ Mar. 5th 10:00 (KST), but have had the upgrade applied to a different Identity than the one selected<br>* Restorable Resources<br>1. Takeoff Module - ID Uptie or Identity Takeoff Ticket<br>2. Identity (The Identity will be restored to Uptie Tier 1 and Level 1)<br>3. Any resources used on the Identity from #2 for Uptying and Leveling prior to using Takeoff Module - ID Uptie or Identity Takeoff Tickets</p>
 <p>* Customer Service Email : limbussupport@projmoon.com<br>* Please submit your request with your UID, and be sure to include details regarding which Identity incorrectly received the effects of the affected items.<br>* Please understand that it may be difficult for us to provide assistance when contacted outside the designated restoration period listed above.</p>
 <p>We sincerely apologize for the inconvenience.</p></div>

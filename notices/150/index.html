@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Nov. 16th STEAM Error Fix</title>
@@ -29,9 +32,10 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: Nov. 16th STEAM Error Fix</h1><div class="notice-date"><time datetime="2023-11-16">November 16, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: Nov. 16th STEAM Error Fix</h1><div class="notice-date"><time datetime="2023-11-16">November 16, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, this is Project Moon.</p>
 <p>The following issue occurred on the November 16th Scheduled Update; the fix for this issue was deployed at 15:30 today.</p>
-<p>[Fixed Issue]<br>(STEAM only) Fixed an issue where a character could not be selected for the Main Story 0-4, making it impossible to progress past that stage.</p>
+<h2 class="notice-section-heading">[Fixed Issue]</h2>
+<p>(STEAM only) Fixed an issue where a character could not be selected for the Main Story 0-4, making it impossible to progress past that stage.</p>
 <p>For Managers experiencing this issue: please close the game, update the game client, and restart in order to progress.<br>We apologize for causing a disturbance to your enjoyment of our game.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

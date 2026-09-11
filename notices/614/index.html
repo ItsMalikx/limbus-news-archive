@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Ver. 1.107.1 Known Issues and Hotfix ETA</title>
@@ -29,14 +32,18 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: Ver. 1.107.1 Known Issues and Hotfix ETA</h1><div class="notice-date"><time datetime="2026-06-18">June 18, 2026</time></div><hr class="notice-title-divider"></div><p>Hello. This is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: Ver. 1.107.1 Known Issues and Hotfix ETA</h1><div class="notice-date"><time datetime="2026-06-18">June 18, 2026</time></div><hr class="notice-title-divider"></div><p>Hello. This is Project Moon.</p>
 <p>We would like to inform you of the known issues identified after the Scheduled Update on Jun. 18th, 2026, along with the hotfix schedule and detailed information.</p>
 <p>Please refer below for more information.</p>
-<p>[ To-be Hotfixed ]<br>▶ Fixed an issue where the background color would display abnormally during the Skill animations of certain Identities in specific Encounters.</p>
-<p>[ Hotfix ETA ]<br>- Jun. 18th (Thu) 20:00 (KST)<br>- There may be a delay of approximately 10 minutes.</p>
+<h2 class="notice-section-heading">[ To-be Hotfixed ]</h2>
+<p>▶ Fixed an issue where the background color would display abnormally during the Skill animations of certain Identities in specific Encounters.</p>
+<h3 class="notice-subsection-heading">[ Hotfix ETA ]</h3>
+<p>- Jun. 18th (Thu) 20:00 (KST)<br>- There may be a delay of approximately 10 minutes.</p>
 <p>※ The Hotfix will be deployed upon restarting the game, and does not require a separate client update. However, please note that additional in-game downloads may occur.</p>
-<p>[ Issues to be resolved with a Scheduled Update ]<br>▶ An issue where, in certain situations in Reflectrial][lairtcelfeR, the &quot;Limited Rewards - Identity Training Ticket III&quot; would intermittently fail to load into the UI<br>- Upon further investigation, we have confirmed that Reward Exchange and remaining quantities are all functioning normally, but the UI for the relevant currency may intermittently fail to appear.<br>- This issue occurred due to insufficient exception handling in the system regarding the difference in the number of items between &quot;Standard Rewards&quot; and &quot;Limited Rewards.&quot; This issue will be fixed with the upcoming Scheduled Update.<br>- Should this issue occur during your gameplay session, please check again after taking one of the following measures: enter a combat Encounter, enter a story scene, or trigger a loading scene.</p>
-<p>[ Additional Info Regarding Crashes Upon Entering Battles on Certain Devices ]<br>Through today&#x27;s Ver. 1.107.1 update, the system has been adjusted so that devices equipped with Mali-G57 and Mali-G68 series GPUs run on &quot;GLES&quot; instead of &quot;Vulkan&quot; for the Graphics API upon game launch.</p>
+<h3 class="notice-subsection-heading">[ Issues to be resolved with a Scheduled Update ]</h3>
+<p>▶ An issue where, in certain situations in Reflectrial][lairtcelfeR, the &quot;Limited Rewards - Identity Training Ticket III&quot; would intermittently fail to load into the UI<br>- Upon further investigation, we have confirmed that Reward Exchange and remaining quantities are all functioning normally, but the UI for the relevant currency may intermittently fail to appear.<br>- This issue occurred due to insufficient exception handling in the system regarding the difference in the number of items between &quot;Standard Rewards&quot; and &quot;Limited Rewards.&quot; This issue will be fixed with the upcoming Scheduled Update.<br>- Should this issue occur during your gameplay session, please check again after taking one of the following measures: enter a combat Encounter, enter a story scene, or trigger a loading scene.</p>
+<h3 class="notice-subsection-heading">[ Additional Info Regarding Crashes Upon Entering Battles on Certain Devices ]</h3>
+<p>Through today&#x27;s Ver. 1.107.1 update, the system has been adjusted so that devices equipped with Mali-G57 and Mali-G68 series GPUs run on &quot;GLES&quot; instead of &quot;Vulkan&quot; for the Graphics API upon game launch.</p>
 <p>We have confirmed that the issue has been resolved for the devices listed above; however, it persists in other environments that do not use those GPUs.</p>
 <p>1) Android Devices<br>- Affected devices and environments: Devices using Qualcomm (Adreno 720), MediaTek (Mali-G610), and several other GPUs, including Mali-G710 and Immortalis-G715.<br>We have additionally confirmed that the game application fails to run in the environments listed above, and we plan to improve the Graphics API filtering logic to address the issue.</p>
 <p>Presently, our ultimate goal is to overhaul the system so that the Graphics API is automatically optimized for the device environment upon game launch.</p>

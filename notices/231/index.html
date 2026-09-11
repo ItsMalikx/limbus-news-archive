@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>May 9th Scheduled Update Notice</title>
@@ -29,11 +32,10 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="walpurgis-night">Walpurgis Night</span><span class="tag-pill" data-tag="mirror-dungeon">Mirror Dungeon</span></div><h1 class="notice-inline-title">May 9th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2024-05-06">May 6, 2024</time></div><hr class="notice-title-divider"></div><p>Greetings Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="walpurgis-night" style="--tag-color: #93F205">Walpurgis Night</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span></div><h1 class="notice-inline-title">May 9th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2024-05-06">May 6, 2024</time></div><hr class="notice-title-divider"></div><p>Greetings Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on May 9th, 2024 (KST).<br>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.<br>Please refer below for details about the update.</p>
 <p>※ The Mirror Dungeon Improvements will be applied after the May 9th (KST) Scheduled Update.<br>In this process, the Simulation Difficulty will be lowered from 5 Floors to 4 Floors.<br>To apply this change, any Simulation Difficulty MD runs from 06:00 to 10:00 (KST) will be closed on May 9th., 12:00.<br>(You can claim your reward from your last cleared Floor)<br>Also, please note that any Weekly Bonus consumed between 06:00~10:00 will not be reset after the Maintenance Period.</p>
-<p>Major Changes</p>
-<hr>
+<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
 <p>1. Dawn Office Fixer Sinclair Additional Buffs</p>
 <p>1) SP Consumption reduced for the &#x27;Unstable Shell of Ego&#x27; Passive<br>- Before<br>Turn Start: at 45 SP, consume 35 SP to enter the Volatile E.G.O::Waxen Pinion state.<br>Or if 2+ allies are defeated in a single turn, and if this unit’s SP isn’t at -45 at Turn End, reset SP to 10; then, enter the Volatile E.G.O::Waxen Pinion state.</p>
 <p>- After<br>Turn Start: at 40+ SP, consume 20 SP to enter the Volatile E.G.O::Waxen Pinion state.<br>Or if 2+ allies are defeated in a single turn, and if this unit’s SP isn’t at -45 at Turn End, reset SP to 20; then, enter the Volatile E.G.O::Waxen Pinion state.<br>If both conditions are met at the same time, whichever condition that results in a higher SP goes into effect.</p>
@@ -52,8 +54,7 @@
 <p>10) Floor Theme Card Pack appearance rate adjusted by each Floor in Simulation &amp; Ritornello<br>- We have adjusted Floor Theme Card Pack appearance rates so that no unreasonably difficult Abnormality Boss Encounters will appear too early on in the Mirror Dungeon run where the E.G.O Gift builds haven&#x27;t been completed yet</p>
 <p>11) Starter Buffs - Active Effects - [Summary/Details] function adjusted: Now, if you select the [Summary] option, only the Main Buff descriptions will be visible.</p>
 <p>12) Floor Theme E.G.O Gift Pools adjusted<br>- To address the issue in which Floor Theme E.G.O Gift pools run out of E.G.O Gifts, we have expanded the E.G.O Gift pools of every Floor Theme Pack.</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► Fixed an issue where Thread Luxcavation &#x27;Daily Bonuses&#x27; showed incorrect values</p>
 <p>► Fixed an issue where skipping the Luxcavation Encounter after completing &#x27;The 3rd Walpurgis Night - Fairy Festival&#x27; did not properly display the rewards<br>- This was a visual-only issue, and there were no issues with actual reward acquisition.</p>
 <p>► Fixed an issue where Skills that used the &#x27;Ammo&#x27; Keyword consumed more &#x27;Ammo&#x27; than they were supposed to</p>
@@ -101,8 +102,7 @@
 <p>► (JP Only) Fixed an issue where Yesod Announcer&#x27;s name was incorrectly inputted</p>
 <p>► (JP Only) Adjusted translations for Queequeg&#x27;s voicelines to match terminologies from the prior games</p>
 <p>► Fixed an issue where Floor 2 Normal, Focused, and Elite Encounters did not yield E.G.O Gift Rewards</p>
-<p>Known Issues</p>
-<hr>
+<h2 class="notice-section-heading">Known Issues</h2><hr class="notice-section-divider">
 <p>► An issue where, in the Encounter against the Abnormality - Wayward Passenger, the game would softlock under certain circumstances</p>
 <p>- This Abnormality Encounter &amp; Mirror Dungeon Event will be temporarily removed from the Mirror Dungeon after May 7th, 2024 12:00</p>
 <p>- They will be added back to the Mirror Dungeon after the May 16th, 2024 Scheduled Maintenance.</p>
@@ -114,15 +114,12 @@
 <p>► An issue where, when the Dawn Office Fixer Sinclair activates his transformation, KQE&#x27;s forced Stagger Pattern gets deactivated</p>
 <p>► An issue where, when the Dawn Office Fixer Sinclair is released from a certain boss enemy&#x27;s summon&#x27;s capturing Skill, the unit does not recover from Stagger even after activating the transformation</p>
 <p>► An issue where the E.G.O Gifts from previous Dungeons or Events, instead of gaining the effects that have been adjusted and tailored for the Mirror Dungeon, gain the same effects as before</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 May 16th, 2024 (KST)<br>- When : After May 9th, 2024 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
-<p>Mirror Dungeon Adjustment &amp; Error Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Mirror Dungeon Adjustment &amp; Error Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x500<br>- Recipients : All users whose game accounts were created before 10:00 May 16th, 2024 (KST)<br>- When : After May 9th, 2024 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until May. 16th (Thu) 2024, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on its status. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank You.</p></div>
 

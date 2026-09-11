@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>[Notice regarding Account Integration Errors]</title>
@@ -29,7 +32,7 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">[Notice regarding Account Integration Errors]</h1><div class="notice-date"><time datetime="2023-02-27">February 27, 2023</time></div><hr class="notice-title-divider"></div><p>We are currently investigating an issue with account integration between the Steam and mobile versions as well as account linkage for certain mobile accounts.<br>We will notify you as soon as the issue is resolved.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">[Notice regarding Account Integration Errors]</h1><div class="notice-date"><time datetime="2023-02-27">February 27, 2023</time></div><hr class="notice-title-divider"></div><p>We are currently investigating an issue with account integration between the Steam and mobile versions as well as account linkage for certain mobile accounts.<br>We will notify you as soon as the issue is resolved.</p>
 <p>We apologize for the inconvenience.<br>We will try to address this issue as soon as possible.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

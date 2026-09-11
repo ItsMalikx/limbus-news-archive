@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lobotomy E.G.O::In the Name of Love and Hate Don Quixote &amp; Don Quixote Electric Screaming E.G.O Error &amp; Subsequent Measures</title>
@@ -29,15 +32,14 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span><span class="tag-pill" data-tag="walpurgis-night">Walpurgis Night</span></div><h1 class="notice-inline-title">Lobotomy E.G.O::In the Name of Love and Hate Don Quixote &amp; Don Quixote Electric Screaming E.G.O Error &amp; Subsequent Measures</h1><div class="notice-date"><time datetime="2025-07-28">July 28, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span><span class="tag-pill" data-tag="walpurgis-night" style="--tag-color: #93F205">Walpurgis Night</span></div><h1 class="notice-inline-title">Lobotomy E.G.O::In the Name of Love and Hate Don Quixote &amp; Don Quixote Electric Screaming E.G.O Error &amp; Subsequent Measures</h1><div class="notice-date"><time datetime="2025-07-28">July 28, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We have identified an issue regarding Love/Hate Potency for &#x27;Lobotomy E.G.O::In the Name of Love and Hate Don Quixote&#x27; &amp; &#x27;Don Quixote Electric Screaming E.G.O&#x27;. The following are the details of the error and our subsequent measures to address it.</p>
 <p>We initially intended to maintain the current state as is without correcting the issue, because we wanted to avoid making it appear like a nerf. However, we have realized that the more Skills that consume Love/Hate and Charge Count are used, the Potency could grow excessively fast, so we intend to correct this issue.</p>
 <p>By fixing the bug and changing the Skill to work as written, we understand that the players&#x27; weeklong experience with this unit will be negatively affected; therefore, we intend to buff the unit&#x27;s Skills so that the experience is largely similar.</p>
 <p>As fixing the above issue could slow down the ramp-up speed for Lobotomy E.G.O::In the Name of Love and Hate Don Quixote, we decided to buff certain parts of the Identity by ensuring that effects that are proportional to its Love/Hate Potency can be ramped up as before, and by raising the unit&#x27;s damage cap.</p>
 <p>We sincerely apologize for this issue that can heavily affect a Walpurgis Night Identity. Also, we would like to express our sincerest apologies for causing confusion and disappointment in our managers due to these issues.</p>
 <p>Please continue reading for more information.</p>
-<p>Error Details</p>
-<hr>
+<h2 class="notice-section-heading">Error Details</h2><hr class="notice-section-divider">
 <p>※ In this announcement, for the sake of readability, we will be calling Love/Hate &quot;Charge&quot;.</p>
 <p>1) Lobotomy E.G.O::In the Name of Love and Hate Don Quixote</p>
 <p>※ Relevant Effect : Gain 1 Love/Hate every time this unit consumes 10 cumulative Love/Hate Count in this Encounter</p>
@@ -45,18 +47,14 @@
 <p>The issue with this passive was that the &quot;Cumulatively Consumed Charge Count&quot; reset that needs to occur upon gaining Charge Potency was missing. (&quot;Cumulatively Consumed Charge Count&quot; is an internally tracked value that is exclusively used to calculate the Charge Potency gain based on Charge Count.)</p>
 <p>This means that, when gaining 2 or more Charge Potency at once, which is supposed to spend 20 of the &quot;Cumulatively Consumed Charge Count&quot; (because it needs to be Charge Potency gained x 10), it spends only 10 of it. In other words, the remaining &quot;Cumulatively Consumed Charge Count&quot; was carried over to the next instance of Charge Potency gain.</p>
 <p>Maintaining this error without fixing it means that, in more extreme examples, some instances of gaining Charge Potency could cause the game to read &quot;31 Cumulatively Consumed Charge Count&quot; instead of &quot;1 Cumulatively Consumed Charge Count&quot; when only a single Charge Count has been consumed, thereby granting 3 Charge Potency despite spending only 1 Charge Count. This could excessively increase the speed at which Charge Potency is gained, which is why we intend to fix this issue.</p>
-<p>&lt;Issue Example&gt;</p>
-<p>Consumes 20 Charge Count</p>
-<hr>
+<h3 class="notice-subsection-heading">&lt;Issue Example&gt;</h3>
+<h2 class="notice-section-heading">Consumes 20 Charge Count</h2><hr class="notice-section-divider">
 <p>Cumulatively Consumed Charge Count : 20<br>Charge Potency gained              : 2<br>Remaining Consumed Charge Count    : 10<br>Resulting Charge Potency           : 3</p>
-<p>Consumes 20 Charge Count</p>
-<hr>
+<h2 class="notice-section-heading">Consumes 20 Charge Count</h2><hr class="notice-section-divider">
 <p>Cumulatively Consumed Charge Count : 10 + 20 = 30<br>Charge Potency gained              : 3<br>Remaining Consumed Charge Count    : 20<br>Resulting Charge Potency           : 6</p>
-<p>Consumes 10 Charge Count</p>
-<hr>
+<h2 class="notice-section-heading">Consumes 10 Charge Count</h2><hr class="notice-section-divider">
 <p>Cumulatively Consumed Charge Count : 20 + 10 = 30<br>Charge Potency gained              : 3<br>Remaining Consumed Charge Count    : 20<br>Resulting Charge Potency           : 9</p>
-<p>Consumes 1 Charge Count</p>
-<hr>
+<h2 class="notice-section-heading">Consumes 1 Charge Count</h2><hr class="notice-section-divider">
 <p>Cumulatively Consumed Charge Count : 20 + 1 = 21<br>Charge Potency gained              : 2<br>Remaining Consumed Charge Count    : 11<br>Resulting Charge Potency           : 11</p>
 <p>► Fixed an issue where Charge Potency can be gained only by Charge Count consumed by Skills</p>
 <p>There is an issue here where only Charge Count consumed by Skills can be used to raise one&#x27;s Charge Potency, which means that other Charge Count-consuming effects, such as E.G.O Gifts or Buffs (such as Near-light Superbattery), did not raise the Charge Potency, so we intend to fix it.</p>
@@ -66,8 +64,7 @@
 <p>The Charge Count consuming or damage-raising effects were working as intended. However, the issue was that this E.G.O could consume Charge Counts twice at once when used in conjunction with the other Identities &amp; E.G.O Gifts.</p>
 <p>This means that, when Lobotomy E.G.O::In the Name of Love and Hate Don Quixote was used alongside this E.G.O, this E.G.O could be used to raise double the amount of Charge Potency as it triggered twice in a row. Maintaining this error also means that it has the potential to affect the upcoming Identities or E.G.O, so we intend to correct this issue.</p>
 <p>Once again, we sincerely apologize for the confusion and inconvenience caused by these errors with Identities and E.G.O.</p>
-<p>Skill Changes</p>
-<hr>
+<h2 class="notice-section-heading">Skill Changes</h2><hr class="notice-section-divider">
 <p>1) Skill 2 - With Love! Hyah!</p>
 <p>- Before</p>
 <p>UT2 : [On Use] Deal +6% damage for every Love/Hate (max 30%)<br>UT4 : [On Use] Deal +10% damage for every Love/Hate (max 50%)</p>
@@ -85,12 +82,10 @@
 <p>UT3 : [On Use] Deal +12% damage for every Love/Hate on self (max 60%)<br>UT4 : [On Use] Deal +24% damage for every Love/Hate on self (max 120%)</p>
 <p>- After</p>
 <p>UT3 : [On Use] Deal +15% damage for every Love/Hate on self (max 60%)<br>UT4 : [On Use] Deal +30% damage for every Love/Hate on self (max 150%)</p>
-<p>Future Preventative Measures</p>
-<hr>
+<h2 class="notice-section-heading">Future Preventative Measures</h2><hr class="notice-section-divider">
 <p>- Improve the internal, mutual confirmation &amp; communication process between relevant personnel</p>
 <p>We will improve the communication process between the implementation personnel and other relevant individuals to ensure that we can identify any missing functions or unexpected issues that may occur when used in conjunction with other parts of the game.</p>
-<p>Lobotomy E.G.O::In the Name of Love and Hate Don Quixote Error Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Lobotomy E.G.O::In the Name of Love and Hate Don Quixote Error Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x1300<br>- Recipients : All users whose game accounts were created before 10:00 Aug. 7th, 2025 (KST)<br>- When : After July 28th, 2025 (Mon) 21:00 (KST)<br>- Can be claimed once per account</p>
 <p>Error Compensation can be claimed until Aug. 7th, (Thu) 2025, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p></div>
 

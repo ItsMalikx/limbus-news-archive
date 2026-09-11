@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>August 17th Scheduled Update Notice</title>
@@ -29,16 +32,13 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">August 17th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-08-14">August 14, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">August 17th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-08-14">August 14, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter maintenance from 10:00 [AM] through 12:00 [PM] on Aug. 17th, 2023 (KST) for system optimizations and content updates. Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost. Please refer below for details about the update.</p>
-<p>Major Changes</p>
-<hr>
+<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
 <p>1. When a unit gains shield, the Stagger threshold display on the HP bar below its sprite will now move to match the HP percentage</p>
-<p>Optimization Reports</p>
-<hr>
+<h2 class="notice-section-heading">Optimization Reports</h2><hr class="notice-section-divider">
 <p>1. RAM Usage Optimization<br>· (iOS) Fixed increased memory usage from R Corp. 4th Pack Rhino Meursault being in battle (Approx. 50mb)<br>· Removed unused camera effects in combat screens (Approx. 20~80mb depending on device resolution)</p>
-<p>Bug Fixes and Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes and Improvements</h2><hr class="notice-section-divider">
 <p>· (Japanese Language) Fixed an issue with Zwei South Section 4 Faust&#x27;s Skill 2 &#x27;Client Protection&#x27; where the amount of Defense Level Up shown in the description was incorrect<br>- Old: [On Use] Apply 3 Defense Level Up to the ally with the lowest HP percentage (3 times per turn)<br>- New: [On Use] Apply 4 Defense Level Up to the ally with the lowest HP percentage (3 times per turn)</p>
 <p>· (English Language) Fixed an error with the description for Zwei South Section 4 Faust&#x27;s Skill 1 &#x27;Patrolling&#x27; at Uptie 2<br>- Old: [Clash Lose] Gain 2 Defense Level Up<br>- New: [Clash Lose] Gain 3 Defense Level Up</p>
 <p>· (English Language) Fixed an error with the description for Zwei South Section 4 Faust&#x27;s Skill 2 &#x27;Client Protection&#x27; at Uptie 2<br>- Old: [On Use] Apply 2 Defense Level Up to the ally with the lowest HP percentage (3 times per turn)<br>- New: [On Use] Apply 3 Defense Level Up to the ally with the lowest HP percentage (3 times per turn)</p>
@@ -49,8 +49,7 @@
 <p>· Fixed the descriptions of certain skills that consume Charge Count stating &#x27;Charge&#x27; instead of &#x27;Charge Count&#x27;<br>- W Corp. L2 Cleanup Agent Faust<br>- R Corp. Pack 4 Rhino Meursault</p>
 <p>· Fixed an issue with the effects of Don Quixote&#x27;s E.G.O - Fluid Sac&#x27;s passive<br>- Old: SP damage equal to (Pride A-Reson. * 2)<br>- New: SP damage equal to (Gloom A-Reson * 2)</p>
 <p>(※ An issue where the damage applies as Pride damage rather than Gloom damage to Abnormalities will be addressed in a future update.)</p>
-<p>Bug Fixes and Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes and Improvements</h2><hr class="notice-section-divider">
 <p>· Fixed an issue with Outis&#x27; E.G.O where the &#x27;Apply Attack Power Up to other allies&#x27; effect of &#x27;Ya Śūnyatā Tad Rūpam&#x27; applied to the user</p>
 <p>· Adjusted descriptions of certain E.G.O Skills with &quot;Burst Tremor&quot; effects (Rime Shank for Rodion and Legerdemain for Gregor) to convey the timing clearer (※ The actual effect will remain the same.)</p>
 <p>· Fixed an issue with Rodion&#x27;s E.G.O &#x27;Rime Shank&#x27; where the effect text &#x27;[On Hit] Inflict Sinking Count&#x27; was not being displayed for the skill at Threadspin Tier 4</p>
@@ -64,11 +63,9 @@
 <p>· Abnormalities - Fixed an issue with the Skills &#x27;Compulsory Offering&#x27; and &#x27;Sluggard Waker&#x27; where the effect &#x27;[Clash Lose] Apply 20 Karma to a random other ally next turn&#x27; applies to the user</p>
 <p>· K Corp. Checkpoint Security - Issue with the Skill &#x27;Cover&#x27; where the effect &#x27;Apply 2 Protection to a random other ally next turn&#x27; applied to the user</p>
 <p>· Fixed the On Use and Clash Lose effects of Shock Centipede&#x27;s skill &#x27;Wriggling Tail&#x27; being swapped with each other in Mirror Dungeon #2</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content: 300 Lunacy<br>- Recipients: All users whose game accounts were created before Aug. 24th, 2023 09:59 (KST)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

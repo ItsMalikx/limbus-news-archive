@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>1.74.0) Notice: Custom Language Title &amp; Content Font Setting Function Updated</title>
@@ -29,10 +32,10 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span></div><h1 class="notice-inline-title">1.74.0) Notice: Custom Language Title &amp; Content Font Setting Function Updated</h1><div class="notice-date"><time datetime="2025-04-16">April 16, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span></div><h1 class="notice-inline-title">1.74.0) Notice: Custom Language Title &amp; Content Font Setting Function Updated</h1><div class="notice-date"><time datetime="2025-04-16">April 16, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We have added a new function to be able to set different fonts for title vs. content texts when using custom fonts. (ex) Set different fonts for ID Skill names &amp; descriptions)</p>
 <p>Please refer to the following link for a tutorial on how to apply the custom languages.<br>- Custom Language How-to</p>
-<p>[Tutorial: Setting different fonts for Title vs. Content]</p>
+<h2 class="notice-section-heading">[Tutorial: Setting different fonts for Title vs. Content]</h2>
 <p>1. Find the following folder: &quot;LimbusCompany_Data/Lang/(your Custom Language folder name here)/Font&quot;.<br>ex) If your Custom Language folder is called &quot;lang1&quot;, find the &quot;LimbusCompany_Data/Lang/lang1/Font&quot; folder.</p>
 <p>2. Create two new folders &quot;Title&quot; and &quot;Context&quot; in the above directory.<br>- Title: For &quot;titles&quot;<br>- Context: For &quot;content&quot;</p>
 <p>3. Add the fonts you want to apply in each respective folder</p>

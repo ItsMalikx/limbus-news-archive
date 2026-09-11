@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Known Issues &amp; Addtn. Bug Fixes in July 31th Scheduled Update, Ver 1.83.0</title>
@@ -29,12 +32,14 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Known Issues &amp; Addtn. Bug Fixes in July 31th Scheduled Update, Ver 1.83.0</h1><div class="notice-date"><time datetime="2025-07-31">July 31, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Known Issues &amp; Addtn. Bug Fixes in July 31th Scheduled Update, Ver 1.83.0</h1><div class="notice-date"><time datetime="2025-07-31">July 31, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We have identified certain issues in Ver. 1.83.0, updated July 31st, and bug fixes that were missing from this week&#x27;s Scheduled Update Notice.</p>
 <p>Please continue reading for more information.</p>
-<p>[Known Issues]<br>► An issue where playing through certain stages could cause the game to softlock<br>※ Relevant Encounters: My Form Empties, Trash Crabs</p>
+<h2 class="notice-section-heading">[Known Issues]</h2>
+<p>► An issue where playing through certain stages could cause the game to softlock<br>※ Relevant Encounters: My Form Empties, Trash Crabs</p>
 <p>► Fixed an issue where a Choice Event(in Chapter 6.5-15 (Hard difficulty)) choice that needs a certain E.G.O Gift to access doesn&#x27;t become accessible even when the player has the relevant E.G.O Gift</p>
-<p>[Bug Fixes &amp; Improvements]<br>► Fixed the incorrect description for the E.G.O Gift &#x27;The Unchosen&#x27;, where the text did not match our intentions<br>- Before : Whenever an ally is killed, all allies gain 2 Attack Power Up next turn<br>- After : When an ally is killed, all allies gain 2 Attack Power Up next turn (once per turn)</p>
+<h3 class="notice-subsection-heading">[Bug Fixes &amp; Improvements]</h3>
+<p>► Fixed the incorrect description for the E.G.O Gift &#x27;The Unchosen&#x27;, where the text did not match our intentions<br>- Before : Whenever an ally is killed, all allies gain 2 Attack Power Up next turn<br>- After : When an ally is killed, all allies gain 2 Attack Power Up next turn (once per turn)</p>
 <p>※ This issue was caused by failing to update the description to match the E.G.O Gift effect changes that were made in the pre-release phase of the Walpurgis Night event, which caused the outdated version of the description to be applied to the live version of the game.</p>
 <p>Normally, our policy is to change the effects to match the texts. However, if we were to change the effects to match the text in this case, it could cause a balancing issue in which ally death could give up to 12 Attack Power Up to all allies, so we intend to change the text instead.</p>
 <p>We sincerely apologize for the confusion caused by the incorrect text description.</p>

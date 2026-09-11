@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STEAM Version: Tutorial Soft-locking Issue Fix Notice</title>
@@ -29,7 +32,7 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">STEAM Version: Tutorial Soft-locking Issue Fix Notice</h1><div class="notice-date"><time datetime="2023-11-27">November 27, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">STEAM Version: Tutorial Soft-locking Issue Fix Notice</h1><div class="notice-date"><time datetime="2023-11-27">November 27, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, this is Project Moon.</p>
 <p>We have identified a Tutorial soft-locking issue in version 1.28.0, and have corrected the issue. This issue occurred only on the STEAM version of the game. Please refer to the information below for more details.</p>
 <p>■ Issue<br>An issue where, during the Loadout tutorial, UI became inaccessible and soft-locked the game<br>An issue where, during the Extraction tutorial, repeatedly pressing the Space or the Enter shortcut key would soft-lock the game</p>
 <p>■ Causes<br>The interactable areas were incorrectly delineated while developing the UI animations<br>Repeated shortcut key inputs were not made to properly interact with the Tutorial progress</p>

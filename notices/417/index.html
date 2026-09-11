@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: An issue where the game may softlock with certain animation triggers</title>
@@ -29,13 +32,16 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: An issue where the game may softlock with certain animation triggers</h1><div class="notice-date"><time datetime="2025-06-13">June 13, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: An issue where the game may softlock with certain animation triggers</h1><div class="notice-date"><time datetime="2025-06-13">June 13, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We have identified an additional issue in version 1.79.1, which is the version of the game that was updated June 12th, 2025.</p>
 <p>Please continue reading for more information.</p>
-<p>[Issue]<br>- An issue where, in certain Stages, some Skills or Stage clear animations won&#x27;t play and the game softlocks</p>
-<p>[Identified Stages with the Issue]<br>- Skill animation used by a certain enemy in Stage 4-48<br>- Stage clear animation in Stage 5-36</p>
+<h2 class="notice-section-heading">[Issue]</h2>
+<p>- An issue where, in certain Stages, some Skills or Stage clear animations won&#x27;t play and the game softlocks</p>
+<h3 class="notice-subsection-heading">[Identified Stages with the Issue]</h3>
+<p>- Skill animation used by a certain enemy in Stage 4-48<br>- Stage clear animation in Stage 5-36</p>
 <p>※ Please note that there may be more Stages affected by this issue.</p>
-<p>[Cause]<br>- The issue occurs when Deploying &quot;R Corp. 4th Pack Rabbit Heathcliff&quot; as an active unit.</p>
+<h3 class="notice-subsection-heading">[Cause]</h3>
+<p>- The issue occurs when Deploying &quot;R Corp. 4th Pack Rabbit Heathcliff&quot; as an active unit.</p>
 <p>We have identified the cause of this issue, but as fixing it requires a logic adjustment to the Identity&#x27;s animation, it is difficult for us to resolve this issue via a hotfix.</p>
 <p>Therefore, please understand that this issue will be fixed with the June 19th Scheduled Update.</p>
 <p>We apologize for the inconvenience, but until we resolve this issue next week,<br>if a progression blocker issue occurs while &quot;R Corp. 4th Pack Rabbit Heathcliff&quot; is an active unit, please remove him from your loadout and try again.</p>

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice Regarding Issue with Premature Display of UI for Certain Chapters</title>
@@ -29,7 +32,7 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice Regarding Issue with Premature Display of UI for Certain Chapters</h1><div class="notice-date"><time datetime="2023-05-31">May 31, 2023</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice Regarding Issue with Premature Display of UI for Certain Chapters</h1><div class="notice-date"><time datetime="2023-05-31">May 31, 2023</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We have identified an error where the chapter (Chapter 3.5) that should only be unlocked after clearing every stage in Part 1, Chapter 3 is being shown on the UI even when the condition is not met.<br>The error occurs after clearing every stage in Part 1, Chapter 2, and lasts until every stage in Part 1, Chapter 3 has been cleared.</p>
 <p>The unintentionally unlocked stages cannot be entered until the player has cleared every stage in Chapter 3.<br>You can enter the stages normally after clearing Chapter 3.</p>
 <p>Please understand that this is a UI error and has no impact on the game progression.</p>

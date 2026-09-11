@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2025, Dec. 24th Scheduled Update Notice</title>
@@ -29,37 +32,35 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="mirror-dungeon">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span></div><h1 class="notice-inline-title">2025, Dec. 24th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-12-22">December 22, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">2025, Dec. 24th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-12-22">December 22, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from<br>10:00 [AM] through 12:00 [PM] on Dec. 24th, 2025 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend<br>that you refrain from entering combat or making in-app<br>purchases and close the application before maintenance<br>begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<p>Notice : Scheduled Update Date Changes &amp; Weekly Rewards (Time in KST)</p>
-<hr>
+<h2 class="notice-section-heading">Notice : Scheduled Update Date Changes &amp; Weekly Rewards (Time in KST)</h2><hr class="notice-section-divider">
 <p>Due to Christmas and New Year&#x27;s holidays in 2025, Dec. 25th,<br>and 2026, Jan. 1st, respectively, Scheduled Updates<br>will not be deployed on Thursdays for those weeks.<br>Instead, Scheduled Updates will be deployed on<br>Wednesday, a day earlier than our usual time.</p>
 <p>※ Scheduled Update Date Changes<br>- Before : 2025, Dec. 25th (Thu) 10:00<br>- After : 2025, Dec. 24th (Wed) 10:00</p>
 <p>- Before : 2026, Jan. 1st (Thu) 06:00<br>- After : 2025, Dec. 31st (Wed) 06:00</p>
 <p>While Season 7 Update and Season 7 Limbus Pass will be deployed<br>on Dec. 31st (Wed), Weekly Missions &amp; Mirror Dungeon Weekly Bonus<br>resets will occur on Jan. 1st (Thu) 06:00 (KST), the same time as usual.</p>
 <p>In order to minimize confusion, we have prepared<br>the following chart to determine which Season’s Pass EXP<br>will be obtainable between Dec. 25th 12:00 ~ Jan. 8th 06:00 via<br>Weekly Missions and Mirror Dungeon Weekly Bonuses.</p>
-<p>[ 12/25 12:00 ~ 12/31 05:59(KST) ]<br>- Weekly Missions : Clearing Weekly Missions grants Season 6 Pass EXP<br>- Mirror Dungeon Weekly Bonuses : Using Weekly Bonuses grants extra Season 6 Pass EXP</p>
-<p>[ 12/31 12:00 ~ 1/1 05:59(KST) ]<br>- Weekly Missions : Weekly Mission Reset - Yes<br>Clearing Weekly Missions grants Season 7 Pass EXP<br>- Mirror Dungeon Weekly Bonuses : Weekly Bonus Reset - No<br>Using Weekly Bonuses grants extra Season 7 Pass EXP</p>
-<p>[ 1/1 06:00 ~ 1/8 05:59(KST) ]<br>- Weekly Missions : Weekly Mission Reset - Yes<br>Clearing Weekly Missions grants Season 7 Pass EXP<br>- Mirror Dungeon Weekly Bonuses : Weekly Bonus Reset - Yes<br>Using Weekly Bonuses grants extra Season 7 Pass EXP</p>
-<p>Major Changes</p>
-<hr>
+<h3 class="notice-subsection-heading">[ 12/25 12:00 ~ 12/31 05:59(KST) ]</h3>
+<p>- Weekly Missions : Clearing Weekly Missions grants Season 6 Pass EXP<br>- Mirror Dungeon Weekly Bonuses : Using Weekly Bonuses grants extra Season 6 Pass EXP</p>
+<h3 class="notice-subsection-heading">[ 12/31 12:00 ~ 1/1 05:59(KST) ]</h3>
+<p>- Weekly Missions : Weekly Mission Reset - Yes<br>Clearing Weekly Missions grants Season 7 Pass EXP<br>- Mirror Dungeon Weekly Bonuses : Weekly Bonus Reset - No<br>Using Weekly Bonuses grants extra Season 7 Pass EXP</p>
+<h3 class="notice-subsection-heading">[ 1/1 06:00 ~ 1/8 05:59(KST) ]</h3>
+<p>- Weekly Missions : Weekly Mission Reset - Yes<br>Clearing Weekly Missions grants Season 7 Pass EXP<br>- Mirror Dungeon Weekly Bonuses : Weekly Bonus Reset - Yes<br>Using Weekly Bonuses grants extra Season 7 Pass EXP</p>
+<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
 <p>► Season 6 Battle Pass end date added</p>
-<p>Bug Fixes and Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes and Improvements</h2><hr class="notice-section-divider">
 <p>► Fixed an issue where incorrect damage number would<br>additionally be displayed when &#x27;Sinking Deluge&#x27; is triggered<br>※ Actual damage and cumulative damage values were functioning<br>normally. Only the displayed damage value has been corrected.</p>
 <p>► Fixed an issue where incorrect damage forecasts were displayed<br>when enemies (inflicted with damage-lowering E.G.O or Skill effects<br>such as Power Down or Paralyze) used Skills<br>with the effect &quot;fix damage dealt to 0 / deal 0 damage&quot;<br>※ This issue was addressed with the December 11 Scheduled<br>Update; however, an additional fix was implemented<br>as the issue persisted during Unopposed Attacks where<br>Clashes do not take place.</p>
 <p>► Fixed an issue where, under specific conditions,<br>certain voicelines and dialogue text did not match after<br>the lobby illustration was set to Wild Hunt Heathcliff</p>
 <p>► (EN Only) Added missing translation for one of<br>N Corp. E.G.O::Fell Bullet Yi Sang&#x27;s voicelines<br>※ Relevant voiceline : &quot;Idle&quot; voiceline</p>
 <p>► (Steam) (EN, JP only) Fixed an issue where no pop-up text was<br>displayed when prompting users to run Steam verify integrity<br>check due to missing resources</p>
 <p>► (iOS) Fixed an issue where &quot;Error Code: 13004&quot; would occur<br>on game launch after an App Store purchase is<br>refunded after being put on hold</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before<br>Dec. 31st, 2025 06:00 (KST)<br>- When : After Dec. 24th, 2025 (Wed) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Dec. 31st (Wed), 2025,<br>06:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

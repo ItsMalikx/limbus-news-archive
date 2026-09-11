@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Known issues in Ver. 1.88.0, updated Oct. 9th</title>
@@ -29,11 +32,13 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Known issues in Ver. 1.88.0, updated Oct. 9th</h1><div class="notice-date"><time datetime="2025-10-09">October 9, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Known issues in Ver. 1.88.0, updated Oct. 9th</h1><div class="notice-date"><time datetime="2025-10-09">October 9, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We have identified an issue where the game lags for several seconds when the player presses the button to enter the combat phase from the chaining phase.</p>
 <p>The following are what we have learned thus far:</p>
-<p>[Cause]<br>Numerous unnecessary text updates occurred simultaneously with the beginning of the Combat Phase, causing the lag.</p>
-<p>[Solution]<br>Adjusted the in-game logic to eliminate unnecessary text updates.</p>
+<h2 class="notice-section-heading">[Cause]</h2>
+<p>Numerous unnecessary text updates occurred simultaneously with the beginning of the Combat Phase, causing the lag.</p>
+<h3 class="notice-subsection-heading">[Solution]</h3>
+<p>Adjusted the in-game logic to eliminate unnecessary text updates.</p>
 <p>Also, as there are heavy frame drops occurring in the version updated today(1.88.0),</p>
 <p>we are currently reviewing and analyzing the adjusted logics and added content in ver. 1.88.0.</p>
 <p>We will fix them as soon as the reviews are completed and deploy a new version of the application.</p>

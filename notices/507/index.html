@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2025, Dec. 11th Scheduled Update Notice</title>
@@ -29,33 +32,33 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">2025, Dec. 11th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-12-15">December 15, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">2025, Dec. 11th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-12-15">December 15, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Dec. 11th, 2025 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<p>Stage Continue Function Added</p>
-<hr>
+<h2 class="notice-section-heading">Stage Continue Function Added</h2><hr class="notice-section-divider">
 <p>► Stage Continue function will be added for Main Story Stages 8-30 and 8-33.</p>
-<p>[ Implementation Intent ]<br>- The Continue function will be added to address the story progression blockage issue caused by these battles&#x27; high level of difficulty, and to alleviate the fatigue caused by repeated attempts. Once the maintenance period ends, you may use the Continue function in high-difficulty Stages and avoid potential interruptions to the enjoyment of the story.</p>
-<p>[ Continue Function Information ]<br>- Upon defeat, a pop-up window will appear, asking if you would like to use the Continue function by spending a certain amount of Lunacy. (The Continue option will be available only when the Continue function is toggled &quot;On&quot; in &quot;Settings - General&quot;)</p>
+<h3 class="notice-subsection-heading">[ Implementation Intent ]</h3>
+<p>- The Continue function will be added to address the story progression blockage issue caused by these battles&#x27; high level of difficulty, and to alleviate the fatigue caused by repeated attempts. Once the maintenance period ends, you may use the Continue function in high-difficulty Stages and avoid potential interruptions to the enjoyment of the story.</p>
+<h3 class="notice-subsection-heading">[ Continue Function Information ]</h3>
+<p>- Upon defeat, a pop-up window will appear, asking if you would like to use the Continue function by spending a certain amount of Lunacy. (The Continue option will be available only when the Continue function is toggled &quot;On&quot; in &quot;Settings - General&quot;)</p>
 <p>- The amount of Lunacy spent to continue the battle will remain the same and not scale with the number of Continues used in the Stage.</p>
 <p>- Choosing to continue will revive all Sinners at max HP and SP and restore their Stagger Thresholds. The enemies&#x27; state will not be affected.</p>
 <p>- Minus Coin-only Identities will be revived at -30 SP.</p>
 <p>- Upon revival, all effects (such as buffs, debuffs, E.G.O Passives, etc) on the Identities will be reset, save for a few exceptions that are essential to each respective Stage.</p>
 <p>- Upon revival, you will gain a certain amount of E.G.O resources added to the amount you had at the point Of defeat.</p>
-<p>[ Notes ]<br>※ The Continue function spends Free Lunacy first. Paid Lunacy will be spent only when you do not have enough Free Lunacy to continue.</p>
+<h3 class="notice-subsection-heading">[ Notes ]</h3>
+<p>※ The Continue function spends Free Lunacy first. Paid Lunacy will be spent only when you do not have enough Free Lunacy to continue.</p>
 <p>※ If, after using the Continue function, the player forfeits the Stage or if the game closes due to unexpected circumstances, any Lunacy spent to continue the battle will be restored. However, Lunacy spent to continue the battle will not be restored if the player completes the Stage after using the Continue function.</p>
 <p>※ If 99 turns pass in a single Stage, or if the player does not have enough Lunacy to continue upon defeat, the Continue function will not be activated, and the battle will immediately end in defeat.</p>
 <p>※ Clearing the Stage with the Continue function will not be counted as &quot;Extra Conditions Fulfilled&quot;. Please clear the Stage without using the Continue function if you would like to complete the &quot;Extra Conditions Fulfilled&quot; challenge.</p>
 <p>※ The Continue option is available only in Stages 8-30 and 8-33 at this moment; please note that its functions may be improved or expanded in the future.</p>
-<p>Major Changes</p>
-<hr>
+<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
 <p>1. Manager Level Cap Increase<br>The Manager Level Cap will be increased from 200 to 300.<br>※ Please note that Managers who have already reached Lv. 200 can receive all accumulated excess EXP by clearing any EXP-granting Stage after the Dec. 11th Scheduled Maintenance.</p>
 <p>2. Extraction Notifications Improved<br>During periods when an Announcer is added to the list of Extractable items, the game will now show relevant notices in the Extraction rates and Extraction guide pop-ups.</p>
 <p>3. Battle Announcer Voiceline Volume Adjustment<br>- Relevant Announcers: Jun, Lei Heng</p>
 <p>※ Although the previous notice only included Lei Heng&#x27;s voiceline volume adjustment, we have confirmed an identical issue with Jun as well. Both Announcers&#x27; voiceline volume will be adjusted.</p>
-<p>Bug Fixes and Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes and Improvements</h2><hr class="notice-section-divider">
 <p>► Fixed an issue where a certain effect of W Corp. L4 Cleanup Agent - CCA Heathcliff&#x27;s Skill 2 did not activate under specific situations.<br>※ Relevant Effect: [Combat Start] Gain Charge Barrier equal to (2 + Charge Potency on self) (max 6, 1 per turn)<br>- Before: When the Skill is used without Charge Potency on self, the Identity did not gain Charge Barrier<br>- After: Using Skill 2 without Charge Potency on self will now grant 2 Charge Barrier</p>
 <p>► Fixed an issue where incorrect damage forecasts were displayed when enemies (inflicted with damage-lowering E.G.O or Skill effects such as Power Down or Paralyze) used Skills with the effect &quot;fix damage dealt to 0 / deal 0 damage&quot;<br>※ This issue did not affect the actual damage calculations. Only the displayed text will be fixed.</p>
 <p>► Fixed an issue where Clash targeting in Focused Encounters would not function properly under certain conditions</p>
@@ -64,12 +67,10 @@
 <p>► Fixed an incorrect description for a certain effect in Main Story Canto 6<br>※ Relevant Effect: Superthermogenesis<br>※ The effect itself will not be changed; only the text displayed will be fixed to match the behavior.</p>
 <p>► (JP Only) Improved the translation of Ricardo (Announcer)&#x27;s voiceline where a term could be misunderstood as story-related official terminology<br>- Before : 大姉貴<br>- After : 上の姉貴</p>
 <p>► (JP Only) Fixed a typo for a certain effect in Main Story Chapter 8<br>※ Relevant Effect : Mutilated Memory</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before Dec. 18th, 2025 10:00 (KST)<br>- When : After Dec. 11th, 2025 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Dec. 18th (Thu), 2025 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 

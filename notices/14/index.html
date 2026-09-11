@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Planned Combat Adjustments</title>
@@ -29,7 +32,7 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span></div><h1 class="notice-inline-title">Planned Combat Adjustments</h1><div class="notice-date"><time datetime="2023-03-07">March 7, 2023</time></div><hr class="notice-title-divider"></div><p>1. Resonance-based Offense &amp; Defense Level Boost<br>- Sin Resonance will now boost the Offense/Defense Level as well. (Offense Level boost applies to Attack/Counter skills, while Defense Level applies to Guard/Evade skills.)<br>- Absolute Resonance applies the highest level of the boost to all resonating skills in the chain.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span></div><h1 class="notice-inline-title">Planned Combat Adjustments</h1><div class="notice-date"><time datetime="2023-03-07">March 7, 2023</time></div><hr class="notice-title-divider"></div><p>1. Resonance-based Offense &amp; Defense Level Boost<br>- Sin Resonance will now boost the Offense/Defense Level as well. (Offense Level boost applies to Attack/Counter skills, while Defense Level applies to Guard/Evade skills.)<br>- Absolute Resonance applies the highest level of the boost to all resonating skills in the chain.</p>
 <p>2. Defense Skill Changes<br>- Using defense skills in regular combat will no longer skip the unit&#x27;s action.<br>- Defense skills will be able to redirect enemy skills in Abnormality battles.<br>- Guard and Evade skills will activate when the unit is about to be attacked by a skill that would otherwise result in a Clash if they were not defending, rather than any attack.<br>- Counter skills maintain the same activation conditions.</p>
 <p>3. Guard and Evade skills are now affected by character growth.<br>- Defense skills (outside of Counter) are affected by the Defense Level.<br>- When using a Guard or Evade skill, its Power may increase or decrease based on the difference between the attacking skill&#x27;s Offense Level and the defending skill&#x27;s Defense Level.</p>
 <p>4. Changes to Stagger<br>- The turn-based action slot additions on the Dashboard will prioritize non-Staggered units.<br>- There will be adjustments to the Stagger Thresholds of certain Identities based on their intended roles and traits. (e.g. Tankers and Damage Sponges will have fewer thresholds. Offense-oriented characters may see little change to their Stagger Thresholds.)</p>

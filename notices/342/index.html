@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Known Issues after the 2025.01.23 Scheduled Update &amp; Improvements</title>
@@ -29,7 +32,7 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="refraction-railway">Refraction Railway</span></div><h1 class="notice-inline-title">Known Issues after the 2025.01.23 Scheduled Update &amp; Improvements</h1><div class="notice-date"><time datetime="2025-01-23">January 23, 2025</time></div><hr class="notice-title-divider"></div><p>[Known Issues after the 2025.01.23 Scheduled Update &amp; Improvements]</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #FF7300">Refraction Railway</span></div><h1 class="notice-inline-title">Known Issues after the 2025.01.23 Scheduled Update &amp; Improvements</h1><div class="notice-date"><time datetime="2025-01-23">January 23, 2025</time></div><hr class="notice-title-divider"></div><h2 class="notice-section-heading">[Known Issues after the 2025.01.23 Scheduled Update &amp; Improvements]</h2>
 <p>Hello, this is Project Moon.</p>
 <p>The following are issues that have been identified after the 2025.01.23 Scheduled Update and the list of improvements we intend to deploy later.</p>
 <p>We will inform you via a notice when each of these changes are applied to the game.<br>Please refer below for more information.</p>
@@ -37,17 +40,23 @@
 <p>- Mirror Dungeon / An issue where, in Chain Battles, allies would lose SP upon ally death<br>※ This issue does not occur in the Refraction Railway.<br>- An issue where choosing to forfeit a fight in Stage 7.5-11 would count it as victory<br>- An issue where, under certain circumstances, Peccatula Invidiae would have an abnormal Skill Slot location<br>- An issue where Peccatula Invidiae&#x27;s Parts would load an UNKNOWN text instead<br>- Event - LCB Regular Check-up / An issue where, in the Reward Exchange menu, the Event tutorial does not match the Event it&#x27;s for<br>- (JP Only) An issue where a section of Ch. 7.5 remains untranslated</p>
 <p>2. Upcoming Improvements and Adjustments</p>
 <p>1) The activation conditionals of the following E.G.O Gifts will be changed from &#x27;Encounter Start&#x27; to &#x27;Turn Start&#x27;</p>
-<p>[Example]<br>- Before: Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Burn or Unique Burn (except E.G.O Skills; only counts Identities on the field at Encounter Start)<br>- After: Turn Start: This Gift activates when 5 or more Identities have Attack Skills that apply Burn or Unique Burn (except E.G.O Skills; only counts Identities that are currently on the field)</p>
-<p>[E.G.O Gifts to be Changed]<br>Soothe the Dead, Bloody Mist, Coupled Oscillation, Enrapturing Trance, Black Sheet Music, T-1 Perpetual Motion Machine, Secret Cookbook, Purloined Flame, Devotion, Hemorrhagic Shock, Interlocked Cogs, Epicenter, Omnivibro-octovecti-bell, Thorny Rope Cuffs, Eerie Effigy, Ruin, Tangled Bones, Surge Gloves, Impending Wave, Reminiscence, Cask Spirits, T-1B Octagonal Bolt, Insulator, T-5 Perpetual Motion Machine, Wholeness, Sublimity, Unbending, Ragged Bamboo Hat, Old Dopo Robe, Pocket Watch: Type L, Pocket Watch: Type E, Pocket Watch: Type Y, Pocket Watch: Type P, Automated Joints, Overcharged Battery, Perpetual Generator Servos, Hearts-powered Jewel</p>
+<h3 class="notice-subsection-heading">[Example]</h3>
+<p>- Before: Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Burn or Unique Burn (except E.G.O Skills; only counts Identities on the field at Encounter Start)<br>- After: Turn Start: This Gift activates when 5 or more Identities have Attack Skills that apply Burn or Unique Burn (except E.G.O Skills; only counts Identities that are currently on the field)</p>
+<h3 class="notice-subsection-heading">[E.G.O Gifts to be Changed]</h3>
+<p>Soothe the Dead, Bloody Mist, Coupled Oscillation, Enrapturing Trance, Black Sheet Music, T-1 Perpetual Motion Machine, Secret Cookbook, Purloined Flame, Devotion, Hemorrhagic Shock, Interlocked Cogs, Epicenter, Omnivibro-octovecti-bell, Thorny Rope Cuffs, Eerie Effigy, Ruin, Tangled Bones, Surge Gloves, Impending Wave, Reminiscence, Cask Spirits, T-1B Octagonal Bolt, Insulator, T-5 Perpetual Motion Machine, Wholeness, Sublimity, Unbending, Ragged Bamboo Hat, Old Dopo Robe, Pocket Watch: Type L, Pocket Watch: Type E, Pocket Watch: Type Y, Pocket Watch: Type P, Automated Joints, Overcharged Battery, Perpetual Generator Servos, Hearts-powered Jewel</p>
 <p>※ With the introduction of Chain Battles, we intend to change the team composition E.G.O Gifts to check its conditional at the start of every turn, instead of only once at the start of the Stage.<br>Therefore, even when Identities are replaced due to Retreating or death, the new Substituted Identities can gain the benefits of those E.G.O Gifts.</p>
 <p>2) The following E.G.O Gifts will no longer apply to effects that gain Bleed, Burn, and Rupture on allies.</p>
-<p>[Examples]<br>- Before: allies inflict double Bleed Potency with Skill effects.<br>- After: against enemies, allies inflict double Bleed Potency with Skill effects.</p>
-<p>[Affected Gifts]<br>Smokes and Wires, Filial Love, Bloody Mist, Hot&#x27;n Juicy Drumstick, Dry-to-the-Bone Breast</p>
+<h3 class="notice-subsection-heading">[Examples]</h3>
+<p>- Before: allies inflict double Bleed Potency with Skill effects.<br>- After: against enemies, allies inflict double Bleed Potency with Skill effects.</p>
+<h3 class="notice-subsection-heading">[Affected Gifts]</h3>
+<p>Smokes and Wires, Filial Love, Bloody Mist, Hot&#x27;n Juicy Drumstick, Dry-to-the-Bone Breast</p>
 <p>※ We have realized that the above Gifts could cause Identities who gain Bleed and Burn to unintentionally get killed, so we intend to address that issue with these changes.</p>
 <p>3) The Keywords and effects of the following E.G.O Gifts will be partially adjusted.</p>
 <p>We will provide additional detail with a future Scheduled Update Notice.</p>
-<p>[Gifts with Keyword Adjustments]<br>Cetacean Heart, Manor-shaped Music Box, Refraction Glass Pod, La Manchaland All-day Pass, Token of Victory, Mask of the Parade, Unhatched Embers</p>
-<p>[Gifts with Planned Adjustments]<br>Broken Greatsword, Dueling Manual Book 3, The Book of Vengeance, Sundered Memory, Punctured Memory, Bloody Mist, Fragment of Hellfire, Fragment of Allurement, Fragment of Inertia, Fragment of Desire, Fragment of Decay, Fragment of Conceit, Fragment of Friction, Impending Wave, Distant Star</p>
+<h3 class="notice-subsection-heading">[Gifts with Keyword Adjustments]</h3>
+<p>Cetacean Heart, Manor-shaped Music Box, Refraction Glass Pod, La Manchaland All-day Pass, Token of Victory, Mask of the Parade, Unhatched Embers</p>
+<h3 class="notice-subsection-heading">[Gifts with Planned Adjustments]</h3>
+<p>Broken Greatsword, Dueling Manual Book 3, The Book of Vengeance, Sundered Memory, Punctured Memory, Bloody Mist, Fragment of Hellfire, Fragment of Allurement, Fragment of Inertia, Fragment of Desire, Fragment of Decay, Fragment of Conceit, Fragment of Friction, Impending Wave, Distant Star</p>
 <p>We sincerely apologize for the inconvenience.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

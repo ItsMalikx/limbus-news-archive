@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Jan. 23rd 2025 (KST) Scheduled Update Server Error Fixed</title>
@@ -29,13 +32,17 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: Jan. 23rd 2025 (KST) Scheduled Update Server Error Fixed</h1><div class="notice-date"><time datetime="2025-01-22">January 22, 2025</time></div><hr class="notice-title-divider"></div><p>[Notice: Jan. 23rd 2025 (KST) Scheduled Update Server Error Fixed]</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: Jan. 23rd 2025 (KST) Scheduled Update Server Error Fixed</h1><div class="notice-date"><time datetime="2025-01-22">January 22, 2025</time></div><hr class="notice-title-divider"></div><h2 class="notice-section-heading">[Notice: Jan. 23rd 2025 (KST) Scheduled Update Server Error Fixed]</h2>
 <p>Hello, this is Project Moon.</p>
 <p>We have identified a server error after the Jan. 23rd, 2025 (KST) Scheduled Update, and have deployed the fix. It was applied to the game without a separate update or necessary game relaunch.</p>
-<p>[Issue]<br>An issue where, if a player in the final node of the 5.5-1 BokGak event force closed the game, an error would occur in the process of refunding the Stage entry cost.</p>
-<p>[Cause]<br>Cause: The function that returns the consumed Enkephalin(loads when logging in) clashed with the function that disables relevant 5.5-1 BokGak Stages upon Event closure, causing an error in the process of reviewing that particular node</p>
-<p>[Solution]<br>The error has been fixed on Jan. 23rd, 2025 13:00 (KST). The server now functions as normal.</p>
-<p>[Subsequent measures]<br>We have added a specific system logic to prevent this issue from occurring again.</p>
+<h3 class="notice-subsection-heading">[Issue]</h3>
+<p>An issue where, if a player in the final node of the 5.5-1 BokGak event force closed the game, an error would occur in the process of refunding the Stage entry cost.</p>
+<h3 class="notice-subsection-heading">[Cause]</h3>
+<p>Cause: The function that returns the consumed Enkephalin(loads when logging in) clashed with the function that disables relevant 5.5-1 BokGak Stages upon Event closure, causing an error in the process of reviewing that particular node</p>
+<h3 class="notice-subsection-heading">[Solution]</h3>
+<p>The error has been fixed on Jan. 23rd, 2025 13:00 (KST). The server now functions as normal.</p>
+<h3 class="notice-subsection-heading">[Subsequent measures]</h3>
+<p>We have added a specific system logic to prevent this issue from occurring again.</p>
 <p>We sincerely apologize for the inconvenience.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

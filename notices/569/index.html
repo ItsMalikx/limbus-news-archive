@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Ver. 1.101.1 Known Issues and Hotfix ETA</title>
@@ -29,18 +32,19 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="mirror-dungeon">Mirror Dungeon</span></div><h1 class="notice-inline-title">Notice: Ver. 1.101.1 Known Issues and Hotfix ETA</h1><div class="notice-date"><time datetime="2026-03-27">March 27, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span></div><h1 class="notice-inline-title">Notice: Ver. 1.101.1 Known Issues and Hotfix ETA</h1><div class="notice-date"><time datetime="2026-03-27">March 27, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We would like to inform you about the known issues identified after the Mar. 26th, 2026 Scheduled Update, and the ETA for a Hotfix that addresses some of them.</p>
 <p>Please continue reading for more information.</p>
-<p>[ Issues to be fixed with the Mar. 27th Hotfix ]</p>
+<h2 class="notice-section-heading">[ Issues to be fixed with the Mar. 27th Hotfix ]</h2>
 <p>▶ An Issue where, under specific circumstances, completion of certain &#x27;Mirror Projection / Achievement - Loadout&#x27; Achievements are abnormally affected</p>
 <p>※ Affected Achievements (9 total)<br>1. Defeat the 4 &#x27;Charm, Wander, Doubt,&#x27; &#x27;Textbook,&#x27; &#x27;Blade and Artwork,&#x27; and &#x27;The Unsevering&#x27; Theme Pack bosses with 3 or more The House of Spiders Identities, with &#x27;LCB Sinner Ryōshū&#x27;, in your Loadout (Not counting Backup Units; incompletable by Rental Teams)<br>2. Defeat the &#x27;The Heartbreaking&#x27; Theme Pack boss with 3 or more Wuthering Heights Identities, including &#x27;Wild Hunt Heathcliff&#x27;, in your Loadout (Not counting Backup Units; incompletable by Rental Teams)<br>3. Defeat the &#x27;The Infinite Procession&#x27; Theme Pack boss with &#x27;Cinq West Section 3 Meursault,&#x27; &#x27;Zwei West Section 3 Sinclair,&#x27; &#x27;Fanghunt Office Fixer Hong Lu,&#x27; and &#x27;Firefist Office Survivor Gregor&#x27; Identities in your Loadout (Not counting Backup Units; incompletable by Rental Teams)<br>4. Defeat the &#x27;Murder on the WARP Express BokGak&#x27; Theme Pack boss with 4 or more Bloodfiend Identities in your Loadout (Not counting Backup Units; incompletable by Rental Teams)<br>5. Defeat the &#x27;The Unconfronting&#x27; Theme Pack boss with 2 or more Mechanical Amalgam Identities in your Loadout (Not counting Backup Units; incompletable by Rental Teams)<br>6. Defeat the &#x27;Miracle in District 20 BokGak&#x27; Theme Pack boss with only Heathcliff and Don Quixote Identities on the field (Not counting Backup Units; incompletable by Rental Teams)<br>7. Defeat the &#x27;Timekilling Time BokGak&#x27; Theme Pack boss with 2 or more T Corp. Identities in your Loadout (Not counting Backup Units; incompletable by Rental Teams)<br>8. Defeat the &#x27;A Beautiful Voice&#x27; Theme Pack boss with &#x27;Wild Hunt Heathcliff&#x27; Identity on the field (Not counting Backup Units; incompletable by Rental Teams)<br>9. Defeat the 5 &#x27;Murder on the WARP Express,&#x27; &#x27;Murder on the WARP Express BokGak,&#x27; &#x27;La Manchaland Re-opening,&#x27; &#x27;The Infinite Procession,&#x27; and &#x27;The Dream Ending&#x27; Theme Pack bosses with &#x27;The Manager of La Manchaland Don Quixote&#x27; Identity on the field (Not counting Backup Units; incompletable by Rental Teams)</p>
 <p>( Issue Details )<br>- This issue can be caused by forfeiting immediately after entering the Boss Encounter, then re-entering with a different Team loadout<br>1. Even after re-entering with a different loadout, because the game reads the previous Team loadout instead, Achievements that should be (or shouldn&#x27;t be) completable with the current loadout are not completed (or completed)<br>2. Loadout Achievements with &quot;Not counting Backup Units&quot; condition count Backup Units for the purpose of completing them</p>
 <p>( Issue Cause )<br>- When re-entering an Encounter after forfeiting it, the in-game data used for Achievement tracking does not properly update with the user&#x27;s current Team loadout, causing this issue to occur.</p>
 <p>( Issue Solution )<br>- Additional code was inserted to update the in-game data used for Achievement tracking. This solution will be deployed via a hotfix.</p>
-<p>[ Hotfix ETA ]<br>- 3.27(Fri) 16:00(KST)<br>- There may be a 10 minute delay.</p>
+<h3 class="notice-subsection-heading">[ Hotfix ETA ]</h3>
+<p>- 3.27(Fri) 16:00(KST)<br>- There may be a 10 minute delay.</p>
 <p>※ The Hotfix will be deployed upon restarting the game, and does not require a separate client update. However, please note that additional in-game downloads may occur.</p>
-<p>[ Issues to be resolved with a Scheduled Update ]</p>
+<h3 class="notice-subsection-heading">[ Issues to be resolved with a Scheduled Update ]</h3>
 <p>▶ An issue where certain Encounters are missing BGM and connected lyrics</p>
 <p>▶ An issue where the Mirror Dungeon EXTREME Theme Pack &#x27;Bridle of Infinity&#x27; enemy unit&#x27;s &quot;Surgery&quot; Keyword does not work</p>
 <p>※ The above issues will be resolved with the April 2nd Scheduled Update.</p>

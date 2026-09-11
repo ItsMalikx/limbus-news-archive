@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Softlocking issue on Mobile Devices with Pending Purchases</title>
@@ -29,14 +32,18 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: Softlocking issue on Mobile Devices with Pending Purchases</h1><div class="notice-date"><time datetime="2025-02-28">February 28, 2025</time></div><hr class="notice-title-divider"></div><p>[Notice: Softlocking issue on Mobile Devices with Pending Purchases]</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: Softlocking issue on Mobile Devices with Pending Purchases</h1><div class="notice-date"><time datetime="2025-02-28">February 28, 2025</time></div><hr class="notice-title-divider"></div><h2 class="notice-section-heading">[Notice: Softlocking issue on Mobile Devices with Pending Purchases]</h2>
 <p>Hello, this is Project Moon.</p>
 <p>We would like to inform you of the softlocking issue that occured after the Feb. 27th, 2025 Scheduled Update on mobile devices with pending purchases.</p>
 <p>A hotfix will be deployed at Feb. 28th, 18:00 (KST) to address this issue.<br>The hotfix will be deployed upon restarting the game without a separate client update; please note that additional in-game downloads will occur.</p>
-<p>[Issue]<br>An issue where devices with pending purchases cannot proceed from the Window menu</p>
-<p>[Cause]<br>Insufficient logic testing for pending purchases on &quot;resource loading error that occurs when, on mobile, the user enters the Shop for the first time as a new account&quot; error fix</p>
-<p>[Solution]<br>The part of the game with issues has been reverted.<br>However, the &#x27;resource loading error that occurs when, on mobile, the user enters the Shop for the first time as a new account&#x27; error will occur again, and we will attempt another fix for this issue.<br>We will inform you via a Scheduled Update Notice as soon as this issue is resolved.</p>
-<p>[Future Measures]<br>Include tests for pending purchases as well when changing Shop-related logic</p>
+<h3 class="notice-subsection-heading">[Issue]</h3>
+<p>An issue where devices with pending purchases cannot proceed from the Window menu</p>
+<h3 class="notice-subsection-heading">[Cause]</h3>
+<p>Insufficient logic testing for pending purchases on &quot;resource loading error that occurs when, on mobile, the user enters the Shop for the first time as a new account&quot; error fix</p>
+<h3 class="notice-subsection-heading">[Solution]</h3>
+<p>The part of the game with issues has been reverted.<br>However, the &#x27;resource loading error that occurs when, on mobile, the user enters the Shop for the first time as a new account&#x27; error will occur again, and we will attempt another fix for this issue.<br>We will inform you via a Scheduled Update Notice as soon as this issue is resolved.</p>
+<h3 class="notice-subsection-heading">[Future Measures]</h3>
+<p>Include tests for pending purchases as well when changing Shop-related logic</p>
 <p>We sincerely apologize for the inconvenience.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

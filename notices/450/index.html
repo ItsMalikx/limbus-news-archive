@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: MD Achievement Counting Error, Hotfix, and Currency Recovery</title>
@@ -29,20 +32,27 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="mirror-dungeon">Mirror Dungeon</span></div><h1 class="notice-inline-title">Notice: MD Achievement Counting Error, Hotfix, and Currency Recovery</h1><div class="notice-date"><time datetime="2025-08-18">August 18, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span></div><h1 class="notice-inline-title">Notice: MD Achievement Counting Error, Hotfix, and Currency Recovery</h1><div class="notice-date"><time datetime="2025-08-18">August 18, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We have identified an issue in Version 1.84.0, updated Aug. 14th, where certain Mirror Dungeon Achievement clear counts was counting twice when it should count only once. The hotfix for this issue has been distributed.</p>
 <p>Please continue reading for more information.</p>
-<p>[ Hotfix ETA ]<br>- 8.18(MON) 21:00(KST)</p>
-<p>[ Issue ]<br>- An issue where, after the Aug. 14th Scheduled Update&#x27;s second round of updates for Mirror of Immortality Achievements, the Mirror Dungeon Clear counts were being counted twice</p>
-<p>[ Affected Achievement Missions ]<br>- Clear Mirror Dungeon at Floor 5 or higher X times<br>- Clear Mirror Dungeon at Floor 5 or higher X times - every floor has to be in Hard Difficulty</p>
-<p>[ Cause ]<br>- This issue was caused by a duplicate id data that was added in the process of updating new Achievements</p>
-<p>[ Solution ]<br>- Removal of the duplicate id data</p>
-<p>[ Future Measures ]<br>- Adjust the data load logic to prevent duplicate data from being entered twice</p>
+<h2 class="notice-section-heading">[ Hotfix ETA ]</h2>
+<p>- 8.18(MON) 21:00(KST)</p>
+<h3 class="notice-subsection-heading">[ Issue ]</h3>
+<p>- An issue where, after the Aug. 14th Scheduled Update&#x27;s second round of updates for Mirror of Immortality Achievements, the Mirror Dungeon Clear counts were being counted twice</p>
+<h3 class="notice-subsection-heading">[ Affected Achievement Missions ]</h3>
+<p>- Clear Mirror Dungeon at Floor 5 or higher X times<br>- Clear Mirror Dungeon at Floor 5 or higher X times - every floor has to be in Hard Difficulty</p>
+<h3 class="notice-subsection-heading">[ Cause ]</h3>
+<p>- This issue was caused by a duplicate id data that was added in the process of updating new Achievements</p>
+<h3 class="notice-subsection-heading">[ Solution ]</h3>
+<p>- Removal of the duplicate id data</p>
+<h3 class="notice-subsection-heading">[ Future Measures ]</h3>
+<p>- Adjust the data load logic to prevent duplicate data from being entered twice</p>
 <p>The solution to the above issue has been identified,<br>and a Hotfix has been deployed to correct it.</p>
 <p>Also, any Mirror Dungeon clear records affected by this errors will be reverted to their correct values, and if the affected record is in a cleared state, it may be reverted to an uncleared state as the clear record is re-adjusted to the correct value. In such a case, any Achievement points and achievement rewards may be withdrawn from your accounts.</p>
 <p>We will inform you of a more detailed deployment date with a future update notice.</p>
 <p>We sincerely apologize for the inconvenience.</p>
-<p>[Notice: Mirror of Immortality Achievement Error Compensation]<br>Compensation: Lunacy x500<br>Recipients: All users whose accounts were created before Aug. 28th, 2025, 10:00<br>When: After Aug. 18th (MON), 2025, 22:30 (KST)<br>Can be claimed once per account</p>
+<h3 class="notice-subsection-heading">[Notice: Mirror of Immortality Achievement Error Compensation]</h3>
+<p>Compensation: Lunacy x500<br>Recipients: All users whose accounts were created before Aug. 28th, 2025, 10:00<br>When: After Aug. 18th (MON), 2025, 22:30 (KST)<br>Can be claimed once per account</p>
 <p>Error Compensation can be claimed until Aug. 28th, (Thu) 2025, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

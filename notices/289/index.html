@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Issues Identified in Sep. 26th Scheduled Update</title>
@@ -29,11 +32,13 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Notice: Issues Identified in Sep. 26th Scheduled Update</h1><div class="notice-date"><time datetime="2024-09-26">September 26, 2024</time></div><hr class="notice-title-divider"></div><p>[Notice: Issues Identified in Sep. 26th Scheduled Update]</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice: Issues Identified in Sep. 26th Scheduled Update</h1><div class="notice-date"><time datetime="2024-09-26">September 26, 2024</time></div><hr class="notice-title-divider"></div><h2 class="notice-section-heading">[Notice: Issues Identified in Sep. 26th Scheduled Update]</h2>
 <p>Hello,<br>This is Project Moon.</p>
 <p>We would like to inform you of the issues that have been identified after the Sep. 26th(THU) 12:00(KST) Scheduled Update.</p>
-<p>&lt;List&gt;<br>1. An issue where the game softlocks in combat under certain circumstances<br>2. Errors in Dante&#x27;s Notes &amp; Story Timeline</p>
-<p>&lt;Details&gt;<br>1. An issue where the game softlocks in combat under certain circumstances</p>
+<h3 class="notice-subsection-heading">&lt;List&gt;</h3>
+<p>1. An issue where the game softlocks in combat under certain circumstances<br>2. Errors in Dante&#x27;s Notes &amp; Story Timeline</p>
+<h3 class="notice-subsection-heading">&lt;Details&gt;</h3>
+<p>1. An issue where the game softlocks in combat under certain circumstances</p>
 <p>We have identified a softlocking issue in our latest Client version(1.57.1) where the game would become unresponsive during a combat encounter.<br>This issue occurs for enemies with certain patterns, and we are currently reviewing, investigating, and fixing content that may be affected by this issue.</p>
 <p>Cause: In the process of adding the &#x27;Retreat&#x27; function to the game, we made an adjustment to the game logic to fix an issue where a unit defeated at the current Turn Start gets eliminated from the Passives list UI on the left side of the screen.</p>
 <p>Issue: The &#x27;Turn End&#x27; effects that were supposed to activate only against surviving units were activating on defeated units as well, which meant that the game could softlock under those specific circumstances.</p>
@@ -44,10 +49,12 @@
 <p>Cause: We misread the timeline of the events in Timekilling Time, which led us to mislabel the months in which the events of the story are taking place.</p>
 <p>Solution: We have adjusted the timeline for the following story banners.<br>* The following story banners visible in the Drive menu have been adjusted to 984-12<br>6.5 - Timekilling Time<br>Detour Tales - &#x27;A Familiar Siren&#x27;<br>6.5 - Murder on the WARP Express<br>Detour Tales - &#x27;The 4th Walpurgis Night&#x27;<br>* The entry dates for Dante&#x27;s Notes, which were added with the Sep. 26th(THU) 12:00(KST) Scheduled Update, have also been adjusted to match our intentions</p>
 <p>Preventative Measure: We will keep better track of the timeline of the City and the order of events that takes place within.</p>
-<p>&lt;Error Fix Deployment ETA&gt;<br>In order to deploy the fix for issue #1 &quot;An issue where the game softlocks in combat under certain circumstances&quot;, we must proceed with a client build.<br>We are currently performing a test on relevant content and developing the upcoming content simultaneously, so it is difficult for us to proceed with a new build and submit an emergency review request to deploy a fix for this issue.<br>The new version with a fix for this issue will be applied with our next Scheduled Update, alongside our other content and fixes.</p>
+<h3 class="notice-subsection-heading">&lt;Error Fix Deployment ETA&gt;</h3>
+<p>In order to deploy the fix for issue #1 &quot;An issue where the game softlocks in combat under certain circumstances&quot;, we must proceed with a client build.<br>We are currently performing a test on relevant content and developing the upcoming content simultaneously, so it is difficult for us to proceed with a new build and submit an emergency review request to deploy a fix for this issue.<br>The new version with a fix for this issue will be applied with our next Scheduled Update, alongside our other content and fixes.</p>
 <p>The issue #2 &quot;Errors in Dante&#x27;s Notes &amp; Story Timeline&quot; will be deployed via a hotfix by 20:30.<br>Hotfixes can be deployed without a client update, and will be applied upon restarting the game. Please note that additional downloads may occur to refresh the in-game data.</p>
 <p>We sincerely apologize for the inconvenience caused by these issues.</p>
-<p>[Sep. 26th Scheduled Update Error Compensation]<br>- Compensation : Lunacy x500<br>- Recipients : All users whose accounts were created before Oct. 3rd 2024, 10:00<br>- When : After Sep. 26th (THU) 2024, 20:30(KST)<br>- Can be claimed once per account</p></div>
+<h3 class="notice-subsection-heading">[Sep. 26th Scheduled Update Error Compensation]</h3>
+<p>- Compensation : Lunacy x500<br>- Recipients : All users whose accounts were created before Oct. 3rd 2024, 10:00<br>- When : After Sep. 26th (THU) 2024, 20:30(KST)<br>- Can be claimed once per account</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>

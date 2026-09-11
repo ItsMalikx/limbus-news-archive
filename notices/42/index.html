@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Apr 13 Scheduled Update Notice</title>
@@ -29,22 +32,18 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">Apr 13 Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-04-10">April 10, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Apr 13 Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-04-10">April 10, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter maintenance from 10:00 [AM] through 12:00 [PM] on April 13th, 2023 (KST) for system optimizations and content updates. <br>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost. <br>Refer to below for details about the update.</p>
-<p>Update Content</p>
-<hr>
+<h2 class="notice-section-heading">Update Content</h2><hr class="notice-section-divider">
 <p>1. Bug Fixes<br>- Fixed an issue where the chance for a unit&#x27;s Speed to be the maximum value was abnormally low<br>- Fixed an issue where generating a defense skill and then canceling it next turn would remove the replaced skill<br>- Refraction Railway: Fixed an issue where multiple instances of the &#x27;Heart of the Townsfolk&#x27; could be generated at the same time during the encounter with Kqe-1j-23<br>- Fixed an issue where the displayed damage value of a single coin with multiple hits was being shown as 1 (The actual damage is calculated and applied normally; this issue only affected the visual presentation.)</p>
 <p>As one of the issues affected the Refraction Railway&#x27;s gameplay, we would like to provide compensation to all players. Refer further below for more details.</p>
-<p>Gameplay Error Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Gameplay Error Compensation</h2><hr class="notice-section-divider">
 <p>Content: Lunacy x300<br>Recipients: All users whose game account was created before 09:59 April 20th, 2023 (KST)</p>
 <p>The mail&#x27;s contents are valid to claim for 7 days. Please redeem them within this timeframe.</p>
-<p>Maintenance and Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance and Application Update Compensation</h2><hr class="notice-section-divider">
 <p>Content: Lunacy x300<br>Recipients: All users whose game account was created before 09:59 April 20th, 2023 (KST)</p>
 <p>The mail&#x27;s contents are valid to claim for 7 days. Please redeem them within this timeframe.</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

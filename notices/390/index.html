@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>[Urgent] Notice: Softlocking Issue Additional Notice</title>
@@ -29,19 +32,24 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">[Urgent] Notice: Softlocking Issue Additional Notice</h1><div class="notice-date"><time datetime="2025-05-15">May 15, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">[Urgent] Notice: Softlocking Issue Additional Notice</h1><div class="notice-date"><time datetime="2025-05-15">May 15, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We have identified an issue with the May 15th Scheduled Update(Ver.1.76.0) where the final node of Story Dungeons would become un-interactable.</p>
 <p>We have identfied the cause of this issue,<br>and will be deploying the fix with Version 1.76.1 at<br>2025.05.15 17:00 (KST).</p>
 <p>However, as mobile environments require us to submit the update<br>for review for the fix, we would like to ask for your understanding<br>that it may take some time for us to release Version 1.76.1 on mobile marketplaes.</p>
 <p>We would like to recommend using the Steam version of the game until<br>Version 1.76.1 passes the reviews on mobile marketplaces.</p>
 <p>We will inform you via an additional update once we are able to confirm<br>that this new version has passed the mobile store reviews.</p>
 <p>We sincerely apologize for this softlocking issue.</p>
-<p>[Issue]<br>- An issue where, after the 2025.05.15 Scheduled Update, the final node of Story Dungeons cannot be interacted with</p>
-<p>[Cause]<br>- A side effect of separating the updated logic from the old logic in the process of updating the movement process between stages</p>
-<p>[Solution]<br>- Resolved the logic that was causing the issues</p>
-<p>[Future Measures]<br>- Set up an internal development reminder to separate the necessary logic when updating<br>- Add an extra test case when making improvements to preexisting functionalities</p>
+<h2 class="notice-section-heading">[Issue]</h2>
+<p>- An issue where, after the 2025.05.15 Scheduled Update, the final node of Story Dungeons cannot be interacted with</p>
+<h3 class="notice-subsection-heading">[Cause]</h3>
+<p>- A side effect of separating the updated logic from the old logic in the process of updating the movement process between stages</p>
+<h3 class="notice-subsection-heading">[Solution]</h3>
+<p>- Resolved the logic that was causing the issues</p>
+<h3 class="notice-subsection-heading">[Future Measures]</h3>
+<p>- Set up an internal development reminder to separate the necessary logic when updating<br>- Add an extra test case when making improvements to preexisting functionalities</p>
 <p>We once again sincerely apologize for the inconvenience.</p>
-<p>[5/15 Scheduled Update Error Compensation]<br>Compensation : Lunacy x1000<br>- Recipients: all users whose game accounts were created before 10:00 May. 22nd, 2025 (KST)<br>- When: After May 15th, (Thu) 2025, 17:00 (KST)<br>Can be claimed once per account</p>
+<h3 class="notice-subsection-heading">[5/15 Scheduled Update Error Compensation]</h3>
+<p>Compensation : Lunacy x1000<br>- Recipients: all users whose game accounts were created before 10:00 May. 22nd, 2025 (KST)<br>- When: After May 15th, (Thu) 2025, 17:00 (KST)<br>Can be claimed once per account</p>
 <p>Error Compensation can be claimed until May 22nd (Thu) 2025, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

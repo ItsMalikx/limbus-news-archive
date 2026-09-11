@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+} catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2024, Dec. 26th Scheduled Update Notice</title>
@@ -29,12 +32,11 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update">Update</span><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="notice">Notice</span></div><h1 class="notice-inline-title">2024, Dec. 26th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2024-12-23">December 23, 2024</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">2024, Dec. 26th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2024-12-23">December 23, 2024</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Dec. 26th, 2024 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<p>New Content</p>
-<hr>
+<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
 <p>1. New Target Extraction [New Target Extraction: Miracle in District 20 BokGak] (24/12/26 12:00 ~ 25/01/09 10:00 (KST))<br>The following E.G.Os will have increased odds of extraction.<br>- E.G.O [HE] : Christmas Nightmare Gregor, Christmas Nightmare Ishmael</p>
 <p>※ Christmas Nightmare Gregor and Christmas Nightmare Ishmael count as Season 5 Event E.G.Os.<br>※ Event Extraction E.G.O &#x27;Holiday Outis&#x27; will be a part of the New Target Extraction Miracle in District 20 BokGak. However, in order to avoid affecting the rates of the new E.G.O, it will not be added to the list of E.G.Os with increased odds of extraction.<br>Please note that Holiday Outis will be featured in the Yisang Exchange list, however.</p>
 <p>2. Target Extraction [Heathcliff]<br>(24/12/26 12:00 ~ 25/01/09 10:00 (KST))<br>The following Identities &amp; E.G.O Will have increased rates of extraction.<br>- E.G.O [HE] : Asymmetrical Inertia Heathcliff, Ya Śūnyatā Tad Rūpam Heathcliff<br>- E.G.O [TETH] : Fell Bullet Heathcliff<br>- E.G.O [ZAYIN] : Holiday Heathcliff<br>- 3★ : Wild Hunt Heathcliff, Öufi South Section 3 Heathcliff, The Pequod Harpooneer Heathcliff, Lobotomy E.G.O::Sunshower Heathcliff, R Corp. 4th Pack Rabbit Heathcliff<br>- 2★ : MultiCrack Office Fixer Heathcliff, Seven South Section 4 Heathcliff, N Corp. Kleinhammer Heathcliff, Shi South Section 5 Heathcliff<br>- 1★ : LCB Sinner Heathcliff</p>
@@ -44,8 +46,7 @@
 <p>5. New Packages<br>With the 2024. 12. 26 (KST) Scheduled Update, the following 2 new limited Packs will be added to the game.</p>
 <p>► Target Extraction Pack<br>- Contents: Decaextraction Ticket x 4<br>- Price: ￦33,000 / $21.99 / ¥3,000<br>- Purchase: Can be purchased only once<br>- Purchasable Period: 24. 12. 26 12:00 ~ 25. 01. 09 10:00 (KST)</p>
 <p>► E.G.O Upgrade Pack<br>- Contents : Takeoff Module - E.G.O Spinning [HE] x 1<br>- Price : ￦23,000 / $15.99 / ¥2,200<br>- Purchase: Can be purchased twice<br>- Purchasable Period: 24. 12. 26 12:00 ~ 25. 01. 09 10:00 (KST)</p>
-<p>Bug Fixes &amp; Improvements</p>
-<hr>
+<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
 <p>► Fixed an issue where Dawn Office Fixer Sinclair&#x27;s Defense Skill &#x27;Rue&#x27; did not work as written in its description<br>※ Relevant Effect : When in an Unstable E.G.O state, Base Power +M for every N Burn on target (max L)<br>- Before: This effect also activated when the unit was not in an Unstable E.G.O state.<br>- After: Adjusted so that the effect activates only when the unit is in an Unstable E.G.O state, to match the description</p>
 <p>► Fixed an issue where the damage indicator for the damages dealt by the third Coin of The Manager of La Manchaland Don Quixote&#x27;s Empowered Skill 3 &#x27;Ascendant Sancho Hardblood Arts - La Sangre&#x27; would show 0 damage dealt</p>
 <p>► Addressed the issue where, after using E.G.O Skills with 2 or more Coins, the camera would not reset properly after the animation is over, causing the affected characters to appear as though they are leaning to the side</p>
@@ -55,12 +56,10 @@
 <p>► Fixed an issue where gaining an E.G.O Gift in the first Choice Event Node after entering the Mirror Dungeon does not show the &#x27;E.G.O Gift GET!&quot; window</p>
 <p>► Fixed an issue where a passive effect of the boss of Intervallo III - Miracle in District 20, &#x27;I CAN&#x27;T BAG THE GIFTS!!&#x27; does not activate on certain Parts</p>
 <p>► Adjusted the icon of the item &#x27;Takeoff Module - E.G.O Spinning [WAW]<br>※ The icon has been adjusted to reflect the Tier of the E.G.O that can make use of this item.</p>
-<p>Maintenance &amp; Application Update Compensation</p>
-<hr>
+<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
 <p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 Jan 2nd, 2025 (KST)<br>- When : After Dec. 26th, 2024 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Jan 2nd (Thu) 2025, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<p>Notes</p>
-<hr>
+<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 
