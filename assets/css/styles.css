@@ -346,7 +346,7 @@ html[data-theme="dark"] .tag-pill {
 }
 
 .notice-title-block {
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.1rem;
 }
 
 .notice-inline-title {
@@ -363,10 +363,10 @@ html[data-theme="dark"] .tag-pill {
   font-weight: 500;
 }
 
-.notice-title-divider {
+.article-content .notice-title-divider {
   border: 0;
   border-top: 1px solid var(--line);
-  margin: 1.2rem 0 0;
+  margin: 0.75rem 0 0;
 }
 
 .article-content h2,
@@ -400,10 +400,11 @@ html[data-theme="dark"] .tag-pill {
   padding-left: 1.35em;
 }
 
-.article-content hr {
+.article-content hr:not(.notice-title-divider) {
   border: 0;
   border-top: 1px solid var(--line);
-  margin: 2em 0;
+  opacity: 0.65;
+  margin: 0.85em 0;
 }
 
 .article-content blockquote {
