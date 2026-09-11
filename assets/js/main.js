@@ -51,6 +51,8 @@ function renderFromLocation({ syncInput = true } = {}) {
   const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
   const requested = query ? Number(params.get("page") || 1) : archivePage;
   const page = Math.min(pages, Math.max(1, Number.isSafeInteger(requested) ? requested : 1));
+  const title = query ? "Search" : "Home";
+  document.title = page === 1 ? title : `${title} | Page ${page}`;
   const fragment = document.createDocumentFragment();
   filtered.slice((page - 1) * pageSize, page * pageSize)
     .forEach(notice => fragment.appendChild(renderNoticeCard(notice)));

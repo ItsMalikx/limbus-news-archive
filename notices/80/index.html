@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Notice on System Changes to Offense/Defense Levels | Limbus Company News Archive</title>
+  <title>Notice on System Changes to Offense/Defense Levels</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -29,17 +29,18 @@
 
     <main class="container-wide notice-layout">
       <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span></div><h1 class="notice-inline-title">Notice on System Changes to Offense/Defense Levels</h1><div class="notice-date"><time datetime="2023-06-23">2023-06-23</time></div><hr class="notice-title-divider"></div><p>--------------------------------------------------</p>
-<p>Hello, this is Project Moon.</p>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix">Bug Fix</span><span class="tag-pill" data-tag="update">Update</span></div><h1 class="notice-inline-title">Notice on System Changes to Offense/Defense Levels</h1><div class="notice-date"><time datetime="2023-06-23">June 23, 2023</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>For the sake of balancing and intuitiveness, the base values of Offense/Defense Levels will change to be similar to the unit&#x27;s current level.</p>
-<p>Aims<br>----</p>
+<p>Aims</p>
+<hr>
 <p>Offense/Defense Levels were implemented as a way to prevent the Coin Power values from inflating exceedingly.<br>(e.g. To prevent cases like Base Coin Power 50 with a +Coin modifier of 20 with 3 Coins)</p>
 <p>Also, the base Offense/Defense Levels of units were set to have slight variations from each other to reflect the character&#x27;s traits (e.g. low defense but attack-focused), based on the unit&#x27;s current level.</p>
 <p>However, the current method of increasing Offense/Defense Levels by fixed coefficients could cause this gap to widen excessively as the unit&#x27;s level grows higher.<br>Because this can create a greater difference in the minimum and maximum values of Offense/Defense Levels than we intended as the level cap is raised in the long-term, we&#x27;ve decided that this needed addressing.</p>
 <p>In consideration of future character balance, the current method of fixed coefficients will not be stable in the long term, so we have adjusted the way each unit&#x27;s Offense and Defense Level are determined.</p>
 <p>Also, we are planning to iron out unintuitive factors where the Offense/Defense Level can differ greatly from the unit&#x27;s current level.<br>(e.g. At unit level 35, the Offense Level can be 45, which makes it difficult to gauge the Defense Level from the unit&#x27;s level and vice versa. If unit levels go up to 50 in the current system, the Offense Level could go up to 80, furthering the confusion.)</p>
 <p>This may result in certain skills&#x27; Offense Level being lower than before.<br>To offset this, we will adjust the Offense/Defense Levels of enemies at the same time to ensure that the changes don&#x27;t significantly affect the damage values and performance of skills.</p>
-<p>Changes<br>-------</p>
+<p>Changes</p>
+<hr>
 <p>1. Changed the Calculation for Offense/Defense Levels<br>The base values of a unit and its E.G.O&#x27;s skill levels, and the unit&#x27;s Defense Level will be determined by the unit&#x27;s current level.</p>
 <p>- Old : Each skill has its own growth rate that increases the Offense/Defense Level as the unit&#x27;s level goes up</p>
 <p>- New : The base values of Offense/Defense Levels are determined by the unit&#x27;s current level, and a fixed modifier unique to the unit will be added or subtracted to produce the final value.<br>(e.g. When a unit has an Offense Level modifier of +4 and a Defense Level modifier of -2: At level 35, the unit&#x27;s Offense Level will be 39 and the Defense Level will be 33; At level 50, the Offense Level will be 54, and the Defense Level will be 48.)</p>
@@ -57,7 +58,7 @@
 <p>· LCB Sinner Faust - Upward Slash, Acute Studies<br>· Kurokumo Wakashu Ryoshu - Lenticular Swirl<br>· South Seven Section 6 Director Outis - Exploit the Gap, Field Command<br>· South Seven Section 6 Ryoshu - Upper Slash<br>· W Corp. L2 Cleanup Agent Meursault - Energy Current<br>· LCCB Assistant Manager Rodion - Suppress<br>· Ishmael&#x27;s E.G.O - Roseate Desire<br>· Hong Lu&#x27;s E.G.O - Roseate Desire</p>
 <p>We will adjust the Offense/Defense Levels of enemies at the same time to ensure that the changes don&#x27;t significantly affect the damage values and performance of the skills.</p></div>
 
-        <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"><a class="notice-pagination__link" rel="prev" href="/notices/81/">← Newer</a><a class="notice-pagination__link" rel="next" href="/notices/79/">Older →</a></nav>
+        <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
 
