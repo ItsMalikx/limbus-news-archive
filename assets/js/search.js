@@ -1,5 +1,4 @@
 import { stripHtml } from "./utils.js";
-import { SITE_CONFIG } from "./config.js";
 
 export function buildSearchIndex(notices) {
   return notices.map((notice) => {

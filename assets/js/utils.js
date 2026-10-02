@@ -35,11 +35,6 @@ export function stripHtml(html = "") {
   return rawText.replace(/\s\s+/g, " ").trim();
 }
 
-export function getQueryParam(name) {
-  const params = new URLSearchParams(window.location.search);
-  return params.get(name);
-}
-
 export function debounce(fn, delay = 120) {
   let timer;
   return (...args) => {
@@ -88,10 +83,6 @@ export async function fetchNotices(url) {
   }
 
   return response.json();
-}
-
-function looksLikeRealHtml(content) {
-  return /<(p|br|hr|ul|ol|li|strong|em|blockquote|h1|h2|h3|h4|h5|h6)\b[^>]*>/i.test(content);
 }
 
 function convertPlainTextNoticeToHtml(text, noticeTitle = "") {
