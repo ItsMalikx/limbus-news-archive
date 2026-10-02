@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice : Adjustments to Some Lunacy Packages | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/115/">
@@ -19,48 +18,32 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
     <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span></div><h1 class="notice-inline-title">Notice : Adjustments to Some Lunacy Packages</h1><div class="notice-date"><time datetime="2023-08-30">August 30, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, dear Manager.</p>
+      <nav class="toc" id="noticeToc" aria-label="Contents" hidden>
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="announcements" style="--tag-color: #68B7ED">Announcements</span></p><h1 class="notice-inline-title">Notice : Adjustments to Some Lunacy Packages</h1><div class="notice-date"><time datetime="2023-08-30">August 30, 2023</time></div><div class="tag-list"><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span><span class="tag-pill" data-tag="rewards" style="--tag-color: #ED9658">Rewards</span></div><hr class="notice-title-divider"></div><p>Greetings, dear Manager.</p>
 <p>Some of the packages sold in the Lunacy Shop will be adjusted.</p>
 <p>With the May 4th Scheduled Update, Lunacy package prices have been adjusted in compliance with the App Store global price(KRW, JPY only) adjustments.</p>
 <p>We have notified you that, while the contents of the Packages will remain the same, package prices may be adjusted in the future with changes to the store(Based on USD) policies.</p>
 <h2 class="notice-section-heading">[ Price Adjustment Table ]</h2>
-<p>Type        : Lunacy<br>Name        : Lunacy (1st Purchase)<br>Current     : USD $0.99 / KRW ₩1,500 / JPY ¥160<br>New         : USD $0.99 / KRW ₩1,100 / JPY ¥100</p>
-<p>Type        : Lunacy<br>Name        : Lunacy Bundle (1st Purchase)<br>Current     : USD $3.99 / KRW ₩6,000 / JPY ¥650<br>New         : USD $3.99 / KRW ₩5,500 / JPY ¥600</p>
-<p>Type        : Lunacy<br>Name        : Lunacy Bouquet (1st Purchase)<br>Current     : USD $11.99 / KRW ₩19,000 / JPY ¥1,900<br>New         : USD $11.99 / KRW ₩17,000 / JPY ¥1,800</p>
-<p>Type        : Lunacy<br>Name        : Lunacy Crate (1st Purchase)<br>Current     : USD $23.99 / KRW ₩37,000 / JPY ¥3,900<br>New         : USD $23.99 / KRW ₩33,000 / JPY ¥3,500</p>
-<p>Type        : Lunacy<br>Name        : Lunacy Mound (1st Purchase)<br>Current     : USD $41.99 / KRW ₩65,000 / JPY ¥6,800<br>New         : USD $41.99 / KRW ₩55,000 / JPY ¥6,000</p>
-<p>Type        : Lunacy<br>Name        : Lunacy Hoard (1st Purchase)<br>Current     : USD $79.99 / KRW ₩119,000 / JPY ¥12,800<br>New         : USD $79.99 / KRW ₩110,000 / JPY ¥12,000</p>
-<p>Type        : Lunacy<br>Name        : Lunacy<br>Current     : USD $0.99 / KRW ₩1,500 / JPY ¥160<br>New         : USD $0.99 / KRW ₩1,100 / JPY ¥100</p>
-<p>Type        : Lunacy<br>Name        : Lunacy Bundle<br>Current     : USD $3.99 / KRW ₩6,000 / JPY ¥650<br>New         : USD $3.99 / KRW ₩5,500 / JPY ¥600</p>
-<p>Type        : Lunacy<br>Name        : Lunacy Bouquet<br>Current     : USD $11.99 / KRW ₩19,000 / JPY ¥1,900<br>New         : USD $11.99 / KRW ₩17,000 / JPY ¥1,800</p>
-<p>Type        : Lunacy<br>Name        : Lunacy Crate<br>Current     : USD $23.99 / KRW ₩37,000 / JPY ¥3,900<br>New         : USD $23.99 / KRW ₩33,000 / JPY ¥3,500</p>
-<p>Type        : Lunacy<br>Name        : Lunacy Mound<br>Current     : USD $41.99 / KRW ₩65,000 / JPY ¥6,800<br>New         : USD $41.99 / KRW ₩55,000 / JPY ¥6,000</p>
-<p>Type        : Lunacy<br>Name        : Lunacy Hoard<br>Current     : USD $79.99 / KRW ₩119,000 / JPY ¥12,800<br>New         : USD $79.99 / KRW ₩110,000 / JPY ¥12,000</p>
-<p>Type        : Lunacy<br>Name        : Monthly Lunacy Supply<br>Current     : USD $6.99 / KRW ₩9,900 / JPY ¥1,100<br>New         : USD $6.99 / KRW ₩9,900 / JPY ¥1,000</p>
-<p>Type        : Packs<br>Name        : Monthly Lunacy Batch<br>Current     : USD $2.99 / KRW ₩4,400 / JPY ¥480<br>New         : USD $2.99 / KRW ₩4,400 / JPY ¥400</p>
-<p>Type        : Packs<br>Name        : Monthly Extraction Pack<br>Current     : USD $9.99 / KRW ₩15,000 / JPY ¥1,600<br>New         : USD $9.99 / KRW ₩14,000 / JPY ¥1,500</p>
-<p>Type        : Packs<br>Name        : Monthly Training Pack I<br>Current     : USD $30.99 / KRW ₩48,000 / JPY ¥4,900<br>New         : USD $30.99 / KRW ₩44,000 / JPY ¥4,500</p>
-<p>Type        : Packs<br>Name        : Monthly Training Pack II<br>Current     : USD $30.99 / KRW ₩48,000 / JPY ¥4,900<br>New         : USD $30.99 / KRW ₩44,000 / JPY ¥4,500</p>
-<p>Type        : Packs<br>Name        : New Manager&#x27;s Onboarding Pack<br>Current     : USD $21.99 / KRW ₩33,000 / JPY ¥3,600<br>New         : USD $21.99 / KRW ₩33,000 / JPY ¥3,000</p>
-<p>Type        : Packs<br>Name        : Season 1 Orienteer Supplies<br>Current     : USD $59.99 / KRW ₩88,000 / JPY ¥9,800<br>New         : USD $59.99 / KRW ₩88,000 / JPY ¥9,000</p>
-<p>Type        : Packs<br>Name        : Weekly Extraction Pack<br>Current     : USD $6.99 / KRW ₩9,900 / JPY ¥1,100<br>New         : USD $6.99 / KRW ₩9,900 / JPY ¥1,000</p>
-<p>Type        : Packs<br>Name        : Weekly Thread Pack<br>Current     : USD $6.99 / KRW ₩9,900 / JPY ¥1,100<br>New         : USD $6.99 / KRW ₩9,900 / JPY ¥1,000</p>
-<p>Type        : Packs<br>Name        : Weekly Enkephalin Pack<br>Current     : USD $6.99 / KRW ₩9,900 / JPY ¥1,100<br>New         : USD $6.99 / KRW ₩9,900 / JPY ¥1,000</p>
-<p>Type        : Battle Pass<br>Name        : Limbus Pass<br>Current     : USD $10.99 / KRW ₩17,000 / JPY ¥1,800<br>New         : USD $10.99 / KRW ₩15,000 / JPY ¥1,500</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--records"><thead><tr><th>Type</th><th>Name</th><th>Current</th><th>New</th></tr></thead><tbody><tr><td>Lunacy</td><td>Lunacy (1st Purchase)</td><td>USD $0.99 / KRW ₩1,500 / JPY ¥160</td><td>USD $0.99 / KRW ₩1,100 / JPY ¥100</td></tr><tr><td>Lunacy</td><td>Lunacy Bundle (1st Purchase)</td><td>USD $3.99 / KRW ₩6,000 / JPY ¥650</td><td>USD $3.99 / KRW ₩5,500 / JPY ¥600</td></tr><tr><td>Lunacy</td><td>Lunacy Bouquet (1st Purchase)</td><td>USD $11.99 / KRW ₩19,000 / JPY ¥1,900</td><td>USD $11.99 / KRW ₩17,000 / JPY ¥1,800</td></tr><tr><td>Lunacy</td><td>Lunacy Crate (1st Purchase)</td><td>USD $23.99 / KRW ₩37,000 / JPY ¥3,900</td><td>USD $23.99 / KRW ₩33,000 / JPY ¥3,500</td></tr><tr><td>Lunacy</td><td>Lunacy Mound (1st Purchase)</td><td>USD $41.99 / KRW ₩65,000 / JPY ¥6,800</td><td>USD $41.99 / KRW ₩55,000 / JPY ¥6,000</td></tr><tr><td>Lunacy</td><td>Lunacy Hoard (1st Purchase)</td><td>USD $79.99 / KRW ₩119,000 / JPY ¥12,800</td><td>USD $79.99 / KRW ₩110,000 / JPY ¥12,000</td></tr><tr><td>Lunacy</td><td>Lunacy</td><td>USD $0.99 / KRW ₩1,500 / JPY ¥160</td><td>USD $0.99 / KRW ₩1,100 / JPY ¥100</td></tr><tr><td>Lunacy</td><td>Lunacy Bundle</td><td>USD $3.99 / KRW ₩6,000 / JPY ¥650</td><td>USD $3.99 / KRW ₩5,500 / JPY ¥600</td></tr><tr><td>Lunacy</td><td>Lunacy Bouquet</td><td>USD $11.99 / KRW ₩19,000 / JPY ¥1,900</td><td>USD $11.99 / KRW ₩17,000 / JPY ¥1,800</td></tr><tr><td>Lunacy</td><td>Lunacy Crate</td><td>USD $23.99 / KRW ₩37,000 / JPY ¥3,900</td><td>USD $23.99 / KRW ₩33,000 / JPY ¥3,500</td></tr><tr><td>Lunacy</td><td>Lunacy Mound</td><td>USD $41.99 / KRW ₩65,000 / JPY ¥6,800</td><td>USD $41.99 / KRW ₩55,000 / JPY ¥6,000</td></tr><tr><td>Lunacy</td><td>Lunacy Hoard</td><td>USD $79.99 / KRW ₩119,000 / JPY ¥12,800</td><td>USD $79.99 / KRW ₩110,000 / JPY ¥12,000</td></tr><tr><td>Lunacy</td><td>Monthly Lunacy Supply</td><td>USD $6.99 / KRW ₩9,900 / JPY ¥1,100</td><td>USD $6.99 / KRW ₩9,900 / JPY ¥1,000</td></tr><tr><td>Packs</td><td>Monthly Lunacy Batch</td><td>USD $2.99 / KRW ₩4,400 / JPY ¥480</td><td>USD $2.99 / KRW ₩4,400 / JPY ¥400</td></tr><tr><td>Packs</td><td>Monthly Extraction Pack</td><td>USD $9.99 / KRW ₩15,000 / JPY ¥1,600</td><td>USD $9.99 / KRW ₩14,000 / JPY ¥1,500</td></tr><tr><td>Packs</td><td>Monthly Training Pack I</td><td>USD $30.99 / KRW ₩48,000 / JPY ¥4,900</td><td>USD $30.99 / KRW ₩44,000 / JPY ¥4,500</td></tr><tr><td>Packs</td><td>Monthly Training Pack II</td><td>USD $30.99 / KRW ₩48,000 / JPY ¥4,900</td><td>USD $30.99 / KRW ₩44,000 / JPY ¥4,500</td></tr><tr><td>Packs</td><td>New Manager&#x27;s Onboarding Pack</td><td>USD $21.99 / KRW ₩33,000 / JPY ¥3,600</td><td>USD $21.99 / KRW ₩33,000 / JPY ¥3,000</td></tr><tr><td>Packs</td><td>Season 1 Orienteer Supplies</td><td>USD $59.99 / KRW ₩88,000 / JPY ¥9,800</td><td>USD $59.99 / KRW ₩88,000 / JPY ¥9,000</td></tr><tr><td>Packs</td><td>Weekly Extraction Pack</td><td>USD $6.99 / KRW ₩9,900 / JPY ¥1,100</td><td>USD $6.99 / KRW ₩9,900 / JPY ¥1,000</td></tr><tr><td>Packs</td><td>Weekly Thread Pack</td><td>USD $6.99 / KRW ₩9,900 / JPY ¥1,100</td><td>USD $6.99 / KRW ₩9,900 / JPY ¥1,000</td></tr><tr><td>Packs</td><td>Weekly Enkephalin Pack</td><td>USD $6.99 / KRW ₩9,900 / JPY ¥1,100</td><td>USD $6.99 / KRW ₩9,900 / JPY ¥1,000</td></tr><tr><td>Battle Pass</td><td>Limbus Pass</td><td>USD $10.99 / KRW ₩17,000 / JPY ¥1,800</td><td>USD $10.99 / KRW ₩15,000 / JPY ¥1,500</td></tr></tbody></table></div>
 <p>[Apr. 21st Steam Notice] Notice of Changes to In-game Purchase Prices</p>
 <p>After an internal review, we have determined that the pricing of the App Store will remain consistent for the foreseeable future. Therefore, we plan to adjust some of the Lunacy packages accordingly.</p>
 <p>Considering the importance of the matter, we will carefully review the package contents and provide you with a new notice including the changes.</p>
@@ -69,13 +52,14 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

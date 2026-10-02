@@ -1,47 +1,80 @@
+/* Limbus Company News Archive. Tokens and rules are documented in DESIGN.md. */
+
+@font-face {
+  font-family: "Schibsted Grotesk";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("../fonts/schibsted-grotesk-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Schibsted Grotesk";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("../fonts/schibsted-grotesk-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Light theme */
 :root {
-  --bg: #dedede;
-  --bg-elev: #e3e3e3;
-  --bg-elev-2: #e8e8e8;
-  --text: #1a1a1a;
-  --text-soft: #404040;
-  --text-muted: #595959;
-  --line: rgba(0, 0, 0, 0.08);
-  --line-strong: rgba(0, 0, 0, 0.14);
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --bg: #f4f4f1;
+  --surface: #ffffff;
+  --surface-2: #ebebe7;
+  --line: #e0e0db;
+  --line-strong: #cbcbc5;
+  --text: #141618;
+  --text-soft: #3b3f45;
+  --text-muted: #60656d;
+  --accent: #0a5fc4;
+
+  --font: "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --gutter: clamp(16px, 4vw, 56px);
   --radius: 18px;
-  --transition: 180ms ease;
+  --pill: 999px;
+  --ease: 160ms cubic-bezier(0.2, 0, 0, 1);
+  --measure: 70ch;
+  --topbar: 60px;
+  color-scheme: light;
 }
 
+/* Dark theme (default; set on <html> before paint) */
 html[data-theme="dark"] {
-  --bg: #181818;
-  --bg-elev: #1c1c1c;
-  --bg-elev-2: #212121;
-  --text: #cccccc;
-  --text-soft: #a8a8a8;
-  --text-muted: #7d7d7d;
+  --bg: #141414;
+  --surface: #1b1b1b;
+  --surface-2: #232323;
   --line: #2b2b2b;
-  --line-strong: #3c3c3c;
-  --shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  --line-strong: #3b3b3b;
+  --text: #ececec;
+  --text-soft: #bdbdbd;
+  --text-muted: #8e8e8e;
+  --accent: #8ab4f8;
+  color-scheme: dark;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-}
-
 html {
-  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.5;
   background: var(--bg);
   color: var(--text);
-  transition: background var(--transition), color var(--transition);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -54,27 +87,23 @@ img {
   display: block;
 }
 
-code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.92em;
-  background: var(--bg-elev-2);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 0.15rem 0.4rem;
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
-.container-wide {
-  width: min(1200px, calc(100% - 32px));
-  margin: 0 auto;
+::selection {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
-.container-narrow {
-  width: min(720px, calc(100% - 32px));
-  margin: 0 auto;
+[hidden] {
+  display: none !important;
 }
 
+/* Layout: fluid, so wide screens are used rather than left empty. */
 .site-shell {
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -83,247 +112,343 @@ main {
   flex-grow: 1;
 }
 
+.container-wide {
+  width: min(1600px, 100% - 2 * var(--gutter));
+  margin: 0 auto;
+}
+
+.container-narrow {
+  width: min(720px, 100% - 2 * var(--gutter));
+  margin: 0 auto;
+}
+
+/* Top bar: cross-site breadcrumb, search on inner pages, theme switch. */
 .topbar {
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(14px);
   background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: saturate(160%) blur(16px);
+  -webkit-backdrop-filter: saturate(160%) blur(16px);
   border-bottom: 1px solid var(--line);
 }
 
 .topbar__inner {
-  width: 100%;
-  max-width: none;
-  padding-inline: clamp(16px, 2.5vw, 40px);
+  min-height: var(--topbar);
+  padding-inline: var(--gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 72px;
   gap: 16px;
 }
+
+
+
+
 
 .brand {
   min-width: 0;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   font-weight: 700;
-  letter-spacing: -0.02em;
 }
 
 .brand__mark {
   flex-shrink: 0;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   background-color: var(--text);
   -webkit-mask: url("../icons/brand-mark.svg") no-repeat center / contain;
   mask: url("../icons/brand-mark.svg") no-repeat center / contain;
 }
 
 .brand__text {
-  font-size: 0.98rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .topbar__actions {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
+
+
+
 
 .icon-btn {
   appearance: none;
-  border: 1px solid var(--line-strong);
-  background: var(--bg-elev);
-  color: var(--text);
-  border-radius: 999px;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   display: inline-grid;
   place-items: center;
-  font: inherit;
+  border: 1px solid transparent;
+  border-radius: var(--pill);
+  background: transparent;
+  color: var(--text-soft);
   cursor: pointer;
-  transition: transform var(--transition), background var(--transition), border-color var(--transition);
+  transition: background var(--ease), color var(--ease), border-color var(--ease);
 }
 
 .icon-btn:hover {
-  transform: translateY(-1px);
-}
-
-.btn {
-  appearance: none;
-  border: 1px solid var(--line-strong);
-  background: var(--text);
-  color: var(--bg);
-  border-radius: 999px;
-  padding: 0.78rem 1rem;
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform var(--transition), opacity var(--transition), background var(--transition), color var(--transition), border-color var(--transition);
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-.btn--ghost {
-  background: var(--bg-elev);
+  background: var(--surface-2);
+  border-color: var(--line);
   color: var(--text);
 }
 
+.icon-btn:active {
+  transform: scale(0.94);
+}
+
+/* Moon in dark mode, sun in light mode. */
+.theme-toggle::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background: currentColor;
+  -webkit-mask: var(--theme-icon) no-repeat center / contain;
+  mask: var(--theme-icon) no-repeat center / contain;
+}
+
+html[data-theme="dark"] .theme-toggle {
+  --theme-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z'/%3E%3C/svg%3E");
+}
+
+html:not([data-theme="dark"]) .theme-toggle {
+  --theme-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4'/%3E%3C/svg%3E");
+}
+
+
+/* Archive masthead */
 .archive-layout {
-  display: block;
-  padding: 28px 0 48px;
-}
-
-.notice-layout {
-  display: block;
-  padding: 28px 0 56px;
-}
-
-.content-panel,
-.article-panel {
-  min-width: 0;
-}
-
-.archive-hero,
-.article-panel,
-.notice-card,
-.empty-card {
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  padding: clamp(36px, 6vw, 72px) 0 72px;
 }
 
 .archive-hero {
-  padding: clamp(20px, 4vw, 28px) clamp(20px, 4vw, 30px) clamp(18px, 4vw, 24px);
-  margin-bottom: 18px;
+  margin-bottom: clamp(28px, 4vw, 44px);
 }
 
-.archive-hero__divider {
-  height: 1px;
-  background: var(--line);
-  margin: 18px 0;
-}
 
 .hero-title {
   margin: 0;
-  font-size: clamp(2rem, 4vw, 3.1rem);
-  letter-spacing: -0.04em;
-  line-height: 1.05;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
 }
 
+
+
+.hero-lede {
+  max-width: 52ch;
+  margin: 20px 0 0;
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
+
+
+
+
+/* Search and tag filters stay reachable while scrolling the archive. */
 .archive-controls {
-  display: block;
-}
-
-.search-block {
-  max-width: 560px;
+  position: sticky;
+  top: var(--topbar);
+  z-index: 50;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  margin: 0 calc(-1 * var(--gutter));
+  padding: 12px var(--gutter);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(160%) blur(16px);
+  -webkit-backdrop-filter: saturate(160%) blur(16px);
 }
 
 .input {
-  width: 100%;
-  border-radius: 12px;
+  flex: 1 1 320px;
+  max-width: 520px;
+  height: 46px;
+  padding: 0 20px 0 46px;
   border: 1px solid var(--line-strong);
-  background: var(--bg-elev-2);
+  border-radius: var(--pill);
+  background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%238b9098' stroke-width='2' stroke-linecap='round' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 18px center;
   color: var(--text);
-  padding: 0.9rem 1rem;
   font: inherit;
-  outline: none;
+  transition: border-color var(--ease), box-shadow var(--ease);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
 }
 
 .input:focus {
-  border-color: var(--text-muted);
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
-.archive-results {
-  margin: 10px 0 0;
-  color: var(--text-soft);
-  font-size: 0.98rem;
+.input:disabled {
+  opacity: 0.7;
 }
 
-.section-title {
-  margin: 0;
-  font-size: 1rem;
-  letter-spacing: -0.02em;
-}
-
-.section-subtitle {
-  color: var(--text-soft);
-}
-
-.notice-list {
-  display: grid;
-  gap: 20px;
-}
-
-.notice-card {
-  display: block;
-  padding: clamp(18px, 4vw, 24px); 
-  transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
-}
-
-.notice-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--line-strong);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-}
-
-.tag-list {
+.tag-filters {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 12px;
 }
 
-.tag-pill {
+.tag-filters:empty {
+  display: none;
+}
+
+/* Phones: one swipeable row instead of several wrapped rows in the sticky bar. */
+@media (max-width: 759px) {
+  .tag-filters {
+    flex-wrap: nowrap;
+    width: calc(100% + 2 * var(--gutter));
+    margin: 0 calc(-1 * var(--gutter));
+    padding: 0 var(--gutter) 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tag-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tag-filter {
+    flex-shrink: 0;
+  }
+}
+
+.tag-filter {
   --tag-color: var(--text-muted);
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--pill);
+  background: transparent;
+  color: var(--text-soft);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--ease), border-color var(--ease), color var(--ease);
+}
 
-  display: inline-block;
-  font-size: clamp(10px, 2.5vw, 12px);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 4px 12px;
-  border-radius: 50px;
-  line-height: 1.2;
-
-  color: color-mix(in srgb, var(--tag-color) 20%, #000000);
-  border: 1.5px solid color-mix(in srgb, var(--tag-color) 20%, #000000);
+.tag-filter::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
   background: var(--tag-color);
 }
 
-html[data-theme="dark"] .tag-pill {
-  color: var(--tag-color);
-  border: 1.5px solid var(--tag-color);
-  background: color-mix(in srgb, var(--tag-color) 15%, transparent);
+.tag-filter[data-tag=""]::before {
+  display: none;
 }
 
-.notice-card__title {
-  margin: 0 0 8px;
-  font-size: clamp(1.15rem, 3.5vw, 1.4rem);
-  letter-spacing: -0.015em;
-  line-height: 1.3;
+.tag-filter:hover {
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+
+.tag-filter[aria-pressed="true"] {
+  border-color: color-mix(in srgb, var(--tag-color) 55%, var(--line));
+  background: color-mix(in srgb, var(--tag-color) 14%, transparent);
+  color: var(--text);
+}
+
+.tag-filter[data-tag=""][aria-pressed="true"],
+.tag-filter[data-tag=""]:only-child {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+
+.tag-filter__count {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.archive-results {
+  margin: 6px 0 18px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.section-title {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
   font-weight: 700;
 }
 
-.notice-card__date {
-  display: block;
+/* Notice grid: one column on phones, more as the screen widens. */
+.notice-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr));
+  gap: 14px;
+}
+
+.notice-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 20px 22px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: background var(--ease), border-color var(--ease);
+}
+
+.notice-card:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+}
+
+.notice-card__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
   color: var(--text-muted);
-  font-size: clamp(11.5px, 2.5vw, 13px);
-  font-weight: 500;
-  margin-bottom: 16px;
+  font-size: 0.8125rem;
+  font-weight: 550;
+}
+
+.notice-card__id {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.8;
+}
+
+.notice-card__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 750;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
 }
 
 .notice-card__summary {
   margin: 0;
   color: var(--text-soft);
-  font-size: clamp(13.5px, 3vw, 15px);
-  line-height: 1.6;
-  
+  font-size: 0.9375rem;
+  line-height: 1.55;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   line-clamp: 3;
@@ -331,174 +456,105 @@ html[data-theme="dark"] .tag-pill {
   overflow: hidden;
 }
 
-.empty-card {
-  padding: 24px;
+.notice-card > .tag-list {
+  margin: auto 0 0;
+  padding-top: 6px;
 }
 
-.article-panel {
-  padding: clamp(20px, 5vw, 32px);
+/* The newest notice on the first page leads the grid. */
+@media (min-width: 720px) {
+  .notice-card--featured {
+    grid-column: span 2;
+    padding: 28px 30px 30px;
+  }
+
+  .notice-card--featured .notice-card__title {
+    font-size: clamp(1.6rem, 2.6vw, 2.25rem);
+    font-weight: 800;
+    line-height: 1.05;
+  }
+
+  .notice-card--featured .notice-card__summary {
+    font-size: 1.0625rem;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    max-width: 68ch;
+  }
 }
 
-.article-content {
-  width: 100%;
-  max-width: none;
-  font-size: 1.0625rem;
-  line-height: 1.72;
-  letter-spacing: -0.01em;
-}
-
-.article-content > *:first-child {
-  margin-top: 0;
-}
-
-.notice-title-block {
-  display: flow-root;
-  margin-bottom: clamp(2rem, 4vw, 2.75rem);
-}
-
-.notice-inline-title {
-  margin: 0 0 8px;
-  font-size: clamp(1.7rem, 4vw, 2.4rem);
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-}
-
-.notice-date {
-  display: block;
-  color: var(--text-muted);
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.article-content .notice-title-divider {
-  border: 0;
-  border-top: 2px solid var(--line-strong);
-  margin: 1.1rem 0 0;
-}
-
-.article-content h2,
-.article-content h3,
-.article-content h4 {
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-}
-
-.article-content h2 {
-  margin-top: 2.3em;
-  margin-bottom: 0.7em;
-  font-size: 1.55rem;
-}
-
-.article-content h3 {
-  margin-top: 1.8em;
-  margin-bottom: 0.6em;
-  font-size: 1.22rem;
-}
-
-.article-content p,
-.article-content ul,
-.article-content ol,
-.article-content blockquote {
-  margin: 1em 0;
-}
-
-.article-content ul,
-.article-content ol {
-  padding-left: 1.35em;
-}
-
-/* Main sections and nested topics have their own type and divider scale. */
-.article-content .notice-section-heading {
-  margin: 2.4rem 0 0;
-  font-size: clamp(1.3rem, 2.5vw, 1.55rem);
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.3;
-}
-
-.article-content .notice-subsection-heading {
-  margin: 1.7rem 0 0.55rem;
-  font-size: clamp(1.08rem, 2vw, 1.2rem);
-  font-weight: 600;
-  color: var(--text-soft);
-  line-height: 1.4;
-}
-
-.article-content .notice-title-block + * {
-  margin-top: 0;
-}
-
-.article-content .notice-section-divider {
-  border: 0;
-  border-top: 1px solid var(--line);
-  margin: 0.6rem 0 1.15rem;
-  opacity: 0.8;
-}
-
-.article-content .notice-subsection-divider {
-  width: min(12rem, 45%);
-  border: 0;
-  border-top: 1px solid var(--line);
-  margin: 0.35rem 0 0.85rem;
-}
-
-.article-content .notice-section-break {
-  width: 30%;
-  border: 0;
-  border-top: 1px solid var(--line);
-  margin: 1.75rem auto;
-}
-
-.article-content blockquote {
-  margin-left: 0;
-  padding: 0.8rem 1rem;
-  border-left: 3px solid var(--text-muted);
-  background: var(--bg-elev-2);
-  border-radius: 0 12px 12px 0;
-}
-
-.notice-pagination {
-  border-top: 1px solid var(--line);
-  margin-top: 32px;
-  padding-top: 20px;
-}
-
-.notice-pagination__desktop,
-.notice-pagination__mobile {
+/* Tags carry the color in the interface. */
+.tag-list {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.tag-pill {
+  --tag-color: var(--text-muted);
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: var(--pill);
+  font-size: 0.6875rem;
+  font-weight: 650;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--tag-color) 52%, #000);
+  background: color-mix(in srgb, var(--tag-color) 14%, #fff);
+  border: 1px solid color-mix(in srgb, var(--tag-color) 38%, #fff);
+}
+
+/* Desaturated toward the text color so tags read as labels, not neon. */
+html[data-theme="dark"] .tag-pill {
+  color: color-mix(in srgb, var(--tag-color) 45%, #d4d4d1);
+  background: color-mix(in srgb, var(--tag-color) 9%, transparent);
+  border-color: color-mix(in srgb, var(--tag-color) 30%, transparent);
+}
+
+.empty-card {
+  grid-column: 1 / -1;
+  padding: 48px 4px;
+  color: var(--text-soft);
+}
+
+.empty-card p {
+  margin: 0;
+}
+
+/* Pagination (archive pages and newer/older links) */
+.notice-pagination {
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
+  margin-top: 36px;
 }
 
 .notice-pagination__link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
   min-width: 44px;
-  color: var(--text);
+  min-height: 44px;
+  padding: 8px 16px;
   border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 0 16px;
-  background: var(--bg-elev-2);
-  font-weight: 500;
-  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  border-radius: var(--pill);
+  color: var(--text-soft);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
-}
-
-a.notice-pagination__link {
-  cursor: pointer;
+  transition: background var(--ease), color var(--ease), border-color var(--ease);
 }
 
 a.notice-pagination__link:hover:not(.active) {
-  background: var(--line);
+  background: var(--surface-2);
+  color: var(--text);
 }
 
 .notice-pagination__link.active {
   background: var(--text);
-  color: var(--bg);
   border-color: var(--text);
+  color: var(--bg);
   pointer-events: none;
 }
 
@@ -507,132 +563,5393 @@ a.notice-pagination__link:hover:not(.active) {
   opacity: 0.45;
 }
 
-.notice-pagination__info {
-  flex-grow: 1;
-  text-align: center;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-muted);
+/* Article: readable column, with an outline beside it on wide screens. */
+.notice-layout {
+  padding: clamp(24px, 4vw, 44px) 0 80px;
 }
 
-.notice-pagination__mobile {
+.article-panel {
+  min-width: 0;
+  max-width: var(--measure);
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  margin-bottom: clamp(8px, 2vw, 20px);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color var(--ease);
+}
+
+.back-link:hover {
+  color: var(--text);
+}
+
+.article-content {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+.article-content > *:first-child {
+  margin-top: 0;
+}
+
+.notice-title-block {
+  display: flow-root;
+  margin-bottom: clamp(28px, 5vw, 40px);
+}
+
+.notice-inline-title {
+  margin: 6px 0 12px;
+  font-size: clamp(2.1rem, 5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+.notice-date {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.article-content .notice-title-divider {
+  border: 0;
+  border-top: 1px solid var(--line-strong);
+  margin: 22px 0 0;
+}
+
+.article-content p,
+.article-content ul,
+.article-content ol {
+  margin: 0 0 1.1em;
+}
+
+.article-content ul,
+.article-content ol {
+  padding-left: 1.35em;
+}
+
+/* Generated notice structure: sections (h2), nested topics (h3), and breaks. */
+.article-content .notice-section-heading,
+.article-content h2 {
+  margin: 2.4em 0 0;
+  font-size: clamp(1.4rem, 2.8vw, 1.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  scroll-margin-top: calc(var(--topbar) + 24px);
+}
+
+.article-content .notice-section-divider {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 12px 0 18px;
+}
+
+.article-content .notice-subsection-heading,
+.article-content h3 {
+  margin: 1.8em 0 0.5em;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.article-content .notice-subsection-divider {
+  width: min(10rem, 40%);
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 4px 0 12px;
+}
+
+.article-content .notice-section-break {
+  width: 4rem;
+  border: 0;
+  border-top: 1px solid var(--line-strong);
+  margin: 2.2em auto;
+}
+
+.article-content .notice-title-block + * {
+  margin-top: 0;
+}
+
+#noticePagination {
+  justify-content: space-between;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+#noticePagination:empty {
   display: none;
 }
 
+#noticePagination > a[rel="next"] {
+  margin-left: auto;
+}
+
+/* Error page */
 .error-layout {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px 0;
+  align-items: flex-start;
+  padding: clamp(64px, 12vw, 120px) 0;
+}
+
+.error-layout .hero-title {
+  font-size: clamp(2.6rem, 9vw, 5rem);
 }
 
 .intro-block {
-  font-size: clamp(1.1rem, 3vw, 1.35rem);
-  line-height: 1.6;
+  max-width: 46ch;
+  margin: 16px 0 28px;
+  font-size: 1.125rem;
+  line-height: 1.55;
   color: var(--text-soft);
-  letter-spacing: -0.01em;
-  max-width: 500px;
 }
 
 .text-link {
   color: var(--text);
-  font-weight: 500;
-  font-size: 1.05rem;
+  font-weight: 600;
   text-decoration: underline;
+  text-decoration-thickness: 1px;
   text-underline-offset: 4px;
   text-decoration-color: var(--line-strong);
-  text-decoration-thickness: 2px;
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-  transition: text-decoration-color var(--transition), color var(--transition);
+  transition: text-decoration-color var(--ease);
 }
 
 .text-link:hover {
   text-decoration-color: var(--text);
 }
 
-.reveal {
-  opacity: 1;
-  animation: revealUp 220ms ease both;
-}
-
-@keyframes revealUp {
-  from { transform: translateY(6px); }
-  to { transform: translateY(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal { animation: none; }
-}
-
-.flex-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.text-muted {
-  color: var(--text-muted);
-}
-
+/* Footer */
 .site-footer {
   border-top: 1px solid var(--line);
-  padding: 30px 0;
-  text-align: center;
-  font-size: 0.9rem;
-  background: color-mix(in srgb, var(--bg) 60%, transparent);
+  padding: 28px 0 36px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 24px;
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
 }
 
 .footer-link {
   color: var(--text-muted);
-  font-weight: 500;
-  transition: color var(--transition);
+  font-weight: 600;
+  transition: color var(--ease);
 }
 
 .footer-link:hover {
   color: var(--text);
-  text-decoration: underline;
-  text-underline-offset: 4px;
 }
 
-@media (max-width: 720px) {
-  .topbar__inner {
-    min-height: 64px;
-  }
+.site-footer__note {
+  margin: 0;
+}
 
-  .archive-hero,
-  .article-panel,
-  .notice-card,
-  .empty-card {
-    border-radius: 16px;
-  }
-
-  .notice-pagination__desktop {
-    display: none;
-  }
-
-  .notice-pagination__mobile {
-    display: flex;
-    gap: 10px;
-  }
-
-  .notice-pagination__link {
-    font-size: 0.9rem;
-    padding: 0 12px;
-    min-height: 40px;
-    min-width: 0;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
-/* Keep article navigation at the outer edges, including single-link pages. */
-#noticePagination {
+
+
+.hero-meta {
+  margin: 14px 0 0;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.archive-status {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 8px 16px;
+  margin: 6px 0 18px;
+}
+
+.archive-status .archive-results {
+  margin: 0;
+}
+
+.sort-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.sort-control select {
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--pill);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+mark {
+  padding: 0 2px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--accent) 24%, transparent);
+  color: inherit;
+}
+
+.loose-results {
+  appearance: none;
+  display: block;
+  margin: 24px auto 0;
+  min-height: 44px;
+  padding: 8px 20px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--pill);
+  background: transparent;
+  color: var(--text-soft);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.loose-results:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+/* Notice pages grow with the screen: larger type keeps lines readable on wide displays. */
+.article-content {
+  font-size: clamp(1.0625rem, 0.95rem + 0.3vw, 1.25rem);
+}
+
+.notice-layout .article-panel {
+  max-width: 72ch;
+  font-size: clamp(1rem, 0.92rem + 0.25vw, 1.15rem);
+}
+
+/* Round 4: one consistent treatment for every chip, pill, and control. */
+.bracket {
+  color: var(--text-muted);
+  font-weight: 400;
+  padding: 0 0.12em;
+}
+
+.icon-btn,
+.icon-btn:hover {
+  border-color: var(--line);
+}
+
+/* Tag pills: neutral text and outline; the tag color appears only as a dot. */
+.tag-pill,
+html[data-theme="dark"] .tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text-soft);
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+}
+
+.tag-pill::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--tag-color);
+}
+
+/* Filter chips: the active chip inverts the same way for every tag. */
+.tag-filter,
+.tag-filter[aria-pressed="true"],
+.tag-filter[data-tag=""][aria-pressed="true"] {
+  min-height: 36px;
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+}
+
+.tag-filter[aria-pressed="true"],
+.tag-filter[data-tag=""][aria-pressed="true"] {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+
+.tag-filter[aria-pressed="true"] .tag-filter__count {
+  color: color-mix(in srgb, var(--bg) 65%, var(--text));
+}
+
+/* Segmented sort control */
+.segmented {
+  display: inline-flex;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: var(--pill);
+}
+
+.segmented button {
+  appearance: none;
+  min-height: 32px;
+  padding: 4px 14px;
+  border: 0;
+  border-radius: var(--pill);
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.segmented button[aria-pressed="true"] {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+/* Back link: a real, readable button. */
+.back-link {
+  min-height: 40px;
+  padding: 6px 16px 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--pill);
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
+.back-link:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+}
+
+/* Notice type: a plain label ahead of the topic pills (types are neutral; topics carry color). */
+.type-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  margin-right: 4px;
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+/* Filters: "Notice type" (single-select) and "Topics" (multi-select) groups. */
+.tag-filters {
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
-#noticePagination > a[rel="next"] {
+.tag-filters {
+  flex-basis: 100%;
+  flex-direction: column;
+}
+
+.tag-filter[data-type]::before {
+  display: none;
+}
+
+@media (max-width: 759px) {
+  .tag-filters {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow: visible;
+  }
+
+  .filter-group {
+    flex-wrap: nowrap;
+    margin: 0 calc(-1 * var(--gutter));
+    padding: 0 var(--gutter) 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .filter-group::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-group + .filter-group {
+    padding-left: var(--gutter);
+    border-left: 0;
+  }
+}
+
+/* ---------- Round 6: identity drawn from the notices themselves ---------- */
+:root {
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+}
+
+/* Same header geometry on every page and on both sites: reserve the scrollbar's space. */
+html {
+  scrollbar-gutter: stable;
+}
+
+.brand {
+  font-size: 0.95rem;
+}
+
+.brand__short {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .brand__full { display: none; }
+  .brand__short { display: inline; }
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 1.05em;
+  height: 1.05em;
+}
+
+/* Every notice opens with "Dear Manager," and a dashed rule; the archive does too. */
+.hero-greeting {
+  margin: 0 0 14px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.9375rem;
+}
+
+.hero-rule {
+  width: min(100%, 640px);
+  margin: 22px 0 0;
+  border: 0;
+  border-top: 2px dashed var(--line-strong);
+}
+
+.hero-lede {
+  margin-top: 20px;
+}
+
+.notice-card__meta,
+.notice-date,
+.hero-meta,
+.archive-results {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0;
+}
+
+
+.notice-card > .tag-list {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+}
+
+.article-content .notice-title-divider,
+.article-content .notice-section-break {
+  border-top-style: dashed;
+}
+
+/* Type: a tinted badge in the type's color. */
+.type-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  margin-right: 2px;
+  padding: 2px 9px;
+  border: 1px solid color-mix(in srgb, var(--tag-color, var(--text-muted)) 40%, transparent);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--tag-color, var(--text-muted)) 14%, transparent);
+  color: color-mix(in srgb, var(--tag-color, var(--text-muted)) 50%, var(--text));
+  font-size: 0.75rem;
+  font-weight: 650;
+}
+
+/* Topics: a colored dot and plain text, clearly secondary to the type. */
+.tag-pill,
+html[data-theme="dark"] .tag-pill {
+  padding: 2px 4px;
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  font-weight: 550;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.tag-pill::before {
+  width: 7px;
+  height: 7px;
+}
+
+/* Filters: types are tabs (one choice); topics are chips (any number). */
+.filter-group[aria-label="Notice type"] {
+  gap: 4px 22px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--line);
+}
+
+.type-tab {
+  --tag-color: var(--text);
+  appearance: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  min-height: 40px;
+  margin-bottom: -3px;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--ease), border-color var(--ease);
+}
+
+.type-tab:hover {
+  color: var(--text);
+}
+
+.type-tab[aria-pressed="true"] {
+  color: var(--text);
+  border-bottom-color: var(--tag-color);
+}
+
+.type-tab .tag-filter__count {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+.filter-group[aria-label="Topics"] {
+  padding-top: 4px;
+}
+
+/* A selected topic fills with its own color. */
+.tag-filter[aria-pressed="true"] {
+  border-color: var(--tag-color);
+  background: var(--tag-color);
+  color: #111214;
+}
+
+.tag-filter[aria-pressed="true"]::before {
+  background: #111214;
+}
+
+.tag-filter[aria-pressed="true"] .tag-filter__count {
+  color: rgb(17 18 20 / 0.65);
+}
+
+.tag-filter__count {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+/* Back link with a real arrow icon. */
+.back-link {
+  gap: 8px;
+}
+
+@media (max-width: 759px) {
+  .filter-group[aria-label="Notice type"] {
+    gap: 4px 18px;
+  }
+}
+
+/* Filters with no matches stay in place (so nothing shifts), just dimmed. */
+.type-tab[data-empty],
+.tag-filter[data-empty] {
+  opacity: 0.45;
+}
+
+/* ---------- Round 7: one box style for every tag and filter ---------- */
+/* Selected / labelled: colored outline over a dark, lightly tinted fill. */
+.type-label,
+.tag-pill,
+html[data-theme="dark"] .tag-pill,
+.tag-filter[aria-pressed="true"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 26px;
+  padding: 2px 10px;
+  border: 1px solid color-mix(in srgb, var(--tag-color, var(--text-muted)) 55%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--tag-color, var(--text-muted)) 13%, var(--surface));
+  color: color-mix(in srgb, var(--tag-color, var(--text-muted)) 62%, var(--text));
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.tag-pill::before,
+.tag-filter::before,
+.tag-filter[aria-pressed="true"]::before {
+  display: none;
+}
+
+/* Light theme: deeper text so the tint stays legible. */
+:root:not([data-theme="dark"]) .type-label,
+:root:not([data-theme="dark"]) .tag-pill,
+:root:not([data-theme="dark"]) .tag-filter[aria-pressed="true"] {
+  color: color-mix(in srgb, var(--tag-color, var(--text-muted)) 55%, #000);
+  background: color-mix(in srgb, var(--tag-color, var(--text-muted)) 14%, #fff);
+}
+
+/* Unselected filter: same box, neutral until chosen. */
+.tag-filter {
+  min-height: 34px;
+  padding: 4px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-soft);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.tag-filter:hover {
+  border-color: color-mix(in srgb, var(--tag-color, var(--text-muted)) 55%, transparent);
+  color: var(--text);
+}
+
+.tag-filter[aria-pressed="true"] {
+  min-height: 34px;
+  padding: 4px 12px;
+  font-size: 0.875rem;
+}
+
+.tag-filter[aria-pressed="true"] .tag-filter__count,
+.tag-filter__count {
+  color: inherit;
+  opacity: 0.7;
+}
+
+.tag-filter__remove {
+  font-size: 1rem;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+/* Filters menu: one toggle, one panel, active filters shown inline. */
+.archive-controls {
+  align-items: center;
+}
+
+.filter-toggle {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 46px;
+  padding: 0 18px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--pill);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-toggle[aria-expanded="true"],
+.filter-toggle:hover {
+  background: var(--surface-2);
+}
+
+.filter-toggle__count {
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+}
+
+.active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.active-filters:empty {
+  display: none;
+}
+
+.filter-clear {
+  appearance: none;
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.tag-filters {
+  flex-basis: 100%;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.filter-group,
+.filter-group[aria-label="Notice type"],
+.filter-group[aria-label="Topics"] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+}
+
+.filter-group__label {
+  flex-basis: 100%;
+  margin: 0 0 2px;
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+@media (max-width: 759px) {
+  .filter-group {
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+}
+
+/* ===== Round 8: the Limbus Company notice look =====
+   Notices: black page, thin bronze frame, gold headings over a fine gold rule, cream text,
+   gold ▶ markers, orange ※ notes. Game UI: bronze chamfered panels (dark) or parchment (light). */
+:root {
+  --bg: #ece2cc;
+  --surface: #f6eedd;
+  --surface-2: #e6d9bd;
+  --line: #d3c29f;
+  --line-strong: #b8a27a;
+  --frame: #a27a4b;
+  --frame-strong: #7c5631;
+  --gold: #8a5a06;
+  --note: #b4461a;
+  --text: #2a2016;
+  --text-soft: #4b3d2c;
+  --text-muted: #6f604b;
+  --accent: #8e1b12;
+  --cut: 10px;
+}
+
+html[data-theme="dark"] {
+  --bg: #0b0a09;
+  --surface: #131110;
+  --surface-2: #1b1815;
+  --line: #2c251e;
+  --line-strong: #463a2c;
+  --frame: #6f5538;
+  --frame-strong: #a8834f;
+  --gold: #efc04a;
+  --note: #ff8a3d;
+  --text: #ede3cf;
+  --text-soft: #cabfa8;
+  --text-muted: #978b77;
+  --accent: #efc04a;
+}
+
+.topbar {
+  border-bottom-color: var(--frame);
+}
+
+.hero-title,
+.notice-card__title,
+.notice-inline-title,
+.article-content .notice-section-heading,
+.article-content h2 {
+  color: var(--gold);
+}
+
+.hero-rule {
+  border-top: 1px solid var(--gold);
+  opacity: 0.7;
+}
+
+/* Chamfered, bronze-framed panels like the game's windows. */
+.notice-card,
+.notice-layout .article-panel {
+  position: relative;
+  isolation: isolate;
+  border: 0;
+  border-radius: 0;
+  background: var(--frame);
+  clip-path: polygon(var(--cut) 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%, var(--cut) 100%, 0 calc(100% - var(--cut)), 0 var(--cut));
+}
+
+.notice-card::before,
+.notice-layout .article-panel::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  background: var(--surface);
+  clip-path: inherit;
+}
+
+.notice-card:hover {
+  background: var(--frame-strong);
+}
+
+.notice-card:hover::before {
+  background: var(--surface-2);
+}
+
+.notice-card > .tag-list {
+  border-top: 1px solid var(--line);
+}
+
+/* Notice page: framed like an official notice, title centered over a gold rule. */
+.notice-layout .article-panel {
+  max-width: 78ch;
+  padding: clamp(24px, 4vw, 44px) clamp(20px, 4vw, 48px) clamp(28px, 4vw, 48px);
+}
+
+.notice-title-block {
+  text-align: center;
+}
+
+.notice-title-block .tag-list {
+  justify-content: center;
+}
+
+.article-content .notice-title-divider {
+  width: min(100%, 520px);
+  margin: 22px auto 0;
+  border-top: 1px solid var(--gold);
+  opacity: 0.6;
+}
+
+.article-content .notice-section-divider {
+  border-top: 1px solid color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+.article-content .notice-subsection-heading,
+.article-content h3 {
+  color: var(--text);
+}
+
+.notice-note {
+  color: var(--note);
+}
+
+.notice-marker {
+  color: var(--gold);
+}
+
+.back-link {
+  margin-bottom: 18px;
+}
+
+/* One row of tags: types, a thin rule, then topics. */
+.tag-filters {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.tag-filters__rule {
+  width: 1px;
+  height: 22px;
+  margin: 0 4px;
+  background: var(--line-strong);
+}
+
+.tag-filter[aria-pressed="true"] {
+  border-color: var(--tag-color);
+}
+
+/* Search: a squared, framed field closer to the game's inputs. */
+.input {
+  border-color: var(--line-strong);
+  border-radius: 8px;
+  background-color: var(--surface);
+}
+
+.input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 20%, transparent);
+}
+
+.notice-pagination__link.active {
+  border-color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 16%, var(--surface));
+  color: var(--gold);
+}
+
+.segmented button[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--gold) 16%, var(--surface));
+  color: var(--gold);
+}
+
+mark {
+  background: color-mix(in srgb, var(--gold) 28%, transparent);
+}
+
+@media (max-width: 759px) {
+  .tag-filters {
+    flex-wrap: nowrap;
+    margin: 0 calc(-1 * var(--gutter));
+    padding: 0 var(--gutter) 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tag-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tag-filter {
+    flex-shrink: 0;
+  }
+}
+
+/* ===== Round 9: black and white site-wide; the notice palette lives on notice pages only ===== */
+:root {
+  --bg: #f5f5f4;
+  --surface: #ffffff;
+  --surface-2: #ececea;
+  --line: #e1e1de;
+  --line-strong: #c9c9c5;
+  --frame: #cfcfcb;
+  --frame-strong: #8f8f8a;
+  --gold: var(--text);
+  --text: #121212;
+  --text-soft: #3c3c3c;
+  --text-muted: #666666;
+  --accent: #121212;
+}
+
+html[data-theme="dark"] {
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --surface-2: #1c1c1c;
+  --line: #262626;
+  --line-strong: #3a3a3a;
+  --frame: #353535;
+  --frame-strong: #6b6b6b;
+  --gold: var(--text);
+  --text: #f2f2f2;
+  --text-soft: #c4c4c4;
+  --text-muted: #8f8f8f;
+  --accent: #f2f2f2;
+}
+
+.topbar {
+  border-bottom-color: var(--line);
+}
+
+/* Project Moon title touch: the angled label tab (as on "Extraction Probabilities" and skill
+   names) over the main title, with a huge faded watermark word like "IDENTITY INFO". */
+.archive-hero,
+.landing-layout {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-watermark {
+  position: absolute;
+  top: -0.32em;
+  left: -0.04em;
+  z-index: -1;
+  margin: 0;
+  color: color-mix(in srgb, var(--text) 6%, transparent);
+  font-size: clamp(5.5rem, 17vw, 15rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.hero-title {
+  color: var(--text);
+}
+
+.hero-tab {
+  display: block;
+  width: fit-content;
+  margin-bottom: 14px;
+  padding: 7px 30px 7px 14px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+}
+
+.hero-main {
+  display: block;
+}
+
+.hero-rule {
+  display: none;
+}
+
+.hero-lede {
+  margin-top: 22px;
+}
+
+/* Notice pages keep the official notice colors: bronze frame, gold titles, cream text. */
+.notice-layout {
+  --frame: #a27a4b;
+  --frame-strong: #7c5631;
+  --gold: #8a5a06;
+  --note: #b4461a;
+}
+
+html[data-theme="dark"] .notice-layout {
+  --surface: #0f0e0d;
+  --frame: #6f5538;
+  --frame-strong: #a8834f;
+  --gold: #efc04a;
+  --note: #ff8a3d;
+  --text: #ede3cf;
+  --text-soft: #cabfa8;
+}
+
+.notice-card__title {
+  color: var(--text);
+}
+
+.notice-card,
+.notice-card:hover {
+  background: var(--line-strong);
+}
+
+.notice-card:hover {
+  background: var(--frame-strong);
+}
+
+.notice-pagination__link.active,
+.segmented button[aria-pressed="true"] {
+  border-color: var(--text);
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.input:focus {
+  border-color: var(--text-muted);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--text) 12%, transparent);
+}
+
+mark {
+  background: color-mix(in srgb, #efc04a 30%, transparent);
+}
+
+/* ===== Round 10 ===== */
+/* One typeface throughout: the monospace accent is retired; figures stay aligned. */
+:root {
+  --mono: var(--font);
+}
+
+.notice-card__meta,
+.notice-date,
+.hero-meta,
+.archive-results,
+.tag-filter__count,
+.section-label,
+.project-feature__meta {
+  font-variant-numeric: tabular-nums;
+}
+
+/* The "Limbus Company" tab reads as part of the title, not a footnote. */
+.hero-tab {
+  margin-bottom: 12px;
+  padding: 8px 40px 8px 16px;
+  font-size: clamp(1.25rem, 2.6vw, 2.1rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 22px) 100%, 0 100%);
+}
+
+/* Notice pages share the home page's black and white; only headings and tags keep color. */
+.notice-layout {
+  --frame: #cfcfcb;
+  --frame-strong: #8f8f8a;
+  --text: #121212;
+  --text-soft: #3c3c3c;
+}
+
+html[data-theme="dark"] .notice-layout {
+  --surface: #141414;
+  --frame: #353535;
+  --frame-strong: #6b6b6b;
+  --text: #f2f2f2;
+  --text-soft: #c4c4c4;
+}
+
+.notice-title-block .notice-date {
+  margin-top: 4px;
+}
+
+.notice-title-block .tag-list {
+  margin: 14px 0 0;
+}
+
+/* Use the screen: a wider notice column whose text grows on large displays. */
+.notice-layout .article-panel {
+  max-width: min(1040px, 100%);
+}
+
+.notice-layout .article-content {
+  font-size: clamp(1.0625rem, 0.9rem + 0.4vw, 1.3rem);
+}
+
+/* Aligned figures widen this font's comma; keep dates proportional. */
+.notice-card__meta,
+.notice-date {
+  font-variant-numeric: normal;
+}
+
+/* ===== Round 11 ===== */
+/* Notice pages: neutral headings and rules; only tags and ※ notes keep color. */
+.notice-layout {
+  --gold: var(--text);
+}
+
+.article-content .notice-title-divider,
+.article-content .notice-section-divider {
+  border-top-color: var(--line-strong);
+  opacity: 1;
+}
+
+/* Notice column scales with the monitor. */
+.notice-layout .article-panel {
+  max-width: min(1600px, 100%);
+}
+
+.notice-layout .article-content {
+  font-size: clamp(1.0625rem, 0.75rem + 0.55vw, 1.45rem);
+}
+
+/* Tag icons: original glyphs drawn in the tag's color. */
+.type-label::before,
+.tag-pill::before,
+.tag-filter::before,
+.tag-filter[aria-pressed="true"]::before {
+  content: "";
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1.05em;
+  height: 1.05em;
+  border-radius: 0;
+  background: var(--tag-color, currentColor);
+  -webkit-mask: var(--icon) no-repeat center / contain;
+  mask: var(--icon) no-repeat center / contain;
+}
+
+.tag-pill:not([data-tag])::before,
+.type-label:not([data-tag])::before {
+  display: none;
+}
+
+.tag-filter[aria-pressed="true"]::before {
+  background: var(--tag-color);
+}
+
+[data-tag="fixes"], [data-icon="fixes"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12' stroke-width='3.5'/%3E%3Ccircle cx='12' cy='20' r='1.8' fill='%23000' stroke='none'/%3E%3C/svg%3E"); }
+[data-tag="patch-notes"], [data-icon="patch-notes"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 3h9l4 4v14H6z'/%3E%3Cpath d='M15 3v4h4M9 11h7M9 15h7M9 19h4'/%3E%3C/svg%3E"); }
+[data-tag="new-content"], [data-icon="new-content"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2l2.4 7.1L22 12l-7.6 2.9L12 22l-2.4-7.1L2 12l7.6-2.9z' fill='%23000'/%3E%3C/svg%3E"); }
+[data-tag="balance"], [data-icon="balance"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 20V5M4 9l4-4 4 4M16 4v15M12 15l4 4 4-4' stroke-width='2.5'/%3E%3C/svg%3E"); }
+[data-tag="rewards"], [data-icon="rewards"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 10h16v11H4zM2 6h20v4H2zM12 6v15'/%3E%3Cpath d='M12 6C10 2 6 3 7.5 6M12 6c2-4 6-3 4.5 0'/%3E%3C/svg%3E"); }
+[data-tag="announcements"], [data-icon="announcements"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 10v4h3l8 5V5L6 10z' fill='%23000'/%3E%3Cpath d='M17 9a4 4 0 0 1 0 6M19.5 6.5a7.5 7.5 0 0 1 0 11'/%3E%3C/svg%3E"); }
+[data-tag="identities-e-g-o"], [data-icon="identities-e-g-o"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 4h14v7c0 5-3.5 9-7 9s-7-4-7-9z'/%3E%3Cpath d='M8.5 10.5l2 1M15.5 10.5l-2 1M9.5 15.5c1.5 1 3.5 1 5 0'/%3E%3C/svg%3E"); }
+[data-tag="mirror-dungeon"], [data-icon="mirror-dungeon"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2l7 10-7 10-7-10z'/%3E%3Cpath d='M12 2v20M5 12h14' stroke-width='1.5'/%3E%3C/svg%3E"); }
+[data-tag="main-story"], [data-icon="main-story"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 6c-2-2-5-2.5-9-2v15c4-.5 7 0 9 2 2-2 5-2.5 9-2V4c-4-.5-7 0-9 2zM12 6v15'/%3E%3C/svg%3E"); }
+[data-tag="events"], [data-icon="events"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3Cpath d='M12 13l1.2 2.4 2.6.4-1.9 1.8.5 2.6-2.4-1.3-2.4 1.3.5-2.6-1.9-1.8 2.6-.4z' fill='%23000' stroke='none'/%3E%3C/svg%3E"); }
+[data-tag="refraction-railway"], [data-icon="refraction-railway"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zM4 10h16'/%3E%3Ccircle cx='8.5' cy='13.5' r='1' fill='%23000'/%3E%3Ccircle cx='15.5' cy='13.5' r='1' fill='%23000'/%3E%3Cpath d='M8 17l-3 4M16 17l3 4'/%3E%3C/svg%3E"); }
+
+html[data-theme] .notice-layout,
+.notice-layout {
+  --gold: var(--text);
+}
+
+/* ===== Round 12 ===== */
+/* Use large monitors: wider page, more grid columns. */
+.container-wide {
+  width: min(2000px, 100% - 2 * var(--gutter));
+}
+
+.notice-list {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+}
+
+.notice-layout .article-panel {
+  max-width: min(1800px, 100%);
+}
+
+/* Larger icons. */
+.type-label::before,
+.tag-pill::before,
+.tag-filter::before,
+.tag-filter[aria-pressed="true"]::before {
+  width: 1.35em;
+  height: 1.35em;
+}
+
+/* Counts reserve their width so a chip never resizes (and reflows) when counts change. */
+.tag-filter__count {
+  display: inline-block;
+  min-width: 3ch;
+  text-align: right;
+}
+
+/* Previews keep the notice's line breaks and fill the card's free space, fading at the end. */
+.notice-card__summary {
+  flex: 1 1 0;
+  min-height: 4.65em;
+  white-space: pre-line;
+  display: block;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 1.6em), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 1.6em), transparent);
+}
+
+.notice-card > .tag-list {
+  margin-top: 0;
+}
+
+.notice-card__summary {
+  min-height: 7.75em;
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 1.2em), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 1.2em), transparent);
+}
+
+/* ===== Round 13 ===== */
+/* Rounded panels instead of chamfered corners. */
+.notice-card,
+.notice-layout .article-panel,
+.project-feature {
+  clip-path: none;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.notice-card::before,
+.notice-layout .article-panel::before,
+.project-feature::before {
+  display: none;
+}
+
+.notice-card:hover,
+.project-feature:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+}
+
+/* Notice pages use the full page width on large monitors. */
+.notice-layout .article-panel {
+  max-width: none;
+}
+
+/* The title rule spans the column like every other rule. */
+.article-content .notice-title-divider {
+  width: 100%;
+  margin: 24px 0 0;
+}
+
+/* Small text scales with the screen instead of staying tiny. */
+.notice-date,
+.notice-card__meta,
+.archive-results,
+.hero-meta {
+  font-size: clamp(0.875rem, 0.72rem + 0.32vw, 1.15rem);
+}
+
+.tag-pill,
+.type-label,
+.tag-filter {
+  font-size: clamp(0.8125rem, 0.7rem + 0.25vw, 1.05rem);
+}
+
+/* Phones: filters wrap onto rows instead of a sideways scroller. */
+@media (max-width: 759px) {
+  .tag-filters {
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .tag-filter {
+    flex-shrink: 1;
+    min-height: 32px;
+    padding: 3px 10px;
+  }
+}
+
+html[data-theme] .tag-pill,
+html[data-theme] .type-label,
+html[data-theme] .tag-filter {
+  font-size: clamp(0.8125rem, 0.7rem + 0.25vw, 1.05rem);
+}
+
+main.notice-layout {
+  width: min(2400px, 100% - 2 * var(--gutter));
+}
+
+/* The watermark word must never widen the page. */
+.archive-hero,
+.landing-layout {
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+body {
+  overflow-x: clip;
+}
+
+/* ===== Round 14: natural sizes, whole-line previews ===== */
+.container-wide {
+  width: min(1640px, 100% - 2 * var(--gutter));
+}
+
+main.notice-layout {
+  width: min(1440px, 100% - 2 * var(--gutter));
+}
+
+.hero-title {
+  font-size: clamp(2.25rem, 4vw, 3.6rem);
+}
+
+.hero-tab {
+  font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+}
+
+.hero-watermark {
+  font-size: clamp(5rem, 13vw, 12rem);
+}
+
+.hero-lede {
+  font-size: clamp(1.05rem, 0.95rem + 0.3vw, 1.25rem);
+}
+
+.notice-layout .article-content {
+  font-size: clamp(1.0625rem, 0.95rem + 0.25vw, 1.2rem);
+}
+
+.notice-inline-title {
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+}
+
+.notice-date,
+.notice-card__meta,
+.archive-results,
+.hero-meta {
+  font-size: clamp(0.85rem, 0.8rem + 0.1vw, 0.95rem);
+}
+
+html[data-theme] .tag-pill,
+html[data-theme] .type-label,
+.tag-pill,
+.type-label {
+  font-size: 0.78rem;
+}
+
+html[data-theme] .tag-filter,
+.tag-filter {
+  font-size: 0.85rem;
+}
+
+.type-label::before,
+.tag-pill::before,
+.tag-filter::before,
+.tag-filter[aria-pressed="true"]::before {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+/* Whole lines only: JS sets the line count to what fits; no fade. */
+.notice-card__summary {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+/* "Show all tags" only matters on phones. */
+.filter-more {
+  display: none;
+}
+
+@media (max-width: 759px) {
+  .tag-filters:not(.is-expanded) {
+    max-height: calc(2 * 36px + 8px);
+    overflow: hidden;
+  }
+
+  .filter-more {
+    display: inline-flex;
+    order: 99;
+    flex-basis: 100%;
+    appearance: none;
+    border: 0;
+    background: none;
+    padding: 4px 0;
+    color: var(--text-soft);
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+
+  .tag-filters:not(.is-expanded) {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .tag-filters:not(.is-expanded) .tag-filter:nth-of-type(n+7) {
+    display: none;
+  }
+}
+
+/* Whole lines only (height set in main.js); tags sit at the card's foot. */
+.notice-card__summary {
+  display: block;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  line-height: 1.55;
+}
+
+.notice-card > .tag-list {
+  margin-top: auto;
+}
+
+/* ===== Round 15 ===== */
+.archive-hero {
+  margin-bottom: 20px;
+}
+
+/* Summaries are flowing text; the "Covers" line starts on its own line. */
+.notice-card__summary {
+  white-space: pre-line;
+}
+
+/* Sticky bar: solid, full-bleed band with a hairline, holding search, tags, and the result count. */
+.archive-controls {
+  margin: 0;
+  padding: 14px 0 12px;
+  background: var(--bg);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: 0 0 0 100vmax var(--bg);
+  clip-path: inset(0 -100vmax);
+  border-bottom: 1px solid var(--line);
+}
+
+.archive-controls .archive-status {
+  flex-basis: 100%;
+  margin: 2px 0 0;
+}
+
+.notice-list {
+  margin-top: 20px;
+}
+
+/* ===== Round 16 ===== */
+/* No sticky bar. */
+.archive-controls {
+  position: static;
+  box-shadow: none;
+  clip-path: none;
+  border-bottom: 0;
+  padding: 0;
+}
+
+/* Notice conventions, colored like the official notices. */
+.notice-layout {
+  --c-before: #8a6a45;
+  --c-after: #9a6a00;
+  --c-note: #c2561a;
+  --c-important: #c62828;
+  --c-label: #9a6a00;
+}
+
+html[data-theme="dark"] .notice-layout {
+  --c-before: #b48a5c;
+  --c-after: #efc04a;
+  --c-note: #ff8a3d;
+  --c-important: #ff4d4d;
+  --c-label: #efc04a;
+}
+
+.notice-note { color: var(--c-note); }
+.notice-note--important { color: var(--c-important); }
+.notice-before { color: var(--c-before); }
+.notice-after { color: var(--c-after); }
+.notice-label { color: var(--c-label); font-weight: 600; }
+.notice-marker { color: var(--c-after); }
+
+/* Section lists in previews read as a compact list. */
+.notice-card__summary {
+  white-space: pre-line;
+}
+
+.article-content .notice-before { color: var(--c-before); }
+.article-content .notice-after { color: var(--c-after); }
+
+/* ===== Round 17 ===== */
+/* Markers keep the text color; arrows and markers use a symbol font at a steady size. */
+.notice-marker,
+.notice-arrow {
+  color: inherit;
+  font-family: "Segoe UI Symbol", "Apple Symbols", "Noto Sans Symbols 2", system-ui, sans-serif;
+}
+
+.notice-marker {
+  display: inline-block;
+  margin-right: 0.15em;
+  font-size: 0.78em;
+  transform: translateY(-0.06em);
+}
+
+.notice-arrow {
+  font-size: 1.15em;
+  line-height: 1;
+}
+
+/* Tables, styled after the notices' gold header cells. */
+.notice-table-wrap {
+  margin: 0 0 1.2em;
+  overflow-x: auto;
+}
+
+.notice-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95em;
+}
+
+.notice-table th,
+.notice-table td {
+  padding: 0.55em 0.8em;
+  border: 1px solid var(--line-strong);
+  text-align: left;
+  vertical-align: top;
+}
+
+.notice-table th {
+  background: color-mix(in srgb, var(--c-after) 16%, var(--surface));
+  color: var(--text);
+  font-weight: 650;
+}
+
+.notice-table--pairs th {
+  width: 38%;
+}
+
+.notice-table caption {
+  padding: 0 0 0.4em;
+  text-align: left;
+  font-weight: 650;
+}
+
+/* ===== Round 18 ===== */
+/* Tables styled like the official notices: gold header cells, gold rules, centered text. */
+.notice-table {
+  --gold-cell: #f2bf1a;
+  border: 2px solid var(--gold-cell);
+  font-size: 0.95em;
+}
+
+.notice-table th,
+.notice-table td {
+  border: 1px solid var(--gold-cell);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.notice-table th,
+.notice-table thead th {
+  background: var(--gold-cell);
+  color: #141414;
+  font-weight: 700;
+}
+
+.notice-table td {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.notice-table caption {
+  padding: 0.45em 0.8em;
+  border: 2px solid var(--gold-cell);
+  border-bottom: 0;
+  background: var(--gold-cell);
+  color: #141414;
+  text-align: center;
+  font-weight: 700;
+  caption-side: top;
+}
+
+.notice-table--pairs th {
+  width: 30%;
+}
+
+/* Contents panel. */
+.toc {
+  margin: 0 0 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.toc__toggle {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 2px 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.toc__caret {
   margin-left: auto;
+  color: var(--text-muted);
+  transition: transform var(--ease);
+}
+
+.toc__toggle[aria-expanded="false"] .toc__caret {
+  transform: rotate(180deg);
+}
+
+.toc__list {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.toc__list li + li {
+  margin-top: 4px;
+}
+
+.toc__list a {
+  position: relative;
+  display: block;
+  padding: 6px 8px 6px 22px;
+  border-radius: 8px;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  line-height: 1.4;
+  transition: color var(--ease), background var(--ease);
+}
+
+.toc__list a::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 0.55em;
+  bottom: 0.55em;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--line-strong);
+}
+
+.toc__list a:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.toc__list a[aria-current] {
+  color: var(--c-after, #efc04a);
+}
+
+.toc__list a[aria-current]::before {
+  background: var(--c-after, #efc04a);
+}
+
+@media (min-width: 1200px) {
+  main.notice-layout.has-toc {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+    width: min(1720px, 100% - 2 * var(--gutter));
+  }
+
+  .notice-layout.has-toc .toc {
+    position: sticky;
+    top: calc(var(--topbar) + 24px);
+    max-height: calc(100vh - var(--topbar) - 48px);
+    overflow-y: auto;
+    margin: 0;
+  }
+}
+
+.notice-table tbody th {
+  border-bottom: 1px solid rgb(0 0 0 / 0.35);
+}
+
+.notice-table tbody tr:last-child th {
+  border-bottom-color: var(--gold-cell);
+}
+
+/* ===== Round 19 ===== */
+.results-divider {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 12px 0 2px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.results-divider::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid var(--line);
+}
+
+/* Tables like the official notices: separate outlined cells with small gaps, centered,
+   a narrow gold label column, and a natural width so long lists wrap onto several lines. */
+.notice-table-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.notice-table {
+  width: auto;
+  min-width: min(100%, 520px);
+  max-width: min(100%, 760px);
+  border: 0;
+  border-collapse: separate;
+  border-spacing: 5px;
+  line-height: 1.45;
+}
+
+.notice-table th,
+.notice-table td,
+.notice-table tbody th,
+.notice-table tbody tr:last-child th {
+  padding: 0.5em 0.9em;
+  border: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.notice-table th,
+.notice-table thead th {
+  background: var(--gold-cell);
+  color: #141414;
+}
+
+.notice-table td {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--gold-cell);
+}
+
+.notice-table--pairs th {
+  width: 1%;
+  min-width: 7em;
+  max-width: 11em;
+  white-space: normal;
+}
+
+.notice-table caption {
+  margin: 0 5px;
+  padding: 0.45em 0.9em;
+  border: 0;
+}
+
+/* ===== Round 20: landing page matches notice pages ===== */
+.archive-panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-bottom: 24px;
+  padding: clamp(24px, 4vw, 48px);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.archive-panel .archive-hero {
+  overflow: visible;
+}
+
+.archive-panel .archive-controls {
+  margin-top: 24px;
+}
+
+.archive-layout {
+  padding-top: clamp(24px, 4vw, 44px);
+}
+
+/* Notice titles carry the same angled tab as the landing title, naming the notice type. */
+.notice-kicker {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 5px 26px 5px 12px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+}
+
+.archive-panel .archive-controls {
+  background: transparent;
+}
+
+/* Tables align with the text column and use the body size. */
+.notice-table-wrap {
+  justify-content: flex-start;
+}
+
+.notice-table {
+  font-size: 1em;
+  min-width: min(100%, 640px);
+  max-width: min(100%, 900px);
+  margin-left: -5px;
+}
+
+.notice-table--pairs th {
+  min-width: 8.5em;
+}
+
+/* Even vertical rhythm inside the landing panel. */
+.archive-panel .archive-hero { margin-bottom: 0; }
+.archive-panel .hero-meta { margin: 12px 0 0; }
+.archive-panel .archive-controls { margin-top: 20px; gap: 12px; }
+.archive-panel .archive-status { margin: 0; }
+.archive-panel .tag-filters { margin: 0; }
+
+/* ===== Round 23: rectangles, not cut corners ===== */
+.hero-tab,
+.notice-kicker {
+  clip-path: none;
+  padding-right: 14px;
+}
+
+/* Classification: a solid white label (like the notice-type tab). */
+.notice-card__type {
+  align-self: flex-start;
+  margin: 0;
+  padding: 3px 9px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Tags: square boxes with a colored outline over a dark fill, like the notice tables. */
+.tag-pill,
+html[data-theme] .tag-pill {
+  border: 1.5px solid color-mix(in srgb, var(--tag-color) 80%, transparent);
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--tag-color) 8%, var(--surface));
+  color: color-mix(in srgb, var(--tag-color) 55%, var(--text));
+}
+
+/* Filters: two rows; options are square boxes; a chosen one fills solid like a table label. */
+.tag-filters {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-row__label {
+  min-width: 3.2rem;
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+
+.type-filter,
+.tag-filter,
+.tag-filter[aria-pressed="true"] {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 4px 12px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--text-soft);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.tag-filter {
+  border-color: color-mix(in srgb, var(--tag-color, var(--line-strong)) 70%, transparent);
+}
+
+.type-filter:hover,
+.tag-filter:hover {
+  color: var(--text);
+}
+
+.type-filter[aria-pressed="true"] {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+
+.tag-filter[aria-pressed="true"] {
+  border-color: var(--tag-color);
+  background: var(--tag-color);
+  color: #141414;
+}
+
+.tag-filter[aria-pressed="true"]::before {
+  background: #141414;
+}
+
+.type-filter[aria-pressed="true"] .tag-filter__count,
+.tag-filter[aria-pressed="true"] .tag-filter__count {
+  color: inherit;
+  opacity: 0.7;
+}
+
+.type-filter[data-empty],
+.tag-filter[data-empty] {
+  opacity: 0.45;
+}
+
+.filter-more {
+  display: none !important;
+}
+
+@media (max-width: 759px) {
+  .filter-row__label {
+    flex-basis: 100%;
+  }
+
+  .tag-filters:not(.is-expanded) .tag-filter:nth-of-type(n+7) {
+    display: inline-flex;
+  }
+}
+
+/* ===== Round 24 ===== */
+/* Even spacing throughout the landing panel. */
+.archive-panel .hero-lede { margin-top: 20px; }
+.archive-panel .hero-meta { margin-top: 20px; }
+.archive-panel .archive-controls { margin-top: 20px; gap: 20px; }
+.archive-panel .tag-filters { gap: 10px; }
+
+/* Summary labels. */
+.summary-label {
+  color: var(--text);
+  font-weight: 650;
+}
+
+/* Tags: filled by default; a selected filter switches to the outlined look. */
+.tag-pill,
+html[data-theme] .tag-pill {
+  border: 1.5px solid var(--tag-color);
+  background: var(--tag-color);
+  color: #141414;
+}
+
+.tag-pill::before {
+  background: #141414;
+}
+
+.tag-filter {
+  border-color: var(--tag-color, var(--line-strong));
+  background: var(--tag-color, var(--surface-2));
+  color: #141414;
+}
+
+.tag-filter::before {
+  background: #141414;
+}
+
+.tag-filter .tag-filter__count {
+  color: inherit;
+  opacity: 0.7;
+}
+
+.tag-filter:hover {
+  color: #141414;
+  filter: brightness(1.08);
+}
+
+.tag-filter[aria-pressed="true"] {
+  border-color: var(--tag-color);
+  background: color-mix(in srgb, var(--tag-color) 8%, var(--surface));
+  color: color-mix(in srgb, var(--tag-color) 55%, var(--text));
+}
+
+.tag-filter[aria-pressed="true"]::before {
+  background: var(--tag-color);
+}
+
+/* Home and notice pages share one container width and a closer type scale. */
+main.notice-layout.has-toc,
+main.notice-layout {
+  width: min(1640px, 100% - 2 * var(--gutter));
+}
+
+.notice-card__title { font-size: 1.35rem; }
+.notice-card__summary { font-size: 1rem; }
+
+/* Floating contents button and drawer (below 1200px). */
+.toc-fab {
+  display: none;
+}
+
+@media (max-width: 1199px) {
+  .notice-layout .toc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 300;
+    width: min(320px, 86vw);
+    margin: 0;
+    border-radius: 0 14px 14px 0;
+    overflow-y: auto;
+    transform: translateX(-102%);
+    transition: transform 220ms cubic-bezier(0.2, 0, 0, 1);
+    box-shadow: 0 0 40px rgb(0 0 0 / 0.5);
+  }
+
+  body.toc-open .notice-layout .toc {
+    transform: none;
+  }
+
+  .toc-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 250;
+    background: rgb(0 0 0 / 0.5);
+  }
+
+  .toc-fab:not([hidden]) {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 200;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 0 18px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--text);
+    font: inherit;
+    font-weight: 650;
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.4);
+    cursor: pointer;
+  }
+}
+
+/* ===== Round 25 ===== */
+/* Filter menu: outlined until chosen; a chosen tag fills solid. (Cards and notices stay filled.) */
+.tag-filter {
+  border-color: color-mix(in srgb, var(--tag-color, var(--line-strong)) 75%, transparent);
+  background: transparent;
+  color: var(--text-soft);
+}
+
+.tag-filter::before {
+  background: var(--tag-color, currentColor);
+}
+
+.tag-filter:hover {
+  color: var(--text);
+  filter: none;
+}
+
+.tag-filter[aria-pressed="true"] {
+  border-color: var(--tag-color);
+  background: var(--tag-color);
+  color: #141414;
+}
+
+.tag-filter[aria-pressed="true"]::before {
+  background: #141414;
+}
+
+/* Hero watermark sits like the main site's: its top above the tab, behind the title. */
+.archive-panel .hero-watermark {
+  top: 0.12em;
+  left: -0.04em;
+}
+
+.archive-panel .archive-hero {
+  padding-top: 0.55em;
+}
+
+/* Classification labels in the notices' gold, distinct from the white title tab. */
+.notice-card__type,
+.notice-kicker {
+  background: #f2bf1a;
+  color: #141414;
+}
+
+/* Contents button in the header on small screens (opens the left drawer). */
+@media (max-width: 1199px) {
+  .topbar .toc-fab:not([hidden]) {
+    position: static;
+    min-height: 40px;
+    margin-right: auto;
+    padding: 0 12px;
+    border-radius: 999px;
+    box-shadow: none;
+    background: transparent;
+    border: 1px solid var(--line);
+  }
+
+  .topbar .toc-fab + .brand {
+    margin-right: auto;
+  }
+
+  .topbar__inner:has(.toc-fab:not([hidden])) .brand {
+    margin-left: 4px;
+  }
+}
+
+.archive-panel .hero-watermark {
+  top: 0.02em;
+  font-size: clamp(4.5rem, 9vw, 8.75rem);
+}
+
+.archive-panel .archive-hero {
+  padding-top: 0.4em;
+}
+
+/* Header: [Contents] brand ........ actions */
+.topbar__inner {
+  justify-content: flex-start;
+}
+
+.topbar__actions {
+  margin-left: auto;
+}
+
+.topbar .toc-fab:not([hidden]) {
+  margin-right: 12px;
+}
+
+/* ===================== Round 26: one application layout ===================== */
+/* Archive and notice pages share the same frame: a 280px sidebar and a main panel. */
+main.app-layout,
+main.notice-layout,
+main.notice-layout.has-toc {
+  width: min(1400px, 100% - 2 * var(--gutter));
+}
+
+@media (min-width: 1200px) {
+  main.app-layout {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+
+  .app-layout .browse {
+    position: sticky;
+    top: calc(var(--topbar) + 24px);
+    max-height: calc(100vh - var(--topbar) - 48px);
+    overflow-y: auto;
+    margin: 0;
+  }
+}
+
+.app-layout,
+.notice-layout {
+  padding-top: clamp(24px, 4vw, 44px);
+}
+
+/* One panel surface for both pages. */
+.archive-panel,
+.notice-layout .article-panel {
+  padding: clamp(24px, 3.5vw, 48px);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  overflow: visible;
+}
+
+/* Readable line length everywhere (tables keep their own width). */
+.notice-layout .article-content {
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.notice-layout .article-content > p,
+.notice-layout .article-content > ul,
+.notice-layout .article-content > ol,
+.notice-card__summary,
+.hero-lede {
+  max-width: 78ch;
+}
+
+/* ---------- Archive header ---------- */
+.hero-watermark { display: none; }
+
+.label-tab {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 4px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  color: var(--text-soft);
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+
+.archive-head .hero-title {
+  margin: 0;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+}
+
+.archive-head .hero-lede {
+  margin: 14px 0 0;
+  font-size: 1.125rem;
+}
+
+.archive-head .hero-meta {
+  margin: 10px 0 0;
+  font-size: 1rem;
+}
+
+.archive-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.archive-search .input {
+  flex: 1 1 320px;
+  max-width: none;
+}
+
+.archive-head .archive-results {
+  margin: 16px 0 0;
+  font-size: 0.95rem;
+}
+
+/* ---------- Notice rows inside the panel ---------- */
+.app-layout .notice-list {
+  display: block;
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.app-layout .notice-list .notice-card {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr) 1rem;
+  gap: 4px 24px;
+  min-height: 0;
+  padding: 22px 6px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: none;
+  clip-path: none;
+}
+
+.app-layout .notice-list .notice-card::before {
+  display: none;
+}
+
+.app-layout .notice-list .notice-card::after {
+  content: "›";
+  align-self: center;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.app-layout .notice-list .notice-card:hover {
+  background: color-mix(in srgb, var(--surface-2) 60%, transparent);
+}
+
+.app-layout .notice-list .notice-card:hover::after {
+  color: var(--text);
+}
+
+.app-layout .notice-card__meta {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 4px;
+  font-size: 0.95rem;
+}
+
+.notice-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
+
+.app-layout .notice-card__title {
+  font-size: 1.3rem;
+  line-height: 1.25;
+}
+
+.app-layout .notice-card__summary,
+.app-layout .notice-card__summary[style] {
+  flex: none;
+  height: auto !important;
+  min-height: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  color: var(--text-soft);
+  font-size: 1rem;
+  line-height: 1.55;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.app-layout .notice-card .tag-list {
+  margin: 4px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+@media (max-width: 759px) {
+  .app-layout .notice-list .notice-card {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 18px 2px;
+  }
+
+  .app-layout .notice-list .notice-card::after { display: none; }
+
+  .app-layout .notice-card__meta {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* ---------- Labels: one readable size, table-label weight, no icons ---------- */
+.type-label::before,
+.tag-pill::before,
+.tag-filter::before,
+.tag-filter[aria-pressed="true"]::before {
+  display: none !important;
+}
+
+.category-badge,
+.tag-pill,
+html[data-theme] .tag-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 0;
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+/* Category: the primary accent (the notices' table gold). */
+.category-badge {
+  border: 1.5px solid #f2bf1a;
+  background: #f2bf1a;
+  color: #141414;
+}
+
+/* Tags: secondary metadata in their own colors. */
+.tag-pill,
+html[data-theme] .tag-pill {
+  border: 1.5px solid color-mix(in srgb, var(--tag-color) 70%, transparent);
+  background: color-mix(in srgb, var(--tag-color) 10%, var(--surface));
+  color: color-mix(in srgb, var(--tag-color) 60%, var(--text));
+}
+
+.notice-kicker {
+  display: block;
+  margin: 0 0 14px;
+  padding: 0;
+  background: none;
+}
+
+.notice-date,
+.notice-title-block .notice-date {
+  font-size: 1rem;
+}
+
+/* ---------- Sidebars: Browse and Contents share one component ---------- */
+.toc__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.browse__body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.browse-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.browse-group + .browse-group {
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.browse-group__label {
+  margin: 0 0 6px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+
+.browse-item {
+  appearance: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 7px 10px 7px 22px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--text-soft);
+  font: inherit;
+  font-size: 0.95rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.browse-item::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 0.55em;
+  bottom: 0.55em;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--line-strong);
+}
+
+.browse-item--tag::before {
+  background: color-mix(in srgb, var(--tag-color) 70%, transparent);
+}
+
+.browse-item:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.browse-item__count {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.browse-item[aria-pressed="true"] {
+  background: color-mix(in srgb, #f2bf1a 10%, transparent);
+  color: #f2bf1a;
+  font-weight: 650;
+}
+
+.browse-item[aria-pressed="true"]::before {
+  background: #f2bf1a;
+}
+
+.browse-item--tag[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--tag-color) 12%, transparent);
+  color: color-mix(in srgb, var(--tag-color) 70%, var(--text));
+}
+
+.browse-item--tag[aria-pressed="true"]::before {
+  background: var(--tag-color);
+}
+
+.browse-item[data-empty] {
+  opacity: 0.45;
+}
+
+.browse .filter-clear {
+  align-self: flex-start;
+  padding: 0 10px;
+}
+
+:root:not([data-theme="dark"]) .browse-item[aria-pressed="true"],
+:root:not([data-theme="dark"]) .toc__list a[aria-current] {
+  color: #8a6400;
+}
+
+/* ---------- Small screens: icon-only header button opens/closes a drawer below the header ---------- */
+@media (max-width: 1199px) {
+  .app-layout .browse,
+  .notice-layout .toc {
+    position: fixed;
+    top: var(--topbar);
+    left: 0;
+    bottom: 0;
+    z-index: 300;
+    width: min(320px, 86vw);
+    margin: 0;
+    border-radius: 0 14px 14px 0;
+    overflow-y: auto;
+    transform: translateX(-102%);
+    transition: transform 220ms cubic-bezier(0.2, 0, 0, 1);
+    box-shadow: 0 0 40px rgb(0 0 0 / 0.5);
+  }
+
+  body.browse-open .app-layout .browse,
+  body.toc-open .notice-layout .toc {
+    transform: none;
+  }
+
+  .toc-scrim {
+    top: var(--topbar);
+  }
+
+  .toc__caret {
+    display: none;
+  }
+
+  .toc__toggle {
+    cursor: default;
+  }
+
+  .topbar .toc-fab:not([hidden]),
+  .toc-fab:not([hidden]) {
+    position: static;
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    min-height: 40px;
+    margin-right: 12px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-soft);
+    box-shadow: none;
+  }
+
+  .toc-fab[aria-expanded="true"] {
+    background: var(--surface-2);
+    color: var(--text);
+  }
+}
+
+@media (min-width: 1200px) {
+  .toc-fab { display: none !important; }
+}
+
+.app-layout .archive-panel,
+.notice-layout .article-panel {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+/* ===================== Round 27 ===================== */
+/* Back to the larger frame and type scale (round 26 shrank both). */
+main.app-layout,
+main.notice-layout,
+main.notice-layout.has-toc {
+  width: min(1640px, 100% - 2 * var(--gutter));
+}
+
+@media (min-width: 1200px) {
+  main.app-layout,
+  main.notice-layout.has-toc {
+    grid-template-columns: 300px minmax(0, 1fr);
+  }
+}
+
+.label-tab {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 7px 14px;
+  border: 0;
+  border-radius: 0;
+  background: var(--text);
+  color: var(--bg);
+  font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.archive-head .hero-title {
+  font-size: clamp(2.6rem, 4.5vw, 4rem);
+  line-height: 1.02;
+}
+
+.archive-head .hero-lede { font-size: 1.2rem; }
+.archive-head .hero-meta { font-size: 1rem; }
+.app-layout .notice-card__title { font-size: 1.4rem; }
+.app-layout .notice-card__summary { font-size: 1.05rem; }
+.app-layout .notice-card__meta { font-size: 1rem; }
+.notice-layout .article-content { font-size: 1.15rem; }
+
+/* Category badge: filled white like the label tab (identity), tags carry the color. */
+.category-badge {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+
+.notice-kicker .category-badge {
+  font-size: 0.95rem;
+}
+
+/* Icons back on tags and the Browse sidebar, drawn in each tag's color. */
+.tag-pill::before,
+html[data-theme] .tag-pill::before {
+  content: "";
+  display: inline-block !important;
+  flex-shrink: 0;
+  width: 1.15em;
+  height: 1.15em;
+  margin-right: 6px;
+  background: var(--tag-color);
+  -webkit-mask: var(--icon) no-repeat center / contain;
+  mask: var(--icon) no-repeat center / contain;
+}
+
+.browse-item--tag {
+  padding-left: 10px;
+}
+
+.browse-item--tag::before {
+  position: static;
+  width: 1.15em;
+  height: 1.15em;
+  border-radius: 0;
+  background: var(--tag-color);
+  -webkit-mask: var(--icon) no-repeat center / contain;
+  mask: var(--icon) no-repeat center / contain;
+}
+
+.browse-item--tag .browse-item__name {
+  margin-right: auto;
+}
+
+.browse-item--tag[aria-pressed="true"]::before {
+  background: var(--tag-color);
+}
+
+/* The active tag row also gets a colored bar so selection reads like the Type list. */
+.browse-item--tag[aria-pressed="true"] {
+  box-shadow: inset 3px 0 0 var(--tag-color);
+}
+
+/* ===================== Round 28 ===================== */
+/* Category badge: a warm parchment neutral that sits with every tag color (not white, not yellow). */
+.category-badge {
+  border-color: #d9cfbd;
+  background: #d9cfbd;
+  color: #1a1612;
+}
+
+:root:not([data-theme="dark"]) .category-badge {
+  border-color: #3a332b;
+  background: #3a332b;
+  color: #f4efe6;
+}
+
+/* Tag pills: icon and text sized and spaced together. */
+.tag-pill,
+html[data-theme] .tag-pill {
+  gap: 7px;
+  padding: 4px 11px 4px 9px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.tag-pill::before,
+html[data-theme] .tag-pill::before {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0;
+}
+
+/* Browse: rows like YouTube / GitHub sidebars. Selection is a soft pill, no bars or shadows. */
+.browse-item,
+.browse-item--tag {
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.browse-item::before,
+.browse-item--tag::before {
+  content: "";
+  position: static;
+  flex-shrink: 0;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 0;
+  background: var(--tag-color, var(--text-muted));
+  -webkit-mask: var(--icon) no-repeat center / contain;
+  mask: var(--icon) no-repeat center / contain;
+}
+
+.browse-item:not([data-icon])::before {
+  -webkit-mask: none;
+  mask: none;
+  width: 1.2em;
+  background: none;
+}
+
+.browse-item__name {
+  margin-right: auto;
+}
+
+.browse-item[aria-pressed="true"],
+.browse-item--tag[aria-pressed="true"] {
+  background: var(--surface-2);
+  color: var(--text);
+  font-weight: 650;
+  box-shadow: none;
+}
+
+.browse-item[aria-pressed="true"]::before,
+.browse-item--tag[aria-pressed="true"]::before {
+  background: var(--tag-color, var(--text));
+}
+
+:root:not([data-theme="dark"]) .browse-item[aria-pressed="true"] {
+  color: var(--text);
+}
+
+.browse-item[aria-pressed="true"] .browse-item__count {
+  color: var(--text-soft);
+}
+
+/* Clear sits in the Browse header, like Spotify's "Your Library  + Create". */
+.toc__head .filter-clear {
+  margin-left: auto;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text-soft);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.toc__head .filter-clear:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+/* Sort: a dropdown next to the search, as in the mockup. */
+.sort-select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.sort-select select {
+  appearance: none;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  padding-right: 22px;
+  cursor: pointer;
+}
+
+.sort-select select:focus {
+  outline: none;
+}
+
+.sort-select:focus-within {
+  border-color: var(--text-muted);
+}
+
+.sort-select__chevron {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  color: var(--text-muted);
+}
+
+.sort-select option {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.archive-search .input {
+  border-radius: 10px;
+}
+
+/* Gentle motion: list refresh, rows, pills. */
+@media (prefers-reduced-motion: no-preference) {
+  .notice-list.is-updating > * {
+    animation: rowIn 220ms cubic-bezier(0.2, 0, 0, 1) both;
+  }
+
+  .notice-list.is-updating > *:nth-child(2) { animation-delay: 20ms; }
+  .notice-list.is-updating > *:nth-child(3) { animation-delay: 40ms; }
+  .notice-list.is-updating > *:nth-child(4) { animation-delay: 60ms; }
+  .notice-list.is-updating > *:nth-child(n+5) { animation-delay: 80ms; }
+
+  .app-layout .notice-list .notice-card {
+    transition: background-color 160ms ease;
+  }
+
+  .app-layout .notice-list .notice-card::after {
+    transition: transform 160ms ease, color 160ms ease;
+  }
+
+  .app-layout .notice-list .notice-card:hover::after {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes rowIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Small screens: the panel pops out of its header button as an anchored menu. */
+@media (max-width: 1199px) {
+  .app-layout .browse,
+  .notice-layout .toc {
+    top: calc(var(--topbar) + 6px);
+    left: 10px;
+    bottom: auto;
+    width: min(320px, calc(100vw - 20px));
+    max-height: calc(100vh - var(--topbar) - 20px);
+    border: 1px solid var(--line-strong);
+    border-radius: 14px;
+    transform: scale(0.96) translateY(-6px);
+    transform-origin: top left;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 180ms cubic-bezier(0.2, 0, 0, 1), opacity 180ms ease, visibility 0s linear 180ms;
+    box-shadow: 0 16px 40px rgb(0 0 0 / 0.55);
+  }
+
+  body.browse-open .app-layout .browse,
+  body.toc-open .notice-layout .toc {
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    transition: transform 180ms cubic-bezier(0.2, 0, 0, 1), opacity 180ms ease, visibility 0s;
+  }
+
+  .toc-scrim {
+    background: rgb(0 0 0 / 0.25);
+  }
+}
+
+/* Contents uses the same row style as Browse: soft highlight, no bars. */
+.toc__list a {
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.toc__list a::before {
+  display: none;
+}
+
+.toc__list a[aria-current],
+:root:not([data-theme="dark"]) .toc__list a[aria-current] {
+  background: var(--surface-2);
+  color: var(--text);
+  font-weight: 650;
+}
+
+/* ===== Round 29 ===== */
+[data-icon="all"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3 2 8l10 5 10-5z'/%3E%3Cpath d='m2 13 10 5 10-5'/%3E%3Cpath d='m2 18 10 5 10-5' opacity='.6'/%3E%3C/svg%3E"); }
+
+.browse-item[data-icon="all"]::before {
+  background: var(--text-soft);
+  -webkit-mask: var(--icon) no-repeat center / contain;
+  mask: var(--icon) no-repeat center / contain;
+}
+
+.browse-item[data-icon="all"][aria-pressed="true"]::before {
+  background: var(--text);
+}
+
+/* The cream accent carries the identity: label tab and category badges. */
+.label-tab {
+  background: #d9cfbd;
+  color: #1a1612;
+}
+
+:root:not([data-theme="dark"]) .label-tab {
+  background: #3a332b;
+  color: #f4efe6;
+}
+
+/* Sidebars scroll quietly when taller than the window. */
+.app-layout .browse,
+.notice-layout .toc {
+  scrollbar-width: none;
+  overscroll-behavior: contain;
+}
+
+.app-layout .browse::-webkit-scrollbar,
+.notice-layout .toc::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===================== Round 30 ===================== */
+/* White identity tab again; each type has its own color. */
+.label-tab {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.category-badge,
+:root:not([data-theme="dark"]) .category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1.5px solid var(--tag-color, var(--text));
+  background: var(--tag-color, var(--text));
+  color: #141414;
+}
+
+.category-badge::before {
+  content: "";
+  width: 1.1em;
+  height: 1.1em;
+  background: #141414;
+  -webkit-mask: var(--icon) no-repeat center / contain;
+  mask: var(--icon) no-repeat center / contain;
+}
+
+/* Tags filled on cards and notice pages (outlined only in the Browse list). */
+.tag-pill,
+html[data-theme] .tag-pill {
+  border: 1.5px solid var(--tag-color);
+  background: var(--tag-color);
+  color: #141414;
+}
+
+.tag-pill::before,
+html[data-theme] .tag-pill::before {
+  background: #141414;
+}
+
+/* Selection shows the item's own color (soft tint), no bars. */
+.browse-item[aria-pressed="true"],
+.browse-item--tag[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--tag-color, var(--text)) 16%, transparent);
+  color: color-mix(in srgb, var(--tag-color, var(--text)) 75%, var(--text));
+}
+
+.browse-item[data-icon="all"][aria-pressed="true"] {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.toc__list a[aria-current],
+:root:not([data-theme="dark"]) .toc__list a[aria-current] {
+  background: color-mix(in srgb, #efc04a 14%, transparent);
+  color: #efc04a;
+}
+
+:root:not([data-theme="dark"]) .toc__list a[aria-current] {
+  color: #8a6400;
+}
+
+/* Text runs the full column so every right edge lines up (headings, rules, paragraphs). */
+.notice-layout .article-content > p,
+.notice-layout .article-content > ul,
+.notice-layout .article-content > ol,
+.notice-card__summary,
+.app-layout .notice-card__summary {
+  max-width: none;
+}
+
+/* Sort menu. */
+.sort-select select[hidden] { display: none; }
+
+.sort-select {
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.sort-button {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 160ms ease;
+}
+
+.sort-button:hover,
+.sort-select.is-open .sort-button {
+  background: var(--surface-2);
+}
+
+.sort-button .sort-select__chevron {
+  position: static;
+  transition: transform 160ms ease;
+}
+
+.sort-select.is-open .sort-select__chevron {
+  transform: rotate(180deg);
+}
+
+.sort-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 60;
+  min-width: 100%;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px) scale(0.98);
+  transform-origin: top right;
+  transition: opacity 150ms ease, transform 150ms ease, visibility 0s linear 150ms;
+}
+
+.sort-select.is-open .sort-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 150ms ease, transform 150ms ease, visibility 0s;
+}
+
+.sort-menu li {
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--text-soft);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.sort-menu li:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.sort-menu li[aria-selected="true"] {
+  color: var(--text);
+  font-weight: 650;
+}
+
+/* Table formats from the notices. */
+.notice-table-title {
+  margin: 0 0 0.4em;
+}
+
+.notice-table--records,
+.notice-table--grid,
+.notice-table--keyed {
+  width: auto;
+}
+
+.notice-table--records thead th,
+.notice-table--grid thead th,
+.notice-table--keyed thead th,
+.notice-table--group thead th {
+  background: var(--gold-cell);
+  color: #141414;
+  text-align: center;
+}
+
+.notice-table--grid .notice-table__corner {
+  background: transparent;
+}
+
+.notice-table--grid tbody th {
+  max-width: 12em;
+}
+
+.notice-table--group td {
+  min-width: 14em;
+}
+
+.notice-table td:empty {
+  box-shadow: none;
+}
+
+/* ===================== Round 31: app shell ===================== */
+/* The sidebar is a full-height rail on the left edge; content sits on the page canvas. */
+@media (min-width: 1200px) {
+  main.app-layout,
+  main.notice-layout.has-toc {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .app-layout .browse,
+  .notice-layout.has-toc .toc {
+    position: sticky;
+    top: var(--topbar);
+    height: calc(100vh - var(--topbar));
+    max-height: none;
+    margin: 0;
+    padding: 24px 20px;
+    border: 0;
+    border-right: 1px solid var(--line);
+    border-radius: 0;
+    background: var(--bg);
+  }
+
+  .app-layout > .archive-panel,
+  .notice-layout.has-toc > .article-panel {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: clamp(28px, 3.5vw, 56px) clamp(24px, 4vw, 64px) 64px;
+  }
+}
+
+.archive-panel,
+.notice-layout .article-panel {
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+
+.notice-layout:not(.has-toc) .article-panel {
+  margin: 0 auto;
+}
+
+/* Section separation comes from rules and spacing, not boxes. */
+.archive-head {
+  padding-bottom: 8px;
+}
+
+.app-layout .notice-list {
+  margin-top: 24px;
+}
+
+.site-footer {
+  position: relative;
+  z-index: 1;
+  background: var(--bg);
+}
+
+/* Tables sized to their content, as in the notices. */
+.notice-table,
+.notice-table--records,
+.notice-table--grid,
+.notice-table--keyed,
+.notice-table--group,
+.notice-table--pairs {
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.notice-table th,
+.notice-table td,
+.notice-table tbody th,
+.notice-table tbody tr:last-child th {
+  padding: 0.4em 0.85em;
+  line-height: 1.4;
+}
+
+.notice-table .cell-item {
+  white-space: nowrap;
+}
+
+.notice-table--pairs th,
+.notice-table--grid tbody th {
+  min-width: 0;
+  max-width: 13em;
+}
+
+.notice-table--group td {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 759px) {
+  .notice-table .cell-item,
+  .notice-table--group td {
+    white-space: normal;
+  }
+}
+
+/* Sort menu: quicker, tighter, check for the current option. */
+.sort-menu {
+  top: calc(100% + 4px);
+  min-width: 100%;
+  padding: 4px;
+  border-radius: 10px;
+  transition: opacity 90ms ease, transform 90ms ease, visibility 0s linear 90ms;
+}
+
+.sort-select.is-open .sort-menu {
+  transition: opacity 90ms ease, transform 90ms ease, visibility 0s;
+}
+
+.sort-menu li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 7px 10px;
+}
+
+.sort-menu li[aria-selected="true"] {
+  font-weight: 600;
+}
+
+.sort-menu__check {
+  visibility: hidden;
+  color: var(--text-soft);
+}
+
+.sort-menu li[aria-selected="true"] .sort-menu__check {
+  visibility: visible;
+}
+
+.sort-button .sort-select__chevron {
+  transition: transform 90ms ease;
+}
+
+/* ===================== Round 32: YouTube/Kick-style shell ===================== */
+.menu-btn {
+  appearance: none;
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color 140ms ease;
+}
+
+.menu-btn:hover {
+  background: var(--surface-2);
+}
+
+.menu-btn[hidden] {
+  display: none;
+}
+
+.rail-head {
+  display: none;
+}
+
+.toc-fab {
+  display: none !important;
+}
+
+/* Clear lives in the Tags label row; the row height never changes. */
+.browse-group__label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 28px;
+  margin: 0 0 6px;
+}
+
+.browse-group__label .filter-clear {
+  margin: 0;
+  padding: 2px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text-soft);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.browse-group__label .filter-clear:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.browse-group__label .filter-clear[hidden] {
+  display: none;
+}
+
+.browse__body {
+  margin-top: 4px;
+}
+
+/* ----- Wide screens: fixed rail (always reachable), collapsible to icons ----- */
+@media (min-width: 1200px) {
+  body:has(.app-layout),
+  body:has(.notice-layout.has-toc) {
+    --rail-w: 280px;
+  }
+
+  html[data-rail="collapsed"] body:has(.app-layout) {
+    --rail-w: 76px;
+  }
+
+  html[data-rail="collapsed"] body:has(.notice-layout.has-toc) {
+    --rail-w: 0px;
+  }
+
+  main.app-layout,
+  main.notice-layout.has-toc {
+    display: block;
+    width: 100%;
+    padding-left: var(--rail-w);
+    transition: padding-left 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .app-layout .browse,
+  .notice-layout.has-toc .toc {
+    position: fixed;
+    top: var(--topbar);
+    left: 0;
+    bottom: 0;
+    z-index: 40;
+    width: var(--rail-w);
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition: width 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  html[data-rail="collapsed"] .notice-layout.has-toc .toc {
+    visibility: hidden;
+    padding: 0;
+    border: 0;
+  }
+
+  body:has(.app-layout) .site-footer,
+  body:has(.notice-layout.has-toc) .site-footer {
+    padding-left: var(--rail-w);
+    transition: padding-left 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+}
+
+/* ----- Small screens: centered brand; full-height drawer over the header ----- */
+@media (max-width: 1199px) {
+  .topbar__inner {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    align-items: center;
+  }
+
+  .topbar__inner > .brand {
+    justify-self: center;
+  }
+
+  .topbar__inner > .menu-btn {
+    margin: 0;
+  }
+
+  .topbar__inner > .topbar__actions {
+    margin: 0;
+    justify-self: end;
+  }
+
+  .topbar__inner:not(:has(.menu-btn:not([hidden]))) {
+    grid-template-columns: 1fr 40px;
+  }
+
+  .topbar__inner:not(:has(.menu-btn:not([hidden]))) > .brand {
+    justify-self: start;
+  }
+
+  .app-layout .browse,
+  .notice-layout .toc,
+  body.drawer-open .app-layout .browse,
+  body.drawer-open .notice-layout .toc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 400;
+    width: min(300px, 86vw);
+    max-height: none;
+    margin: 0;
+    padding: 0 16px 24px;
+    border: 0;
+    border-right: 1px solid var(--line);
+    border-radius: 0;
+    background: var(--bg);
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    overflow-y: auto;
+    transform: translateX(-102%);
+    transform-origin: left center;
+    transition: transform 220ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  body.drawer-open .app-layout .browse,
+  body.drawer-open .notice-layout .toc {
+    transform: none;
+    box-shadow: 0 0 40px rgb(0 0 0 / 0.5);
+  }
+
+  .rail-head {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    min-height: var(--topbar);
+    margin: 0 -16px 8px;
+    padding: 0 16px;
+    background: var(--bg);
+  }
+
+  .rail-head .menu-btn {
+    margin-right: 10px;
+  }
+
+  .notice-layout .toc .toc__toggle {
+    margin-top: 4px;
+  }
+
+  .shell-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 350;
+    background: rgb(0 0 0 / 0.5);
+  }
+
+  .shell-scrim[hidden] {
+    display: none;
+  }
+}
+
+/* The menu button sits over the rail's icon column, as in YouTube/Kick. */
+.topbar__inner:has(> .menu-btn:not([hidden])) {
+  padding-left: 18px;
+}
+
+@media (max-width: 1199px) {
+  .topbar__inner:has(> .menu-btn:not([hidden])) {
+    padding-left: 10px;
+  }
+}
+
+/* Round 33: full-size menu icon; a collapsed sidebar is hidden entirely (YouTube). */
+.menu-btn {
+  width: 44px;
+  height: 44px;
+}
+
+.menu-btn .icon {
+  width: 26px;
+  height: 26px;
+}
+
+@media (min-width: 1200px) {
+  html[data-rail="collapsed"] body:has(.app-layout) {
+    --rail-w: 0px;
+  }
+
+  html[data-rail="collapsed"] .app-layout .browse {
+    visibility: hidden;
+    padding: 0;
+    border: 0;
+  }
+}
+
+/* ===================== Round 33 ===================== */
+/* Brand at header scale. */
+.topbar .brand,
+.rail-head .brand {
+  gap: 10px;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+}
+
+.topbar .brand__mark,
+.rail-head .brand__mark {
+  width: 22px;
+  height: 22px;
+}
+
+/* The rail slides as one piece (no width animation), so rows never rewrap mid-motion. */
+@media (min-width: 1200px) {
+  body:has(.app-layout),
+  body:has(.notice-layout.has-toc) {
+    --rail-full: 280px;
+  }
+
+  .app-layout .browse,
+  .notice-layout.has-toc .toc,
+  html[data-rail="collapsed"] .app-layout .browse,
+  html[data-rail="collapsed"] .notice-layout.has-toc .toc {
+    width: var(--rail-full);
+    padding: 24px 20px;
+    border-right: 1px solid var(--line);
+    visibility: visible;
+    transform: none;
+    transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), visibility 0s;
+  }
+
+  html[data-rail="collapsed"] .app-layout .browse,
+  html[data-rail="collapsed"] .notice-layout.has-toc .toc {
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), visibility 0s linear 200ms;
+  }
+}
+
+.browse-item__name {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.browse-item__count {
+  flex-shrink: 0;
+}
+
+/* Type: a row of chips (choose one), unlike the Tags list below (rows, combine). */
+.browse-group[aria-label="Type"] {
+  flex-direction: row;
+  padding-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.browse-group[aria-label="Type"] .browse-group__label {
+  flex-basis: 100%;
+}
+
+.browse-item--type,
+.browse-item--type[aria-pressed="true"] {
+  width: auto;
+  gap: 7px;
+  padding: 6px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.browse-item--type .browse-item__name {
+  margin-right: 0;
+}
+
+.browse-item--type .browse-item__count {
+  display: none;
+}
+
+.browse-item--type::before {
+  width: 1em;
+  height: 1em;
+}
+
+.browse-item--type:hover {
+  background: var(--surface-2);
+}
+
+.browse-item--type[aria-pressed="true"],
+.browse-item--type[data-icon="all"][aria-pressed="true"] {
+  border-color: transparent;
+  background: var(--tag-color, var(--text));
+  color: #111;
+}
+
+.browse-item--type[aria-pressed="true"]::before,
+.browse-item--type[data-icon="all"][aria-pressed="true"]::before {
+  background: #111;
+}
+
+.browse-group[aria-label="Type"] .browse-item--type {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: max-content;
+  justify-content: flex-start;
+}
+
+/* ===================== Round 34 ===================== */
+/* Type vs tags everywhere: the type is a solid pill (as in the sidebar chips);
+   tags are tinted labels in their color (as in the sidebar's selected tags). */
+.category-badge,
+:root:not([data-theme="dark"]) .category-badge {
+  padding: 4px 12px 4px 10px;
+  border-radius: 999px;
+}
+
+.tag-pill,
+html[data-theme] .tag-pill {
+  border: 1px solid color-mix(in srgb, var(--tag-color) 45%, transparent);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--tag-color) 14%, transparent);
+  color: color-mix(in srgb, var(--tag-color) 82%, #fff);
+}
+
+.tag-pill::before,
+html[data-theme] .tag-pill::before {
+  background: var(--tag-color);
+}
+
+:root:not([data-theme="dark"]) .tag-pill {
+  border-color: color-mix(in srgb, var(--tag-color) 60%, transparent);
+  background: color-mix(in srgb, var(--tag-color) 16%, transparent);
+  color: color-mix(in srgb, var(--tag-color) 55%, #111);
+}
+
+:root:not([data-theme="dark"]) .tag-pill::before {
+  background: color-mix(in srgb, var(--tag-color) 70%, #111);
+}
+
+/* Contents heading matches the Browse group labels. */
+.toc__label {
+  margin: 0 0 8px;
+}
+
+.toc__list[hidden] {
+  display: block;
+}
+
+/* Comfortable reading size on desktop displays (a touch above 100% browser zoom). */
+@media (min-width: 1200px) {
+  body {
+    zoom: 1.05;
+  }
+}
+
+@media (min-width: 1700px) {
+  body {
+    zoom: 1.1;
+  }
+}
+
+@media (min-width: 2300px) {
+  body {
+    zoom: 1.25;
+  }
+}
+
+/* ===================== Round 35 ===================== */
+[data-tag="fixes"], [data-icon="fixes"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8.9 5.6 12.6 1.9 21.1 10.4 17.4 14.1Z' fill='%23000'/%3E%3Cpath d='M13.2 9.8 3 20' stroke-width='3.4'/%3E%3C/svg%3E"); }
+
+.rail-head .menu-btn {
+  margin-right: 0;
+}
+
+/* Hierarchy: tags are the filled labels; the type is an outlined pill in its color. */
+.category-badge,
+:root:not([data-theme="dark"]) .category-badge {
+  border: 1.5px solid var(--tag-color, var(--text));
+  background: transparent;
+  color: var(--tag-color, var(--text));
+}
+
+.category-badge::before {
+  background: var(--tag-color, var(--text));
+}
+
+:root:not([data-theme="dark"]) .category-badge {
+  color: color-mix(in srgb, var(--tag-color, var(--text)) 60%, #111);
+  border-color: color-mix(in srgb, var(--tag-color, var(--text)) 75%, #111);
+}
+
+:root:not([data-theme="dark"]) .category-badge::before {
+  background: color-mix(in srgb, var(--tag-color, var(--text)) 60%, #111);
+}
+
+.tag-pill,
+html[data-theme] .tag-pill,
+:root:not([data-theme="dark"]) .tag-pill {
+  border: 1px solid var(--tag-color);
+  background: var(--tag-color);
+  color: #141414;
+}
+
+.tag-pill::before,
+html[data-theme] .tag-pill::before,
+:root:not([data-theme="dark"]) .tag-pill::before {
+  background: #141414;
+}
+
+/* The sidebar follows the same scheme: selected type chip outlined, selected tag filled. */
+.browse-item--type[aria-pressed="true"],
+.browse-item--type[data-icon="all"][aria-pressed="true"] {
+  border-color: var(--tag-color, var(--text));
+  background: color-mix(in srgb, var(--tag-color, var(--text)) 14%, transparent);
+  color: var(--tag-color, var(--text));
+}
+
+.browse-item--type[aria-pressed="true"]::before,
+.browse-item--type[data-icon="all"][aria-pressed="true"]::before {
+  background: var(--tag-color, var(--text));
+}
+
+.browse-item--tag[aria-pressed="true"] {
+  background: var(--tag-color);
+  color: #141414;
+}
+
+.browse-item--tag[aria-pressed="true"]::before,
+.browse-item--tag[aria-pressed="true"] .browse-item__count {
+  background-color: #141414;
+  color: #141414;
+}
+
+.browse-item--tag[aria-pressed="true"] .browse-item__count {
+  background: none;
+}
+
+/* ===================== Round 36: one visual rule ===================== */
+/* Nothing is solid-filled. Type = outlined pill. Tag = soft tinted label. Same in the sidebar. */
+.category-badge,
+:root:not([data-theme="dark"]) .category-badge {
+  border: 1.5px solid var(--tag-color, var(--text));
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tag-color, var(--text));
+}
+
+.tag-pill,
+html[data-theme] .tag-pill {
+  border: 0;
+  border-radius: 6px;
+  padding: 5px 11px 5px 9px;
+  background: color-mix(in srgb, var(--tag-color) 16%, transparent);
+  color: color-mix(in srgb, var(--tag-color) 80%, #fff);
+}
+
+.tag-pill::before,
+html[data-theme] .tag-pill::before {
+  background: var(--tag-color);
+}
+
+:root:not([data-theme="dark"]) .tag-pill {
+  border: 0;
+  background: color-mix(in srgb, var(--tag-color) 18%, transparent);
+  color: color-mix(in srgb, var(--tag-color) 50%, #111);
+}
+
+:root:not([data-theme="dark"]) .tag-pill::before {
+  background: color-mix(in srgb, var(--tag-color) 65%, #111);
+}
+
+/* Sidebar: selected type chip outlined; selected tag row tinted. */
+.browse-item--type[aria-pressed="true"],
+.browse-item--type[data-icon="all"][aria-pressed="true"] {
+  border-color: var(--tag-color, var(--text));
+  background: transparent;
+  color: var(--tag-color, var(--text));
+}
+
+.browse-item--type[aria-pressed="true"] {
+  cursor: default;
+}
+
+.browse-item--tag[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--tag-color) 16%, transparent);
+  color: color-mix(in srgb, var(--tag-color) 80%, #fff);
+}
+
+.browse-item--tag[aria-pressed="true"]::before {
+  background-color: var(--tag-color);
+}
+
+.browse-item--tag[aria-pressed="true"] .browse-item__count {
+  color: color-mix(in srgb, var(--tag-color) 80%, #fff);
+}
+
+:root:not([data-theme="dark"]) .browse-item--tag[aria-pressed="true"],
+:root:not([data-theme="dark"]) .browse-item--tag[aria-pressed="true"] .browse-item__count {
+  color: color-mix(in srgb, var(--tag-color) 50%, #111);
+}
+
+/* Counts on both groups, in the same muted style. */
+.browse-item--type .browse-item__count {
+  display: inline;
+  margin-left: 2px;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.browse-item--type[aria-pressed="true"] .browse-item__count {
+  color: inherit;
+  opacity: 0.75;
+}
+
+/* Menu button sits closer to the logo. */
+.topbar__inner > .menu-btn {
+  margin-right: -6px;
+}
+
+/* ===================== Round 37 ===================== */
+/* Normal size: no page zoom. */
+body {
+  zoom: 1 !important;
+}
+
+/* Filtered URL on refresh: wait for the filtered list instead of flashing the unfiltered one. */
+html[data-pending] #noticeList,
+html[data-pending] #resultsSummary,
+html[data-pending] .notice-pagination {
+  visibility: hidden;
+}
+
+/* Type label (cards and notice pages): small caps-style text in the type color. */
+.category-badge,
+:root:not([data-theme="dark"]) .category-badge {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--tag-color, var(--text-soft));
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.category-badge::before {
+  display: none;
+}
+
+:root:not([data-theme="dark"]) .category-badge {
+  color: color-mix(in srgb, var(--tag-color, var(--text)) 60%, #111);
+}
+
+
+/* ===================== Round 38 ===================== */
+/* Type = colored kicker text above the title; tags keep their tinted pills; date column stays left. */
+.app-layout .notice-card__body {
+  gap: 6px;
+}
+
+/* ===================== Round 39: Type back to a list ===================== */
+/* Type rows match the Tags rows, but with plain (uncolored) icons; the selected type gets
+   an accent bar in its color, while a selected tag gets a tint. */
+.browse-group[aria-label="Type"] {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 2px;
+  padding-bottom: 0;
+}
+
+.browse-group[aria-label="Type"] .browse-group__label {
+  flex-basis: auto;
+}
+
+.browse-group[aria-label="Type"] .browse-item--type,
+.browse-group[aria-label="Type"] .browse-item--type[aria-pressed="true"] {
+  position: relative;
+  display: flex;
+  flex: none;
+  width: 100%;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  font-size: inherit;
+  font-weight: 500;
+}
+
+.browse-group[aria-label="Type"] .browse-item--type .browse-item__name {
+  margin-right: auto;
+}
+
+.browse-group[aria-label="Type"] .browse-item--type .browse-item__count {
+  display: inline;
+  margin: 0;
+  color: var(--text-muted);
+  font-weight: 500;
+  opacity: 1;
+}
+
+.browse-group[aria-label="Type"] .browse-item--type::before,
+.browse-group[aria-label="Type"] .browse-item--type[data-icon="all"]::before {
+  width: 1.2em;
+  height: 1.2em;
+  background: var(--text-soft);
+}
+
+.browse-group[aria-label="Type"] .browse-item--type:hover {
+  background: var(--surface-2);
+}
+
+.browse-group[aria-label="Type"] .browse-item--type[aria-pressed="true"] {
+  background: var(--surface-2);
+  font-weight: 650;
+  cursor: default;
+}
+
+.browse-group[aria-label="Type"] .browse-item--type[aria-pressed="true"]::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 0;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--tag-color, var(--text));
+}
+
+.browse-group[aria-label="Type"] .browse-item--type[aria-pressed="true"]::before {
+  background: var(--tag-color, var(--text));
+}
+
+.browse-group[aria-label="Type"] .browse-item--type[aria-pressed="true"] .browse-item__count {
+  color: var(--text-soft);
+}
+
+/* ===================== Round 40 ===================== */
+/* A tag looks the same everywhere: colored icon + plain text. On cards and notice pages it
+   sits in a neutral pill; the color tint is reserved for a selected tag in the sidebar. */
+.tag-pill,
+html[data-theme] .tag-pill,
+:root:not([data-theme="dark"]) .tag-pill {
+  gap: 7px;
+  padding: 4px 11px 4px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-soft);
+  font-weight: 500;
+}
+
+.tag-pill::before,
+html[data-theme] .tag-pill::before,
+:root:not([data-theme="dark"]) .tag-pill::before {
+  background: var(--tag-color);
+}
+
+/* ===================== Round 41: one system ===================== */
+/* Shapes: 8px for rows, fields and menus; 6px for pills. Color = category:
+   a tag is always a filled pill in its color; a type is always colored text. */
+:root {
+  --radius-row: 8px;
+  --radius-pill: 6px;
+}
+
+.input,
+#searchInput,
+.sort-button,
+.sort-menu,
+.browse-item,
+.browse-item--tag,
+.browse-group[aria-label="Type"] .browse-item--type,
+.browse-group[aria-label="Type"] .browse-item--type[aria-pressed="true"],
+.toc__list a,
+.back-link,
+.filter-clear,
+.browse-group__label .filter-clear {
+  border-radius: var(--radius-row);
+}
+
+/* Tags: filled pills, same everywhere (cards, notice pages, selected in the sidebar). */
+.tag-pill,
+html[data-theme] .tag-pill,
+:root:not([data-theme="dark"]) .tag-pill {
+  gap: 6px;
+  padding: 3px 9px 3px 8px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--tag-color);
+  color: #141414;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.tag-pill::before,
+html[data-theme] .tag-pill::before,
+:root:not([data-theme="dark"]) .tag-pill::before {
+  width: 1.05em;
+  height: 1.05em;
+  background: #141414;
+}
+
+.browse-item--tag[aria-pressed="true"],
+:root:not([data-theme="dark"]) .browse-item--tag[aria-pressed="true"] {
+  background: var(--tag-color);
+  color: #141414;
+  font-weight: 600;
+}
+
+.browse-item--tag[aria-pressed="true"]::before {
+  background-color: #141414;
+}
+
+.browse-item--tag[aria-pressed="true"] .browse-item__count,
+:root:not([data-theme="dark"]) .browse-item--tag[aria-pressed="true"] .browse-item__count {
+  color: #141414;
+  opacity: 0.7;
+}
+
+/* Type: colored text in normal case, the same voice as the rest of the page. */
+.category-badge,
+:root:not([data-theme="dark"]) .category-badge {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Sidebar: both lists use the same text; only the marks differ. */
+.browse-item,
+.browse-item--tag,
+.browse-group[aria-label="Type"] .browse-item--type {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.browse-group[aria-label="Type"] .browse-item--type[aria-pressed="true"] {
+  font-weight: 600;
+}
+
+/* ===================== Round 43: one palette, one selection style ===================== */
+/* Category colors share one lightness and chroma (OKLCH L 0.75), so no color shouts.
+   Selection works the same everywhere: a tint of the item's color plus a bar on its left edge
+   (Type rows, Tag rows, the Contents list). Icons are neutral until selected. */
+
+/* Slightly larger base size on desktop (text only; layout unchanged). */
+@media (min-width: 1200px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+/* Sidebar rows: identical anatomy for Type and Tags. */
+.browse-item,
+.browse-item--tag,
+.browse-group[aria-label="Type"] .browse-item--type {
+  position: relative;
+  color: var(--text-soft);
+}
+
+.browse-item::before,
+.browse-item--tag::before,
+.browse-group[aria-label="Type"] .browse-item--type::before,
+.browse-group[aria-label="Type"] .browse-item--type[data-icon="all"]::before {
+  background: var(--text-muted);
+}
+
+.browse-item:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.browse-item[aria-pressed="true"],
+.browse-item--tag[aria-pressed="true"],
+.browse-group[aria-label="Type"] .browse-item--type[aria-pressed="true"],
+:root:not([data-theme="dark"]) .browse-item--tag[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--tag-color, var(--text)) 13%, transparent);
+  box-shadow: none;
+  color: color-mix(in srgb, var(--tag-color, var(--text)) 85%, #fff);
+  font-weight: 600;
+}
+
+.browse-item[aria-pressed="true"]::before,
+.browse-item--tag[aria-pressed="true"]::before,
+.browse-group[aria-label="Type"] .browse-item--type[aria-pressed="true"]::before {
+  background-color: var(--tag-color, var(--text));
+}
+
+.browse-item[aria-pressed="true"]::after,
+.browse-group[aria-label="Type"] .browse-item--type[aria-pressed="true"]::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 0;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--tag-color, var(--text));
+}
+
+.browse-item[aria-pressed="true"] .browse-item__count,
+.browse-item--tag[aria-pressed="true"] .browse-item__count,
+.browse-group[aria-label="Type"] .browse-item--type[aria-pressed="true"] .browse-item__count,
+:root:not([data-theme="dark"]) .browse-item--tag[aria-pressed="true"] .browse-item__count {
+  color: inherit;
+  opacity: 0.75;
+}
+
+.browse-item[data-icon="all"][aria-pressed="true"] {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+:root:not([data-theme="dark"]) .browse-item[aria-pressed="true"] {
+  color: color-mix(in srgb, var(--tag-color, var(--text)) 55%, #111);
+}
+
+/* Contents: the same selection (gold accent). */
+.toc__list a {
+  position: relative;
+}
+
+.toc__list a[aria-current]::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 0;
+  width: 3px;
+  border-radius: 3px;
+  background: #e2b13c;
+}
+
+/* Tags on cards and notice pages: the same tint as a selected tag. */
+.tag-pill,
+html[data-theme] .tag-pill,
+:root:not([data-theme="dark"]) .tag-pill {
+  gap: 6px;
+  padding: 3px 9px 3px 8px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--tag-color) 14%, transparent);
+  color: color-mix(in srgb, var(--tag-color) 85%, #fff);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tag-pill::before,
+html[data-theme] .tag-pill::before {
+  background: var(--tag-color);
+}
+
+:root:not([data-theme="dark"]) .tag-pill {
+  background: color-mix(in srgb, var(--tag-color) 18%, transparent);
+  color: color-mix(in srgb, var(--tag-color) 50%, #111);
+}
+
+:root:not([data-theme="dark"]) .tag-pill::before {
+  background: color-mix(in srgb, var(--tag-color) 65%, #111);
+}
+
+/* ===================== Round 44: color encodes the type only ===================== */
+/* One color dimension per notice: the type (3 hues). Tags are neutral labels without icons;
+   their icons stay in the sidebar as wayfinding. */
+
+/* Type label: small caps-style kicker in the type color, tight to the title it labels. */
+.category-badge,
+:root:not([data-theme="dark"]) .category-badge,
+.notice-kicker .category-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.app-layout .notice-card__body {
+  gap: 4px;
+}
+
+.app-layout .notice-card__title {
+  margin-bottom: 2px;
+}
+
+.app-layout .notice-card .tag-list {
+  margin-top: 8px;
+}
+
+.notice-kicker {
+  margin: 0 0 6px;
+}
+
+/* Tags: neutral, text only. */
+.tag-pill,
+html[data-theme] .tag-pill,
+:root:not([data-theme="dark"]) .tag-pill {
+  padding: 2px 9px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--text-soft);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.tag-pill::before,
+html[data-theme] .tag-pill::before,
+:root:not([data-theme="dark"]) .tag-pill::before {
+  display: none !important;
+}
+
+/* Sidebar tags: icons neutral; selection neutral (same tint + bar, in the text color). */
+.browse-item--tag[aria-pressed="true"],
+:root:not([data-theme="dark"]) .browse-item--tag[aria-pressed="true"] {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.browse-item--tag[aria-pressed="true"]::before {
+  background-color: var(--text);
+}
+
+.browse-item--tag[aria-pressed="true"]::after {
+  background: var(--text);
+}
+
+/* Round 45: a bracket group in a table cell never breaks across lines. */
+.notice-table .cell-unit {
+  white-space: nowrap;
+}
+
+/* ===================== Round 46 ===================== */
+/* Tags: neutral pill with a small dot in the tag's color. */
+.tag-pill::before,
+html[data-theme] .tag-pill::before,
+:root:not([data-theme="dark"]) .tag-pill::before {
+  content: "";
+  display: inline-block !important;
+  width: 7px;
+  height: 7px;
+  margin: 0;
+  border-radius: 50%;
+  background: var(--tag-color);
+  -webkit-mask: none;
+  mask: none;
+}
+
+.tag-pill,
+html[data-theme] .tag-pill,
+:root:not([data-theme="dark"]) .tag-pill {
+  gap: 7px;
+  padding: 2px 10px 2px 9px;
+}
+
+/* Sidebar tags: icons in their colors again (the legend for the dots); selection tinted in that color. */
+.browse-item--tag::before {
+  background: var(--tag-color);
+}
+
+.browse-item--tag[aria-pressed="true"],
+:root:not([data-theme="dark"]) .browse-item--tag[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--tag-color) 13%, transparent);
+  color: color-mix(in srgb, var(--tag-color) 85%, #fff);
+}
+
+.browse-item--tag[aria-pressed="true"]::before {
+  background-color: var(--tag-color);
+}
+
+.browse-item--tag[aria-pressed="true"]::after {
+  background: var(--tag-color);
+}
+
+:root:not([data-theme="dark"]) .browse-item--tag[aria-pressed="true"] {
+  color: color-mix(in srgb, var(--tag-color) 55%, #111);
+}
+
+/* ===================== Round 47 ===================== */
+/* Tags: the tag's own icon in its color (replaces the dot), sized to stay legible. */
+.tag-pill::before,
+html[data-theme] .tag-pill::before,
+:root:not([data-theme="dark"]) .tag-pill::before {
+  width: 1.15em;
+  height: 1.15em;
+  border-radius: 0;
+  background: var(--tag-color);
+  -webkit-mask: var(--icon) no-repeat center / contain;
+  mask: var(--icon) no-repeat center / contain;
+}
+
+.tag-pill,
+html[data-theme] .tag-pill,
+:root:not([data-theme="dark"]) .tag-pill {
+  gap: 6px;
+  padding: 3px 10px 3px 8px;
+  font-size: 0.85rem;
+}
+
+
+/* ===================== Round 48: solid icons (original drawings) ===================== */
+[data-tag="rewards"], [data-icon="rewards"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M2 7h9v4H2zM13 7h9v4h-9zM4 12h7v10H4zM13 12h7v10h-7zM11.6 7C9.6 2.4 5.4 2.8 6.4 5.6 6.9 7 11.6 7 11.6 7zM12.4 7c2-4.6 6.2-4.2 5.2-1.4C17.1 7 12.4 7 12.4 7z'/%3E%3C/svg%3E"); }
+[data-tag="identities-e-g-o"], [data-icon="identities-e-g-o"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M4 3h16v8c0 5.5-3.8 10-8 10s-8-4.5-8-10zM7.3 9.3l3.1 1.3-.6 1.4-3.1-1.3zM16.7 9.3l-3.1 1.3.6 1.4 3.1-1.3zM8.6 15c2.2 1.6 4.6 1.6 6.8 0l.9 1.3c-2.8 2-5.8 2-8.6 0z'/%3E%3C/svg%3E"); }
+[data-tag="mirror-dungeon"], [data-icon="mirror-dungeon"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M12 1.5l7.3 9.7H4.7zM4.7 12.8h14.6L12 22.5z'/%3E%3C/svg%3E"); }
+[data-tag="main-story"], [data-icon="main-story"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M11 5.6C9 4.1 6 3.5 2.5 4v15c3.5-.4 6.3.1 8.5 1.6zM13 5.6c2-1.5 5-2.1 8.5-1.6v15c-3.5-.4-6.3.1-8.5 1.6z'/%3E%3C/svg%3E"); }
+[data-tag="events"], [data-icon="events"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M7 1.5h2v3.5H7zM15 1.5h2v3.5h-2zM3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM12 9.5l1.6 3.2 3.5.5-2.5 2.5.6 3.5L12 17.5l-3.2 1.7.6-3.5-2.5-2.5 3.5-.5z'/%3E%3C/svg%3E"); }
+[data-tag="refraction-railway"], [data-icon="refraction-railway"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M7 2h10a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3zM6.5 5h11v5h-11zM8.5 12.7a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 1 0 0-2.8zM15.5 12.7a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 1 0 0-2.8zM7.4 19l-2 3h2.4l2-3zM16.6 19l2 3h-2.4l-2-3z'/%3E%3C/svg%3E"); }
+[data-tag="patch-notes"], [data-icon="patch-notes"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M6 2h8l5 5v15H6zM14 3.5V7h3.5zM9 11h7v1.7H9zM9 14.6h7v1.7H9zM9 18.2h4.5v1.7H9z'/%3E%3C/svg%3E"); }
+
+/* ===================== Round 49 ===================== */
+/* Whole layout a touch larger on big desktop displays (1440p and up), not just the text. */
+@media (min-width: 1920px) {
+  body {
+    zoom: 1.08 !important;
+  }
+}
+[data-tag="mirror-dungeon"], [data-icon="mirror-dungeon"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M12 1.5l7.5 10.5L12 22.5 4.5 12zM12 7.2l3.4 4.8-3.4 4.8-3.4-4.8z'/%3E%3C/svg%3E"); }
+[data-tag="identities-e-g-o"], [data-icon="identities-e-g-o"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M12 2.5a4.6 4.6 0 1 0 0 9.2 4.6 4.6 0 1 0 0-9.2zM3.5 21.5c0-4.8 3.8-8.2 8.5-8.2s8.5 3.4 8.5 8.2z'/%3E%3C/svg%3E"); }
+
+/* ===================== Round 50 ===================== */
+/* Icons: every icon solid; centered on the text line. */
+[data-tag="mirror-dungeon"], [data-icon="mirror-dungeon"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M12 1.5l7.5 10.5L12 22.5 4.5 12z'/%3E%3C/svg%3E"); }
+[data-tag="all"], [data-icon="all"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M12 2 2 7l10 5 10-5zM2 11.6l2.3-1.15L12 14.3l7.7-3.85L22 11.6l-10 5zM2 16.6l2.3-1.15L12 19.3l7.7-3.85L22 16.6l-10 5z'/%3E%3C/svg%3E"); }
+[data-tag="announcements"], [data-icon="announcements"] { --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' fill-rule='evenodd' d='M3 9.5h3.5L14 5v14l-7.5-4.5H3zM16.5 8.6a4.5 4.5 0 0 1 0 6.8l-1.2-1.4a2.7 2.7 0 0 0 0-4zM18.8 5.9a8 8 0 0 1 0 12.2l-1.2-1.4a6.2 6.2 0 0 0 0-9.4z'/%3E%3C/svg%3E"); }
+
+.tag-pill,
+html[data-theme] .tag-pill,
+:root:not([data-theme="dark"]) .tag-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  line-height: 1.4;
+}
+
+.tag-pill::before,
+html[data-theme] .tag-pill::before,
+:root:not([data-theme="dark"]) .tag-pill::before,
+.browse-item::before {
+  flex: none;
+  align-self: center;
+  position: static;
+  top: auto;
+  margin: 0;
+  transform: none;
+  vertical-align: middle;
+}
+
+/* Medium widths (and zoomed-in desktops): the sidebar stays a rail beside the content,
+   pushing it over, instead of becoming an overlay. Only phones (<760px) use the drawer. */
+@media (min-width: 760px) and (max-width: 1199px) {
+  body:has(.app-layout),
+  body:has(.notice-layout.has-toc) {
+    --rail-w: 260px;
+  }
+
+  html[data-rail="collapsed"] body:has(.app-layout),
+  html[data-rail="collapsed"] body:has(.notice-layout.has-toc) {
+    --rail-w: 0px;
+  }
+
+  main.app-layout,
+  main.notice-layout.has-toc {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 0 0 var(--rail-w);
+    transition: padding-left 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .app-layout .browse,
+  .notice-layout.has-toc .toc,
+  body.drawer-open .app-layout .browse,
+  body.drawer-open .notice-layout.has-toc .toc {
+    position: fixed;
+    top: var(--topbar);
+    left: 0;
+    bottom: 0;
+    z-index: 40;
+    width: 260px;
+    padding: 24px 16px;
+    border: 0;
+    border-right: 1px solid var(--line);
+    box-shadow: none;
+    visibility: visible;
+    transform: none;
+    transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), visibility 0s;
+  }
+
+  html[data-rail="collapsed"] .app-layout .browse,
+  html[data-rail="collapsed"] .notice-layout.has-toc .toc {
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 200ms cubic-bezier(0.2, 0, 0, 1), visibility 0s linear 200ms;
+  }
+
+  .rail-head,
+  .shell-scrim {
+    display: none !important;
+  }
+
+  .app-layout > .archive-panel,
+  .notice-layout.has-toc > .article-panel {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 28px clamp(20px, 3vw, 40px) 64px;
+  }
+
+  .topbar__inner {
+    display: flex;
+  }
+
+  .topbar__inner > .brand {
+    justify-self: auto;
+  }
+
+  .topbar__inner > .menu-btn {
+    margin-right: -6px;
+  }
+
+  .topbar__inner > .topbar__actions {
+    margin-left: auto;
+  }
+
+  body:has(.app-layout) .site-footer,
+  body:has(.notice-layout.has-toc) .site-footer {
+    padding-left: var(--rail-w);
+  }
+}
+
+/* Round 51: equal inner padding on both sides of a card; the chevron sits at the right edge
+   of its column. The card bleeds out by the same amount, so its text stays aligned with the
+   search bar above. */
+.app-layout .notice-list .notice-card {
+  margin-inline: -16px;
+  padding-inline: 16px;
+}
+
+.app-layout .notice-list .notice-card::after {
+  justify-self: end;
+  text-align: right;
+}
+
+@media (max-width: 759px) {
+  .app-layout .notice-list .notice-card {
+    margin-inline: -12px;
+    padding-inline: 12px;
+  }
+}
+
+/* The bleed belongs to the list, so its top rule and the card rules line up. */
+.app-layout .notice-list {
+  margin-inline: -16px;
+}
+
+.app-layout .notice-list .notice-card {
+  margin-inline: 0;
+}
+
+@media (max-width: 759px) {
+  .app-layout .notice-list {
+    margin-inline: -12px;
+  }
+
+  .app-layout .notice-list .notice-card {
+    margin-inline: 0;
+  }
+}
+
+/* ===================== Round 53 ===================== */
+/* "All" in a soft lavender: distinct from the three type colors and from white. */
+.browse-item[data-icon="all"] {
+  --tag-color: #b2a1e7;
+}
+
+.browse-item[data-icon="all"][aria-pressed="true"],
+.browse-group[aria-label="Type"] .browse-item--type[data-icon="all"][aria-pressed="true"] {
+  background: color-mix(in srgb, #b2a1e7 13%, transparent);
+  color: color-mix(in srgb, #b2a1e7 85%, #fff);
+}
+
+.browse-group[aria-label="Type"] .browse-item--type[data-icon="all"][aria-pressed="true"]::before,
+.browse-group[aria-label="Type"] .browse-item--type[data-icon="all"][aria-pressed="true"]::after {
+  background: #b2a1e7;
+}
+
+:root:not([data-theme="dark"]) .browse-item[data-icon="all"][aria-pressed="true"] {
+  color: #5b48a6;
+}
+
+/* Summaries are never cut off: every line is one whole sentence and there are at most three. */
+.app-layout .notice-card__summary,
+.app-layout .notice-card__summary[style] {
+  display: block;
+  -webkit-line-clamp: unset;
+  line-clamp: none;
+  overflow: visible;
+}
+
+/* Phones: no bleed, so the card edges match the rule above the list. */
+@media (max-width: 759px) {
+  .app-layout .notice-list {
+    margin-inline: 0;
+  }
+
+  .app-layout .notice-list .notice-card {
+    padding-inline: 0;
+  }
+}
+
+/* ===================== Round 55 ===================== */
+/* Card rhythm: the same 8px step between type, title, summary and tags. */
+.app-layout .notice-card__body {
+  gap: 8px;
+}
+
+.app-layout .notice-card__title,
+.app-layout .notice-card__summary {
+  margin: 0;
+}
+
+.app-layout .notice-card .tag-list {
+  margin-top: 0;
+}
+
+/* Type (experiment): a solid rectangular block in the type color, with its icon. */
+.category-badge,
+:root:not([data-theme="dark"]) .category-badge,
+.notice-kicker .category-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 6px;
+  padding: 3px 8px 3px 7px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--tag-color, var(--text));
+  color: #141414;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.category-badge::before,
+:root:not([data-theme="dark"]) .category-badge::before {
+  content: "";
+  display: inline-block !important;
+  flex: none;
+  width: 1.15em;
+  height: 1.15em;
+  background: #141414;
+  -webkit-mask: var(--icon) no-repeat center / contain;
+  mask: var(--icon) no-repeat center / contain;
+}
+
+/* ===================== Round 56 ===================== */
+/* Title: "The [Limbus Company] News Archive", brackets quiet. */
+.archive-head .hero-title {
+  margin: 0;
+}
+
+.hero-bracket {
+  margin: 0 0.06em;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* Type blocks: text only (no icon), a touch larger for legibility. */
+.category-badge,
+:root:not([data-theme="dark"]) .category-badge,
+.notice-kicker .category-badge {
+  gap: 0;
+  padding: 4px 9px;
+  font-size: 0.8rem;
+}
+
+.category-badge::before,
+:root:not([data-theme="dark"]) .category-badge::before {
+  display: none !important;
+}
+
+.archive-head .hero-title {
+  font-size: clamp(2.2rem, 3.8vw, 3.6rem);
+}
+
+/* ===================== Round 57 ===================== */
+/* Title on two lines again; "[ Limbus Company ]" never splits across lines. */
+.archive-head .hero-title {
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+}
+
+.bracketed {
+  white-space: nowrap;
+}
+
+.hero-bracket {
+  margin: 0;
+}
+
+.hero-lede .hero-bracket {
+  font-weight: 400;
+}
+
+/* Type and tags share one size; the type differs only by its color fill and capitals. */
+.category-badge,
+:root:not([data-theme="dark"]) .category-badge,
+.notice-kicker .category-badge,
+.tag-pill,
+html[data-theme] .tag-pill,
+:root:not([data-theme="dark"]) .tag-pill {
+  box-sizing: border-box;
+  min-height: 28px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.category-badge,
+:root:not([data-theme="dark"]) .category-badge,
+.notice-kicker .category-badge {
+  padding-inline: 10px;
+  border-color: var(--tag-color, var(--text));
+  letter-spacing: 0.05em;
+}
+
+/* Notice header: one even step between type, title, date and tags. */
+.notice-title-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.notice-title-block > * {
+  margin: 0 !important;
+}
+
+.notice-title-block .tag-list {
+  justify-content: center;
+}
+
+.notice-title-block .notice-title-divider {
+  align-self: stretch;
+  margin-top: 12px !important;
+}
+
+/* ===================== Round 58 ===================== */
+/* Desktop: the title on one line. Phones: "The [ Limbus Company ]" on the first line, sized to fit. */
+.archive-head .hero-title {
+  font-size: clamp(2.2rem, 3.8vw, 3.6rem);
+}
+
+.hero-line {
+  white-space: nowrap;
+}
+
+.hero-break {
+  display: none;
+}
+
+@media (max-width: 759px) {
+  .archive-head .hero-title {
+    font-size: min(2.6rem, 8.6vw);
+  }
+
+  .hero-break {
+    display: inline;
+  }
+}
+
+/* The name stands out in the description; the brackets stay quiet. */
+.hero-lede .bracketed {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.hero-lede .bracketed .hero-bracket {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+@media (max-width: 759px) {
+  /* Sized from the space left after the page padding, so "The [ Limbus Company ]" always fits. */
+  .archive-head .hero-title {
+    font-size: min(2.6rem, calc((100vw - 88px) / 10.6));
+  }
+}
+
+/* ===================== Round 59: scale from the label size ===================== */
+/* Labels (type and tags) are the base step: identical lettering, so they read as the same size;
+   the type differs only by its color fill. Every other card size steps up from it (~1.2x):
+   label 0.8125rem -> date 0.875rem -> summary 1rem -> title 1.375rem. */
+.category-badge,
+:root:not([data-theme="dark"]) .category-badge,
+.notice-kicker .category-badge {
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.tag-pill,
+html[data-theme] .tag-pill,
+:root:not([data-theme="dark"]) .tag-pill {
+  font-weight: 600;
+}
+
+.app-layout .notice-card__meta {
+  font-size: 0.875rem;
+}
+
+.app-layout .notice-card__summary,
+.app-layout .notice-card__summary[style] {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.app-layout .notice-card__title {
+  font-size: 1.375rem;
+  line-height: 1.25;
+}
+
+/* More breathing room: taller rows and a 10px step inside each card. */
+.app-layout .notice-list .notice-card {
+  padding-top: 26px;
+  padding-bottom: 26px;
+}
+
+.app-layout .notice-card__body {
+  gap: 10px;
+}
+
+.app-layout .notice-card .tag-list {
+  margin-top: 2px;
+}
+
+@media (max-width: 759px) {
+  .app-layout .notice-list .notice-card {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .app-layout .notice-card__meta {
+    margin-bottom: 4px;
+  }
+
+  .app-layout .notice-card__title {
+    font-size: 1.25rem;
+  }
+}
+
+/* Header breathing room: title, description and search on an even rhythm. */
+.archive-head .hero-title {
+  margin-bottom: 14px;
+}
+
+.archive-head .hero-lede {
+  margin: 0;
+}
+
+.archive-head .archive-search {
+  margin-top: 26px;
+}
+
+.app-layout .notice-list {
+  margin-top: 28px;
+}
+
+.app-layout .archive-head h1.hero-title {
+  margin: 0 0 14px !important;
+}
+
+.app-layout .archive-head h1.hero-title {
+  margin: 0 0 20px !important;
+}
+
+@media (max-width: 759px) {
+  .app-layout .archive-head h1.hero-title {
+    margin-bottom: 16px !important;
+  }
+}
+
+/* ===================== Round 60 ===================== */
+/* Labels: the type's capitals style, applied to tags too, one step smaller for both.
+   Same box and lettering; the type is filled, tags are outlined with their icon. */
+.category-badge,
+:root:not([data-theme="dark"]) .category-badge,
+.notice-kicker .category-badge,
+.tag-pill,
+html[data-theme] .tag-pill,
+:root:not([data-theme="dark"]) .tag-pill {
+  min-height: 24px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.category-badge,
+:root:not([data-theme="dark"]) .category-badge,
+.notice-kicker .category-badge {
+  padding-inline: 8px;
+}
+
+.tag-pill,
+html[data-theme] .tag-pill,
+:root:not([data-theme="dark"]) .tag-pill {
+  gap: 5px;
+  padding-inline: 7px 8px;
+}
+
+.tag-pill::before,
+html[data-theme] .tag-pill::before,
+:root:not([data-theme="dark"]) .tag-pill::before {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+/* The name in the description stands out a step more. */
+.hero-lede .bracketed {
+  font-weight: 700;
+}
+
+/* Round 61: the filled type matches the tag's inner area (tag = 24px incl. its 1px stroke). */
+.category-badge,
+:root:not([data-theme="dark"]) .category-badge,
+.notice-kicker .category-badge {
+  min-height: 22px;
+  margin-block: 1px;
+  padding: 1px 7px;
+  border: 0;
+}
+
+/* The gift's bow makes it sit low; nudge it onto the text line. */
+[data-tag="rewards"]::before,
+[data-icon="rewards"]::before {
+  transform: translateY(-1px);
+}
+
+/* Round 62: light-on-dark text reads heavier and tighter than dark-on-color, so the outlined
+   tags get a touch more tracking and a lighter weight to match the filled type optically. */
+.tag-pill,
+html[data-theme] .tag-pill,
+:root:not([data-theme="dark"]) .tag-pill {
+  font-weight: 650;
+  letter-spacing: 0.085em;
+}
+
+/* Round 63: the brackets in the description share the name's weight (they stay grey). */
+.hero-lede .bracketed .hero-bracket {
+  font-weight: 700;
+}
+
+/* ===================== Round 64 ===================== */
+/* Wider sidebar so counts keep clear of long names. */
+@media (min-width: 1200px) {
+  body:has(.app-layout),
+  body:has(.notice-layout.has-toc) {
+    --rail-w: 304px;
+    --rail-full: 304px;
+  }
+
+  html[data-rail="collapsed"] body:has(.app-layout),
+  html[data-rail="collapsed"] body:has(.notice-layout.has-toc) {
+    --rail-w: 0px;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1199px) {
+  body:has(.app-layout),
+  body:has(.notice-layout.has-toc) {
+    --rail-w: 284px;
+  }
+
+  .app-layout .browse,
+  .notice-layout.has-toc .toc {
+    width: 284px;
+  }
+}
+
+.browse-item__count {
+  margin-left: 12px;
+}
+
+/* Card meta and arrow on the label scale: the date sits on the same 24px line as the type
+   label, the number below it, and the arrow matches the title's size. */
+.app-layout .notice-card__meta {
+  gap: 2px;
+  font-size: 0.875rem;
+  line-height: 24px;
+}
+
+.app-layout .notice-list .notice-card::after {
+  font-size: 1.375rem;
+  line-height: 1;
+}
+
+.app-layout .notice-list .notice-card {
+  grid-template-columns: 9rem minmax(0, 1fr) 1.25rem;
+}
+
+@media (max-width: 759px) {
+  .app-layout .notice-list .notice-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* The card arrow as a drawn chevron sized with the title, not a tiny text glyph. */
+.app-layout .notice-list .notice-card::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: var(--text-muted);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 5 7 7-7 7'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 5 7 7-7 7'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+.app-layout .notice-list .notice-card:hover::after {
+  background: var(--text);
+}
+
+/* Round 65: date and number scaled with the labels. The labels went from 0.8125rem to 0.72rem,
+   so the meta text steps down by the same ratio (0.875rem -> ~0.78rem), staying one notch above
+   the capitals since it is mixed case. */
+.app-layout .notice-card__meta,
+.app-layout .notice-card__meta time,
+.app-layout .notice-card__id {
+  font-size: 0.78rem;
+}
+
+/* Round 66: date and number back up, one step above the summary's small text. */
+.app-layout .notice-card__meta,
+.app-layout .notice-card__meta time,
+.app-layout .notice-card__id {
+  font-size: 0.9rem;
+}
+
+/* Round 67: no color transitions while the theme flips (the sort button lagged behind). */
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: none !important;
+}
+
+/* Round 68: "[ Limbus Company ]" in the title one weight heavier, brackets included (still grey). */
+.hero-title .bracketed,
+.hero-title .bracketed .hero-bracket {
+  font-weight: 850;
+}
+
+/* ===================== Round 69 ===================== */
+/* Phones (experiment): tables shrink to fit the screen instead of scrolling sideways. */
+@media (max-width: 759px) {
+  .notice-table-wrap {
+    overflow-x: auto;
+  }
+
+  .notice-table,
+  .notice-table--records,
+  .notice-table--grid,
+  .notice-table--keyed,
+  .notice-table--group,
+  .notice-table--pairs {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    border-spacing: 3px;
+    font-size: 0.72rem;
+    line-height: 1.35;
+  }
+
+  .notice-table th,
+  .notice-table td,
+  .notice-table tbody th,
+  .notice-table tbody tr:last-child th {
+    min-width: 0;
+    max-width: none;
+    padding: 0.4em 0.35em;
+  }
+
+  .notice-table .cell-unit,
+  .notice-table .cell-item {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 759px) {
+  .notice-table .cell-unit {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 759px) {
+  .notice-table .cell-item,
+  .notice-table .cell-unit {
+    white-space: nowrap;
+  }
+
+  .notice-table tbody th,
+  .notice-table--pairs th,
+  .notice-table--grid tbody th {
+    width: 1%;
+    min-width: 5.5em;
+    max-width: 7em;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 759px) {
+  .notice-table,
+  .notice-table--records,
+  .notice-table--grid,
+  .notice-table--keyed,
+  .notice-table--group,
+  .notice-table--pairs {
+    font-size: 0.66rem;
+  }
+
+  /* Lines may break between bracket groups, never inside one. */
+  .notice-table .cell-item:has(.cell-unit) {
+    white-space: normal;
+  }
+}
+
+/* Round 70: phones - no negative offset (the scroll container clipped the left tiles). */
+@media (max-width: 759px) {
+  .notice-table,
+  .notice-table--records,
+  .notice-table--grid,
+  .notice-table--keyed,
+  .notice-table--group,
+  .notice-table--pairs {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* Round 71: the header (caption) inset always equals the tile gap, so it spans the cells below. */
+@media (max-width: 759px) {
+  .notice-table caption {
+    margin-inline: 3px;
+  }
+}
+
+/* Round 72: tables fit their column. Lines in a cell may wrap when space runs out
+   (bracket groups stay whole); the scroll area leaves room for its scrollbar. */
+.notice-table .cell-item,
+.notice-table--group td {
+  white-space: normal;
+}
+
+.notice-table .cell-unit {
+  white-space: nowrap;
+}
+
+.notice-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+@media (max-width: 759px) {
+  .notice-table .cell-item,
+  .notice-table .cell-item:has(.cell-unit) {
+    white-space: normal;
+  }
+}
+
+/* Tables take their natural width, capped at the column; cells wrap only once that cap is hit. */
+.notice-table,
+.notice-table--records,
+.notice-table--grid,
+.notice-table--keyed,
+.notice-table--group,
+.notice-table--pairs {
+  width: max-content;
+  max-width: 100%;
+}
+
+@media (max-width: 759px) {
+  .notice-table,
+  .notice-table--records,
+  .notice-table--grid,
+  .notice-table--keyed,
+  .notice-table--group,
+  .notice-table--pairs {
+    width: max-content;
+    max-width: 100%;
+  }
+}
+
+/* List lines stay whole on wider screens; plain text cells (stage names, labels) wrap first. */
+@media (min-width: 760px) {
+  .notice-table .cell-item {
+    white-space: nowrap;
+  }
+}
+
+.notice-table th,
+.notice-table td,
+.notice-table tbody th,
+.notice-table tbody tr:last-child th {
+  padding-inline: 0.7em;
+}
+
+/* Round 73: the script shrinks wide tables to fit, so phones start from a normal size. */
+@media (max-width: 759px) {
+  .notice-table,
+  .notice-table--records,
+  .notice-table--grid,
+  .notice-table--keyed,
+  .notice-table--group,
+  .notice-table--pairs {
+    font-size: 0.85rem;
+  }
+}
+
+/* One rule at every width: a list line never breaks; a line of several bracket groups may break
+   between groups. The script then shrinks only tables that still do not fit. */
+.notice-table .cell-item,
+.notice-table .cell-item:has(.cell-unit) {
+  white-space: nowrap;
+}
+
+.notice-table .cell-item:has(.cell-unit + .cell-unit) {
+  white-space: normal;
+}
+
+@media (max-width: 759px) {
+  .notice-table .cell-item,
+  .notice-table .cell-item:has(.cell-unit) {
+    white-space: nowrap;
+  }
+
+  .notice-table .cell-item:has(.cell-unit + .cell-unit) {
+    white-space: normal;
+  }
+}
+
+.notice-table.is-wrapping .cell-item,
+.notice-table.is-wrapping .cell-item:has(.cell-unit) {
+  white-space: normal;
+}
+
+/* Round 74: the sidebar scales with the screen instead of a fixed width. */
+@media (min-width: 1200px) {
+  body:has(.app-layout),
+  body:has(.notice-layout.has-toc) {
+    --rail-w: clamp(264px, 20vw, 320px);
+    --rail-full: clamp(264px, 20vw, 320px);
+  }
+}
+
+@media (min-width: 760px) and (max-width: 1199px) {
+  body:has(.app-layout),
+  body:has(.notice-layout.has-toc) {
+    --rail-w: clamp(220px, 28vw, 284px);
+  }
+
+  .app-layout .browse,
+  .notice-layout.has-toc .toc {
+    width: clamp(220px, 28vw, 284px);
+    padding-inline: 12px;
+  }
+
+  .browse-item,
+  .toc__list a {
+    font-size: 0.9rem;
+  }
+}
+
+html[data-rail="collapsed"] body:has(.app-layout),
+html[data-rail="collapsed"] body:has(.notice-layout.has-toc) {
+  --rail-w: 0px;
+}
+
+/* Round 76: phones start tables at the normal size; the script shrinks them as needed. */
+@media (max-width: 759px) {
+  .notice-table,
+  .notice-table--records,
+  .notice-table--grid,
+  .notice-table--keyed,
+  .notice-table--group,
+  .notice-table--pairs {
+    font-size: 1rem;
+  }
+}
+
+/* Round 77: tables are scaled as a whole by the script (zoom), so lines never wrap to fit. */
+.notice-table .cell-item,
+.notice-table .cell-item:has(.cell-unit),
+.notice-table .cell-item:has(.cell-unit + .cell-unit) {
+  white-space: nowrap;
+}
+
+.notice-table-wrap {
+  overflow-x: visible;
+  padding-bottom: 0;
+}
+
+@media (max-width: 759px) {
+  .notice-table .cell-item,
+  .notice-table .cell-item:has(.cell-unit),
+  .notice-table .cell-item:has(.cell-unit + .cell-unit) {
+    white-space: nowrap;
+  }
+
+  .notice-table-wrap {
+    overflow-x: visible;
+  }
+}
+
+/* Round 78: natural-width tables (the script scales them); scroll only past the 10px floor. */
+.notice-table td,
+.notice-table th {
+  white-space: nowrap;
+}
+
+.notice-table tbody th,
+.notice-table thead th {
+  white-space: nowrap;
+}
+
+.notice-table-wrap.is-scrolling {
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+/* An empty header corner (where row labels meet column headers) is not a block. */
+.notice-table thead th:empty,
+.notice-table .notice-table__corner {
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Gold label and header cells wrap at a sensible width (as in the official tables); content stays whole. */
+.notice-table tbody th,
+.notice-table thead th {
+  white-space: normal;
+  min-width: 6em;
+  max-width: 11em;
+}
+
+.notice-table td {
+  white-space: nowrap;
+}
+
+/* Plain text cells (stage names etc.) wrap at a sensible width; list lines stay whole. */
+.notice-table td {
+  white-space: normal;
+  max-width: 12em;
+}
+
+.notice-table td:has(.cell-item),
+.notice-table td:has(.cell-unit) {
+  max-width: none;
+}
+
+.notice-table .cell-item,
+.notice-table .cell-unit {
+  white-space: nowrap;
 }

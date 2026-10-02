@@ -1,6 +1,7 @@
-import { initThemeToggle } from "/assets/js/utils.js";
+import { initThemeToggle, initShell } from "/assets/js/utils.js";
 import { TAG_COLORS } from "/assets/js/config.js";
 try { initThemeToggle(); } catch (error) { console.warn("Theme preference unavailable", error); }
+try { initShell(); } catch (error) { /* shell menu optional */ }
 for (const tag of document.querySelectorAll("[data-tag]")) {
   const color = TAG_COLORS[tag.dataset.tag];
   if (color) tag.style.setProperty("--tag-color", color);
@@ -41,4 +42,118 @@ async function initNavigation() {
     console.warn("Notice navigation unavailable", error);
   }
 }
+
+// "Back to results" returns to the archive view (query, tag, page, scroll) the reader came from.
+function initBackLink() {
+  const link = document.querySelector?.(".back-link");
+  if (!link) return;
+  let last = null;
+  try { last = window.sessionStorage.getItem("lcna:last-archive"); } catch { return; }
+  if (!last || !last.startsWith("/")) return;
+  link.href = last;
+  const label = link.querySelector?.(".back-link__label") || link;
+  if (/[?&](q|tag|type)=/.test(last)) label.textContent = "Back to results";
+
+}
+try { initBackLink(); } catch (error) { console.warn("Back link unavailable", error); }
+
+// Contents panel (HoYoLAB-style): section list with a marker, current section highlighted.
+function initContents() {
+  const toc = document.getElementById("noticeToc");
+  const list = document.getElementById("noticeTocList");
+  const headings = [...document.querySelectorAll("#noticeContent .notice-section-heading")]
+    .filter(heading => !/^index$|^contents$/i.test(heading.textContent.trim()));
+  if (!toc || !list || headings.length < 2) return;
+  // The list is served in the HTML; build it only if it is missing.
+  const served = [...list.querySelectorAll("a")];
+  const links = served.length ? served : headings.map((heading, index) => {
+    heading.id ||= `section-${index + 1}`;
+    const item = document.createElement("li");
+    const link = document.createElement("a");
+    link.href = `#${heading.id}`;
+    link.textContent = heading.textContent.trim();
+    item.appendChild(link);
+    list.appendChild(item);
+    return link;
+  });
+  const linkedHeadings = links.map(link => document.getElementById(link.getAttribute("href").slice(1))).filter(Boolean);
+  if (linkedHeadings.length === links.length) headings.splice(0, headings.length, ...linkedHeadings);
+  toc.hidden = false;
+  document.querySelector(".notice-layout")?.classList.add("has-toc");
+  const setActive = index => links.forEach((link, i) => link.toggleAttribute("aria-current", i === index));
+  // Current section: the last heading scrolled past the top band; at the page bottom, the last one.
+  let pinned = null;
+  const update = () => {
+    if (pinned !== null) return;
+    const band = 140;
+    let current = 0;
+    headings.forEach((heading, index) => { if (heading.getBoundingClientRect().top <= band) current = index; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+      const lastVisible = headings.findLastIndex(heading => heading.getBoundingClientRect().top < window.innerHeight);
+      if (lastVisible > current) current = lastVisible;
+    }
+    setActive(current);
+  };
+  // A clicked entry stays selected through the whole smooth scroll: the pin lifts only once
+  // scrolling has been still for a moment, so passing sections never light up on the way.
+  let frame = 0;
+  let settle = 0;
+  const release = () => { clearTimeout(settle); settle = setTimeout(() => { pinned = null; }, 160); };
+  window.addEventListener("scroll", () => {
+    if (pinned !== null) { release(); return; }
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(update);
+  }, { passive: true });
+  const unpin = () => { if (pinned !== null) { pinned = null; update(); } };
+  ["wheel", "touchstart", "keydown"].forEach(type => window.addEventListener(type, unpin, { passive: true }));
+  links.forEach((link, index) => link.addEventListener("click", () => {
+    setActive(index);
+    // Set after the click's own event handling so it is not cleared by the unpin listeners.
+    setTimeout(() => { pinned = index; release(); }, 0);
+  }));
+  // Wait for the browser to restore the scroll position (on refresh) before choosing a section.
+  if (document.readyState === "complete") update();
+  else window.addEventListener("load", () => requestAnimationFrame(update), { once: true });
+}
+try { initContents(); } catch (error) { console.warn("Contents unavailable", error); }
+
+// A table wider than its column is scaled down evenly as a whole (text, padding, borders and gaps
+// together, like a picture) until it fits. It is measured at its natural width (every line on one
+// line, columns unsqueezed) so the scaled table keeps the official proportions. Text is never scaled
+// below ~10px: past that point the table stays at 10px and scrolls sideways instead.
+const MIN_TABLE_TEXT = 10;
+function fitTables() {
+  document.querySelectorAll(".notice-table-wrap").forEach(wrap => {
+    const table = wrap.querySelector("table");
+    if (!table) return;
+    table.style.zoom = "";
+    table.style.maxWidth = "none";
+    wrap.classList.remove("is-scrolling");
+    const natural = table.getBoundingClientRect().width;
+    const room = wrap.clientWidth;
+    if (natural <= room + 1) return;
+    const text = parseFloat(getComputedStyle(table).fontSize) || 16;
+    const fit = room / natural;
+    const floor = MIN_TABLE_TEXT / text;
+    if (fit >= floor) {
+      table.style.zoom = String(Math.floor(fit * 1000) / 1000);
+    } else {
+      table.style.zoom = String(Math.ceil(floor * 1000) / 1000);
+      wrap.classList.add("is-scrolling");
+    }
+  });
+}
+try {
+  fitTables();
+  if (document.fonts?.ready) document.fonts.ready.then(fitTables);
+  // Re-fit whenever the text column changes width: window resize, rotation, zoom, or the
+  // sidebar opening/closing (which resizes the column without resizing the window).
+  let fitFrame = 0;
+  const refit = () => { cancelAnimationFrame(fitFrame); fitFrame = requestAnimationFrame(fitTables); };
+  const column = document.getElementById("noticeContent");
+  if (column && "ResizeObserver" in window) new ResizeObserver(refit).observe(column);
+  window.addEventListener("resize", refit);
+  window.addEventListener("load", refit, { once: true });
+} catch (error) { /* tables keep their default size */ }
+
 initNavigation();

@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2024, August 1st Scheduled Update Notice | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/259/">
@@ -19,58 +18,65 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">2024, August 1st Scheduled Update Notice</h1><div class="notice-date"><time datetime="2024-07-29">July 29, 2024</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">Major Changes</a></li><li><a href="#section-2">Bug Fixes &amp; Improvements</a></li><li><a href="#section-3">Maintenance &amp; Application Update Compensation</a></li><li><a href="#section-4">Notes</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="patch-notes" style="--tag-color: #64C897">Patch Notes</span></p><h1 class="notice-inline-title">2024, August 1st Scheduled Update Notice</h1><div class="notice-date"><time datetime="2024-07-29">July 29, 2024</time></div><div class="tag-list"><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Aug. 1st, 2024 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
-<p>1. (JP Only) Fixed an issue where Yi Sang E.G.O - Dimension Shredder had incorrect Skill effect descriptions for Threadspinning Tier 1~3<br>- Before : [攻撃後] 次のターンにクイック 2, 攻撃威力増加 1を得る<br>- After : [攻撃前] 充電 回数を消耗し、消耗した分ダメージ量を増加(最大N%)</p>
+<h2 class="notice-section-heading" id="section-1">Major Changes</h2><hr class="notice-section-divider">
+<p>1. (JP Only) Fixed an issue where Yi Sang E.G.O - Dimension Shredder had incorrect Skill effect descriptions for Threadspinning Tier 1~3<br><span class="notice-before">- Before : [攻撃後] 次のターンにクイック 2, 攻撃威力増加 1を得る</span><br><span class="notice-after">- After : [攻撃前] 充電 回数を消耗し、消耗した分ダメージ量を増加(最大N%)</span></p>
 <p>At Threadspinning Tier 1 ~ 2: N = 50 / At Threadspinning Tier 3: N = 75</p>
-<p>All Managers&#x27; Yi Sang E.G.O - Dimension Shredder Threadspinning Tiers will be reset to Tier 1 after the Aug. 1st (KST) Scheduled Update.<br>Once the reset is processed, all Threads and Egoshards used to Threadspin that E.G.O will be refunded to your account.<br>The Egoshards will be refunded as &#x27;Season 4 Yi Sang Egoshards&#x27; regardless of when you threadspun the E.G.O.</p>
-<p>The incorrect translation text was applied to this E.G.O&#x27;s description due to the same error that caused the Hong Lu E.G.O - Dimension Shredder description issue in the past.<br>Because this issue went unfixed for nearly a year, we intend to reset the Threadspinning Tier for this E.G.O and refund all resources used to Threadspin it.<br>We sincerely apologize for giving the Managers an incorrect description of the E.G.O. We also sincerely apologize for causing you disturbance by letting this issue go unfixed for so long, and for failing to recognize another instance of the same error.<br>We apologize to all Managers who have been using Yi Sang E.G.O - Dimension Shredder.</p>
-<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
-<p>► (EN Only) Fixed an incorrect description for W Corp. L2 Cleanup Agent Faust Skill 3<br>- Before : Spend 5 Charge Count to inflict 2 Attack Power Down next turn; Inflict 3 Paralyze<br>- After : Spend 5 Charge Count to inflict 2 Attack Power Down and 3 Paralyze next turn</p>
-<p>► (EN Only) Fixed an issue where certain Keyword highlights were missing in the Yi Sang E.G.O - Dimension Shredder Threadspinning Popup UI</p>
-<p>► (JP Only) Fixed an issue where certain Keyword highlights were missing from the Yi Sang E.G.O - Dimension Shredder Passive description</p>
-<p>► Fixed an issue where the &#x27;Blubberbubble&#x27; VFX from the Sinclair E.G.O - Cavernous Wailing used by Peccatulum Invidiae type enemies did not appear<br>※ This is a visual-only issue; the effect was working as intended.</p>
-<p>► Fixed an issue where using a specific E.G.O Skill in the Focused Encounter tutorial in Stage 1-11 caused the game to softlock</p>
-<p>► Fixed an issue where a specific behavior could cause a camera positioning &amp; E.G.O error</p>
-<p>► Fixed an issue where Keyword highlights were missing from certain Skills</p>
-<p>► Fixed an issue where viewing the Manager Ticket of a friend could cause the assigned Identity&#x27;s CG art to miss certain VFX</p>
-<p>► Addressed an issue where the music was missing from the Middle Little Brothers encounter in the Floor Theme Pack &#x27;Insignificant Envy&#x27;</p>
-<p>► Fixed an issue where a specific Stage entity in Stage 6-41 had an incorrect placement of the entity&#x27;s name in the Detailed Information UI</p>
-<p>► (EN Only) Fixed typos in the Observation Log for a certain Canto IV Boss</p>
-<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
-<p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 Aug. 8th, 2024 (KST)<br>- When : After Aug. 1st, 2024 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
+<p>All Managers&#x27; Yi Sang E.G.O - Dimension Shredder Threadspinning Tiers will be reset to Tier 1 after the Aug. 1st (KST) Scheduled Update.<br>Once the reset is processed, all Threads and Egoshards used to Threadspin that E.G.O will be refunded to your account.<br>The Egoshards will be refunded as &#x27;Season 4 Yi Sang Egoshards&#x27; regardless of when you threadspun the E.G.O.</p>
+<p>The incorrect translation text was applied to this E.G.O&#x27;s description due to the same error that caused the Hong Lu E.G.O - Dimension Shredder description issue in the past.<br>Because this issue went unfixed for nearly a year, we intend to reset the Threadspinning Tier for this E.G.O and refund all resources used to Threadspin it.<br>We sincerely apologize for giving the Managers an incorrect description of the E.G.O. We also sincerely apologize for causing you disturbance by letting this issue go unfixed for so long, and for failing to recognize another instance of the same error.<br>We apologize to all Managers who have been using Yi Sang E.G.O - Dimension Shredder.</p>
+<h2 class="notice-section-heading" id="section-2">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> (EN Only) Fixed an incorrect description for W Corp. L2 Cleanup Agent Faust Skill 3<br><span class="notice-before">- Before : Spend 5 Charge Count to inflict 2 Attack Power Down next turn; Inflict 3 Paralyze</span><br><span class="notice-after">- After : Spend 5 Charge Count to inflict 2 Attack Power Down and 3 Paralyze next turn</span></p>
+<p><span class="notice-marker">▶</span> (EN Only) Fixed an issue where certain Keyword highlights were missing in the Yi Sang E.G.O - Dimension Shredder Threadspinning Popup UI</p>
+<p><span class="notice-marker">▶</span> (JP Only) Fixed an issue where certain Keyword highlights were missing from the Yi Sang E.G.O - Dimension Shredder Passive description</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the &#x27;Blubberbubble&#x27; VFX from the Sinclair E.G.O - Cavernous Wailing used by Peccatulum Invidiae type enemies did not appear<br><span class="notice-note">※ This is a visual-only issue; the effect was working as intended.</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where using a specific E.G.O Skill in the Focused Encounter tutorial in Stage 1-11 caused the game to softlock</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where a specific behavior could cause a camera positioning &amp; E.G.O error</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where Keyword highlights were missing from certain Skills</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where viewing the Manager Ticket of a friend could cause the assigned Identity&#x27;s CG art to miss certain VFX</p>
+<p><span class="notice-marker">▶</span> Addressed an issue where the music was missing from the Middle Little Brothers encounter in the Floor Theme Pack &#x27;Insignificant Envy&#x27;</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where a specific Stage entity in Stage 6-41 had an incorrect placement of the entity&#x27;s name in the Detailed Information UI</p>
+<p><span class="notice-marker">▶</span> (EN Only) Fixed typos in the Observation Log for a certain Canto IV Boss</p>
+<h2 class="notice-section-heading" id="section-3">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Content:</span> Lunacy x300<br>- <span class="notice-label">Recipients:</span> All users whose game accounts were created before 10:00 Aug. 8th, 2024 (KST)<br>- <span class="notice-label">When:</span> After Aug. 1st, 2024 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Aug. 8th (Thu) 2024, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-4">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on its status. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

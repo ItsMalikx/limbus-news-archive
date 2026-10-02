@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2025, Dec. 4th Scheduled Update Notice | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/505/">
@@ -19,77 +18,84 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">2025, Dec. 4th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-12-01">December 1, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">New Content</a></li><li><a href="#section-2">Bug Fixes and Improvements</a></li><li><a href="#section-3">Maintenance &amp; Application Update Compensation</a></li><li><a href="#section-4">Notes</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="patch-notes" style="--tag-color: #64C897">Patch Notes</span></p><h1 class="notice-inline-title">2025, Dec. 4th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-12-01">December 1, 2025</time></div><div class="tag-list"><span class="tag-pill" data-tag="identities-e-g-o" style="--tag-color: #EE8AB2">Identities &amp; E.G.O</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span><span class="tag-pill" data-tag="rewards" style="--tag-color: #ED9658">Rewards</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Dec. 4th, 2025 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
-<p>1. New Identity Target Extraction - [Drifting Blade of Hongyuan Ryōshū] (25/12/04 ~ 12:00 12/18 10:00 (KST))<br>The following Identity will have increased odds of extraction:<br>- 3★ : Drifting Blade of Hongyuan Ryōshū</p>
-<p>※ Drifting Blade of Hongyuan Ryōshū is Season 6 Identity.</p>
+<h2 class="notice-section-heading" id="section-1">New Content</h2><hr class="notice-section-divider">
+<p>1. New Identity Target Extraction - [Drifting Blade of Hongyuan Ryōshū] (25/12/04 ~ 12:00 12/18 10:00 (KST))<br>The following Identity will have increased odds of extraction:<br>- 3★ : Drifting Blade of Hongyuan Ryōshū</p>
+<p><span class="notice-note">※ Drifting Blade of Hongyuan Ryōshū is Season 6 Identity.</span></p>
 <p>2. Target Extraction: [Ishmael] (25/12/04 12:00 ~ 12/18 10:00 (KST))<br>The following Identities and E.G.Os will have increased odds of extraction:<br>- E.G.O [HE]: Christmas Nightmare Ishmael, Ardor Blossom Star Ishmael<br>- E.G.O [TETH]: Bygone Days Ishmael<br>- 3★ : Family Hierarch Candidate Ishmael, Kurokumo Clan Captain Ishmael, Zwei Assoc. West Section 3 Ishmael, The Pequod Captain Ishmael, Molar Boatworks Fixer Ishmael, Liu South Section 4 Ishmael, R Corp. 4th Pack Reindeer Ishmael<br>- 2★ : Edgar Family Butler Ishmael, Lobotomy E.G.O::Sloshing Ishmael, LCCB Assistant Manager Ishmael, Shi South Section 5 Ishmael<br>- 1★ : LCB Sinner Ishmael</p>
 <p>3. New Identity Added<br>The following Identity will be added to the list of extractable Identities:<br>- 3★ : Drifting Blade of Hongyuan Ryōshū</p>
 <p>4. New Extractable Announcer<br>A new extractable Announcer will be added to the following extractions:</p>
-<p>► New Announcer Extraction<br>- Lei Heng</p>
-<p>► Featured Extractions List<br>- Standard Extraction<br>- New Target Extraction [Drifting Blade of Hongyuan Ryōshū]<br>- Target Extraction: [Ishmael]</p>
-<p>► Extraction Period : 25/12/04 12:00 ~ 12/18 10:00 (KST)</p>
-<p>※ Please note that Announcer Extraction rate does not affect the Extraction rates of 3★ Identities or E.G.O.</p>
-<p>※ 2★ and 1★ Identities have lower Extraction rates to make room for Announcer Extraction rates.</p>
-<p>※ The Announcer above will no longer be extractable once the Extraction Period ends. However, you may acquire it via Yisang exchange available in subsequent Target Extractions (Does not apply to Standard Extraction as it does not allow Yisang Exchanges).</p>
+<p><span class="notice-marker">▶</span> New Announcer Extraction<br>- Lei Heng</p>
+<p><span class="notice-marker">▶</span> Featured Extractions List<br>- Standard Extraction<br>- New Target Extraction [Drifting Blade of Hongyuan Ryōshū]<br>- <span class="notice-label">Target Extraction:</span> [Ishmael]</p>
+<p><span class="notice-marker">▶</span> Extraction Period : 25/12/04 12:00 ~ 12/18 10:00 (KST)</p>
+<p><span class="notice-note">※ Please note that Announcer Extraction rate does not affect the Extraction rates of 3★ Identities or E.G.O.</span></p>
+<p><span class="notice-note">※ 2★ and 1★ Identities have lower Extraction rates to make room for Announcer Extraction rates.</span></p>
+<p><span class="notice-note notice-note--important">※ The Announcer above will no longer be extractable once the Extraction Period ends. However, you may acquire it via Yisang exchange available in subsequent Target Extractions (Does not apply to Standard Extraction as it does not allow Yisang Exchanges).</span></p>
 <p>5. New Packages<br>2 new limited packages will be added to the game with the Dec. 4th, 2025 (KST) Scheduled Update.</p>
-<p>► Target Extraction Pack<br>- Contents : Decaextraction Ticket x4<br>- Price : ₩33,000 / $21.99 / ¥3,000<br>- Can be purchased once<br>- Purchasable Period : 25. 12. 4 12:00 ~ 12. 18 10:00 (KST)</p>
-<p>Identity Growth Pack<br>- Contents : Takeoff Module - ID Uptie x 1, Identity Training Ticket IV x 60, Identity Training Ticket III x 30<br>- Price : ₩33,000 / $21.99 / ¥3,000<br>- Can be purchased once<br>- Purchasable Period : 25. 12. 4 12:00 ~ 12. 18 10:00 (KST)</p>
-<h2 class="notice-section-heading">Bug Fixes and Improvements</h2><hr class="notice-section-divider">
-<p>► Fixed an issue where Skills that apply effects &quot;when hit&quot; were not affected by external value modifiers such as Support Passives or E.G.O Gifts<br>※ As there was no specific sequence in place to collect instances of effects triggered &quot;when hit&quot;, we wrote a separate sequence for the &quot;when hit&quot; timing. However, in the process of doing so, we neglected to have their Potency/Count gains or losses be affected by external modifiers, which is what caused this issue. We have resolved this issue by adjusting the aforementioned separate sequence to also be affected by external effects &quot;when hit&quot;.</p>
-<p>※ Affected Identities (6 total)<br>- N Corp. E.G.O::Contempt,Awe Ryōshū : Defense Skill<br>- T Corp. Class 3 Collection Staff Don Quixote : Defense Skill<br>- R Corp. 4th Pack Rhino Meursault : Defense Skill<br>- Öufi South Section 3 Heathcliff : Defense Skill<br>- T Corp. Class 2 Collection Staff Rodion : Defense Skill<br>- The Thumb East Soldato II Sinclair : Defense Skill</p>
-<p>※ This applies to enemy Skills that apply effects &quot;when hit&quot; as well.</p>
-<p>► Fixed an issue where Don Quixote E.G.O Fluid Sac&#x27;s Passive &quot;Wave of Depression&quot; effect dealt Gloom damage against targets with SP values as well in Focused Encounters<br>※This issue occurred because, in the process of adding this Passive, we set incorrect values for determining whether targets have SP or not in Focused Encounters. We have corrected the values for determining whether the targets have SP or not in Focused Encounters; now, targets with SP will lose SP even in Focused Encounters.</p>
-<p>► Fixed an issue where, when certain Skills failed to hit due to enemies&#x27; &#x27;Evade&#x27;, the Skill would not trigger despite fulfilling its activation requirements</p>
-<p>※ Affected Skills: Night Awls Capitano Gregor&#x27;s &#x27;Mercé&quot;, Fluid Sac Don Quixote&#x27;s Passive &#x27;Wave of Depression&#x27;</p>
-<p>※ The above effects were functioning as intended. Only the issue where the effects would fail to trigger due to enemies&#x27; &#x27;Evade&#x27; will be fixed.</p>
-<p>※ This issue occurred because, in the process of developing the above effects, an implementation error left an unnecessary [On Hit] condition. Going forward, we will add a step to verify the presence of preexisting specifications when updating the units based on changes to their design during the implementation phase, reinforcing our process.</p>
-<p>► Fixed an incorrect description in Rodion E.G.O Rime Shank&#x27;s Passive &quot;Coldness&quot;<br>- Before : On hit, if the target has 5+ Sinking, inflict 1 Bind and Attack Power Down (3 times per unit)<br>- After : On Hit, if the target has 5+ Sinking, inflict 1 Bind and Attack Power Down next turn (3 times per unit)</p>
-<p>※ We have identified an issue where this Passive applies its effects next turn instead of in the same turn. However, as a considerable amount of time has passed since this E.G.O was released, we believe that its current behavior has come to be accepted as the default.</p>
+<p><span class="notice-marker">▶</span> Target Extraction Pack<br>- <span class="notice-label">Contents:</span> Decaextraction Ticket x4<br>- <span class="notice-label">Price:</span> ₩33,000 / $21.99 / ¥3,000<br>- Can be purchased once<br>- <span class="notice-label">Purchasable Period:</span> 25. 12. 4 12:00 ~ 12. 18 10:00 (KST)</p>
+<p>Identity Growth Pack<br>- <span class="notice-label">Contents:</span> Takeoff Module - ID Uptie x 1, Identity Training Ticket IV x 60, Identity Training Ticket III x 30<br>- <span class="notice-label">Price:</span> ₩33,000 / $21.99 / ¥3,000<br>- Can be purchased once<br>- <span class="notice-label">Purchasable Period:</span> 25. 12. 4 12:00 ~ 12. 18 10:00 (KST)</p>
+<h2 class="notice-section-heading" id="section-2">Bug Fixes and Improvements</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Fixed an issue where Skills that apply effects &quot;when hit&quot; were not affected by external value modifiers such as Support Passives or E.G.O Gifts<br><span class="notice-note">※ As there was no specific sequence in place to collect instances of effects triggered &quot;when hit&quot;, we wrote a separate sequence for the &quot;when hit&quot; timing. However, in the process of doing so, we neglected to have their Potency/Count gains or losses be affected by external modifiers, which is what caused this issue. We have resolved this issue by adjusting the aforementioned separate sequence to also be affected by external effects &quot;when hit&quot;.</span></p>
+<p><span class="notice-note">※ Affected Identities (6 total)</span><br>- N Corp. E.G.O::Contempt,Awe Ryōshū : Defense Skill<br>- T Corp. Class 3 Collection Staff Don Quixote : Defense Skill<br>- R Corp. 4th Pack Rhino Meursault : Defense Skill<br>- Öufi South Section 3 Heathcliff : Defense Skill<br>- T Corp. Class 2 Collection Staff Rodion : Defense Skill<br>- The Thumb East Soldato II Sinclair : Defense Skill</p>
+<p><span class="notice-note">※ This applies to enemy Skills that apply effects &quot;when hit&quot; as well.</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where Don Quixote E.G.O Fluid Sac&#x27;s Passive &quot;Wave of Depression&quot; effect dealt Gloom damage against targets with SP values as well in Focused Encounters<br><span class="notice-note">※This issue occurred because, in the process of adding this Passive, we set incorrect values for determining whether targets have SP or not in Focused Encounters. We have corrected the values for determining whether the targets have SP or not in Focused Encounters; now, targets with SP will lose SP even in Focused Encounters.</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, when certain Skills failed to hit due to enemies&#x27; &#x27;Evade&#x27;, the Skill would not trigger despite fulfilling its activation requirements</p>
+<p><span class="notice-note">※ Affected Skills: Night Awls Capitano Gregor&#x27;s &#x27;Mercé&quot;, Fluid Sac Don Quixote&#x27;s Passive &#x27;Wave of Depression&#x27;</span></p>
+<p><span class="notice-note">※ The above effects were functioning as intended. Only the issue where the effects would fail to trigger due to enemies&#x27; &#x27;Evade&#x27; will be fixed.</span></p>
+<p><span class="notice-note">※ This issue occurred because, in the process of developing the above effects, an implementation error left an unnecessary [On Hit] condition. Going forward, we will add a step to verify the presence of preexisting specifications when updating the units based on changes to their design during the implementation phase, reinforcing our process.</span></p>
+<p><span class="notice-marker">▶</span> Fixed an incorrect description in Rodion E.G.O Rime Shank&#x27;s Passive &quot;Coldness&quot;<br><span class="notice-before">- Before : On hit, if the target has 5+ Sinking, inflict 1 Bind and Attack Power Down (3 times per unit)</span><br><span class="notice-after">- After : On Hit, if the target has 5+ Sinking, inflict 1 Bind and Attack Power Down next turn (3 times per unit)</span></p>
+<p><span class="notice-note">※ We have identified an issue where this Passive applies its effects next turn instead of in the same turn. However, as a considerable amount of time has passed since this E.G.O was released, we believe that its current behavior has come to be accepted as the default.</span></p>
 <p>Also, if we were to follow our usual policy (of changing the behavior to match the description) and make this Passive apply its effects in the same turn, inflicting &quot;Bind&quot; same turn would not do anything as enemy Speed values would be left unchanged, and inflicting &quot;Attack Power Down&quot; would depend heavily on Rodion&#x27;s own Speed relative to that of the other Sinners, making the effect much trickier to utilize.</p>
 <p>With the above factors in consideration, we will be adjusting the in-game description of the effect by adding the phrase &quot;next turn&quot; to match the behavior, so that &quot;Bind&quot; and &quot;Attack Power Down&quot; infliction would still remain in a usable state.</p>
 <p>We sincerely apologize for the delayed adjustment of this issue, especially since it has been so long after its release. We will exercise additional care and attention to prevent relevant issues from occurring again.</p>
-<p>► Fixed an issue where, when the turn in which a unit&#x27;s Charge effect expires, the Charge effect that was to be gained next turn disappears as well</p>
-<p>► Fixed an issue where Minus Coin Identities didn&#x27;t show portrait cut-ins even when they flip Tails on their Skill 3 attacks<br>※ Affected Identities : Lobotomy E.G.O::ln the Name of Love and Hate Don Quixote, Lobotomy E.G.O::Sunshower Heathcliff, Lobotomy E.G.O::The Sword Sharpened with Tears Rodion, The One Who Shall Grip Sinclair</p>
-<p>► Fixed an issue where the pop-up window would occasionally not close when selling E.G.O Gifts in Mirror Dungeon &quot;Shop&quot; nodes</p>
-<p>► (iOS) Fixed an issue where, in certain combat situations, Sinner Icons on the Dashboards couldn&#x27;t be interacted with</p>
-<p>► (STEAM) Fixed an issue where, upon starting the game, the game becomes unresponsive at the &quot;Connecting...&quot; screen</p>
-<p>► (KR Only) Fixed a typo in Ishmael&#x27;s &quot;Very High&quot; Choice Event dialogue<br>- Before : 되나고요? 당연한 걸 굳이 묻지 마세요<br>- After : 되냐고요? 당연한 걸 굳이 묻지 마세요</p>
-<p>► Fixed an issue where, in the &quot;Season 6 3★ Guarantee Decaextraction&quot; Extraction, the pre-Uptie illustration of &quot;Heishou Pack - You Branch Adept Heathcliff&quot; was used</p>
-<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
-<p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before Dec. 11th, 2025 10:00 (KST)<br>- When : After Dec. 4th, 2025 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, when the turn in which a unit&#x27;s Charge effect expires, the Charge effect that was to be gained next turn disappears as well</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where Minus Coin Identities didn&#x27;t show portrait cut-ins even when they flip Tails on their Skill 3 attacks<br><span class="notice-note">※ Affected Identities : Lobotomy E.G.O::ln the Name of Love and Hate Don Quixote, Lobotomy E.G.O::Sunshower Heathcliff, Lobotomy E.G.O::The Sword Sharpened with Tears Rodion, The One Who Shall Grip Sinclair</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the pop-up window would occasionally not close when selling E.G.O Gifts in Mirror Dungeon &quot;Shop&quot; nodes</p>
+<p><span class="notice-marker">▶</span> (iOS) Fixed an issue where, in certain combat situations, Sinner Icons on the Dashboards couldn&#x27;t be interacted with</p>
+<p><span class="notice-marker">▶</span> (STEAM) Fixed an issue where, upon starting the game, the game becomes unresponsive at the &quot;Connecting...&quot; screen</p>
+<p><span class="notice-marker">▶</span> (KR Only) Fixed a typo in Ishmael&#x27;s &quot;Very High&quot; Choice Event dialogue<br><span class="notice-before">- Before : 되나고요? 당연한 걸 굳이 묻지 마세요</span><br><span class="notice-after">- After : 되냐고요? 당연한 걸 굳이 묻지 마세요</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, in the &quot;Season 6 3★ Guarantee Decaextraction&quot; Extraction, the pre-Uptie illustration of &quot;Heishou Pack - You Branch Adept Heathcliff&quot; was used</p>
+<h2 class="notice-section-heading" id="section-3">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Content:</span> Lunacy x300<br>- <span class="notice-label">Recipients:</span> All users whose game accounts were created before Dec. 11th, 2025 10:00 (KST)<br>- <span class="notice-label">When:</span> After Dec. 4th, 2025 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Dec. 11th (Thu), 2025 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-4">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

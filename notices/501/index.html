@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>November 20th New Content - Refraction Railway Line 1 BokGak | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/501/">
@@ -19,21 +18,27 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #FF7300">Refraction Railway</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span></div><h1 class="notice-inline-title">November 20th New Content - Refraction Railway Line 1 BokGak</h1><div class="notice-date"><time datetime="2025-11-17">November 17, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">Content Details</a></li><li><a href="#section-2">About Line 1 BokGak</a></li><li><a href="#section-3">Focused Encounters</a></li><li><a href="#section-4">Combat Progression</a></li><li><a href="#section-5">Observation Logs</a></li><li><a href="#section-6">Clear Info</a></li><li><a href="#section-7">Claiming Rewards</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="announcements" style="--tag-color: #68B7ED">Announcements</span></p><h1 class="notice-inline-title">November 20th New Content - Refraction Railway Line 1 BokGak</h1><div class="notice-date"><time datetime="2025-11-17">November 17, 2025</time></div><div class="tag-list"><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #46C6AA">Refraction Railway</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span><span class="tag-pill" data-tag="rewards" style="--tag-color: #ED9658">Rewards</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>New Content &lt;Refraction Railway Line 1 BokGak&gt; will be added to the game with the Nov. 20th, 2025 (KST) Scheduled Update.</p>
 <h2 class="notice-section-heading">&lt;Unlock Conditions&gt;</h2>
 <p>Clear Main Story 8-33</p>
@@ -42,9 +47,9 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <p>- Upon clearing the Terminus, you will be rewarded with a Refraction Railway Line 1 BokGak cosmetic banner.</p>
 <p>- If you have achieved certain conditions before clearing the final Station, you will be rewarded with a special cosmetic banner.</p>
 <p>- Refraction Railway Line 1 BokGak does not have a specified end date, and will be a permanent addition to the game.</p>
-<p>※ Please note that Refraction Railway Line 5 does not close with the introduction of Refraction Railway Line 1 BokGak.</p>
-<p>※ Refraction Railway Line 1 BokGak does not keep track of nor display your past run records.</p>
-<h2 class="notice-section-heading">Content Details</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ Please note that Refraction Railway Line 5 does not close with the introduction of Refraction Railway Line 1 BokGak.</span></p>
+<p><span class="notice-note">※ Refraction Railway Line 1 BokGak does not keep track of nor display your past run records.</span></p>
+<h2 class="notice-section-heading" id="section-1">Content Details</h2><hr class="notice-section-divider">
 <p>- Enter the Refraction Railway menu to select between &lt;Refraction Railway Line 1 BokGak&gt; or &lt;Refraction Railway Line 5&gt;.</p>
 <p>- &lt;Refraction Railway Line 1 BokGak&gt; unlocks upon clearing Main Story Stage 8-33, and can be accessed via the Drive tab.</p>
 <p>- The Line can be accessed anytime without spending any resources.</p>
@@ -55,9 +60,9 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <p>- The Refraction Railway Line 1 BokGak will have a new Recommended Upgrade Level: Uptie Tier 4 and Level 55 for Identities and Threadspinning Tier 4 for E.G.O.</p>
 <p>- Identity Level in Refraction Railway Line 1 BokGak will be capped at Level 55.</p>
 <p>- Refraction Railway Line 1 BokGak enemy stats and Skills will be adjusted to reflect this change.</p>
-<h2 class="notice-section-heading">About Line 1 BokGak</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-2">About Line 1 BokGak</h2><hr class="notice-section-divider">
 <p>- Line 1 BokGak comprises 13 Stations, each of which features highly difficult challenges.</p>
-<p>- &quot;Clear Turns&quot;, which is the number of turns it took for you to clear the Station, and &quot;Total Turns&quot;, which is the cumulative number of turns it took for you from the first Station to the current Station,<br>will be displayed above each Station.</p>
+<p>- &quot;Clear Turns&quot;, which is the number of turns it took for you to clear the Station, and &quot;Total Turns&quot;, which is the cumulative number of turns it took for you from the first Station to the current Station, will be displayed above each Station.</p>
 <p>- Any remaining E.G.O Resource after the Station can be used in the subsequent Station.</p>
 <p>- Please check the bottom of the screen to view your Deployed Identities&#x27; HP and SP statuses.</p>
 <h3 class="notice-subsection-heading">&lt;Major Changes&gt;</h3>
@@ -69,11 +74,11 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <h3 class="notice-subsection-heading">&lt;Major Changes&gt;</h3>
 <p>- In Line 1 BokGak, you can enter the Station only when you have selected both your Deployment and Backup units: 5 and 7 units, respectively.</p>
 <p>- You can change your Team Loadout between every Station—change your Team&#x27;s Identities, E.G.O, or Deployment orders as you see fit.</p>
-<h2 class="notice-section-heading">Focused Encounters</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-3">Focused Encounters</h2><hr class="notice-section-divider">
 <p>- Only up to 5 Identities can be fielded at once in each Encounter.<br>- Every battle in the Refraction Railway will allow you to directly match ally skills against enemy skills, just like in Focused Encounters.</p>
 <h3 class="notice-subsection-heading">&lt;Buffs&gt;</h3>
 <p>- A defeated ally Identity will give E.G.O resources that correspond with the Sin Affinities and the Rank of each Attack Skill on the defeated Ally.</p>
-<h2 class="notice-section-heading">Combat Progression</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-4">Combat Progression</h2><hr class="notice-section-divider">
 <p>- You may choose to retry or give up on a stage.<br>- Selecting either of those options will reset the Stage, and will put you back at the beginning of the first wave should you attempt it again.</p>
 <h3 class="notice-subsection-heading">&lt;Defeat&gt;</h3>
 <p>- If all of your allies are defeated, you can choose between returning to the Team Loadout menu to change your Deployment orders or immediately retrying the battle from wave 1.</p>
@@ -82,36 +87,37 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <p>- You may restart from a previously cleared Station.</p>
 <p>- Restarting from a previously cleared Station will revert the state of your Identities&#x27; statuses and your E.G.O resource reserves to that point as well, and delete any Stage Clear records made since entering that Station.</p>
 <p>- Reaching 100 Turns in a single Station will count as defeat.</p>
-<h2 class="notice-section-heading">Observation Logs</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-5">Observation Logs</h2><hr class="notice-section-divider">
 <p>- In Line 1 BokGak, all enemy info will be unlocked for viewing from the start. Prepare the appropriate strategy, Identity, and E.G.O loadout based on this information.</p>
 <p>- In Line 1 BokGak, damage bonus based on Observation Levels does not apply in the Refraction Railway.</p>
 <p>- In Line 1 BokGak, the updated Observation Level will be saved even if you give up or retry mid-Encounter.</p>
 <h3 class="notice-subsection-heading">&lt;Major Changes&gt;</h3>
 <p>- You now have the option to display Battle Hints (gimmick reading priority) on certain enemy Skills.</p>
-<h2 class="notice-section-heading">Clear Info</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-6">Clear Info</h2><hr class="notice-section-divider">
 <p>- After clearing each Station, you can view statistics such as participating Identities and damage contributions in the Clear Info menu.</p>
 <h3 class="notice-subsection-heading">&lt;Records&gt;</h3>
 <p>- Your Refraction Railway Line 1 BokGak stats will be recorded upon clearing the Terminus.<br>- View the Total Turns and Clear Turns by Station here; click the &quot;Details&quot; button to view the damage contribution statistics.</p>
 <h3 class="notice-subsection-heading">&lt;Major Changes&gt;</h3>
 <p>- Refraction Railway Line 1 BokGak does not maintain a record for all of your previous attempts.<br>- Please note that the Refraction Railway menu will not show any records for your previous attempts or Turn Counts.</p>
-<h2 class="notice-section-heading">Claiming Rewards</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-7">Claiming Rewards</h2><hr class="notice-section-divider">
 <p>- Once a Station is cleared for the first time, its rewards will be sent to the &quot;Lost &amp; Found&quot;.</p>
 <p>- To access the &quot;Lost &amp; Found&quot; for the first time, a certain number of Enkephalin Modules will be required. Rewards that can be claimed afterward are free of charge.</p>
-<p>- You can earn various level-up and extraction currencies here. Special rewards include 「Takeoff Module - ID Uptie」, 「Season 1 - 3★ Guarantee Decaextraction Ticket」, and 「Refraction Railway Line 1 BokGak Themed Ticket Deco」.</p>
+<p>- You can earn various level-up and extraction currencies here. Special rewards include 「Takeoff Module - ID Uptie」, 「Season 1 - 3★ Guarantee Decaextraction Ticket」, and 「Refraction Railway Line 1 BokGak Themed Ticket Deco」.</p>
 <h3 class="notice-subsection-heading">&lt;Special Cosmetic Banners&gt;</h3>
 <p>- Here, you can view the acquisition conditions for the Refraction Railway Line 1 BokGak Banner.</p>
-<p>※ Refraction Railway Line 1 BokGak Banner does not display your Turn Count.</p></div>
+<p><span class="notice-note">※ Refraction Railway Line 1 BokGak Banner does not display your Turn Count.</span></p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Upcoming Mirror Dungeon Changes | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/315/">
@@ -19,51 +18,58 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
     <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">Notice: Upcoming Mirror Dungeon Changes</h1><div class="notice-date"><time datetime="2024-11-28">November 28, 2024</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.<br>The following are upcoming changes and improvements to the Mirror Dungeon.<br>Any of the following that can be adjusted via a Hotfix without going through a client build will be changed as soon as possible.</p>
+      <nav class="toc" id="noticeToc" aria-label="Contents" hidden>
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="announcements" style="--tag-color: #68B7ED">Announcements</span></p><h1 class="notice-inline-title">Notice: Upcoming Mirror Dungeon Changes</h1><div class="notice-date"><time datetime="2024-11-28">November 28, 2024</time></div><div class="tag-list"><span class="tag-pill" data-tag="identities-e-g-o" style="--tag-color: #EE8AB2">Identities &amp; E.G.O</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #76B3F1">Mirror Dungeon</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.<br>The following are upcoming changes and improvements to the Mirror Dungeon.<br>Any of the following that can be adjusted via a Hotfix without going through a client build will be changed as soon as possible.</p>
 <p>We sincerely apologize for the inconvenience.</p>
 <h2 class="notice-section-heading">&lt;List of Changes Deploying with the Hotfix&gt;</h2>
-<p>※ The following changes will be applied to the game via the temporary hotfix scheduled to be deployed today.<br>We will inform you via a notice when the hotfix is deployed.</p>
+<p><span class="notice-note">※ The following changes will be applied to the game via the temporary hotfix scheduled to be deployed today.</span><br>We will inform you via a notice when the hotfix is deployed.</p>
 <p>1. E.G.O Gift Enhancement, Refresh, and Skill Replacement Cost in Shops will be lowered.</p>
 <p>2. The number of purchasable E.G.O Gift from Shops will be increased.<br>- The base number of Gifts sold will be increased from 3 to 4.</p>
 <p>3. Adjust the number of enemies in certain Focused Encounters where there are too many enemy Slots compared to ally Slots</p>
 <p>4. Add 30 &#x27;Starter Buff Cost&#x27;(the currency used to purchase the Grace of Stars; temporary name) regardless of the loadout&#x27;s Rest Bonus value<br>- The said change is a temporary effect; it will be replaced with the 24.12.05 (KST) Scheduled Update.</p>
-<p>5. Adjusted the 30+ Rest Bonus Passive Effect<br>Before: Upon Floor 2 entry, select a Tier 2 Shop-only E.G.O Gift of your choice<br>After: Starting Cost upon entry +100<br>- The said change is a temporary effect; it will be replaced with the 24.12.05 (KST) Scheduled Update.</p>
-<p>6. Adjusted the 60+ Rest Bonus Passive Effect<br>Before: Upon Floor 3 entry, select a Tier 2 Shop-only E.G.O Gift of your choice<br>After: Starting Cost upon entry +150<br>- The said change is a temporary effect; it will be replaced with the 24.12.05 (KST) Scheduled Update.</p>
+<p>5. Adjusted the 30+ Rest Bonus Passive Effect<br><span class="notice-before">Before: Upon Floor 2 entry, select a Tier 2 Shop-only E.G.O Gift of your choice</span><br><span class="notice-after">After: Starting Cost upon entry +100</span><br>- The said change is a temporary effect; it will be replaced with the 24.12.05 (KST) Scheduled Update.</p>
+<p>6. Adjusted the 60+ Rest Bonus Passive Effect<br><span class="notice-before">Before: Upon Floor 3 entry, select a Tier 2 Shop-only E.G.O Gift of your choice</span><br><span class="notice-after">After: Starting Cost upon entry +150</span><br>- The said change is a temporary effect; it will be replaced with the 24.12.05 (KST) Scheduled Update.</p>
 <h3 class="notice-subsection-heading">&lt;List of Changes Deploying with the Hard Update&gt;</h3>
-<p>※ The following changes will be applied to the game with the 24.12.05 (KST) Scheduled Update.</p>
+<p><span class="notice-note">※ The following changes will be applied to the game with the 24.12.05 (KST) Scheduled Update.</span></p>
 <p>1. Players will now be able to select 2 or more Grace of Stars at once, as long as their Rest Bonus stock allows<br>- Cannot stack two identical effects over one another.</p>
 <p>2. Guarantees 60 &#x27;Starter Buff Cost&#x27;<br>- Even without the Rest Bonus from rested Identities, players will have a base value of 60 &#x27;Starter Buff Cost&#x27; to purchase the Grace of Stars. The sum of &#x27;Starter Buff Cost&#x27; and maximized Identity Rest Bonus adds up to 120.</p>
 <p>3. Grace of Stars Passive Deleted / Addition and adjustment of new Grace of Stars(Cards) Effects<br>- In order to alleviate the discomfort of having no Grace of Stars activated due to having 0 Rest Bonus, we are planning to move the Grace of Stars Passives to the Grace of Stars Cards(Starter Buff Cards).<br>- We are planning to adjust the prices to ensure that players can purchase at least 2 Grace of Stars with the 60 guaranteed &#x27;Starter Buff Cost&#x27;.</p>
-<p>※ Design Intent<br>The Rest Bonus system was implemented to encourage the use of multiple loadouts.<br>However, the system as it is now discourages players from enjoying the Mirror Dungeon<br>as players with only a single loadout or with few loadouts cannot gain much Passives<br>or bonuses from the Grace of Stars.<br>We failed to see this during the early stages of our design, and this issue occurred due to our inadequacies. We will be sure to continue refining ourselves and improving the game.</p>
-<p>In order to adjust the current Mirror Dungeon, and to have its issues addressed without deviating from our original intent, we intend to add the base Rest Bonus to purchase the Grace of Stars and adjust the way the system works.<br>With these changes, we will make it so that players with few loadouts can also gain the benefits of the Grace of Stars<br>and players with multiple loadouts can gain even further benefits from the system.</p>
+<p><span class="notice-note">※ Design Intent</span><br>The Rest Bonus system was implemented to encourage the use of multiple loadouts.<br>However, the system as it is now discourages players from enjoying the Mirror Dungeon as players with only a single loadout or with few loadouts cannot gain much Passives or bonuses from the Grace of Stars.<br>We failed to see this during the early stages of our design, and this issue occurred due to our inadequacies. We will be sure to continue refining ourselves and improving the game.</p>
+<p>In order to adjust the current Mirror Dungeon, and to have its issues addressed without deviating from our original intent, we intend to add the base Rest Bonus to purchase the Grace of Stars and adjust the way the system works.<br>With these changes, we will make it so that players with few loadouts can also gain the benefits of the Grace of Stars and players with multiple loadouts can gain even further benefits from the system.</p>
 <h3 class="notice-subsection-heading">&lt;Number of new E.G.O Gifts added with the Hard Difficulty&gt;</h3>
-<p>50 New E.G.O Gifts<br>- Appears in all difficulties<br>► 12 E.G.O Gifts in the Slash/Pierce/Blunt category</p>
-<p>- Appears only in the Hard Difficulty<br>► 20 E.G.O Gifts in the 7 Keyword(Burn, Bleed, Tremor, Rupture, Sinking, Poise, and Charge) Categories<br>(Each category gains new Tier 4 Fusion E.G.O Gifts)<br>► 18 new Specific Theme Pack(Story or Refraction Railway) only E.G.O Gifts</p></div>
+<p>50 New E.G.O Gifts<br>- Appears in all difficulties<br><span class="notice-marker">▶</span> 12 E.G.O Gifts in the Slash/Pierce/Blunt category</p>
+<p>- Appears only in the Hard Difficulty<br><span class="notice-marker">▶</span> 20 E.G.O Gifts in the 7 Keyword(Burn, Bleed, Tremor, Rupture, Sinking, Poise, and Charge) Categories<br>(Each category gains new Tier 4 Fusion E.G.O Gifts)<br><span class="notice-marker">▶</span> 18 new Specific Theme Pack(Story or Refraction Railway) only E.G.O Gifts</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

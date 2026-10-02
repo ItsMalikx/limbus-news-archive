@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice : Issues after Feb. 22nd Scheduled Update | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/197/">
@@ -19,50 +18,57 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
     <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">Notice : Issues after Feb. 22nd Scheduled Update</h1><div class="notice-date"><time datetime="2024-02-22">February 22, 2024</time></div><hr class="notice-title-divider"></div><h2 class="notice-section-heading">[Errors identified after the Feb. 22nd Scheduled Update]</h2>
+      <nav class="toc" id="noticeToc" aria-label="Contents" hidden>
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="fixes" style="--tag-color: #FF8577">Fixes</span></p><h1 class="notice-inline-title">Notice : Issues after Feb. 22nd Scheduled Update</h1><div class="notice-date"><time datetime="2024-02-22">February 22, 2024</time></div><div class="tag-list"><span class="tag-pill" data-tag="main-story" style="--tag-color: #C2AB7B">Main Story</span></div><hr class="notice-title-divider"></div><h2 class="notice-section-heading">[Errors identified after the Feb. 22nd Scheduled Update]</h2>
 <p>Greetings, Dear Manager.</p>
 <p>We would like to inform you of the additional issues that have been identified after the Feb. 22nd Scheduled Update.</p>
 <h3 class="notice-subsection-heading">&lt;Additional Issues&gt;</h3>
-<p>► An issue where, in Canto 4 or 5, completing only the stages of Part 1 &amp; Part 2(of each Canto) blocked certain Stages from being playable.<br>[Issue Trigger Conditions]<br>- Entering a Canto 4 Part 2 Stage after having cleared only up to Canto 4 Part 1<br>- Entering a Canto 4 Part 3 Stage after having cleared only up to Canto 4 Part 2<br>- Entering a Canto 5 Part 2 Stage after having cleared only up to Canto 4 Part 1<br>- Entering a Canto 5 Part 3 Stage after having cleared only up to Canto 4 Part 2</p>
-<p>► Blade Lineage Mentor Meursault - Swordplay of the Homeland/In Memoriam(Buff) Error<br>- An issue where &#x27;When at 5+ Poise, upon Skill use, Skill 1 and Skill 2 gain Coin Power +(3/# of Coins, minimum 1) and deal +(30/# of Coins)% damage on Critical Hit doesn&#x27;t activate<br>- An issue where &#x27;When at 7+ Poise, upon Skill use, Skill 3 deals +(30/# of Coins)% more damage and deals +(50/# of Coins)% damage on Critical Hit&#x27; activated as &#x27;When at 7+ Poise, upon Skill use, Skill 3 deals +(30*# of Coins)% more damage and deals +(50*# of Coins)% damage on Critical Hit&#x27; instead</p>
-<p>► Blade Lineage Mentor Meursault - Swordplay of the Homeland(Passive) Error<br>- An issue where Blade Lineage Mentor Meursault&#x27;s &#x27;In Memoriam(Swordplay of the Homeland, activated when Blade Lineage allies are defeated)&#x27; buff&#x27;s increased Skill 3 damage and Critical damage effect did not apply to the skill &quot;To Claim Their Bones&#x27;</p>
-<p>► An issue where using the &#x27;Yield My Flesh&#x27; Skill did not prevent Blade Lineage Mentor Meursault from getting Staggered due to Tremor Burst effects</p>
-<p>► Yield My Flesh to Claim Their Bones event tutorial mislabeling issue<br>- An issue where the last page of the Event Tutorial labels the event as &#x27;Miracle in District 20&#x27;</p>
-<p>► An issue where entering Hell&#x27;s Chicken &amp; Yield My Flesh To Claim Their Bones Event Dungeons cleared the &quot;Enter the Mirror Dungeon 1 time(s)&quot; Weekly Pass challenge</p>
-<p>► An issue where, in certain Android devices, Combat Encounter graphics do not render properly</p>
-<p>► An issue where, when using certain E.G.O Skills, the character sprites would disappear periodically</p>
+<p><span class="notice-marker">▶</span> An issue where, in Canto 4 or 5, completing only the stages of Part 1 &amp; Part 2(of each Canto) blocked certain Stages from being playable.<br>[Issue Trigger Conditions]<br>- Entering a Canto 4 Part 2 Stage after having cleared only up to Canto 4 Part 1<br>- Entering a Canto 4 Part 3 Stage after having cleared only up to Canto 4 Part 2<br>- Entering a Canto 5 Part 2 Stage after having cleared only up to Canto 4 Part 1<br>- Entering a Canto 5 Part 3 Stage after having cleared only up to Canto 4 Part 2</p>
+<p><span class="notice-marker">▶</span> Blade Lineage Mentor Meursault - Swordplay of the Homeland/In Memoriam(Buff) Error<br>- An issue where &#x27;When at 5+ Poise, upon Skill use, Skill 1 and Skill 2 gain Coin Power +(3/# of Coins, minimum 1) and deal +(30/# of Coins)% damage on Critical Hit doesn&#x27;t activate<br>- An issue where &#x27;When at 7+ Poise, upon Skill use, Skill 3 deals +(30/# of Coins)% more damage and deals +(50/# of Coins)% damage on Critical Hit&#x27; activated as &#x27;When at 7+ Poise, upon Skill use, Skill 3 deals +(30*# of Coins)% more damage and deals +(50*# of Coins)% damage on Critical Hit&#x27; instead</p>
+<p><span class="notice-marker">▶</span> Blade Lineage Mentor Meursault - Swordplay of the Homeland(Passive) Error<br>- An issue where Blade Lineage Mentor Meursault&#x27;s &#x27;In Memoriam(Swordplay of the Homeland, activated when Blade Lineage allies are defeated)&#x27; buff&#x27;s increased Skill 3 damage and Critical damage effect did not apply to the skill &quot;To Claim Their Bones&#x27;</p>
+<p><span class="notice-marker">▶</span> An issue where using the &#x27;Yield My Flesh&#x27; Skill did not prevent Blade Lineage Mentor Meursault from getting Staggered due to Tremor Burst effects</p>
+<p><span class="notice-marker">▶</span> Yield My Flesh to Claim Their Bones event tutorial mislabeling issue<br>- An issue where the last page of the Event Tutorial labels the event as &#x27;Miracle in District 20&#x27;</p>
+<p><span class="notice-marker">▶</span> An issue where entering Hell&#x27;s Chicken &amp; Yield My Flesh To Claim Their Bones Event Dungeons cleared the &quot;Enter the Mirror Dungeon 1 time(s)&quot; Weekly Pass challenge</p>
+<p><span class="notice-marker">▶</span> An issue where, in certain Android devices, Combat Encounter graphics do not render properly</p>
+<p><span class="notice-marker">▶</span> An issue where, when using certain E.G.O Skills, the character sprites would disappear periodically</p>
 <p>The following issues have been resolved; we will proceed with a Client Build, go through an emergency review, and apply the fix as soon as possible.</p>
 <p>Because mobile platforms (iOS, Android) require an app review before the update is posted, we will notify you with an additional notice as soon as we pass the review and make the fix available for download.<br>Please note that Steam version of the game will be updated at the same time as the iOS and Android versions are updated.<br>We will inform you of the specifics of the issue causes when the game client is updated after passing the reviews.</p>
-<p>► An issue where, in Canto 4 or 5, completing only the stages of Part 1 &amp; Part 2(of each Canto) blocked certain Stages from being playable.<br>► Blade Lineage Mentor Meursault - Swordplay of the Homeland/In Memoriam(Buff) Error<br>► Blade Lineage Mentor Meursault - Swordplay of the Homeland(Passive) Error<br>► An issue where, in certain Android devices, Combat Encounter graphics do not render properly</p>
+<p><span class="notice-marker">▶</span> An issue where, in Canto 4 or 5, completing only the stages of Part 1 &amp; Part 2(of each Canto) blocked certain Stages from being playable.<br><span class="notice-marker">▶</span> Blade Lineage Mentor Meursault - Swordplay of the Homeland/In Memoriam(Buff) Error<br><span class="notice-marker">▶</span> Blade Lineage Mentor Meursault - Swordplay of the Homeland(Passive) Error<br><span class="notice-marker">▶</span> An issue where, in certain Android devices, Combat Encounter graphics do not render properly</p>
 <p>The remaining issues will be corrected with a future update; we will inform you via a Scheduled Update Notice as soon as they are resolved.</p>
 <p>We sincerely apologize for causing a disturbance to your enjoyment of our game.</p>
 <h3 class="notice-subsection-heading">[Feb. 22nd Scheduled Update Error Compensation]</h3>
-<p>- Compensation : Lunacy x1300<br>- Recipients : All users whose accounts were created before Mar. 7th 2024, 10:00<br>- Can be claimed once per account<br>- When : After Feb. 22nd 2024(KST), 17:00</p></div>
+<p>- <span class="notice-label">Compensation:</span> Lunacy x1300<br>- <span class="notice-label">Recipients:</span> All users whose accounts were created before Mar. 7th 2024, 10:00<br>- Can be claimed once per account<br>- <span class="notice-label">When:</span> After Feb. 22nd 2024(KST), 17:00</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

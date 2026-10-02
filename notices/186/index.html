@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Feb. 1st New Content - Refraction Railway Line 3 | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/186/">
@@ -19,21 +18,27 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #FF7300">Refraction Railway</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span></div><h1 class="notice-inline-title">Feb. 1st New Content - Refraction Railway Line 3</h1><div class="notice-date"><time datetime="2024-01-29">January 29, 2024</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">Content Details</a></li><li><a href="#section-2">Content Progression</a></li><li><a href="#section-3">Combat Progression</a></li><li><a href="#section-4">Observation Levels</a></li><li><a href="#section-5">Stage Info</a></li><li><a href="#section-6">Claiming Rewards</a></li><li><a href="#section-7">Special Decorative Banners</a></li><li><a href="#section-8">Records</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="announcements" style="--tag-color: #68B7ED">Announcements</span></p><h1 class="notice-inline-title">Feb. 1st New Content - Refraction Railway Line 3</h1><div class="notice-date"><time datetime="2024-01-29">January 29, 2024</time></div><div class="tag-list"><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #46C6AA">Refraction Railway</span><span class="tag-pill" data-tag="events" style="--tag-color: #ABB74F">Events</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span><span class="tag-pill" data-tag="rewards" style="--tag-color: #ED9658">Rewards</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>New Content &lt;Refraction Railway Line 3&gt; will be added to the game with the Feb. 1st, 2024 (KST) Scheduled Update.</p>
 <h2 class="notice-section-heading">&lt;Unlock Conditions&gt;</h2>
 <p>Clear Main Story 5-36</p>
@@ -43,48 +48,48 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <p>- Refraction Railway Line 3 will end with the start of Refraction Railway Line 4.</p>
 <h3 class="notice-subsection-heading">&lt;About Refraction Railway Line 2 Rewards&gt;</h3>
 <p>Any rewards you have not claimed from the Line 2 Lost &amp; Found will be lost with the start of Refraction Railway Line 3.<br>(Unclaimed rewards will not be delivered to your inbox either.)<br>If you are yet to claim your Line 2 rewards, please claim them before the Feb. 1st Scheduled Update.</p>
-<h2 class="notice-section-heading">Content Details</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-1">Content Details</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- &lt;Refraction Railway Line 3&gt; will open after completing Main Story 3-36, and can be accessed via the ‘Drive’ menu.</p>
 <p>- As long as Line 3 is active, it can be accessed anytime without spending any resources. Line 3 will close upon the opening of &lt;Refraction Railway Line 4&gt;.</p>
 <p>- You can spend a certain number of Modules(only for the first time) at the Lost &amp; Found to claim your Refraction Railway rewards.</p>
 <p>- Upon entering, you will choose your Identities and E.G.O. to begin the expedition with. Unlike in the previous Refraction Railway, however, any changes made to your Identities and E.G.O’s levels, Uptie Tiers, and Threadspinning Tiers after starting the run will be reflected on your active team in the Railway.</p>
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- Refraction Railway Line 3 is composed of 13 total Stations, and you will face highly difficult encounters in 10 of those Stations.</p>
 <p>- In non-combat Stations, #4, #8, and #12, you can heal or revive your Identities. You can also modify your loadout in those Stations. Identities with 0 or positive SP will maintain their SP, but Identities with negative SP will recover to 0 SP.</p>
 <p>- Total Turns taken to clear the Station(Clear Turns) and Total Turns taken since the First Stop to each respective Station will be shown above each Station.</p>
 <p>- The E.G.O resources held after clearing a Station can be carried over to the next Station.</p>
 <p>- The HP, SP, and availability of your Identities are shown at the bottom of the screen. Select the area to view your loadout.</p>
-<h2 class="notice-section-heading">Content Progression</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-2">Content Progression</h2><hr class="notice-section-divider">
 <p>- Upon defeat, you can either return to the state immediately before entering that Station or continue using your surviving Identities. Should you choose to continue, the enemies&#x27; current HP will be saved. Their remaining HP percentages will be shown above the Station.</p>
 <p>- Upon forfeiting an Encounter, you will be returned to the state immediately before entering this stage.</p>
 <p>- If you choose to ‘continue’ using your surviving identities, a ‘Reset’ button will be added to the Stage Info page. Select it to return to the state immediately before entering that Station for the first time.</p>
 <p>- During an expedition, you can choose to start over(rewind) from previously cleared Stations. When you do so, the Encounter will start with the Sinners’ statuses and E.G.O resources reverted to the point of your initial entry to that Station, and the completion progress for any Stations you&#x27;ve cleared since that Station will be reset.</p>
-<h2 class="notice-section-heading">Combat Progression</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-3">Combat Progression</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- A maximum of 6 Sinners may enter an encounter. Although you may do so with fewer than 6 Sinners, they will not gain additional Skill Slots.</p>
 <p>- All encounters will be Focused Encounters where you, the Manager, will manually match your allies’ Skills against the enemies’ Skills.</p>
 <p>- Unlike in Refraction Railway Line 2, the Identities’ Speed, Skills on the Dashboard, used Skills of individual Identities, and remaining Skills will not be saved between each Station in Refraction Railway Line 3.</p>
-<h2 class="notice-section-heading">Observation Levels</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-4">Observation Levels</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- If you have already unlocked the Abnormalities&#x27; Observation Levels through Story Dungeon Encounters, their Observation Levels will be reflected in the Refraction Railway and you can view their information as you would in those Dungeons. However, their Resistance and any information different from their original counterparts will be locked upon your first encounter with them on the Railway.</p>
 <p>- The damage bonus based on Observation Levels does not apply in Refraction Railway Line 3.</p>
 <p>- In Refraction Railway Line 3, if the Observation Log was updated mid-encounter, the updated Observation Log info will be saved even if you give up mid-encounter.</p>
-<h2 class="notice-section-heading">Stage Info</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-5">Stage Info</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- In Refraction Railway Line 3, you can view Stats and Resistances for Abnormalities’ Parts in the Stage Info menu. (If it has been unlocked during the encounter)</p>
-<h2 class="notice-section-heading">Claiming Rewards</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-6">Claiming Rewards</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- After clearing a Station for the first time during the event period, rewards from them will be sent to the &quot;Lost &amp; Found&quot;.</p>
 <p>- To access the &quot;Lost &amp; Found&quot; for the first time, a certain number of Enkephalin Modules will be required. Rewards that can be claimed afterward are free of charge.</p>
-<p>- You can earn various level-up and extraction currencies here. Special rewards include 「Level Boost Ticket IV」, 「Season 3 - 3★ Guarantee Decaextraction Ticket」, 「Refraction Railway Line 3 Themed Business Card Deco」.</p>
-<h2 class="notice-section-heading">Special Decorative Banners</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<p>- You can earn various level-up and extraction currencies here. Special rewards include 「Level Boost Ticket IV」, 「Season 3 - 3★ Guarantee Decaextraction Ticket」, 「Refraction Railway Line 3 Themed Business Card Deco」.</p>
+<h2 class="notice-section-heading" id="section-7">Special Decorative Banners</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- Here, you can view the acquisition conditions for Refraction Railway Line 3 Banners. The harder the conditions, the more elaborate your Banner will be.</p>
 <p>- Once you obtain a Banner, the Turn Count of your best record will be displayed on it.</p>
 <p>- The highest Turn Count that can be displayed on the Banner is 999. The highest possible Turn Count that can be recorded in a Station is 99 Turns, and if your Turn Count goes beyond 100 Turns, it will be recorded as ‘99 Turns’.</p>
-<h2 class="notice-section-heading">Records</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-8">Records</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- Your stats will be recorded upon clearing the Terminus, which can be viewed from your Logs during the Refraction Railway’s runtime.</p>
 <p>- Up to 20 records can be saved. If you have more than 20 records, records with the highest Total Turns will be deleted first.</p>
 <p>- The date of completion, Total Turns taken, used Identities, and damage output statistics will be displayed in your Logs (Travel Collection).</p>
@@ -93,13 +98,14 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

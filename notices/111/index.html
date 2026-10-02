@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>August 24th Scheduled Update Notice | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/111/">
@@ -19,67 +18,74 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">August 24th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-08-21">August 21, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">Update Contents</a></li><li><a href="#section-2">Optimizations</a></li><li><a href="#section-3">Major Changes</a></li><li><a href="#section-4">Bug Fixes and Improvements</a></li><li><a href="#section-5">Update Content</a></li><li><a href="#section-6">Maintenance &amp; Application Update Compensation</a></li><li><a href="#section-7">Notes</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="patch-notes" style="--tag-color: #64C897">Patch Notes</span></p><h1 class="notice-inline-title">August 24th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2023-08-21">August 21, 2023</time></div><div class="tag-list"><span class="tag-pill" data-tag="identities-e-g-o" style="--tag-color: #EE8AB2">Identities &amp; E.G.O</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter maintenance from 10:00 [AM] through 12:00 [PM] on August 24th, 2023 (KST) for system optimizations and content updates. Please make note of the maintenance schedule; we recommend that you refrain from entering combat or mating in-app purchases and close the application before maintenance beings so that no data is lost. Refer below for details about the update.</p>
-<h2 class="notice-section-heading">Update Contents</h2><hr class="notice-section-divider">
-<p>1. New Target Extraction - [New Target Extraction - W Corp. L3 Cleanup Agent Ryōshū &amp; W Corp. L2 Cleanup Agent Hong Lu] (Aug. 24th 12:00 ~ Sep. 7th 09:59 (KST))</p>
+<h2 class="notice-section-heading" id="section-1">Update Contents</h2><hr class="notice-section-divider">
+<p>1. New Target Extraction - [New Target Extraction - W Corp. L3 Cleanup Agent Ryōshū &amp; W Corp. L2 Cleanup Agent Hong Lu] (Aug. 24th 12:00 ~ Sep. 7th 09:59 (KST))</p>
 <p>Extraction rates increase for the following identities:<br>-3★ : W Corp. L3 Cleanup Agent Ryōshū<br>-2★ : W Corp. L2 Cleanup Agent Hong Lu</p>
 <p>2. New Identities Added</p>
 <p>The following are added to the list of extractable Identities:<br>-3★ : W Corp. L3 Cleanup Agent Ryōshū<br>-2★ : W Corp. L2 Cleanup Agent Hong Lu</p>
-<h2 class="notice-section-heading">Optimizations</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-2">Optimizations</h2><hr class="notice-section-divider">
 <p>1. RAM usage improvement</p>
 <p>We have modified sound resources&#x27; load and play structures to prevent unnecessary sound resources from consuming RAM usage on devices (About 300MB on Mobile)</p>
-<p>※ This requires a sound resource redownload.<br>Outdated sound resources will be deleted.<br>(Download Size : About 1GB)</p>
-<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ This requires a sound resource redownload.</span><br>Outdated sound resources will be deleted.<br>(Download Size : About 1GB)</p>
+<h2 class="notice-section-heading" id="section-3">Major Changes</h2><hr class="notice-section-divider">
 <p>1. FPS Settings Diversified</p>
-<p>- Before: Settings - Graphics - Adjust ‘FPS’ option to adjust general game FPS<br>- After: Settings - Graphics - Adjust ‘Normal FPS’ and ‘Combat FPS’ to adjust FPS independently</p>
+<p><span class="notice-before">- Before: Settings - Graphics - Adjust ‘FPS’ option to adjust general game FPS</span><br><span class="notice-after">- After: Settings - Graphics - Adjust ‘Normal FPS’ and ‘Combat FPS’ to adjust FPS independently</span></p>
 <p>(1) Normal FPS: Adjusts framerates of all non-combat scenes<br>(2) Combat FPS: Adjusts framerate in combat scenes</p>
-<h2 class="notice-section-heading">Bug Fixes and Improvements</h2><hr class="notice-section-divider">
-<p>· Changed the effects of Uptie 3 Zwei Association South Section 6 Sinclair&#x27;s Skill 3 &#x27;Strong Strike&#x27;<br>- Before : [On Use] Give 1 Protection to the ally with the least HP<br>- After : [On Use] Give 1 Protection to the ally with the least HP ‘next turn’</p>
-<p>※ The skill’s Uptie 3 activation timing has been changed to ‘next turn’ due to an error after the Uptie 4 update. Therefore, the description has been changed to match the current effects.</p>
+<h2 class="notice-section-heading" id="section-4">Bug Fixes and Improvements</h2><hr class="notice-section-divider">
+<p>· Changed the effects of Uptie 3 Zwei Association South Section 6 Sinclair&#x27;s Skill 3 &#x27;Strong Strike&#x27;<br><span class="notice-before">- Before : [On Use] Give 1 Protection to the ally with the least HP</span><br><span class="notice-after">- After : [On Use] Give 1 Protection to the ally with the least HP ‘next turn’</span></p>
+<p><span class="notice-note">※ The skill’s Uptie 3 activation timing has been changed to ‘next turn’ due to an error after the Uptie 4 update. Therefore, the description has been changed to match the current effects.</span></p>
 <p>· Fixed an issue where Uptie 4 Zwei Association South Section 6 Sinclair&#x27;s Skill 3 &#x27;Strong Strike&#x27; applied 1 Protection on this turn and not ‘on the next turn’ as it is written</p>
 <p>· Fixed an issue where Uptie 4 LCCB Assistant Manager Ishmael&#x27;s Skill 1 &#x27;Shove&#x27; applied Coin Power +2 instead of Skill Power +2 as it is written</p>
-<p>· Fixed an issue where Don Quixote E.G.O - Fluid Sac&#x27;s Passive ‘Waves of Depression’ was dealing Pride damage instead of Gloom damage as it is written</p>
-<p>· Changed the target description for the Gloom damage effect of Don Quixote E.G.O - Fluid Sac passive ‘Waves of Depression’<br>- Before : &quot;Abnormalities take Gloom damage instead&quot;<br>- After : &quot;Targets without SP values take Gloom damage instead&quot;</p>
-<p>· Fixed an issue where Ishmael E.G.O - Ardor Blossom Star Tier 4 Threadspinning Awakening skill&#x27;s [Heads Attack End] effect would apply even when the coin lands on Tails.</p>
-<p>· Fixed an issue where the conditions for activating Ishmael E.G.O - Ardor Blossom Star passive ‘Shower of Fire’ incorrectly included allies as well</p>
+<p>· Fixed an issue where Don Quixote E.G.O - Fluid Sac&#x27;s Passive ‘Waves of Depression’ was dealing Pride damage instead of Gloom damage as it is written</p>
+<p>· Changed the target description for the Gloom damage effect of Don Quixote E.G.O - Fluid Sac passive ‘Waves of Depression’<br><span class="notice-before">- Before : &quot;Abnormalities take Gloom damage instead&quot;</span><br><span class="notice-after">- After : &quot;Targets without SP values take Gloom damage instead&quot;</span></p>
+<p>· Fixed an issue where Ishmael E.G.O - Ardor Blossom Star Tier 4 Threadspinning Awakening skill&#x27;s [Heads Attack End] effect would apply even when the coin lands on Tails.</p>
+<p>· Fixed an issue where the conditions for activating Ishmael E.G.O - Ardor Blossom Star passive ‘Shower of Fire’ incorrectly included allies as well</p>
 <p>Greetings, Dear Manager.</p>
 <p>We would like to notify you of the additional information omitted from the August 24th Scheduled Update Notice.</p>
-<h2 class="notice-section-heading">Update Content</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-5">Update Content</h2><hr class="notice-section-divider">
 <p>[Additional Information] 3. Target Extraction : [Ishmael] (Aug. 24th 12:00 ~ Sep. 7th 09:59 (KST))</p>
 <p>The following Identities and E.G.O will have increased odds of extraction.</p>
-<p>- E.G.O [HE] : Ardor Blossom Star Ishmael<br>- 3★ : Molar Boatworks Fixer Ishmael, Liu South Section 4 Ishmael, R Corp. 4th Pack Reindeer Ishmael<br>- 2★ : Lobotomy E.G.O::Sloshing - Ishmael, LCCB Assistant Manager Ishmael, Shi South Section 5 Ishmael<br>- 1★ : LCB Sinner Ishmael</p>
+<p>- E.G.O [HE] : Ardor Blossom Star Ishmael<br>- 3★ : Molar Boatworks Fixer Ishmael, Liu South Section 4 Ishmael, R Corp. 4th Pack Reindeer Ishmael<br>- 2★ : Lobotomy E.G.O::Sloshing - Ishmael, LCCB Assistant Manager Ishmael, Shi South Section 5 Ishmael<br>- 1★ : LCB Sinner Ishmael</p>
 <p>We apologize for causing inconvenience by uploading an incorrect notice.</p>
-<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
-<p>- Content: 300 Lunacy<br>- Recipients: Every user whose game account was created before 09:59 Aug. 24th, 2023 (KST)</p>
-<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-6">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Content:</span> 300 Lunacy<br>- <span class="notice-label">Recipients:</span> Every user whose game account was created before 09:59 Aug. 24th, 2023 (KST)</p>
+<h2 class="notice-section-heading" id="section-7">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

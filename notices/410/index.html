@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Stage 8-30 Difficulty Survey Results | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/410/">
@@ -19,80 +18,87 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">Notice: Stage 8-30 Difficulty Survey Results</h1><div class="notice-date"><time datetime="2025-05-30">May 30, 2025</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">Stage 8-30 Survey Results</a></li><li><a href="#section-2">Number of Retries</a></li><li><a href="#section-3">Retry Strategy</a></li><li><a href="#section-4">ID Upgrade Progress</a></li><li><a href="#section-5">E.G.O Threadspinning Tiers</a></li><li><a href="#section-6">Most Used Identities</a></li><li><a href="#section-7">Difficulty Experience based on Turn Count</a></li><li><a href="#section-8">Adjustment Direction Opinion</a></li><li><a href="#section-9">Unbreakable Coin Difficulty</a></li><li><a href="#section-10">Tremor, Burn Difficulty</a></li><li><a href="#section-11">Gimmick Difficulty</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="announcements" style="--tag-color: #68B7ED">Announcements</span></p><h1 class="notice-inline-title">Notice: Stage 8-30 Difficulty Survey Results</h1><div class="notice-date"><time datetime="2025-05-30">May 30, 2025</time></div><div class="tag-list"><span class="tag-pill" data-tag="identities-e-g-o" style="--tag-color: #EE8AB2">Identities &amp; E.G.O</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>At 5.30 18:00 (KST), the hotfix for 8-30 was deployed.<br>We would like to share an explanation with you as to how we reached that conclusion, alongside the survey results.</p>
 <p>Please review the information and the chart below for more information.</p>
-<h2 class="notice-section-heading">Stage 8-30 Survey Results</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-1">Stage 8-30 Survey Results</h2><hr class="notice-section-divider">
 <p>Survey Sample Size: 28845<br>Clear Rate of Participants: 20135 (70%)</p>
-<p>Ingame Data<br>cleared 8-29: 180,711<br>cleared 8-30: 142,071 (78%)</p>
-<h2 class="notice-section-heading">Number of Retries</h2><hr class="notice-section-divider">
-<p>- First Try: 22.1%<br>- 2: 20.7%<br>- 3~4: 21.1%<br>- 5 or more: 10.8%<br>- not cleared: 25.2%</p>
-<h2 class="notice-section-heading">Retry Strategy</h2><hr class="notice-section-divider">
-<p>- Retry Immediately: 11762<br>- Upgrade ID &amp; E.G.O: 6505<br>- Swap ID &amp; E.G.O Composition: 13627<br>- Review Boss Texts &amp; Gimmicks: 14466<br>- Search for Info Online: 6626</p>
-<h2 class="notice-section-heading">ID Upgrade Progress</h2><hr class="notice-section-divider">
+<p>Ingame Data cleared 8-29: 180,711 cleared 8-30: 142,071 (78%)</p>
+<h2 class="notice-section-heading" id="section-2">Number of Retries</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">First Try:</span> 22.1%<br>- 2: 20.7%<br>- 3~4: 21.1%<br>- 5 or more: 10.8%<br>- not cleared: 25.2%</p>
+<h2 class="notice-section-heading" id="section-3">Retry Strategy</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Retry Immediately:</span> 11762<br>- Upgrade ID &amp; E.G.O: 6505<br>- Swap ID &amp; E.G.O Composition: 13627<br>- Review Boss Texts &amp; Gimmicks: 14466<br>- <span class="notice-label">Search for Info Online:</span> 6626</p>
+<h2 class="notice-section-heading" id="section-4">ID Upgrade Progress</h2><hr class="notice-section-divider">
 <p>- Uptie Tier 4, Level 55: 76.5%<br>- Uptie Tier 4, Level 50: 15.0%<br>- Uptie Tier 3, Level 55<br>- Uptie Tier 3, Level 50<br>- not applicable</p>
-<h2 class="notice-section-heading">E.G.O Threadspinning Tiers</h2><hr class="notice-section-divider">
-<p>- Tier 1<br>- Tier 2: 12.1%<br>- Tier 3: 63.9%<br>- Tier 4: 20.9%</p>
-<h2 class="notice-section-heading">Most Used Identities</h2><hr class="notice-section-divider">
-<p>Yi Sang: The Ring Pointillist Student (43%) | Liu South Section 3 (14%)<br>Faust: Heishou Pack - Mao Branch Adept (57%) | The One Who Grips (17%)<br>Don Quixote: The Manager of La Manchaland (50%) | Lobotomy E.G.O::Lantern (16%) | Cinq East Section 3 (15%)<br>Ryōshū: Heishou Pack - Mao Branch (56%) | Lobotomy E.G.O::Red Eyes &amp; Penitence (21%)<br>Meursault: Cinq West Section 3 (43%) | Blade Lineage Mentor (24%)<br>Hong Lu: Full-Stop Office Rep. (49%) | K Corp. Class 3 Excision Staff (13%) | Tingtang Gang Gangleader (12%)<br>Heathcliff: Full-Stop Office Fixer (42%) | Wild Hunt (18%)<br>Ishmael: Kurokumo Clan Captain (33%) | Zwei West Section 3 (26%)<br>Rodion: Heishou Pack - Si Branch (35%) | The Princess of La Manchaland (36%)<br>Sinclair: Cinq South Section 4 (21%) | The One Who Shall Grip (17%) | Devyat&#x27; North Section 3 (16%)<br>Outis: Heishou Pack - Mao Branch (53%) | The Barber of La Manchaland (23%)<br>Gregor: Heishou Pack - Si Branch (35%) | The Priest of La Manchaland (33%)</p>
-<h2 class="notice-section-heading">Difficulty Experience based on Turn Count</h2><hr class="notice-section-divider">
-<p>- Legend: Turn 1~5, Turn 6~10, Turn 11+<br>- Vertical Axis: Very Easy, 2, 3, 4, Very Hard</p>
-<h2 class="notice-section-heading">Adjustment Direction Opinion</h2><hr class="notice-section-divider">
-<p>- Reduce Enemy HP: 6009<br>- Reduce Enemy SP Heal: 8747<br>- Increase E.G.O Resource Gain: 7079<br>- Reduce ID Deaths: 6983<br>- No Adjustment Needed: 9070<br>- Adjustment Needed(Other): 4137</p>
-<h2 class="notice-section-heading">Unbreakable Coin Difficulty</h2><hr class="notice-section-divider">
-<p>- Very Easy<br>- Somewhat Easy: 18.7%<br>- Adequate<br>- Somewhat Hard: 32.1%<br>- Very Hard: 40.5%</p>
-<p>(Adjustment Opinion)<br>- Reduce Damage: 7690<br>- Reduce Power: 5459<br>- Reduce Frequency: 8628<br>- Reduce DMG on Player Clash Win: 20504<br>- No Adjustment Needed: 4666<br>- Adjustment Needed(Other): 3843</p>
-<h2 class="notice-section-heading">Tremor, Burn Difficulty</h2><hr class="notice-section-divider">
-<p>- Very Easy: 13.6%<br>- Somewhat Easy: 23.7%<br>- Adequate: 36.9%<br>- Somewhat Hard: 17.7%<br>- Very Hard: 8.2%</p>
-<p>(Adjustment Opinion)<br>- Reduce Potency &amp; Count Inflicted: 3777<br>- Inflict Less on Player Clash Win: 13696<br>- No Adjustment Needed: 13201<br>- Adjustment Needed(Other): 1565</p>
-<h2 class="notice-section-heading">Gimmick Difficulty</h2><hr class="notice-section-divider">
-<p>- Very Easy: 6.8%<br>- Somewhat Easy: 15.5%<br>- Adequate: 35.0%<br>- Somewhat Hard: 28.2%<br>- Very Hard: 14.4%</p>
-<p>(Adjustment Opinion)<br>- More Intuitive Gimmick Description: 6679<br>- Reduce Penalty upon Gimmick Solve: 8090<br>- Increase Advantage upon Gimmick Solve: 9367<br>- Reduce Penalty of Failing to Solve Gimmick: 6341<br>- No Adjustment Needed: 9868<br>- Adjustment Needed(Other): 1904</p>
+<h2 class="notice-section-heading" id="section-5">E.G.O Threadspinning Tiers</h2><hr class="notice-section-divider">
+<p>- Tier 1<br>- <span class="notice-label">Tier 2:</span> 12.1%<br>- <span class="notice-label">Tier 3:</span> 63.9%<br>- <span class="notice-label">Tier 4:</span> 20.9%</p>
+<h2 class="notice-section-heading" id="section-6">Most Used Identities</h2><hr class="notice-section-divider">
+<p>Yi Sang: The Ring Pointillist Student (43%) | Liu South Section 3 (14%)<br>Faust: Heishou Pack - Mao Branch Adept (57%) | The One Who Grips (17%)<br>Don Quixote: The Manager of La Manchaland (50%) | Lobotomy E.G.O::Lantern (16%) | Cinq East Section 3 (15%)<br>Ryōshū: Heishou Pack - Mao Branch (56%) | Lobotomy E.G.O::Red Eyes &amp; Penitence (21%)<br>Meursault: Cinq West Section 3 (43%) | Blade Lineage Mentor (24%)<br>Hong Lu: Full-Stop Office Rep. (49%) | K Corp. Class 3 Excision Staff (13%) | Tingtang Gang Gangleader (12%)<br>Heathcliff: Full-Stop Office Fixer (42%) | Wild Hunt (18%)<br>Ishmael: Kurokumo Clan Captain (33%) | Zwei West Section 3 (26%)<br>Rodion: Heishou Pack - Si Branch (35%) | The Princess of La Manchaland (36%)<br>Sinclair: Cinq South Section 4 (21%) | The One Who Shall Grip (17%) | Devyat&#x27; North Section 3 (16%)<br>Outis: Heishou Pack - Mao Branch (53%) | The Barber of La Manchaland (23%)<br>Gregor: Heishou Pack - Si Branch (35%) | The Priest of La Manchaland (33%)</p>
+<h2 class="notice-section-heading" id="section-7">Difficulty Experience based on Turn Count</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Legend:</span> Turn 1~5, Turn 6~10, Turn 11+<br>- <span class="notice-label">Vertical Axis:</span> Very Easy, 2, 3, 4, Very Hard</p>
+<h2 class="notice-section-heading" id="section-8">Adjustment Direction Opinion</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Reduce Enemy HP:</span> 6009<br>- <span class="notice-label">Reduce Enemy SP Heal:</span> 8747<br>- <span class="notice-label">Increase E.G.O Resource Gain:</span> 7079<br>- <span class="notice-label">Reduce ID Deaths:</span> 6983<br>- <span class="notice-label">No Adjustment Needed:</span> 9070<br>- Adjustment Needed(Other): 4137</p>
+<h2 class="notice-section-heading" id="section-9">Unbreakable Coin Difficulty</h2><hr class="notice-section-divider">
+<p>- Very Easy<br>- <span class="notice-label">Somewhat Easy:</span> 18.7%<br>- Adequate<br>- <span class="notice-label">Somewhat Hard:</span> 32.1%<br>- <span class="notice-label">Very Hard:</span> 40.5%</p>
+<p>(Adjustment Opinion)<br>- <span class="notice-label">Reduce Damage:</span> 7690<br>- <span class="notice-label">Reduce Power:</span> 5459<br>- <span class="notice-label">Reduce Frequency:</span> 8628<br>- Reduce DMG on Player Clash Win: 20504<br>- <span class="notice-label">No Adjustment Needed:</span> 4666<br>- Adjustment Needed(Other): 3843</p>
+<h2 class="notice-section-heading" id="section-10">Tremor, Burn Difficulty</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Very Easy:</span> 13.6%<br>- <span class="notice-label">Somewhat Easy:</span> 23.7%<br>- <span class="notice-label">Adequate:</span> 36.9%<br>- <span class="notice-label">Somewhat Hard:</span> 17.7%<br>- <span class="notice-label">Very Hard:</span> 8.2%</p>
+<p>(Adjustment Opinion)<br>- Reduce Potency &amp; Count Inflicted: 3777<br>- Inflict Less on Player Clash Win: 13696<br>- <span class="notice-label">No Adjustment Needed:</span> 13201<br>- Adjustment Needed(Other): 1565</p>
+<h2 class="notice-section-heading" id="section-11">Gimmick Difficulty</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Very Easy:</span> 6.8%<br>- <span class="notice-label">Somewhat Easy:</span> 15.5%<br>- <span class="notice-label">Adequate:</span> 35.0%<br>- <span class="notice-label">Somewhat Hard:</span> 28.2%<br>- <span class="notice-label">Very Hard:</span> 14.4%</p>
+<p>(Adjustment Opinion)<br>- More Intuitive Gimmick Description: 6679<br>- Reduce Penalty upon Gimmick Solve: 8090<br>- Increase Advantage upon Gimmick Solve: 9367<br>- Reduce Penalty of Failing to Solve Gimmick: 6341<br>- <span class="notice-label">No Adjustment Needed:</span> 9868<br>- Adjustment Needed(Other): 1904</p>
 <h3 class="notice-subsection-heading">[Cleared Stage 8-30]</h3>
-<p>28,845 managers have participated in the survey.<br>Among them, 20,135 managers have cleared Stage 8-30,<br>which makes up about 70% of the managers who have responded to the survey.</p>
-<p>Comparing this to the in-game results,<br>180,711 managers have cleared up to Stage 8-29,<br>and 142,071 managers have cleared Stage 8-30.<br>That is approximately 78% of the sample, which we believe is not a significant difference from the in-game data.</p>
+<p>28,845 managers have participated in the survey.<br>Among them, 20,135 managers have cleared Stage 8-30, which makes up about 70% of the managers who have responded to the survey.</p>
+<p>Comparing this to the in-game results,<br>180,711 managers have cleared up to Stage 8-29, and 142,071 managers have cleared Stage 8-30.<br>That is approximately 78% of the sample, which we believe is not a significant difference from the in-game data.</p>
 <h3 class="notice-subsection-heading">[The Managers&#x27; Clear Loadouts]</h3>
-<p>Most managers challenged the battle with the following upgrade levels: ID Uptie 4, Level 55,<br>and E.G.O Threadspinning Tier 3.</p>
-<p>We also identified that most of the teams used to clear the stage were Rupture or Bleed Teams,<br>which employed the Full-Stop Office Identities, Heishou Pack Identities, and/or La Manchaland Identities.</p>
+<p>Most managers challenged the battle with the following upgrade levels: ID Uptie 4, Level 55, and E.G.O Threadspinning Tier 3.</p>
+<p>We also identified that most of the teams used to clear the stage were Rupture or Bleed Teams, which employed the Full-Stop Office Identities, Heishou Pack Identities, and/or La Manchaland Identities.</p>
 <h3 class="notice-subsection-heading">[Turn-based Gameplay Experience &amp; Difficulty Adjustments]</h3>
-<p>According to the turn-based difficulty results, most of our users have replied that<br>the battle becomes increasingly difficult the later into the fight they progress.</p>
-<p>We believe that this was due to the following reasons: The Sinners continuously deploy E.G.O,<br>and constantly lose SP due to ally deaths.<br>This leads to harder, lower Clash Win chances,<br>and difficulties with constantly rising amount of damage taken.</p>
-<p>Therefore, we decided to add a SP loss effect and adjusted the SP heal effect on the boss,<br>so that the fight will not become too difficult.</p>
-<p>► Blasting Shatterslash [爆碎斬]: Added &quot;[Clash Lose] Lose 10 SP on self&quot;<br>► Reloading Tiantui Star&#x27;s Blade: Removed &quot;[On Use] Heal 10 SP.; - At less than 0 SP, heal 5 additional SP&quot;</p>
+<p>According to the turn-based difficulty results, most of our users have replied that the battle becomes increasingly difficult the later into the fight they progress.</p>
+<p>We believe that this was due to the following reasons: The Sinners continuously deploy E.G.O, and constantly lose SP due to ally deaths.<br>This leads to harder, lower Clash Win chances, and difficulties with constantly rising amount of damage taken.</p>
+<p>Therefore, we decided to add a SP loss effect and adjusted the SP heal effect on the boss, so that the fight will not become too difficult.</p>
+<p><span class="notice-marker">▶</span> Blasting Shatterslash [爆碎斬]: Added &quot;[Clash Lose] Lose 10 SP on self&quot;<br><span class="notice-marker">▶</span> Reloading Tiantui Star&#x27;s Blade: Removed &quot;[On Use] Heal 10 SP.; - At less than 0 SP, heal 5 additional SP&quot;</p>
 <h3 class="notice-subsection-heading">[Unbreakable Coin Damages Lowered]</h3>
-<p>The Unbreakable Coin difficulty survey results were the following:<br>Very hard - 40.5%, and Somewhat hard - 32.1%.</p>
-<p>We decided that this was due to the fact that winning the Clash still resulted in the player team receiving significant damage<br>from the Unbreakable Coins of Savage Tigerslayer&#x27;s Perfected Flurry of Blades [超絕猛虎殺擊亂斬] Skill.</p>
-<p>Therefore, we added a Power Down &amp; Paralyze effects to the Unbreakable Coin effects<br>to minimize the amount of damage taken on Clash Win,<br>and adjusted the value for Unrelenting Spirit - Shin [剛氣-心] so that the difficulty is more appropriate.</p>
-<p>► Tanglecleaver [快刀亂麻]: Added &quot;[Clash Lose] Gain 4 Power Down&quot; and &quot;[Clash Lose] Gain 1 Paralyze&quot;<br>► Savage Tigerslayer&#x27;s Perfected Flurry of Blades [超絕猛虎殺擊亂斬]: &quot;Added [Clash Lose] Gain 2 Power Down&quot; and &quot;[Clash Lose] Gain 6 Paralyze&quot;<br>► Unrelenting Spirit - Shin [剛氣-心]: Reduced the cap for &quot;damage modifier gained from Speed difference if this unit is faster than the target by 3 or more&quot; from 40% to 20%.</p>
+<p>The Unbreakable Coin difficulty survey results were the following:<br>Very hard - 40.5%, and Somewhat hard - 32.1%.</p>
+<p>We decided that this was due to the fact that winning the Clash still resulted in the player team receiving significant damage from the Unbreakable Coins of Savage Tigerslayer&#x27;s Perfected Flurry of Blades [超絕猛虎殺擊亂斬] Skill.</p>
+<p>Therefore, we added a Power Down &amp; Paralyze effects to the Unbreakable Coin effects to minimize the amount of damage taken on Clash Win, and adjusted the value for Unrelenting Spirit - Shin [剛氣-心] so that the difficulty is more appropriate.</p>
+<p><span class="notice-marker">▶</span> Tanglecleaver [快刀亂麻]: Added &quot;[Clash Lose] Gain 4 Power Down&quot; and &quot;[Clash Lose] Gain 1 Paralyze&quot;<br><span class="notice-marker">▶</span> Savage Tigerslayer&#x27;s Perfected Flurry of Blades [超絕猛虎殺擊亂斬]: &quot;Added [Clash Lose] Gain 2 Power Down&quot; and &quot;[Clash Lose] Gain 6 Paralyze&quot;<br><span class="notice-marker">▶</span> Unrelenting Spirit - Shin [剛氣-心]: Reduced the cap for &quot;damage modifier gained from Speed difference if this unit is faster than the target by 3 or more&quot; from 40% to 20%.</p>
 <h3 class="notice-subsection-heading">[Tremor &amp; Burn Gameplay &amp; Gimmick Difficulty Experience]</h3>
-<p>Most of the managers have said that they were appropriate as-is,<br>and many of the proposed adjustments from the managers say that they do not wish any drastic adjustments in this regard.</p>
-<p>However, as many managers have also spoken that they would like for this aspect to be addressed,<br>we would like to state that further adjustments are not completely off the table,<br>in case additional adjustments regarding keyword debuffs and gimmicks are needed.</p>
-<p>We would like to once again share our deepest appreciation for the managers who have given their input<br>via the survey so that we could pinpoint the specific area of difficulty in the said Encounter.</p></div>
+<p>Most of the managers have said that they were appropriate as-is, and many of the proposed adjustments from the managers say that they do not wish any drastic adjustments in this regard.</p>
+<p>However, as many managers have also spoken that they would like for this aspect to be addressed, we would like to state that further adjustments are not completely off the table, in case additional adjustments regarding keyword debuffs and gimmicks are needed.</p>
+<p>We would like to once again share our deepest appreciation for the managers who have given their input via the survey so that we could pinpoint the specific area of difficulty in the said Encounter.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

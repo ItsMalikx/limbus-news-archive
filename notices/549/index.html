@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026, Mar. 5th Scheduled Update Notice | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/549/">
@@ -19,84 +18,91 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="walpurgis-night" style="--tag-color: #93F205">Walpurgis Night</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span></div><h1 class="notice-inline-title">2026, Mar. 5th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-03-04">March 4, 2026</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">New Content</a></li><li><a href="#section-2">Mirror of Names and Spiders Mode Update</a></li><li><a href="#section-3">Bug Fixes &amp; Improvements</a></li><li><a href="#section-4">Maintenance &amp; Application Update Compensation</a></li><li><a href="#section-5">Notes</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="patch-notes" style="--tag-color: #64C897">Patch Notes</span></p><h1 class="notice-inline-title">2026, Mar. 5th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-03-04">March 4, 2026</time></div><div class="tag-list"><span class="tag-pill" data-tag="events" style="--tag-color: #ABB74F">Events</span><span class="tag-pill" data-tag="identities-e-g-o" style="--tag-color: #EE8AB2">Identities &amp; E.G.O</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #76B3F1">Mirror Dungeon</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Mar. 5th, 2026 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
-<p>1. New Target Extraction - [The 8th Walpurgis Night Target Extraction] (3/5 12:00 ~ 3/19 10:00 (KST))</p>
+<h2 class="notice-section-heading" id="section-1">New Content</h2><hr class="notice-section-divider">
+<p>1. New Target Extraction - [The 8th Walpurgis Night Target Extraction] (3/5 12:00 ~ 3/19 10:00 (KST))</p>
 <p>The following Identities, E.G.O, and Announcer will have increased odds of extraction:</p>
-<p>- E.G.O [HE] : Harmony Sinclair<br>- 3★ : Lobotomy E.G.O::Hornet [Alteration] Meursault, Lobotomy E.G.O::Faint Aroma &amp; Solitude Ryōshū<br>- Announcer : Chesed Announcer</p>
-<p>※ Lobotomy E.G.O::Hornet [Alteration] Meursault and Lobotomy E.G.O::Faint Aroma &amp; Solitude Ryōshū are WALPURGISNACHT-VIII Identities.  <br>※ Harmony Sinclair is WALPURGISNACHT-VIII E.G.O.</p>
-<p>2. Target Extraction - [The 3rd &amp; 4th Walpurgis Night Target Extraction BokGak] (3/5 12:00 ~ 3/19 10:00 (KST))</p>
+<p>- E.G.O [HE] : Harmony Sinclair<br>- 3★ : Lobotomy E.G.O::Hornet [Alteration] Meursault, Lobotomy E.G.O::Faint Aroma &amp; Solitude Ryōshū<br>- <span class="notice-label">Announcer:</span> Chesed Announcer</p>
+<p><span class="notice-note">※ Lobotomy E.G.O::Hornet [Alteration] Meursault and Lobotomy E.G.O::Faint Aroma &amp; Solitude Ryōshū are WALPURGISNACHT-VIII Identities.</span><br><span class="notice-note">※ Harmony Sinclair is WALPURGISNACHT-VIII E.G.O.</span></p>
+<p>2. Target Extraction - [The 3rd &amp; 4th Walpurgis Night Target Extraction BokGak] (3/5 12:00 ~ 3/19 10:00 (KST))</p>
 <p>The following Identities, E.G.O, and Announcer will have increased odds of extraction:</p>
-<p>- E.G.O [WAW] : Sanguine Desire Rodion<br>- E.G.O [HE] : Wingbeat Ishmael, Solemn Lament Gregor<br>- 3★ : Dawn Office Fixer Sinclair, Lobotomy E.G.O::Red Eyes &amp; Penitence Ryōshū, Lobotomy E.G.O::Solemn Lament Yi Sang<br>- Announcer : Yesod Announcer, Molar Office Announcer, Hod Announcer, Dawn Office Announcer</p>
-<p>※ Please note that [The 8th Walpurgis Night Target Extraction] and [The 3rd &amp; 4th Walpurgis Night Target Extraction BokGak] are separate Extractions, and feature different improved rates.  <br>Please confirm each Banner’s featured units and Probabilities menu prior to extracting.</p>
+<p>- E.G.O [WAW] : Sanguine Desire Rodion<br>- E.G.O [HE] : Wingbeat Ishmael, Solemn Lament Gregor<br>- 3★ : Dawn Office Fixer Sinclair, Lobotomy E.G.O::Red Eyes &amp; Penitence Ryōshū, Lobotomy E.G.O::Solemn Lament Yi Sang<br>- <span class="notice-label">Announcer:</span> Yesod Announcer, Molar Office Announcer, Hod Announcer, Dawn Office Announcer</p>
+<p><span class="notice-note">※ Please note that [The 8th Walpurgis Night Target Extraction] and [The 3rd &amp; 4th Walpurgis Night Target Extraction BokGak] are separate Extractions, and feature different improved rates.</span><br>Please confirm each Banner’s featured units and Probabilities menu prior to extracting.</p>
 <p>3. Walpurgis Night Identities and E.G.O Added</p>
 <p>During the Event period, all current and previous 「Walpurgis Night」 event Identities and E.G.O will be added to the Extractable list.</p>
-<p>※ The Event will last from Mar. 5th 12:00 ~ Mar. 19th 10:00.  <br>※ Please note that Walpurgis Night Identities and E.G.O will no longer be available for Extraction once the Event period ends.</p>
+<p><span class="notice-note">※ The Event will last from Mar. 5th 12:00 ~ Mar. 19th 10:00.</span><br><span class="notice-note notice-note--important">※ Please note that Walpurgis Night Identities and E.G.O will no longer be available for Extraction once the Event period ends.</span></p>
 <p>4. New Event [The 8th Walpurgis Night]</p>
-<p>※ Please refer to the Steam notice for more information.</p>
+<p><span class="notice-note">※ Please refer to the Steam notice for more information.</span></p>
 <p>5. New Packages</p>
 <p>3 new limited packages will be added to the game with the Mar. 5th, 2026 (KST) Scheduled Update.</p>
-<p>► Target Extraction Pack<br>- Contents : Decaextraction Ticket x 4<br>- Price : ₩33,000 / $21.99 / ¥3,000<br>- Can be purchased once<br>- Purchasable Period : 26. 3. 5 12:00 ~ 3. 19 10:00 (KST)</p>
-<p>► Identity Growth Pack<br>- Contents : Takeoff Module - ID Uptie x1, Identity Training Ticket IV x80, Identity Training Ticket III x20<br>- Price : ₩33,000 / $21.99 / ¥3,000<br>- Can be purchased twice<br>- Purchasable Period : 26. 3. 5 12:00 ~ 3. 19 10:00 (KST)</p>
-<p>► E.G.O Upgrade Pack<br>- Content : Takeoff Module - E.G.O Spinning [HE] x1<br>- Price : ₩23,000 / $15.99 / ¥2,200<br>- Can be purchased once<br>- Purchasable Period : 26. 3. 5 12:00 ~ 3. 19 10:00 (KST)</p>
-<h2 class="notice-section-heading">Mirror of Names and Spiders Mode Update</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Target Extraction Pack<br>- <span class="notice-label">Contents:</span> Decaextraction Ticket x 4<br>- <span class="notice-label">Price:</span> ₩33,000 / $21.99 / ¥3,000<br>- Can be purchased once<br>- <span class="notice-label">Purchasable Period:</span> 26. 3. 5 12:00 ~ 3. 19 10:00 (KST)</p>
+<p><span class="notice-marker">▶</span> Identity Growth Pack<br>- <span class="notice-label">Contents:</span> Takeoff Module - ID Uptie x1, Identity Training Ticket IV x80, Identity Training Ticket III x20<br>- <span class="notice-label">Price:</span> ₩33,000 / $21.99 / ¥3,000<br>- Can be purchased twice<br>- <span class="notice-label">Purchasable Period:</span> 26. 3. 5 12:00 ~ 3. 19 10:00 (KST)</p>
+<p><span class="notice-marker">▶</span> E.G.O Upgrade Pack<br>- <span class="notice-label">Content:</span> Takeoff Module - E.G.O Spinning [HE] x1<br>- <span class="notice-label">Price:</span> ₩23,000 / $15.99 / ¥2,200<br>- Can be purchased once<br>- <span class="notice-label">Purchasable Period:</span> 26. 3. 5 12:00 ~ 3. 19 10:00 (KST)</p>
+<h2 class="notice-section-heading" id="section-2">Mirror of Names and Spiders Mode Update</h2><hr class="notice-section-divider">
 <p>The Parallel Superposition Mode will be unlocked, allowing Mirror Dungeon runs up to Floor 10.</p>
-<p>※ Please note for your gameplay plans that the Mirror Dungeon will be closed from 2026. 03. 05 06:00 ~ 10:00 to process the Mirror of Names and Spiders Parallel Superposition Mode Update.</p>
-<p>※ This update unlocks only the Parallel Superposition Mode. EXTREME Mode and Quality-of-Life improvements will be scheduled at a later date. We will inform you via a separate notice once they become available.</p>
-<p>► Parallel Superposition Mode Details</p>
+<p><span class="notice-note">※ Please note for your gameplay plans that the Mirror Dungeon will be closed from 2026. 03. 05 06:00 ~ 10:00 to process the Mirror of Names and Spiders Parallel Superposition Mode Update.</span></p>
+<p><span class="notice-note">※ This update unlocks only the Parallel Superposition Mode. EXTREME Mode and Quality-of-Life improvements will be scheduled at a later date. We will inform you via a separate notice once they become available.</span></p>
+<p><span class="notice-marker">▶</span> Parallel Superposition Mode Details</p>
 <p>- You can progress the Mirror of Names and Spiders up to Floor 10 by applying the Parallel Superposition Mode.<br>- Parallel Superposition shares the same unlock requirements with the Mirror Dungeon Hard Difficulty—Clear Main Story Chapter 8.<br>- Parallel Superposition is a high-difficulty content, and exists solely for personal challenges or upcoming Achievements.<br>- Clearing higher Floors in Parallel Superposition Mode will yield more Starlight.<br>- You can enable the Parallel Superposition Mode by clicking the Parallel Superposition mode button on the entry screen or the toggle button on the right side of the Mirror Dungeon settings pop-up.<br>- To apply the Parallel Superposition Mode, you must finish every chosen Theme Pack up to Floor 5 on Hard Difficulty with the Parallel Superposition Mode toggled on.</p>
-<p>※ Please note that the Pass EXP or Lunacy rewards for clearing Floors above Floor 6 or higher are no different from clearing Floor 5.  <br>※ Entering the Mirror of Names and Spiders with a Rental Team will only allow you to progress up to Floor 5.</p>
-<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
-<p>► Fixed an issue where the effects of Cursed E.G.O Gifts do not work properly</p>
-<p>► Fixed an issue where, when the player has acquired the Omni-tool E.G.O Gift in a Mirror Dungeon run, the game could freeze when battling certain enemy units</p>
-<p>► Fixed an issue where the effect activation typography UI would load for the first Coin of every Skill, regardless of their conditions</p>
-<p>※ This issue occurred with the optimization update in the Feb. 12th Scheduled Update. During optimization, the settings were accidentally set to trigger all typography UI to appear when resetting the activation checker.  <br>To address this issue, we have adjusted the logic to disable all typography UI triggers when resetting the activation checker.</p>
-<p>► Fixed an issue in Stage 9-41 where, for a certain Skill, the clash forecast UI shows &quot;Unopposed Attack&quot; even when it can be clashed</p>
-<p>※ This is a UI-only issue; if the Skill can be clashed, the &quot;Unopposed Attack&quot; effects do not activate.</p>
-<p>► Fixed an issue where the fade-to-black effect loads unnaturally when entering the Team loadout menu from the following: Mirror Dungeon, Dungeon of the Fathoms, and Refraction Railway</p>
-<p>► (AOS, iOS) Fixed an issue where, on mobile devices, viewing detailed info about Identities or E.G.O in the selector UI fails to load the corresponding illustrations</p>
-<p>► Fixed an issue where flavor texts in the enemy effects window were hard to read when using the Default Mode UI</p>
-<p>► Fixed an issue where, in the E.G.O Gift Compendium, certain E.G.O Gift acquisition conditions were not listed</p>
-<p>► Fixed an issue where, in the Window tab, the notification icon did not go away even after reading the notice</p>
-<p>► Fixed an issue where post-Mirror Dungeon run obtained items UI shows Starlight as well</p>
-<p>► (JP Only) Improved readability of the 3rd Anniversary Nominable Identity Ticket</p>
-<p>► Fixed an issue where the &quot;Cancel&quot; button showed an incorrect icon when selecting a Sinner in the Nominable Egoshard usage UI</p>
-<p>► Improved UI interaction to allow users to access Egoshard Crates or Nominable Egoshard Crates directly from Identity Uptie and E.G.O Threadspinning UI without having to move to the Inventory menu</p>
-<p>► Fixed an issue where the battle statistics background was incorrectly applied when using the &quot;Default Mode&quot; UI</p>
-<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
-<p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 Mar. 12th, 2026 (KST)<br>- When : After Mar. 5th, 2026 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
+<p><span class="notice-note notice-note--important">※ Please note that the Pass EXP or Lunacy rewards for clearing Floors above Floor 6 or higher are no different from clearing Floor 5.</span><br><span class="notice-note">※ Entering the Mirror of Names and Spiders with a Rental Team will only allow you to progress up to Floor 5.</span></p>
+<h2 class="notice-section-heading" id="section-3">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Fixed an issue where the effects of Cursed E.G.O Gifts do not work properly</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, when the player has acquired the Omni-tool E.G.O Gift in a Mirror Dungeon run, the game could freeze when battling certain enemy units</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the effect activation typography UI would load for the first Coin of every Skill, regardless of their conditions</p>
+<p><span class="notice-note">※ This issue occurred with the optimization update in the Feb. 12th Scheduled Update. During optimization, the settings were accidentally set to trigger all typography UI to appear when resetting the activation checker.</span><br>To address this issue, we have adjusted the logic to disable all typography UI triggers when resetting the activation checker.</p>
+<p><span class="notice-marker">▶</span> Fixed an issue in Stage 9-41 where, for a certain Skill, the clash forecast UI shows &quot;Unopposed Attack&quot; even when it can be clashed</p>
+<p><span class="notice-note">※ This is a UI-only issue; if the Skill can be clashed, the &quot;Unopposed Attack&quot; effects do not activate.</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the fade-to-black effect loads unnaturally when entering the Team loadout menu from the following: Mirror Dungeon, Dungeon of the Fathoms, and Refraction Railway</p>
+<p><span class="notice-marker">▶</span> (AOS, iOS) Fixed an issue where, on mobile devices, viewing detailed info about Identities or E.G.O in the selector UI fails to load the corresponding illustrations</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where flavor texts in the enemy effects window were hard to read when using the Default Mode UI</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, in the E.G.O Gift Compendium, certain E.G.O Gift acquisition conditions were not listed</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, in the Window tab, the notification icon did not go away even after reading the notice</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where post-Mirror Dungeon run obtained items UI shows Starlight as well</p>
+<p><span class="notice-marker">▶</span> (JP Only) Improved readability of the 3rd Anniversary Nominable Identity Ticket</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the &quot;Cancel&quot; button showed an incorrect icon when selecting a Sinner in the Nominable Egoshard usage UI</p>
+<p><span class="notice-marker">▶</span> Improved UI interaction to allow users to access Egoshard Crates or Nominable Egoshard Crates directly from Identity Uptie and E.G.O Threadspinning UI without having to move to the Inventory menu</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the battle statistics background was incorrectly applied when using the &quot;Default Mode&quot; UI</p>
+<h2 class="notice-section-heading" id="section-4">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Content:</span> Lunacy x300<br>- <span class="notice-label">Recipients:</span> All users whose game accounts were created before 10:00 Mar. 12th, 2026 (KST)<br>- <span class="notice-label">When:</span> After Mar. 5th, 2026 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Mar. 12th (Thu) 2026, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-5">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

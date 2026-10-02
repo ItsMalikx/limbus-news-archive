@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>New Content - The 6th Walpurgis Night | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/432/">
@@ -19,112 +18,119 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="walpurgis-night" style="--tag-color: #93F205">Walpurgis Night</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">New Content - The 6th Walpurgis Night</h1><div class="notice-date"><time datetime="2025-07-14">July 14, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">New Content</a></li><li><a href="#section-2">Extractions</a></li><li><a href="#section-3">Extractions - Yisang Exchange</a></li><li><a href="#section-4">Dispenser</a></li><li><a href="#section-5">7/17 Linked Content - Mini Episode</a></li><li><a href="#section-6">7/17 Linked Content - Hatred and Despair</a></li><li><a href="#section-7">Mirror Dungeon Floor Theme Pack - Hatred and Despair Pack Added</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="announcements" style="--tag-color: #68B7ED">Announcements</span></p><h1 class="notice-inline-title">New Content - The 6th Walpurgis Night</h1><div class="notice-date"><time datetime="2025-07-14">July 14, 2025</time></div><div class="tag-list"><span class="tag-pill" data-tag="events" style="--tag-color: #ABB74F">Events</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #76B3F1">Mirror Dungeon</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>On July 17th, 2025 (KST), new content 「The 6th Walpurgis Night」 will be added to the game.</p>
-<p>- Event Period: 2025/7/17 12:00 ~ 7/31 10:00 (KST)</p>
-<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
-<p>- Announcers : Tiphereth Announcer, Magical Girl(The Queen of Hatred) Announcer<br>- E.G.O [WAW] : In the Name of Love and Hate Don Quixote<br>- 3★ : Lobotomy E.G.O::In the Name of Love and Hate Don Quixote, Lobotomy E.G.O::The Sword Sharpened with Tears Rodion</p>
-<p>※ Notice: Extraction Rate Changes during the Event Period<br>During the Walpurgis Night Event, Extractable Announcers will be added to the game.</p>
+<p>- <span class="notice-label">Event Period:</span> 2025/7/17 12:00 ~ 7/31 10:00 (KST)</p>
+<h2 class="notice-section-heading" id="section-1">New Content</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Announcers:</span> Tiphereth Announcer, Magical Girl(The Queen of Hatred) Announcer<br>- E.G.O [WAW] : In the Name of Love and Hate Don Quixote<br>- 3★ : Lobotomy E.G.O::In the Name of Love and Hate Don Quixote, Lobotomy E.G.O::The Sword Sharpened with Tears Rodion</p>
+<p><span class="notice-note">※ Notice: Extraction Rate Changes during the Event Period</span><br>During the Walpurgis Night Event, Extractable Announcers will be added to the game.</p>
 <p>Due to this addition, the Extraction rates for certain Extractions will be changed while the Walpurgis Night event is active.</p>
 <p>In compliance with the 「Voluntary Restraint Guidelines for Probabilistic Items」 of Korea Association of Game Industry, the exact Extraction rates are disclosed in the in-game menu &quot;Detailed Rates&quot;</p>
 <p>Please note this information as you play the game.</p>
-<h2 class="notice-section-heading">Extractions</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-2">Extractions</h2><hr class="notice-section-divider">
 <p>1. The 6th Walpurgis Night Target Extraction<br>「The 6th Walpurgis Night」 Target Extraction will be featured over the Event period. 「The 6th Walpurgis Night」 Target Extraction features increased Extraction rates for the following new Identities, E.G.O, and Announcers.</p>
-<p>► List</p>
-<p>3★ : Lobotomy E.G.O::In the Name of Love and Hate Don Quixote, Lobotomy E.G.O::The Sword Sharpened with Tears Rodion<br>E.G.O [WAW] : In the Name of Love and Hate Don Quixote<br>Announcer : Tiphereth Announcer, Magical Girl(The Queen of Hatred) Announcer</p>
+<p><span class="notice-marker">▶</span> List</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">3★</th><td><span class="cell-item">Lobotomy E.G.O::In the Name of Love and Hate Don Quixote</span><br><span class="cell-item">Lobotomy E.G.O::The Sword Sharpened with Tears Rodion</span></td></tr><tr><th scope="row">E.G.O [WAW]</th><td>In the Name of Love and Hate Don Quixote</td></tr><tr><th scope="row">Announcer</th><td><span class="cell-item">Tiphereth Announcer</span><br><span class="cell-item">Magical Girl(The Queen of Hatred) Announcer</span></td></tr></tbody></table></div>
 <p>2. The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak<br>「The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak」 will be featured over the Event period. 「The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak」 features increased Extraction rates for the Identities, E.G.O, and Announcers added during the 1st and the 2nd Walpurgis Night.</p>
-<p>► Better Odds</p>
-<p>3★ : Lobotomy E.G.O::Regret Faust, Lobotomy E.G.O::Magic Bullet Outis<br>2★ : Hook Office Fixer Hong Lu, Lobotomy E.G.O::Lantern Don Quixote<br>E.G.O [TETH] : Regret Meursault<br>Announcer : Malkuth Announcer, Pierre &amp; Jack Announcer</p>
-<p>► Identities &amp; E.G.O<br>During the Event period, all current and previous 「Walpurgis Night」 event Identities and E.G.O will be Extractable from the following Extractions.</p>
-<p>► Walpurgis Night ID &amp; E.G.O Extractions<br>- The 6th Walpurgis Night Target Extraction<br>- The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak<br>- New Manager’s Welcome Extraction<br>- Assured Extraction: 3★ Identity Extraction (※ Does not include E.G.Os)<br>- Standard Extraction</p>
+<p><span class="notice-marker">▶</span> Better Odds</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">3★</th><td><span class="cell-item">Lobotomy E.G.O::Regret Faust</span><br><span class="cell-item">Lobotomy E.G.O::Magic Bullet Outis</span></td></tr><tr><th scope="row">2★</th><td><span class="cell-item">Hook Office Fixer Hong Lu</span><br><span class="cell-item">Lobotomy E.G.O::Lantern Don Quixote</span></td></tr><tr><th scope="row">E.G.O [TETH]</th><td>Regret Meursault</td></tr><tr><th scope="row">Announcer</th><td>Malkuth Announcer, Pierre &amp; Jack Announcer</td></tr></tbody></table></div>
+<p><span class="notice-marker">▶</span> Identities &amp; E.G.O<br>During the Event period, all current and previous 「Walpurgis Night」 event Identities and E.G.O will be Extractable from the following Extractions.</p>
+<p><span class="notice-marker">▶</span> Walpurgis Night ID &amp; E.G.O Extractions<br>- The 6th Walpurgis Night Target Extraction<br>- The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak<br>- New Manager’s Welcome Extraction<br>- <span class="notice-label">Assured Extraction:</span> 3★ Identity Extraction (※ Does not include E.G.Os)<br>- Standard Extraction</p>
 <h3 class="notice-subsection-heading">&lt;Featured&gt;</h3>
-<p>3★ : &lt;New&gt; Lobotomy E.G.O::In the Name of Love and Hate Don Quixote, &lt;New&gt; Lobotomy E.G.O::The Sword Sharpened with Tears Rodion, Full-Stop Office Rep Hong Lu, Full-Stop Office Fixer Heathcliff, Lobotomy E.G.O::Solemn Lament Yi Sang, Lobotomy E.G.O::Red Eyes &amp; Penitence Ryōshū, Dawn Office Fixer Sinclair, Lobotomy E.G.O::Magic Bullet Outis, Lobotomy E.G.O::Regret Faust<br>2★ : Lobotomy E.G.O::Lantern Don Quixote, Hook Office Fixer Hong Lu<br>E.G.O [WAW] : &lt;New&gt; In the Name of Love and Hate Don Quixote, Sanguine Desire Rodion<br>E.G.O [HE] : Magic Bullet Outis, Solemn Lament Gregor, Wingbeat Ishmael<br>E.G.O [TETH] : Regret Meursault</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">3★</th><td><span class="cell-item">&lt;New&gt; Lobotomy E.G.O::In the Name of Love and Hate Don Quixote</span><br><span class="cell-item">&lt;New&gt; Lobotomy E.G.O::The Sword Sharpened with Tears Rodion</span><br><span class="cell-item">Full-Stop Office Rep Hong Lu</span><br><span class="cell-item">Full-Stop Office Fixer Heathcliff</span><br><span class="cell-item">Lobotomy E.G.O::Solemn Lament Yi Sang</span><br><span class="cell-item">Lobotomy E.G.O::Red Eyes &amp; Penitence Ryōshū</span><br><span class="cell-item">Dawn Office Fixer Sinclair</span><br><span class="cell-item">Lobotomy E.G.O::Magic Bullet Outis</span><br><span class="cell-item">Lobotomy E.G.O::Regret Faust</span></td></tr><tr><th scope="row">2★</th><td><span class="cell-item">Lobotomy E.G.O::Lantern Don Quixote</span><br><span class="cell-item">Hook Office Fixer Hong Lu</span></td></tr><tr><th scope="row">E.G.O [WAW]</th><td><span class="cell-item">&lt;New&gt; In the Name of Love and Hate Don Quixote</span><br><span class="cell-item">Sanguine Desire Rodion</span></td></tr><tr><th scope="row">E.G.O [HE]</th><td><span class="cell-item">Magic Bullet Outis</span><br><span class="cell-item">Solemn Lament Gregor</span><br><span class="cell-item">Wingbeat Ishmael</span></td></tr><tr><th scope="row">E.G.O [TETH]</th><td>Regret Meursault</td></tr></tbody></table></div>
 <h3 class="notice-subsection-heading">&lt;Increased Extraction Rates&gt;</h3>
 <p>「The 6th Walpurgis Night」 Identities and E.G.O receive increased Extraction rates for 「The 6th Walpurgis Night Target Extraction」 during the event period.</p>
-<p>- Affected Extractions: The 6th Walpurgis Night Target Extraction<br>- Identities &amp; E.G.O with increased rates</p>
-<p>3★ : Lobotomy E.G.O::In the Name of Love and Hate Don Quixote, Lobotomy E.G.O::The Sword Sharpened with Tears Rodion<br>E.G.O [WAW] : In the Name of Love and Hate Don Quixote</p>
+<p>- <span class="notice-label">Affected Extractions:</span> The 6th Walpurgis Night Target Extraction<br>- Identities &amp; E.G.O with increased rates</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">3★</th><td><span class="cell-item">Lobotomy E.G.O::In the Name of Love and Hate Don Quixote</span><br><span class="cell-item">Lobotomy E.G.O::The Sword Sharpened with Tears Rodion</span></td></tr><tr><th scope="row">E.G.O [WAW]</th><td>In the Name of Love and Hate Don Quixote</td></tr></tbody></table></div>
 <p>The 1st &amp; 2nd Walpurgis Night Identities and E.G.O receive increased Extraction rates for 「The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak」 during the event period.</p>
-<p>- Affected Extractions: The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak<br>- Identities &amp; E.G.O with increased rates</p>
-<p>3★ : Lobotomy E.G.O::Regret Faust, Lobotomy E.G.O::Magic Bullet Outis<br>2★ : Hook Office Fixer Hong Lu, Lobotomy E.G.O::Lantern Don Quixote<br>E.G.O [TETH] : Regret Meursault</p>
+<p>- <span class="notice-label">Affected Extractions:</span> The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak<br>- Identities &amp; E.G.O with increased rates</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">3★</th><td><span class="cell-item">Lobotomy E.G.O::Regret Faust</span><br><span class="cell-item">Lobotomy E.G.O::Magic Bullet Outis</span></td></tr><tr><th scope="row">2★</th><td><span class="cell-item">Hook Office Fixer Hong Lu</span><br><span class="cell-item">Lobotomy E.G.O::Lantern Don Quixote</span></td></tr><tr><th scope="row">E.G.O [TETH]</th><td>Regret Meursault</td></tr></tbody></table></div>
 <p>During the event period, all Walpurgis Night Identities &amp; E.G.O can appear from New Manager&#x27;s Welcome Extraction, Assured Extraction: 3★ Identity Extraction (※ Does not include E.G.Os), and Standard Fare Extractions as well.</p>
 <p>However, please note that those Extractions do not provide specific increased Extraction rates.</p>
-<p>► Announcers<br>During the Event period, all current and previous 「Walpurgis Night」 event Announcers will be Extractable from the following Extractions.</p>
-<p>► Walpurgis Night Announcer Extractions<br>- The 6th Walpurgis Night Target Extraction<br>- The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak</p>
+<p><span class="notice-marker">▶</span> Announcers<br>During the Event period, all current and previous 「Walpurgis Night」 event Announcers will be Extractable from the following Extractions.</p>
+<p><span class="notice-marker">▶</span> Walpurgis Night Announcer Extractions<br>- The 6th Walpurgis Night Target Extraction<br>- The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak</p>
 <h3 class="notice-subsection-heading">&lt;Featured Announcers&gt;</h3>
 <p>Announcer : &lt;New&gt; Tiphereth Announcer, &lt;New&gt; Magical Girl(The Queen of Hatred) Announcer, Netzach Announcer, Full-Stop Office Announcer, Hod Announcer, Dawn Office Announcer, Yesod Announcer, Molar Office Announcer, Malkuth Announcer, Pierre/Jack Announcer, Angela Announcer</p>
 <h3 class="notice-subsection-heading">&lt;Increased Extraction Rates&gt;</h3>
 <p>「The 6th Walpurgis Night」 Announcers receive increased Extraction rates for 「The 6th Walpurgis Night Target Extraction」 during the event period.</p>
-<p>- Affected Extractions: The 6th Walpurgis Night Target Extraction<br>- Announcers with increased rates</p>
+<p>- <span class="notice-label">Affected Extractions:</span> The 6th Walpurgis Night Target Extraction<br>- Announcers with increased rates</p>
 <p>Announcer : Tiphereth Announcer, Magical Girl(The Queen of Hatred) Announcer</p>
 <p>The 1st &amp; 2nd Walpurgis Night Announcers receive increased Extraction rates for 「The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak」 during the event period.</p>
-<p>- Affected Extractions: The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak<br>- Announcers with increased rates</p>
+<p>- <span class="notice-label">Affected Extractions:</span> The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak<br>- Announcers with increased rates</p>
 <p>Announcer : Malkuth Announcer, Pierre &amp; Jack Announcer</p>
 <p>The Announcers’ Extraction rate does not affect the Extraction rates of 3★ Identities. However, 2★ and 1★ units have lower Extraction rates to make room for the Announcers’ Extraction rates.<br>A duplicate of an already-owned Announcer will be automatically converted to 50 Thread Crates.</p>
 <p>Please note that the Walpurgis Night Announcers are featured only in 「The 6th Walpurgis Night Target Extraction」 and 「The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak」 and will not appear in other Extractions.</p>
-<h2 class="notice-section-heading">Extractions - Yisang Exchange</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-3">Extractions - Yisang Exchange</h2><hr class="notice-section-divider">
 <p>The following Identities, E.G.O, and Announcers will be available from 「The 6th Walpurgis Night」 Target Extraction Yisang Exchange.</p>
 <h3 class="notice-subsection-heading">&lt;List&gt;</h3>
-<p>3★ : &lt;New&gt; Lobotomy E.G.O::In the Name of Love and Hate Don Quixote, &lt;New&gt; Lobotomy E.G.O::The Sword Sharpened with Tears Rodion<br>E.G.O [WAW] : &lt;New&gt; In the Name of Love and Hate Don Quixote<br>Announcer : &lt;New&gt; Tiphereth Announcer, &lt;New&gt; Magical Girl(The Queen of Hatred) Announcer, Netzach Announcer, Full-Stop Office Announcer, Hod Announcer, Dawn Office Announcer, Yesod Announcer, Molar Office Announcer, Malkuth Announcer, Pierre/Jack Announcer, Angela Announcer</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">3★</th><td><span class="cell-item">&lt;New&gt; Lobotomy E.G.O::In the Name of Love and Hate Don Quixote</span><br><span class="cell-item">&lt;New&gt; Lobotomy E.G.O::The Sword Sharpened with Tears Rodion</span></td></tr><tr><th scope="row">E.G.O [WAW]</th><td>&lt;New&gt; In the Name of Love and Hate Don Quixote</td></tr><tr><th scope="row">Announcer</th><td><span class="cell-item">&lt;New&gt; Tiphereth Announcer</span><br><span class="cell-item">&lt;New&gt; Magical Girl(The Queen of Hatred) Announcer</span><br><span class="cell-item">Netzach Announcer</span><br><span class="cell-item">Full-Stop Office Announcer</span><br><span class="cell-item">Hod Announcer</span><br><span class="cell-item">Dawn Office Announcer</span><br><span class="cell-item">Yesod Announcer</span><br><span class="cell-item">Molar Office Announcer</span><br><span class="cell-item">Malkuth Announcer</span><br><span class="cell-item">Pierre/Jack Announcer</span><br><span class="cell-item">Angela Announcer</span></td></tr></tbody></table></div>
 <p>The following Identities, E.G.O, and Announcers will be available from 「The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak」 Target Extraction Yisang Exchange.</p>
 <h3 class="notice-subsection-heading">&lt;List&gt;</h3>
-<p>3★ : Lobotomy E.G.O::Regret Faust, Lobotomy E.G.O::Magic Bullet Outis<br>E.G.O [TETH] : Regret Meursault<br>Announcer : &lt;New&gt; Tiphereth Announcer, &lt;New&gt; Magical Girl(The Queen of Hatred) Announcer, Netzach Announcer, Full-Stop Office Announcer, Hod Announcer, Dawn Office Announcer, Yesod Announcer, Molar Office Announcer, Malkuth Announcer, Pierre/Jack Announcer, Angela Announcer</p>
-<p>※ Walpurgis Night Announcers are featured in both 「The 6th Walpurgis Night」 and 「The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak」 Yisang Exchange lists.</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">3★</th><td><span class="cell-item">Lobotomy E.G.O::Regret Faust</span><br><span class="cell-item">Lobotomy E.G.O::Magic Bullet Outis</span></td></tr><tr><th scope="row">E.G.O [TETH]</th><td>Regret Meursault</td></tr><tr><th scope="row">Announcer</th><td><span class="cell-item">&lt;New&gt; Tiphereth Announcer</span><br><span class="cell-item">&lt;New&gt; Magical Girl(The Queen of Hatred) Announcer</span><br><span class="cell-item">Netzach Announcer</span><br><span class="cell-item">Full-Stop Office Announcer</span><br><span class="cell-item">Hod Announcer</span><br><span class="cell-item">Dawn Office Announcer</span><br><span class="cell-item">Yesod Announcer</span><br><span class="cell-item">Molar Office Announcer</span><br><span class="cell-item">Malkuth Announcer</span><br><span class="cell-item">Pierre/Jack Announcer</span><br><span class="cell-item">Angela Announcer</span></td></tr></tbody></table></div>
+<p><span class="notice-note">※ Walpurgis Night Announcers are featured in both 「The 6th Walpurgis Night」 and 「The 1st &amp; 2nd Walpurgis Night Target Extraction BokGak」 Yisang Exchange lists.</span></p>
 <p>Please note that any exchanged duplicates of Identities that have already been obtained will be converted to 50 Egoshards of the respective Sinner. Please note that any exchanged duplicates of Announcers that have already been obtained will be immediately converted to 50 Thread Crates.</p>
-<h2 class="notice-section-heading">Dispenser</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-4">Dispenser</h2><hr class="notice-section-divider">
 <p>During 「The 6th Walpurgis Night」 Event period, you can purchase all Identities and E.G.Os featured in the previous 「Walpurgis Night」 Events.</p>
 <p>However, Identities featured in the ongoing 「The 6th Walpurgis Night」 event cannot be purchased from the Dispenser.<br>Please note that 「Walpurgis Night」 Event Announcers will not be featured in the Dispenser.</p>
 <h3 class="notice-subsection-heading">&lt;Available from the Dispenser&gt;</h3>
-<p>E.G.O [WAW] : Sanguine Desire Rodion<br>E.G.O [HE] : Magic Bullet Outis, Solemn Lament Gregor, Wingbeat Ishmael<br>E.G.O [TETH] : Regret Meursault<br>3★ : Full-Stop Office Rep Hong Lu, Full-Stop Office Fixer Heathcliff, Lobotomy E.G.O::Solemn Lament Yi Sang, Lobotomy E.G.O::Red Eyes &amp; Penitence Ryōshū, Dawn Office Fixer Sinclair, Lobotomy E.G.O::Magic Bullet Outis, Lobotomy E.G.O::Regret Faust<br>2★ : Lobotomy E.G.O::Lantern Don Quixote, Hook Office Fixer Hong Lu</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">E.G.O [WAW]</th><td>Sanguine Desire Rodion</td></tr><tr><th scope="row">E.G.O [HE]</th><td><span class="cell-item">Magic Bullet Outis</span><br><span class="cell-item">Solemn Lament Gregor</span><br><span class="cell-item">Wingbeat Ishmael</span></td></tr><tr><th scope="row">E.G.O [TETH]</th><td>Regret Meursault</td></tr><tr><th scope="row">3★</th><td><span class="cell-item">Full-Stop Office Rep Hong Lu</span><br><span class="cell-item">Full-Stop Office Fixer Heathcliff</span><br><span class="cell-item">Lobotomy E.G.O::Solemn Lament Yi Sang</span><br><span class="cell-item">Lobotomy E.G.O::Red Eyes &amp; Penitence Ryōshū</span><br><span class="cell-item">Dawn Office Fixer Sinclair</span><br><span class="cell-item">Lobotomy E.G.O::Magic Bullet Outis</span><br><span class="cell-item">Lobotomy E.G.O::Regret Faust</span></td></tr><tr><th scope="row">2★</th><td><span class="cell-item">Lobotomy E.G.O::Lantern Don Quixote</span><br><span class="cell-item">Hook Office Fixer Hong Lu</span></td></tr></tbody></table></div>
 <h3 class="notice-subsection-heading">&lt;Unavailable from the Dispenser&gt;</h3>
-<p>E.G.O [WAW] : &lt;New&gt; In the Name of Love and Hate Don Quixote<br>3★ : &lt;New&gt; Lobotomy E.G.O::In the Name of Love and Hate Don Quixote, &lt;New&gt; Lobotomy E.G.O::The Sword Sharpened with Tears Rodion</p>
-<h2 class="notice-section-heading">7/17 Linked Content - Mini Episode</h2><hr class="notice-section-divider">
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">E.G.O [WAW]</th><td>&lt;New&gt; In the Name of Love and Hate Don Quixote</td></tr><tr><th scope="row">3★</th><td><span class="cell-item">&lt;New&gt; Lobotomy E.G.O::In the Name of Love and Hate Don Quixote</span><br><span class="cell-item">&lt;New&gt; Lobotomy E.G.O::The Sword Sharpened with Tears Rodion</span></td></tr></tbody></table></div>
+<h2 class="notice-section-heading" id="section-5">7/17 Linked Content - Mini Episode</h2><hr class="notice-section-divider">
 <p>With the start of the Event, a new Mini Episode 「The 6th Walpurgis Night」 will be introduced to the game.</p>
-<p>- Unlock Conditions : Clear Stage 8-33</p>
-<p>※ Upon first entry, Managers who have not completed Stage 8-33 will be asked to confirm if they want to view the story before proceeding to the “Event Encounter - Hatred and Despair”</p>
-<h2 class="notice-section-heading">7/17 Linked Content - Hatred and Despair</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Unlock Conditions:</span> Clear Stage 8-33</p>
+<p><span class="notice-note">※ Upon first entry, Managers who have not completed Stage 8-33 will be asked to confirm if they want to view the story before proceeding to the “Event Encounter - Hatred and Despair”</span></p>
+<h2 class="notice-section-heading" id="section-6">7/17 Linked Content - Hatred and Despair</h2><hr class="notice-section-divider">
 <p>During the Event period, linked content 「Hatred and Despair」 will be introduced to the game.</p>
-<p>- Event Period : 2025/7/17 12:00 ~ 7/31 10:00 (KST)<br>- Event Reward Exchange Period : 2025/7/17 12:00 ~ 8/7 10:00 (KST)<br>- Unlock Conditions : None</p>
+<p>- <span class="notice-label">Event Period:</span> 2025/7/17 12:00 ~ 7/31 10:00 (KST)<br>- <span class="notice-label">Event Reward Exchange Period:</span> 2025/7/17 12:00 ~ 8/7 10:00 (KST)<br>- <span class="notice-label">Unlock Conditions:</span> None</p>
 <h3 class="notice-subsection-heading">&lt;Description&gt;</h3>
 <p>- With the start of the Event, the 「Hatred and Despair」 Event page will be added to the game.<br>- Complete special Missions(challenges) in the Easy and Hard difficulty Encounters to receive Mission Rewards.</p>
 <h3 class="notice-subsection-heading">&lt;Event Progression&gt;</h3>
-<p>► During the Event period, 「The 6th Walpurgis Night - Hatred and Despair」 Event can be accessed regardless of the Main Story progress.<br>※ Once the Event closes, however, the unlock condition will change to Clear Stage 8-33<br>► Hatred and Despair Event has two difficulties: Easy and Hard.<br>► Completing the Hatred and Despair Encounters will consume an Enkephalin Module. Clear the Easy difficulty to unlock the Hard difficulty.<br>► The following effects will be active in the Easy difficulty:<br>- If the Identity’s level is lower than 55, raise their level to 55<br>- If Identities’ Uptie Tiers or equipped E.G.O’s Threadspinning Tiers are lower than Tier 3, raise it to Tier 3<br>► During the Event Period, fulfill Missions(challenges) in each of the Easy and Hard difficulties to obtain their Rewards from the ‘Missions’ menu.</p>
+<p><span class="notice-marker">▶</span> During the Event period, 「The 6th Walpurgis Night - Hatred and Despair」 Event can be accessed regardless of the Main Story progress.<br><span class="notice-note">※ Once the Event closes, however, the unlock condition will change to Clear Stage 8-33</span><br><span class="notice-marker">▶</span> Hatred and Despair Event has two difficulties: Easy and Hard.<br><span class="notice-marker">▶</span> Completing the Hatred and Despair Encounters will consume an Enkephalin Module. Clear the Easy difficulty to unlock the Hard difficulty.<br><span class="notice-marker">▶</span> The following effects will be active in the Easy difficulty:<br>- If the Identity’s level is lower than 55, raise their level to 55<br>- If Identities’ Uptie Tiers or equipped E.G.O’s Threadspinning Tiers are lower than Tier 3, raise it to Tier 3<br><span class="notice-marker">▶</span> During the Event Period, fulfill Missions(challenges) in each of the Easy and Hard difficulties to obtain their Rewards from the ‘Missions’ menu.</p>
 <h3 class="notice-subsection-heading">&lt;Event Team Loadout&gt;</h3>
-<p>► There will be a special, fixed Announcer for the Hatred and Despair Encounter. Therefore, you cannot select your own Announcers for this Event Encounter.<br>► The #1 and the #2 Sinner in the Deployment Order will be imbued with the &#x27;Central Command Team Captain&#x27;, and ‘Welfare Team Model Employee’ effects, respectively.<br>- Central Command Team Captain: gains Skill Slots, changes to Skill composition, and various beneficial effects.<br>- Welfare Team Model Employee: gains various beneficial effects.</p>
+<p><span class="notice-marker">▶</span> There will be a special, fixed Announcer for the Hatred and Despair Encounter. Therefore, you cannot select your own Announcers for this Event Encounter.<br><span class="notice-marker">▶</span> The #1 and the #2 Sinner in the Deployment Order will be imbued with the &#x27;Central Command Team Captain&#x27;, and ‘Welfare Team Model Employee’ effects, respectively.<br>- <span class="notice-label">Central Command Team Captain:</span> gains Skill Slots, changes to Skill composition, and various beneficial effects.<br>- <span class="notice-label">Welfare Team Model Employee:</span> gains various beneficial effects.</p>
 <h3 class="notice-subsection-heading">&lt;Event Combat Encounter&gt;</h3>
 <p>- The Hatred and Despair Encounter is a Suppression effort of ‘The Knight of Despair’ Abnormality.<br>- Suppress the Abnormality, complete various missions, and earn your rewards.<br>- However, once you go past the 99 turns, the Encounter will end in defeat.</p>
 <h3 class="notice-subsection-heading">&lt;Missions&gt;</h3>
-<p>► View Missions(challenges) to complete in the [Missions] menu. Every mission provides a reward upon completion.<br>► There are Easy and Hard Missions, which can be completed in Easy and Hard difficulties, respectively.<br>► Once the Event closes on 2025/7/31 10:00 (KST), you can no longer complete your Missions.<br>► [Rewards Claim] will remain open for 3 weeks from 2025/7/17 12:00 ~ 2025/8/7 10:00 (KST).<br>► Even after the event fully ends, you will be able to experience the &#x27;The 6th Walpurgis Night - Hatred and Despair&#x27; combat Encounters and view its story any time on the Drive tab and Theater - [Detour Tales].<br>► From 2025/7/31 12:00 ~ 2025/8/7 10:00 (KST), you can revisit the story but not the Encounter. The Combat Encounter will become available again after 2025/8/7 12:00 (KST) via the Driverside menu.</p>
-<h2 class="notice-section-heading">Mirror Dungeon Floor Theme Pack - Hatred and Despair Pack Added</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> View Missions(challenges) to complete in the [Missions] menu. Every mission provides a reward upon completion.<br><span class="notice-marker">▶</span> There are Easy and Hard Missions, which can be completed in Easy and Hard difficulties, respectively.<br><span class="notice-marker">▶</span> Once the Event closes on 2025/7/31 10:00 (KST), you can no longer complete your Missions.<br><span class="notice-marker">▶</span> [Rewards Claim] will remain open for 3 weeks from 2025/7/17 12:00 ~ 2025/8/7 10:00 (KST).<br><span class="notice-marker">▶</span> Even after the event fully ends, you will be able to experience the &#x27;The 6th Walpurgis Night - Hatred and Despair&#x27; combat Encounters and view its story any time on the Drive tab and Theater - [Detour Tales].<br><span class="notice-marker">▶</span> From 2025/7/31 12:00 ~ 2025/8/7 10:00 (KST), you can revisit the story but not the Encounter. The Combat Encounter will become available again after 2025/8/7 12:00 (KST) via the Driverside menu.</p>
+<h2 class="notice-section-heading" id="section-7">Mirror Dungeon Floor Theme Pack - Hatred and Despair Pack Added</h2><hr class="notice-section-divider">
 <p>After the July 11th Scheduled Update, the Hatred and Despair Theme Pack will be added to the Mirror Dungeon.<br>Walpurgis Night Choice Events and E.G.O Gifts will be added to the said floor.</p>
 <h3 class="notice-subsection-heading">&lt;Spawn Location&gt;</h3>
 <p>- Mirror Dungeon Normal Difficulty Floor 4<br>- Mirror Dungeon Hard Difficulty Floor 3</p>
-<p>※ Please note that this Floor Theme Pack will appear as a fixed spawn during the Walpurgis Night Event Period, and will be added to the randomized pool of the said floor once the Event is over.</p>
+<p><span class="notice-note">※ Please note that this Floor Theme Pack will appear as a fixed spawn during the Walpurgis Night Event Period, and will be added to the randomized pool of the said floor once the Event is over.</span></p>
 <p>Please note that playing through the Walpurgis Night Theme Pack has no effect on your Event Mission progress.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

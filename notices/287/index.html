@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sep. 26th - New User Event &amp; Returning User Event | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/287/">
@@ -19,73 +18,80 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span></div><h1 class="notice-inline-title">Sep. 26th - New User Event &amp; Returning User Event</h1><div class="notice-date"><time datetime="2024-09-23">September 23, 2024</time></div><hr class="notice-title-divider"></div><p>Greetings, dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">New User Event</a></li><li><a href="#section-2">Returning User Event</a></li><li><a href="#section-3">Returning User Event</a></li><li><a href="#section-4">Returning User Event</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="announcements" style="--tag-color: #68B7ED">Announcements</span></p><h1 class="notice-inline-title">Sep. 26th - New User Event &amp; Returning User Event</h1><div class="notice-date"><time datetime="2024-09-23">September 23, 2024</time></div><div class="tag-list"><span class="tag-pill" data-tag="events" style="--tag-color: #ABB74F">Events</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span><span class="tag-pill" data-tag="rewards" style="--tag-color: #ED9658">Rewards</span></div><hr class="notice-title-divider"></div><p>Greetings, dear Manager.</p>
 <p>With the Sep. 26th, 2024 (KST) Scheduled Update, the [New User Event &amp; Returning User Event] will be added to the game.</p>
-<p>► Event Description</p>
-<p>1. New User Event<br>- Event Accessible Period : Always accessible after 2024/9/26 12:00 (KST)</p>
-<p>- Event Activation Period<br>(1) Start Date : Date of account creation<br>(2) End Date : 30 days from the day of account creation (including the creation date)</p>
-<p>- Content : For 14 days, new users can receive various rewards by logging in.</p>
-<p>- Major Rewards : Nominable S1 Identity Ticket, Takeoff Module - ID Uptie, Nominable S1 Battle Pass E.G.O Ticket</p>
-<p>2. Returning User Event<br>- Event Accessible Period : 2024/9/26 12:00 (KST) ~ 2024/10/31 06:00 (KST)</p>
-<p>- Event Activation Period<br>(1) Start Date : When a user who matches the returning user conditions logs in to the game for the first time during the Event Accessible Period<br>(2) End Date : 14 days from the above date (including the first day of logging in)</p>
-<p>- Returning user conditions : If 60 days have passed since the user’s last login record &amp; if the user has completed Main Story 1 - 11</p>
-<p>- Content : Returning users can receive various rewards by logging in or completing returning user missions.</p>
-<p>- Major Rewards : Assured Extraction: 3★ Identity, Takeoff Module - ID Uptie, Season 4 Uptie &amp; Threadspinning only Shard (Universal)</p>
-<h2 class="notice-section-heading">New User Event</h2><hr class="notice-section-divider">
-<p>► Event Accessible Period<br>Always accessible after 2024/9/26 12:00 (KST)</p>
-<p>► Event Activation Period<br>- Start Date : Date of account creation<br>- End Date : 30 days from the day of account creation (including the creation date)</p>
+<p><span class="notice-marker">▶</span> Event Description</p>
+<p>1. New User Event<br>- <span class="notice-label">Event Accessible Period:</span> Always accessible after 2024/9/26 12:00 (KST)</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><caption>Event Activation Period</caption><tbody><tr><th scope="row">(1) Start Date</th><td>Date of account creation</td></tr><tr><th scope="row">(2) End Date</th><td>30 days from the day of account creation (including the creation date)</td></tr></tbody></table></div>
+<p>- <span class="notice-label">Content:</span> For 14 days, new users can receive various rewards by logging in.</p>
+<p>- <span class="notice-label">Major Rewards:</span> Nominable S1 Identity Ticket, Takeoff Module - ID Uptie, Nominable S1 Battle Pass E.G.O Ticket</p>
+<p>2. Returning User Event<br>- <span class="notice-label">Event Accessible Period:</span> 2024/9/26 12:00 (KST) ~ 2024/10/31 06:00 (KST)</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><caption>Event Activation Period</caption><tbody><tr><th scope="row">(1) Start Date</th><td>When a user who matches the returning user conditions logs in to the game for the first time during the Event Accessible Period</td></tr><tr><th scope="row">(2) End Date</th><td>14 days from the above date (including the first day of logging in)</td></tr></tbody></table></div>
+<p>- <span class="notice-label">Returning user conditions:</span> If 60 days have passed since the user’s last login record &amp; if the user has completed Main Story 1 - 11</p>
+<p>- <span class="notice-label">Content:</span> Returning users can receive various rewards by logging in or completing returning user missions.</p>
+<p>- <span class="notice-label">Major Rewards:</span> Assured Extraction: 3★ Identity, Takeoff Module - ID Uptie, Season 4 Uptie &amp; Threadspinning only Shard (Universal)</p>
+<h2 class="notice-section-heading" id="section-1">New User Event</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Event Accessible Period<br>Always accessible after 2024/9/26 12:00 (KST)</p>
+<p><span class="notice-marker">▶</span> Event Activation Period<br>- <span class="notice-label">Start Date:</span> Date of account creation<br>- <span class="notice-label">End Date:</span> 30 days from the day of account creation (including the creation date)</p>
 <p>(※ The measurement of days is based on the Server update time, which is 06:00 (KST))</p>
-<p>► Description<br>- All users who create a new account after the 2024/9/26 (KST) Scheduled Update will be presented with the [New User Event] Page.</p>
+<p><span class="notice-marker">▶</span> Description<br>- All users who create a new account after the 2024/9/26 (KST) Scheduled Update will be presented with the [New User Event] Page.</p>
 <p>- A new user can obtain login rewards based on the cumulative number of days they logged in during the event period.</p>
 <p>- You can receive up to 14 days of cumulative login rewards.</p>
-<p>- You can receive a Nominable S1 Identity Ticket as the 7-day cumulative login reward, Takeoff Module - ID Uptie as the 13-day cumulative login reward, and the Nominable S1 Battle Pass E.G.O Ticket as the 14-day cumulative login reward.</p>
-<p>※ The [Nominable S1 Identity Ticket] includes Season 1 Event Identities.</p>
-<h2 class="notice-section-heading">Returning User Event</h2><hr class="notice-section-divider">
-<p>► Event Accessible Period<br>2024/9/26 12:00 (KST) ~ 2024/10/31 06:00 (KST)</p>
-<p>► Event Activation Period<br>- Start Date : When a user who matches the returning user conditions logs in to the game for the first time during the Event Accessible Period<br>- End Date : 14 days from the above date (including the first day of logging in)</p>
+<p>- You can receive a Nominable S1 Identity Ticket as the 7-day cumulative login reward, Takeoff Module - ID Uptie as the 13-day cumulative login reward, and the Nominable S1 Battle Pass E.G.O Ticket as the 14-day cumulative login reward.</p>
+<p><span class="notice-note">※ The [Nominable S1 Identity Ticket] includes Season 1 Event Identities.</span></p>
+<h2 class="notice-section-heading" id="section-2">Returning User Event</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Event Accessible Period<br>2024/9/26 12:00 (KST) ~ 2024/10/31 06:00 (KST)</p>
+<p><span class="notice-marker">▶</span> Event Activation Period<br>- <span class="notice-label">Start Date:</span> When a user who matches the returning user conditions logs in to the game for the first time during the Event Accessible Period<br>- <span class="notice-label">End Date:</span> 14 days from the above date (including the first day of logging in)</p>
 <p>(※ The measurement of days is based on the Server update time, which is 06:00 (KST))</p>
 <p>(※ Even when the ‘Event Accessible Period’ ends, any Returning User Event in progress will not expire until its own end date.)</p>
 <p>(※ If a user who matches the returning user conditions logs in to the game for the first time after the Event Accessible Period ends, because the Event Accessible Period is over, they will not be able to participate in the Returning User Event.)</p>
-<p>► Returning User Conditions<br>- If 60 days have passed since the user’s last login record &amp; if the user has completed Main Story 1 - 11</p>
-<p>► Description<br>Any managers who fit the ‘Returning User’ description can access the following content.</p>
+<p><span class="notice-marker">▶</span> Returning User Conditions<br>- If 60 days have passed since the user’s last login record &amp; if the user has completed Main Story 1 - 11</p>
+<p><span class="notice-marker">▶</span> Description<br>Any managers who fit the ‘Returning User’ description can access the following content.</p>
 <p>1. Upon the first login, receive Workplace Re-adjustment Assistance Resources<br>2. Returning User Login Event<br>3. Returning User Missions<br>4. Luxcavation Bonus Reward Buff Activated<br>5. Returning User Pack</p>
-<h2 class="notice-section-heading">Returning User Event</h2><hr class="notice-section-divider">
-<p>► Workplace Re-adjustment Assistance Resources<br>When logging in for the first time, Returning Users will receive ‘Workplace Re-adjustment Assistance Resources’</p>
-<p>► Returning User Login Event<br>A Returning User can obtain login rewards based on the cumulative number of days they logged in during the event period.<br>You can receive up to 14 days of cumulative login rewards.</p>
-<p>- Major Reward : Assured Extraction: 3★ Identity (7-days cumulative login)</p>
-<p>► Returning User Missions<br>During the Event period, Returning Users can complete Returning Manager Missions to receive various rewards.<br>Completing Missions raises your completion meter, and you can receive Mission progress rewards every time you meet a certain milestone on the meter.</p>
-<p>- Major Rewards : Takeoff Module - ID Uptie x1, Season 4 Uptie &amp; Threadspinning only Shard (Universal)</p>
-<p>※ 「Season 4 Uptie &amp; Threadspinning only Shard (Universal)」 can be used to Uptie or Threadspin any Identity/E.G.O you wish to upgrade. Unlike the other Sinner Egoshards, these can be used universally for all Sinners. This item counts as a Season 4 Currency, and just like other Seasonal Currencies, its quantity in your inventory will be halved when the new Season begins. However, if you claim this reward during Season 5, you will receive them as Season 5 Uptie &amp; Threadspinning only Shard (Universal), which means that they won’t be halved when Season 5 begins.</p>
-<h2 class="notice-section-heading">Returning User Event</h2><hr class="notice-section-divider">
-<p>► Luxcavation Bonus Reward Buff Activated<br>Returning Users will have Luxcavation Bonus Rewards Buffs activated during the Event period.</p>
+<h2 class="notice-section-heading" id="section-3">Returning User Event</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Workplace Re-adjustment Assistance Resources<br>When logging in for the first time, Returning Users will receive ‘Workplace Re-adjustment Assistance Resources’</p>
+<p><span class="notice-marker">▶</span> Returning User Login Event<br>A Returning User can obtain login rewards based on the cumulative number of days they logged in during the event period.<br>You can receive up to 14 days of cumulative login rewards.</p>
+<p>- <span class="notice-label">Major Reward:</span> Assured Extraction: 3★ Identity (7-days cumulative login)</p>
+<p><span class="notice-marker">▶</span> Returning User Missions<br>During the Event period, Returning Users can complete Returning Manager Missions to receive various rewards.<br>Completing Missions raises your completion meter, and you can receive Mission progress rewards every time you meet a certain milestone on the meter.</p>
+<p>- <span class="notice-label">Major Rewards:</span> Takeoff Module - ID Uptie x1, Season 4 Uptie &amp; Threadspinning only Shard (Universal)</p>
+<p><span class="notice-note">※ 「Season 4 Uptie &amp; Threadspinning only Shard (Universal)」 can be used to Uptie or Threadspin any Identity/E.G.O you wish to upgrade. Unlike the other Sinner Egoshards, these can be used universally for all Sinners. This item counts as a Season 4 Currency, and just like other Seasonal Currencies, its quantity in your inventory will be halved when the new Season begins. However, if you claim this reward during Season 5, you will receive them as Season 5 Uptie &amp; Threadspinning only Shard (Universal), which means that they won’t be halved when Season 5 begins.</span></p>
+<h2 class="notice-section-heading" id="section-4">Returning User Event</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Luxcavation Bonus Reward Buff Activated<br>Returning Users will have Luxcavation Bonus Rewards Buffs activated during the Event period.</p>
 <p>- EXP &amp; Thread Luxcavations receive 3 daily bonuses each.<br>- Clearing the Luxcavation while the Luxcavation Bonus is active will give you additional base rewards.<br>- However, any bonus rewards received either by skipping encounters or using daily bonuses will not be affected.</p>
-<p>► Returning User Pack<br>During the Event Period, Returning Users can purchase the [Back to Office Pack] from the Package shop.</p>
-<p>- Back to Office Pack<br>- Description : A limited package for returning managers. Contains the following items:<br>(※ This item is only visible to returning users, and can be purchased only during the return event period.)<br>- Contents : Extraction Ticket x5, Identity Training Ticket IV x45, Thread x100<br>- Price : ₩9,900 / $6.99 / ¥1,000</p></div>
+<p><span class="notice-marker">▶</span> Returning User Pack<br>During the Event Period, Returning Users can purchase the [Back to Office Pack] from the Package shop.</p>
+<p>- Back to Office Pack<br>- <span class="notice-label">Description:</span> A limited package for returning managers. Contains the following items:<br>(※ This item is only visible to returning users, and can be purchased only during the return event period.)<br>- <span class="notice-label">Contents:</span> Extraction Ticket x5, Identity Training Ticket IV x45, Thread x100<br>- <span class="notice-label">Price:</span> ₩9,900 / $6.99 / ¥1,000</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

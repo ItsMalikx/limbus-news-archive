@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>New Content - Refraction Railway Line 5 | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/349/">
@@ -19,21 +18,27 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #FF7300">Refraction Railway</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">New Content - Refraction Railway Line 5</h1><div class="notice-date"><time datetime="2025-02-17">February 17, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">Content Details</a></li><li><a href="#section-2">Recommended Upgrade Levels</a></li><li><a href="#section-3">About Line 5</a></li><li><a href="#section-4">Loadouts</a></li><li><a href="#section-5">Focused Encounters</a></li><li><a href="#section-6">Combat Progression</a></li><li><a href="#section-7">Observation Logs</a></li><li><a href="#section-8">Clear Info</a></li><li><a href="#section-9">Claiming Rewards</a></li><li><a href="#section-10">Special Decorative Banners</a></li><li><a href="#section-11">Records</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="announcements" style="--tag-color: #68B7ED">Announcements</span></p><h1 class="notice-inline-title">New Content - Refraction Railway Line 5</h1><div class="notice-date"><time datetime="2025-02-17">February 17, 2025</time></div><div class="tag-list"><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #46C6AA">Refraction Railway</span><span class="tag-pill" data-tag="events" style="--tag-color: #ABB74F">Events</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span><span class="tag-pill" data-tag="rewards" style="--tag-color: #ED9658">Rewards</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>New Content &lt;Refraction Railway Line 5&gt; will be added to the game with the Feb. 20th, 2024 (KST) Scheduled Update.</p>
 <h2 class="notice-section-heading">&lt;Unlock Conditions&gt;</h2>
 <p>Clear Main Story 7-36</p>
@@ -44,89 +49,90 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <h3 class="notice-subsection-heading">&lt;About Refraction Railway Line 4 Rewards&gt;</h3>
 <p>Any rewards you have not claimed from Line 4 Lost &amp; Found will be lost with the start of Refraction Railway Line 5. (Unclaimed rewards will not be delivered to your inbox either.)</p>
 <p>If you haven&#x27;t yet claimed your Line 4 rewards, please claim them before the Feb. 20th Scheduled Update.</p>
-<h2 class="notice-section-heading">Content Details</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-1">Content Details</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- &lt;Refraction Railway Line 5&gt; will open after completing Main Story 7-36, and can be accessed via the &#x27;Drive&#x27; menu.</p>
 <p>- As long as Line 5 is active, it can be accessed anytime without spending any resources. Line 5 will close upon the opening of &lt;Refraction Railway Line 6&gt;.</p>
 <p>- You can spend a certain number of Modules(only for the first time) at the Lost &amp; Found to claim your Refraction Railway rewards.</p>
-<h2 class="notice-section-heading">Recommended Upgrade Levels</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-2">Recommended Upgrade Levels</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- The recommended upgrade levels for Refraction Railway Line 5 are: Identity Uptie Tier 4, Level 50, and E.G.O Threadspin Tier 4. The Refraction Railway presents a very difficult series of battles; we strongly recommend that you enter the Railway after meeting the above conditions.</p>
 <p>- Any Level Ups, Upties, or Threadspinnings performed after entry will be reflected in your current loadout within the Refraction Railway as well.</p>
-<h2 class="notice-section-heading">About Line 5</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-3">About Line 5</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- Line 5 is comprised of 3 different &#x27;Sections&#x27;. Each Section is composed of 3 or more Stations(waves), and you may freely adjust your loadout before entering each Section. If you are having difficulties with progressing, perhaps changing up your loadout may be an effective choice.</p>
 <p>- Clearing the Section will record your Clear Turn Count. With it, the Total Turn Count will also be saved. The Total Turn Count is the sum of all Clear Turn Counts from each Section, from Section 1 to your current Section.</p>
 <p>- Below each Section, you can view the rewards for clearing that Section. Claim them at the Lost &amp; Found.</p>
 <p>- Any remaining E.G.O Resource after the Section can be used in the subsequent Section.</p>
 <p>- Entering a new Section revives all defeated allies, fully heals all wounded Identities, and resets SP to 0.</p>
 <p>- During an expedition, you can choose to start over from previously cleared Stages/Sections in order to reduce your Total Turn Count. When you do so, the Stage will start with the Sinners&#x27; statuses and E.G.O resources reverted to that point, and any progress you&#x27;ve made since that Section will be reset.</p>
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- Please note that any Identities that participated in Section 1 cannot participate in Section 2.</p>
 <p>- Please note that there are no Identity restrictions in Section 3, however, so you may use any Identities that have been used previously in Section 1 and 2.</p>
-<h2 class="notice-section-heading">Loadouts</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-4">Loadouts</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- Refraction Railway Line 5 uses the &#x27;Chain Battle&#x27; system. In Chain Battles, when a Deployed unit is defeated, the Backup units will fill their spots in their own Deployment orders.</p>
 <p>- You cannot enter the Encounter until all 6 Deployment units and 6 Backup units have been selected.</p>
 <p>- Backup units receive bonus Starting SP. Minus Coin Identities gain negative Starting SP buffs.</p>
-<p>► Buffs</p>
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<p><span class="notice-marker">▶</span> Buffs</p>
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- When an allied Identity is killed, you will obtain E.G.O resources corresponding to the ranks and Affinities of their Base Attack Skills.</p>
 <p>- Select the question-mark shaped [Active Effects] icon to view Buffs and Trials currently active on allies and enemies. This information can also be viewed by checking the buff icon below allies and enemies.</p>
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- You may select a special buff at the end of each wave. However, each buff comes with Trial effects that buff the enemies.</p>
 <p>- Selected Buffs and Trials will be active throughout the Line 5 run.</p>
 <p>- Trials attached to each Buffs are all fixed.</p>
-<h2 class="notice-section-heading">Focused Encounters</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-5">Focused Encounters</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- Every battle in the Refraction Railway will allow you to directly match ally skills against enemy skills, just like in Focused Encounters.</p>
-<p>► Chain Battles</p>
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<p><span class="notice-marker">▶</span> Chain Battles</p>
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- When a Deployed unit is defeated, the Backup unit will fill their spot in the Deployment order.</p>
 <p>- When a Backup unit is Deployed into battle, its Combat Passive activates instead of its Support Passive. When a Deployed unit is defeated, its Support Passive will activate instead of its Combat Passive.</p>
 <p>- Certain enemies in Line 5 will be affected by their own Deployment orders as well.</p>
-<h2 class="notice-section-heading">Combat Progression</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-6">Combat Progression</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>You can choose to forfeit or retry a stage in the middle of an Encounter. Please note that choosing to forfeit or retry the Stage will reset the entire Section and that you will have to start over from the very first wave.</p>
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>If all of your allies are defeated, you can choose between returning to the Team Loadout menu to change your Deployment orders or immediately retrying the battle from wave 1.</p>
-<h2 class="notice-section-heading">Observation Logs</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-7">Observation Logs</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- Save for the Boss enemy of each final wave, all enemy info will be unlocked for viewing from the start. Prepare the appropriate strategy, Identity, and E.G.O loadout based on this information.</p>
 <p>- In Line 5, damage bonus based on Observation Levels does not apply in the Refraction Railway.</p>
 <p>- In Line 5, the updated Observation Level will be saved even if you give up or retry mid-Encounter.</p>
-<h2 class="notice-section-heading">Clear Info</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-8">Clear Info</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>After clearing each Section, you can view statistics such as the obtained Buffs, Trials, and participating Identities in the Clear Info menu.</p>
-<h2 class="notice-section-heading">Claiming Rewards</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-9">Claiming Rewards</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- After clearing a Station for the first time during the event period, rewards from them will be sent to the &quot;Lost &amp; Found&quot;.</p>
 <p>- To access the &quot;Lost &amp; Found&quot; for the first time, a certain number of Enkephalin Modules will be required. Rewards that can be claimed afterward are free of charge.</p>
-<p>- You can earn various level-up and extraction currencies here. Special rewards include 「Level Boost Ticket V」, 「Season 5 - 3★ Guarantee Decaextraction Ticket」, 「Refraction Railway Line 5 Themed Ticket Deco」.</p>
-<h2 class="notice-section-heading">Special Decorative Banners</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<p>- You can earn various level-up and extraction currencies here. Special rewards include 「Level Boost Ticket V」, 「Season 5 - 3★ Guarantee Decaextraction Ticket」, 「Refraction Railway Line 5 Themed Ticket Deco」.</p>
+<h2 class="notice-section-heading" id="section-10">Special Decorative Banners</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- Here, you can view the acquisition conditions for Refraction Railway Line 5 Banners. The harder the conditions, the more elaborate your Banner will be.</p>
 <p>- Once you obtain a Banner, the Turn Count of your best record for each Section and total turns will be displayed on it. If there are records with the same number of total turns, it will display the more recent record.</p>
 <p>- The highest Turn Count that can be recorded in each Section is 100 Turns. If your Turn Count goes beyond 100 Turns in a single Stage, the Encounter will end in defeat.</p>
-<h2 class="notice-section-heading">Records</h2><hr class="notice-section-divider">
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<h2 class="notice-section-heading" id="section-11">Records</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>- Your stats will be recorded upon clearing Section 3, which can be viewed from your Travel Collection during the Refraction Railway&#x27;s runtime.</p>
 <p>- Up to 20 records can be saved. If you have more than 20 records, records with the highest Total Turns will be deleted first.</p>
 <p>- The date of completion, Total Turns taken, used Identities, and damage output statistics will be displayed in your Logs (Travel Collection).</p>
 <p>- You can view only your own records in the Travel Collection</p>
-<p>※ The above image is for demonstration purposes only and is subject to change before the official release.</p>
+<p><span class="notice-note">※ The above image is for demonstration purposes only and is subject to change before the official release.</span></p>
 <p>More detailed information for each run can be viewed here.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

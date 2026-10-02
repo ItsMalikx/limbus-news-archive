@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Missing Items from the Mar. 19th, 2026 Scheduled Update Notice | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/562/">
@@ -19,43 +18,50 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
     <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="walpurgis-night" style="--tag-color: #93F205">Walpurgis Night</span></div><h1 class="notice-inline-title">Notice: Missing Items from the Mar. 19th, 2026 Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-03-18">March 18, 2026</time></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
+      <nav class="toc" id="noticeToc" aria-label="Contents" hidden>
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="fixes" style="--tag-color: #FF8577">Fixes</span></p><h1 class="notice-inline-title">Notice: Missing Items from the Mar. 19th, 2026 Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-03-18">March 18, 2026</time></div><div class="tag-list"><span class="tag-pill" data-tag="identities-e-g-o" style="--tag-color: #EE8AB2">Identities &amp; E.G.O</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span><span class="tag-pill" data-tag="rewards" style="--tag-color: #ED9658">Rewards</span></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>We previously shared this week&#x27;s Scheduled Update details on Monday, Mar. 16th, 2026. However, we have confirmed that some newly applied updates and known issues were unintentionally omitted and not communicated to our Managers.</p>
 <p>Please note below for the details.</p>
 <h2 class="notice-section-heading">[ Additional Changes Applied in the Mar. 19th Scheduled Update ]</h2>
-<p>1. New Entries for Dante&#x27;s Notes<br>After the Mar. 19th (KST) Scheduled Update, new entries will be added to Dante&#x27;s Notes.<br>► Unlock Condition : Clear all Stages of Main Story Chapter 8.5</p>
-<p>2. E.G.O Gift &quot;The End of all Evil&quot; Fusion Recipe Change<br>- Before : Imposed Weight + Cetacean Heart + Town-protecting Harpoon<br>- After : Cetacean Heart + Town-protecting Harpoon</p>
-<p>※ Fusing these E.G.O Gifts together meant that the player could no longer gain the benefits of the E.G.O Gift &quot;Imposed Weight&quot;. Also, we have determined that, compared to other Fusion Gifts, fusing &quot;The End of all Evil&quot; with its relatively rare E.G.O Gift recipe was more difficult and expensive, while providing less benefit in return.</p>
+<p>1. New Entries for Dante&#x27;s Notes<br>After the Mar. 19th (KST) Scheduled Update, new entries will be added to Dante&#x27;s Notes.<br><span class="notice-marker">▶</span> Unlock Condition : Clear all Stages of Main Story Chapter 8.5</p>
+<p>2. E.G.O Gift &quot;The End of all Evil&quot; Fusion Recipe Change<br><span class="notice-before">- Before : Imposed Weight + Cetacean Heart + Town-protecting Harpoon</span><br><span class="notice-after">- After : Cetacean Heart + Town-protecting Harpoon</span></p>
+<p><span class="notice-note">※ Fusing these E.G.O Gifts together meant that the player could no longer gain the benefits of the E.G.O Gift &quot;Imposed Weight&quot;. Also, we have determined that, compared to other Fusion Gifts, fusing &quot;The End of all Evil&quot; with its relatively rare E.G.O Gift recipe was more difficult and expensive, while providing less benefit in return.</span></p>
 <p>With this in mind, we will be lowering the Fusion difficulty and cost of this E.G.O Gift by removing the E.G.O Gift &quot;Imposed Weight&quot; from its recipe.</p>
 <h3 class="notice-subsection-heading">[ Known Issues in Mar. 19th Scheduled Update ]</h3>
-<p>► An issue where the new Target Extraction [LCB Regular Check-up BokGak] banner has an incorrect Extraction end-date<br>※ Please note that the actual end-date of this Extraction is, as previously shared,<br>2026/04/02 10:00(KST).<br>※ This issue will be resolved by a hotfix today.</p>
-<p>► An issue where voices have not been added to The 4th Walpurgis Night &amp; The 5th Walpurgis Night Mini-episodes<br>※ This issue will be resolved with the Mar. 26th Scheduled Update.</p>
+<p><span class="notice-marker">▶</span> An issue where the new Target Extraction [LCB Regular Check-up BokGak] banner has an incorrect Extraction end-date<br><span class="notice-note">※ Please note that the actual end-date of this Extraction is, as previously shared,</span><br>2026/04/02 10:00(KST).<br><span class="notice-note">※ This issue will be resolved by a hotfix today.</span></p>
+<p><span class="notice-marker">▶</span> An issue where voices have not been added to The 4th Walpurgis Night &amp; The 5th Walpurgis Night Mini-episodes<br><span class="notice-note">※ This issue will be resolved with the Mar. 26th Scheduled Update.</span></p>
 <p>We sincerely apologize for the inconvenience caused by the missing update content and the known issues.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2025, Apr. 3rd Scheduled Update Notice | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/366/">
@@ -19,67 +18,74 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">2025, Apr. 3rd Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-03-31">March 31, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">New Content</a></li><li><a href="#section-2">Major Changes</a></li><li><a href="#section-3">Bug Fixes &amp; Improvements</a></li><li><a href="#section-4">Bug Fixes &amp; Improvements</a></li><li><a href="#section-5">Maintenance &amp; Application Update Compensation</a></li><li><a href="#section-6">Notes</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="patch-notes" style="--tag-color: #64C897">Patch Notes</span></p><h1 class="notice-inline-title">2025, Apr. 3rd Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-03-31">March 31, 2025</time></div><div class="tag-list"><span class="tag-pill" data-tag="identities-e-g-o" style="--tag-color: #EE8AB2">Identities &amp; E.G.O</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span><span class="tag-pill" data-tag="rewards" style="--tag-color: #ED9658">Rewards</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Apr. 3rd, 2025 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-1">New Content</h2><hr class="notice-section-divider">
 <p>1. New Target Extraction [The Middle Little Brother Sinclair] (25/04/03 12:00 ~ 04/17 10:00 (KST))<br>The following Identity will have increased odds of extraction.<br>- 3★ : The Middle Little Brother Sinclair</p>
-<p>※ The Middle Little Brother Sinclair is a Standard Fare Identity.</p>
+<p><span class="notice-note">※ The Middle Little Brother Sinclair is a Standard Fare Identity.</span></p>
 <p>2. Target Extraction [Don Quixote] (25/04/03 12:00 ~ 04/17 10:00 (KST))<br>The following Identities and E.G.O will have increased odds of extraction.<br>- E.G.O [HE] : Telepole Don Quixote<br>- E.G.O [TETH] : Wishing Cairn Don Quixote, Lifetime Stew Don Quixote<br>- 3★ : Cinq East Section 3 Don Quixote, Manager of La Manchaland Don Quixote, T Corp. Class 3 Collection Staff Don Quixote, The Middle Little Sister Don Quixote, Cinq South Section 5 Director Don Quixote, W Corp. L3 Cleanup Agent Don Quixote<br>- 2★ : Blade Lineage Salsu Don Quixote, N Corp. Mittelhammer Don Quixote, Shi South Section 5 Director Don Quixote<br>- 1★ : LCB Sinner Don Quixote</p>
 <p>3. New Identity Added<br>The following Identity has been added to the list of extractable Identities.<br>- 3★ : The Middle Little Brother Sinclair</p>
 <p>4. New Packages<br>1 new limited package will be added to the game with the 2025. 4. 3 (KST) Scheduled Update.</p>
-<p>► Identity Growth Pack<br>- Contents : Takeoff Module - ID Uptie x 1, Identity Training Ticket IV x 50, Identity Training Ticket III x 20<br>- Price : ￦33,000 / $21.99 / ¥3,000<br>- Purchase : Can be purchased once<br>- Purchasable Period : 25. 4. 3 12:00 ~ 4. 17 10:00 (KST)</p>
-<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Identity Growth Pack<br>- <span class="notice-label">Contents:</span> Takeoff Module - ID Uptie x 1, Identity Training Ticket IV x 50, Identity Training Ticket III x 20<br>- <span class="notice-label">Price:</span> ￦33,000 / $21.99 / ¥3,000<br>- <span class="notice-label">Purchase:</span> Can be purchased once<br>- <span class="notice-label">Purchasable Period:</span> 25. 4. 3 12:00 ~ 4. 17 10:00 (KST)</p>
+<h2 class="notice-section-heading" id="section-2">Major Changes</h2><hr class="notice-section-divider">
 <p>1. Manager Ticket Deco Sorting Options expanded<br>New Ticket Deco Sorting Conditions have been changed &amp; added.</p>
-<p>※ Introduction Phrases &amp; Words : Sorting Options Changed<br>- Before : Default / Alphabetical / Recent<br>- After : Claim Date(previously &#x27;Recent&#x27;) / Release Date / Alphabetical</p>
-<p>※ Banners : new sorting options—Claim Date, Release Date sorting options added<br>※ Border1, Border2, E.G.O Bg : Claim Date, Release Date sorting options added</p>
-<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
-<p>► Fixed an issue where Cinq East Section 3 Don Quixote&#x27;s Defense Skill effect does not activate after the first evade<br>※ Relevant Effect: If this unit&#x27;s Speed is faster than the target&#x27;s, gain +1 Coin Power for every 2 Speed difference (max 2)</p>
-<p>► Adjusted the description for The Middle Little Sister Don Quixote&#x27;s Counter Skill &#x27;Multifold Retribution&#x27;<br>- Before: [Combat Start] If at 6+ Envy A-Reson including this Skill, use &#x27;A Just Vengeance&#x27; as Counter.<br>- After: [Combat Start] At 6+ sum of Envy A-Resons.(does not need to be consecutive), use &#x27;A Just Vengeance&#x27; as Counter.<br>※ As this Identity has been out for a while, we decided that the way her Counter Skill currently functions has been solidified as how this character is supposed to function. Also, adjusting the functions to match the description means that this Identity will be weakened. Taking this into account, we intend to make an exception this time to change the description to match the function, as opposed to our usual policy(of changing the function to match the description).</p>
-<p>► Fixed an issue where, in Stage 7.5-25, a certain Skill cannot be clashed against<br>※ Relevant Skill: Night in the Backstreets</p>
-<p>► Fixed an issue where, when the Enkephalin Module recharge pop-up window appears when attempting to claim the rewards in the Lost &amp; Found menu of Refraction Railway, the UI malfunctioned under certain circumstances</p>
-<p>► Fixed an issue where a choice hint text does not match the actual results in a Choice Event present in the Mirror of the Dreaming Theme Pack - Nocturnal Sweeping<br>- Before: Run a Gluttony &amp; Pride Advantage check to gain a Rupture E.G.O Gift.<br>- After: Run a Gluttony &amp; Pride Advantage check to gain a Keywordless E.G.O Gift.</p>
-<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
-<p>► Added a bonus modifier to Identities from a certain faction in a Choice Event present in the Mirror of the Dreaming Theme Pack - Nocturnal Sweeping</p>
-<p>► Disabled a certain Announcer from activating in Stage 6-41 as it would be awkward for them to be an announcer in that Stage</p>
-<p>► Adjusted the name &amp; icon of an effect used by The Middle enemies<br>- Before: Vendetta Mark<br>- After: The Middle&#x27;s Vendetta Mark</p>
-<p>► Fixed an issue where the description text in Page 6 of Intervallo V - Nocturnal Sweeping Tutorials does not load correctly</p>
-<p>► Added elaboration regarding Event currency collection in Intervallo V - Nocturnal Sweeping Tutorials Page 2<br>※ Added Elaboration: However, [Sweeper Fuel Cylinder] cannot be obtained in Luxcavations and in Mirror Dungeon Parallel Superposition Mode (F6 or higher).</p>
-<p>► Fixed an issue where volumes for certain sounds could not be adjusted in Stage 7.5-25</p>
-<p>► (EN Only) Fixed an issue where the Identity Story for Heishou Pack - Mao Branch Outis used an incorrect terminology<br>- Before: Reverse-jointed<br>- After: Digitigrade</p>
-<p>► (EN Only) Standardization work for inconsistent wordings in Skill descriptions in progress</p>
-<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
-<p>- Content: Lunacy x300<br>- Recipients: all users whose game accounts were created before 10:00 Apr. 10th, 2025 (KST)<br>- When: After Apr. 3rd (Thu) 2025, 12:00 (KST)<br>- Can be claimed once per account</p>
+<p><span class="notice-note">※ Introduction Phrases &amp; Words : Sorting Options Changed</span><br><span class="notice-before">- Before : Default / Alphabetical / Recent</span><br><span class="notice-after">- After : Claim Date(previously &#x27;Recent&#x27;) / Release Date / Alphabetical</span></p>
+<p><span class="notice-note">※ Banners : new sorting options—Claim Date, Release Date sorting options added</span><br><span class="notice-note">※ Border1, Border2, E.G.O Bg : Claim Date, Release Date sorting options added</span></p>
+<h2 class="notice-section-heading" id="section-3">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Fixed an issue where Cinq East Section 3 Don Quixote&#x27;s Defense Skill effect does not activate after the first evade<br><span class="notice-note">※ Relevant Effect: If this unit&#x27;s Speed is faster than the target&#x27;s, gain +1 Coin Power for every 2 Speed difference (max 2)</span></p>
+<p><span class="notice-marker">▶</span> Adjusted the description for The Middle Little Sister Don Quixote&#x27;s Counter Skill &#x27;Multifold Retribution&#x27;<br><span class="notice-before">- Before: [Combat Start] If at 6+ Envy A-Reson including this Skill, use &#x27;A Just Vengeance&#x27; as Counter.</span><br><span class="notice-after">- After: [Combat Start] At 6+ sum of Envy A-Resons.(does not need to be consecutive), use &#x27;A Just Vengeance&#x27; as Counter.</span><br><span class="notice-note">※ As this Identity has been out for a while, we decided that the way her Counter Skill currently functions has been solidified as how this character is supposed to function. Also, adjusting the functions to match the description means that this Identity will be weakened. Taking this into account, we intend to make an exception this time to change the description to match the function, as opposed to our usual policy(of changing the function to match the description).</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, in Stage 7.5-25, a certain Skill cannot be clashed against<br><span class="notice-note">※ Relevant Skill: Night in the Backstreets</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, when the Enkephalin Module recharge pop-up window appears when attempting to claim the rewards in the Lost &amp; Found menu of Refraction Railway, the UI malfunctioned under certain circumstances</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where a choice hint text does not match the actual results in a Choice Event present in the Mirror of the Dreaming Theme Pack - Nocturnal Sweeping<br><span class="notice-before">- Before: Run a Gluttony &amp; Pride Advantage check to gain a Rupture E.G.O Gift.</span><br><span class="notice-after">- After: Run a Gluttony &amp; Pride Advantage check to gain a Keywordless E.G.O Gift.</span></p>
+<h2 class="notice-section-heading" id="section-4">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Added a bonus modifier to Identities from a certain faction in a Choice Event present in the Mirror of the Dreaming Theme Pack - Nocturnal Sweeping</p>
+<p><span class="notice-marker">▶</span> Disabled a certain Announcer from activating in Stage 6-41 as it would be awkward for them to be an announcer in that Stage</p>
+<p><span class="notice-marker">▶</span> Adjusted the name &amp; icon of an effect used by The Middle enemies<br><span class="notice-before">- Before: Vendetta Mark</span><br><span class="notice-after">- After: The Middle&#x27;s Vendetta Mark</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the description text in Page 6 of Intervallo V - Nocturnal Sweeping Tutorials does not load correctly</p>
+<p><span class="notice-marker">▶</span> Added elaboration regarding Event currency collection in Intervallo V - Nocturnal Sweeping Tutorials Page 2<br><span class="notice-note notice-note--important">※ Added Elaboration: However, [Sweeper Fuel Cylinder] cannot be obtained in Luxcavations and in Mirror Dungeon Parallel Superposition Mode (F6 or higher).</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where volumes for certain sounds could not be adjusted in Stage 7.5-25</p>
+<p><span class="notice-marker">▶</span> (EN Only) Fixed an issue where the Identity Story for Heishou Pack - Mao Branch Outis used an incorrect terminology<br><span class="notice-before">- Before: Reverse-jointed</span><br><span class="notice-after">- After: Digitigrade</span></p>
+<p><span class="notice-marker">▶</span> (EN Only) Standardization work for inconsistent wordings in Skill descriptions in progress</p>
+<h2 class="notice-section-heading" id="section-5">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Content:</span> Lunacy x300<br>- <span class="notice-label">Recipients:</span> all users whose game accounts were created before 10:00 Apr. 10th, 2025 (KST)<br>- <span class="notice-label">When:</span> After Apr. 3rd (Thu) 2025, 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Apr. 10th (Thu) 2025, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-6">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

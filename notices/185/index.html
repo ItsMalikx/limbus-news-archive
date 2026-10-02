@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>February 1st Scheduled Update Notice | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/185/">
@@ -19,63 +18,70 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #FF7300">Refraction Railway</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">February 1st Scheduled Update Notice</h1><div class="notice-date"><time datetime="2024-01-29">January 29, 2024</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">New Content</a></li><li><a href="#section-2">Major Changes</a></li><li><a href="#section-3">Bug Fixes &amp; Improvements</a></li><li><a href="#section-4">Known Issues</a></li><li><a href="#section-5">Maintenance &amp; Application Update Compensation</a></li><li><a href="#section-6">Notes</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="patch-notes" style="--tag-color: #64C897">Patch Notes</span></p><h1 class="notice-inline-title">February 1st Scheduled Update Notice</h1><div class="notice-date"><time datetime="2024-01-29">January 29, 2024</time></div><div class="tag-list"><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #46C6AA">Refraction Railway</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span><span class="tag-pill" data-tag="main-story" style="--tag-color: #C2AB7B">Main Story</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Feb 1st, 2024 (KST). Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost. Please refer below for details about the update.</p>
-<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
-<p>1. New Content - Refraction Railway Line 3</p>
-<p>- Unlock Conditions : Clear Main Story 5-36<br>※ Please refer to the Steam Announcements Page for more information.</p>
-<p>2. Mini Episode Added<br>- Unlock Conditions : Clear Main Story 5.5(Intervallo III-1)-12</p>
-<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-1">New Content</h2><hr class="notice-section-divider">
+<p>1. New Content - Refraction Railway Line 3</p>
+<p>- <span class="notice-label">Unlock Conditions:</span> Clear Main Story 5-36<br><span class="notice-note">※ Please refer to the Steam Announcements Page for more information.</span></p>
+<p>2. Mini Episode Added<br>- <span class="notice-label">Unlock Conditions:</span> Clear Main Story 5.5(Intervallo III-1)-12</p>
+<h2 class="notice-section-heading" id="section-2">Major Changes</h2><hr class="notice-section-divider">
 <p>1. Refraction Railway Line 2 Closure</p>
 <p>Any rewards you have not claimed from the Line 2 Lost &amp; Found will be lost with the start of Refraction Railway Line 3. (Unclaimed rewards will not be delivered to your inbox either.) If you are yet to claim your Line 2 rewards, please claim them before the Feb. 1st Scheduled Update.</p>
-<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
-<p>► Fixed an issue where Bayonet Artierlly Crab&#x27;s &#x27;Shell Tackle!!!&#x27; Skill did not activate &#x27;On Hit, inflict 3 Pierce Fragility next turn&#x27;, but instead activated &#x27;On Hit, inflict 3 Pierce Fragility this turn&#x27;</p>
-<p>► Fixed an issue where, in Focused Encounters, achieving Resonance or Absolute Resonance with Defensive Skills did not show Resonance details UI</p>
-<p>► Fixed an issue where certain Voicelines played at a lower volume than the average volume</p>
-<p>► Fixed an issue where &#x27;Summoned Unit - Flotsam&#x27; passive &quot;Harden&quot; did not activate</p>
-<p>► Adjusted the camera focus timing when enemies are killed at Turn End by effects such as Burn</p>
-<p>► Fixed an issue where, if all enemies are killed at Turn Start, clearing the Stage caused the Combat UI to linger</p>
-<p>► Fixed an issue where an unvoiced Announcer&#x27;s subtitles appeared only for a brief second</p>
-<p>► E.G.O Gift - Fixed an issue where &#x27;Black Sheet Music&#x27; effect &#x27;When hitting an enemy with a Skill, inflict 5 Sinking Potency&#x27; did not activate properly<br>- Before : Activated only when the unit dealt HP damage On Hit<br>- After : Activates On Hit</p>
-<p>► Adjusted Announcer voicelines in response to certain boss patterns in a certain encounter of Main Story 5-36</p>
-<p>► Fixed an issue where the focused camera did not act properly at Turn Start &amp; Turn End</p>
-<p>► Fixed issues in Drive - Inferno - Mini Stories - The 2nd Walpurgis Night numbering<br>(1) Changed &#x27;MINI-1&#x27; to &#x27;MINI-2&#x27;<br>(2) Added the missing &#x27;District 21&#x27; text on the map</p>
-<p>► Adjusted placement of certain portrait resources<br>(1) Dieci Association South Section 4 Hong Lu<br>(2) Dieci Association South Section 4 Yi Sang</p>
-<h2 class="notice-section-heading">Known Issues</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-3">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Fixed an issue where Bayonet Artierlly Crab&#x27;s &#x27;Shell Tackle!!!&#x27; Skill did not activate &#x27;On Hit, inflict 3 Pierce Fragility next turn&#x27;, but instead activated &#x27;On Hit, inflict 3 Pierce Fragility this turn&#x27;</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, in Focused Encounters, achieving Resonance or Absolute Resonance with Defensive Skills did not show Resonance details UI</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where certain Voicelines played at a lower volume than the average volume</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where &#x27;Summoned Unit - Flotsam&#x27; passive &quot;Harden&quot; did not activate</p>
+<p><span class="notice-marker">▶</span> Adjusted the camera focus timing when enemies are killed at Turn End by effects such as Burn</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, if all enemies are killed at Turn Start, clearing the Stage caused the Combat UI to linger</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where an unvoiced Announcer&#x27;s subtitles appeared only for a brief second</p>
+<p><span class="notice-marker">▶</span> E.G.O Gift - Fixed an issue where &#x27;Black Sheet Music&#x27; effect &#x27;When hitting an enemy with a Skill, inflict 5 Sinking Potency&#x27; did not activate properly<br><span class="notice-before">- Before : Activated only when the unit dealt HP damage On Hit</span><br><span class="notice-after">- After : Activates On Hit</span></p>
+<p><span class="notice-marker">▶</span> Adjusted Announcer voicelines in response to certain boss patterns in a certain encounter of Main Story 5-36</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the focused camera did not act properly at Turn Start &amp; Turn End</p>
+<p><span class="notice-marker">▶</span> Fixed issues in Drive - Inferno - Mini Stories - The 2nd Walpurgis Night numbering<br>(1) Changed &#x27;MINI-1&#x27; to &#x27;MINI-2&#x27;<br>(2) Added the missing &#x27;District 21&#x27; text on the map</p>
+<p><span class="notice-marker">▶</span> Adjusted placement of certain portrait resources<br>(1) Dieci Association South Section 4 Hong Lu<br>(2) Dieci Association South Section 4 Yi Sang</p>
+<h2 class="notice-section-heading" id="section-4">Known Issues</h2><hr class="notice-section-divider">
 <p>We are currently investigating the issue below. We will inform you via a notice as soon as it is corrected.</p>
-<p>► An issue where, in the 11th Station Encounter of Refraction Railway Line 3, choosing to continue after Defeat (by team wipe) does not save the Encounter phase progress</p>
+<p><span class="notice-marker">▶</span> An issue where, in the 11th Station Encounter of Refraction Railway Line 3, choosing to continue after Defeat (by team wipe) does not save the Encounter phase progress</p>
 <p>We apologize for the inconvenience.</p>
-<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
-<p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 Feb. 8th, 2024 (KST)<br>- When : After Feb. 1st, 2024 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
+<h2 class="notice-section-heading" id="section-5">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Content:</span> Lunacy x300<br>- <span class="notice-label">Recipients:</span> All users whose game accounts were created before 10:00 Feb. 8th, 2024 (KST)<br>- <span class="notice-label">When:</span> After Feb. 1st, 2024 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenace Compensation can be claimed until Feb. 8th (Thu) 2024, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-6">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance.If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

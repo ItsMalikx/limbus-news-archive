@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026, Jul. 23rd Scheduled Update Notice | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/621/">
@@ -19,21 +18,27 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">2026, Jul. 23rd Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-07-22">July 22, 2026</time></div><hr class="notice-title-divider"></div><p>Hello,<br>This is Kim Jihoon, Director at Project Moon.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">New Content</a></li><li><a href="#section-2">Bug Fixes &amp; Improvements</a></li><li><a href="#section-3">Maintenance &amp; Application Update Compensation</a></li><li><a href="#section-4">Notes</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="patch-notes" style="--tag-color: #64C897">Patch Notes</span></p><h1 class="notice-inline-title">2026, Jul. 23rd Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-07-22">July 22, 2026</time></div><div class="tag-list"><span class="tag-pill" data-tag="identities-e-g-o" style="--tag-color: #EE8AB2">Identities &amp; E.G.O</span><span class="tag-pill" data-tag="main-story" style="--tag-color: #C2AB7B">Main Story</span><span class="tag-pill" data-tag="refraction-railway" style="--tag-color: #46C6AA">Refraction Railway</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span></div><hr class="notice-title-divider"></div><p>Hello,<br>This is Kim Jihoon, Director at Project Moon.</p>
 <p>We would like to provide you with an update regarding our plans and release schedule for Chapter 10.</p>
 <p>Although we had initially scheduled the Chapter 10 update for release by August, it has been delayed to September 17th.</p>
 <p>Additional time provided by the delay will be used to add voice acting to Chapter 10 and refine its content.</p>
@@ -43,86 +48,86 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <p>HamHamPangPang&#x27;s employees will be managing the Limbus Company booth at TGS. Merchandise will be distributed at the booth.</p>
 <p>We will strive to make up for this delay by providing a more engaging experience for our users.</p>
 <p>Once again, we sincerely apologize for the delay.</p>
-<h2 class="notice-section-heading">2026, Jul. 23rd Scheduled Update Notice</h2><hr class="notice-section-divider">
 <p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Jul. 23rd, 2026 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-1">New Content</h2><hr class="notice-section-divider">
 <p>1. New Target Extraction [LCE E.G.O::Dimension Shredder Yi Sang]<br>(7/23 12:00 ~ 8/6 10:00 (KST))</p>
 <p>The following Identity will have increased odds of extraction:</p>
-<p>3★ : LCE E.G.O::Dimension Shredder Yi Sang</p>
-<p>※ LCE E.G.O::Dimension Shredder Yi Sang is a Season 7 Identity.</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--group"><thead><tr><th colspan="1">3★</th></tr></thead><tbody><tr><td>LCE E.G.O::Dimension Shredder Yi Sang</td></tr></tbody></table></div>
+<p><span class="notice-note">※ LCE E.G.O::Dimension Shredder Yi Sang is a Season 7 Identity.</span></p>
 <p>2. Target Extraction [Rodion] (7/23 12:00 ~ 8/6 10:00 (KST))</p>
 <p>The following Identities and E.G.O will have increased odds of extraction:</p>
-<p>E.G.O [WAW] : Indicant&#x27;s Trial Rodion<br>E.G.O [HE] : Pursuance Rodion<br>E.G.O [ZAYIN] : Into the Sunset Rodion<br>3★ : The House of Spiders: The Thumb Nursefather Rodion, The Ring Pointillist Student Rodion, R Corp. 4th Pack Reindeer Rodion, Heishou Pack - Si Branch Rodion, The Princess of La Manchaland Rodion, Devyat North Section 3 Rodion, Liu South Section 4 Director Rodion, Dieci South Section 4 Rodion, Rosespanner Workshop Rep Rodion, Kurokumo Clan Wakashu Rodion<br>2★ : T Corp. Class 2 Collection Staff Rodion, Zwei South Section 5 Rodion, N Corp. Mittelhammer Rodion, LCCB Assistant Manager Rodion<br>1★ : LCB Sinner Rodion</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">E.G.O [WAW]</th><td>Indicant&#x27;s Trial Rodion</td></tr><tr><th scope="row">E.G.O [HE]</th><td>Pursuance Rodion</td></tr><tr><th scope="row">E.G.O [ZAYIN]</th><td>Into the Sunset Rodion</td></tr><tr><th scope="row">3★</th><td><span class="cell-item">The House of Spiders: The Thumb Nursefather Rodion</span><br><span class="cell-item">The Ring Pointillist Student Rodion</span><br><span class="cell-item">R Corp. 4th Pack Reindeer Rodion</span><br><span class="cell-item">Heishou Pack - Si Branch Rodion</span><br><span class="cell-item">The Princess of La Manchaland Rodion</span><br><span class="cell-item">Devyat North Section 3 Rodion</span><br><span class="cell-item">Liu South Section 4 Director Rodion</span><br><span class="cell-item">Dieci South Section 4 Rodion</span><br><span class="cell-item">Rosespanner Workshop Rep Rodion</span><br><span class="cell-item">Kurokumo Clan Wakashu Rodion</span></td></tr><tr><th scope="row">2★</th><td><span class="cell-item">T Corp. Class 2 Collection Staff Rodion</span><br><span class="cell-item">Zwei South Section 5 Rodion</span><br><span class="cell-item">N Corp. Mittelhammer Rodion</span><br><span class="cell-item">LCCB Assistant Manager Rodion</span></td></tr><tr><th scope="row">1★</th><td>LCB Sinner Rodion</td></tr></tbody></table></div>
 <p>3. New Identity Added</p>
 <p>The following Identity has been added to the list of Extractable Identities.</p>
-<p>3★ : LCE E.G.O::Dimension Shredder Yi Sang</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--group"><thead><tr><th colspan="1">3★</th></tr></thead><tbody><tr><td>LCE E.G.O::Dimension Shredder Yi Sang</td></tr></tbody></table></div>
 <p>4. New Extractable Announcer</p>
 <p>A new Extraction Announcer has been added to the following Extractions.</p>
-<p>► New Announcer</p>
+<p><span class="notice-marker">▶</span> New Announcer</p>
 <p>- Matthias/Kira Announcer</p>
-<p>► Featured Extractions</p>
+<p><span class="notice-marker">▶</span> Featured Extractions</p>
 <p>- Standard Fare Extraction<br>- New Identity Target Extraction [LCE E.G.O::Dimension Shredder Yi Sang]<br>- Target Extraction [Rodion]</p>
-<p>► Featured Period: 26/07/23 12:00 ~ 08/06 10:00 (KST)</p>
-<p>※ Please note that the Announcer Extraction rate does not affect the Extraction rates of 3★ Identities or E.G.O.</p>
-<p>※ 2★ and 1★ Identities will have lower Extraction rates to make room for Announcer Extraction rates.</p>
-<p>※ The Announcer above will no longer be extractable once the Extraction Period ends. However, you may acquire it via Yisang Exchange available in subsequent Target Extractions (does not apply to Standard Fare Extraction as it does not allow Yisang Exchanges).</p>
+<p><span class="notice-marker">▶</span> Featured Period: 26/07/23 12:00 ~ 08/06 10:00 (KST)</p>
+<p><span class="notice-note">※ Please note that the Announcer Extraction rate does not affect the Extraction rates of 3★ Identities or E.G.O.</span></p>
+<p><span class="notice-note">※ 2★ and 1★ Identities will have lower Extraction rates to make room for Announcer Extraction rates.</span></p>
+<p><span class="notice-note notice-note--important">※ The Announcer above will no longer be extractable once the Extraction Period ends. However, you may acquire it via Yisang Exchange available in subsequent Target Extractions (does not apply to Standard Fare Extraction as it does not allow Yisang Exchanges).</span></p>
 <p>5. New Content [Refraction Railway Line 2 BokGak]</p>
-<p>※ Please refer to the relevant Steam Announcement for more information.</p>
+<p><span class="notice-note">※ Please refer to the relevant Steam Announcement for more information.</span></p>
 <p>6. New Packages</p>
 <p>2 new limited packages will be added to the game with the Jul. 23rd, 2026 (KST) Scheduled Update.</p>
-<p>► Target Extraction Pack<br>- Contents: Decaextraction Ticket x 4<br>- Price : ₩33,000 / $21.99 / ¥3,000<br>- Can be purchased once<br>- Purchasable Period: 26. 7. 23 12:00 ~ 8. 6 10:00 (KST)</p>
-<p>► Identity Growth Pack<br>- Contents : Takeoff Module - ID Uptie x 1, Identity Training Ticket IV x 80, Identity Training Ticket III x 20<br>- Price : ₩33,000 / $21.99 / ¥3,000<br>- Can be purchased once<br>- Purchasable Period: 26. 7. 23 12:00 ~ 8. 6 10:00 (KST)</p>
+<p><span class="notice-marker">▶</span> Target Extraction Pack<br>- <span class="notice-label">Contents:</span> Decaextraction Ticket x 4<br>- <span class="notice-label">Price:</span> ₩33,000 / $21.99 / ¥3,000<br>- Can be purchased once<br>- <span class="notice-label">Purchasable Period:</span> 26. 7. 23 12:00 ~ 8. 6 10:00 (KST)</p>
+<p><span class="notice-marker">▶</span> Identity Growth Pack<br>- <span class="notice-label">Contents:</span> Takeoff Module - ID Uptie x 1, Identity Training Ticket IV x 80, Identity Training Ticket III x 20<br>- <span class="notice-label">Price:</span> ₩33,000 / $21.99 / ¥3,000<br>- Can be purchased once<br>- <span class="notice-label">Purchasable Period:</span> 26. 7. 23 12:00 ~ 8. 6 10:00 (KST)</p>
 <p>7. E.G.O Threadspinning Tier 5 Update E.G.O Thread</p>
 <p>Threadspinning Tier 5 will be added for &quot;4th Match Flame Rodion&quot; E.G.O</p>
 <p>8. New effect added to E.G.O Gift &quot;Cleanup Agent Gear Set C&quot;</p>
-<p>- New: Among Identities that inflict Dimensional Rift using Base Skills, count 1 non-W Corp. Identity with the earliest Deployment order as a W Corp. Identity</p>
-<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
-<p>► Fixed an issue where &quot;4th Match Flame Rodion&quot; E.G.O Passive would not work as intended</p>
-<p>→ Relevant effect : After defeating an enemy that has Burn, heal (Wrath A-Reson.)% HP</p>
-<p>- Before :<br>1. This effect would not trigger when the user defeated an enemy that had Burn by attacking the said enemy&#x27;s Part that did not have Burn<br>2. This effect would trigger when an ally that has Burn was defeated</p>
-<p>- After :<br>1. This effect will now trigger even when the user defeats an enemy by attacking the said enemy&#x27;s Part that does not have Burn, as long as the enemy&#x27;s other Part has Burn<br>2. This effect will now only trigger when an enemy that has Burn is defeated</p>
-<p>※ This effect was designed to trigger when the user defeats an enemy by attacking the enemy&#x27;s Part that does not have Burn, as long as its other Parts have Burn. However, in a review of the effect&#x27;s function, we have identified an issue where the logic would fail to distinguish enemies from allies, and an issue where the effect would not trigger when a non-Burn Part is attacked. As such, we will adjust the logic of this effect to match its textual description and intended design. We sincerely apologize for the confusion caused by this issue.</p>
-<p>► Fixed an issue where certain speech bubbles were missing from &quot;The Manager of La Manchaland Don Quixote&quot;</p>
-<p>► (KR, EN Only) Fixed a typo in a speech bubble in &quot;The Lord of Hongyuan Hong Lu&quot;<br>- Before : 사(蛇)여. / Heed me, Si (蛇).<br>- After : 사(巳)여. / Heed me, Si (巳).</p>
-<p>► Applied various adjustments to the &quot;Line 2&quot; Mirror Dungeon Theme Pack</p>
-<p>→ Adjustment 1 : Adjusted the effect and description of &quot;Crown of Thorns&quot; effect<br>- Before : More than 7 Rose units could be generated due to the &quot;Crown of Thorns&quot; effect<br>- After : When there are more than 7 Rose units to be generated due to the &quot;Crown of Thorns&quot; effect, the ones connected to defeated Sinners will be removed, capping the maximum number of Rose units to 7</p>
-<p>※ With the above change, a new description will be added to the &quot;Crown of Thorns&quot; effect: &quot;- If this effect causes the number of Rose units on the field to exceed 7, remove Rose units that are bound with defeated Sinners equal to the excess amount&quot;</p>
-<p>→ Adjustment 2 : Updated the &quot;Sloth-drenched Rose&quot; Skill &quot;Stubborn Sloth&quot; description to match its effects<br>- Before : [On Hit] Inflict +2 Tremor Count<br>- After : [On Hit] Inflict 8 Tremor</p>
-<p>※ This is a description-only fix; the effect is working as described in the &quot;After&quot;.</p>
-<p>→ Adjustment 3 : Updated the &quot;Pride-drenched Rose&quot; Skill &quot;Touchy Pride&quot; description to match its effects<br>- Before : At 5+ Poise, Coin Power +3<br>- After : Description removed</p>
-<p>※ This effect was identified as inactive; the description will be removed accordingly.</p>
-<p>► Applied various adjustments to the &quot;Line 2&quot; Mirror Dungeon Theme Pack</p>
-<p>→ Adjustment 4 : Updated the &quot;Singular Vine&quot; Passive description<br>- Before : ... Lose 0.1 Resistance to the corresponding Sin Affinity for this Encounter (Stackable)<br>- After : ... Gain 0.1 Resistance to the corresponding Sin Affinity for this Encounter (Stackable)</p>
-<p>※ This is a description-only fix; the effect is working as described in the &quot;After&quot;.</p>
-<p>→ Adjustment 5 : Updated the &quot;Broken Sign&quot; Passive description (KR Only)<br>- Before : 표지판 부위가 부서지면 장미의 최대 체력 감소<br>- After : 표지판 부위가 파괴되면 장미의 최대 체력 감소</p>
-<p>► Fixed the text description misalignment issue for the UI Design switch tutorial</p>
-<p>► Fixed an issue where &quot;Fairy Gentleman&quot; combat SD would appear blurry when zoomed out</p>
-<p>► Fixed an issue where the cinematic of a Skill used by an enemy unit in Stage 8.5-11 would be displayed erroneously</p>
-<p>► Fixed an issue where Sinner BGM UI showed Rodion and Sinclair with mismatched UI elements</p>
-<p>► Added BGM acquisition notification when clearing Refraction Railway, and clarification regarding BGM in the reward acquisition UI</p>
-<p>► Addressed the issue where the user could unintentionally toggle soundtracks when scrolling through the soundtrack list in the Lobby BGM UI menu</p>
-<p>► Fixed an issue where, under certain circumstances, unobtained soundtracks could play when playing different tracks</p>
-<p>► Fixed an issue where &quot;Rosespanner Workshop Rep Rodion&quot; Identity illustration would not appear when viewing its Identity Story</p>
-<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
-<p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before Jul. 30th, 2026, 10:00 AM (KST)<br>- When : After Jul. 23rd (Thu), 2026, 12:00 (KST)<br>- Can be claimed once per account</p>
+<p>- <span class="notice-label">New:</span> Among Identities that inflict Dimensional Rift using Base Skills, count 1 non-W Corp. Identity with the earliest Deployment order as a W Corp. Identity</p>
+<h2 class="notice-section-heading" id="section-2">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Fixed an issue where &quot;4th Match Flame Rodion&quot; E.G.O Passive would not work as intended</p>
+<p><span class="notice-arrow">→</span> Relevant effect : After defeating an enemy that has Burn, heal (Wrath A-Reson.)% HP</p>
+<p><span class="notice-before">- Before :</span><br>1. This effect would not trigger when the user defeated an enemy that had Burn by attacking the said enemy&#x27;s Part that did not have Burn<br>2. This effect would trigger when an ally that has Burn was defeated</p>
+<p><span class="notice-after">- After :</span><br>1. This effect will now trigger even when the user defeats an enemy by attacking the said enemy&#x27;s Part that does not have Burn, as long as the enemy&#x27;s other Part has Burn<br>2. This effect will now only trigger when an enemy that has Burn is defeated</p>
+<p><span class="notice-note">※ This effect was designed to trigger when the user defeats an enemy by attacking the enemy&#x27;s Part that does not have Burn, as long as its other Parts have Burn. However, in a review of the effect&#x27;s function, we have identified an issue where the logic would fail to distinguish enemies from allies, and an issue where the effect would not trigger when a non-Burn Part is attacked. As such, we will adjust the logic of this effect to match its textual description and intended design. We sincerely apologize for the confusion caused by this issue.</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where certain speech bubbles were missing from &quot;The Manager of La Manchaland Don Quixote&quot;</p>
+<p><span class="notice-marker">▶</span> (KR, EN Only) Fixed a typo in a speech bubble in &quot;The Lord of Hongyuan Hong Lu&quot;<br><span class="notice-before">- Before : 사(蛇)여. / Heed me, Si (蛇).</span><br><span class="notice-after">- After : 사(巳)여. / Heed me, Si (巳).</span></p>
+<p><span class="notice-marker">▶</span> Applied various adjustments to the &quot;Line 2&quot; Mirror Dungeon Theme Pack</p>
+<p><span class="notice-arrow">→</span> Adjustment 1 : Adjusted the effect and description of &quot;Crown of Thorns&quot; effect<br><span class="notice-before">- Before : More than 7 Rose units could be generated due to the &quot;Crown of Thorns&quot; effect</span><br><span class="notice-after">- After : When there are more than 7 Rose units to be generated due to the &quot;Crown of Thorns&quot; effect, the ones connected to defeated Sinners will be removed, capping the maximum number of Rose units to 7</span></p>
+<p><span class="notice-note">※ With the above change, a new description will be added to the &quot;Crown of Thorns&quot; effect: &quot;- If this effect causes the number of Rose units on the field to exceed 7, remove Rose units that are bound with defeated Sinners equal to the excess amount&quot;</span></p>
+<p><span class="notice-arrow">→</span> Adjustment 2 : Updated the &quot;Sloth-drenched Rose&quot; Skill &quot;Stubborn Sloth&quot; description to match its effects<br><span class="notice-before">- Before : [On Hit] Inflict +2 Tremor Count</span><br><span class="notice-after">- After : [On Hit] Inflict 8 Tremor</span></p>
+<p><span class="notice-note">※ This is a description-only fix; the effect is working as described in the &quot;After&quot;.</span></p>
+<p><span class="notice-arrow">→</span> Adjustment 3 : Updated the &quot;Pride-drenched Rose&quot; Skill &quot;Touchy Pride&quot; description to match its effects<br><span class="notice-before">- Before : At 5+ Poise, Coin Power +3</span><br><span class="notice-after">- After : Description removed</span></p>
+<p><span class="notice-note notice-note--important">※ This effect was identified as inactive; the description will be removed accordingly.</span></p>
+<p><span class="notice-marker">▶</span> Applied various adjustments to the &quot;Line 2&quot; Mirror Dungeon Theme Pack</p>
+<p><span class="notice-arrow">→</span> Adjustment 4 : Updated the &quot;Singular Vine&quot; Passive description<br><span class="notice-before">- Before : ... Lose 0.1 Resistance to the corresponding Sin Affinity for this Encounter (Stackable)</span><br><span class="notice-after">- After : ... Gain 0.1 Resistance to the corresponding Sin Affinity for this Encounter (Stackable)</span></p>
+<p><span class="notice-note">※ This is a description-only fix; the effect is working as described in the &quot;After&quot;.</span></p>
+<p><span class="notice-arrow">→</span> Adjustment 5 : Updated the &quot;Broken Sign&quot; Passive description (KR Only)<br><span class="notice-before">- Before : 표지판 부위가 부서지면 장미의 최대 체력 감소</span><br><span class="notice-after">- After : 표지판 부위가 파괴되면 장미의 최대 체력 감소</span></p>
+<p><span class="notice-marker">▶</span> Fixed the text description misalignment issue for the UI Design switch tutorial</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where &quot;Fairy Gentleman&quot; combat SD would appear blurry when zoomed out</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the cinematic of a Skill used by an enemy unit in Stage 8.5-11 would be displayed erroneously</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where Sinner BGM UI showed Rodion and Sinclair with mismatched UI elements</p>
+<p><span class="notice-marker">▶</span> Added BGM acquisition notification when clearing Refraction Railway, and clarification regarding BGM in the reward acquisition UI</p>
+<p><span class="notice-marker">▶</span> Addressed the issue where the user could unintentionally toggle soundtracks when scrolling through the soundtrack list in the Lobby BGM UI menu</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, under certain circumstances, unobtained soundtracks could play when playing different tracks</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where &quot;Rosespanner Workshop Rep Rodion&quot; Identity illustration would not appear when viewing its Identity Story</p>
+<h2 class="notice-section-heading" id="section-3">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Content:</span> Lunacy x300<br>- <span class="notice-label">Recipients:</span> All users whose game accounts were created before Jul. 30th, 2026, 10:00 AM (KST)<br>- <span class="notice-label">When:</span> After Jul. 23rd (Thu), 2026, 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Jul. 30th (Thu), 2026, 10:00 (KST) via the in-game Mailbox (mail available for 7 days).</p>
-<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-4">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

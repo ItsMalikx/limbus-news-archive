@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>‘We would like to share our official stance regarding the in-game issues identified to date. | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/99/">
@@ -19,23 +18,29 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">‘We would like to share our official stance regarding the in-game issues identified to date.</h1><div class="notice-date"><time datetime="2023-07-25">July 25, 2023</time></div><hr class="notice-title-divider"></div><p>Hello, this is Kim Ji-hoon from Project Moon.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">Regarding Attack and Defense Level Changes/Errors</a></li><li><a href="#section-2">Regarding Heathcliff’s E.G.O ‘Corpse Sac’ display error</a></li><li><a href="#section-3">Regarding Faust’s E.G.O Representation Error</a></li><li><a href="#section-4">Regarding unbalanced rotation</a></li><li><a href="#section-5">Regarding abnormal behavior of playing specific accounts or actions for farming</a></li><li><a href="#section-6">Regarding the skill error of Sinclair’s Identity distributed in the 4.5 chapter event</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="fixes" style="--tag-color: #FF8577">Fixes</span></p><h1 class="notice-inline-title">‘We would like to share our official stance regarding the in-game issues identified to date.</h1><div class="notice-date"><time datetime="2023-07-25">July 25, 2023</time></div><div class="tag-list"><span class="tag-pill" data-tag="identities-e-g-o" style="--tag-color: #EE8AB2">Identities &amp; E.G.O</span><span class="tag-pill" data-tag="events" style="--tag-color: #ABB74F">Events</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span></div><hr class="notice-title-divider"></div><p>Hello, this is Kim Ji-hoon from Project Moon.</p>
 <p>I would like to address the game issues identified so far and share our official stance.</p>
-<h2 class="notice-section-heading">Regarding Attack and Defense Level Changes/Errors</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-1">Regarding Attack and Defense Level Changes/Errors</h2><hr class="notice-section-divider">
 <p>We sincerely apologize for the attack level change in the 7/13 update feeling like a stealth nerf due to our inadequate response.</p>
 <p>In the process of modifying a large amount of data, there was an issue where the attack and defense levels of Identities and E.G.O, including W Corp. Faust, were altered lower than characters who previously had the same values.</p>
 <p>Also, in the process of calculating the changing values, we did not consider the future value of characters with high growth coefficients and calculated them as the same value. The work was not carried out with the intention of downgrading the stats of the Identities and E.G.O you acquired. The numerical issues were due to the lack of skill and mistakes of the staff, and it is our fault.</p>
@@ -43,24 +48,24 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <p>We are also very sorry for the delayed announcement regarding this matter. With the announcement being delayed, many managers were greatly disappointed and felt a sense of loss due to the lack of follow-up measures.</p>
 <p>We will strive to prevent this from happening again. When changing values, we will carefully check whether it affects the previous values. If there are any changes in values, we will first announce the detailed changes with a notice. When issues such as in-game values and balance occur, we will announce them as quickly as possible.</p>
 <p>Once again, we sincerely apologize.</p>
-<h2 class="notice-section-heading">Regarding Heathcliff’s E.G.O ‘Corpse Sac’ display error</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-2">Regarding Heathcliff’s E.G.O ‘Corpse Sac’ display error</h2><hr class="notice-section-divider">
 <p>We apologize for correcting the fact that the effect of Heathcliff’s E.G.O ‘Corpse Sac’ at 4th stage synchronization was different from the actual function as a display error, and for announcing it late in the notice after discovering that there was a display error. Even if it was actually a display error, it is difficult for players to distinguish whether it was a display error or a performance downgrade under the guise of a display error, and we think you felt frustrated with the late response.</p>
 <p>We are also very sorry that there are many errors in the game other than Corpse Sac, where the existing in-game display and performance are different. Due to our insufficient inspection, many errors occurred in the game. This has made it difficult for managers to trust the game’s performance and display.</p>
 <p>We will make every effort to ensure that display errors and performance bugs do not occur due to our overly hasty release schedule without rigorous inspections. If display errors or bugs are identified, we will tell you immediately.</p>
 <p>We also apologize for providing error compensation to all managers when a problem occurred in the 4th stage due to insufficient inspection of Corpse Sac E.G.O. In the future, we will provide error compensation only to managers who have experienced the problem, even if it takes time.</p>
 <p>We are sorry to say this because of the many errors so far. However, we will try to show a gradually improving appearance in future updates, not just words.</p>
-<h2 class="notice-section-heading">Regarding Faust’s E.G.O Representation Error</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-3">Regarding Faust’s E.G.O Representation Error</h2><hr class="notice-section-divider">
 <p>Faust’s E.G.O Representation Emitter had very strong performance compared to other sinners’ base E.G.O due to an error in the initial design. Therefore, we wanted to adjust the performance to be the same as the base E.G.O performance of other sinners. The performance adjustment of E.G.O Increased due to initial design mistakes is a problem caused by our lack of planning ability. I’m very sorry.</p>
 <p>Also, in the process of adjustment, it became excessively lower than the performance of the existing E.G.O. This was due to excessive adjustment and a lack of balance consideration.</p>
 <p>We will readjust the performance of the Representation Emitter by increasing the number of allied personnel receiving sanity recovery by 1 and including Faust in the sanity recovery target. We will also consider whether to make additional adjustments after checking the trend continuously.</p>
-<h2 class="notice-section-heading">Regarding unbalanced rotation</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-4">Regarding unbalanced rotation</h2><hr class="notice-section-divider">
 <p>We are aware that there is a problem with the appearance rotation of the Identities and E.G.O of the 12 sinners. We apologize for the delayed release of new Identities and E.G.O for other sinners due to the release of duplicate Identities and E.G.O of sinners that previously appeared in extraction.</p>
 <p>We determined that there would be no rotational problems when listing the roadmap for a long time, but we did not deeply consider that it could be felt as imbalance and favoritism for players who have difficulty knowing the long-term roadmap.</p>
 <p>In the future, we will create a new rotation by considering the release time of the previous Identities and E.G.O of the sinners from the player’s perspective.</p>
-<h2 class="notice-section-heading">Regarding abnormal behavior of playing specific accounts or actions for farming</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-5">Regarding abnormal behavior of playing specific accounts or actions for farming</h2><hr class="notice-section-divider">
 <p>We have identified a phenomenon in which it is possible to play the game at a very fast speed using speed hacks. This is considered abnormal play, and if such a record is confirmed, the game account may be suspended without warning. When a game account is suspended, the reason for the suspension will be notified to the email address linked to the account. Instead, we will proceed with sanctions without warning for any hacking, so please do not use hacking even out of curiosity.</p>
 <p>We are very sorry for disappointing the managers in a short period of time due to the frequent occurrence of bugs in the game, our lack of planning skills, and unskilled response. We will do our best to prevent the contents mentioned in this notice from recurring.</p>
-<h2 class="notice-section-heading">Regarding the skill error of Sinclair’s Identity distributed in the 4.5 chapter event</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-6">Regarding the skill error of Sinclair’s Identity distributed in the 4.5 chapter event</h2><hr class="notice-section-divider">
 <p>In the “Candle” skill of Sinclair’s Identity distributed in the 4.5 chapter event, the Item ‘Furor’ tremor count is less than 10, gain 6 tremor and cause tremor burst to yourself was confirmed to have been applied as “If your tremor count is less than 10, gain tremor count 6, and cause tremor burst to yourself.”</p>
 <p>This issue was identified during final testing today, and the error will inevitably be corrected on 8/3 because a client build is required to fix the issue.</p>
 <p>We have apologized for several errors in this notice, but we are also aware of the seriousness of insufficient inspection in a situation where a problem has occurred again with the newly released Identities.</p>
@@ -71,13 +76,14 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>January 11th Scheduled Update Notice | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/177/">
@@ -19,85 +18,92 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="walpurgis-night" style="--tag-color: #93F205">Walpurgis Night</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">January 11th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2024-01-08">January 8, 2024</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">Update Contents</a></li><li><a href="#section-2">Update Contents</a></li><li><a href="#section-3">Major Changes</a></li><li><a href="#section-4">Major Changes</a></li><li><a href="#section-5">Major Changes</a></li><li><a href="#section-6">Bug Fixes &amp; Improvements</a></li><li><a href="#section-7">Maintenance &amp; Application Update Compensation</a></li><li><a href="#section-8">Notes</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="patch-notes" style="--tag-color: #64C897">Patch Notes</span></p><h1 class="notice-inline-title">January 11th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2024-01-08">January 8, 2024</time></div><div class="tag-list"><span class="tag-pill" data-tag="events" style="--tag-color: #ABB74F">Events</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span><span class="tag-pill" data-tag="main-story" style="--tag-color: #C2AB7B">Main Story</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Jan 11th, 2024 (KST).<br>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.<br>Please refer below for details about the update.</p>
-<h2 class="notice-section-heading">Update Contents</h2><hr class="notice-section-divider">
-<p>1. New Event - The 2nd Walpurgis Night<br>※ Please refer to the Steam Announcement [Jan. 11th New Content - The 2nd Walpurgis Night] for more information.</p>
+<h2 class="notice-section-heading" id="section-1">Update Contents</h2><hr class="notice-section-divider">
+<p>1. New Event - The 2nd Walpurgis Night<br><span class="notice-note">※ Please refer to the Steam Announcement [Jan. 11th New Content - The 2nd Walpurgis Night] for more information.</span></p>
 <p>2. The 2nd Walpurgis Night Target Extraction (Jan. 11th 2024, 12:00 ~ Jan. 25th, 10:00 (KST))<br>Extraction rate increases for the following identities.<br>- 3★ : Lobotomy E.G.O::Magic Bullet Outis<br>- 2★ : Lobotomy E.G.O::Lantern Don Quixote</p>
 <p>3. [Target Extraction: Yi Sang] (Jan. 11th 2024, 12:00 ~ Jan. 25th 10:00 (KST))<br>The following Identities and E.G.O will have increased odds of extraction.<br>- E.G.O [HE] : Dimension Shredder Yi Sang<br>- E.G.O [TETH] : Wishing Cairn Yi Sang<br>- 3★ : W Corp. L3 Cleanup Agent Yi Sang, Effloresced E.G.O::Spicebush Yi Sang, Blade Lineage Salsu Yi Sang<br>- 2★ : The Pequod First Mate Yi Sang, Seven South Section 6 Yi Sang<br>- 1★ : LCB Sinner Yi Sang</p>
-<p>4. Identities, E.G.O, and Announcers added to the list of extractable items<br>※ Please refer to the Steam Announcement [Jan. 11th New Content - The 2nd Walpurgis Night] for more information.</p>
-<h2 class="notice-section-heading">Update Contents</h2><hr class="notice-section-divider">
+<p>4. Identities, E.G.O, and Announcers added to the list of extractable items<br><span class="notice-note">※ Please refer to the Steam Announcement [Jan. 11th New Content - The 2nd Walpurgis Night] for more information.</span></p>
+<h2 class="notice-section-heading" id="section-2">Update Contents</h2><hr class="notice-section-divider">
 <h3 class="notice-subsection-heading">&lt;Thread&gt;</h3>
-<p>► [Name Change] Monthly Thread Pack I (← Monthly Thread Pack)<br>- Price : ₩28,000 / $18.99 / ¥2,600<br>- Contents : Thread x300</p>
-<p>► [New] Monthly Thread Pack II<br>- Price : ₩46,000 / $32.99 / ¥4,800<br>- Contents : Thread x500</p>
-<p>► [New] Monthly Thread Pack III<br>- Price : ₩90,000 / $61.99 / ¥9,200<br>- Contents : Thread x1000</p>
+<p><span class="notice-marker">▶</span> [Name Change] Monthly Thread Pack I (<span class="notice-arrow">←</span> Monthly Thread Pack)<br>- <span class="notice-label">Price:</span> ₩28,000 / $18.99 / ¥2,600<br>- <span class="notice-label">Contents:</span> Thread x300</p>
+<p><span class="notice-marker">▶</span> [New] Monthly Thread Pack II<br>- <span class="notice-label">Price:</span> ₩46,000 / $32.99 / ¥4,800<br>- <span class="notice-label">Contents:</span> Thread x500</p>
+<p><span class="notice-marker">▶</span> [New] Monthly Thread Pack III<br>- <span class="notice-label">Price:</span> ₩90,000 / $61.99 / ¥9,200<br>- <span class="notice-label">Contents:</span> Thread x1000</p>
 <p>With the name change, ‘Monthly EXP Pack I’ and ‘Monthly Thread Pack I’ monthly purchase chances will be reset after the Jan. 11th Scheduled Update. Please note this information if you are planning to purchase these Packs.</p>
-<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-3">Major Changes</h2><hr class="notice-section-divider">
 <p>1. Unique Status Effects<br>Unique Status Effects, which are status effects that apply Burn or Bleed via indirect means, will now be each categorized as [Unique Status Effects].<br>We have added [Unique Status Effects] conditions for certain E.G.O Gift activation conditions so that relevant Identities can properly synergize with them.</p>
-<p>※ This change is not limited to Burn or Bleed. If any new indirect ways of applying other Status Effects are added to the game, they will be categorized as [Unique Status Effects] as well.</p>
-<p>► Unique Status Effects<br>- Nails<br>- Dark Flame (Added after the Jan. 11th Scheduled Update)</p>
-<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ This change is not limited to Burn or Bleed. If any new indirect ways of applying other Status Effects are added to the game, they will be categorized as [Unique Status Effects] as well.</span></p>
+<p><span class="notice-marker">▶</span> Unique Status Effects<br>- Nails<br>- Dark Flame (Added after the Jan. 11th Scheduled Update)</p>
+<h2 class="notice-section-heading" id="section-4">Major Changes</h2><hr class="notice-section-divider">
 <p>2. Mirror Dungeon: Certain E.G.O Gift activation conditions &amp; effects updated</p>
-<p>► Hellterfly’s Dream activation conditions<br>- Before : When inflicting Burn Potency to enemies with Burn<br>After : When inflicting Burn Potency or Unique Burn to enemies with Burn or Unique Burn</p>
-<p>► Wound Clerid activation conditions<br>- Before : When hitting an enemy with a Skill that inflicts Bleed Potency<br>- After : When hitting an enemy with a Skill that inflicts Bleed Potency or Unique Bleed</p>
-<p>► Fiery Down activation conditions<br>- Before : When hitting an enemy with a Skill that inflicts Burn Potency or a Lust Affinity Skill<br>- After : When hitting an enemy with a Lust Affinity Skill or a Skill that inflicts Burn Potency or Unique Burn</p>
-<p>► Pinpoint Logic Circuit activation conditions<br>- Before : When hitting an enemy with an Envy Affinity Skill or a Skill that inflicts Burn Potency<br>- After : When hitting an enemy with an Envy Affinity Skill or a Skill that inflicts Burn Potency or Unique Burn</p>
-<p>► Rusted Cutting Knife activation conditions<br>- Before : When inflicting Bleed Potency with Skill effects against non-Staggered enemies<br>- After : When inflicting Bleed Potency or Unique Bleed with Skill effects against non-Staggered enemies</p>
-<p>► Soothe the Dead activation conditions &amp; effects<br>Before : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Burn Potency. (...) To Skills that inflict Burn Potency: Final Power +1, Coin Power +1, inflicted Burn Potency +1, inflicted Burn Count +1.<br>- After : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Burn Potency, Count, or Unique Burn. (...) To Skills that inflict Burn Potency, Count, or Unique Burn: Final Power +1, Coin Power +1, inflicted Burn Potency +1, inflicted Burn Count +1.</p>
-<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
-<p>► Bloody Mist activation conditions &amp; effects<br>- Before : Encounter Start: This Gift Activates when 5 or more Identities have Attack Skills that apply Bleed Potency. (...) Skills that inflict Bleed Potency: Coin Power +2, damage dealt +100%<br>- After : Encounter Start: This Gift Activates when 5 or more Identities have Attack Skills that apply Bleed Potency, Count, or Unique Bleed. (...) Skills that inflict Bleed Potency, Count, or Unique Bleed: Coin Power +2, damage dealt +100%</p>
-<p>► Enrapturing Trance activation conditions<br>- Before : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Rupture Potency<br>- After : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Rupture Potency or Count</p>
-<p>► Black Sheet Music activation conditions<br>- Before : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Sinking Potency<br>- After : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Sinking Potency or Count</p>
-<p>► Lucky Pouch activation conditions<br>- Before : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that gain Poise Potency<br>- After : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that gain Poise Potency or Count</p>
-<p>※ The following changes are not a part of the Jan. 11th Scheduled Update. They will be applied with a future update.</p>
-<p>► Coupled Oscillation activation conditions<br>- Before : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Tremor Potency<br>- After : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Tremor Potency or Count<br>※ Currently, we do not plan to let Identities Tremor Count on self to activate this effect when applying Tremor Count on self.</p>
-<p>► Lucky Pouch effects<br>- Before : Skill 3 of Identities with Skills that gain Poise Potency: Final Power +3, Coin Power +(12/# of Coins), damage dealt +(50/# of Coins)%.<br>- After : Skill 3 of Identities with Skills that gain Poise Potency or Count: Final Power +3, Coin Power +(12/# of Coins), damage dealt +(50/# of Coins)%.</p>
-<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
-<p>► Standardized Skill text regarding Skill effects that cause SP damage<br>- Before : Deal N SP damage / (Same in English) / X loses N SP<br>- After : Standardized to “Deal N SP damage”<br>※ Affected E.G.O list<br>- Faust E.G.O ‘Fluid Sac’, Don Quixote E.G.O ‘Fluid Sac’, Ishmael E.G.O ‘Capote’, and Rodion E.G.O ‘Pursuance’<br>- This does not change the actual effects of the E.G.O.</p>
-<p>► R Corp. 4th Pack Reindeer Ishmael’s Skill 3 - Mind Whip description clarified<br>- Before : At less than X Charge Count, target a random unit for an unopposed attack<br>- After : At less than X Charge count at Combat Start, target a random unit for an unopposed attack<br>- This does not change the actual effects of the Skill. The text was adjusted only to clarify the activation timing of the Mind Whip Skill.</p>
-<p>► Fixed an issue where ‘Rodion E.G.O - Pursuance’ showed the unique E.G.O Background even when it was under Threadspinning Tier 3</p>
-<p>► Fixed an issue where the E.G.O Gift Enrapturing Trance did not activate properly upon [When hitting an enemy with a Skill]</p>
-<p>► Fixed an issue where, in the ‘Sell E.G.O Gifts’ menu while the Starter Buff ‘Namesake’ was activated, the prices did not update accordingly to the modifiers</p>
-<p>► Fixed an issue where exiting after attempting to turn ON/OFF the Starter Buffs in the Mirror Dungeon caused an error</p>
-<p>► Fixed an issue where attempting to use ‘Wish of a Star’ under a specific set of conditions caused an error</p>
-<p>► Improved the 000 Identity Uptie cutscene from Tier 2 to Tier 3 so that it would display the Spine animation instead of a static image</p>
-<p>► Fixed an issue where the ‘Abnormality - Ambling Pearl’ Encounter would leave surviving summoned units under a specific condition</p>
-<p>► Improved the Dispenser UI so that items that cannot be dispensed would display the ‘Cannot Purchase’ label</p>
-<p>► (EN, JP only) Fixed an issue where the Main Story Canto IV - 54 cutscene displayed an incorrect location in certain scenes</p>
-<p>► Fixed an issue where the Boss enemy in Main Story Canto V - 10 would not show the proper animation upon death</p>
-<p>► (KR only) Improved certain dialogue texts in the Kurokumo Wakashu Rodion Identity’s Uptie Story</p>
-<p>► Window - Updated the Inventory icon</p>
-<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
-<p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 Jan 18th, 2024 (KST)<br>- When : After Jan 11th, 2024 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
+<p><span class="notice-marker">▶</span> Hellterfly’s Dream activation conditions<br><span class="notice-before">- Before : When inflicting Burn Potency to enemies with Burn</span><br><span class="notice-after">After : When inflicting Burn Potency or Unique Burn to enemies with Burn or Unique Burn</span></p>
+<p><span class="notice-marker">▶</span> Wound Clerid activation conditions<br><span class="notice-before">- Before : When hitting an enemy with a Skill that inflicts Bleed Potency</span><br><span class="notice-after">- After : When hitting an enemy with a Skill that inflicts Bleed Potency or Unique Bleed</span></p>
+<p><span class="notice-marker">▶</span> Fiery Down activation conditions<br><span class="notice-before">- Before : When hitting an enemy with a Skill that inflicts Burn Potency or a Lust Affinity Skill</span><br><span class="notice-after">- After : When hitting an enemy with a Lust Affinity Skill or a Skill that inflicts Burn Potency or Unique Burn</span></p>
+<p><span class="notice-marker">▶</span> Pinpoint Logic Circuit activation conditions<br><span class="notice-before">- Before : When hitting an enemy with an Envy Affinity Skill or a Skill that inflicts Burn Potency</span><br><span class="notice-after">- After : When hitting an enemy with an Envy Affinity Skill or a Skill that inflicts Burn Potency or Unique Burn</span></p>
+<p><span class="notice-marker">▶</span> Rusted Cutting Knife activation conditions<br><span class="notice-before">- Before : When inflicting Bleed Potency with Skill effects against non-Staggered enemies</span><br><span class="notice-after">- After : When inflicting Bleed Potency or Unique Bleed with Skill effects against non-Staggered enemies</span></p>
+<p><span class="notice-marker">▶</span> Soothe the Dead activation conditions &amp; effects<br><span class="notice-before">Before : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Burn Potency. (...) To Skills that inflict Burn Potency: Final Power +1, Coin Power +1, inflicted Burn Potency +1, inflicted Burn Count +1.</span><br><span class="notice-after">- After : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Burn Potency, Count, or Unique Burn. (...) To Skills that inflict Burn Potency, Count, or Unique Burn: Final Power +1, Coin Power +1, inflicted Burn Potency +1, inflicted Burn Count +1.</span></p>
+<h2 class="notice-section-heading" id="section-5">Major Changes</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Bloody Mist activation conditions &amp; effects<br><span class="notice-before">- Before : Encounter Start: This Gift Activates when 5 or more Identities have Attack Skills that apply Bleed Potency. (...) Skills that inflict Bleed Potency: Coin Power +2, damage dealt +100%</span><br><span class="notice-after">- After : Encounter Start: This Gift Activates when 5 or more Identities have Attack Skills that apply Bleed Potency, Count, or Unique Bleed. (...) Skills that inflict Bleed Potency, Count, or Unique Bleed: Coin Power +2, damage dealt +100%</span></p>
+<p><span class="notice-marker">▶</span> Enrapturing Trance activation conditions<br><span class="notice-before">- Before : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Rupture Potency</span><br><span class="notice-after">- After : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Rupture Potency or Count</span></p>
+<p><span class="notice-marker">▶</span> Black Sheet Music activation conditions<br><span class="notice-before">- Before : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Sinking Potency</span><br><span class="notice-after">- After : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Sinking Potency or Count</span></p>
+<p><span class="notice-marker">▶</span> Lucky Pouch activation conditions<br><span class="notice-before">- Before : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that gain Poise Potency</span><br><span class="notice-after">- After : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that gain Poise Potency or Count</span></p>
+<p><span class="notice-note">※ The following changes are not a part of the Jan. 11th Scheduled Update. They will be applied with a future update.</span></p>
+<p><span class="notice-marker">▶</span> Coupled Oscillation activation conditions<br><span class="notice-before">- Before : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Tremor Potency</span><br><span class="notice-after">- After : Encounter Start: This Gift activates when 5 or more Identities have Attack Skills that apply Tremor Potency or Count</span><br><span class="notice-note">※ Currently, we do not plan to let Identities Tremor Count on self to activate this effect when applying Tremor Count on self.</span></p>
+<p><span class="notice-marker">▶</span> Lucky Pouch effects<br><span class="notice-before">- Before : Skill 3 of Identities with Skills that gain Poise Potency: Final Power +3, Coin Power +(12/# of Coins), damage dealt +(50/# of Coins)%.</span><br><span class="notice-after">- After : Skill 3 of Identities with Skills that gain Poise Potency or Count: Final Power +3, Coin Power +(12/# of Coins), damage dealt +(50/# of Coins)%.</span></p>
+<h2 class="notice-section-heading" id="section-6">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Standardized Skill text regarding Skill effects that cause SP damage<br><span class="notice-before">- Before : Deal N SP damage / (Same in English) / X loses N SP</span><br><span class="notice-after">- After : Standardized to “Deal N SP damage”</span><br><span class="notice-note">※ Affected E.G.O list</span><br>- Faust E.G.O ‘Fluid Sac’, Don Quixote E.G.O ‘Fluid Sac’, Ishmael E.G.O ‘Capote’, and Rodion E.G.O ‘Pursuance’<br>- This does not change the actual effects of the E.G.O.</p>
+<p><span class="notice-marker">▶</span> R Corp. 4th Pack Reindeer Ishmael’s Skill 3 - Mind Whip description clarified<br><span class="notice-before">- Before : At less than X Charge Count, target a random unit for an unopposed attack</span><br><span class="notice-after">- After : At less than X Charge count at Combat Start, target a random unit for an unopposed attack</span><br>- This does not change the actual effects of the Skill. The text was adjusted only to clarify the activation timing of the Mind Whip Skill.</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where ‘Rodion E.G.O - Pursuance’ showed the unique E.G.O Background even when it was under Threadspinning Tier 3</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the E.G.O Gift Enrapturing Trance did not activate properly upon [When hitting an enemy with a Skill]</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, in the ‘Sell E.G.O Gifts’ menu while the Starter Buff ‘Namesake’ was activated, the prices did not update accordingly to the modifiers</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where exiting after attempting to turn ON/OFF the Starter Buffs in the Mirror Dungeon caused an error</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where attempting to use ‘Wish of a Star’ under a specific set of conditions caused an error</p>
+<p><span class="notice-marker">▶</span> Improved the 000 Identity Uptie cutscene from Tier 2 to Tier 3 so that it would display the Spine animation instead of a static image</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the ‘Abnormality - Ambling Pearl’ Encounter would leave surviving summoned units under a specific condition</p>
+<p><span class="notice-marker">▶</span> Improved the Dispenser UI so that items that cannot be dispensed would display the ‘Cannot Purchase’ label</p>
+<p><span class="notice-marker">▶</span> (EN, JP only) Fixed an issue where the Main Story Canto IV - 54 cutscene displayed an incorrect location in certain scenes</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the Boss enemy in Main Story Canto V - 10 would not show the proper animation upon death</p>
+<p><span class="notice-marker">▶</span> (KR only) Improved certain dialogue texts in the Kurokumo Wakashu Rodion Identity’s Uptie Story</p>
+<p><span class="notice-marker">▶</span> Window - Updated the Inventory icon</p>
+<h2 class="notice-section-heading" id="section-7">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Content:</span> Lunacy x300<br>- <span class="notice-label">Recipients:</span> All users whose game accounts were created before 10:00 Jan 18th, 2024 (KST)<br>- <span class="notice-label">When:</span> After Jan 11th, 2024 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenace Compensation can be claimed until Jan. 18th (Thu) 2024, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-8">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

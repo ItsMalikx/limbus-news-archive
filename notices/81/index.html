@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Intro to New Contents for June 29th - Mirror of Mirrors (Mirror Dungeon #2) | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/81/">
@@ -19,35 +18,41 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">Intro to New Contents for June 29th - Mirror of Mirrors (Mirror Dungeon #2)</h1><div class="notice-date"><time datetime="2023-06-26">June 26, 2023</time></div><hr class="notice-title-divider"></div><p>Greetings, dear manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">参考事項</a></li><li><a href="#section-2">Entry Cost and Reward Reception</a></li><li><a href="#section-3">Changes to Clear Rewards</a></li><li><a href="#section-4">Changes to Clear Rewards</a></li><li><a href="#section-5">Changes to Weekly Bonus</a></li><li><a href="#section-6">Changes to Levels on Entry</a></li><li><a href="#section-7">Cost</a></li><li><a href="#section-8">Starter Buffs</a></li><li><a href="#section-9">Floor-based Enemy Buffs in Mirror Dungeons</a></li><li><a href="#section-10">New Gifts, Events, and Abnormalities</a></li><li><a href="#section-11">Changes to Universal Events</a></li><li><a href="#section-12">Quality of Life Features</a></li><li><a href="#section-13">Quality of Life Features</a></li><li><a href="#section-14">Other Changes</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="announcements" style="--tag-color: #68B7ED">Announcements</span></p><h1 class="notice-inline-title">Intro to New Contents for June 29th - Mirror of Mirrors (Mirror Dungeon #2)</h1><div class="notice-date"><time datetime="2023-06-26">June 26, 2023</time></div><div class="tag-list"><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #76B3F1">Mirror Dungeon</span><span class="tag-pill" data-tag="events" style="--tag-color: #ABB74F">Events</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span></div><hr class="notice-title-divider"></div><p>Greetings, dear manager.</p>
 <p>The new content of &lt;Mirror of Mirrors&gt; (Mirror Dungeon #2) will be added with the June 29th, 2023 (KST) update.</p>
 <p>Date: After the scheduled maintenance on June 29th, 12:00 (KST)<br>Requirements: Clear Main Story 4-54 and Mirror of the Beginning (Mirror Dungeon #1)<br>Intro: In Mirror Dungeon #2, you can earn large sums of Battle Pass XP.</p>
-<p>※ Hard mode for Mirror Dungeon #2 will be unlocked after the July 6th (KST) scheduled update.</p>
-<h2 class="notice-section-heading">参考事項</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ Hard mode for Mirror Dungeon #2 will be unlocked after the July 6th (KST) scheduled update.</span></p>
+<h2 class="notice-section-heading" id="section-1">参考事項</h2><hr class="notice-section-divider">
 <p>The 2023 June 29th (KST) scheduled update will be performed between 10 AM and 12 PM, and parts of the changes to the Mirror Dungeons will apply after the scheduled update is completed.<br>As such, Mirror Dungeon weekly bonus counts and expeditions in progress will reset when the update is complete on 12.<br>You will not be able to claim rewards for expeditions from before 10 AM on June 29th once the reset takes place, so please make sure to claim the rewards before the maintenance.</p>
-<h2 class="notice-section-heading">Entry Cost and Reward Reception</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-2">Entry Cost and Reward Reception</h2><hr class="notice-section-divider">
 <p>Entry Cost<br>Old : Enkephalin Module required for entry<br>New : Enkephalin Module NOT required for entry</p>
 <p>Reward Reception<br>Old : When an expedition is over, rewards are provided based on the number of floors and nodes reached<br>New : When an expedition is over, rewards are shown based on the number of floors and nodes reached; the player may choose whether to use Enkephalin Modules to claim them</p>
-<p>※ In accordance with these changes, daily free entries and simulations for Mirror Dungeons will be removed once Mirror Dungeon #2 is added.</p>
-<h2 class="notice-section-heading">Changes to Clear Rewards</h2><hr class="notice-section-divider">
-<p>► Aims</p>
+<p><span class="notice-note notice-note--important">※ In accordance with these changes, daily free entries and simulations for Mirror Dungeons will be removed once Mirror Dungeon #2 is added.</span></p>
+<h2 class="notice-section-heading" id="section-3">Changes to Clear Rewards</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Aims</p>
 <p>In Mirror Dungeons, you can earn Pass XP based on the number of floors and nodes reached.<br>Each expedition to Mirror Dungeon #2 is expected to be longer than an expedition to Mirror Dungeon #1.<br>We determined that the lengthening of playtime for repetitive contents will come off as burdensome to many players.<br>As such, even if you only clear up to Floor 3 of Mirror Dungeon #2, you will still be able to obtain 80% of Pass XP and 100% of Lunacy compared to the rewards for clearing Floor 5.</p>
-<h2 class="notice-section-heading">Changes to Clear Rewards</h2><hr class="notice-section-divider">
-<p>※ Below is a table of rewards for clearing each Mirror Dungeon.</p>
+<h2 class="notice-section-heading" id="section-4">Changes to Clear Rewards</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ Below is a table of rewards for clearing each Mirror Dungeon.</span></p>
 <p>With Bonus</p>
 <h3 class="notice-subsection-heading">&lt;Mirror Dungeon #1&gt;</h3>
 <p>- Lunacy x250<br>- Egoshard Crate x8 or Nominable Egoshard Crate x5<br>- Battle Pass EXP 20</p>
@@ -66,46 +71,44 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <p>- Battle Pass EXP 30</p>
 <h3 class="notice-subsection-heading">&lt;Mirror Dungeon #2 - Hard&gt;</h3>
 <p>- Battle Pass EXP 50</p>
-<p>► Comparison between Mirror Dungeons - Based on final floor clears</p>
-<p>List : Mirror Dungeon #1<br>Enkephalin Modules Cost : 3<br>Pass XP : 10<br>Manager XP : 60<br>Floors : 3<br>Nodes : 20</p>
-<p>List : Mirror Dungeon #2<br>Enkephalin Modules Cost : 5<br>Pass XP : 30<br>Manager XP : 100<br>Floors : 5<br>Nodes : 30</p>
-<p>List : Mirror Dungeon #2 - Hard<br>Enkephalin Modules Cost : 6<br>Pass XP : 50<br>Manager XP : 120<br>Floors : 5<br>Nodes : 30</p>
-<h2 class="notice-section-heading">Changes to Weekly Bonus</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Comparison between Mirror Dungeons - Based on final floor clears</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--records"><thead><tr><th>List</th><th>Enkephalin Modules Cost</th><th>Pass XP</th><th>Manager XP</th><th>Floors</th><th>Nodes</th></tr></thead><tbody><tr><td>Mirror Dungeon #1</td><td>3</td><td>10</td><td>60</td><td>3</td><td>20</td></tr><tr><td>Mirror Dungeon #2</td><td>5</td><td>30</td><td>100</td><td>5</td><td>30</td></tr><tr><td>Mirror Dungeon #2 - Hard</td><td>6</td><td>50</td><td>120</td><td>5</td><td>30</td></tr></tbody></table></div>
+<h2 class="notice-section-heading" id="section-5">Changes to Weekly Bonus</h2><hr class="notice-section-divider">
 <p>Weekly bonuses for Mirror Dungeons no longer provide Egoshard-related items.<br>As noted in the Season 2 announcement, the Nominable Egoshard Crates that could’ve been earned as weekly bonuses (285 crates) have been integrated to Season 2 Battle Pass free rewards.<br>The number of weekly bonuses is 3 like before.</p>
 <p>Applying the weekly bonus adds the following:<br>- Lunacy reward added<br>- Pass XP gain increased by 50%</p>
-<h2 class="notice-section-heading">Changes to Levels on Entry</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-6">Changes to Levels on Entry</h2><hr class="notice-section-divider">
 <p>Identity levels are fixed at a certain value upon entry.</p>
 <p>- Mirror Dungeon #1: 30<br>- Mirror Dungeon #2 Normal: 35</p>
-<p>※ Uptie and Threadspin Tiers follow the player’s progress.</p>
-<h2 class="notice-section-heading">Cost</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ Uptie and Threadspin Tiers follow the player’s progress.</span></p>
+<h2 class="notice-section-heading" id="section-7">Cost</h2><hr class="notice-section-divider">
 <p>The new resource of ‘Cost’ is introduced to Mirror Dungeons.<br>Cost can be obtained through combat encounters and events, allowing you to deploy additional Identities and E.G.O, or partake of shop and rest stop events.<br>On Normal difficulty, the initial team setup doesn&#x27;t require any Cost. (Starting Cost is 0)<br>On Hard difficulty, you&#x27;re given a set amount of Cost to build your initial team with.</p>
-<h2 class="notice-section-heading">Starter Buffs</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-8">Starter Buffs</h2><hr class="notice-section-divider">
 <p>The starter buffs are newly introduced, starting with Mirror Dungeon #2.</p>
 <p>Starter buffs can be activated using &#x27;Starlight&#x27;, providing various effects to aid your Mirror Dungeon expedition.<br>進行する際に役立つ様々な効果を活性化することができます。<br>Starlight can be earned by playing Mirror Dungeons.<br>Reaching further floors rewards more.<br>Note that Starlight rewards for clearing Floor 5 are considerably larger than clearing only up to Floor 3.</p>
 <p>You cannot use the Starlight from a Mirror Dungeon to activate starter buffs for other Mirror Dungeons.<br>Starter buffs apply to both the Normal and Hard difficulties, but it does not affect other Mirror Dungeons.</p>
-<h2 class="notice-section-heading">Floor-based Enemy Buffs in Mirror Dungeons</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-9">Floor-based Enemy Buffs in Mirror Dungeons</h2><hr class="notice-section-divider">
 <p>Starting with Mirror Dungeon #2, a new system is implemented to make enemies more powerful as you go up the floors.<br>Whenever you proceed to the next floor, enemies will gain a buff that persists throughout the expedition.</p>
-<p>※ The floor-based enemy buffs do not apply in Mirror Dungeon #1.</p>
-<h2 class="notice-section-heading">New Gifts, Events, and Abnormalities</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The floor-based enemy buffs do not apply in Mirror Dungeon #1.</span></p>
+<h2 class="notice-section-heading" id="section-10">New Gifts, Events, and Abnormalities</h2><hr class="notice-section-divider">
 <p>New E.G.O Gifts (45 total), Abnormality events (25 total), and combat encounters against Abnormalities will be added.</p>
-<h2 class="notice-section-heading">Changes to Universal Events</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-11">Changes to Universal Events</h2><hr class="notice-section-divider">
 <p>Originally, universal events could heal Sinners, power them up, or provide a chance to recruit.<br>As Identity levels are fixed upon entry, power-up options will be removed.<br>Healing and recruitment options will also be removed and integrated into 『Rest Stop』 events and 『Shop』 events.<br>The newly added events are as follows:</p>
-<p>► 『Rest Stop』 events<br>- Sinners can heal HP.<br>- You can spend Cost to additionally deploy or change Identities and E.G.O.</p>
-<p>► 『Shop』 events<br>You can spend Cost to heal larger amounts of HP and SP.<br>You can spend Cost to additionally deploy or change Identities and E.G.O.<br>You can spend Cost to purchase listed E.G.O Gifts.<br>You can spend Cost to change one skill from the listed Identity (from your possession).<br>(Possible combinations listed below; changing Skill 1 to Skill 3 requires the highest amount of Cost.)</p>
+<p><span class="notice-marker">▶</span> 『Rest Stop』 events<br>- Sinners can heal HP.<br>- You can spend Cost to additionally deploy or change Identities and E.G.O.</p>
+<p><span class="notice-marker">▶</span> 『Shop』 events<br>You can spend Cost to heal larger amounts of HP and SP.<br>You can spend Cost to additionally deploy or change Identities and E.G.O.<br>You can spend Cost to purchase listed E.G.O Gifts.<br>You can spend Cost to change one skill from the listed Identity (from your possession).<br>(Possible combinations listed below; changing Skill 1 to Skill 3 requires the highest amount of Cost.)</p>
 <h3 class="notice-subsection-heading">&lt; Skill 1 → Skill 2 &gt;</h3>
-<p>&lt; Skill 2 → Skill 3 &gt;<br>&lt; Skill 1 → Skill 3 &gt;</p>
-<h2 class="notice-section-heading">Quality of Life Features</h2><hr class="notice-section-divider">
+<p>&lt; Skill 2 <span class="notice-arrow">→</span> Skill 3 &gt;<br>&lt; Skill 1 <span class="notice-arrow">→</span> Skill 3 &gt;</p>
+<h2 class="notice-section-heading" id="section-12">Quality of Life Features</h2><hr class="notice-section-divider">
 <p>The following features will be added to improve the player convenience for Mirror Dungeons.</p>
 <p>(1) E.G.O Gifts List<br>A button to view the list of E.G.O Gifts you currently own and check their effects will be added.</p>
 <p>(2) Preset Configuration<br>Using the preset button, you can load up the setup of Identities and E.G.O previously used.<br>Presets are saved individually for each Mirror Dungeon.</p>
 <p>(3) Direction Display<br>The direction you can move in from the current node will be displayed.</p>
 <p>(4) E.G.O Resources fully carried over<br>E.G.O resources are fully carried over between combat encounters.</p>
-<h2 class="notice-section-heading">Quality of Life Features</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-13">Quality of Life Features</h2><hr class="notice-section-divider">
 <p>(5) E.G.O Threadspin Tier displayed during setup<br>You can see the Threadspin Tiers of E.G.O during the setup stage.</p>
 <p>(6) Buffs from events are easier to check<br>A button to check the buff gained from an event will be added.</p>
 <p>(7) Useful Types per stage<br>Types and affinities effective against the enemies will be shown below combat nodes.</p>
-<p>※ The feature of “event choices that have been selected before showing their outcomes in advance in subsequent encounters” will be implemented in a future update.<br>We will let you know when the feature is added.</p>
-<h2 class="notice-section-heading">Other Changes</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ The feature of “event choices that have been selected before showing their outcomes in advance in subsequent encounters” will be implemented in a future update.</span><br>We will let you know when the feature is added.</p>
+<h2 class="notice-section-heading" id="section-14">Other Changes</h2><hr class="notice-section-divider">
 <p>The following changes will apply to Mirror Dungeon #1 as well when Mirror Dungeon #2 is added.</p>
 <p>- When starting a Mirror Dungeon #1 expedition, you can select up to 5 Identities and E.G.O. (Combat participant limit per floor remains the same)</p>
 <p>- As Identity levels are fixed upon entry, enemy levels will be adjusted accordingly.<br>Old: Ally levels are between 15 and 30; enemy levels are between 15 and 25, depending on the floor<br>New: Ally levels are fixed at 30; enemy levels are between 25 and 34, depending on the floor</p>
@@ -124,13 +127,14 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

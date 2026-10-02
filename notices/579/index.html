@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026, Apr. 23rd Scheduled Update Notice | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/579/">
@@ -19,90 +18,97 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">2026, Apr. 23rd Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-04-22">April 22, 2026</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">New Feature</a></li><li><a href="#section-2">Abnormality Classification Code Adjustments</a></li><li><a href="#section-3">Bug Fixes &amp; Improvements</a></li><li><a href="#section-4">Maintenance &amp; Application Update Compensation</a></li><li><a href="#section-5">Notes</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="patch-notes" style="--tag-color: #64C897">Patch Notes</span></p><h1 class="notice-inline-title">2026, Apr. 23rd Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-04-22">April 22, 2026</time></div><div class="tag-list"><span class="tag-pill" data-tag="identities-e-g-o" style="--tag-color: #EE8AB2">Identities &amp; E.G.O</span><span class="tag-pill" data-tag="main-story" style="--tag-color: #C2AB7B">Main Story</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #76B3F1">Mirror Dungeon</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Apr. 23rd, 2026 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<h2 class="notice-section-heading">New Feature</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-1">New Feature</h2><hr class="notice-section-divider">
 <p>1. Luxcavation Consecutive Battle Update<br>A new Consecutive Battle feature has been added to the Luxcavation Dungeon, allowing repeated runs or skips.</p>
-<p>- The Consecutive Battle UI will appear at the top of each Luxcavation UI upon clearing them for the first time.<br>- You may set up to 10 Consecutive Battles.<br>- Enkephalin Modules will be consumed according to the number of runs completed.<br>※ Consecutive Battles are only available for Luxcavation Dungeons cleared at least once.<br>※ Daily bonus rewards for Thread Luxcavation can only be obtained up to 3 times per day, even when using the Consecutive Battle feature.<br>※ When losing or forfeiting the battle during Consecutive Battles, Enkephalin Modules used and Rewards yielded will be based on the current number of runs completed.<br>※ Additional details can be checked via the Settings button during Consecutive Battle.</p>
-<p>&lt;New Content&gt; - Reflectrial][lairtcelFeR<br>※ Please refer to the Steam notice for more details.</p>
-<h2 class="notice-section-heading">Abnormality Classification Code Adjustments</h2><hr class="notice-section-divider">
-<p>Baba Yaga<br>- Before : F-05-10-18<br>- After : F-02-10-18</p>
-<p>kqe-1j-23<br>- Before : O-06-20-02<br>- After : O-05-20-02</p>
-<p>Steam Transport Machine<br>- Before : O-06-21-16<br>- After : O-05-21-16</p>
+<p>- The Consecutive Battle UI will appear at the top of each Luxcavation UI upon clearing them for the first time.<br>- You may set up to 10 Consecutive Battles.<br>- Enkephalin Modules will be consumed according to the number of runs completed.<br><span class="notice-note">※ Consecutive Battles are only available for Luxcavation Dungeons cleared at least once.</span><br><span class="notice-note">※ Daily bonus rewards for Thread Luxcavation can only be obtained up to 3 times per day, even when using the Consecutive Battle feature.</span><br><span class="notice-note">※ When losing or forfeiting the battle during Consecutive Battles, Enkephalin Modules used and Rewards yielded will be based on the current number of runs completed.</span><br><span class="notice-note">※ Additional details can be checked via the Settings button during Consecutive Battle.</span></p>
+<p>&lt;New Content&gt; - Reflectrial][lairtcelFeR<br><span class="notice-note">※ Please refer to the Steam notice for more details.</span></p>
+<h2 class="notice-section-heading" id="section-2">Abnormality Classification Code Adjustments</h2><hr class="notice-section-divider">
+<p>Baba Yaga<br><span class="notice-before">- Before : F-05-10-18</span><br><span class="notice-after">- After : F-02-10-18</span></p>
+<p>kqe-1j-23<br><span class="notice-before">- Before : O-06-20-02</span><br><span class="notice-after">- After : O-05-20-02</span></p>
+<p>Steam Transport Machine<br><span class="notice-before">- Before : O-06-21-16</span><br><span class="notice-after">- After : O-05-21-16</span></p>
 <p>Erroneous Abnormality Classification Codes have been uncovered and rectified. Investigations revealed that the issue was caused by a mistake made by DD, an employee of the LCE Information Team, while transcribing Risk Levels and Classifications entries.</p>
-<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
-<p>► Changed the timing of Enkephalin Module consumption in Luxcavations<br>- Before : Daily Bonus &amp; Modules were consumed upon entering Luxcavations<br>- After : Daily Bonus &amp; Modules are now consumed upon exiting Luxcavations</p>
-<p>► Adjusted the in-game calculation logic so that Skills with &quot;use Coin X an additional time&quot; used by certain Identities or enemies are reflected in the Win Rate &amp; Damage forecasts<br>- Identities whose Win Rate &amp; Damage forecasts are affected : Shi South Section 5 Ishmael (Skill 2), The Ring Fauvist Student Meursault (Skill 3)<br>- Identities whose Damage forecast is affected : Kurokumo Clan Wakashu Hong Lu (Skill 2)<br>※ Win Rate forecasts will now take additional Skill Coin uses into their calculation.</p>
-<p>► Fixed an issue where, in the Mirror Dungeon, owning the E.G.O Gift &quot;Universal Instinct&quot; without any The Ring-faction Identities in your Team could cause the battle to be unresponsive</p>
-<p>► Fixed an issue where certain Passive and Skill effects on an enemy unit in Chapter 9.5 - &#x27;Twining Threads&#x27; do not work as intended<br>(1) Passive : The Ring&#x27;s Docent of Fauvism<br>※ Relevant effect : Immediately Before Getting Hit by a Skill that has 1 Atk Weight, if there is an allied Student of the Ring, have the said unit take the attack instead<br>- Before : The above effect activated even for Unclashable Skills, Clashable Guards, Guards, and Evade Skills<br>- After : Adjusted the behavior to match the description. Fixed an issue where the Sinners&#x27; Evade Skills could not evade the boss&#x27;s attacks second Coin onward</p>
-<p>(2) Skill : Finishing Touch, 3rd Coin effect<br>- Before : &quot;[On Hit] Inflict 2 Sinking&quot; inflicted 3 Sinking<br>- After : The ability now inflicts 2 Sinking, as described</p>
-<p>► Fixed an issue where Clash Win Rate calculation would not be affected when a boss unit from Chapter 9.5 - &#x27;Twining Threads&#x27; used a certain Skill<br>※ Relevant Skill effect : If the main target has Palette Vibrante, Clash Power +6</p>
-<p>► Fixed an issue where, in the Mirror Dungeon Theme Pack - &#x27;Twining Threads&#x27;, if the boss unit&#x27;s phase change occurs due to an E.G.O Gift that deals damage at Turn End, the phase change animation plays again the next turn</p>
+<h2 class="notice-section-heading" id="section-3">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Changed the timing of Enkephalin Module consumption in Luxcavations<br><span class="notice-before">- Before : Daily Bonus &amp; Modules were consumed upon entering Luxcavations</span><br><span class="notice-after">- After : Daily Bonus &amp; Modules are now consumed upon exiting Luxcavations</span></p>
+<p><span class="notice-marker">▶</span> Adjusted the in-game calculation logic so that Skills with &quot;use Coin X an additional time&quot; used by certain Identities or enemies are reflected in the Win Rate &amp; Damage forecasts<br>- Identities whose Win Rate &amp; Damage forecasts are affected : Shi South Section 5 Ishmael (Skill 2), The Ring Fauvist Student Meursault (Skill 3)<br>- Identities whose Damage forecast is affected : Kurokumo Clan Wakashu Hong Lu (Skill 2)<br><span class="notice-note">※ Win Rate forecasts will now take additional Skill Coin uses into their calculation.</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, in the Mirror Dungeon, owning the E.G.O Gift &quot;Universal Instinct&quot; without any The Ring-faction Identities in your Team could cause the battle to be unresponsive</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where certain Passive and Skill effects on an enemy unit in Chapter 9.5 - &#x27;Twining Threads&#x27; do not work as intended<br>(1) Passive : The Ring&#x27;s Docent of Fauvism<br><span class="notice-note">※ Relevant effect : Immediately Before Getting Hit by a Skill that has 1 Atk Weight, if there is an allied Student of the Ring, have the said unit take the attack instead</span><br><span class="notice-before">- Before : The above effect activated even for Unclashable Skills, Clashable Guards, Guards, and Evade Skills</span><br><span class="notice-after">- After : Adjusted the behavior to match the description. Fixed an issue where the Sinners&#x27; Evade Skills could not evade the boss&#x27;s attacks second Coin onward</span></p>
+<p>(2) Skill : Finishing Touch, 3rd Coin effect<br><span class="notice-before">- Before : &quot;[On Hit] Inflict 2 Sinking&quot; inflicted 3 Sinking</span><br><span class="notice-after">- After : The ability now inflicts 2 Sinking, as described</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where Clash Win Rate calculation would not be affected when a boss unit from Chapter 9.5 - &#x27;Twining Threads&#x27; used a certain Skill<br><span class="notice-note">※ Relevant Skill effect : If the main target has Palette Vibrante, Clash Power +6</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, in the Mirror Dungeon Theme Pack - &#x27;Twining Threads&#x27;, if the boss unit&#x27;s phase change occurs due to an E.G.O Gift that deals damage at Turn End, the phase change animation plays again the next turn</p>
 <h3 class="notice-subsection-heading">[ Cause ]</h3>
 <p>- When the enemy&#x27;s HP hits the point where the phase change occurs, the phase change effect triggers at Turn End<br>- The E.G.O Gifts&#x27; Turn End effects activate after the Skill effects expire, which means that they trigger the phase change again in the next turn</p>
 <h3 class="notice-subsection-heading">[ Issue Fix ]</h3>
 <p>- Adjusted the effects so that the phase change trigger could be properly relayed even after E.G.O Gifts&#x27; &quot;deal damage at Turn End&quot; effect triggers</p>
-<p>► Fixed an issue where the Abnormality &quot;You Want To Get Beat? Hurtily?&quot; can be killed even when its Surgery Stack is not at 5</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the Abnormality &quot;You Want To Get Beat? Hurtily?&quot; can be killed even when its Surgery Stack is not at 5</p>
 <h3 class="notice-subsection-heading">[ Cause ]</h3>
 <p>- There is an invisible code within the &quot;Surgery&quot; status effect so that, when the &quot;Surgery&quot; status adjusts the unit&#x27;s max HP, current HP is automatically adjusted proportional to the Max HP changes (rounding off to the nearest whole number).<br>- Mirror Dungeon has an effect that reduces the units&#x27; max HP by Floor.<br>- When &quot;Surgery&quot; Stack goes from 3 to 4, it interacts with the &quot;reduce max HP&quot; effect of the Mirror Dungeon, reducing the unit&#x27;s max HP by more than 50%<br>- In this process, if the current HP before max HP adjustment was 1, rounding off to the whole number reduces the unit&#x27;s HP to 0, killing the unit</p>
 <h3 class="notice-subsection-heading">[ Issue Fix ]</h3>
 <p>- Added a minimum HP cap so that when the unit&#x27;s Current HP is adjusted due to the &quot;Surgery&quot; effect, the minimum HP is fixed at 1</p>
-<p>► Fixed an issue where, when a boss unit appearing in Chapter 9.5 - &#x27;Twining Threads&#x27; and Theme Pack - &#x27;Twining Threads&#x27; uses a certain Skill, certain typography UI do not load properly</p>
-<p>► Fixed certain awkward phrasing display in the Abnormality Choice Event for &quot;kqe-1j-23&quot;</p>
-<p>► Fixed an issue where a certain Hidden Boss featured in Mirror Dungeon EXTREME Theme Packs is missing voiceovers under specific conditions</p>
-<p>► Fixed an issue where, under specific conditions, a certain boss enemy in Main Story Stage 7-36 plays its voiceline repeatedly</p>
-<p>► (EN Only) Fixed typos and mistakes in Chapter 9.5 - &quot;Twining Threads&quot; Story</p>
-<p>► (JP Only) Adjusted certain expressions in Chapter 9.5 - &quot;Twining Threads&quot; Story</p>
-<p>► Fixed an issue where, when hovering over the Event Reward Identity for Chapter 9.5 - &#x27;Twining Threads&#x27;, a sound effect different from the intended one plays</p>
-<p>► Fixed an issue where certain enemy units&#x27; SD Sprites in Chapter 9.5 - &#x27;Twining Threads&#x27; were pivoted incorrectly</p>
-<p>► Fixed an issue where &quot;Account&quot; and &quot;Misc.&quot; tabs were visible in the in-combat Options UI</p>
-<p>► Fixed an issue where selecting the &quot;Shard::Thread Exchange&quot; button from the Identity Uptie/E.G.O Threadspinning UI causes the &quot;Thread Exchange&quot; UI to load incorrectly</p>
-<p>► (JP Only) Fixed an issue where &quot;Charm of the Beastly&quot; effect in the E.G.O Gift &quot;Artwork: Taxidermied Ferity&quot; was not in Japanese</p>
-<p>► Fixed an issue where, when a pop-up window appears when the user has selected fewer-than-possible E.G.O Gifts, the user can still interact with the area outside the window</p>
-<p>► Additionally addressed the issue where preceding nodes would disappear in the Mirror Dungeon when progressing through certain Theme Packs</p>
-<p>► Fixed an issue where certain VFX on &quot;The 6th Walpurgis Night&quot; Boss unit&quot; loads incorrectly</p>
-<p>► Adjusted Façade Projection UI as per the addition of the &quot;Threadskein&quot; item</p>
-<p>► (EN Only) Adjusted phrasing for certain Skills, Passives, and Keywords to improve clarity</p>
-<p>(1) Adjustments for descriptions using &quot;With&quot;<br>- Before : With<br>- After : that has / that have / using</p>
-<p>(2) Adjustments for descriptions using &quot;Units With / Without SP&quot;<br>- Before : Units With / Without SP<br>- After : SP Units / Non-SP Units</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, when a boss unit appearing in Chapter 9.5 - &#x27;Twining Threads&#x27; and Theme Pack - &#x27;Twining Threads&#x27; uses a certain Skill, certain typography UI do not load properly</p>
+<p><span class="notice-marker">▶</span> Fixed certain awkward phrasing display in the Abnormality Choice Event for &quot;kqe-1j-23&quot;</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where a certain Hidden Boss featured in Mirror Dungeon EXTREME Theme Packs is missing voiceovers under specific conditions</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, under specific conditions, a certain boss enemy in Main Story Stage 7-36 plays its voiceline repeatedly</p>
+<p><span class="notice-marker">▶</span> (EN Only) Fixed typos and mistakes in Chapter 9.5 - &quot;Twining Threads&quot; Story</p>
+<p><span class="notice-marker">▶</span> (JP Only) Adjusted certain expressions in Chapter 9.5 - &quot;Twining Threads&quot; Story</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, when hovering over the Event Reward Identity for Chapter 9.5 - &#x27;Twining Threads&#x27;, a sound effect different from the intended one plays</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where certain enemy units&#x27; SD Sprites in Chapter 9.5 - &#x27;Twining Threads&#x27; were pivoted incorrectly</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where &quot;Account&quot; and &quot;Misc.&quot; tabs were visible in the in-combat Options UI</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where selecting the &quot;Shard::Thread Exchange&quot; button from the Identity Uptie/E.G.O Threadspinning UI causes the &quot;Thread Exchange&quot; UI to load incorrectly</p>
+<p><span class="notice-marker">▶</span> (JP Only) Fixed an issue where &quot;Charm of the Beastly&quot; effect in the E.G.O Gift &quot;Artwork: Taxidermied Ferity&quot; was not in Japanese</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, when a pop-up window appears when the user has selected fewer-than-possible E.G.O Gifts, the user can still interact with the area outside the window</p>
+<p><span class="notice-marker">▶</span> Additionally addressed the issue where preceding nodes would disappear in the Mirror Dungeon when progressing through certain Theme Packs</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where certain VFX on &quot;The 6th Walpurgis Night&quot; Boss unit&quot; loads incorrectly</p>
+<p><span class="notice-marker">▶</span> Adjusted Façade Projection UI as per the addition of the &quot;Threadskein&quot; item</p>
+<p><span class="notice-marker">▶</span> (EN Only) Adjusted phrasing for certain Skills, Passives, and Keywords to improve clarity</p>
+<p>(1) Adjustments for descriptions using &quot;With&quot;<br><span class="notice-before">- Before : With</span><br><span class="notice-after">- After : that has / that have / using</span></p>
+<p>(2) Adjustments for descriptions using &quot;Units With / Without SP&quot;<br><span class="notice-before">- Before : Units With / Without SP</span><br><span class="notice-after">- After : SP Units / Non-SP Units</span></p>
 <p>1) Identities</p>
-<p>Yi Sang : The Pequod First Mate Yi Sang, LCE E.G.O::Lantern Yi Sang, W Corp. L3 Cleanup Agent Yi Sang, The Ring Pointillist Student Yi Sang<br>Faust : LCB Sinner Faust, Wuthering Heights Butler Faust, MultiCrack Office Rep Faust<br>Don Quixote : N Corp. Mittelhammer Don Quixote, Blade Lineage Salsu Don Quixote, T Corp. Class 3 Collection Staff Don Quixote, Cinq South Section 5 Director Don Quixote, Lobotomy E.G.O::In the Name of Love and Hate Don Quixote, Heishou Pack - Wei Branch Don Quixote, The Index Proxy - Effloresced E.G.O::Procuration Don Quixote<br>Ryōshū : Seven South Section 6 Ryōshū, Liu South Section 4 Ryōshū, Kurokumo Clan Wakashu Ryōshū, Edgar Family Chief Butler Ryōshū, N Corp. E.G.O::Contempt, Awe Ryōshū, Lobotomy E.G.O::Faint Aroma &amp; Solitude Ryōshū<br>Meursault : Rosespanner Workshop Fixer Meursault, Dead Rabbits Boss Meursault, R Corp. 4th Pack Rhino Meursault, Blade Lineage Mentor Meursault, Cinq West Section 3 Meursault, The Prince of La Manchaland Meursault, Lobotomy E.G.O::Hornet [Alteration] Meursault<br>Hong Lu : Hook Office Fixer Hong Lu, Fanghunt Office Fixer Hong Lu, Full-Stop Office Rep Hong Lu, R Corp. 4th Pack Reindeer Hong Lu, The Lord of Hongyuan Hong Lu<br>Heathcliff : LCB Sinner Heathcliff, Seven South Section 4 Heathcliff, Wild Hunt Heathcliff, Full-Stop Office Fixer Heathcliff<br>Ishmael : Edgar Family Butler Ishmael, Molar Boatworks Fixer Ishmael, Zwei West Section 3 Ishmael<br>Rodion : T Corp. Class 2 Collection Staff Rodion, Liu South Section 4 Director Rodion, The Princess of La Manchaland Rodion<br>Sinclair : Molar Boatworks Fixer Sinclair, Devyat&#x27; North Section 3 Sinclair, Heishou Pack - You Branch Sinclair<br>Outis : The Ring Pointillist Student Outis, Molar Office Fixer Outis, Wuthering Heights Chief Butler Outis, LCA Udjat Vanguard Team 3 Leader Outis<br>Gregor : Rosespanner Workshop Fixer Gregor, Firefist Office Survivor Gregor, Lobotomy E.G.O::Lamp Gregor, LCE E.G.O::AEDD Gregor</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">Yi Sang</th><td><span class="cell-item">The Pequod First Mate Yi Sang</span><br><span class="cell-item">LCE E.G.O::Lantern Yi Sang</span><br><span class="cell-item">W Corp. L3 Cleanup Agent Yi Sang</span><br><span class="cell-item">The Ring Pointillist Student Yi Sang</span></td></tr><tr><th scope="row">Faust</th><td><span class="cell-item">LCB Sinner Faust</span><br><span class="cell-item">Wuthering Heights Butler Faust</span><br><span class="cell-item">MultiCrack Office Rep Faust</span></td></tr><tr><th scope="row">Don Quixote</th><td><span class="cell-item">N Corp. Mittelhammer Don Quixote</span><br><span class="cell-item">Blade Lineage Salsu Don Quixote</span><br><span class="cell-item">T Corp. Class 3 Collection Staff Don Quixote</span><br><span class="cell-item">Cinq South Section 5 Director Don Quixote</span><br><span class="cell-item">Lobotomy E.G.O::In the Name of Love and Hate Don Quixote</span><br><span class="cell-item">Heishou Pack - Wei Branch Don Quixote</span><br><span class="cell-item">The Index Proxy - Effloresced E.G.O::Procuration Don Quixote</span></td></tr><tr><th scope="row">Ryōshū</th><td><span class="cell-item">Seven South Section 6 Ryōshū</span><br><span class="cell-item">Liu South Section 4 Ryōshū</span><br><span class="cell-item">Kurokumo Clan Wakashu Ryōshū</span><br><span class="cell-item">Edgar Family Chief Butler Ryōshū</span><br><span class="cell-item">N Corp. E.G.O::Contempt, Awe Ryōshū</span><br><span class="cell-item">Lobotomy E.G.O::Faint Aroma &amp; Solitude Ryōshū</span></td></tr><tr><th scope="row">Meursault</th><td><span class="cell-item">Rosespanner Workshop Fixer Meursault</span><br><span class="cell-item">Dead Rabbits Boss Meursault</span><br><span class="cell-item">R Corp. 4th Pack Rhino Meursault</span><br><span class="cell-item">Blade Lineage Mentor Meursault</span><br><span class="cell-item">Cinq West Section 3 Meursault</span><br><span class="cell-item">The Prince of La Manchaland Meursault</span><br><span class="cell-item">Lobotomy E.G.O::Hornet [Alteration] Meursault</span></td></tr><tr><th scope="row">Hong Lu</th><td><span class="cell-item">Hook Office Fixer Hong Lu</span><br><span class="cell-item">Fanghunt Office Fixer Hong Lu</span><br><span class="cell-item">Full-Stop Office Rep Hong Lu</span><br><span class="cell-item">R Corp. 4th Pack Reindeer Hong Lu</span><br><span class="cell-item">The Lord of Hongyuan Hong Lu</span></td></tr><tr><th scope="row">Heathcliff</th><td><span class="cell-item">LCB Sinner Heathcliff</span><br><span class="cell-item">Seven South Section 4 Heathcliff</span><br><span class="cell-item">Wild Hunt Heathcliff</span><br><span class="cell-item">Full-Stop Office Fixer Heathcliff</span></td></tr><tr><th scope="row">Ishmael</th><td><span class="cell-item">Edgar Family Butler Ishmael</span><br><span class="cell-item">Molar Boatworks Fixer Ishmael</span><br><span class="cell-item">Zwei West Section 3 Ishmael</span></td></tr><tr><th scope="row">Rodion</th><td><span class="cell-item">T Corp. Class 2 Collection Staff Rodion</span><br><span class="cell-item">Liu South Section 4 Director Rodion</span><br><span class="cell-item">The Princess of La Manchaland Rodion</span></td></tr><tr><th scope="row">Sinclair</th><td><span class="cell-item">Molar Boatworks Fixer Sinclair</span><br><span class="cell-item">Devyat&#x27; North Section 3 Sinclair</span><br><span class="cell-item">Heishou Pack - You Branch Sinclair</span></td></tr><tr><th scope="row">Outis</th><td><span class="cell-item">The Ring Pointillist Student Outis</span><br><span class="cell-item">Molar Office Fixer Outis</span><br><span class="cell-item">Wuthering Heights Chief Butler Outis</span><br><span class="cell-item">LCA Udjat Vanguard Team 3 Leader Outis</span></td></tr><tr><th scope="row">Gregor</th><td><span class="cell-item">Rosespanner Workshop Fixer Gregor</span><br><span class="cell-item">Firefist Office Survivor Gregor</span><br><span class="cell-item">Lobotomy E.G.O::Lamp Gregor</span><br><span class="cell-item">LCE E.G.O::AEDD Gregor</span></td></tr></tbody></table></div>
 <p>2) Status Effects</p>
-<p>- The One Who Grips Faust : Fanatic<br>- N Corp. E.G.O::Contempt, Awe Ryōshū : Contempt, Gaze<br>- The Lord of Hongyuan Hong Lu : Lordsguard<br>- Wild Hunt Heathcliff : Impending Ruin<br>- Kurokumo Clan Captain Ishmael : Battle Ready<br>- The Princess of La Manchaland : Festive Fever<br>- Cinq South Section 4 Director Sinclair : Declared Duel - Sinclair<br>- The Middle Little Brother Sinclair : Vendetta Mark<br>- Wuthering Heights Chief Butler Outis : Echoes of the Manor<br>- LCA Udjat Vanguard Team 3 Leader Outis : Sheut Fracture<br>- Twinhook Pirates First Mate Gregor : Unjust Enrichment<br>- Lobotomy E.G.O::Lamp Gregor : Dazzle<br>- Other : Time Moratorium, Assist Defense</p>
-<p>※ Please note that gradual clarification of descriptions will continue in future updates.</p>
-<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
-<p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before Apr. 30th, 2026, 10:00 AM (KST)<br>- When : After Apr. 23rd (Thu), 2026, 12:00 (KST)<br>- Can be claimed once per account</p>
+<p>- <span class="notice-label">The One Who Grips Faust:</span> Fanatic<br>- N Corp. E.G.O::Contempt, Awe Ryōshū : Contempt, Gaze<br>- <span class="notice-label">The Lord of Hongyuan Hong Lu:</span> Lordsguard<br>- <span class="notice-label">Wild Hunt Heathcliff:</span> Impending Ruin<br>- <span class="notice-label">Kurokumo Clan Captain Ishmael:</span> Battle Ready<br>- <span class="notice-label">The Princess of La Manchaland:</span> Festive Fever<br>- Cinq South Section 4 Director Sinclair : Declared Duel - Sinclair<br>- The Middle Little Brother Sinclair : Vendetta Mark<br>- Wuthering Heights Chief Butler Outis : Echoes of the Manor<br>- LCA Udjat Vanguard Team 3 Leader Outis : Sheut Fracture<br>- Twinhook Pirates First Mate Gregor : Unjust Enrichment<br>- Lobotomy E.G.O::Lamp Gregor : Dazzle<br>- <span class="notice-label">Other:</span> Time Moratorium, Assist Defense</p>
+<p><span class="notice-note">※ Please note that gradual clarification of descriptions will continue in future updates.</span></p>
+<h2 class="notice-section-heading" id="section-4">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Content:</span> Lunacy x300<br>- <span class="notice-label">Recipients:</span> All users whose game accounts were created before Apr. 30th, 2026, 10:00 AM (KST)<br>- <span class="notice-label">When:</span> After Apr. 23rd (Thu), 2026, 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Apr. 30th (Thu), 2026, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-5">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

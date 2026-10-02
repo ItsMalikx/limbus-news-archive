@@ -63,15 +63,21 @@ export function initThemeToggle(buttonId = "themeToggle") {
   const button = document.getElementById(buttonId);
   if (!button) return;
 
-  button.textContent = initial === "dark" ? "☾" : "☀︎";
+  // The icon comes from CSS (html[data-theme]); keep the accessible label in sync.
+  const label = theme => button.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+  label(initial);
 
   button.addEventListener("click", () => {
     const current = document.documentElement.getAttribute("data-theme") || "dark";
     const next = current === "light" ? "dark" : "light";
 
+    // Switch every color at once: hover/background fades would otherwise lag behind the page.
+    const root = document.documentElement;
+    root.classList.add("theme-switching");
     applyTheme(next);
     saveTheme(next);
-    button.textContent = next === "dark" ? "☾" : "☀︎";
+    label(next);
+    requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove("theme-switching")));
   });
 }
 
@@ -182,4 +188,51 @@ export function sortNotices(notices, mode = "date-desc") {
 
 export function buildNoticeUrl(id) {
   return `/notices/${encodeURIComponent(id)}/`;
+}
+
+// App shell menu. Wide screens: the button collapses or expands the sidebar for this page only
+// (every page opens with it expanded). Small screens: it opens the sidebar as a drawer, closed by default.
+export function initShell() {
+  const button = document.getElementById("menuButton");
+  const rail = document.querySelector(".app-layout .browse, .notice-layout .toc");
+  const scrim = document.getElementById("shellScrim");
+  if (!button || !rail || rail.hidden) {
+    if (button) button.hidden = true;
+    return;
+  }
+  const root = document.documentElement;
+  const wide = () => window.matchMedia("(min-width: 760px)").matches;
+  const setDrawer = open => {
+    document.body.classList.toggle("drawer-open", open);
+    button.setAttribute("aria-expanded", String(open));
+    if (scrim) scrim.hidden = !open;
+  };
+  button.addEventListener("click", () => {
+    if (wide()) {
+      if (root.dataset.rail === "collapsed") delete root.dataset.rail; else root.dataset.rail = "collapsed";
+    } else {
+      setDrawer(!document.body.classList.contains("drawer-open"));
+    }
+  });
+  rail.querySelector(".rail-close")?.addEventListener("click", () => setDrawer(false));
+  scrim?.addEventListener("click", () => setDrawer(false));
+  rail.addEventListener("click", event => { if (!wide() && event.target.closest("a")) setDrawer(false); });
+  window.addEventListener("keydown", event => { if (event.key === "Escape") setDrawer(false); });
+  // Browser zoom past the breakpoint keeps an open sidebar open (as a drawer, and back);
+  // an ordinary resize to a narrow window leaves the drawer closed.
+  let wasWide = wide();
+  let ratio = window.devicePixelRatio;
+  window.addEventListener("resize", () => {
+    const now = wide();
+    const zoomed = window.devicePixelRatio !== ratio;
+    ratio = window.devicePixelRatio;
+    if (now === wasWide) return;
+    if (now) {
+      if (document.body.classList.contains("drawer-open")) delete root.dataset.rail;
+      setDrawer(false);
+    } else {
+      setDrawer(zoomed && root.dataset.rail !== "collapsed");
+    }
+    wasWide = now;
+  });
 }

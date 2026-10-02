@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notice: Server Error Fixes &amp; Mirror Dungeon Improvements | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/226/">
@@ -19,28 +18,33 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
     <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span></div><h1 class="notice-inline-title">Notice: Server Error Fixes &amp; Mirror Dungeon Improvements</h1><div class="notice-date"><time datetime="2024-05-02">May 2, 2024</time></div><hr class="notice-title-divider"></div><h2 class="notice-section-heading">[Notice: Server Error Fixes &amp; Mirror Dungeon Improvements]</h2>
-<p>Hello,<br>This is Project Moon.</p>
+      <nav class="toc" id="noticeToc" aria-label="Contents" hidden>
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="fixes" style="--tag-color: #FF8577">Fixes</span></p><h1 class="notice-inline-title">Notice: Server Error Fixes &amp; Mirror Dungeon Improvements</h1><div class="notice-date"><time datetime="2024-05-02">May 2, 2024</time></div><div class="tag-list"><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #76B3F1">Mirror Dungeon</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span></div><hr class="notice-title-divider"></div><p>Hello,<br>This is Project Moon.</p>
 <p>In this notice, we would like to inform you regarding the server errors that have occurred after the May 2nd 12:00 (KST) Scheduled Update, and upcoming improvements to the Mirror Dungeon.</p>
 <p>1. Server Error Fixes</p>
 <p>After the May 2nd 12:00 (KST) Scheduled Update, we identified an issue where an abnormal frequency of server errors prevented players from progressing through the game normally. This issue has now been corrected.</p>
 <p>Over 100,000 server login requests were made immediately after the maintenance completion, which caused the server system to overload and malfunction. This was the cause of the in-game server error popup messages.<br>We have taken temporary measures to stabilize the server.</p>
 <p>Please refer to the following for more details.</p>
-<h3 class="notice-subsection-heading">&lt;Cause&gt;</h3>
+<h2 class="notice-section-heading">&lt;Cause&gt;</h2>
 <p>- Abrupt rise in login attempts within a short span of time<br>- The sudden rise in login attempts sent a relatively large amount of data requests to the server<br>- The amount of data was too much for the server to process, causing the systems to overload and malfunction</p>
 <h3 class="notice-subsection-heading">&lt;Solution&gt;</h3>
 <p>The following functions have been temporarily limited to stabilize the server.<br>- Temporarily disabled Account deletion<br>- Temporarily deleted the notification function for new Friend requests in the main UI (by the user banner on the bottom left side of the screen)<br>We will monitor the server systems for a while before enabling the above functions again.<br>We will inform you via an additional notice regarding the above measures.</p>
@@ -48,7 +52,7 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <p>- We plan to conduct hardware stabilization and logic optimization work so that the server system will function normally even with multiple concentrated requests.</p>
 <p>We sincerely apologize for the inconvenience.</p>
 <p>2. Mirror Dungeon Improvements</p>
-<p>We are closely monitoring the Managers&#x27; opinions regarding the difficulty of Mirror Dungeon - Mirror of the Wuthering.<br>Several adjustments, including balancing adjustments, will be deployed to the Mirror Dungeon after continued observation of your experiences.<br>We will inform you of the Mirror Dungeon improvements via a notice.</p>
+<p>We are closely monitoring the Managers&#x27; opinions regarding the difficulty of Mirror Dungeon - Mirror of the Wuthering.<br>Several adjustments, including balancing adjustments, will be deployed to the Mirror Dungeon after continued observation of your experiences.<br>We will inform you of the Mirror Dungeon improvements via a notice.</p>
 <p>Our intent in planning this Mirror Dungeon was to slowly ease the difficulty as more and more Starter Buffs are unlocked, which would eventually lead to a similar level of difficulty and playtimes.<br>As we have informed you via our previous notice, this Mirror Dungeon may feel more difficult compared to the previous Mirror Dungeon due to the loss of access to the following modifiers: Types of E.G.O Gifts, Numbers, Enhancement Levels, Owned Cost, and Damage Dealt.</p>
 <p>However, we did notice that several enemies that appear in the earlier stages of the Dungeon have abnormally high HP, so their HP will be adjusted via a hotfix.<br>This issue occurred because certain enemies from other content, such as Refraction Railway, did not have their HP scaling applied to them in the process; this led to their HP being higher than it should be at that point in the Mirror Dungeon.<br>We apologize for the troubles the higher enemy HP may have caused in your Mirror Dungeon experience.<br>We will notify you via an additional notice as soon as it is deployed.</p>
 <p>An additional notice will be posted later today regarding additional changes that will be deployed to the Mirror Dungeon.<br>We sincerely apologize for causing these balancing issues and complications with every Mirror Dungeon update.<br>We will make sure to improve these issues so that you will have a more positive experience with our content.</p>
@@ -58,13 +62,14 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

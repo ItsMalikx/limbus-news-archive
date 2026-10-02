@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guide on Season 6: Zàng Huā Yīn | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/387/">
@@ -19,107 +18,98 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span></div><h1 class="notice-inline-title">Guide on Season 6: Zàng Huā Yīn</h1><div class="notice-date"><time datetime="2025-05-05">May 5, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-2">1. Season 5 Egoshard Carryover</a></li><li><a href="#section-3">2. Gradual Main Story &amp; Battle Pass Updates</a></li><li><a href="#section-4">3. Packages</a></li><li><a href="#section-5">4. Identity Level Cap Increase &amp; Luxcavations</a></li><li><a href="#section-6">5. Season 6 Extractions</a></li><li><a href="#section-7">6. Season 6 Dispenser</a></li><li><a href="#section-8">7. Mirror Dungeon #6 In Development</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="announcements" style="--tag-color: #68B7ED">Announcements</span></p><h1 class="notice-inline-title">Guide on Season 6: Zàng Huā Yīn</h1><div class="notice-date"><time datetime="2025-05-05">May 5, 2025</time></div><div class="tag-list"><span class="tag-pill" data-tag="identities-e-g-o" style="--tag-color: #EE8AB2">Identities &amp; E.G.O</span><span class="tag-pill" data-tag="main-story" style="--tag-color: #C2AB7B">Main Story</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #76B3F1">Mirror Dungeon</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span></div><hr class="notice-title-divider"></div><p>Greetings, dear Manager.</p>
 <p>[Season 6: Zàng Huā Yīn] will commence on May 15th, 2025, at 12:00 PM (KST).<br>This notice will provide information on Season 6 and its new or adjusted systems.</p>
-<p>Please note that the contents shown here are subject to change. <br>We will notify you again as each update is deployed.</p>
-<h2 class="notice-section-heading">Index</h2><hr class="notice-section-divider">
+<p>Please note that the contents shown here are subject to change.<br>We will notify you again as each update is deployed.</p>
+<h2 class="notice-section-heading" id="section-1">Index</h2><hr class="notice-section-divider">
 <p>1. Season 5 Egoshard Carryover<br>2. Gradual Main Story &amp; Battle Pass Updates<br>3. Packages<br>4. Identity Level Cap Increased &amp; Luxcavations<br>5. Season 6 Extractions<br>6. Season 6 Dispenser<br>7. Mirror Dungeon #6 In Development</p>
-<h2 class="notice-section-heading">1. Season 5 Egoshard Carryover</h2><hr class="notice-section-divider">
-<h2 class="notice-section-heading">Guide on Season Changes - Egoshards</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-2">1. Season 5 Egoshard Carryover</h2><hr class="notice-section-divider">
+<h3 class="notice-subsection-heading">Guide on Season Changes - Egoshards</h3><hr class="notice-subsection-divider">
 <p>- When a new Season begins, half of the previous Season’s Egoshards will be carried over (rounded up).<br>- The carryover rates for unconverted Egoshards from multiple seasons past will be halved for each following Season.<br>- The remaining Egoshards are converted into Thread.<br>- Egoshard Crates (both random and nominable) will be carried over in the same way.</p>
 <p>As per the information above, half of the currencies listed below will be converted to Season 6’s.</p>
 <p>- Season 5 [Sinner]’s Egoshards<br>- Season 5 Uptie &amp; Threadspinning only Shards (Universal)<br>- Season 5 Egoshard Crate<br>- Season 5 Nominable Egoshard Crate</p>
 <p>The carryover of currencies to Season 6 will automatically occur the first time you log into the game during Season 6.<br>A popup will show how much previous Season’s Egoshard relevant currency you owned, and how they have been converted.</p>
-<p>※ Previous Season’s Identity Egoshard currencies that are still in the Mailbox or in the Lost &amp; Found will be carried over when they are claimed. Carryover to Season 6 currency will occur as soon as they are claimed, and currencies that were not carried over will be converted to Thread-related currencies.</p>
-<h2 class="notice-section-heading">2. Gradual Main Story &amp; Battle Pass Updates</h2><hr class="notice-section-divider">
+<p><span class="notice-note notice-note--important">※ Previous Season’s Identity Egoshard currencies that are still in the Mailbox or in the Lost &amp; Found will be carried over when they are claimed. Carryover to Season 6 currency will occur as soon as they are claimed, and currencies that were not carried over will be converted to Thread-related currencies.</span></p>
+<h2 class="notice-section-heading" id="section-3">2. Gradual Main Story &amp; Battle Pass Updates</h2><hr class="notice-section-divider">
 <p>Chapter 8 of the main story and the Season 6 Pass will be updated in 3 parts.</p>
-<p>► 5/15<br>- Main Story Ch. 8 《Part 1》<br>- Season 6 Pass Rewards 《Lv. 1 ~ Lv. 20》</p>
-<p>► 5/22<br>- Main Story Ch. 8 《Part 2》<br>- Season 6 Pass Rewards 《Lv. 21 ~ Lv. 40》</p>
-<p>► 5/29<br>- Main Story Ch. 8 《Part 3》<br>- Season 6 Pass Rewards 《Lv. 41 ~ Lv. 120 (Max Pass Level)》<br>- Season 6 Pass Max Pass Level+ Rewards</p>
-<p>Accumulated Pass Levels are continuously tracked regardless of the gradual updates. <br>When the subsequent updates unlock the rewards for higher Pass Levels, you can immediately claim them up to your accumulated Pass Level.</p>
+<p><span class="notice-marker">▶</span> 5/15<br>- Main Story Ch. 8 《Part 1》<br>- Season 6 Pass Rewards 《Lv. 1 ~ Lv. 20》</p>
+<p><span class="notice-marker">▶</span> 5/22<br>- Main Story Ch. 8 《Part 2》<br>- Season 6 Pass Rewards 《Lv. 21 ~ Lv. 40》</p>
+<p><span class="notice-marker">▶</span> 5/29<br>- Main Story Ch. 8 《Part 3》<br>- Season 6 Pass Rewards 《Lv. 41 ~ Lv. 120 (Max Pass Level)》<br>- Season 6 Pass Max Pass Level+ Rewards</p>
+<p>Accumulated Pass Levels are continuously tracked regardless of the gradual updates.<br>When the subsequent updates unlock the rewards for higher Pass Levels, you can immediately claim them up to your accumulated Pass Level.</p>
 <p>Max Pass Level rewards earned for leveling up the Pass past the max Pass Level are also kept track of even when they aren’t unlocked, and you can claim the accumulated Season 6 Nominable Egoshard Crates immediately once they are made available.</p>
 <p>Chapter 8 stage progression rewards and Max Pass Level rewards will become available to claim with the May 29th update, when 《Part 3》 of this chapter is added.</p>
-<p>※ Battle Pass Changes<br>Unlike in previous Seasons’ Battle Passes, Season 6 Battle Pass contains 4 E.G.O, not 6 E.G.O. To make up for the reduced number of E.G.O in the Battle Pass, more rewards will be added to the Battle Pass, and preexisting rewards will be boosted.</p>
+<p><span class="notice-note">※ Battle Pass Changes</span><br>Unlike in previous Seasons’ Battle Passes, Season 6 Battle Pass contains 4 E.G.O, not 6 E.G.O. To make up for the reduced number of E.G.O in the Battle Pass, more rewards will be added to the Battle Pass, and preexisting rewards will be boosted.</p>
 <p>With every new main chapter, we always had a feeling that we could have done more—as E.G.O animation development coincided with development schedule for the new main story development within a limited timeframe, we could not put as much focus on developing the main chapter enemies or cutscenes.</p>
 <p>For this reason, given the limited time we have, we decided that a more effective means of expressing the imagery and the interesting parts of the main chapter would be to vary the types of enemies or the qualities present in each of them, while putting more of our focus into raising the bar for the main highlight E.G.O.</p>
 <p>Also, considering the reduced number of E.G.O in the Battle Pass, we decided to boost the amount of Extraction Tickets and upgrade resources and add Uptie-related items to maintain the value of the Battle Pass.</p>
 <p>We will try our best to make up for the disappointment caused by the reduced number of E.G.O in the Battle Pass by creating an exciting main story chapter.</p>
-<p>► Changes (Battle Pass Activated)</p>
-<p>[ Contents ] E.G.O<br>[ Season 5: Oblivion ] x6<br>[ Season 6: Zàng Huā Yīn ] x4</p>
-<p>[ Contents ] Extraction Tickets<br>[ Season 5: Oblivion ] x20<br>[ Season 6: Zàng Huā Yīn ] x30</p>
-<p>[ Contents ] Season 6 Uptie &amp; Threadspinning only Shards (Universal)<br>[ Season 5: Oblivion ] None<br>[ Season 6: Zàng Huā Yīn ] x150</p>
-<p>[ Contents ] Training Tickets (EXP)<br>[ Season 5: Oblivion ] Identity Training Ticket II x150, Identity Training Ticket III x80 (110,000 EXP)<br>[ Season 6: Zàng Huā Yīn ] Identity Training Ticket III x80, Identity Training Ticket IV x30 (170,000 EXP)</p>
-<p>[ Contents ] Takeoff Module - Identity Uptie<br>[ Season 5: Oblivion ] None<br>[ Season 6: Zàng Huā Yīn ] x2</p>
-<h2 class="notice-section-heading">3. Packages</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Changes (Battle Pass Activated)</p>
+<p>Contents : E.G.O<br>Season 5: Oblivion : x6<br>Season 6: Zàng Huā Yīn : x4</p>
+<p>Contents : Extraction Tickets<br>Season 5: Oblivion : x20<br>Season 6: Zàng Huā Yīn : x30</p>
+<p>Contents : Season 6 Uptie &amp; Threadspinning only Shards (Universal)<br>Season 5: Oblivion : None<br>Season 6: Zàng Huā Yīn : x150</p>
+<p>Contents : Training Tickets (EXP)<br>Season 5: Oblivion : Identity Training Ticket II x150, Identity Training Ticket III x80 (110,000 EXP)<br>Season 6: Zàng Huā Yīn : Identity Training Ticket III x80, Identity Training Ticket IV x30 (170,000 EXP)</p>
+<p>Contents : Takeoff Module - Identity Uptie<br>Season 5: Oblivion : None<br>Season 6: Zàng Huā Yīn : x2</p>
+<h2 class="notice-section-heading" id="section-4">3. Packages</h2><hr class="notice-section-divider">
 <p>With the Season 6 Update, the following 2 new packages will be added to the game.</p>
-<p>- Season 6 Commencement Lunacy Pack<br>[ Package Title ] Season 6 Commencement Lunacy Pack<br>[ Contents ] Paid Lunacy 1300<br>[ Price ] ￦15,000 / $10.99 / ¥1,500</p>
-<p>※ We recommend this Package for Managers who seek to purchase only the Battle Pass.<br>(Battle Pass Price : Paid Lunacy x1300)</p>
-<p>- Season 6 Settler Supplies<br>[ Package Title ] Season 6 Settler Supplies<br>[ Contents ] Lunacy (Paid) x5040, Decaextraction Ticket x3, Identity Training Ticket IV x60, Thread x80, Season 5 Nominable Egoshard Crate x 40<br>[ Price ] ￦99,000 / $69.99 / ¥10,000</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><caption>Season 6 Commencement Lunacy Pack</caption><tbody><tr><th scope="row">Package Title</th><td>Season 6 Commencement Lunacy Pack</td></tr><tr><th scope="row">Contents</th><td>Paid Lunacy 1300</td></tr><tr><th scope="row">Price</th><td>￦15,000 / $10.99 / ¥1,500</td></tr></tbody></table></div>
+<p><span class="notice-note">※ We recommend this Package for Managers who seek to purchase only the Battle Pass.</span><br><span class="notice-note">(Battle Pass Price : Paid Lunacy x1300)</span></p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><caption>Season 6 Settler Supplies</caption><tbody><tr><th scope="row">Package Title</th><td>Season 6 Settler Supplies</td></tr><tr><th scope="row">Contents</th><td><span class="cell-item">Lunacy (Paid) x5040</span><br><span class="cell-item">Decaextraction Ticket x3</span><br><span class="cell-item">Identity Training Ticket IV x60</span><br><span class="cell-item">Thread x80</span><br><span class="cell-item">Season 5 Nominable Egoshard Crate x 40</span></td></tr><tr><th scope="row">Price</th><td>￦99,000 / $69.99 / ¥10,000</td></tr></tbody></table></div>
 <p>The following are the prices for the Battle Pass &amp; Battle Pass Package.</p>
-<p>- Battle Pass<br>[ Package Title ] Limbus Pass<br>[ Contents ] Battle Pass Rewards (maxes out at Lv. 120), Battle Pass Max Pass Level EX Rewards<br>[ Price ] Paid Lunacy x 1300</p>
-<p>[ Package Title ] Limbus Pass Package<br>[ Contents ] Battle Pass Rewards (maxes out at Lv. 120), Battle Pass Max Pass Level EX Rewards, Special Banner x1, Level Boost Ticket V x1, +10 Battle Pass Level<br>[ Price ] Paid Lunacy x 2700</p>
-<p>[ Package Title ] Limbus Pass Package (when purchased separately)<br>[ Contents ] Special Banner x1, Level Boost Ticket V x1, +10 Battle Pass Level<br>[ Price ] Paid Lunacy x 1700</p>
-<h2 class="notice-section-heading">4. Identity Level Cap Increase &amp; Luxcavations</h2><hr class="notice-section-divider">
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><caption>Battle Pass</caption><tbody><tr><th scope="row">Package Title</th><td>Limbus Pass</td></tr><tr><th scope="row">Contents</th><td><span class="cell-item">Battle Pass Rewards (maxes out at Lv. 120)</span><br><span class="cell-item">Battle Pass Max Pass Level EX Rewards</span></td></tr><tr><th scope="row">Price</th><td>Paid Lunacy x 1300</td></tr></tbody></table></div>
+<div class="notice-table-wrap"><table class="notice-table notice-table--records"><thead><tr><th>Package Title</th><th>Contents</th><th>Price</th></tr></thead><tbody><tr><td>Limbus Pass Package</td><td><span class="cell-item">Battle Pass Rewards (maxes out at Lv. 120)</span><br><span class="cell-item">Battle Pass Max Pass Level EX Rewards</span><br><span class="cell-item">Special Banner x1</span><br><span class="cell-item">Level Boost Ticket V x1</span><br><span class="cell-item">+10 Battle Pass Level</span></td><td>Paid Lunacy x 2700</td></tr><tr><td>Limbus Pass Package (when purchased separately)</td><td><span class="cell-item">Special Banner x1</span><br><span class="cell-item">Level Boost Ticket V x1</span><br><span class="cell-item">+10 Battle Pass Level</span></td><td>Paid Lunacy x 1700</td></tr></tbody></table></div>
+<h2 class="notice-section-heading" id="section-5">4. Identity Level Cap Increase &amp; Luxcavations</h2><hr class="notice-section-divider">
 <h3 class="notice-subsection-heading">&lt;Identity Level Cap Increase&gt;</h3>
 <p>If you have cleared the Main Story Chapter 7, the max level of Identities will be increased from 50 to 55 with the Season 6 Update.</p>
-<p>- Identity Level Cap Increase Conditions<br>No Conditions : Identity Level Cap 40<br>Clear Main Story Chapter 5 : Identity Level Cap 45<br>Clear main Story Chapter 6 : Identity Level Cap 50<br>Clear main Story Chapter 7 : Identity Level Cap 55</p>
+<p class="notice-table-title">Identity Level Cap Increase Conditions</p><div class="notice-table-wrap"><table class="notice-table notice-table--keyed"><thead><tr><th>Conditions</th><th>Identity Level Cap</th></tr></thead><tbody><tr><th scope="row">No Conditions</th><td>40</td></tr><tr><th scope="row">Clear Main Story Chapter 5</th><td>45</td></tr><tr><th scope="row">Clear main Story Chapter 6</th><td>50</td></tr><tr><th scope="row">Clear main Story Chapter 7</th><td>55</td></tr></tbody></table></div>
 <h3 class="notice-subsection-heading">&lt;New EXP Luxcavation&gt;</h3>
-<p>Clearing a certain stage in Chapter 8 《Part 2》<br>will unlock EXP Luxcavation #8</p>
-<p>[ Stage ] EXP Luxcavation #8<br>[ Enkephalin Cost ] 60<br>[ Rewards ] Identity Training Ticket IV x6, Identity Training Ticket III x2, Identity Training Ticket II x4<br>[ EXP Conversion ] 20800</p>
-<p>[ Stage ] Luxcavation #8 (When skipped)<br>[ Enkephalin Cost ] 120<br>[ Rewards ] Identity Training Ticket IV x9, Identity Training Ticket III x3, Identity Training Ticket II x6<br>[ EXP Conversion ] 31200</p>
-<p>Starting from EXP Luxcavation #8, Slash, Pierce, and Blunt Stages will be introduced. They each open on the following days:<br>- Slash : MON, TUE, SUN<br>- Pierce : WED, THU, SUN<br>- Blunt : FRI, SAT, SUN</p>
+<p>Clearing a certain stage in Chapter 8 《Part 2》 will unlock EXP Luxcavation #8</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--records"><thead><tr><th>Stage</th><th>Enkephalin Cost</th><th>Rewards</th><th>EXP Conversion</th></tr></thead><tbody><tr><td>EXP Luxcavation #8</td><td>60</td><td><span class="cell-item">Identity Training Ticket IV x6</span><br><span class="cell-item">Identity Training Ticket III x2</span><br><span class="cell-item">Identity Training Ticket II x4</span></td><td>20800</td></tr><tr><td>Luxcavation #8 (When skipped)</td><td>120</td><td><span class="cell-item">Identity Training Ticket IV x9</span><br><span class="cell-item">Identity Training Ticket III x3</span><br><span class="cell-item">Identity Training Ticket II x6</span></td><td>31200</td></tr></tbody></table></div>
+<p>Starting from EXP Luxcavation #8, Slash, Pierce, and Blunt Stages will be introduced. They each open on the following days:<br>- <span class="notice-label">Slash:</span> MON, TUE, SUN<br>- <span class="notice-label">Pierce:</span> WED, THU, SUN<br>- <span class="notice-label">Blunt:</span> FRI, SAT, SUN</p>
 <p>Each Attack Type Stage has first-time clear rewards, and clearing each Attack Type unlocks the Encounter Skip option for the said Attack Type Stage. For example, clearing Luxcavation #8 [Slash] will unlock the Skip function only for Luxcavation #8 [Slash] and not [Pierce] or [Blunt].</p>
-<h2 class="notice-section-heading">5. Season 6 Extractions</h2><hr class="notice-section-divider">
-<h2 class="notice-section-heading">Guide on Season Changes - Extractions</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-6">5. Season 6 Extractions</h2><hr class="notice-section-divider">
+<h3 class="notice-subsection-heading">Guide on Season Changes - Extractions</h3><hr class="notice-subsection-divider">
 <p>- The new Season’s Identities and E.G.O will be added to the list of Extractable items.<br>- Identities &amp; E.G.O from previous Seasons remain in the pool and are obtainable via Extractions.<br>- Event Identities &amp; E.G.O from previous Seasons, cannot be obtained from Extractions. However, in Sinner-specific Target Extractions, previous Seasons’ Event and Event Reward Identities &amp; E.G.O will be available from the respective Sinner’s Extractions and their Yisang Exchange cataolog.</p>
-<h3 class="notice-subsection-heading">[ Remains Extractable ]</h3>
-<p>Season 4 : [Standard Fare], [Season 1~3]<br>Season 5 : [Standard Fare], [Season 1~4]<br>Season 6 : [Standard Fare], [Season 1~5]</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><caption>Remains Extractable</caption><tbody><tr><th scope="row">Season 4</th><td><span class="cell-item"><span class="cell-unit">[Standard Fare]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 1~3]</span></span></td></tr><tr><th scope="row">Season 5</th><td><span class="cell-item"><span class="cell-unit">[Standard Fare]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 1~4]</span></span></td></tr><tr><th scope="row">Season 6</th><td><span class="cell-item"><span class="cell-unit">[Standard Fare]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 1~5]</span></span></td></tr></tbody></table></div>
 <h3 class="notice-subsection-heading">[ Event IDs &amp; E.G.O from the immediately preceding Season removed ]</h3>
-<p>Season 4 : [Season 3 Event]<br>Season 5 : [Season 4 Event]<br>Season 6 : [Season 5 Event]</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">Season 4</th><td><span class="cell-unit">[Season 3 Event]</span></td></tr><tr><th scope="row">Season 5</th><td><span class="cell-unit">[Season 4 Event]</span></td></tr><tr><th scope="row">Season 6</th><td><span class="cell-unit">[Season 5 Event]</span></td></tr></tbody></table></div>
 <h3 class="notice-subsection-heading">[ IDs &amp; E.G.O added during the ongoing Season ]</h3>
-<p>Season 4 : [Season 4], [Season 4 Event]<br>Season 5 : [Season 5], [Season 5 Event]<br>Season 6 : [Season 6], [Season 6 Event]</p>
-<h3 class="notice-subsection-heading">[ All Extractables ]</h3>
-<p>Season 4 : [Standard], [Season 1~3], [Season 4], [Season 4 Event]<br>Season 5 : [Standard], [Season 1~4], [Season 5], [Season 5 Event]<br>Season 6 : [Standard], [Season 1~5], [Season 6], [Season 6 Event]</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">Season 4</th><td><span class="cell-item"><span class="cell-unit">[Season 4]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 4 Event]</span></span></td></tr><tr><th scope="row">Season 5</th><td><span class="cell-item"><span class="cell-unit">[Season 5]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 5 Event]</span></span></td></tr><tr><th scope="row">Season 6</th><td><span class="cell-item"><span class="cell-unit">[Season 6]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 6 Event]</span></span></td></tr></tbody></table></div>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><caption>All Extractables</caption><tbody><tr><th scope="row">Season 4</th><td><span class="cell-item"><span class="cell-unit">[Standard]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 1~3]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 4]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 4 Event]</span></span></td></tr><tr><th scope="row">Season 5</th><td><span class="cell-item"><span class="cell-unit">[Standard]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 1~4]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 5]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 5 Event]</span></span></td></tr><tr><th scope="row">Season 6</th><td><span class="cell-item"><span class="cell-unit">[Standard]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 1~5]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 6]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 6 Event]</span></span></td></tr></tbody></table></div>
 <p>As shown in the image above, the following identities and E.G.O will be removed from all Extractable item lists with the start of Season 6. (※ Except from the following Extractions: [Season 5] Assured Extraction: 3★ Identity, and Sinner-specific Target Extractions)</p>
-<p>► [Season 5 Event] Identities • E.G.O<br>E.G.O [HE] : Christmas Nightmare Ishmael, Christmas Nightmare Gregor, Thoracalgia Ryōshū<br>3★ : LCE E.G.O::Ardor Blossom Star Faust, Kurokumo Clan Captain Ishmael, Heishou Pack - Mao Branch Ryōshū</p>
-<p>※ In Sinner-specific Target Extractions, Previous Seasons’ Event and Event Reward Identities &amp; E.G.O will still be available from the respective Sinner’s Extractions and their Yisang Exchange cataolog.</p>
-<h2 class="notice-section-heading">6. Season 6 Dispenser</h2><hr class="notice-section-divider">
-<h2 class="notice-section-heading">Guide on Season Changes - Dispenser</h2><hr class="notice-section-divider">
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><caption>[Season 5 Event] Identities • E.G.O</caption><tbody><tr><th scope="row">E.G.O [HE]</th><td><span class="cell-item">Christmas Nightmare Ishmael</span><br><span class="cell-item">Christmas Nightmare Gregor</span><br><span class="cell-item">Thoracalgia Ryōshū</span></td></tr><tr><th scope="row">3★</th><td><span class="cell-item">LCE E.G.O::Ardor Blossom Star Faust</span><br><span class="cell-item">Kurokumo Clan Captain Ishmael</span><br><span class="cell-item">Heishou Pack - Mao Branch Ryōshū</span></td></tr></tbody></table></div>
+<p><span class="notice-note">※ In Sinner-specific Target Extractions, Previous Seasons’ Event and Event Reward Identities &amp; E.G.O will still be available from the respective Sinner’s Extractions and their Yisang Exchange cataolog.</span></p>
+<h2 class="notice-section-heading" id="section-7">6. Season 6 Dispenser</h2><hr class="notice-section-divider">
+<h3 class="notice-subsection-heading">Guide on Season Changes - Dispenser</h3><hr class="notice-subsection-divider">
 <p>- Identities and E.G.O from the new Season will be available at the Dispenser.<br>- You will be able to exchange for Identities and E.G.O from the past Seasons’ Battle Passes.<br>- Please note that Extraction Identities &amp; E.G.O belonging to the Season immediately before the new Season will be inaccessible from the Dispenser.</p>
-<h3 class="notice-subsection-heading">[ Remains Dispensable ]</h3>
-<p>Season 4 : [Standard Fare]<br>Season 5 : [Standard Fare]<br>Season 6 : [Standard Fare]</p>
-<h3 class="notice-subsection-heading">[ New Season IDs &amp; E.G.O Added ]</h3>
-<p>Season 4 : [Season 4], [Season 4 Event]<br>Season 5 : [Season 5], [Season 5 Event]<br>Season 6 : [Season 6], [Season 6 Event]</p>
-<h3 class="notice-subsection-heading">[ Previous Season Pass E.G.O Added ]</h3>
-<p>Season 4 : [Season 1~3 Pass] E.G.O<br>Season 5 : [Season 1~4 Pass] E.G.O<br>Season 6 : [Season 1~5 Pass] E.G.O</p>
-<h3 class="notice-subsection-heading">[ Previous Season IDs &amp; E.G.O Removed ]</h3>
-<p>Season 4 : [Season 3], [Season 3 Event]<br>Season 5 : [Season 4], [Season 4 Event]<br>Season 6 : [Season 5], [Season 5 Event]</p>
-<h3 class="notice-subsection-heading">[ IDs &amp; E.G.O from 2+ Seasons Past Added ]</h3>
-<p>Season 4 : [Season 1~2], [Season 1~2 Event]<br>Season 5 : [Season 1~3], [Season 1~3 Event]<br>Season 6 : [Season 1~4], [Season 1~4 Event]</p>
-<h3 class="notice-subsection-heading">[ Dispensable List ]</h3>
-<p>Season 4 : [Standard Fare], [Season 4], [Season 4 Event], [Season 1~3 Pass] E.G.O, [Season 1~2], [Season 1~2 Event]<br>Season 5 : [Standard Fare], [Season 5], [Season 5 Event], [Season 1~4 Pass] E.G.O, [Season 1~3], [Season 1~3 Event]<br>Season 6 : [Standard Fare], [Season 6], [Season 6 Event], [Season 1~5 Pass] - E.G.O, [Season 1~4], [Season 1~4 Event]</p>
-<p>As shown in the image above, the following Identities and E.G.O<br>will be removed from the Dispenser catalog with the start of Season 6.</p>
-<p>► [Season 5] Identities &amp; E.G.O<br>E.G.O [WAW] : Indicant’s Trial Rodion<br>E.G.O [HE] : Fell Bullet Yi Sang, Thoracalgia Faust<br>3★ : Cinq West Section 3 Meursault, The Barber of La Manchaland Outis, The Priest of La Manchaland Gregor, The Princess of La Manchaland Rodion, The Manager of La Manchaland Don Quixote, Firefist Office Survivor Gregor<br>2★ : Zwei West Section 3 Sinclair, Fanghunt Office Fixer Hong Lu</p>
-<p>► [Season 5 Event] Identities &amp; E.G.O<br>E.G.O [HE] : Christmas Nightmare Ishmael, Christmas Nightmare Gregor, Thoracalgia Ryōshū<br>3★ : LCE E.G.O::Ardor Blossom Star Faust, Kurokumo Clan Captain Ishmael, Heishou Pack - Mao Branch Ryōshū</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--grid"><thead><tr><th class="notice-table__corner"></th><th>Remains Dispensable</th><th>New Season IDs &amp; E.G.O Added</th><th>Previous Season Pass E.G.O Added</th><th>Previous Season IDs &amp; E.G.O Removed</th><th>IDs &amp; E.G.O from 2+ Seasons Past Added</th><th>Dispensable List</th></tr></thead><tbody><tr><th scope="row">Season 4</th><td><span class="cell-unit">[Standard Fare]</span></td><td><span class="cell-item"><span class="cell-unit">[Season 4]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 4 Event]</span></span></td><td><span class="cell-unit">[Season 1~3 Pass] E.G.O</span></td><td><span class="cell-item"><span class="cell-unit">[Season 3]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 3 Event]</span></span></td><td><span class="cell-item"><span class="cell-unit">[Season 1~2]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 1~2 Event]</span></span></td><td><span class="cell-item"><span class="cell-unit">[Standard Fare]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 4]</span> <span class="cell-unit">[Season 4 Event]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 1~3 Pass] E.G.O</span></span><br><span class="cell-item"><span class="cell-unit">[Season 1~2]</span> <span class="cell-unit">[Season 1~2 Event]</span></span></td></tr><tr><th scope="row">Season 5</th><td><span class="cell-unit">[Standard Fare]</span></td><td><span class="cell-item"><span class="cell-unit">[Season 5]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 5 Event]</span></span></td><td><span class="cell-unit">[Season 1~4 Pass] E.G.O</span></td><td><span class="cell-item"><span class="cell-unit">[Season 4]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 4 Event]</span></span></td><td><span class="cell-item"><span class="cell-unit">[Season 1~3]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 1~3 Event]</span></span></td><td><span class="cell-item"><span class="cell-unit">[Standard Fare]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 5]</span> <span class="cell-unit">[Season 5 Event]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 1~4 Pass] E.G.O</span></span><br><span class="cell-item"><span class="cell-unit">[Season 1~3]</span> <span class="cell-unit">[Season 1~3 Event]</span></span></td></tr><tr><th scope="row">Season 6</th><td><span class="cell-unit">[Standard Fare]</span></td><td><span class="cell-item"><span class="cell-unit">[Season 6]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 6 Event]</span></span></td><td><span class="cell-unit">[Season 1~5 Pass] E.G.O</span></td><td><span class="cell-item"><span class="cell-unit">[Season 5]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 5 Event]</span></span></td><td><span class="cell-item"><span class="cell-unit">[Season 1~4]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 1~4 Event]</span></span></td><td><span class="cell-item"><span class="cell-unit">[Standard Fare]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 6]</span> <span class="cell-unit">[Season 6 Event]</span></span><br><span class="cell-item"><span class="cell-unit">[Season 1~5 Pass] - E.G.O</span></span><br><span class="cell-item"><span class="cell-unit">[Season 1~4]</span> <span class="cell-unit">[Season 1~4 Event]</span></span></td></tr></tbody></table></div>
+<p>As shown in the image above, the following Identities and E.G.O will be removed from the Dispenser catalog with the start of Season 6.</p>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><caption>[Season 5] Identities &amp; E.G.O</caption><tbody><tr><th scope="row">E.G.O [WAW]</th><td>Indicant’s Trial Rodion</td></tr><tr><th scope="row">E.G.O [HE]</th><td>Fell Bullet Yi Sang, Thoracalgia Faust</td></tr><tr><th scope="row">3★</th><td><span class="cell-item">Cinq West Section 3 Meursault</span><br><span class="cell-item">The Barber of La Manchaland Outis</span><br><span class="cell-item">The Priest of La Manchaland Gregor</span><br><span class="cell-item">The Princess of La Manchaland Rodion</span><br><span class="cell-item">The Manager of La Manchaland Don Quixote</span><br><span class="cell-item">Firefist Office Survivor Gregor</span></td></tr><tr><th scope="row">2★</th><td><span class="cell-item">Zwei West Section 3 Sinclair</span><br><span class="cell-item">Fanghunt Office Fixer Hong Lu</span></td></tr></tbody></table></div>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><caption>[Season 5 Event] Identities &amp; E.G.O</caption><tbody><tr><th scope="row">E.G.O [HE]</th><td><span class="cell-item">Christmas Nightmare Ishmael</span><br><span class="cell-item">Christmas Nightmare Gregor</span><br><span class="cell-item">Thoracalgia Ryōshū</span></td></tr><tr><th scope="row">3★</th><td><span class="cell-item">LCE E.G.O::Ardor Blossom Star Faust</span><br><span class="cell-item">Kurokumo Clan Captain Ishmael</span><br><span class="cell-item">Heishou Pack - Mao Branch Ryōshū</span></td></tr></tbody></table></div>
 <p>Also, the following Identities &amp; E.G.O will be added to the catalog.</p>
-<p>► [Season 4 Pass] E.G.O<br>E.G.O [WAW] : Yearning - Mircalla Don Quixote, Yearning - Mircalla Meursault<br>E.G.O [HE] : Hex Nail Rodion<br>E.G.O [TETH] : Hex Nail Sinclair, Lasso Hong Lu, Lasso Faust</p>
-<p>► [Season 4] Identitites &amp; E.G.O<br>E.G.O [WAW] : Contempt, Awe Ryōshū<br>3★ : Wuthering Heights Chief Butler Outis, Edgar Family Heir Gregor, Edgar Family Chief Butler Ryōshū, Wild Hunt Heathcliff<br>2★ : Dead Rabbits Boss Meursault, Wuthering Heights Butler Faust, Edgar Family Butler Ishmael</p>
-<p>► [Season 4 Event] Identitites &amp; E.G.O<br>E.G.O [WAW] : Everlasting Faust<br>E.G.O [HE] : Dimension Shredder Outis<br>3★ : MultiCrack Office Fixer Faust, District 20 Yurodivy Hong Lu<br>2★ : MultiCrack Office Fixer Heathcliff, District 20 Yurodivy Ryōshū</p>
-<h2 class="notice-section-heading">7. Mirror Dungeon #6 In Development</h2><hr class="notice-section-divider">
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><caption>[Season 4 Pass] E.G.O</caption><tbody><tr><th scope="row">E.G.O [WAW]</th><td><span class="cell-item">Yearning - Mircalla Don Quixote</span><br><span class="cell-item">Yearning - Mircalla Meursault</span></td></tr><tr><th scope="row">E.G.O [HE]</th><td>Hex Nail Rodion</td></tr><tr><th scope="row">E.G.O [TETH]</th><td>Hex Nail Sinclair, Lasso Hong Lu, Lasso Faust</td></tr></tbody></table></div>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><caption>[Season 4] Identitites &amp; E.G.O</caption><tbody><tr><th scope="row">E.G.O [WAW]</th><td>Contempt, Awe Ryōshū</td></tr><tr><th scope="row">3★</th><td><span class="cell-item">Wuthering Heights Chief Butler Outis</span><br><span class="cell-item">Edgar Family Heir Gregor</span><br><span class="cell-item">Edgar Family Chief Butler Ryōshū</span><br><span class="cell-item">Wild Hunt Heathcliff</span></td></tr><tr><th scope="row">2★</th><td><span class="cell-item">Dead Rabbits Boss Meursault</span><br><span class="cell-item">Wuthering Heights Butler Faust</span><br><span class="cell-item">Edgar Family Butler Ishmael</span></td></tr></tbody></table></div>
+<div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><caption>[Season 4 Event] Identitites &amp; E.G.O</caption><tbody><tr><th scope="row">E.G.O [WAW]</th><td>Everlasting Faust</td></tr><tr><th scope="row">E.G.O [HE]</th><td>Dimension Shredder Outis</td></tr><tr><th scope="row">3★</th><td><span class="cell-item">MultiCrack Office Fixer Faust</span><br><span class="cell-item">District 20 Yurodivy Hong Lu</span></td></tr><tr><th scope="row">2★</th><td><span class="cell-item">MultiCrack Office Fixer Heathcliff</span><br><span class="cell-item">District 20 Yurodivy Ryōshū</span></td></tr></tbody></table></div>
+<h2 class="notice-section-heading" id="section-8">7. Mirror Dungeon #6 In Development</h2><hr class="notice-section-divider">
 <p>Mirror Dungeon #6 will be added during Season 6.</p>
 <p>With the Mirror Dungeon #6 Update, the preexisting Mirror Dungeon #5 [Mirror of the Dreaming] will be closed.</p>
 <p>We will inform you further with a notice dedicated to Mirror Dungeon #6 in the future.</p></div>
@@ -127,13 +117,14 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

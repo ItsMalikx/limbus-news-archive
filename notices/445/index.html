@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2025, Aug. 7th Scheduled Update Notice | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/445/">
@@ -19,81 +18,88 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">2025, Aug. 7th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-08-04">August 4, 2025</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">New Content</a></li><li><a href="#section-2">Bug Fixes &amp; Improvements</a></li><li><a href="#section-3">Maintenance &amp; Application Update Compensation</a></li><li><a href="#section-4">Notes</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="patch-notes" style="--tag-color: #64C897">Patch Notes</span></p><h1 class="notice-inline-title">2025, Aug. 7th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2025-08-04">August 4, 2025</time></div><div class="tag-list"><span class="tag-pill" data-tag="main-story" style="--tag-color: #C2AB7B">Main Story</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #76B3F1">Mirror Dungeon</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Aug. 7th, 2025 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-1">New Content</h2><hr class="notice-section-divider">
 <p>1. New Content [Mirror of Immortality Parallel Superposition Mode &amp; Achievements]</p>
-<p>※ Please refer to the Steam Announcements Page for more information.</p>
-<p>※ For the Mirror of Immortality Parallel Superposition mode and Achievements implementation, Mirror Dungeon entry will be blocked for the following period: Aug. 7th, 2025 06:00 ~ 12:00 (KST)</p>
-<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
-<p>► Fixed an issue where, in Stage 6.5-15 (Hard) Dungeon, a Choice Event option could not be interacted with despite having the requisite E.G.O Gift</p>
-<p>► Fixed an issue where parts of E.G.O Gifts &#x27;Lightning Axe, Flower in the Mirror, and Moon in the Water&#x27; did not work properly</p>
-<p>※ Issue 1: Fixed an issue where the effects that are strengthened based on the number of Deployed Identities did not activate in the first Encounter after obtaining the E.G.O Gift</p>
-<p>※ Issue 2: An issue where, in Chain Battles, Backup Unit Identities did not count toward the E.G.O Gift strengthening conditionals</p>
-<p>► Fixed an issue where, if the enhanced version of E.G.O Gift &#x27;Nebulizer&#x27; was equipped while Faust E.G.O &#x27;Thoracalgia&#x27; Passive &#x27;Breath&#x27; was activated, certain effects did not activate</p>
-<p>※ Relevant Effects : First Turn Start of a wave: all allies gain X Poise Potency and +Y Poise Count</p>
-<p>► Fixed an issue where parts of E.G.O Gifts &#x27;Microprecision Time Accelerator&#x27; buff &#x27;Microprecision Time Acceleration&#x27; did not work properly</p>
-<p>※ Issue 1: Fixed an issue where the units&#x27; minimum and maximum Speed values did not apply immediately upon Encounter Start</p>
-<p>※ Issue 2: Fixed an issue where Base Power, Damage, and Stagger Threshold-raising effects were boosted even for Skills that don&#x27;t inflict Tremor Potency, Count, or trigger Tremor Burst</p>
-<p>► (EN Only) Fixed an issue where the description for the Skill &#x27;Mutilate&#x27; for the Boss enemy in Chapter 6.5 - Timekilling Time was incorrectly translated</p>
-<p>- Before : [Clash Lose] At 75%-HP, consume 75 Stolen Time and gain Clash Power +2<br>- After : [On Use] At 75%-HP, consume 75 Stolen Time and gain Clash Power +2</p>
-<p>► Removed the &#x27;E.G.O Resource halved upon clearing a combat Encounter&#x27; effect from certain Dungeons of the Fathoms</p>
-<p>※ Affected Dungeons : Ch. 3.5 - Hell&#x27;s Chicken, Ch. 5.5 - Yield my Flesh to Claim their Bones, Ch. 6.5 - Timekilling Time</p>
-<p>※ As they were built based on previous Mirror Dungeons, E.G.O Resources were getting halved with every encounter. That will no longer be the case with this Scheduled Update.</p>
-<p>※ Please note that, in the Dungeon featured in Ch. 7.5 - LCB Regular Check-up, E.G.O Resources are already not getting halved between each Encounter.</p>
-<p>► Changed the Floor from which &#x27;Refraction Railway Line 1&#x27; Mirror Dungeon Theme Pack may appear</p>
-<p>- Before : Hard Difficulty Floor 4<br>- After : Hard Difficulty Floor 4, Floor 5</p>
-<p>► Fixed an issue where the &#x27;Remove 3 E.G.O resources of a random Affinity&#x27; effect did not activate for an enemy Skill &#x27;Mantra&#x27;</p>
-<p>► Fixed an issue where, in Shops featured in Dungeons of the Fathoms, it appears as though the Identities are affected by previous level caps</p>
-<p>※ This is a visual-only issue; the Identities&#x27; actual levels are reflected in those Dungeons.</p>
-<p>► Adjusted the interaction needed to access the Team Loadout menu in Dungeons of the Fathoms</p>
-<p>- Before : Select the list of Sinners at the bottom of the screen to view the Team Loadout menu.<br>- After : Select the View Loadout button (Person-shaped Icon) to view the Team Loadout menu.</p>
-<p>► Fixed certain visual misalignments in Don Quixote E.G.O &#x27;In the Name of Love and Hate&#x27; Illustration</p>
-<p>► Fixed an issue where the halo effect that appears in battle against Abnormality &#x27;My Form Empties&#x27; was missing</p>
-<p>► Fixed an issue where certain visual effects for Heishou Pack - Si Branch Identities did not appear in certain circumstances</p>
-<p>► Fixed a line break issue for the Abnormality &#x27;Sign of Roses&#x27; effect &#x27;Blooming Sin&#x27; buff tooltip</p>
-<p>► Fixed an issue where the top line text could be cut off in the buff tooltip UI</p>
-<p>► (JP Only) Fixed an issue where, when using Meursault E.G.O &#x27;Crushbound Past&#x27;, the subtitles extended beyond the screen boundaries</p>
-<p>► (EN Only) Adjusted the translated text length for &quot;Herbert&quot; Announcer&#x27;s voicelines to fit into the Announcer text box UI</p>
-<p>► Added summaries to Combat &amp; Support Passive activation description texts so that the passive texts won&#x27;t clutter the combat phase</p>
-<p>※ Affected Identities : Lobotomy E.G.O::In the Name of Love and Hate Don Quixote, Lobotomy E.G.O::The Sword Sharpened with Tears Rodion</p>
-<p>► Fixed an issue where the Ch. 6.5 Timekilling Time boss enemy&#x27;s voice triggers too often when getting hit</p>
-<p>► (EN, JP Only) Fixed an issue where the description text that appears upon using the Team swap function in Mirror Dungeon Shops appeared untranslated</p>
-<p>► (KR Only) Fixed various typos for the &#x27;Herbert&#x27; Announcer</p>
-<p>► (JP Only) Fixed an issue where Ruby text tags were exposed in certain sentences</p>
-<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
-<p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 Aug. 14th, 2025 (KST)<br>- When : After Aug. 7th, 2025 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
+<p><span class="notice-note">※ Please refer to the Steam Announcements Page for more information.</span></p>
+<p><span class="notice-note notice-note--important">※ For the Mirror of Immortality Parallel Superposition mode and Achievements implementation, Mirror Dungeon entry will be blocked for the following period: Aug. 7th, 2025 06:00 ~ 12:00 (KST)</span></p>
+<h2 class="notice-section-heading" id="section-2">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Fixed an issue where, in Stage 6.5-15 (Hard) Dungeon, a Choice Event option could not be interacted with despite having the requisite E.G.O Gift</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where parts of E.G.O Gifts &#x27;Lightning Axe, Flower in the Mirror, and Moon in the Water&#x27; did not work properly</p>
+<p><span class="notice-note">※ Issue 1: Fixed an issue where the effects that are strengthened based on the number of Deployed Identities did not activate in the first Encounter after obtaining the E.G.O Gift</span></p>
+<p><span class="notice-note">※ Issue 2: An issue where, in Chain Battles, Backup Unit Identities did not count toward the E.G.O Gift strengthening conditionals</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, if the enhanced version of E.G.O Gift &#x27;Nebulizer&#x27; was equipped while Faust E.G.O &#x27;Thoracalgia&#x27; Passive &#x27;Breath&#x27; was activated, certain effects did not activate</p>
+<p><span class="notice-note">※ Relevant Effects : First Turn Start of a wave: all allies gain X Poise Potency and +Y Poise Count</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where parts of E.G.O Gifts &#x27;Microprecision Time Accelerator&#x27; buff &#x27;Microprecision Time Acceleration&#x27; did not work properly</p>
+<p><span class="notice-note">※ Issue 1: Fixed an issue where the units&#x27; minimum and maximum Speed values did not apply immediately upon Encounter Start</span></p>
+<p><span class="notice-note">※ Issue 2: Fixed an issue where Base Power, Damage, and Stagger Threshold-raising effects were boosted even for Skills that don&#x27;t inflict Tremor Potency, Count, or trigger Tremor Burst</span></p>
+<p><span class="notice-marker">▶</span> (EN Only) Fixed an issue where the description for the Skill &#x27;Mutilate&#x27; for the Boss enemy in Chapter 6.5 - Timekilling Time was incorrectly translated</p>
+<p><span class="notice-before">- Before : [Clash Lose] At 75%-HP, consume 75 Stolen Time and gain Clash Power +2</span><br><span class="notice-after">- After : [On Use] At 75%-HP, consume 75 Stolen Time and gain Clash Power +2</span></p>
+<p><span class="notice-marker">▶</span> Removed the &#x27;E.G.O Resource halved upon clearing a combat Encounter&#x27; effect from certain Dungeons of the Fathoms</p>
+<p><span class="notice-note">※ Affected Dungeons : Ch. 3.5 - Hell&#x27;s Chicken, Ch. 5.5 - Yield my Flesh to Claim their Bones, Ch. 6.5 - Timekilling Time</span></p>
+<p><span class="notice-note">※ As they were built based on previous Mirror Dungeons, E.G.O Resources were getting halved with every encounter. That will no longer be the case with this Scheduled Update.</span></p>
+<p><span class="notice-note">※ Please note that, in the Dungeon featured in Ch. 7.5 - LCB Regular Check-up, E.G.O Resources are already not getting halved between each Encounter.</span></p>
+<p><span class="notice-marker">▶</span> Changed the Floor from which &#x27;Refraction Railway Line 1&#x27; Mirror Dungeon Theme Pack may appear</p>
+<p><span class="notice-before">- Before : Hard Difficulty Floor 4</span><br><span class="notice-after">- After : Hard Difficulty Floor 4, Floor 5</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the &#x27;Remove 3 E.G.O resources of a random Affinity&#x27; effect did not activate for an enemy Skill &#x27;Mantra&#x27;</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, in Shops featured in Dungeons of the Fathoms, it appears as though the Identities are affected by previous level caps</p>
+<p><span class="notice-note">※ This is a visual-only issue; the Identities&#x27; actual levels are reflected in those Dungeons.</span></p>
+<p><span class="notice-marker">▶</span> Adjusted the interaction needed to access the Team Loadout menu in Dungeons of the Fathoms</p>
+<p><span class="notice-before">- Before : Select the list of Sinners at the bottom of the screen to view the Team Loadout menu.</span><br><span class="notice-after">- After : Select the View Loadout button (Person-shaped Icon) to view the Team Loadout menu.</span></p>
+<p><span class="notice-marker">▶</span> Fixed certain visual misalignments in Don Quixote E.G.O &#x27;In the Name of Love and Hate&#x27; Illustration</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the halo effect that appears in battle against Abnormality &#x27;My Form Empties&#x27; was missing</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where certain visual effects for Heishou Pack - Si Branch Identities did not appear in certain circumstances</p>
+<p><span class="notice-marker">▶</span> Fixed a line break issue for the Abnormality &#x27;Sign of Roses&#x27; effect &#x27;Blooming Sin&#x27; buff tooltip</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the top line text could be cut off in the buff tooltip UI</p>
+<p><span class="notice-marker">▶</span> (JP Only) Fixed an issue where, when using Meursault E.G.O &#x27;Crushbound Past&#x27;, the subtitles extended beyond the screen boundaries</p>
+<p><span class="notice-marker">▶</span> (EN Only) Adjusted the translated text length for &quot;Herbert&quot; Announcer&#x27;s voicelines to fit into the Announcer text box UI</p>
+<p><span class="notice-marker">▶</span> Added summaries to Combat &amp; Support Passive activation description texts so that the passive texts won&#x27;t clutter the combat phase</p>
+<p><span class="notice-note">※ Affected Identities : Lobotomy E.G.O::In the Name of Love and Hate Don Quixote, Lobotomy E.G.O::The Sword Sharpened with Tears Rodion</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the Ch. 6.5 Timekilling Time boss enemy&#x27;s voice triggers too often when getting hit</p>
+<p><span class="notice-marker">▶</span> (EN, JP Only) Fixed an issue where the description text that appears upon using the Team swap function in Mirror Dungeon Shops appeared untranslated</p>
+<p><span class="notice-marker">▶</span> (KR Only) Fixed various typos for the &#x27;Herbert&#x27; Announcer</p>
+<p><span class="notice-marker">▶</span> (JP Only) Fixed an issue where Ruby text tags were exposed in certain sentences</p>
+<h2 class="notice-section-heading" id="section-3">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Content:</span> Lunacy x300<br>- <span class="notice-label">Recipients:</span> All users whose game accounts were created before 10:00 Aug. 14th, 2025 (KST)<br>- <span class="notice-label">When:</span> After Aug. 7th, 2025 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Aug. 14th, (Thu) 2025, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-4">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026, Feb. 26th Scheduled Update Notice | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/543/">
@@ -19,56 +18,62 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">2026, Feb. 26th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-02-25">February 25, 2026</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">New Content</a></li><li><a href="#section-2">Bug Fixes &amp; Improvements</a></li><li><a href="#section-3">Known Issue</a></li><li><a href="#section-4">Maintenance &amp; Application Update Compensation</a></li><li><a href="#section-5">Notes</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="patch-notes" style="--tag-color: #64C897">Patch Notes</span></p><h1 class="notice-inline-title">2026, Feb. 26th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2026-02-25">February 25, 2026</time></div><div class="tag-list"><span class="tag-pill" data-tag="events" style="--tag-color: #ABB74F">Events</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span><span class="tag-pill" data-tag="rewards" style="--tag-color: #ED9658">Rewards</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Feb. 26th, 2026 (KST).</p>
 <p>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.</p>
 <p>Please refer below for details about the update.</p>
-<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-1">New Content</h2><hr class="notice-section-divider">
 <p>1. User Interface Design Update Part 1</p>
 <p>Part 1 of the update that enables &quot;Dark Mode&quot; UI option will be applied to the game. Certain UI elements will be changed as well.</p>
-<p>※ Select the UI change icon to enter the menu to switch between Default Mode and Dark Mode.</p>
-<p>※ Any UI changes that were not applied with Update Part 1 will be applied gradually in parts.</p>
+<p><span class="notice-note">※ Select the UI change icon to enter the menu to switch between Default Mode and Dark Mode.</span></p>
+<p><span class="notice-note">※ Any UI changes that were not applied with Update Part 1 will be applied gradually in parts.</span></p>
 <p>2. New Content [Mirror of Names and Spiders HARD]</p>
-<p>※ Please refer to the Steam Announcements Page for more information.</p>
-<p>※ Please note that the Mirror Dungeon will be closed from 2026. 02. 26 06:00 ~ 12:00 (KST) to process the Mirror of Names and Spiders Hard Difficulty Update.</p>
+<p><span class="notice-note">※ Please refer to the Steam Announcements Page for more information.</span></p>
+<p><span class="notice-note">※ Please note that the Mirror Dungeon will be closed from 2026. 02. 26 06:00 ~ 12:00 (KST) to process the Mirror of Names and Spiders Hard Difficulty Update.</span></p>
 <p>3. Special 3rd Anniversary Event</p>
-<p>※ Please refer to the Steam Announcements Page for more information.</p>
+<p><span class="notice-note">※ Please refer to the Steam Announcements Page for more information.</span></p>
 <p>4. 3rd Anniversary Commemorative Packages</p>
 <p>4 new limited packages will be added to the game with the Feb. 26th, 2026 (KST) Scheduled Update to commemorate our 3rd Anniversary.</p>
-<p>► 3rd Anniversary Pack I</p>
-<p>- Contents : 3★ Identity Guarantee Decaextraction Ticket x1, Identity Takeoff Ticket - ver.3 x1, Angela (Library Director - Early Days) Announcer (immediate access)<br>- Price : 2,500 Paid Lunacy<br>- Purchase : Can be purchased only once<br>- Purchasable Period : 26. 2. 26 12:00 ~ 3. 26 10:00 (KST)</p>
-<p>※ If you already have the Angela (Library Director - Early Days) Announcer, gain x50 Thread Crates instead.</p>
-<p>※ Use the Identity Takeoff Ticket - ver.3 to select an Identity to Level up to 60 &amp; Uptie to Tier 4. However, if you use this item before your level cap is expanded to 60 with story progression, please note that it will raise your Identity’s level only up to your current cap, meaning that any excess EXP will be lost.</p>
-<p>※ Identity Takeoff Ticket - ver.3 can be used in both the Level-up window and in your inventory. However, Identities that are already at Level 60 have their Level-up button disabled, so please use this item via the inventory in such cases.</p>
-<p>► 3rd Anniversary Pack II</p>
-<p>- Contents : 3rd Anniversary Nominable Identity Ticket x1<br>- Price : 2,500 Paid Lunacy<br>- Purchase : Can be purchased only once<br>- Purchasable Period : 26. 2. 26 12:00 ~ 3. 26 10:00 (KST)</p>
-<p>※ Use the 3rd Anniversary Nominable Identity Ticket to select and obtain an Identity among those released up to Season 6. Please refer to the below for selectable/non-selectable Identities.</p>
-<p>- Selectable : Identities released prior to Season 7 commencement (including Standard Fare Identities, Season 1~6 Identities, and Season 1~6 Event Identities)<br>- Non-selectable : Identities released after Season 7 commencement (including Standard Fare Identities and Event Identities), Walpurgis Night Identities</p>
-<p>※ Obtaining a duplicate of an Identity you already own will yield the respective Sinner’s Egoshards instead.</p>
+<p><span class="notice-marker">▶</span> 3rd Anniversary Pack I</p>
+<p>- <span class="notice-label">Contents:</span> 3★ Identity Guarantee Decaextraction Ticket x1, Identity Takeoff Ticket - ver.3 x1, Angela (Library Director - Early Days) Announcer (immediate access)<br>- <span class="notice-label">Price:</span> 2,500 Paid Lunacy<br>- <span class="notice-label">Purchase:</span> Can be purchased only once<br>- <span class="notice-label">Purchasable Period:</span> 26. 2. 26 12:00 ~ 3. 26 10:00 (KST)</p>
+<p><span class="notice-note">※ If you already have the Angela (Library Director - Early Days) Announcer, gain x50 Thread Crates instead.</span></p>
+<p><span class="notice-note">※ Use the Identity Takeoff Ticket - ver.3 to select an Identity to Level up to 60 &amp; Uptie to Tier 4. However, if you use this item before your level cap is expanded to 60 with story progression, please note that it will raise your Identity’s level only up to your current cap, meaning that any excess EXP will be lost.</span></p>
+<p><span class="notice-note">※ Identity Takeoff Ticket - ver.3 can be used in both the Level-up window and in your inventory. However, Identities that are already at Level 60 have their Level-up button disabled, so please use this item via the inventory in such cases.</span></p>
+<p><span class="notice-marker">▶</span> 3rd Anniversary Pack II</p>
+<p>- <span class="notice-label">Contents:</span> 3rd Anniversary Nominable Identity Ticket x1<br>- <span class="notice-label">Price:</span> 2,500 Paid Lunacy<br>- <span class="notice-label">Purchase:</span> Can be purchased only once<br>- <span class="notice-label">Purchasable Period:</span> 26. 2. 26 12:00 ~ 3. 26 10:00 (KST)</p>
+<p><span class="notice-note">※ Use the 3rd Anniversary Nominable Identity Ticket to select and obtain an Identity among those released up to Season 6. Please refer to the below for selectable/non-selectable Identities.</span></p>
+<p>- <span class="notice-label">Selectable:</span> Identities released prior to Season 7 commencement (including Standard Fare Identities, Season 1~6 Identities, and Season 1~6 Event Identities)<br>- Non-selectable : Identities released after Season 7 commencement (including Standard Fare Identities and Event Identities), Walpurgis Night Identities</p>
+<p><span class="notice-note">※ Obtaining a duplicate of an Identity you already own will yield the respective Sinner’s Egoshards instead.</span></p>
 <p>- 2★ Identity : Egoshard x15<br>- 3★ Identity : Egoshard x50</p>
-<p>► 3rd Anniversary Commemorative Extraction Pack</p>
-<p>- Contents : Decaextraction Ticket x5<br>- Price : ₩33,000 / $21.99 / ¥3,000<br>- Purchase : Can be purchased only once<br>- Purchasable Period : 26. 2. 26 12:00 ~ 3. 26 10:00 (KST)</p>
-<p>► 3rd Anniversary Commemorative ID Growth Pack</p>
-<p>- Contents : Identity Training Ticket IV x200, Takeoff Module - ID Uptie x2<br>- Price : ₩55,000 / $41.99 / ¥6,000<br>- Purchase : Can be purchased only once<br>- Purchasable Period : 26. 2. 26 12:00 ~ 3. 26 10:00 (KST)</p>
-<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
-<p>► Fixed an issue where &#x27;The House of Spiders: The Index Nursefather Yi Sang&#x27; did not affect ally positioning even when the Identity&#x27;s Speed increased via the &#x27;Indulgence in Prescripts&#x27; effect.</p>
-<p>► Fixed certain effect errors related to the keyword &#x27;Charge Barrier&#x27;</p>
-<p>※ Relevant Effect: Gain (Charge Barrier # x n) Shield</p>
-<p>- Before: Upon activation of &#x27;Gain Charge Barrier next turn&#x27; effect, the Shield-gaining effect would apply in both the current turn and the next turn<br>- After: Upon activation of &#x27;Gain Charge Barrier next turn&#x27; effect, the Shield-gaining effect will now apply only in the next turn</p>
+<p><span class="notice-marker">▶</span> 3rd Anniversary Commemorative Extraction Pack</p>
+<p>- <span class="notice-label">Contents:</span> Decaextraction Ticket x5<br>- <span class="notice-label">Price:</span> ₩33,000 / $21.99 / ¥3,000<br>- <span class="notice-label">Purchase:</span> Can be purchased only once<br>- <span class="notice-label">Purchasable Period:</span> 26. 2. 26 12:00 ~ 3. 26 10:00 (KST)</p>
+<p><span class="notice-marker">▶</span> 3rd Anniversary Commemorative ID Growth Pack</p>
+<p>- <span class="notice-label">Contents:</span> Identity Training Ticket IV x200, Takeoff Module - ID Uptie x2<br>- <span class="notice-label">Price:</span> ₩55,000 / $41.99 / ¥6,000<br>- <span class="notice-label">Purchase:</span> Can be purchased only once<br>- <span class="notice-label">Purchasable Period:</span> 26. 2. 26 12:00 ~ 3. 26 10:00 (KST)</p>
+<h2 class="notice-section-heading" id="section-2">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Fixed an issue where &#x27;The House of Spiders: The Index Nursefather Yi Sang&#x27; did not affect ally positioning even when the Identity&#x27;s Speed increased via the &#x27;Indulgence in Prescripts&#x27; effect.</p>
+<p><span class="notice-marker">▶</span> Fixed certain effect errors related to the keyword &#x27;Charge Barrier&#x27;</p>
+<p><span class="notice-note">※ Relevant Effect: Gain (Charge Barrier # x n) Shield</span></p>
+<p><span class="notice-before">- Before: Upon activation of &#x27;Gain Charge Barrier next turn&#x27; effect, the Shield-gaining effect would apply in both the current turn and the next turn</span><br><span class="notice-after">- After: Upon activation of &#x27;Gain Charge Barrier next turn&#x27; effect, the Shield-gaining effect will now apply only in the next turn</span></p>
 <h3 class="notice-subsection-heading">[Cause of the Issue]</h3>
 <p>With the Nov. 13th, 2025 Update, we had deployed an optimization that improves how in-battle effect summary UI is displayed.</p>
 <p>However, an error occurred in the process of deploying that optimization, where some of the logic that refers to the pre- and post-keyword applications mid-battle erroneously used the information of the next turn instead of the current turn.</p>
@@ -77,44 +82,45 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <p>So far, the only confirmed case of this issue is the &#x27;Gain Charge Barrier next turn&#x27; effect for &#x27;W Corp. L2 Cleanup Agent Hong Lu&#x27;.</p>
 <h3 class="notice-subsection-heading">[Issue Fix]</h3>
 <p>We have made adjustments so that the logic that refers to the pre- and post-keyword application uses the information of the current turn in battle.</p>
-<p>► Fixed an issue where the Coin effect of Uptie 4 Defense Skill for &#x27;The Middle Little Brother Meursault&#x27; functioned differently from its description</p>
-<p>※ Relevant Effect: [On Hit] Inflict 1 Bleed</p>
-<p>- Before: The Bleed effect would be inflicted On Heads Hit<br>- After: The Bleed effect will now be inflicted On Hit, matching its text description</p>
-<p>► Fixed an issue where game progression could be blocked under specific conditions in certain Stages of the Mirror Dungeon Theme Pack &#x27;Charm, Wander, Doubt&#x27;</p>
-<p>► Fixed an issue where the typography image did not display when the Support Passives of &#x27;Lobotomy E.G.O::Solemn Lament Yi Sang&#x27; and &#x27;The House of Spiders: The Index Nursefather Yi Sang&#x27; were activated</p>
-<p>※ The actual effects were functioning normally; only the typography display issue has been corrected.</p>
-<p>► Fixed an issue where the Sapling of Light ability &#x27;IRA&#x27; would behave abnormally when used under certain conditions</p>
-<p>► Fixed an issue where certain keywords and Skill animations used by &#x27;The House of Spiders: The Index Nursefather Yi Sang&#x27; were applied incorrectly</p>
-<p>※ The same issue was also identified for the enemy unit sharing the same keywords and will be corrected.</p>
-<p>► Fixed an issue where the effect summary text of certain E.G.O Gifts displayed during battle did not match their actual effects</p>
-<p>※ Relevant E.G.O Gifts: Purloined Flame, Dry-to-the-Bone Breast, Hot Tears, The Unchosen</p>
-<p>※ The actual effects were functioning correctly according to their descriptions; only the summarized in-battle text has been corrected.</p>
-<p>► Improved the Mirror Dungeon so that when obtaining Vestiges via the effect &#x27;Grace of Stars – Perfected Possibility&#x27;, an informational side pop-up will now be displayed upon entering the Mirror Dungeon</p>
-<p>► Fixed an issue where, when the average Sinner level was below the recommended level, the informational pop-up text displayed at the final node of Refraction Railway Line 1 Bokgak was inconsistent with the texts of the other nodes</p>
-<p>► (EN Only) Improved localization consistency of certain effect texts</p>
-<p>※ [Attack End]</p>
-<p>- Before: &quot;Attack End&quot; and &quot;After Attack&quot; were used interchangeably<br>- After: The text will now be standardized into &quot;Attack End&quot;</p>
-<p>※ [Excluding forced Staggers]</p>
-<p>- Before: &quot;unless it&#x27;s a forced Stagger&quot; and &quot;excluding forced Staggers&quot; were used interchangeably<br>- After: The text will now be standardized into &quot;excluding forced Staggers&quot;</p>
-<h2 class="notice-section-heading">Known Issue</h2><hr class="notice-section-divider">
-<p>► An issue where the Charge Barrier effect visual briefly appears upon the third Coin hit of Skill 3 for &#x27;W Corp. L2 Cleanup Agent Hong Lu&#x27;</p>
-<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
-<p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 Mar. 5th, 2026 (KST)<br>- When : After Feb. 26th, 2026 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the Coin effect of Uptie 4 Defense Skill for &#x27;The Middle Little Brother Meursault&#x27; functioned differently from its description</p>
+<p><span class="notice-note">※ Relevant Effect: [On Hit] Inflict 1 Bleed</span></p>
+<p><span class="notice-before">- Before: The Bleed effect would be inflicted On Heads Hit</span><br><span class="notice-after">- After: The Bleed effect will now be inflicted On Hit, matching its text description</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where game progression could be blocked under specific conditions in certain Stages of the Mirror Dungeon Theme Pack &#x27;Charm, Wander, Doubt&#x27;</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the typography image did not display when the Support Passives of &#x27;Lobotomy E.G.O::Solemn Lament Yi Sang&#x27; and &#x27;The House of Spiders: The Index Nursefather Yi Sang&#x27; were activated</p>
+<p><span class="notice-note">※ The actual effects were functioning normally; only the typography display issue has been corrected.</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the Sapling of Light ability &#x27;IRA&#x27; would behave abnormally when used under certain conditions</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where certain keywords and Skill animations used by &#x27;The House of Spiders: The Index Nursefather Yi Sang&#x27; were applied incorrectly</p>
+<p><span class="notice-note">※ The same issue was also identified for the enemy unit sharing the same keywords and will be corrected.</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the effect summary text of certain E.G.O Gifts displayed during battle did not match their actual effects</p>
+<p><span class="notice-note">※ Relevant E.G.O Gifts: Purloined Flame, Dry-to-the-Bone Breast, Hot Tears, The Unchosen</span></p>
+<p><span class="notice-note">※ The actual effects were functioning correctly according to their descriptions; only the summarized in-battle text has been corrected.</span></p>
+<p><span class="notice-marker">▶</span> Improved the Mirror Dungeon so that when obtaining Vestiges via the effect &#x27;Grace of Stars – Perfected Possibility&#x27;, an informational side pop-up will now be displayed upon entering the Mirror Dungeon</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where, when the average Sinner level was below the recommended level, the informational pop-up text displayed at the final node of Refraction Railway Line 1 Bokgak was inconsistent with the texts of the other nodes</p>
+<p><span class="notice-marker">▶</span> (EN Only) Improved localization consistency of certain effect texts</p>
+<p><span class="notice-note">※ [Attack End]</span></p>
+<p><span class="notice-before">- Before: &quot;Attack End&quot; and &quot;After Attack&quot; were used interchangeably</span><br><span class="notice-after">- After: The text will now be standardized into &quot;Attack End&quot;</span></p>
+<p><span class="notice-note">※ [Excluding forced Staggers]</span></p>
+<p><span class="notice-before">- Before: &quot;unless it&#x27;s a forced Stagger&quot; and &quot;excluding forced Staggers&quot; were used interchangeably</span><br><span class="notice-after">- After: The text will now be standardized into &quot;excluding forced Staggers&quot;</span></p>
+<h2 class="notice-section-heading" id="section-3">Known Issue</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> An issue where the Charge Barrier effect visual briefly appears upon the third Coin hit of Skill 3 for &#x27;W Corp. L2 Cleanup Agent Hong Lu&#x27;</p>
+<h2 class="notice-section-heading" id="section-4">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Content:</span> Lunacy x300<br>- <span class="notice-label">Recipients:</span> All users whose game accounts were created before 10:00 Mar. 5th, 2026 (KST)<br>- <span class="notice-label">When:</span> After Feb. 26th, 2026 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Mar. 5th (Thu) 2026, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-5">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on the status of maintenance. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>New Content - Ch.5.5 - Miracle in District 20 BokGak | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/327/">
@@ -19,63 +18,70 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="mirror-dungeon" style="--tag-color: #A855F7">Mirror Dungeon</span><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span></div><h1 class="notice-inline-title">New Content - Ch.5.5 - Miracle in District 20 BokGak</h1><div class="notice-date"><time datetime="2024-12-23">December 23, 2024</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
-<p>With the Dec. 26th, 2024 (KST) Update, new content<br>[Ch 5.5 - Miracle in District 20 BokGak] will be added to the game.</p>
-<p>► Duration<br>2024/12/26 12:00 (KST) ~ Before 1/23 (KST) Scheduled Update<br>► Event Rewards Exchange<br>2024/12/26 12:00 (KST) ~ Before1/30 (KST) Scheduled Update<br>► Requirements<br>- Miracle in District 20 Event Banner: Clear Main Story 0-4 (Tutorial)<br>- Miracle in District 20 (Normal Difficulty): Clear Main Story 5-36<br>- Miracle in District 20 (Hard Difficulty): Clear Main Story 6-48</p>
-<h2 class="notice-section-heading">Event Description</h2><hr class="notice-section-divider">
-<p>- When the event starts, the [Ch. 5.5 - Miracle in District 20]<br>Event Page will open.<br>- During the event period, you can earn [Trinkets Sack] by clearing<br>the Miracle in District 20 Event Stages &amp; the Mirror Dungeons.<br>- Voices will be added to the Miracle in District 20 story,<br>and you can access the Miracle in District 20 Hard<br>Difficulty Stages during the event period.<br>- You can redeem various rewards from the [Reward Exchange]<br>by spending the event currency that you have collected.</p>
-<h2 class="notice-section-heading">Event Gameplay</h2><hr class="notice-section-divider">
-<p>► Miracle in District 20 Story<br>Voices will be added to the story of Miracle in District 20.</p>
-<p>► Miracle in District 20 Combat Stages<br>You can obtain [Trinkets Sack] every time you complete a combat Encounter of ‘Miracle in District 20’. Each Encounter has a first-time reward; with it, you can obtain even more [Trinkets Sack].<br>However, if you had previously cleared the Miracle in District 20 Stages, you cannot obtain additional first-time rewards.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">Event Description</a></li><li><a href="#section-2">Event Gameplay</a></li><li><a href="#section-3">Event Gameplay</a></li><li><a href="#section-4">Event Gameplay</a></li><li><a href="#section-5">Event Currency</a></li><li><a href="#section-6">Event Bonus E.G.O</a></li><li><a href="#section-7">Event Rewards</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="announcements" style="--tag-color: #68B7ED">Announcements</span></p><h1 class="notice-inline-title">New Content - Ch.5.5 - Miracle in District 20 BokGak</h1><div class="notice-date"><time datetime="2024-12-23">December 23, 2024</time></div><div class="tag-list"><span class="tag-pill" data-tag="events" style="--tag-color: #ABB74F">Events</span><span class="tag-pill" data-tag="main-story" style="--tag-color: #C2AB7B">Main Story</span><span class="tag-pill" data-tag="identities-e-g-o" style="--tag-color: #EE8AB2">Identities &amp; E.G.O</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+<p>With the Dec. 26th, 2024 (KST) Update, new content<br>[Ch 5.5 - Miracle in District 20 BokGak] will be added to the game.</p>
+<p><span class="notice-marker">▶</span> Duration<br>2024/12/26 12:00 (KST) ~ Before 1/23 (KST) Scheduled Update<br><span class="notice-marker">▶</span> Event Rewards Exchange<br>2024/12/26 12:00 (KST) ~ Before1/30 (KST) Scheduled Update<br><span class="notice-marker">▶</span> Requirements<br>- Miracle in District 20 Event Banner: Clear Main Story 0-4 (Tutorial)<br>- Miracle in District 20 (Normal Difficulty): Clear Main Story 5-36<br>- Miracle in District 20 (Hard Difficulty): Clear Main Story 6-48</p>
+<h2 class="notice-section-heading" id="section-1">Event Description</h2><hr class="notice-section-divider">
+<p>- When the event starts, the [Ch. 5.5 - Miracle in District 20]<br>Event Page will open.<br>- During the event period, you can earn [Trinkets Sack] by clearing the Miracle in District 20 Event Stages &amp; the Mirror Dungeons.<br>- Voices will be added to the Miracle in District 20 story, and you can access the Miracle in District 20 Hard<br>Difficulty Stages during the event period.<br>- You can redeem various rewards from the [Reward Exchange]<br>by spending the event currency that you have collected.</p>
+<h2 class="notice-section-heading" id="section-2">Event Gameplay</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Miracle in District 20 Story<br>Voices will be added to the story of Miracle in District 20.</p>
+<p><span class="notice-marker">▶</span> Miracle in District 20 Combat Stages<br>You can obtain [Trinkets Sack] every time you complete a combat Encounter of ‘Miracle in District 20’. Each Encounter has a first-time reward; with it, you can obtain even more [Trinkets Sack].<br>However, if you had previously cleared the Miracle in District 20 Stages, you cannot obtain additional first-time rewards.</p>
 <p>The final Combat Stage of the Miracle in District 20 event costs an Enkephalin Module.<br>That final Stage will have a higher Enkephalin-to-[Trinkets Sack] ratio, so it will be much more effective as a means of collecting [Trinkets Sack].</p>
-<p>► Miracle in District 20 Combat Stages (Hard Difficulty)<br>Miracle in District 20 Hard Difficulty will become available during the Event period. Clearing Main Story Stage 6-48 will unlock the Hard Difficulty.<br>Earn even more [Trinkets Sack] by playing through the Hard Difficulty.</p>
+<p><span class="notice-marker">▶</span> Miracle in District 20 Combat Stages (Hard Difficulty)<br>Miracle in District 20 Hard Difficulty will become available during the Event period. Clearing Main Story Stage 6-48 will unlock the Hard Difficulty.<br>Earn even more [Trinkets Sack] by playing through the Hard Difficulty.</p>
 <p>You can earn first-time Clear rewards (including the Event currency), EX-Clear rewards, and Chapter Progression by clearing the Hard Difficulty Stages as well.</p>
-<h2 class="notice-section-heading">Event Gameplay</h2><hr class="notice-section-divider">
-<p>► Mirror Dungeon<br>During the Event Period, [Miracle in District 20 BokGak Theme Pack] will have a fixed appearance on Floor 4-5 of the Mirror Dungeon Hard Difficulty. [Miracle in District 20 BokGak Theme Pack] is a ‘Long Battle’ Theme Pack and features exclusive Choice Events and E.G.O Gifts.</p>
-<p>※ The Preexisting [Miracle in District 20 Theme Pack] will not be changed.<br>※ The same Theme Pack will not appear twice in the same run once completed.<br>※ Miracle in District 20 Theme Pack will no longer have a fixed appearance once the Event ends, and may appear on different floors.</p>
+<h2 class="notice-section-heading" id="section-3">Event Gameplay</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Mirror Dungeon<br>During the Event Period, [Miracle in District 20 BokGak Theme Pack] will have a fixed appearance on Floor 4-5 of the Mirror Dungeon Hard Difficulty. [Miracle in District 20 BokGak Theme Pack] is a ‘Long Battle’ Theme Pack and features exclusive Choice Events and E.G.O Gifts.</p>
+<p><span class="notice-note">※ The Preexisting [Miracle in District 20 Theme Pack] will not be changed.</span><br><span class="notice-note">※ The same Theme Pack will not appear twice in the same run once completed.</span><br><span class="notice-note">※ Miracle in District 20 Theme Pack will no longer have a fixed appearance once the Event ends, and may appear on different floors.</span></p>
 <p>During the Event period, clearing the [Miracle in District 20 BokGak Theme Pack] will also yield three relevant E.G.O Gifts (Pom-pom Hat, Huge Gift Sack, and Sad Plushie) from the Miracle in District 20 Theme Pack. (This feature is active only during the Event Period)</p>
 <p>Clearing a Mirror Dungeon run will net you [Trinkets Sack]. Selecting the [Miracle in District 20] or [Miracle in District 20 BokGak] Theme Packs will net you even more [Trinkets Sack].<br>The Theme Pack in the Hard Difficulty yields much more Event currency than the Normal Difficulty.</p>
-<p>※ Please note that the Weekly Bonus does not affect the amount of Event currency gained.<br>※ Please note that, if you have started a Mirror Dungeon run before the event started, you will not gain event currency from that run.</p>
-<h2 class="notice-section-heading">Event Gameplay</h2><hr class="notice-section-divider">
-<p>► Main Story<br>Managers who have not met the Event unlock conditions can obtain [Trinkets Sack] as a first-time reward from Main Story Combat Encounters. Upon your first-time clear of an Encounter, you can obtain [Trinkets Sack] proportional to the amount of Enkephalin Spent regardless of whether you’ve met the EX Clear Conditions or not.</p>
-<p>※ You cannot obtain [Trinkets Sack] from stages that have already been completed.<br>※ You cannot obtain [Trinkets Sack] from Luxcavations or the Refraction Railway.</p>
-<h2 class="notice-section-heading">Event Currency</h2><hr class="notice-section-divider">
+<p><span class="notice-note">※ Please note that the Weekly Bonus does not affect the amount of Event currency gained.</span><br><span class="notice-note">※ Please note that, if you have started a Mirror Dungeon run before the event started, you will not gain event currency from that run.</span></p>
+<h2 class="notice-section-heading" id="section-4">Event Gameplay</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Main Story<br>Managers who have not met the Event unlock conditions can obtain [Trinkets Sack] as a first-time reward from Main Story Combat Encounters. Upon your first-time clear of an Encounter, you can obtain [Trinkets Sack] proportional to the amount of Enkephalin Spent regardless of whether you’ve met the EX Clear Conditions or not.</p>
+<p><span class="notice-note">※ You cannot obtain [Trinkets Sack] from stages that have already been completed.</span><br><span class="notice-note">※ You cannot obtain [Trinkets Sack] from Luxcavations or the Refraction Railway.</span></p>
+<h2 class="notice-section-heading" id="section-5">Event Currency</h2><hr class="notice-section-divider">
 <p>In rare cases, clearing the ‘Miracle in District 20’ Stages, the Mirror Dungeon, and the Main Story Stages will also yield [Huge Trinkets Sack]. [Huge Trinkets Sack] has the highest chance of dropping from the final Encounter of the Miracle in District 20 BokGak Event. However, the drop chance is the same across all other Encounters.</p>
 <p>[Huge Trinkets Sack] is automatically converted to 20 [Trinkets Sack] in the Results or the Rewards screen upon acquisition.</p>
-<h2 class="notice-section-heading">Event Bonus E.G.O</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-6">Event Bonus E.G.O</h2><hr class="notice-section-divider">
 <p>Obtain more [Trinkets Sack] by completing Event Encounters or the Mirror Dungeon while equipped with Event Bonus E.G.Os.</p>
 <h3 class="notice-subsection-heading">&lt;Event Bonus E.G.Os&gt;</h3>
-<p>► 40% Bonus<br>- E.G.O [HE] :<br>Christmas Nightmare Ishmael,<br>Christmas Nightmare Gregor, Holiday Outis</p>
-<p>► 20% Bonus<br>- E.G.O [ZAYIN] : Holiday Heathcliff</p>
-<p>※ The Event Currency Bonus from each E.G.O is additive. (Rounded up)<br>※ Event Currency Bonus maxes out at 120% Bonus.<br>※ Event Bonus E.G.Os don’t actually have to participate in a battle; you can earn the bonus currency simply by having them in your Team loadout.<br>※ Event Currency Bonus applies to first-time clear rewards and Mirror Dungeon clear rewards as well.</p>
-<h2 class="notice-section-heading">Event Rewards</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> 40% Bonus<br>- E.G.O [HE] :<br>Christmas Nightmare Ishmael,<br>Christmas Nightmare Gregor, Holiday Outis</p>
+<p><span class="notice-marker">▶</span> 20% Bonus<br>- E.G.O [ZAYIN] : Holiday Heathcliff</p>
+<p><span class="notice-note">※ The Event Currency Bonus from each E.G.O is additive. (Rounded up)</span><br><span class="notice-note">※ Event Currency Bonus maxes out at 120% Bonus.</span><br><span class="notice-note">※ Event Bonus E.G.Os don’t actually have to participate in a battle; you can earn the bonus currency simply by having them in your Team loadout.</span><br><span class="notice-note">※ Event Currency Bonus applies to first-time clear rewards and Mirror Dungeon clear rewards as well.</span></p>
+<h2 class="notice-section-heading" id="section-7">Event Rewards</h2><hr class="notice-section-divider">
 <p>At the [Rewards Exchange], you can spend [Trinkets Sack] you’ve collected to purchase various rewards. You may find the rewards from the previous Miracle in District 20 (Ticket Deco, cosmetic Banners, 1 Event Reward E.G.O) here.<br>In addition, a Miracle in District 20 Announcer will be added to the list of redeemable rewards.</p>
-<p>※ You can no longer obtain [Trinkets Sack] after you obtain enough [Trinkets Sack] to purchase every item in the [Reward Exchange].<br>※ You cannot obtain duplicates of special rewards(Ticket Deco, cosmetic Banners, 1 Event Reward E.G.O) if you already own them.<br>※ [Trinkets Sack] will no longer be obtainable once the Event closes after the 2024/01/23 (KST) Scheduled Update.<br>※ [Reward Exchange] will be open for 5 weeks, from 2024/12/26 12:00 (KST) ~ 2025/01/30 (KST) Scheduled Update.<br>※ Even after the event fully ends, you will be able to experience the Miracle in District 20 Combat Encounters or view its story anytime at Drive and Theater - [Detour Tales].</p></div>
+<p><span class="notice-note notice-note--important">※ You can no longer obtain [Trinkets Sack] after you obtain enough [Trinkets Sack] to purchase every item in the [Reward Exchange].</span><br><span class="notice-note">※ You cannot obtain duplicates of special rewards(Ticket Deco, cosmetic Banners, 1 Event Reward E.G.O) if you already own them.</span><br><span class="notice-note notice-note--important">※ [Trinkets Sack] will no longer be obtainable once the Event closes after the 2024/01/23 (KST) Scheduled Update.</span><br><span class="notice-note">※ [Reward Exchange] will be open for 5 weeks, from 2024/12/26 12:00 (KST) ~ 2025/01/30 (KST) Scheduled Update.</span><br><span class="notice-note">※ Even after the event fully ends, you will be able to experience the Miracle in District 20 Combat Encounters or view its story anytime at Drive and Theater - [Detour Tales].</span></p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>

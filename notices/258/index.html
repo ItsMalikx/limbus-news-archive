@@ -3,13 +3,12 @@
 <head>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
 } catch {}</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2024, July 25th Scheduled Update Notice | Limbus Company News Archive</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/258/">
@@ -19,58 +18,65 @@ if (theme === "light" || theme === "dark") document.documentElement.dataset.them
 <body>
   <div class="site-shell">
     <header class="topbar">
-      <div class="topbar__inner container-wide">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
         <a class="brand" href="/">
           <span class="brand__mark"></span>
-          <span class="brand__text">Limbus Company News Archive</span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
         </a>
-
-        <nav class="topbar__actions" aria-label="Site actions">
-          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">☾</button>
-        </nav>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
       </div>
     </header>
 
-    <main class="container-wide notice-layout">
-      <article class="article-panel reveal">
-        <div id="noticeContent" class="article-content"><div class="notice-title-block"><div class="tag-list"><span class="tag-pill" data-tag="update" style="--tag-color: #F8C200">Update</span><span class="tag-pill" data-tag="bug-fix" style="--tag-color: #3B82F6">Bug Fix</span><span class="tag-pill" data-tag="notice" style="--tag-color: #06B6D4">Notice</span></div><h1 class="notice-inline-title">2024, July 25th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2024-07-22">July 22, 2024</time></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
+    <main class="container-wide notice-layout has-toc">
+      <nav class="toc" id="noticeToc" aria-label="Contents">
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"><li><a href="#section-1">New Content</a></li><li><a href="#section-2">Major Changes</a></li><li><a href="#section-3">Bug Fixes &amp; Improvements</a></li><li><a href="#section-4">Maintenance &amp; Application Update Compensation</a></li><li><a href="#section-5">Notes</a></li></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="patch-notes" style="--tag-color: #64C897">Patch Notes</span></p><h1 class="notice-inline-title">2024, July 25th Scheduled Update Notice</h1><div class="notice-date"><time datetime="2024-07-22">July 22, 2024</time></div><div class="tag-list"><span class="tag-pill" data-tag="identities-e-g-o" style="--tag-color: #EE8AB2">Identities &amp; E.G.O</span><span class="tag-pill" data-tag="new-content" style="--tag-color: #76C479">New Content</span><span class="tag-pill" data-tag="balance" style="--tag-color: #C198F0">Balance</span></div><hr class="notice-title-divider"></div><p>Greetings, Dear Manager.</p>
 <p>The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Jul. 25th, 2024 (KST).<br>Please make note of the maintenance schedule; we recommend that you refrain from entering combat or making in-app purchases and close the application before maintenance begins so that no data is lost.<br>Please refer below for details about the update.</p>
-<h2 class="notice-section-heading">New Content</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-1">New Content</h2><hr class="notice-section-divider">
 <p>1. New Target Extraction [New Target Extraction: W Corp. L3 Cleanup Captain Outis &amp; Fell Bullet E.G.O for Heathcliff] (7/25 12:00 ~ 8/8 10:00 (KST))<br>Extraction rate increases for the following Identity &amp; E.G.O<br>- 3★ : W Corp. L3 Cleanup Captain Outis<br>- E.G.O [TETH] : Fell Bullet Heathcliff</p>
 <p>2. Target Extraction [Gregor] (7/25 12:00 ~ 8/8 10:00 (KST))<br>Extraction rate increases for the following Identities and E.G.O.<br>- E.G.O [WAW] : Garden of Thorns Gregor<br>- E.G.O [TETH] : Lantern Gregor<br>- 3★ : Edgar Family Heir Gregor, Twinhook Pirates First Mate Gregor, Zwei South Section 4 Gregor, G Corp. Manager Corporal Gregor<br>- 2★ : Rosespanner Workshop Fixer Gregor, R.B. Sous-chef Gregor, Liu South Section 6 Gregor<br>- 1★ : LCB Sinner Gregor</p>
 <p>3. New Identity &amp; E.G.O Added<br>The following Identity &amp; E.G.O have been added to the list of extractable Identities &amp; E.G.O.<br>- 3★ : W Corp. L3 Cleanup Captain Outis<br>- E.G.O [TETH] : Fell Bullet Heathcliff</p>
-<h2 class="notice-section-heading">Major Changes</h2><hr class="notice-section-divider">
-<p>1. Changed &#x27;Charge Potency&#x27; behavior<br>► Before<br>(1) Expires when Charge Count drops to 0<br>(2) Max Value : 1</p>
-<p>► After<br>(1) When Charge Potency reaches a value of 2 or higher during an Encounter, Charge Potency does not expire even when Charge Count drops to 0<br>(2) Max Value : 99</p>
-<h2 class="notice-section-heading">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
-<p>► Fixed an issue where certain Skill effects gave Charge Potency when gaining Charge Count next turn<br>※ This issue was corrected with the Jul. 11th, 2024 Scheduled Update but was missing from the update notice changelog.</p>
-<p>► (KR Only) Fixed an issue where certain Charge Identities &amp; E.G.O Skill/Passive descriptions were missing the descriptor &quot;Count&quot;<br>- Hong Lu E.G.O - Dimension Shredder&#x27;s E.G.O Passive</p>
-<p>► (EN Only) Fixed an issue where certain Charge Identities &amp; E.G.O Skill/Passive descriptions were missing the descriptor &quot;Count&quot;.<br>- W Corp. L2 Cleanup Agent Meursaut&#x27;s Skill 2 and Skill 3<br>- R Corp. 4th Pack Reindeer Ishmael&#x27;s Skill 3<br>- Heathcliff E.G.O - Teleploe&#x27;s E.G.O Passive<br>- Hong Lu E.G.O - Dimension Shredder&#x27;s E.G.O Passive<br>- Yi Sang E.G.O - Dimension Shredder&#x27;s Awakening &amp; Corrosion Skills before Threadspinning Tier 4</p>
-<p>► (JP Only) Fixed an issue where incorrect text would appear on the popup when Threadspinning Yi Sang E.G.O - Sunshower</p>
-<p>► Fixed an issue where Sinclair E.G.O - Cavernous Wailing&#x27;s &#x27;Blubberbubble&#x27; VFX appeared at incorrect timings<br>(1) At Combat Start with the Skill selected, the Blubberbubble VFX would appear even before the Skill was used<br>(2) The Blubberbubble VFX disappeared upon using the actual Skill<br>※ This is a visual only issue; the Shield effects worked as intended.</p>
-<p>► Fixed an issue where certain enemies with the Charge Keyword were missing the word &#x27;Count&#x27; in their Skill, Buff, and Passive descriptions</p>
-<p>► Fixed an issue where Abnormality - Skin Prophet encounter might cause an error at Turn End under a specific circumstance</p>
-<p>► Fixed an issue where deploying Lobotomy E.G.O::Regret Faust caused the Skill VFX to briefly play when entering a Stage</p>
-<p>► Fixed an issue where the combat camera slowly slides to the bottom left corner of the screen on certain device environments</p>
-<p>► Addressed the issue where, if the self-introduction text gets too long in the user info -&gt; friends list UI, the text would go outside the UI text box<br>※ We have changed this to make it so that any text that goes beyond the UI text box cuts off with an ellipses</p>
-<p>► STEAM) Fixed an issue where gamepad input was registered as camera movement in combat</p>
-<h2 class="notice-section-heading">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
-<p>- Content : Lunacy x300<br>- Recipients : All users whose game accounts were created before 10:00 Aug. 1st, 2024 (KST)<br>- When : After Jul. 25th, 2024 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
+<h2 class="notice-section-heading" id="section-2">Major Changes</h2><hr class="notice-section-divider">
+<p>1. Changed &#x27;Charge Potency&#x27; behavior<br><span class="notice-marker">▶</span> Before<br>(1) Expires when Charge Count drops to 0<br>(2) Max Value : 1</p>
+<p><span class="notice-marker">▶</span> After<br>(1) When Charge Potency reaches a value of 2 or higher during an Encounter, Charge Potency does not expire even when Charge Count drops to 0<br>(2) Max Value : 99</p>
+<h2 class="notice-section-heading" id="section-3">Bug Fixes &amp; Improvements</h2><hr class="notice-section-divider">
+<p><span class="notice-marker">▶</span> Fixed an issue where certain Skill effects gave Charge Potency when gaining Charge Count next turn<br><span class="notice-note">※ This issue was corrected with the Jul. 11th, 2024 Scheduled Update but was missing from the update notice changelog.</span></p>
+<p><span class="notice-marker">▶</span> (KR Only) Fixed an issue where certain Charge Identities &amp; E.G.O Skill/Passive descriptions were missing the descriptor &quot;Count&quot;<br>- Hong Lu E.G.O - Dimension Shredder&#x27;s E.G.O Passive</p>
+<p><span class="notice-marker">▶</span> (EN Only) Fixed an issue where certain Charge Identities &amp; E.G.O Skill/Passive descriptions were missing the descriptor &quot;Count&quot;.<br>- W Corp. L2 Cleanup Agent Meursaut&#x27;s Skill 2 and Skill 3<br>- R Corp. 4th Pack Reindeer Ishmael&#x27;s Skill 3<br>- Heathcliff E.G.O - Teleploe&#x27;s E.G.O Passive<br>- Hong Lu E.G.O - Dimension Shredder&#x27;s E.G.O Passive<br>- Yi Sang E.G.O - Dimension Shredder&#x27;s Awakening &amp; Corrosion Skills before Threadspinning Tier 4</p>
+<p><span class="notice-marker">▶</span> (JP Only) Fixed an issue where incorrect text would appear on the popup when Threadspinning Yi Sang E.G.O - Sunshower</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where Sinclair E.G.O - Cavernous Wailing&#x27;s &#x27;Blubberbubble&#x27; VFX appeared at incorrect timings<br>(1) At Combat Start with the Skill selected, the Blubberbubble VFX would appear even before the Skill was used<br>(2) The Blubberbubble VFX disappeared upon using the actual Skill<br><span class="notice-note">※ This is a visual only issue; the Shield effects worked as intended.</span></p>
+<p><span class="notice-marker">▶</span> Fixed an issue where certain enemies with the Charge Keyword were missing the word &#x27;Count&#x27; in their Skill, Buff, and Passive descriptions</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where Abnormality - Skin Prophet encounter might cause an error at Turn End under a specific circumstance</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where deploying Lobotomy E.G.O::Regret Faust caused the Skill VFX to briefly play when entering a Stage</p>
+<p><span class="notice-marker">▶</span> Fixed an issue where the combat camera slowly slides to the bottom left corner of the screen on certain device environments</p>
+<p><span class="notice-marker">▶</span> Addressed the issue where, if the self-introduction text gets too long in the user info -&gt; friends list UI, the text would go outside the UI text box<br><span class="notice-note">※ We have changed this to make it so that any text that goes beyond the UI text box cuts off with an ellipses</span></p>
+<p><span class="notice-marker">▶</span> STEAM) Fixed an issue where gamepad input was registered as camera movement in combat</p>
+<h2 class="notice-section-heading" id="section-4">Maintenance &amp; Application Update Compensation</h2><hr class="notice-section-divider">
+<p>- <span class="notice-label">Content:</span> Lunacy x300<br>- <span class="notice-label">Recipients:</span> All users whose game accounts were created before 10:00 Aug. 1st, 2024 (KST)<br>- <span class="notice-label">When:</span> After Jul. 25th, 2024 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
 <p>Maintenance Compensation can be claimed until Aug. 1st (Thu) 2024, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p>
-<h2 class="notice-section-heading">Notes</h2><hr class="notice-section-divider">
+<h2 class="notice-section-heading" id="section-5">Notes</h2><hr class="notice-section-divider">
 <p>- Please update your game client to the newest version on the respective store (Google Play/App Store/Steam).<br>- Forcibly shutting down the game while it is downloading resources may cause the download to fail, so please be careful not to close the application during the download.<br>- You will not be able to play &lt;Limbus Company&gt; during maintenance. Please understand.<br>- The maintenance schedule may suddenly change depending on its status. If such a change occurs, we will let you know in a follow-up notice.<br>- A resource download may be prompted after the build update. If you&#x27;re using a mobile device, it is recommended to proceed with a Wi-Fi connection.<br>- If you&#x27;re playing with a guest account, we recommend that you link your account with other platforms to prevent possible account loss.<br>- The maintenance compensation will be provided once per account. Please note that the distribution may be slow due to network delays or other causes.<br>- The update gifts are valid to claim for 7 days. Please redeem them within this timeframe.</p>
 <p>Thank you.</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
     </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
 
     <footer class="site-footer">
-      <div class="container-wide flex-col" style="align-items: center; gap: 14px;">
-        <div>
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
           <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
-        </div>
-        <span class="text-muted" style="font-size: 0.85rem;">Copyright © 2026 Malik. All rights reserved.</span>
+        </nav>
       </div>
     </footer>
   </div>
