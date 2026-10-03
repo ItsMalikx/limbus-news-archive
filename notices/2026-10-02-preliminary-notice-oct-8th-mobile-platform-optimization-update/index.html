@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<script>try { const theme = localStorage.getItem("limbus-archive-theme");
+if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
+} catch {}</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preliminary Notice: Oct. 8th Mobile Platform Optimization Update | Limbus Company News Archive</title>
+  <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=e7fc412744" />
+<link rel="canonical" href="https://lcna.whosmalikx.com/notices/2026-10-02-preliminary-notice-oct-8th-mobile-platform-optimization-update/">
+<meta name="description" content="Hello, this is Project Moon. With Ver. 1.116.2 Scheduled Update, which will be deployed on Oct. 8th, 12:00 (KST), we will be implementing the following memory-r">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Preliminary Notice: Oct. 8th Mobile Platform Optimization Update", "url": "https://lcna.whosmalikx.com/notices/2026-10-02-preliminary-notice-oct-8th-mobile-platform-optimization-update/", "mainEntityOfPage": "https://lcna.whosmalikx.com/notices/2026-10-02-preliminary-notice-oct-8th-mobile-platform-optimization-update/", "inLanguage": "en", "about": {"@type": "VideoGame", "name": "Limbus Company"}, "isPartOf": {"@type": "WebSite", "name": "Limbus Company News Archive", "url": "https://lcna.whosmalikx.com/"}, "datePublished": "2026-10-02"}</script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="topbar__inner">
+        <button class="menu-btn" id="menuButton" type="button" aria-label="Menu" aria-expanded="false"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <a class="brand" href="/">
+          <span class="brand__mark"></span>
+          <span class="brand__text" title="Limbus Company News Archive">LCNA</span>
+        </a>
+        <div class="topbar__actions">
+          <button id="themeToggle" class="icon-btn theme-toggle" type="button" aria-label="Switch to light theme"></button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container-wide notice-layout">
+      <nav class="toc" id="noticeToc" aria-label="Contents" hidden>
+        <div class="rail-head"><button class="menu-btn rail-close" type="button" aria-label="Close menu"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div>
+        <p class="browse-group__label toc__label"><span>Contents</span></p>
+        <ol class="toc__list" id="noticeTocList"></ol>
+      </nav>
+      <article class="article-panel">
+        <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
+        <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="announcements" style="--tag-color: #68B7ED">Announcements</span></p><h1 class="notice-inline-title" id="notice-title">Preliminary Notice: Oct. 8th Mobile Platform Optimization Update</h1><div class="notice-date"><time datetime="2026-10-02">October 2, 2026</time></div><div class="tag-list"><span class="tag-pill" data-tag="main-story" style="--tag-color: #C2AB7B">Main Story</span></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.<br>With Ver. 1.116.2 Scheduled Update, which will be deployed on Oct. 8th, 12:00 (KST), we will be implementing the following memory-related optimizations.</p>
+<p>Please refer to the information below.</p>
+<h3 class="notice-subsection-heading">■ Improvements</h3>
+<p>1. Main Story Chapter 10 - &lt;Part 3&gt; Combat / visual effects resource optimization<br>- We have improved the compression method for resources in Shadowed combat, characters, E.G.O, and various other resources.<br>- The affected resources will still maintain the same resolution, so it will not affect the effective visual quality.</p>
+<p>2. Resource reset after unique cinematic and combat resources are used<br>- We have identified and fixed an issue where certain unique visual resources in Main Story Chapter 10 - &lt;Part 3&gt; carry over to the following scenes.<br>- We have identified and fixed an issue where relevant cinematic resources after finishing an Encounter in the Shadowed would carry over to the next battle Encounter.</p>
+<p>3. Unnecessary resource loading removed<br>- We have identified and fixed an issue where certain combat visual resources were being loaded in scenes where they weren&#x27;t used.</p>
+<h3 class="notice-subsection-heading">■ Expected Results</h3>
+<p><span class="notice-note">※ These are based on the results from our internal iOS testing device with 4GB of available RAM for application usage.</span><br>- Memory usage when continuously playing the latter part of &lt;Part 3&gt; will be reduced by up to approximately 15%. (Based on our internal 4GB RAM testing device, these changes reduce memory usage by approximately 300MB)<br>- We expect this to reduce crashing instances in the affected sections.</p>
+<p>The same optimization processes will be applied to AOS devices as well, and we expect this to reduce the crashing frequency by reducing the total amount of memory usage.</p>
+<p>However, please note that results may vary depending on your device&#x27;s conditions &amp; active background processes.</p>
+<h3 class="notice-subsection-heading">■ Additional Information</h3>
+<p>- Please note that this improvement does not guarantee that crashes won&#x27;t occur in certain Encounters on devices with 4GB RAM.<br>We are currently implementing further optimization solutions, and will inform you as soon as they are applied.<br>- If the game continues to crash repeatedly, it may help to try again after closing all other applications.<br>- If the issue persists, please submit a customer service ticket with the following information included: Your device model, the area in the game where the crash occurs, and a screenshot to help us identify the exact issue.</p>
+<p>We will continue to implement optimization solutions to improve stability on mobile platforms.</p>
+<p>We sincerely apologize for the inconvenience.</p></div>
+
+        <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
+      </article>
+    </main>
+    <div class="shell-scrim" id="shellScrim" hidden></div>
+
+    <footer class="site-footer">
+      <div class="container-wide site-footer__inner">
+        <p class="site-footer__note">Copyright &copy; 2026 Malik. All rights reserved.</p>
+        <nav class="site-footer__links" aria-label="Footer">
+          <a href="https://whosmalikx.com/privacy" class="footer-link">Privacy Policy</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/assets/js/static.js?v=69e6f3dc5c"></script>
+</body>
+</html>
