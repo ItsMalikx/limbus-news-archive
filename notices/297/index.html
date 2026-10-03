@@ -39,9 +39,9 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
       <article class="article-panel">
         <a class="back-link" href="/"><svg class="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg><span class="back-link__label">All notices</span></a>
         <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="fixes" style="--tag-color: #FF8577">Fixes</span></p><h1 class="notice-inline-title">Notice: Issues Identified in the Oct. 17th Scheduled Update</h1><div class="notice-date"><time datetime="2024-10-17">October 17, 2024</time></div><div class="tag-list"></div><hr class="notice-title-divider"></div><p>Greetings, dear manager.<br>We have identified the following issues in our October 17th Scheduled Update.</p>
-<p>1. An issue where the game may get softlocked during the battle in Stage 7-26</p>
+<h3 class="notice-subsection-heading">1. An issue where the game may get softlocked during the battle in Stage 7-26</h3>
 <p>7-26 We have identified an issue where the game has a chance to softlock in Stage 7-26.<br>Please refer to the following for more information.</p>
-<h2 class="notice-section-heading">[Conditions]</h2>
+<h3 class="notice-subsection-heading">[Conditions]</h3>
 <p>- May occur in Clashes against a special enemy that appears only in Stage 7-26.<br>- There is approxiatemly 20% chance that your character will freeze during a Clash, softlocking the game.<br>- This issue is localized entirely within this single stage.</p>
 <h3 class="notice-subsection-heading">[Cause]</h3>
 <p>We created a specialized clash script only for that combat Encounter Stage.<br>However, there was a logic error in that script tied to a specific animation, which causes the softlocking issue.</p>
@@ -49,7 +49,7 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
 <h3 class="notice-subsection-heading">[Solution and our future measures]</h3>
 <p>We identified the problem logic and corrected the issue.<br>We plan to add additional logic for exception cases so that no soft locking issue may occur due to similar cutscene logic issues(such as the next animation not loading for a certain amount of time).</p>
 <p>However, as our current goal is to focus on the stability of the content for the next part of the chapter, we kindly ask for your understanding that the fix for this issue will be deployed with our next Scheduled Update, Canto 7 (Part 3).</p>
-<p>2. Notice: Oct. 17th Scheduled Update Error Hotfix</p>
+<h3 class="notice-subsection-heading">2. Notice: Oct. 17th Scheduled Update Error Hotfix</h3>
 <p>We will deploy a Hotfix for the following issues by 17:00 today.<br>Hotfixes can be deployed without a separate client update, and can be applied by restarting the game. However, please note that additional downloads may occur.</p>
 <h3 class="notice-subsection-heading">&lt;List&gt;</h3>
 <p><span class="notice-marker">▶</span> Fixed an issue where &#x27;The Barber of La Manchaland Outis&#x27; Skill 3&#x27;s &quot;[On Use] If the target has 5+ Bleed, Coin Power +1&quot; works up to &quot;Coin Power +2&quot;<br><span class="notice-marker">▶</span> (EN Only) Fixed an issue where Faust&#x27;s Lasso E.G.O Corrosion Skill Threadspinning Tier 4 has an issue where &quot;(max 2)&quot; was missing from &quot;Coin Power +1 for ever 7 Rupture on the target (max 2)&quot;<br><span class="notice-marker">▶</span> (KR Only) Fixed typos in &#x27;The Barber of La Manchaland Outis&#x27; self-introduction lines &amp; voice lines<br><span class="notice-marker">▶</span> (JP Only) Fixed an issue where a certain character&#x27;s Skill Keyword was mislabeled as &quot;Poise&quot; instead of &quot;Rupture&quot;<br><span class="notice-marker">▶</span> Updated the BGM for Stage 7-34 with a more recent version of the song</p>
