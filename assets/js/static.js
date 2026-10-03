@@ -171,12 +171,13 @@ try {
     viewer.className = "image-viewer";
     viewer.setAttribute("aria-label", "Image viewer");
     viewer.innerHTML = `<div class="image-viewer__bar">`
+      + `<button type="button" class="image-viewer__button image-viewer__close" aria-label="Close">${icon("M6 6l12 12M18 6L6 18")}</button></div>`
       + `<div class="image-viewer__zoom" role="group" aria-label="Zoom">`
       + `<button type="button" class="image-viewer__button image-viewer__out" aria-label="Zoom out">${icon("M6 12h12")}</button>`
       + `<input type="range" class="image-viewer__slider" min="100" max="600" step="10" value="100" aria-label="Zoom level">`
       + `<button type="button" class="image-viewer__button image-viewer__in" aria-label="Zoom in">${icon("M6 12h12M12 6v12")}</button>`
-      + `<output class="image-viewer__level">100%</output></div>`
-      + `<button type="button" class="image-viewer__button image-viewer__close" aria-label="Close">${icon("M6 6l12 12M18 6L6 18")}</button></div>`
+      + `<output class="image-viewer__level">100%</output>`
+      + `<button type="button" class="image-viewer__fit">Fit</button></div>`
       + `<button type="button" class="image-viewer__button image-viewer__nav image-viewer__nav--prev" aria-label="Previous image">${icon("M15 5l-7 7 7 7")}</button>`
       + `<figure class="image-viewer__figure"><img class="image-viewer__image" alt="" draggable="false"><figcaption class="image-viewer__count"></figcaption></figure>`
       + `<button type="button" class="image-viewer__button image-viewer__nav image-viewer__nav--next" aria-label="Next image">${icon("M9 5l7 7-7 7")}</button>`;
@@ -200,7 +201,9 @@ try {
       viewer.classList.toggle("is-zoomed", scale > 1);
       picture.style.width = scale > 1 ? `${baseWidth * scale}px` : "";
       slider.value = Math.round(scale * 100);
+      slider.style.setProperty("--fill", `${(scale - 1) / 5 * 100}%`);
       level.textContent = `${Math.round(scale * 100)}%`;
+      $(".image-viewer__fit").disabled = scale === 1;
       if (scale > 1) {
         const after = picture.getBoundingClientRect();
         figure.scrollLeft += after.left + fx * after.width - x;
@@ -225,6 +228,7 @@ try {
     slider.addEventListener("input", () => setScale(slider.value / 100));
     $(".image-viewer__in").addEventListener("click", () => setScale(scale + 0.5));
     $(".image-viewer__out").addEventListener("click", () => setScale(scale - 0.5));
+    $(".image-viewer__fit").addEventListener("click", () => setScale(1));
     picture.addEventListener("click", event => { if (!moved) setScale(scale > 1 ? 1 : 2.5, event.clientX, event.clientY); });
     figure.addEventListener("wheel", event => {
       if (!event.ctrlKey) return;  // Ctrl + scroll and trackpad pinch zoom; plain scrolling pans
