@@ -18,6 +18,22 @@
     "summary": "Covers Season 7 Egoshard Carryover, Gradual Main Story & Battle Pass Updates, Packages, and 4 more topics."
   },
   {
+    "id": 648,
+    "source_id": 648,
+    "title": "Notice: Limbus Company Mobile Platform Recommended Specs Adjusted",
+    "content": "Hello, this is Project Moon.\n\nThrough the \"Follow-up Measures on Issues After the Unity Version Upgrade on 5/28/2026\" Notice posted Jul. 9th, we informed you that Limbus Company's minimum device requirements will be updated for a stable gameplay environment.\n\nWith the Main Story Chapter 10 (Part 1) update, we will be adjusting the minimum device requirements for iOS devices as follows.\n\n<New iOS Minimum Device Requirements>\n\nRecommended Device: 6GB of RAM or higher (iPhone 15 or higher recommended)\nRecommended OS Version: iOS 26 or higher (up-to-date OS recommended)\nMinimum Supported OS: iOS 15.0 or higher (unchanged; based on App Store compatibility)\niPads: 6GB of RAM or higher (iPad (A16), iPad mini (A17 Pro), iPad Air (M1 or higher), iPad Pro (M1 or higher), etc.)\n\n※ Update Period: After [Sep. 17th (Thu)] Main Story Chapter 10 (Part 1) Update\n※ Please note that \"recommended device specs\" are specifications required to enjoy the entire game smoothly, including the contents of Chapter 10. Devices below the recommended specs will still be able to install and run the game application.\n※ Recommended device specs on AOS(Android) is unchanged.\n\n<Reasons for Adjustment>\n\n1. Increased Memory Usage for Chapter 10\nMain Story Chapter 10 introduces a new gameplay system and various new visual effects, which increased the game's RAM usage compared to the previous chapters.\n\n2. iOS Memory Restrictions\niOS limits how much RAM each application can access based on the device's RAM.\nBased on tests we conducted on devices with 4GB or less RAM, certain sections of Chapter 10 may cause the game to freeze or crash.\nAnother reason is the increased RAM allocation to the OS itself following iOS 26.4 update, as we have informed you in the July notice.\n\n3. Continuing Optimization Efforts\nWe are continuing optimization efforts to ensure a stable Chapter 10 experience on devices that meet the recommended specs, and we will continue to work to reduce issue frequency on devices below the recommended specs as well.\n\nWe will also continue optimization efforts for Adreno 720 GPU devices to resolve the issue where they are unable to launch the game despite having sufficient RAM.\n\n<For Managers Using Devices under 4GB RAM>\n\nGame installation, access, and gameplay of previously released content are still available on devices that do not meet the recommended specs.\nHowever, devices in that category may encounter freezing or crashing while playing through Chapter 10. If those issues occur on your device, we recommend the following measures:\n· Close all other running applications, then restart the game.\n· Reboot the device, then start the game.\n· Free up available space on your device storage.\n\nIf possible, we recommend playing Limbus Company on mobile devices or PC (Steam) with more available RAM. Please note that, through the \"Link Account\" function, you can continue playing on the same account across other devices.\n\n<Note: RAM for each iPhone Model>\n\nRAM 8GB or higher: iPhone 15 Pro / 15 Pro Max, all iPhone 16 series devices, iPhone 16e, all iPhone 17 series devices, iPhone Air\nRAM 6GB: iPhone 15 / 15 Plus, iPhone 14 series devices, iPhone 13 Pro / 13 Pro Max, iPhone 12 Pro / 12 Pro Max\nRAM 4GB or lower: iPhone 13 / 13 mini, iPhone 12 / 12 mini, iPhone 11 series devices, iPhone SE (2nd·3rd gen.), iPhone XS / XR or earlier models\n\n※ As device RAM is not an officially revealed spec by Apple, please note that the above information is taken from what is publicly available.\n\nWe are sharing this notice to provide more information and ensure as many Managers as possible can access the game in a stable environment.\nWe sincerely apologize to Managers who may be inconvenienced by the recommended device requirements.\nPlease understand that our mobile device optimization efforts will continue.\n\nThank you.",
+    "date": "2026-09-14",
+    "type": "Announcements",
+    "tags": [
+      "Main Story",
+      "Balance"
+    ],
+    "date_source": "steam-posted",
+    "order": 894,
+    "match_method": "exact-title",
+    "summary": "Covers iOS Minimum Device Requirements, Reasons for Adjustment, Increased Memory Usage for Chapter 10, and 4 more topics."
+  },
+  {
     "id": 635,
     "source_id": 635,
     "title": "Notice: Elaboration Regarding Canto 10 Early Unlock Function",
@@ -1511,6 +1527,32 @@
     "summary": "Covers Issue, Cause, Solution, and 1 more topics."
   },
   {
+    "id": 645,
+    "source_id": 645,
+    "title": "Limbus Company 2026 H1 Roadmap Information",
+    "content": "![Image 1 from the official notice](https://clan.akamai.steamstatic.com/images/43587230/78f6a3735c3e7531564c3d431a5e5015a2130940.jpg)\n\n![Image 2 from the official notice](https://clan.akamai.steamstatic.com/images/43587230/2b61a298d6b1f314ed0568633a5843d807fc7ba3.jpg)",
+    "date": "2026-02-27",
+    "type": "Announcements",
+    "tags": [],
+    "date_source": "steam-posted",
+    "order": 764,
+    "match_method": "exact-title",
+    "summary": "The 2026 H1 roadmap of upcoming content.\nIncludes 2 images from the official notice."
+  },
+  {
+    "id": 646,
+    "source_id": 646,
+    "title": "Limbus Company 3rd Anniv. & Roadmap Livestream",
+    "content": "This broadcast will be streamed on YouTube and Chzzk.\n\n[Go to YouTube Live Stream](https://youtube.com/live/i7uXpviKVIQ)",
+    "date": "2026-02-27",
+    "type": "Announcements",
+    "tags": [],
+    "date_source": "steam-posted",
+    "order": 760,
+    "match_method": "exact-title",
+    "summary": "This broadcast will be streamed on YouTube and Chzzk."
+  },
+  {
     "id": 546,
     "source_id": 546,
     "title": "Notice: Cursed E.G.O Non-functionality Issue",
@@ -1610,6 +1652,22 @@
     "order": 754,
     "match_method": "exact-title",
     "summary": "Covers Event Description, The 3rd Anniversary Login Event, The 3rd Anniversary Attendance Check Event, and 1 more topics."
+  },
+  {
+    "id": 647,
+    "source_id": 647,
+    "title": "Limbus Company 3rd Anniversary and Future Roadmap Livestream",
+    "content": "![Image from the official notice](https://clan.akamai.steamstatic.com/images/43587230/86add5de3010f94ac753b859dfe64b9a5bfdd6ff.jpg)",
+    "date": "2026-02-25",
+    "type": "Announcements",
+    "tags": [
+      "Rewards",
+      "Events"
+    ],
+    "date_source": "steam-posted",
+    "order": 752,
+    "match_method": "exact-title",
+    "summary": "The roadmap of upcoming content.\nIncludes 1 image from the official notice."
   },
   {
     "id": 540,
@@ -3602,6 +3660,19 @@
     "summary": "Improved the UI indicator when targeting enemy Counter, Clashable Guard, Clashable Counter Skills.\nIncludes 21 bug fixes and 1 known issue."
   },
   {
+    "id": 644,
+    "source_id": 644,
+    "title": "Latter Half of 2025 Roadmap Livestream",
+    "content": "![Image from the official notice](https://clan.akamai.steamstatic.com/images/43587230/cb612127e08ba8110836312703f84655f80835da.png)",
+    "date": "2025-06-09",
+    "type": "Announcements",
+    "tags": [],
+    "date_source": "steam-posted",
+    "order": 574,
+    "match_method": "exact-title",
+    "summary": "The Latter Half of 2025 roadmap of upcoming content.\nIncludes 1 image from the official notice."
+  },
+  {
     "id": 413,
     "source_id": 413,
     "title": "Notice: Main Story Stage 5-36 Final Encounter Softlocking Issue",
@@ -4266,6 +4337,19 @@
     "summary": "We have identified and fixed the following issue in combat Encounters."
   },
   {
+    "id": 368,
+    "source_id": 368,
+    "title": "Notice: Custom Language Support & Game Security Update",
+    "content": "------------------------------------------------------\n\nHello.\n\nIn this notice, we would like to provide additional context on why the custom language support, a function announced on Mar. 31st (MON), will be added to the game.\n\nWe have identified multiple cases in which Limbus Company's client has been modified for abnormal use.\n\nSuch behavior not only compromises the fairness of the game, but may also cause discomfort to players who are enjoying the game properly. Therefore, we have been continuously working on enhancing the game's security systems to prevent such issues.\n\nIn this process of enhancing our security measures, we recognized that certain legitimate modifications of our game, such as custom language mods, could also be limited with this change.\n\nTherefore, we decided to implement the custom language support function, which allows our players to play the game in unsupported languages as well without the need to modify the game client.\n\nPlease note that, as we proceed with the game security enhancement update, modification of the game client beyond the language text files, such as modification of client images or in-game data, could be met with legal action or account bans without prior warning.\n\nWe continue to strive toward providing our users with better, fairer experiences while enjoying our game.\n\nSincerely, thank you for playing our game.",
+    "date": "2025-04-01",
+    "type": "Announcements",
+    "tags": [],
+    "date_source": "steam-posted",
+    "order": 516,
+    "match_method": "exact-title",
+    "summary": "In this notice, we would like to provide additional context on why the custom language support, a function announced on Mar. 31st (MON), will be added to the game.\nWe have identified multiple cases in which Limbus Company's client has been modified for abnormal use."
+  },
+  {
     "id": 367,
     "source_id": 367,
     "title": "Notice: Custom Language Translation Support",
@@ -4295,19 +4379,6 @@
     "order": 513,
     "match_method": "exact-title",
     "summary": "Adds Target Extraction [The Middle Little Brother Sinclair], Target Extraction [Don Quixote], and 2 more.\nManager Ticket Deco Sorting Options expanded.\nIncludes 13 bug fixes."
-  },
-  {
-    "id": 368,
-    "source_id": 368,
-    "title": "Notice: Custom Language",
-    "content": "Support & Game Security Update\n------------------------------\n\nHello.\n\nIn this notice, we would like to provide additional context on why the custom language support, a function announced on Mar. 31st (MON), will be added to the game.\n\nWe have identified multiple cases in which Limbus Company's client has been modified for abnormal use.\n\nSuch behavior not only compromises the fairness of the game, but may also cause discomfort to players who are enjoying the game properly. Therefore, we have been continuously working on enhancing the game's security systems to prevent such issues.\n\nIn this process of enhancing our security measures, we recognized that certain legitimate modifications of our game, such as custom language mods, could also be limited with this change.\n\nTherefore, we decided to implement the custom language support function, which allows our players to play the game in unsupported languages as well without the need to modify the game client.\n\nPlease note that, as we proceed with the game security enhancement update, modification of the game client beyond the language text files, such as modification of client images or in-game data, could be met with legal action or account bans without prior warning.\n\nWe continue to strive toward providing our users with better, fairer experiences while enjoying our game.\n\nSincerely, thank you for playing our game.",
-    "date": "2025-03-31",
-    "type": "Announcements",
-    "tags": [],
-    "date_source": "previous-unverified",
-    "order": 368,
-    "match_method": "unmatched",
-    "summary": "In this notice, we would like to provide additional context on why the custom language support, a function announced on Mar. 31st (MON), will be added to the game.\nWe have identified multiple cases in which Limbus Company's client has been modified for abnormal use."
   },
   {
     "id": 365,
