@@ -1,4 +1,4 @@
-import { stripHtml, escapeHtml } from "/assets/js/utils.js?v=fefa847c5c";
+import { stripHtml, escapeHtml } from "/assets/js/utils.js?v=b4315c6b70";
 
 // Ranked search: weighted fields, prefix and typo-tolerant matching, "quoted phrases",
 // and highlighted excerpts. Only `export function` declarations: tests load this as a script.

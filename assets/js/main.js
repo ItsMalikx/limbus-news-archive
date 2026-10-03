@@ -2,8 +2,8 @@ import { SITE_CONFIG, TAG_COLORS } from "/assets/js/config.js?v=9b10988a44";
 import {
   buildNoticeUrl, fetchNotices, initThemeToggle, initShell, normalizeNotice, sortNotices,
   stripHtml, debounce, escapeHtml, formatDate
-} from "/assets/js/utils.js?v=fefa847c5c";
-import { buildSearchIndex, searchNotices, highlight, excerpt } from "/assets/js/search.js?v=6a14623396";
+} from "/assets/js/utils.js?v=b4315c6b70";
+import { buildSearchIndex, searchNotices, highlight, excerpt } from "/assets/js/search.js?v=99710035e2";
 
 const noticeList = document.getElementById("noticeList");
 const searchInput = document.getElementById("searchInput");
@@ -45,7 +45,7 @@ const summaryHtml = text => String(text).split("\n").map(escapeHtml).join("\n");
 function renderNoticeCard(notice, featured = false, words = []) {
   const article = document.createElement("a");
   article.className = featured ? "notice-card notice-card--featured" : "notice-card";
-  article.href = buildNoticeUrl(notice.id);
+  article.href = buildNoticeUrl(notice);
   const typeColor = TAG_COLORS[tagSlug(notice.type || "")];
   const type = notice.type ? `<span class="type-label" data-tag="${tagSlug(notice.type)}" ${typeColor ? `style="--tag-color: ${typeColor}"` : ""}>${escapeHtml(notice.type)}</span>` : "";
   const tags = notice.tags.map(tag => {
@@ -57,7 +57,7 @@ function renderNoticeCard(notice, featured = false, words = []) {
   const date = notice.date
     ? `<time datetime="${escapeHtml(notice.date)}">${escapeHtml(formatDate(notice.date))}</time>` : "";
   article.innerHTML = `
-    <div class="notice-card__meta">${date}<span class="notice-card__id">#${escapeHtml(notice.id)}</span></div>
+    <div class="notice-card__meta">${date}<span class="notice-card__id">#${escapeHtml(notice.number)}</span></div>
     <div class="notice-card__body">
       ${notice.type ? `<span class="category-badge" data-icon="${tagSlug(notice.type)}" ${TAG_COLORS[tagSlug(notice.type)] ? `style="--tag-color: ${TAG_COLORS[tagSlug(notice.type)]}"` : ""}>${escapeHtml(notice.type)}</span>` : ""}
       <h2 class="notice-card__title">${words.length ? highlight(notice.title, words) : escapeHtml(notice.title)}</h2>

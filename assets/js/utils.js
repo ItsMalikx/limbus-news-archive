@@ -177,17 +177,18 @@ export function sortNotices(notices, mode = "date-desc") {
   };
   return [...notices].sort((a, b) => {
     switch (mode) {
-      case "id-asc": return Number(a.id) - Number(b.id);
-      case "id-desc": return Number(b.id) - Number(a.id);
-      case "title-asc": return a.title.localeCompare(b.title) || Number(a.id) - Number(b.id);
-      case "title-desc": return b.title.localeCompare(a.title) || Number(b.id) - Number(a.id);
+      case "id-asc": return Number(a.number) - Number(b.number);
+      case "id-desc": return Number(b.number) - Number(a.number);
+      case "title-asc": return a.title.localeCompare(b.title) || Number(a.number) - Number(b.number);
+      case "title-desc": return b.title.localeCompare(a.title) || Number(b.number) - Number(a.number);
       default: return compareDate(a, b);
     }
   });
 }
 
-export function buildNoticeUrl(id) {
-  return `/notices/${encodeURIComponent(id)}/`;
+// A notice's page: /notices/<slug>/ (the number shown on cards is its place in time order, not its address).
+export function buildNoticeUrl(notice) {
+  return `/notices/${encodeURIComponent(notice.slug)}/`;
 }
 
 // App shell menu. Wide screens: the button collapses or expands the sidebar for this page only

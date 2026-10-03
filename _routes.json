@@ -6,8 +6,7 @@
     "/notice.html",
     "/404",
     "/404.html",
-    "/notices/616",
-    "/notices/616/"
+    "/notices/*"
   ],
   "exclude": []
 }

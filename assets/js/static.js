@@ -1,4 +1,4 @@
-import { initThemeToggle, initShell } from "/assets/js/utils.js?v=fefa847c5c";
+import { initThemeToggle, initShell } from "/assets/js/utils.js?v=b4315c6b70";
 import { TAG_COLORS } from "/assets/js/config.js?v=9b10988a44";
 import { createZoomView } from "/assets/js/zoomview.js?v=47127c69d8";
 try { initThemeToggle(); } catch (error) { console.warn("Theme preference unavailable", error); }
@@ -17,15 +17,15 @@ window.addEventListener("keydown", event => {
 
 async function initNavigation() {
   const navigation = document.getElementById("noticePagination");
-  const match = window.location.pathname.match(/^\/notices\/([1-9][0-9]*)\/$/);
+  const match = window.location.pathname.match(/^\/notices\/([a-z0-9-]+)\/$/);
   if (!navigation || !match) return;
   try {
     const response = await fetch("/data/notice-order.json", { cache: "no-cache" });
     if (!response.ok) throw new Error("Notice order unavailable");
     const ids = await response.json();
-    if (!Array.isArray(ids) || ids.some(id => !Number.isSafeInteger(id) || id <= 0) ||
+    if (!Array.isArray(ids) || ids.some(slug => typeof slug !== "string" || !/^[a-z0-9-]+$/.test(slug)) ||
         new Set(ids).size !== ids.length) throw new Error("Invalid notice order");
-    const index = ids.indexOf(Number(match[1]));
+    const index = ids.indexOf(match[1]);
     if (index < 0) return;
     const links = [];
     for (const [offset, relation, label] of [[-1, "prev", "\u2190 Newer"], [1, "next", "Older \u2192"]]) {
