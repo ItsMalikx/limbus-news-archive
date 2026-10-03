@@ -159,4 +159,46 @@ try {
   window.addEventListener("load", refit, { once: true });
 } catch (error) { /* tables keep their default size */ }
 
+// Notice images open full size in a viewer: × / Esc / a click outside the image closes it, arrows step
+// through the notice's images (and do not change notice while it is open).
+try {
+  const images = [...document.querySelectorAll(".notice-figure img")];
+  if (images.length) {
+    const icon = path => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${path}"/></svg>`;
+    const viewer = document.createElement("dialog");
+    viewer.className = "image-viewer";
+    viewer.setAttribute("aria-label", "Image viewer");
+    viewer.innerHTML = `<button type="button" class="image-viewer__close" aria-label="Close">${icon("M6 6l12 12M18 6L6 18")}</button>`
+      + `<button type="button" class="image-viewer__nav image-viewer__nav--prev" aria-label="Previous image">${icon("M15 5l-7 7 7 7")}</button>`
+      + `<figure class="image-viewer__figure"><img class="image-viewer__image" alt=""><figcaption class="image-viewer__count"></figcaption></figure>`
+      + `<button type="button" class="image-viewer__nav image-viewer__nav--next" aria-label="Next image">${icon("M9 5l7 7-7 7")}</button>`;
+    document.body.append(viewer);
+    const picture = viewer.querySelector(".image-viewer__image");
+    const count = viewer.querySelector(".image-viewer__count");
+    let index = 0;
+    const show = next => {
+      index = (next + images.length) % images.length;
+      picture.src = images[index].currentSrc || images[index].src;
+      picture.alt = images[index].alt;
+      count.textContent = images.length > 1 ? `${index + 1} / ${images.length}` : "";
+    };
+    viewer.classList.toggle("image-viewer--single", images.length < 2);
+    images.forEach((image, position) => image.closest("a")?.addEventListener("click", event => {
+      if (event.button || event.ctrlKey || event.metaKey || event.shiftKey) return;  // new-tab clicks still work
+      event.preventDefault();
+      show(position);
+      viewer.showModal();
+    }));
+    viewer.querySelector(".image-viewer__close").addEventListener("click", () => viewer.close());
+    viewer.querySelector(".image-viewer__nav--prev").addEventListener("click", () => show(index - 1));
+    viewer.querySelector(".image-viewer__nav--next").addEventListener("click", () => show(index + 1));
+    viewer.addEventListener("click", event => { if (event.target === viewer || event.target.matches(".image-viewer__figure")) viewer.close(); });
+    viewer.addEventListener("keydown", event => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      event.preventDefault();
+      show(index + (event.key === "ArrowRight" ? 1 : -1));
+    });
+  }
+} catch (error) { /* images still open in a new tab */ }
+
 initNavigation();

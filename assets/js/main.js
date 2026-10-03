@@ -3,7 +3,7 @@ import {
   buildNoticeUrl, fetchNotices, initThemeToggle, initShell, normalizeNotice, sortNotices,
   stripHtml, debounce, escapeHtml, formatDate
 } from "/assets/js/utils.js?v=fefa847c5c";
-import { buildSearchIndex, searchNotices, highlight, excerpt } from "/assets/js/search.js?v=42a54d33f3";
+import { buildSearchIndex, searchNotices, highlight, excerpt } from "/assets/js/search.js?v=fa71ac03ad";
 
 const noticeList = document.getElementById("noticeList");
 const searchInput = document.getElementById("searchInput");

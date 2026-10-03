@@ -3,14 +3,26 @@ import { stripHtml, escapeHtml } from "/assets/js/utils.js?v=fefa847c5c";
 // Ranked search: weighted fields, prefix and typo-tolerant matching, "quoted phrases",
 // and highlighted excerpts. Only `export function` declarations: tests load this as a script.
 
+// Words as the index and the query both see them: accents dropped, possessives removed ("Ryōshū's"),
+// dotted acronyms joined ("E.G.O" -> "ego"), everything else split at punctuation.
 function normalizeText(text) {
-  return String(text || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+  return String(text || "").normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase()
+    .replace(/['’]s\b/g, "")
+    .replace(/(?<![\p{L}\p{N}])(?:\p{L}\.){2,}\p{L}?(?![\p{L}\p{N}])/gu, match => match.replace(/\./g, ""))
+    .replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+}
+
+// Extra index words kept whole: version numbers and dates ("1.116.1", "2025.11.20") and hyphenated
+// words joined ("re-run" -> "rerun", "log-in" -> "login").
+function compoundWords(text) {
+  const lower = String(text || "").normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  return [...lower.matchAll(/\d+(?:\.\d+)+/g)].map(match => match[0])
+    .concat([...lower.matchAll(/\p{L}+(?:-\p{L}+)+/gu)].map(match => match[0].replace(/-/g, "")));
 }
 
 function countTerms(text) {
   const counts = new Map();
-  for (const word of normalizeText(text).split(" ")) {
+  for (const word of [...normalizeText(text).split(" "), ...compoundWords(text)]) {
     if (word) counts.set(word, (counts.get(word) || 0) + 1);
   }
   return counts;
@@ -52,20 +64,38 @@ export function buildSearchIndex(notices) {
       }
     }
     return { notice, order, plain, fields, text: ` ${normalizeText(`${notice.title} ${plain}`)} `,
-      key: `${normalizeText(notice.title)}|${notice.date || ""}` };
+      title: ` ${normalizeText(notice.title)} `, key: `${normalizeText(notice.title)}|${notice.date || ""}` };
   });
   return { docs, vocabulary, words: [...vocabulary.keys()] };
 }
 
 const FIELD_WEIGHTS = { title: 10, tags: 7, headings: 5, lead: 2.5, body: 1 };
 const STOPWORDS = new Set("a an and are as at be by for from in is it of on or the to with".split(" "));
+// Shorthand players type: a term also matches notices that spell it out.
+const ALIASES = { md: "mirror dungeon", rr: "refraction railway", bp: "battle pass", wn: "walpurgis night",
+  lux: "luxcavation", s: "season", ch: "chapter" };
 
 export function parseQuery(query) {
-  const phrases = [...String(query).matchAll(/"([^"]+)"/g)].map(match => normalizeText(match[1])).filter(Boolean);
-  const words = normalizeText(String(query).replace(/"[^"]*"/g, " ")).split(" ")
-    .filter(word => word && (word.length > 1 || /\d/.test(word)));
+  const raw = String(query);
+  const phrases = [...raw.matchAll(/"([^"]+)"/g)].map(match => normalizeText(match[1])).filter(Boolean);
+  const rest = raw.replace(/"[^"]*"/g, " ");
+  const versions = compoundWords(rest).filter(word => /\d/.test(word));  // "1.116" stays one term
+  // Hyphenated words are one term ("re-run" finds "rerun" and "re-run").
+  const joined = compoundWords(rest).filter(word => !/\d/.test(word));
+  let words = normalizeText(rest.replace(/\d+(?:\.\d+)+/g, " ").replace(/\p{L}+(?:-\p{L}+)+/gu, " ")).split(" ").filter(Boolean);
+  words.push(...joined);
+  // "MD6", "RR6", "S8": shorthand followed by a number is two terms; a one-letter shorthand means its
+  // full words ("S8" -> season 8), never a prefix.
+  words = words.flatMap(word => {
+    const parts = word.match(/^([a-z]{1,3})(\d+)$/);
+    if (!parts || !ALIASES[parts[1]]) return [word];
+    return parts[1].length === 1 ? [...ALIASES[parts[1]].split(" "), parts[2]] : [parts[1], parts[2]];
+  });
+  const longer = words.filter(word => word.length > 1 || /\d/.test(word) || ALIASES[word]);
+  // A lone letter is a prefix search ("w" while typing); next to other words it is ignored.
+  words = longer.length || versions.length ? longer : words;
   const meaningful = words.filter(word => !STOPWORDS.has(word));
-  return { phrases, terms: [...new Set(meaningful.length ? meaningful : words)] };
+  return { phrases, terms: [...new Set([...(meaningful.length ? meaningful : words), ...versions])] };
 }
 
 // Exact word, then word prefixes, then (only if the word is absent) close misspellings.
@@ -73,12 +103,14 @@ function expandTerm(term, index) {
   const matches = [];
   if (index.vocabulary.has(term)) matches.push([term, 1]);
   const numeric = /^\d+$/.test(term);
-  if (!numeric && term.length >= 3) {
+  // Words of 2+ letters, numbers of 3+ digits ("202" -> 2025, 2026) and versions ("1.11" -> 1.116.1).
+  if (numeric ? term.length >= 3 : true) {
+    const quality = numeric ? 0.6 : term.length >= 3 ? 0.75 : term.length === 2 ? 0.6 : 0.4;
     for (const word of index.words) {
-      if (word !== term && word.startsWith(term)) matches.push([word, 0.75]);
+      if (word !== term && word.startsWith(term) && (!numeric || /^\d+$/.test(word))) matches.push([word, quality]);
     }
   }
-  if (!matches.length && !numeric && term.length >= 4) {
+  if (!matches.length && !numeric && term.length >= 4 && !term.includes(".")) {
     const limit = term.length <= 6 ? 1 : 2;
     for (const word of index.words) {
       if (editDistance(term, word, limit) <= limit) matches.push([word, 0.5]);
@@ -98,7 +130,7 @@ export function searchNotices(index, query) {
     let score = 0;
     const words = [];
     let everyTerm = true;
-    expansions.forEach(options => {
+    expansions.forEach((options, position) => {
       let termScore = 0;
       for (const [field, weight] of Object.entries(FIELD_WEIGHTS)) {
         let best = 0;
@@ -111,13 +143,20 @@ export function searchNotices(index, query) {
         }
         termScore += best;
       }
+      const alias = ALIASES[terms[position]];
+      if (alias && doc.text.includes(` ${alias} `)) {
+        termScore = Math.max(termScore, doc.title.includes(` ${alias} `) ? 25 : 4);
+        if (!words.includes(alias)) words.push(alias);
+      }
       if (!termScore) everyTerm = false;
       score += termScore;
     });
     if (!everyTerm) continue;
-    const title = ` ${normalizeText(doc.notice.title)} `;
-    for (const phrase of phrases) score += title.includes(` ${phrase} `) ? 30 : 8;
+    for (const phrase of phrases) score += doc.title.includes(` ${phrase} `) ? 30 : 8;
     if (terms.length > 1 && terms.every((_, i) => expansions[i].some(([word]) => doc.fields.title.has(word)))) score *= 1.5;
+    // Words typed together ("chapter 10", "season 8") rank notices that say them together first.
+    const together = ` ${terms.map(term => ALIASES[term] && !doc.text.includes(` ${term} `) ? ALIASES[term] : term).join(" ")} `;
+    if (terms.length > 1 && !together.includes(".") && doc.text.includes(together)) score *= doc.title.includes(together) ? 4 : 3;
     results.push({ doc, score, words: [...words, ...phrases] });
   }
   // Stable: equal scores keep archive (newest-first) order.
