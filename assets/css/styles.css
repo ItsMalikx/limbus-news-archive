@@ -904,10 +904,13 @@ body:has(.image-viewer[open]) {
 }
 /* The stage is the zoom camera's viewport (zoomview.js places and transforms the image). */
 .image-viewer__stage {
-  position: relative;
-  align-self: stretch;
-  justify-self: stretch;
-  min-height: 0;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  --zoom-pad-top: 68px;
+  --zoom-pad-right: 72px;
+  --zoom-pad-bottom: 84px;
+  --zoom-pad-left: 72px;
   overflow: hidden;
   touch-action: none;
   cursor: grab
@@ -920,9 +923,13 @@ body:has(.image-viewer[open]) {
   -webkit-user-drag: none
 }
 .image-viewer__count {
-  min-height: 1.2em;
+  position: fixed;
+  top: 22px;
+  left: 20px;
+  z-index: 2;
   color: #a8a8a8;
-  font-size: 0.875rem
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums
 }
 .image-viewer__button {
   display: grid;
@@ -953,7 +960,7 @@ body:has(.image-viewer[open]) {
   position: fixed;
   top: 12px;
   right: 12px;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   gap: 8px
 }
@@ -1034,6 +1041,8 @@ body:has(.image-viewer[open]) {
   cursor: default
 }
 .image-viewer__nav {
+  position: relative;
+  z-index: 2;
   justify-self: center;
   align-self: center
 }
@@ -1065,8 +1074,9 @@ body:has(.image-viewer[open]) {
   .image-viewer__nav--next {
     right: 6px
   }
-  .image-viewer__figure {
-    padding-bottom: 84px
+  .image-viewer__stage {
+    --zoom-pad-right: 8px;
+    --zoom-pad-left: 8px
   }
   .image-viewer__slider {
     width: 90px

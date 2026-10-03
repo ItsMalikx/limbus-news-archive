@@ -1,6 +1,6 @@
 import { initThemeToggle, initShell } from "/assets/js/utils.js?v=fefa847c5c";
 import { TAG_COLORS } from "/assets/js/config.js?v=9b10988a44";
-import { createZoomView } from "/assets/js/zoomview.js?v=039b5feecb";
+import { createZoomView } from "/assets/js/zoomview.js?v=47127c69d8";
 try { initThemeToggle(); } catch (error) { console.warn("Theme preference unavailable", error); }
 try { initShell(); } catch (error) { /* shell menu optional */ }
 for (const tag of document.querySelectorAll("[data-tag]")) {
@@ -189,7 +189,7 @@ try {
     const slider = $(".image-viewer__slider"), level = $(".image-viewer__level");
     let index = 0;
     // The slider is logarithmic: equal steps feel like equal zooms. 0 = fitted, 100 = the most zoom.
-    const view = createZoomView(stage, picture, { onChange: state => {
+    const view = createZoomView(stage, picture, { wheelArea: viewer, onChange: state => {
       const position = Math.log(state.zoom) / Math.log(state.maxZoom) * 100 || 0;
       slider.value = position;
       slider.style.setProperty("--fill", `${position}%`);

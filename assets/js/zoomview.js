@@ -1,10 +1,17 @@
 // A zoom-and-pan camera for one piece of content (an image) inside a viewport element.
 //
 // The content is placed at the viewport's top-left at its natural size and drawn with
-// transform: translate(x, y) scale(s), origin 0 0; all the geometry is done here. While the pointer
-// is over the viewport, the wheel (with or without Ctrl, mouse or trackpad) zooms around the cursor and
-// the page neither scrolls nor zooms; dragging pans (with pointer capture), two fingers pinch around their
-// midpoint, and a double click zooms in at that point (or back to fit). Nothing is captured outside it.
+// transform: translate(x, y) scale(s), origin 0 0; all the geometry is done here.
+//
+// - The viewport is meant to fill the window, with the controls floating over it (as in photo viewers):
+//   a zoomed image reaches the window's edges instead of being clipped by an inner box. Padding, set in
+//   CSS with --zoom-pad-top/right/bottom/left on the viewport, only keeps the fitted image clear of the
+//   controls; the more the image is enlarged, the further it may pan towards the true edges.
+// - While the pointer is over the viewport (or `wheelArea`), the wheel, with or without Ctrl, mouse or
+//   trackpad, zooms around the cursor; the page neither scrolls nor zooms. Nothing is captured elsewhere.
+// - Dragging pans 1:1 (pointer capture keeps it going outside), past an edge with a rubber band that
+//   springs back on release, and with a little momentum after a flick. Two fingers pinch around their
+//   midpoint. A double click zooms in at that point, or back to fit.
 //
 //   const view = createZoomView(viewport, image, { onChange: state => ... });
 //   view.zoomIn() / zoomOut() / fitToView() / resetView() / setZoom(scale, anchor?, animate?)
@@ -14,18 +21,19 @@
 
 const NO_PAN = "button, a, input, select, textarea, label, [data-no-pan]";
 
-export function createZoomView(viewport, content, { maxZoom = 8, onChange = () => {} } = {}) {
+export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = viewport, onChange = () => {} } = {}) {
   const camera = { scale: 1, x: 0, y: 0, fit: 1, min: 1, max: 1, width: 0, height: 0, contentWidth: 0, contentHeight: 0 };
-  let target = null;          // { scale, ax, ay }: an eased zoom in progress, anchored at viewport point (ax, ay)
-  let frame = 0, rect = null, dragged = false;
+  const pad = { top: 0, right: 0, bottom: 0, left: 0 };
+  let zoomTarget = null;      // { scale, ax, ay }: an eased zoom anchored at viewport point (ax, ay)
+  let settle = false;         // easing back inside the pan limits (after a rubber-band drag or a resize)
+  let velocity = null;        // { x, y } px per ms: momentum after a flick
+  let frame = 0, rect = null, dragged = false, lastTime = 0;
   const pointers = new Map(); // pointerId -> { x, y } (viewport coordinates)
-  let gesture = null;         // { x, y } last pan point, or { mid, distance } last pinch
+  let gesture = null;         // a pan { x, y, start, samples } or a pinch { mid, distance }
 
   content.draggable = false;
   Object.assign(content.style, { position: "absolute", left: "0", top: "0", maxWidth: "none", maxHeight: "none", transformOrigin: "0 0", willChange: "transform" });
-  viewport.style.touchAction = "none";
-  viewport.style.overflow = "hidden";
-  viewport.style.userSelect = "none";
+  Object.assign(viewport.style, { touchAction: "none", overflow: "hidden", userSelect: "none" });
 
   const clampScale = scale => Math.min(camera.max, Math.max(camera.min, scale));
   const local = event => {
@@ -33,13 +41,29 @@ export function createZoomView(viewport, content, { maxZoom = 8, onChange = () =
     return { x: event.clientX - rect.left, y: event.clientY - rect.top };
   };
 
-  // Keep the content on screen: a dimension smaller than the viewport is centred, a larger one may not
-  // leave a gap at either edge.
-  function clampPan() {
-    const width = camera.contentWidth * camera.scale, height = camera.contentHeight * camera.scale;
-    camera.x = width <= camera.width ? (camera.width - width) / 2 : Math.min(0, Math.max(camera.width - width, camera.x));
-    camera.y = height <= camera.height ? (camera.height - height) / 2 : Math.min(0, Math.max(camera.height - height, camera.y));
+  // Where the content may sit on one axis. Fitted (or smaller), it is centred in the padded area; as it
+  // grows its edges may move out to the viewport's own edges, never leaving a gap inside them.
+  function limits(size, viewSize, before, after) {
+    const centred = before + (viewSize - before - after - size) / 2;
+    return [Math.min(centred, viewSize - size), Math.max(centred, 0)];
   }
+  function bounds() {
+    const [minX, maxX] = limits(camera.contentWidth * camera.scale, camera.width, pad.left, pad.right);
+    const [minY, maxY] = limits(camera.contentHeight * camera.scale, camera.height, pad.top, pad.bottom);
+    return { minX, maxX, minY, maxY };
+  }
+  function clampPan() {
+    const b = bounds();
+    camera.x = Math.min(b.maxX, Math.max(b.minX, camera.x));
+    camera.y = Math.min(b.maxY, Math.max(b.minY, camera.y));
+  }
+  // Past a limit, the content follows the pointer less and less (iOS-style rubber band).
+  function rubber(value, low, high, size) {
+    if (value < low) return low - band(low - value, size);
+    if (value > high) return high + band(value - high, size);
+    return value;
+  }
+  const band = (distance, size) => (1 - 1 / (distance * 0.55 / Math.max(size, 1) + 1)) * size;
 
   // Scale about a viewport point: the content point under (ax, ay) stays under it.
   function zoomAbout(scale, ax, ay) {
@@ -52,38 +76,69 @@ export function createZoomView(viewport, content, { maxZoom = 8, onChange = () =
   }
 
   function render() {
-    content.style.transform = `translate(${camera.x}px, ${camera.y}px) scale(${camera.scale})`;
+    content.style.transform = `translate3d(${camera.x}px, ${camera.y}px, 0) scale(${camera.scale})`;
     onChange(getViewportState());
   }
 
-  // One frame of the eased zoom: cover a share of the remaining distance (in log space, so zooming in
-  // and out feel alike), finishing once it is within a hair.
-  function step() {
+  // One animation frame: eased zoom (a share of the remaining distance in log space, so zooming in and
+  // out feel alike), momentum (friction per ms), and settling back inside the limits.
+  function step(now) {
     frame = 0;
-    if (target) {
-      const ratio = target.scale / camera.scale;
-      if (Math.abs(Math.log(ratio)) < 0.002) { zoomAbout(target.scale, target.ax, target.ay); target = null; }
-      else { zoomAbout(camera.scale * ratio ** 0.35, target.ax, target.ay); }
+    const elapsed = Math.min(64, now - (lastTime || now)) || 16;
+    lastTime = now;
+    let busy = false;
+    if (zoomTarget) {
+      const ratio = zoomTarget.scale / camera.scale;
+      if (Math.abs(Math.log(ratio)) < 0.002) { zoomAbout(zoomTarget.scale, zoomTarget.ax, zoomTarget.ay); zoomTarget = null; }
+      else { zoomAbout(camera.scale * ratio ** (1 - 0.65 ** (elapsed / 16)), zoomTarget.ax, zoomTarget.ay); busy = true; }
+    }
+    if (velocity) {
+      camera.x += velocity.x * elapsed;
+      camera.y += velocity.y * elapsed;
+      const friction = 0.9 ** (elapsed / 16);
+      velocity = { x: velocity.x * friction, y: velocity.y * friction };
+      const b = bounds();
+      if (camera.x < b.minX || camera.x > b.maxX) velocity.x = 0;  // momentum stops at an edge
+      if (camera.y < b.minY || camera.y > b.maxY) velocity.y = 0;
+      clampPan();
+      if (Math.hypot(velocity.x, velocity.y) < 0.02) velocity = null;
+      else busy = true;
+    }
+    if (settle) {
+      const b = bounds(), x = Math.min(b.maxX, Math.max(b.minX, camera.x)), y = Math.min(b.maxY, Math.max(b.minY, camera.y));
+      const share = 1 - 0.75 ** (elapsed / 16);
+      camera.x += (x - camera.x) * share;
+      camera.y += (y - camera.y) * share;
+      if (Math.abs(x - camera.x) < 0.5 && Math.abs(y - camera.y) < 0.5) { camera.x = x; camera.y = y; settle = false; }
+      else busy = true;
     }
     render();
-    if (target) frame = requestAnimationFrame(step);
+    if (busy) frame = requestAnimationFrame(step);
+    else lastTime = 0;
   }
   const schedule = () => { frame ||= requestAnimationFrame(step); };
+  const stopMotion = () => { zoomTarget = null; velocity = null; settle = false; };
 
-  function center() { return { x: camera.width / 2, y: camera.height / 2 }; }
+  const center = () => ({ x: pad.left + (camera.width - pad.left - pad.right) / 2, y: pad.top + (camera.height - pad.top - pad.bottom) / 2 });
 
   function setZoom(scale, anchor = center(), animate = true) {
     if (!camera.contentWidth) return;
-    if (animate) { target = { scale: clampScale(scale), ax: anchor.x, ay: anchor.y }; schedule(); }
-    else { target = null; zoomAbout(scale, anchor.x, anchor.y); schedule(); }
+    velocity = null;
+    settle = false;
+    if (animate) zoomTarget = { scale: clampScale(scale), ax: anchor.x, ay: anchor.y };
+    else { zoomTarget = null; zoomAbout(scale, anchor.x, anchor.y); }
+    schedule();
   }
 
   function measure() {
     rect = null;
+    const style = getComputedStyle(viewport);
+    for (const side of ["top", "right", "bottom", "left"]) pad[side] = parseFloat(style.getPropertyValue(`--zoom-pad-${side}`)) || 0;
     camera.width = viewport.clientWidth;
     camera.height = viewport.clientHeight;
     if (!camera.contentWidth || !camera.width || !camera.height) return false;
-    camera.fit = Math.min(1, camera.width / camera.contentWidth, camera.height / camera.contentHeight);
+    const room = { width: Math.max(1, camera.width - pad.left - pad.right), height: Math.max(1, camera.height - pad.top - pad.bottom) };
+    camera.fit = Math.min(1, room.width / camera.contentWidth, room.height / camera.contentHeight);
     camera.min = camera.fit;
     camera.max = Math.max(camera.fit * maxZoom, 1);
     return true;
@@ -92,7 +147,7 @@ export function createZoomView(viewport, content, { maxZoom = 8, onChange = () =
   function fitToView(animate = false) {
     if (!measure()) return;
     if (animate) return setZoom(camera.fit);
-    target = null;
+    stopMotion();
     camera.scale = camera.fit;
     clampPan();
     schedule();
@@ -100,7 +155,7 @@ export function createZoomView(viewport, content, { maxZoom = 8, onChange = () =
 
   // A new image (or the same one reloaded): fit it once its size is known.
   function load() {
-    target = null;
+    stopMotion();
     camera.contentWidth = content.naturalWidth || content.offsetWidth;
     camera.contentHeight = content.naturalHeight || content.offsetHeight;
     content.style.width = `${camera.contentWidth}px`;
@@ -128,15 +183,17 @@ export function createZoomView(viewport, content, { maxZoom = 8, onChange = () =
   // Wheel: always zoom here (never scroll the page, never zoom the browser). Deltas are normalised:
   // lines and pages become pixels, one mouse notch is capped, and Ctrl + small fractional deltas
   // (trackpad pinch) are scaled up so pinching tracks the fingers.
-  viewport.addEventListener("wheel", event => {
+  wheelArea.addEventListener("wheel", event => {
     event.preventDefault();
-    if (!camera.contentWidth) return;
+    if (!camera.contentWidth || pointers.size) return;
     let delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? camera.height : 1);
     const pinch = event.ctrlKey && Math.abs(delta) < 50 && !Number.isInteger(delta);
     delta = Math.max(-80, Math.min(80, delta));
     const { x, y } = local(event);
-    const from = target ? target.scale : camera.scale;
-    target = { scale: clampScale(from * Math.exp(-delta * (pinch ? 0.01 : 0.0025))), ax: x, ay: y };
+    velocity = null;
+    settle = false;
+    const from = zoomTarget ? zoomTarget.scale : camera.scale;
+    zoomTarget = { scale: clampScale(from * Math.exp(-delta * (pinch ? 0.01 : 0.0025))), ax: x, ay: y };
     schedule();
   }, { passive: false });
 
@@ -146,14 +203,15 @@ export function createZoomView(viewport, content, { maxZoom = 8, onChange = () =
     pointers.set(event.pointerId, local(event));
     viewport.setPointerCapture(event.pointerId);
     dragged = false;
-    target = null;
-    startGesture();
+    stopMotion();
+    startGesture(event.timeStamp);
   });
-  function startGesture() {
+  function startGesture(time) {
     const points = [...pointers.values()];
+    // A pan keeps the unconstrained position (`raw`) so the rubber band can be measured from the limits.
     gesture = points.length >= 2
       ? { mid: { x: (points[0].x + points[1].x) / 2, y: (points[0].y + points[1].y) / 2 }, distance: Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y) || 1 }
-      : points.length ? { x: points[0].x, y: points[0].y, start: { ...points[0] } } : null;
+      : points.length ? { x: points[0].x, y: points[0].y, start: { ...points[0] }, raw: { x: camera.x, y: camera.y }, samples: [{ ...points[0], time }] } : null;
   }
   viewport.addEventListener("pointermove", event => {
     if (!pointers.has(event.pointerId) || !gesture) return;
@@ -169,22 +227,39 @@ export function createZoomView(viewport, content, { maxZoom = 8, onChange = () =
       dragged = true;
     } else {
       const point = points[0];
-      camera.x += point.x - gesture.x;
-      camera.y += point.y - gesture.y;
-      clampPan();
+      gesture.raw.x += point.x - gesture.x;
+      gesture.raw.y += point.y - gesture.y;
+      const b = bounds();
+      camera.x = rubber(gesture.raw.x, b.minX, b.maxX, camera.width);
+      camera.y = rubber(gesture.raw.y, b.minY, b.maxY, camera.height);
       if (!dragged && Math.hypot(point.x - gesture.start.x, point.y - gesture.start.y) > 4) {
         dragged = true;
         viewport.classList.add("is-panning");
       }
-      gesture = { ...gesture, x: point.x, y: point.y };
+      gesture.x = point.x;
+      gesture.y = point.y;
+      gesture.samples.push({ ...point, time: event.timeStamp });
+      while (gesture.samples.length > 2 && event.timeStamp - gesture.samples[0].time > 100) gesture.samples.shift();
     }
     schedule();
   });
   const release = event => {
     if (!pointers.delete(event.pointerId)) return;
     if (viewport.hasPointerCapture(event.pointerId)) viewport.releasePointerCapture(event.pointerId);
-    startGesture();  // a pinch that loses a finger carries on as a pan from where that finger is
-    if (!pointers.size) viewport.classList.remove("is-panning");
+    const pan = gesture && !gesture.mid ? gesture : null;
+    if (!pointers.size) {
+      viewport.classList.remove("is-panning");
+      // A flick carries on a little (velocity over the last 100 ms); a slow release just stops.
+      const first = pan?.samples[0], last = pan?.samples[pan.samples.length - 1];
+      const span = first && last ? last.time - first.time : 0;
+      if (dragged && span > 0 && event.type === "pointerup" && event.timeStamp - last.time < 50) {
+        const v = { x: (last.x - first.x) / span, y: (last.y - first.y) / span };
+        if (Math.hypot(v.x, v.y) > 0.25) velocity = v;
+      }
+      settle = true;
+      schedule();
+    }
+    startGesture(event.timeStamp);  // a pinch that loses a finger carries on as a pan from the other
   };
   viewport.addEventListener("pointerup", release);
   viewport.addEventListener("pointercancel", release);
@@ -202,18 +277,19 @@ export function createZoomView(viewport, content, { maxZoom = 8, onChange = () =
       minimumScale: camera.min, maximumScale: camera.max, fitScale: camera.fit,
       zoom: camera.scale / camera.fit, maxZoom: camera.max / camera.fit,  // relative to fit (1 = fitted)
       viewportWidth: camera.width, viewportHeight: camera.height,
-      contentWidth: camera.contentWidth, contentHeight: camera.contentHeight,
+      contentWidth: camera.contentWidth, contentHeight: camera.contentHeight, padding: { ...pad },
     };
   }
 
+  const aimed = () => (zoomTarget ? zoomTarget.scale : camera.scale);
   return {
-    zoomIn: (anchor) => setZoom((target ? target.scale : camera.scale) * 1.5, anchor),
-    zoomOut: (anchor) => setZoom((target ? target.scale : camera.scale) / 1.5, anchor),
+    zoomIn: anchor => setZoom(aimed() * 1.5, anchor),
+    zoomOut: anchor => setZoom(aimed() / 1.5, anchor),
     fitToView: () => fitToView(true),
     resetView: () => fitToView(true),
     setZoom,
     // Put content point (x, y) at the centre of the view.
-    panTo(x, y) { target = null; camera.x = camera.width / 2 - x * camera.scale; camera.y = camera.height / 2 - y * camera.scale; clampPan(); schedule(); },
+    panTo(x, y) { stopMotion(); const c = center(); camera.x = c.x - x * camera.scale; camera.y = c.y - y * camera.scale; clampPan(); schedule(); },
     getViewportState,
     moved: () => dragged,
     load,
