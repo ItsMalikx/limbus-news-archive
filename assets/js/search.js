@@ -165,32 +165,56 @@ export function searchNotices(index, query) {
   return { results: results.filter(result => !seen.has(result.doc.key) && seen.add(result.doc.key)), terms };
 }
 
+// Highlighting matches the way search does: on accent-free lowercase text ("ryoshu" marks "Ryōshū"),
+// with dots and hyphens allowed between letters ("ego" marks "E.G.O", "rerun" marks "re-run").
+function folded(text) {
+  let out = "";
+  const map = [];
+  for (let i = 0; i < text.length; i++) {
+    for (const char of text[i].normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase()) {
+      out += char;
+      map.push(i);
+    }
+  }
+  map.push(text.length);
+  return { out, map };
+}
+
 function matcher(words) {
-  const parts = words.filter(Boolean).sort((a, b) => b.length - a.length)
-    .map(word => word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/ /g, "\\W+"));
-  return parts.length ? new RegExp(`(^|[^\\p{L}\\p{N}])(${parts.join("|")})`, "giu") : null;
+  const parts = [...new Set(words.filter(Boolean))].sort((a, b) => b.length - a.length).map(word =>
+    word.split(" ").map(piece => [...piece].map(char => char.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("[.\\-]?")).join("\\W+"));
+  return parts.length ? new RegExp(`(^|[^\\p{L}\\p{N}])(${parts.join("|")})`, "gu") : null;
+}
+
+// [start, end) ranges of matches in the original text.
+function matchRanges(text, words) {
+  const pattern = matcher(words);
+  if (!pattern) return [];
+  const { out, map } = folded(text);
+  return [...out.matchAll(pattern)].map(match => {
+    const at = match.index + match[1].length;
+    return [map[at], map[at + match[2].length]];
+  });
 }
 
 export function highlight(text, words) {
-  const pattern = matcher(words);
-  if (!pattern) return escapeHtml(text);
+  text = String(text);
   let html = "";
   let last = 0;
-  for (const match of String(text).matchAll(pattern)) {
-    const start = match.index + match[1].length;
-    html += escapeHtml(text.slice(last, start)) + `<mark>${escapeHtml(match[2])}</mark>`;
-    last = start + match[2].length;
+  for (const [start, end] of matchRanges(text, words)) {
+    if (start < last) continue;
+    html += escapeHtml(text.slice(last, start)) + `<mark>${escapeHtml(text.slice(start, end))}</mark>`;
+    last = end;
   }
-  return html + escapeHtml(String(text).slice(last));
+  return html + escapeHtml(text.slice(last));
 }
 
 // Excerpt around the first body match, so it is clear why a result was returned.
 export function excerpt(plain, words, length = 220) {
   const text = String(plain).replace(/\s+/g, " ").trim();
-  const pattern = matcher(words);
-  const match = pattern ? pattern.exec(text) : null;
-  if (!match) return highlight(text.slice(0, length) + (text.length > length ? "…" : ""), words);
-  const at = match.index + match[1].length;
+  const first = matchRanges(text, words)[0];
+  if (!first) return highlight(text.slice(0, length) + (text.length > length ? "…" : ""), words);
+  const at = first[0];
   let start = Math.max(0, at - 70);
   if (start > 0) start = text.indexOf(" ", start) + 1 || start;
   const slice = text.slice(start, start + length);
