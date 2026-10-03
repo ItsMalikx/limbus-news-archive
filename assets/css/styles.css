@@ -902,12 +902,22 @@ body:has(.image-viewer[open]) {
   margin: 0;
   padding: 68px 0 84px
 }
-.image-viewer__image {
-  max-width: 100%;
-  max-height: 100%;
+/* The stage is the zoom camera's viewport (zoomview.js places and transforms the image). */
+.image-viewer__stage {
+  position: relative;
+  align-self: stretch;
+  justify-self: stretch;
   min-height: 0;
-  border-radius: 8px;
-  object-fit: contain
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab
+}
+.image-viewer__stage.is-panning {
+  cursor: grabbing
+}
+.image-viewer__image {
+  user-select: none;
+  -webkit-user-drag: none
 }
 .image-viewer__count {
   min-height: 1.2em;
@@ -946,12 +956,6 @@ body:has(.image-viewer[open]) {
   z-index: 1;
   display: flex;
   gap: 8px
-}
-.image-viewer__image {
-  cursor: zoom-in
-}
-.image-viewer__figure {
-  touch-action: none
 }
 /* Zoom: a floating bar at the bottom centre */
 .image-viewer__zoom {
@@ -1028,31 +1032,6 @@ body:has(.image-viewer[open]) {
 .image-viewer__fit:disabled {
   opacity: .45;
   cursor: default
-}
-.image-viewer.is-zoomed .image-viewer__figure {
-  display: block;
-  overflow: auto;
-  overscroll-behavior: contain;
-  cursor: grab;
-  scrollbar-width: thin
-}
-.image-viewer.is-zoomed .image-viewer__figure.is-dragging {
-  cursor: grabbing
-}
-.image-viewer.is-zoomed .image-viewer__image {
-  max-width: none;
-  max-height: none;
-  height: auto;
-  margin: 0 auto;
-  cursor: zoom-out;
-  user-select: none;
-  -webkit-user-drag: none
-}
-.image-viewer.is-zoomed .image-viewer__figure.is-dragging .image-viewer__image {
-  cursor: grabbing
-}
-.image-viewer.is-zoomed .image-viewer__count {
-  display: none
 }
 .image-viewer__nav {
   justify-self: center;
@@ -1255,7 +1234,8 @@ html[data-theme=dark] .notice-layout {
 .type-label:not([data-tag])::before {
   display: none
 }
-/* Type and tag icons: Phosphor Icons, Fill weight (MIT, https://phosphoricons.com). Used as masks, so
+/* Type and tag icons: Phosphor Icons, Fill weight (MIT, https://phosphoricons.com), except New content's
+   single four-point star (drawn here). Used as masks, so
    they take the type/tag colour. One rule per icon. */
 [data-icon=all],
 [data-tag=all] {
@@ -1275,7 +1255,7 @@ html[data-theme=dark] .notice-layout {
 }
 [data-icon=new-content],
 [data-tag=new-content] {
-  --icon: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 256 256%22 fill=%22%23000%22%3E%3Cpath d=%22M208,144a15.78,15.78,0,0,1-10.42,14.94L146,178l-19,51.62a15.92,15.92,0,0,1-29.88,0L78,178l-51.62-19a15.92,15.92,0,0,1,0-29.88L78,110l19-51.62a15.92,15.92,0,0,1,29.88,0L146,110l51.62,19A15.78,15.78,0,0,1,208,144ZM152,48h16V64a8,8,0,0,0,16,0V48h16a8,8,0,0,0,0-16H184V16a8,8,0,0,0-16,0V32H152a8,8,0,0,0,0,16Zm88,32h-8V72a8,8,0,0,0-16,0v8h-8a8,8,0,0,0,0,16h8v8a8,8,0,0,0,16,0V96h8a8,8,0,0,0,0-16Z%22/%3E%3C/svg%3E")
+  --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%23000' d='M128 16C137 86 170 119 240 128C170 137 137 170 128 240C119 170 86 137 16 128C86 119 119 86 128 16Z'/%3E%3C/svg%3E")
 }
 [data-icon=balance],
 [data-tag=balance] {
