@@ -3774,7 +3774,7 @@ html[data-theme] .tag-pill {
 :root:not([data-theme=dark]) .category-badge,
 :root:not([data-theme=dark]) .tag-pill,
 html[data-theme] .tag-pill {
-  min-height: 24px;
+  min-height: 2.1em;
   padding-top: 2px;
   padding-bottom: 2px;
   font-size: .8125rem;
@@ -3791,8 +3791,8 @@ html[data-theme] .tag-pill {
 .tag-pill,
 :root:not([data-theme=dark]) .tag-pill,
 html[data-theme] .tag-pill {
-  gap: 5px;
-  padding-inline: 7px 8px
+  gap: .45em;
+  padding-inline: .6em .7em
 }
 .tag-pill::before,
 :root:not([data-theme=dark]) .tag-pill::before,
@@ -3806,9 +3806,9 @@ html[data-theme] .tag-pill::before {
 .category-badge,
 .notice-kicker .category-badge,
 :root:not([data-theme=dark]) .category-badge {
-  min-height: 22px;
+  min-height: 1.9em;
   margin-block: 1px;
-  padding: 1px 7px;
+  padding: .08em .6em;
   border: 0
 }
 .tag-pill,
