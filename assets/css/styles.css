@@ -789,6 +789,29 @@ html[data-theme=dark] {
 .notice-marker {
   color: var(--gold)
 }
+.notice-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  overflow-wrap: anywhere
+}
+.notice-link:hover {
+  text-decoration-thickness: 2px
+}
+.notice-figure {
+  margin: 1.5em 0
+}
+.notice-figure a {
+  display: block
+}
+.notice-figure img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-2)
+}
 .back-link {
   margin-bottom: 18px
 }
