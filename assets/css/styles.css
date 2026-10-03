@@ -1834,7 +1834,7 @@ main.notice-layout.has-toc {
 }
 .archive-head .archive-results {
   margin: 16px 0 0;
-  font-size: .95rem
+  font-size: .875rem
 }
 .app-layout .notice-list {
   display: block;
@@ -2635,7 +2635,7 @@ html[data-theme] .tag-pill::before {
   border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--text-soft);
-  font-size: .8rem;
+  font-size: .8125rem;
   font-weight: 600;
   line-height: 1.5;
   text-decoration: none
@@ -2708,12 +2708,6 @@ html[data-theme] .tag-pill::before {
     margin: 0;
     justify-self: end
   }
-  .topbar__inner:not(:has(.menu-btn:not([hidden]))) {
-    grid-template-columns: 1fr 40px
-  }
-  .topbar__inner:not(:has(.menu-btn:not([hidden]))) > .brand {
-    justify-self: start
-  }
   .app-layout .browse,
   .notice-layout .toc,
   body.drawer-open .app-layout .browse,
@@ -2768,13 +2762,20 @@ html[data-theme] .tag-pill::before {
     display: none
   }
 }
-.topbar__inner:has(> .menu-btn:not([hidden])) {
+/* Every page lays its top bar out the same way: a page without a sidebar keeps the menu button's
+   place, invisibly, so the logo never moves between pages. */
+.topbar__inner:has(> .menu-btn) {
   padding-left: 18px
 }
 @media (max-width:1199px) {
-  .topbar__inner:has(> .menu-btn:not([hidden])) {
+  .topbar__inner:has(> .menu-btn) {
     padding-left: 10px
   }
+}
+.topbar__inner > .menu-btn[hidden] {
+  display: inline-grid!important;
+  visibility: hidden;
+  pointer-events: none
 }
 .menu-btn {
   width: 44px;
@@ -3776,9 +3777,9 @@ html[data-theme] .tag-pill {
   min-height: 24px;
   padding-top: 2px;
   padding-bottom: 2px;
-  font-size: .72rem;
+  font-size: .8125rem;
   font-weight: 700;
-  letter-spacing: .06em;
+  letter-spacing: .05em;
   line-height: 1.4;
   text-transform: uppercase
 }
@@ -3814,7 +3815,7 @@ html[data-theme] .tag-pill::before {
 :root:not([data-theme=dark]) .tag-pill,
 html[data-theme] .tag-pill {
   font-weight: 650;
-  letter-spacing: .085em
+  letter-spacing: .06em
 }
 .hero-lede .bracketed .hero-bracket {
   font-weight: 700
@@ -3874,7 +3875,7 @@ html[data-theme] .tag-pill {
 .app-layout .notice-card__id,
 .app-layout .notice-card__meta,
 .app-layout .notice-card__meta time {
-  font-size: .9rem
+  font-size: .875rem; font-weight: 500
 }
 html.theme-switching *,
 html.theme-switching ::after,

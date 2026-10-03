@@ -54,6 +54,8 @@ function initBackLink() {
   link.href = last;
   const label = link.querySelector?.(".back-link__label") || link;
   if (/[?&](q|tag|type)=/.test(last)) label.textContent = "Back to results";
+  // The archive page restores its scroll position for this return (not for ordinary links).
+  link.addEventListener("click", () => { try { window.sessionStorage.setItem("lcna:restore-scroll", last); } catch {} });
 
 }
 try { initBackLink(); } catch (error) { console.warn("Back link unavailable", error); }

@@ -27,7 +27,16 @@ function storage(action) {
 function saveScroll() {
   storage(store => store.setItem(scrollKey(), String(Math.round(window.scrollY || 0))));
 }
-function restoreScroll() {
+// On arrival, only a return (back/forward, a reload, or "Back to results") goes back to where the
+// reader was; opening a page from a link (the page numbers, a tag) starts at the top.
+function returning() {
+  const back = storage(store => store.getItem("lcna:restore-scroll"));
+  if (back !== null) storage(store => store.removeItem("lcna:restore-scroll"));
+  const type = window.performance?.getEntriesByType?.("navigation")?.[0]?.type;
+  return type === "back_forward" || type === "reload" || back === `${window.location.pathname}${window.location.search}`;
+}
+function restoreScroll(arriving = false) {
+  if (arriving && !returning()) return;
   const saved = Number(storage(store => store.getItem(scrollKey())));
   if (saved > 0 && typeof window.scrollTo === "function") window.requestAnimationFrame?.(() => window.scrollTo(0, saved));
 }
@@ -316,7 +325,7 @@ async function init() {
     syncSortMenu = initSortMenu(sortSelect) || null;
     renderFromLocation();
     if (window.history && "scrollRestoration" in window.history) window.history.scrollRestoration = "manual";
-    restoreScroll();
+    restoreScroll(true);
     window.addEventListener("pagehide", saveScroll);
     noticeList.addEventListener?.("click", saveScroll);
     sortSelect?.addEventListener("change", () => {
