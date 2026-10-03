@@ -6713,6 +6713,21 @@
     "summary": "Adds Target Extraction - [New Target Extraction: Edgar Family Chief Butler Ryōshū & Butler Ishmael], Target Extraction - [Target Extraction: Heathcliff], and 2 more.\nIncludes 24 bug fixes and 2 known issues."
   },
   {
+    "id": 656,
+    "source_id": 656,
+    "title": "Limbus Company Season 4 Roadmap",
+    "content": "![Image from the official notice](https://clan.akamai.steamstatic.com/images/43587230/5e0f7caa1183b9babbf3382d40fe3d1a02ad6291.png)",
+    "date": "2024-04-12",
+    "type": "Announcements",
+    "tags": [
+      "New Content"
+    ],
+    "date_source": "steam-posted",
+    "order": 297,
+    "match_method": "linked",
+    "summary": "The Season 4 roadmap of upcoming content.\nIncludes 1 image from the official notice."
+  },
+  {
     "id": 217,
     "source_id": 217,
     "title": "Notice: Heathcliff Binds E.G.O Error",
@@ -9368,6 +9383,19 @@
     "order": 59,
     "match_method": "linked",
     "summary": "In addition, we would like to provide an additional compensation for the delay in the roadmap."
+  },
+  {
+    "id": 655,
+    "source_id": 655,
+    "title": "2023 Roadmap",
+    "content": "![Image from the official notice](https://clan.akamai.steamstatic.com/images/43587230/131dd8ee4539c2a7420d03413759988c0d44e6f7.png)",
+    "date": "2023-04-20",
+    "type": "Announcements",
+    "tags": [],
+    "date_source": "steam-posted",
+    "order": 58,
+    "match_method": "linked",
+    "summary": "The 2023 roadmap of upcoming content.\nIncludes 1 image from the official notice."
   },
   {
     "id": 49,
