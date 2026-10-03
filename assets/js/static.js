@@ -61,7 +61,7 @@ try { initBackLink(); } catch (error) { console.warn("Back link unavailable", er
 function initContents() {
   const toc = document.getElementById("noticeToc");
   const list = document.getElementById("noticeTocList");
-  const headings = [...document.querySelectorAll("#noticeContent .notice-section-heading")]
+  const headings = [...document.querySelectorAll("#noticeContent .notice-section-heading:not(.notice-label-heading)")]
     .filter(heading => !/^index$|^contents$/i.test(heading.textContent.trim()));
   if (!toc || !list || headings.length < 2) return;
   // The list is served in the HTML; build it only if it is missing.
@@ -160,47 +160,56 @@ try {
 } catch (error) { /* tables keep their default size */ }
 
 // Notice images open full size in a viewer: × / Esc / a click outside the image closes it, arrows step
-// through the notice's images (and do not change notice while it is open). Clicking the image (or the
-// zoom button) zooms in around that point; drag to look around, click again to zoom out.
+// through the notice's images (and do not change notice while it is open). Zoom with the slider or
+// −/+ (100–600%), a click (zooms in around that point, or back to fit), pinch on touch screens, or
+// Ctrl + scroll / trackpad pinch; drag to look around.
 try {
   const images = [...document.querySelectorAll(".notice-figure img")];
   if (images.length) {
     const icon = path => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${path}"/></svg>`;
-    const ZOOM_IN = "M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4M11 8v6M8 11h6";
-    const ZOOM_OUT = "M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM20 20l-4-4M8 11h6";
     const viewer = document.createElement("dialog");
     viewer.className = "image-viewer";
     viewer.setAttribute("aria-label", "Image viewer");
     viewer.innerHTML = `<div class="image-viewer__bar">`
-      + `<button type="button" class="image-viewer__button image-viewer__zoom" aria-label="Zoom in">${icon(ZOOM_IN)}</button>`
+      + `<div class="image-viewer__zoom" role="group" aria-label="Zoom">`
+      + `<button type="button" class="image-viewer__button image-viewer__out" aria-label="Zoom out">${icon("M6 12h12")}</button>`
+      + `<input type="range" class="image-viewer__slider" min="100" max="600" step="10" value="100" aria-label="Zoom level">`
+      + `<button type="button" class="image-viewer__button image-viewer__in" aria-label="Zoom in">${icon("M6 12h12M12 6v12")}</button>`
+      + `<output class="image-viewer__level">100%</output></div>`
       + `<button type="button" class="image-viewer__button image-viewer__close" aria-label="Close">${icon("M6 6l12 12M18 6L6 18")}</button></div>`
       + `<button type="button" class="image-viewer__button image-viewer__nav image-viewer__nav--prev" aria-label="Previous image">${icon("M15 5l-7 7 7 7")}</button>`
-      + `<figure class="image-viewer__figure"><img class="image-viewer__image" alt=""><figcaption class="image-viewer__count"></figcaption></figure>`
+      + `<figure class="image-viewer__figure"><img class="image-viewer__image" alt="" draggable="false"><figcaption class="image-viewer__count"></figcaption></figure>`
       + `<button type="button" class="image-viewer__button image-viewer__nav image-viewer__nav--next" aria-label="Next image">${icon("M9 5l7 7-7 7")}</button>`;
     document.body.append(viewer);
-    const figure = viewer.querySelector(".image-viewer__figure");
-    const picture = viewer.querySelector(".image-viewer__image");
-    const count = viewer.querySelector(".image-viewer__count");
-    const zoomButton = viewer.querySelector(".image-viewer__zoom");
-    let index = 0, zoomed = false, drag = null, dragged = false;
-    const setZoom = (on, point) => {
-      const box = picture.getBoundingClientRect();
-      const fx = point ? (point.clientX - box.left) / box.width : 0.5;
-      const fy = point ? (point.clientY - box.top) / box.height : 0.5;
-      zoomed = on;
-      viewer.classList.toggle("is-zoomed", on);
-      zoomButton.setAttribute("aria-label", on ? "Zoom out" : "Zoom in");
-      zoomButton.innerHTML = icon(on ? ZOOM_OUT : ZOOM_IN);
-      // Zoomed: the image's full resolution, and at least twice the size it was shown at.
-      picture.style.width = on ? `${Math.max(picture.naturalWidth, box.width * 2)}px` : "";
-      if (on) requestAnimationFrame(() => {
-        figure.scrollLeft = fx * picture.offsetWidth - figure.clientWidth / 2;
-        figure.scrollTop = fy * picture.offsetHeight - figure.clientHeight / 2;
-      });
+    const $ = selector => viewer.querySelector(selector);
+    const figure = $(".image-viewer__figure"), picture = $(".image-viewer__image"), count = $(".image-viewer__count");
+    const slider = $(".image-viewer__slider"), level = $(".image-viewer__level");
+    let index = 0, scale = 1, baseWidth = 0, moved = false;
+    const pointers = new Map();
+    let pan = null, pinch = null;
+
+    // Zoom to `next` (1 = fit) keeping the point under (x, y) where it is.
+    const setScale = (next, x, y) => {
+      next = Math.min(6, Math.max(1, next));
+      const area = figure.getBoundingClientRect(), box = picture.getBoundingClientRect();
+      x ??= area.left + area.width / 2;
+      y ??= area.top + area.height / 2;
+      const fx = (x - box.left) / box.width, fy = (y - box.top) / box.height;
+      if (scale === 1) baseWidth = box.width;
+      scale = next;
+      viewer.classList.toggle("is-zoomed", scale > 1);
+      picture.style.width = scale > 1 ? `${baseWidth * scale}px` : "";
+      slider.value = Math.round(scale * 100);
+      level.textContent = `${Math.round(scale * 100)}%`;
+      if (scale > 1) {
+        const after = picture.getBoundingClientRect();
+        figure.scrollLeft += after.left + fx * after.width - x;
+        figure.scrollTop += after.top + fy * after.height - y;
+      }
     };
     const show = next => {
       index = (next + images.length) % images.length;
-      if (zoomed) setZoom(false);
+      setScale(1);
       picture.src = images[index].currentSrc || images[index].src;
       picture.alt = images[index].alt;
       count.textContent = images.length > 1 ? `${index + 1} / ${images.length}` : "";
@@ -212,35 +221,62 @@ try {
       show(position);
       viewer.showModal();
     }));
-    viewer.addEventListener("close", () => { if (zoomed) setZoom(false); });
-    zoomButton.addEventListener("click", () => setZoom(!zoomed));
-    picture.addEventListener("click", event => { if (!dragged) setZoom(!zoomed, event); });
+    viewer.addEventListener("close", () => setScale(1));
+    slider.addEventListener("input", () => setScale(slider.value / 100));
+    $(".image-viewer__in").addEventListener("click", () => setScale(scale + 0.5));
+    $(".image-viewer__out").addEventListener("click", () => setScale(scale - 0.5));
+    picture.addEventListener("click", event => { if (!moved) setScale(scale > 1 ? 1 : 2.5, event.clientX, event.clientY); });
+    figure.addEventListener("wheel", event => {
+      if (!event.ctrlKey) return;  // Ctrl + scroll and trackpad pinch zoom; plain scrolling pans
+      event.preventDefault();
+      setScale(scale * Math.exp(-event.deltaY / 300), event.clientX, event.clientY);
+    }, { passive: false });
     figure.addEventListener("pointerdown", event => {
-      dragged = false;
-      if (!zoomed || event.button) return;
-      drag = { x: event.clientX, y: event.clientY, left: figure.scrollLeft, top: figure.scrollTop };
+      if (event.button) return;
+      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
       figure.setPointerCapture(event.pointerId);
+      moved = false;
+      if (pointers.size === 2) {
+        const [a, b] = [...pointers.values()];
+        pinch = { distance: Math.hypot(a.x - b.x, a.y - b.y), scale };
+        pan = null;
+      } else if (scale > 1) {
+        pan = { x: event.clientX, y: event.clientY, left: figure.scrollLeft, top: figure.scrollTop };
+      }
     });
     figure.addEventListener("pointermove", event => {
-      if (!drag) return;
-      const dx = event.clientX - drag.x, dy = event.clientY - drag.y;
-      if (Math.abs(dx) + Math.abs(dy) > 4) { dragged = true; figure.classList.add("is-dragging"); }
-      figure.scrollLeft = drag.left - dx;
-      figure.scrollTop = drag.top - dy;
+      if (!pointers.has(event.pointerId)) return;
+      pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+      if (pinch && pointers.size === 2) {
+        const [a, b] = [...pointers.values()];
+        moved = true;
+        setScale(pinch.scale * Math.hypot(a.x - b.x, a.y - b.y) / pinch.distance, (a.x + b.x) / 2, (a.y + b.y) / 2);
+      } else if (pan) {
+        const dx = event.clientX - pan.x, dy = event.clientY - pan.y;
+        if (Math.abs(dx) + Math.abs(dy) > 4) { moved = true; figure.classList.add("is-dragging"); }
+        figure.scrollLeft = pan.left - dx;
+        figure.scrollTop = pan.top - dy;
+      }
     });
-    const endDrag = () => { drag = null; figure.classList.remove("is-dragging"); };
-    figure.addEventListener("pointerup", endDrag);
-    figure.addEventListener("pointercancel", endDrag);
-    viewer.querySelector(".image-viewer__close").addEventListener("click", () => viewer.close());
-    viewer.querySelector(".image-viewer__nav--prev").addEventListener("click", () => show(index - 1));
-    viewer.querySelector(".image-viewer__nav--next").addEventListener("click", () => show(index + 1));
+    const release = event => {
+      pointers.delete(event.pointerId);
+      if (pointers.size < 2) pinch = null;
+      if (!pointers.size) { pan = null; figure.classList.remove("is-dragging"); }
+    };
+    figure.addEventListener("pointerup", release);
+    figure.addEventListener("pointercancel", release);
+    $(".image-viewer__close").addEventListener("click", () => viewer.close());
+    $(".image-viewer__nav--prev").addEventListener("click", () => show(index - 1));
+    $(".image-viewer__nav--next").addEventListener("click", () => show(index + 1));
     viewer.addEventListener("click", event => {
-      if (!zoomed && !dragged && (event.target === viewer || event.target === figure)) viewer.close();
+      if (scale === 1 && !moved && (event.target === viewer || event.target === figure)) viewer.close();
     });
     viewer.addEventListener("keydown", event => {
-      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
-      event.preventDefault();
-      show(index + (event.key === "ArrowRight" ? 1 : -1));
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        show(index + (event.key === "ArrowRight" ? 1 : -1));
+      } else if (event.key === "+" || event.key === "=") setScale(scale + 0.5);
+      else if (event.key === "-") setScale(scale - 0.5);
     });
   }
 } catch (error) { /* images still open in a new tab */ }

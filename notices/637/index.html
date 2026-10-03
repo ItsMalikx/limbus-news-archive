@@ -10,7 +10,7 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
   <title>2026, Jul. 9th Scheduled Update Notice | Limbus Company News Archive</title>
   <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=ed3092e382" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=787520602e" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/637/">
 <meta name="description" content="-------------------------------------- Greetings, Dear Manager. The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Jul. 9th, 2026">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "2026, Jul. 9th Scheduled Update Notice", "url": "https://lcna.whosmalikx.com/notices/637/", "mainEntityOfPage": "https://lcna.whosmalikx.com/notices/637/", "inLanguage": "en", "about": {"@type": "VideoGame", "name": "Limbus Company"}, "isPartOf": {"@type": "WebSite", "name": "Limbus Company News Archive", "url": "https://lcna.whosmalikx.com/"}, "datePublished": "2026-07-08"}</script>
@@ -67,7 +67,7 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
 <p>With the Jul. 9th Scheduled Update, 2 new Theme Pack-exclusive E.G.O Gifts will be added to the game. These new E.G.O Gifts do not have separate Choice Events, and can be obtained via E.G.O Gift Search, the Shop function, Fusion, and Node Clear Reward.</p>
 <h2 class="notice-section-heading" id="section-2">Fix for an issue where &quot;can gain up to N per turn&quot; effects were applied differently than intended in certain situations</h2><hr class="notice-section-divider">
 <p><span class="notice-note">※ We will explain using The Blade of House of Spiders Ryōshū&#x27;s &quot;Dihui Star&#x27;s Blade&quot; as an example.</span></p>
-<h3 class="notice-subsection-heading">[Example Condition]</h3>
+<h3 class="notice-subsection-heading notice-label-heading">[Example Condition]</h3>
 <p>1. The unit has 67 Stacks of &quot;Dihui Star&#x27;s Blade&quot;<br>2. The unit attempts to gain 20 &quot;Dihui Star&#x27;s Blade&quot; by using the &quot;Slay the Heavens - Tiansha&quot; Skill (this will cause the unit to gain only 3 Stacks of &quot;Dihui Star&#x27;s Blade&quot;, as gaining any more would exceed its max cap)<br>3. The unit consumes 50 Stacks of &quot;Dihui Star&#x27;s Blade&quot; by using &quot;Rend Space - Echoshear&quot;<br>4. The unit attempts to gain an additional 15 Stacks of &quot;Dihui Star&#x27;s Blade&quot; by using &quot;Rend Space&quot;</p>
 <p><span class="notice-before">- Before:</span><br>- When gaining a buff through Skills and other means, if the amount gained exceeded the maximum cap, per-turn limit was calculated based on the total &quot;Stacks attempted to be gained,&quot; instead of &quot;Stacks actually gained.&quot;<br>- In the example above, the game treated all 20 Stacks from Step 2 as having been gained. As a result, in Step 4, only 5 Stacks were gained.</p>
 <p><span class="notice-after">- After:</span><br>- This will be fixed so that even if the Stacks gained exceeds the maximum cap, only the &quot;amount actually gained&quot; will count toward the per-turn gain limit.<br>- As a result, buffs can be additionally gained up to the remaining per-turn gain limit.<br>- In regards to the example above, only the 3 &quot;Dihui Star&#x27;s Blade&quot; actually gained in Step 2 will be counted toward the cap, allowing all 15 &quot;Dihui Star&#x27;s Blade&quot; to be gained in Step 4.</p>
@@ -104,6 +104,6 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
     </footer>
   </div>
 
-  <script type="module" src="/assets/js/static.js?v=002e8fffbc"></script>
+  <script type="module" src="/assets/js/static.js?v=42a38c2411"></script>
 </body>
 </html>

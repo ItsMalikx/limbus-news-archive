@@ -7,6 +7,7 @@ import { stripHtml, escapeHtml } from "/assets/js/utils.js?v=fefa847c5c";
 // dotted acronyms joined ("E.G.O" -> "ego"), everything else split at punctuation.
 function normalizeText(text) {
   return String(text || "").normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase()
+    .replace(/\{\/?(?:gold|red|orange|yellow|green|blue|purple|gray|plain)\}/g, " ")
     .replace(/['’]s\b/g, "")
     .replace(/(?<![\p{L}\p{N}])(?:\p{L}\.){2,}\p{L}?(?![\p{L}\p{N}])/gu, match => match.replace(/\./g, ""))
     .replace(/[^\p{L}\p{N}]+/gu, " ").trim();

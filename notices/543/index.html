@@ -10,7 +10,7 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
   <title>2026, Feb. 26th Scheduled Update Notice | Limbus Company News Archive</title>
   <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=ed3092e382" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=787520602e" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/543/">
 <meta name="description" content="---------------------------------------- Greetings, Dear Manager. The server will enter scheduled maintenance from 10:00 [AM] through 12:00 [PM] on Feb. 26th, 2">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "2026, Feb. 26th Scheduled Update Notice", "url": "https://lcna.whosmalikx.com/notices/543/", "mainEntityOfPage": "https://lcna.whosmalikx.com/notices/543/", "inLanguage": "en", "about": {"@type": "VideoGame", "name": "Limbus Company"}, "isPartOf": {"@type": "WebSite", "name": "Limbus Company News Archive", "url": "https://lcna.whosmalikx.com/"}, "datePublished": "2026-02-25"}</script>
@@ -74,13 +74,13 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
 <p><span class="notice-marker">▶</span> Fixed certain effect errors related to the keyword &#x27;Charge Barrier&#x27;</p>
 <p><span class="notice-note">※ Relevant Effect: Gain (Charge Barrier # x n) Shield</span></p>
 <p><span class="notice-before">- Before: Upon activation of &#x27;Gain Charge Barrier next turn&#x27; effect, the Shield-gaining effect would apply in both the current turn and the next turn</span><br><span class="notice-after">- After: Upon activation of &#x27;Gain Charge Barrier next turn&#x27; effect, the Shield-gaining effect will now apply only in the next turn</span></p>
-<h3 class="notice-subsection-heading">[Cause of the Issue]</h3>
+<h3 class="notice-subsection-heading notice-label-heading">[Cause of the Issue]</h3>
 <p>With the Nov. 13th, 2025 Update, we had deployed an optimization that improves how in-battle effect summary UI is displayed.</p>
 <p>However, an error occurred in the process of deploying that optimization, where some of the logic that refers to the pre- and post-keyword applications mid-battle erroneously used the information of the next turn instead of the current turn.</p>
-<h3 class="notice-subsection-heading">[Areas Affected by the Issue]</h3>
+<h3 class="notice-subsection-heading notice-label-heading">[Areas Affected by the Issue]</h3>
 <p>The issue may arise when the effect-gaining activation timing for &quot;a certain effect activates when gaining/losing a status effect keyword&quot; triggers &quot;next turn&quot;.</p>
 <p>So far, the only confirmed case of this issue is the &#x27;Gain Charge Barrier next turn&#x27; effect for &#x27;W Corp. L2 Cleanup Agent Hong Lu&#x27;.</p>
-<h3 class="notice-subsection-heading">[Issue Fix]</h3>
+<h3 class="notice-subsection-heading notice-label-heading">[Issue Fix]</h3>
 <p>We have made adjustments so that the logic that refers to the pre- and post-keyword application uses the information of the current turn in battle.</p>
 <p><span class="notice-marker">▶</span> Fixed an issue where the Coin effect of Uptie 4 Defense Skill for &#x27;The Middle Little Brother Meursault&#x27; functioned differently from its description</p>
 <p><span class="notice-note">※ Relevant Effect: [On Hit] Inflict 1 Bleed</span></p>
@@ -125,6 +125,6 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
     </footer>
   </div>
 
-  <script type="module" src="/assets/js/static.js?v=002e8fffbc"></script>
+  <script type="module" src="/assets/js/static.js?v=42a38c2411"></script>
 </body>
 </html>

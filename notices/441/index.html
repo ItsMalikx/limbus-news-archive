@@ -10,7 +10,7 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
   <title>Notice: July 31st Ver 1.83.0 Known Issues &amp; Subsequent Measures | Limbus Company News Archive</title>
   <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=ed3092e382" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=787520602e" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/441/">
 <meta name="description" content="Hello, this is Project Moon. In this notice, we would like to inform you about the causes and our measures toward issues that have been identified, in addition ">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Notice: July 31st Ver 1.83.0 Known Issues & Subsequent Measures", "url": "https://lcna.whosmalikx.com/notices/441/", "mainEntityOfPage": "https://lcna.whosmalikx.com/notices/441/", "inLanguage": "en", "about": {"@type": "VideoGame", "name": "Limbus Company"}, "isPartOf": {"@type": "WebSite", "name": "Limbus Company News Archive", "url": "https://lcna.whosmalikx.com/"}, "datePublished": "2025-07-31"}</script>
@@ -41,25 +41,25 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
         <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="fixes" style="--tag-color: #FF8577">Fixes</span></p><h1 class="notice-inline-title">Notice: July 31st Ver 1.83.0 Known Issues &amp; Subsequent Measures</h1><div class="notice-date"><time datetime="2025-07-31">July 31, 2025</time></div><div class="tag-list"></div><hr class="notice-title-divider"></div><p>Hello, this is Project Moon.</p>
 <p>In this notice, we would like to inform you about the causes and our measures toward issues that have been identified, in addition to the softlocking issue in our previous notice. With it, we would also like to inform you regarding our new client update.</p>
 <p><span class="notice-marker">▶</span> An issue where the game softlocks in certain Encounters</p>
-<h2 class="notice-section-heading">[ Cause ]</h2>
+<h2 class="notice-section-heading notice-label-heading">[ Cause ]</h2>
 <p>This issue was a side effect of fixing the issue where the targeting mechanism for Skills with the [Indiscriminate] trait did not work properly, the fix for which was deployed with today&#x27;s Scheduled Update.</p>
 <p>The side effect was that, when an enemy target uses a [Indiscriminate] Skill in Focused Encounters, we observed an abnormal legnthening of the targeting time, which caused the game to softlock.</p>
-<h3 class="notice-subsection-heading">[ Solution ]</h3>
+<h3 class="notice-subsection-heading notice-label-heading">[ Solution ]</h3>
 <p>We have identified the exact logic that was causing the issue, and have tracked and corrected the cause of the error to properly address it.</p>
-<h3 class="notice-subsection-heading">[ Subsequent Measures ]</h3>
+<h3 class="notice-subsection-heading notice-label-heading">[ Subsequent Measures ]</h3>
 <p>We will be adding a logic to preemptively detect other logics that are taking abnormally long to calculate.</p>
 <p><span class="notice-marker">▶</span> An issue where certain effects of the E.G.O Gift Omnivibro-octovecti-bell did not work properly<br><span class="notice-note">※ Relevant effect : extend the Tremor - Superposition on target at Turn End to the next turn</span></p>
-<h3 class="notice-subsection-heading">[ Cause ]</h3>
+<h3 class="notice-subsection-heading notice-label-heading">[ Cause ]</h3>
 <p>In Focused Encounters, the E.G.O Gift should have applied to each part of enemies, but it was applying Tremor - Superposition to the enemies themselves, which caused the relevant effects to not trigger.</p>
-<h3 class="notice-subsection-heading">[ Solution ]</h3>
+<h3 class="notice-subsection-heading notice-label-heading">[ Solution ]</h3>
 <p>We have adjusted the code so that the E.G.O Gift&#x27;s effects apply to each part instead of the enemy itself in Focused Encounters.</p>
-<h3 class="notice-subsection-heading">[ Subsequent Measures ]</h3>
+<h3 class="notice-subsection-heading notice-label-heading">[ Subsequent Measures ]</h3>
 <p>Going forward, we will be including an additional testing step to ensure that E.G.O Gift effects are applying to each Part in Focused Encounters, so that this issue won&#x27;t occur again.</p>
 <p><span class="notice-marker">▶</span> New Client Deployment ETA</p>
 <p>A new Client version(1.83.1) with fixes for the above issues will be deployed.</p>
 <p>STEAM: The update will be deployed around 19:00 (KST).<br>iOS, Android: As Client updates need to go through the review process of each respective marketplaces, we will inform you again of the update schedule once the reviews are complete.</p>
 <p>We sincerely apologize for the inconvenience.</p>
-<h3 class="notice-subsection-heading">[7/31 Scheduled Update Error Compensation]</h3>
+<h3 class="notice-subsection-heading notice-label-heading">[7/31 Scheduled Update Error Compensation]</h3>
 <p>- <span class="notice-label">Content:</span> Lunacy x300<br>- <span class="notice-label">Recipients:</span> All users whose game accounts were created before 10:00 Aug. 7th, 2025 (KST)<br>- <span class="notice-label">When:</span> After July 31st, 2025 (Thu) 20:00 (KST)<br>- Can be claimed once per account</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
@@ -77,6 +77,6 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
     </footer>
   </div>
 
-  <script type="module" src="/assets/js/static.js?v=002e8fffbc"></script>
+  <script type="module" src="/assets/js/static.js?v=42a38c2411"></script>
 </body>
 </html>
