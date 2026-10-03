@@ -1,5 +1,5 @@
-import { initThemeToggle, initShell } from "/assets/js/utils.js";
-import { TAG_COLORS } from "/assets/js/config.js";
+import { initThemeToggle, initShell } from "/assets/js/utils.js?v=fefa847c5c";
+import { TAG_COLORS } from "/assets/js/config.js?v=9b10988a44";
 try { initThemeToggle(); } catch (error) { console.warn("Theme preference unavailable", error); }
 try { initShell(); } catch (error) { /* shell menu optional */ }
 for (const tag of document.querySelectorAll("[data-tag]")) {
@@ -111,9 +111,12 @@ function initContents() {
     // Set after the click's own event handling so it is not cleared by the unpin listeners.
     setTimeout(() => { pinned = index; release(); }, 0);
   }));
-  // Wait for the browser to restore the scroll position (on refresh) before choosing a section.
-  if (document.readyState === "complete") update();
-  else window.addEventListener("load", () => requestAnimationFrame(update), { once: true });
+  // A fresh visit starts at the top, so mark the section now. On refresh / back / forward (or a
+  // #section link) the browser restores the scroll position first: choose the section after load,
+  // so the first entry never flashes. A timer (not a frame callback) so it always runs.
+  const restoring = location.hash || ["reload", "back_forward"].includes(performance.getEntriesByType?.("navigation")?.[0]?.type);
+  if (!restoring || document.readyState === "complete") update();
+  else window.addEventListener("load", () => setTimeout(update, 0), { once: true });
 }
 try { initContents(); } catch (error) { console.warn("Contents unavailable", error); }
 

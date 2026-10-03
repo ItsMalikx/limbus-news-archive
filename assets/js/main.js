@@ -1,9 +1,9 @@
-import { SITE_CONFIG, TAG_COLORS } from "./config.js";
+import { SITE_CONFIG, TAG_COLORS } from "/assets/js/config.js?v=9b10988a44";
 import {
   buildNoticeUrl, fetchNotices, initThemeToggle, initShell, normalizeNotice, sortNotices,
   stripHtml, debounce, escapeHtml, formatDate
-} from "./utils.js";
-import { buildSearchIndex, searchNotices, highlight, excerpt } from "./search.js";
+} from "/assets/js/utils.js?v=fefa847c5c";
+import { buildSearchIndex, searchNotices, highlight, excerpt } from "/assets/js/search.js?v=42a54d33f3";
 
 const noticeList = document.getElementById("noticeList");
 const searchInput = document.getElementById("searchInput");
