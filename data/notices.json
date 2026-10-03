@@ -4542,6 +4542,22 @@
     "summary": "Softlocking issue that occured after the Feb. 27th, 2025 Scheduled Update on mobile devices with pending purchases.\nA hotfix will be deployed at Feb. 28th, 18:00 (KST) to address this issue."
   },
   {
+    "id": 649,
+    "source_id": 649,
+    "title": "Director's 2nd Anniversary Mini-livestream",
+    "content": "![Image from the official notice](https://clan.akamai.steamstatic.com/images/43587230/b1937c8bb0a10578d9eda0d84d1145bd3d24541d.png)",
+    "date": "2025-02-24",
+    "type": "Announcements",
+    "tags": [
+      "Rewards",
+      "Events"
+    ],
+    "date_source": "steam-posted",
+    "order": 495,
+    "match_method": "exact-title",
+    "summary": "Includes 1 image from the official notice."
+  },
+  {
     "id": 355,
     "source_id": 355,
     "title": "New Content - 2nd Anniversary Event",
@@ -5272,6 +5288,19 @@
     "summary": "Reward : Lunacy x1300, 3★ Guarantee Decaextraction Ticket x1"
   },
   {
+    "id": 652,
+    "source_id": 652,
+    "title": "Limbus Company - Roadmap",
+    "content": "![Image from the official notice](https://clan.akamai.steamstatic.com/images/43587230/2b08c1e34abeee7c4ac0e65691c947ac55561567.png)",
+    "date": "2024-11-22",
+    "type": "Announcements",
+    "tags": [],
+    "date_source": "steam-posted",
+    "order": 431,
+    "match_method": "exact-title",
+    "summary": "The roadmap of upcoming content.\nIncludes 1 image from the official notice."
+  },
+  {
     "id": 309,
     "source_id": 309,
     "title": "ProjectMoon 8th Anniversary Reward",
@@ -5989,6 +6018,21 @@
     "order": 361,
     "match_method": "exact-title",
     "summary": "We have identified an issue as of August 2nd (Friday) 10:20 AM (KST) where in-app purchases on iOS devices for Limbus Company are completing successfully, but the purchased items are not being delivered.\nWe are currently investigating this problem."
+  },
+  {
+    "id": 651,
+    "source_id": 651,
+    "title": "Limbus Company - Roadmap to Canto VII",
+    "content": "![Image from the official notice](https://clan.akamai.steamstatic.com/images/43587230/bc0f3d82eca897c1f1db4be54d10f9e6f70b86aa.png)",
+    "date": "2024-07-29",
+    "type": "Announcements",
+    "tags": [
+      "Main Story"
+    ],
+    "date_source": "steam-posted",
+    "order": 360,
+    "match_method": "exact-title",
+    "summary": "The Canto VII roadmap of upcoming content.\nIncludes 1 image from the official notice."
   },
   {
     "id": 259,
@@ -9725,6 +9769,21 @@
     "summary": "Adds Mini-event: New-hire’s Attendance Rewards, Target Extraction: N Corp. #2, and 5 more.\nIncludes 3 more changes."
   },
   {
+    "id": 653,
+    "source_id": 653,
+    "title": "!!!<<<Refraction Railway Line 1 Abnormality Observed>>>!!!",
+    "content": "![Image from the official notice](https://clan.akamai.steamstatic.com/images/43587230/29cd1366b4b2323f5c1f40e7e5ba0ddc761ae549.png)",
+    "date": "2023-03-17",
+    "type": "Announcements",
+    "tags": [
+      "Refraction Railway"
+    ],
+    "date_source": "steam-posted",
+    "order": 25,
+    "match_method": "exact-title",
+    "summary": "Includes 1 image from the official notice."
+  },
+  {
     "id": 22,
     "source_id": 22,
     "title": "Planned Addition of E.G.O Overclock and Other Adjustments for Apr 6",
@@ -9940,6 +9999,21 @@
     "order": 11,
     "match_method": "exact-title",
     "summary": "To start off, we would like to apologize to our users playing <Limbus Company> for allowing frequent bugs and errors to seriously hinder the experience.\nOur insufficient preparation caused disappointment to many players."
+  },
+  {
+    "id": 650,
+    "source_id": 650,
+    "title": "[Limbus Company First Half of 2023 Roadmap]",
+    "content": "[Limbus Company First Half of 2023 Roadmap]\n\nGreetings. This is Limbus Company\nThe <Limbus Company First Half of 2023 Roadmap> has been revealed today. Please refer to the details.\n\n<Official Twitter Post>\n- Limbus Company: https://twitter.com/LimbusCompany_B/status/1631228910162841600\n\n<Roadmap Reveal Gifts>\n- Items : 1300 Lunacy, Thread x100\n- Details : These items can be redeemed via the in-game mailbox until March 9th (Thu) 23:59 (KST). The mail will be valid for 7 days after receipt.\n\nThank you.\n\n![Image from the official notice](https://clan.akamai.steamstatic.com/images/43587230/1de4ae73d2fc40c6008d916de4f50ea0aebdb2cd.png)",
+    "date": "2023-03-02",
+    "type": "Announcements",
+    "tags": [
+      "Rewards"
+    ],
+    "date_source": "steam-posted",
+    "order": 10,
+    "match_method": "exact-title",
+    "summary": "This is Limbus Company The <Limbus Company First Half of 2023 Roadmap> has been revealed today.\nCovers Official Twitter Post and Roadmap Reveal Gifts."
   },
   {
     "id": 8,
