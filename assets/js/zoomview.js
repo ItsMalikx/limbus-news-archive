@@ -34,6 +34,12 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
   content.draggable = false;
   Object.assign(content.style, { position: "absolute", left: "0", top: "0", maxWidth: "none", maxHeight: "none", transformOrigin: "0 0", willChange: "transform" });
   Object.assign(viewport.style, { touchAction: "none", overflow: "hidden", userSelect: "none" });
+  // Reads a CSS length the browser has fully resolved (calc(), var(), any unit) through a hidden probe,
+  // in layout pixels (offsetWidth), the same units as clientWidth, whatever zoom the page has.
+  const probe = Object.assign(document.createElement("span"), { ariaHidden: "true" });
+  Object.assign(probe.style, { position: "absolute", left: "0", top: "0", height: "0", visibility: "hidden", pointerEvents: "none" });
+  viewport.append(probe);
+  const cssLength = name => { probe.style.width = `var(${name}, 0px)`; return probe.offsetWidth || 0; };
 
   const clampScale = scale => Math.min(camera.max, Math.max(camera.min, scale));
   const local = event => {
@@ -132,8 +138,7 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
 
   function measure() {
     rect = null;
-    const style = getComputedStyle(viewport);
-    for (const side of ["top", "right", "bottom", "left"]) pad[side] = parseFloat(style.getPropertyValue(`--zoom-pad-${side}`)) || 0;
+    for (const side of ["top", "right", "bottom", "left"]) pad[side] = cssLength(`--zoom-pad-${side}`);
     camera.width = viewport.clientWidth;
     camera.height = viewport.clientHeight;
     if (!camera.contentWidth || !camera.width || !camera.height) return false;
