@@ -25,7 +25,7 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
   const camera = { scale: 1, x: 0, y: 0, fit: 1, min: 1, max: 1, width: 0, height: 0, contentWidth: 0, contentHeight: 0 };
   const pad = { top: 0, right: 0, bottom: 0, left: 0 };
   let zoomTarget = null;      // { scale, ax, ay }: an eased zoom anchored at viewport point (ax, ay)
-  let settle = false;         // easing back inside the pan limits (after a rubber-band drag or a resize)
+  let settle = null;          // easing back inside the pan limits after a drag: { start, fromX, fromY, duration }
   let velocity = null;        // { x, y } px per ms: momentum after a flick
   let frame = 0, rect = null, dragged = false, lastTime = 0;
   const pointers = new Map(); // pointerId -> { x, y } (viewport coordinates)
@@ -104,33 +104,43 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
       const friction = 0.9 ** (elapsed / 16);
       velocity = { x: velocity.x * friction, y: velocity.y * friction };
       const b = bounds();
-      if (camera.x < b.minX || camera.x > b.maxX) velocity.x = 0;  // momentum stops at an edge
+      // Momentum stops at an edge; the eased return (below) brings the content back inside, never a jump.
+      if (camera.x < b.minX || camera.x > b.maxX) velocity.x = 0;
       if (camera.y < b.minY || camera.y > b.maxY) velocity.y = 0;
-      clampPan();
       if (Math.hypot(velocity.x, velocity.y) < 0.02) velocity = null;
       else busy = true;
     }
-    if (settle) {
+    // Back inside the limits along one ease-out curve over a set time (220-400 ms by distance), so a
+    // small overshoot glides back as smoothly as a large one instead of snapping.
+    if (settle && !velocity) {
       const b = bounds(), x = Math.min(b.maxX, Math.max(b.minX, camera.x)), y = Math.min(b.maxY, Math.max(b.minY, camera.y));
-      const share = 1 - 0.75 ** (elapsed / 16);
-      camera.x += (x - camera.x) * share;
-      camera.y += (y - camera.y) * share;
-      if (Math.abs(x - camera.x) < 0.5 && Math.abs(y - camera.y) < 0.5) { camera.x = x; camera.y = y; settle = false; }
-      else busy = true;
-    }
+      if (settle.start === undefined) {
+        const distance = Math.hypot(x - camera.x, y - camera.y);
+        if (distance < 0.5) settle = null;
+        else Object.assign(settle, { start: now, fromX: camera.x, fromY: camera.y, toX: x, toY: y,
+                                     duration: Math.min(400, 220 + distance * 0.8) });
+      }
+      if (settle) {
+        const progress = Math.min(1, (now - settle.start) / settle.duration), eased = 1 - (1 - progress) ** 3;
+        camera.x = settle.fromX + (settle.toX - settle.fromX) * eased;
+        camera.y = settle.fromY + (settle.toY - settle.fromY) * eased;
+        if (progress >= 1) settle = null;
+        else busy = true;
+      }
+    } else if (settle) busy = true;
     render();
     if (busy) frame = requestAnimationFrame(step);
     else lastTime = 0;
   }
   const schedule = () => { frame ||= requestAnimationFrame(step); };
-  const stopMotion = () => { zoomTarget = null; velocity = null; settle = false; };
+  const stopMotion = () => { zoomTarget = null; velocity = null; settle = null; };
 
   const center = () => ({ x: pad.left + (camera.width - pad.left - pad.right) / 2, y: pad.top + (camera.height - pad.top - pad.bottom) / 2 });
 
   function setZoom(scale, anchor = center(), animate = true) {
     if (!camera.contentWidth) return;
     velocity = null;
-    settle = false;
+    settle = null;
     if (animate) zoomTarget = { scale: clampScale(scale), ax: anchor.x, ay: anchor.y };
     else { zoomTarget = null; zoomAbout(scale, anchor.x, anchor.y); }
     schedule();
@@ -196,7 +206,7 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
     delta = Math.max(-80, Math.min(80, delta));
     const { x, y } = local(event);
     velocity = null;
-    settle = false;
+    settle = null;
     const from = zoomTarget ? zoomTarget.scale : camera.scale;
     zoomTarget = { scale: clampScale(from * Math.exp(-delta * (pinch ? 0.01 : 0.0025))), ax: x, ay: y };
     schedule();
@@ -261,7 +271,7 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
         const v = { x: (last.x - first.x) / span, y: (last.y - first.y) / span };
         if (Math.hypot(v.x, v.y) > 0.25) velocity = v;
       }
-      settle = true;
+      settle = {};
       schedule();
     }
     startGesture(event.timeStamp);  // a pinch that loses a finger carries on as a pan from the other
