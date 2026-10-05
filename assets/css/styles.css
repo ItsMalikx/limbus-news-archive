@@ -4143,46 +4143,47 @@ html[data-rail=collapsed] body:has(.notice-layout.has-toc) {
 .notice-table .cell-unit {
   white-space: nowrap
 }
-/* "Copy link to highlight": floats under a text selection in a notice. A shared link's passage is
-   highlighted on arrival (::target-text by the browser, ::highlight(passage) by the script fallback). */
-.highlight-link {
-  position: absolute;
-  z-index: 40;
-  display: inline-flex;
-  align-items: center;
-  gap: calc(8 * var(--u));
-  min-height: calc(36 * var(--u));
-  padding: calc(8 * var(--u)) calc(14 * var(--u));
-  border: 1px solid var(--line-strong);
-  border-radius: calc(8 * var(--u));
-  background: var(--surface);
-  color: var(--text);
-  font: inherit;
-  font-size: max(13px, calc(14 * var(--u)));
-  font-weight: 650;
-  white-space: nowrap;
-  box-shadow: 0 calc(6 * var(--u)) calc(20 * var(--u)) rgb(0 0 0 / 0.28);
-  cursor: pointer;
-  transition: border-color var(--ease), color var(--ease)
-}
-.highlight-link[hidden] {
-  display: none
-}
-.highlight-link:hover {
-  border-color: var(--accent);
-  color: var(--accent)
-}
-.highlight-link svg {
-  width: calc(16 * var(--u));
-  height: calc(16 * var(--u));
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round
-}
-::target-text,
-::highlight(passage) {
+/* A shared link to a passage (#:~:text=, made by the browser's own "Copy link to highlight") is
+   highlighted in the site's accent. */
+::target-text {
   background: color-mix(in srgb, var(--accent) 38%, transparent);
   color: inherit
 }
+/* Notice boxes ([Box] in the transcript): the framed panels the notice images use to set text apart.
+   A gold frame (title in its top border), a red frame for warnings, a dark red filled panel whose title
+   sits on a pill. */
+.notice-box {
+  --box-line: #f8c200;
+  min-width: 0;
+  margin: 1.25em 0;
+  padding: .85em clamp(14px, 1.4em, 26px) 1em;
+  border: 2px solid var(--box-line);
+  border-radius: 0
+}
+.notice-box__title {
+  max-width: calc(100% - 2em);
+  margin: 0 auto;
+  padding: 0 .6em;
+  color: var(--box-line);
+  font-weight: 700;
+  font-size: 1.06em;
+  text-align: center
+}
+.notice-box__body > :first-child { margin-top: 0 }
+.notice-box__body > :last-child { margin-bottom: 0 }
+.notice-box--red { --box-line: #ff0902 }
+.notice-box--filled {
+  --box-line: #e10600;
+  background: #680000
+}
+.notice-box--filled .notice-box__title {
+  padding: .2em 1.8em;
+  border-radius: 999px;
+  background: #990000;
+  color: #f8c200
+}
+.notice-box__title .notice-note { color: inherit }
+:root[data-theme="light"] .notice-box { --box-line: #a87a12 }
+:root[data-theme="light"] .notice-box--red { --box-line: #c0352c }
+:root[data-theme="light"] .notice-box--filled { --box-line: #c0352c; background: #f6dcd6 }
+:root[data-theme="light"] .notice-box--filled .notice-box__title { background: #c0352c; color: #fff4d6 }

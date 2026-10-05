@@ -49,6 +49,7 @@ function editDistance(a, b, limit) {
 // syntax, divider lines and image lines removed. Straight from the text: no HTML is built or parsed.
 export function noticePlainText(text) {
   return String(text || "").replace(/!\[[^\]]*\]\([^)]*\)/g, " ").replace(/^\[\/?Table\b[^\]\n]*\]\s*$/gim, " ")
+    .replace(/^\[Box[^\]:\n]*(?::\s*([^\]\n]*))?\]\s*$/gim, (_, title) => title || " ").replace(/^\[\/Box\]\s*$/gim, " ")
     .replace(/\{\/?[a-z]+\}/g, "").replace(/\*\*|__/g, "").replace(/^\s*-{3,}\s*$/gm, " ")
     .replace(/(^|\s)[|^](?=\s|$)/gm, " ").replace(/\\([\\|^])/g, "$1").replace(/\s+/g, " ").trim();
 }
