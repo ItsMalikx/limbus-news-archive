@@ -1,4 +1,4 @@
-import { stripHtml, escapeHtml } from "/assets/js/utils.js?v=b4315c6b70";
+import { stripHtml, escapeHtml } from "/assets/js/utils.js?v=ba2deb1b4c";
 
 // Ranked search: weighted fields, prefix and typo-tolerant matching, "quoted phrases",
 // and highlighted excerpts. Only `export function` declarations: tests load this as a script.
@@ -45,29 +45,77 @@ function editDistance(a, b, limit) {
   return previous[b.length];
 }
 
+// A notice transcript (the archive's text syntax) as plain words: colour and emphasis markup, table
+// syntax, divider lines and image lines removed. Straight from the text: no HTML is built or parsed.
+export function noticePlainText(text) {
+  return String(text || "").replace(/!\[[^\]]*\]\([^)]*\)/g, " ").replace(/^\[\/?Table\b[^\]\n]*\]\s*$/gim, " ")
+    .replace(/\{\/?[a-z]+\}/g, "").replace(/\*\*|__/g, "").replace(/^\s*-{3,}\s*$/gm, " ")
+    .replace(/(^|\s)[|^](?=\s|$)/gm, " ").replace(/\\([\\|^])/g, "$1").replace(/\s+/g, " ").trim();
+}
+
+// The headings of a transcript: the lines underlined with dashes.
+export function noticeHeadings(text) {
+  return [...String(text || "").matchAll(/^(.+)\r?\n\s*-{3,}\s*$/gm)].map(match => noticePlainText(match[1])).join(" ");
+}
+
+// One notice's entry in the index (its words added to `vocabulary`). The transcript text is used when
+// the notice has it; otherwise its HTML content.
+export function indexNotice(notice, order, vocabulary) {
+  const fromText = typeof notice.text === "string";
+  const html = fromText ? "" : String(notice.content || "");
+  const plain = fromText ? noticePlainText(notice.text) : stripHtml(html);
+  const headings = fromText ? noticeHeadings(notice.text)
+    : [...html.matchAll(/<h[23][^>]*>([\s\S]*?)<\/h[23]>/gi)].map(match => stripHtml(match[1])).join(" ");
+  const fields = {
+    title: countTerms(notice.title),
+    tags: countTerms([notice.type || "", ...(notice.tags || [])].join(" ")),
+    headings: countTerms(headings),
+    lead: countTerms(plain.slice(0, 300)),
+    body: countTerms(plain)
+  };
+  for (const counts of Object.values(fields)) {
+    for (const word of counts.keys()) {
+      if (!vocabulary.has(word)) vocabulary.set(word, new Set());
+      vocabulary.get(word).add(order);
+    }
+  }
+  return { notice, order, plain, fields, text: ` ${normalizeText(`${notice.title} ${plain}`)} `,
+    title: ` ${normalizeText(notice.title)} `, key: `${normalizeText(notice.title)}|${notice.date || ""}` };
+}
+
 export function buildSearchIndex(notices) {
   const vocabulary = new Map();
-  const docs = notices.map((notice, order) => {
-    const html = String(notice.content || "");
-    const plain = stripHtml(html);
-    const headings = [...html.matchAll(/<h[23][^>]*>([\s\S]*?)<\/h[23]>/gi)].map(match => stripHtml(match[1])).join(" ");
-    const fields = {
-      title: countTerms(notice.title),
-      tags: countTerms([notice.type || "", ...(notice.tags || [])].join(" ")),
-      headings: countTerms(headings),
-      lead: countTerms(plain.slice(0, 300)),
-      body: countTerms(plain)
-    };
-    for (const counts of Object.values(fields)) {
-      for (const word of counts.keys()) {
-        if (!vocabulary.has(word)) vocabulary.set(word, new Set());
-        vocabulary.get(word).add(order);
-      }
-    }
-    return { notice, order, plain, fields, text: ` ${normalizeText(`${notice.title} ${plain}`)} `,
-      title: ` ${normalizeText(notice.title)} `, key: `${normalizeText(notice.title)}|${notice.date || ""}` };
-  });
-  return { docs, vocabulary, words: [...vocabulary.keys()] };
+  const docs = notices.map((notice, order) => indexNotice(notice, order, vocabulary));
+  return { docs, vocabulary, words: [...vocabulary.keys()], ready: true };
+}
+
+// The list without word lookups (enough to show every notice in order, before the index is built).
+export function listIndex(notices) {
+  return { docs: notices.map((notice, order) => ({ notice, order, plain: "", fields: null, text: "", title: "" })),
+    vocabulary: new Map(), words: [], ready: false };
+}
+
+// The same index built a few notices at a time after the page has shown, giving the page back between
+// slices (no long task blocks scrolling or typing). `onReady(index, later)` gets the finished index;
+// `finishNow()` completes it at once (a search typed before it is done).
+export function startSearchIndex(notices, onReady, budget = 8) {
+  const vocabulary = new Map(), docs = [];
+  let order = 0, finished = false;
+  const done = later => { finished = true; onReady({ docs, vocabulary, words: [...vocabulary.keys()], ready: true }, later); };
+  const step = () => {
+    if (finished) return;
+    const started = Date.now();
+    while (order < notices.length && Date.now() - started < budget) docs.push(indexNotice(notices[order], order++, vocabulary));
+    if (order < notices.length) setTimeout(step, 0); else done(true);
+  };
+  const api = { finishNow() {
+    if (finished) return;
+    while (order < notices.length) docs.push(indexNotice(notices[order], order++, vocabulary));
+    done(false);
+  } };
+  // (Where there is no timer, as in a bare script context, it is built at once.)
+  if (typeof setTimeout === "function") setTimeout(step, 0); else api.finishNow();
+  return api;
 }
 
 const FIELD_WEIGHTS = { title: 10, tags: 7, headings: 5, lead: 2.5, body: 1 };

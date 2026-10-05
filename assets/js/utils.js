@@ -147,14 +147,12 @@ function convertPlainTextNoticeToHtml(text, noticeTitle = "") {
   return blocks.join("");
 }
 
+// `text` is the transcript; `content` its simple HTML, made only when something asks for it (the
+// archive page never does: making it for every notice up front was most of the page's start-up time).
 export function normalizeNotice(notice = {}) {
-  const rawContent = notice.content || "";
-  const textContent = String(rawContent);
+  const textContent = String(notice.content || "");
   const title = notice.title || `Untitled Notice ${notice.id ?? ""}`;
-
-  const content = convertPlainTextNoticeToHtml(textContent, title);
-
-  return {
+  const normalized = {
     ...notice,
     id: notice.id,
     title: title,
@@ -162,9 +160,15 @@ export function normalizeNotice(notice = {}) {
     category: notice.category || "Uncategorized",
     tags: Array.isArray(notice.tags) ? notice.tags : [],
     summary: notice.summary || "",
-    content,
+    text: textContent,
     toc: notice.toc !== false
   };
+  let html = null;
+  Object.defineProperty(normalized, "content", {
+    get: () => html ?? (html = convertPlainTextNoticeToHtml(textContent, title)),
+    enumerable: true, configurable: true
+  });
+  return normalized;
 }
 
 export function sortNotices(notices, mode = "date-desc") {

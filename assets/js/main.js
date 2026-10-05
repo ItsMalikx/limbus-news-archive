@@ -2,8 +2,8 @@ import { SITE_CONFIG, TAG_COLORS } from "/assets/js/config.js?v=9b10988a44";
 import {
   buildNoticeUrl, fetchNotices, initThemeToggle, initShell, normalizeNotice, sortNotices,
   stripHtml, debounce, escapeHtml, formatDate
-} from "/assets/js/utils.js?v=b4315c6b70";
-import { buildSearchIndex, searchNotices, highlight, excerpt } from "/assets/js/search.js?v=bd9d2dbae3";
+} from "/assets/js/utils.js?v=ba2deb1b4c";
+import { buildSearchIndex, listIndex, startSearchIndex, noticePlainText, searchNotices, highlight, excerpt } from "/assets/js/search.js?v=1b29f24b5e";
 
 const noticeList = document.getElementById("noticeList");
 const searchInput = document.getElementById("searchInput");
@@ -14,7 +14,7 @@ const navigation = [...document.querySelectorAll('[aria-label="Archive pages"]')
 const archivePage = Number(noticeList.dataset.archivePage) || 1;
 const pageSize = Number(noticeList.dataset.pageSize) || SITE_CONFIG.pageSize || 50;
 let allNotices = [];
-let searchIndex = null;
+let searchIndex = null, indexing = null;
 let animateNext = false;
 // Results scoring below this share of the best match are tucked behind a button.
 const LOOSE_RATIO = 0.15;
@@ -61,7 +61,7 @@ function renderNoticeCard(notice, featured = false, words = []) {
     const color = TAG_COLORS[tagSlug(tag)];
     return `<span class="tag-pill" data-tag="${tagSlug(tag)}" ${color ? `style="--tag-color: ${color}"` : ""}>${escapeHtml(tag)}</span>`;
   }).join("");
-  const plain = notice.summary?.trim() || stripHtml(notice.content).trim();
+  const plain = notice.summary?.trim() || noticePlainText(notice.text ?? stripHtml(notice.content)).slice(0, 600);
   const summary = plain;
   const date = notice.date
     ? `<time datetime="${escapeHtml(notice.date)}">${escapeHtml(formatDate(notice.date))}</time>` : "";
@@ -169,6 +169,7 @@ function renderFromLocation({ syncInput = true } = {}) {
   const defaultSort = query ? "relevance" : "newest";
   const requestedSort = params.get("sort");
   const sort = ["newest", "oldest"].includes(requestedSort) || (requestedSort === "relevance" && query) ? requestedSort : defaultSort;
+  if (query && !searchIndex.ready) indexing?.finishNow();
   const { results } = searchNotices(searchIndex, query);
   const ranked = sort === "newest" && query ? [...results].sort((a, b) => a.doc.order - b.doc.order)
     : sort === "oldest" ? [...results].sort((a, b) => b.doc.order - a.doc.order) : results;
@@ -321,7 +322,13 @@ async function init() {
   try {
     const raw = await fetchNotices(SITE_CONFIG.dataUrl);
     allNotices = sortNotices(raw.map(normalizeNotice), "date-desc");
-    searchIndex = buildSearchIndex(allNotices);
+    // The search index: at once when the page opens on a search; otherwise built in slices after the
+    // list has shown (it was most of the page's start-up time).
+    searchIndex = initialQuery ? buildSearchIndex(allNotices) : listIndex(allNotices);
+    if (!searchIndex.ready) indexing = startSearchIndex(allNotices, (built, later) => {
+      searchIndex = built;
+      if (later && new URLSearchParams(window.location.search).get("q")) renderFromLocation({ syncInput: false });
+    });
     syncSortMenu = initSortMenu(sortSelect) || null;
     renderFromLocation();
     if (window.history && "scrollRestoration" in window.history) window.history.scrollRestoration = "manual";
