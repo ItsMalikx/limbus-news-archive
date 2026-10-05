@@ -4139,6 +4139,12 @@ html[data-rail=collapsed] body:has(.notice-layout.has-toc) {
 .notice-table td:has(.cell-unit) {
   max-width: none
 }
+/* A title across the table, or a cell alone in its row, is not a column to keep in balance with others:
+   it takes the width its text needs, as in the official images. */
+.notice-table thead .notice-table__title,
+.notice-table td:only-child {
+  max-width: none
+}
 .notice-table .cell-item,
 .notice-table .cell-unit {
   white-space: nowrap
