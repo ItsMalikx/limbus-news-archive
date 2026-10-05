@@ -818,8 +818,8 @@ html[data-theme=dark] {
 .notice-color-red { color: #ff0902 }
 .notice-color-orange { color: #ff7200 }
 .notice-color-yellow { color: #f8c200 }
-.notice-color-green { color: #3fa66b }
-.notice-color-blue { color: #4a9ae8 }
+.notice-color-green { color: #69d400 }
+.notice-color-blue { color: #0090d3 }
 .notice-color-purple { color: #a07ce8 }
 .notice-color-brown { color: #a16a3b }
 .notice-color-gray { color: var(--text-muted) }
@@ -828,8 +828,8 @@ html[data-theme=dark] {
 :root[data-theme="light"] .notice-color-red { color: #c0352c }
 :root[data-theme="light"] .notice-color-orange { color: #b45f0e }
 :root[data-theme="light"] .notice-color-yellow { color: #8f6a00 }
-:root[data-theme="light"] .notice-color-green { color: #23784a }
-:root[data-theme="light"] .notice-color-blue { color: #1f6fbf }
+:root[data-theme="light"] .notice-color-green { color: #3d7a00 }
+:root[data-theme="light"] .notice-color-blue { color: #006a9e }
 :root[data-theme="light"] .notice-color-purple { color: #7550c4 }
 :root[data-theme="light"] .notice-color-brown { color: #8a5528 }
 .notice-link {
