@@ -812,7 +812,8 @@ html[data-theme=dark] {
 .article-content u {
   text-underline-offset: .18em
 }
-.notice-color-gold { color: var(--gold) }
+/* Its own colour: inside notices --gold is the text colour (monochrome headings), which {gold} must not follow. */
+.notice-color-gold { color: #efc04a }
 .notice-color-red { color: #e5534b }
 .notice-color-orange { color: #e8892b }
 .notice-color-yellow { color: #e3b341 }
@@ -821,6 +822,7 @@ html[data-theme=dark] {
 .notice-color-purple { color: #a07ce8 }
 .notice-color-gray { color: var(--text-muted) }
 .notice-color-plain { color: var(--text) }
+:root[data-theme="light"] .notice-color-gold { color: #8a5a06 }
 :root[data-theme="light"] .notice-color-red { color: #c0352c }
 :root[data-theme="light"] .notice-color-orange { color: #b45f0e }
 :root[data-theme="light"] .notice-color-yellow { color: #8f6a00 }
