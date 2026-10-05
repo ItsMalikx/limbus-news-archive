@@ -813,14 +813,15 @@ html[data-theme=dark] {
   text-underline-offset: .18em
 }
 /* Its own colour: inside notices --gold is the text colour (monochrome headings), which {gold} must not follow. */
-.notice-color-gold { color: #efc04a }
-.notice-color-red { color: #e5534b }
-.notice-color-orange { color: #e8892b }
-.notice-color-yellow { color: #e3b341 }
+/* Notice text colours: the exact colours of Project Moon's notice images (dark theme). */
+.notice-color-gold { color: #f8c200 }
+.notice-color-red { color: #ff0902 }
+.notice-color-orange { color: #ff7200 }
+.notice-color-yellow { color: #f8c200 }
 .notice-color-green { color: #3fa66b }
 .notice-color-blue { color: #4a9ae8 }
 .notice-color-purple { color: #a07ce8 }
-.notice-color-brown { color: #c48148 }
+.notice-color-brown { color: #a16a3b }
 .notice-color-gray { color: var(--text-muted) }
 .notice-color-plain { color: var(--text) }
 :root[data-theme="light"] .notice-color-gold { color: #8a5a06 }
@@ -1443,11 +1444,11 @@ html[data-theme] .type-label {
   --c-label: #9a6a00
 }
 html[data-theme=dark] .notice-layout {
-  --c-before: #b48a5c;
-  --c-after: #efc04a;
-  --c-note: #ff8a3d;
-  --c-important: #ff4d4d;
-  --c-label: #efc04a
+  --c-before: #a16a3b;
+  --c-after: #f8c200;
+  --c-note: #ff7200;
+  --c-important: #ff0902;
+  --c-label: #f8c200
 }
 .notice-note {
   color: var(--c-note)
