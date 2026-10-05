@@ -1,5 +1,6 @@
 export const SITE_CONFIG = {
   siteName: "Limbus Company News Archive",
+  shortName: "LCNA",
   dataUrl: new URL("../../data/notices.json", import.meta.url).href,
   pageSize: 48
 };

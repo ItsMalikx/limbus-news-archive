@@ -4143,3 +4143,46 @@ html[data-rail=collapsed] body:has(.notice-layout.has-toc) {
 .notice-table .cell-unit {
   white-space: nowrap
 }
+/* "Copy link to highlight": floats under a text selection in a notice. A shared link's passage is
+   highlighted on arrival (::target-text by the browser, ::highlight(passage) by the script fallback). */
+.highlight-link {
+  position: absolute;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(8 * var(--u));
+  min-height: calc(36 * var(--u));
+  padding: calc(8 * var(--u)) calc(14 * var(--u));
+  border: 1px solid var(--line-strong);
+  border-radius: calc(8 * var(--u));
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: max(13px, calc(14 * var(--u)));
+  font-weight: 650;
+  white-space: nowrap;
+  box-shadow: 0 calc(6 * var(--u)) calc(20 * var(--u)) rgb(0 0 0 / 0.28);
+  cursor: pointer;
+  transition: border-color var(--ease), color var(--ease)
+}
+.highlight-link[hidden] {
+  display: none
+}
+.highlight-link:hover {
+  border-color: var(--accent);
+  color: var(--accent)
+}
+.highlight-link svg {
+  width: calc(16 * var(--u));
+  height: calc(16 * var(--u));
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round
+}
+::target-text,
+::highlight(passage) {
+  background: color-mix(in srgb, var(--accent) 38%, transparent);
+  color: inherit
+}

@@ -1,5 +1,5 @@
-import { initThemeToggle, initShell } from "/assets/js/utils.js?v=ba2deb1b4c";
-import { TAG_COLORS } from "/assets/js/config.js?v=9b10988a44";
+import { initThemeToggle, initShell } from "/assets/js/utils.js?v=1aaa0d34d7";
+import { TAG_COLORS } from "/assets/js/config.js?v=f79448758d";
 import { createZoomView } from "/assets/js/zoomview.js?v=6e9714c2a0";
 try { initThemeToggle(); } catch (error) { console.warn("Theme preference unavailable", error); }
 try { initShell(); } catch (error) { /* shell menu optional */ }
@@ -236,5 +236,134 @@ try {
     });
   }
 } catch (error) { /* images still open in a new tab */ }
+
+// Links to a passage: selecting text in the notice offers "Copy link to highlight", a link ending in a
+// text fragment (#:~:text=start,end) that browsers scroll to and highlight on arrival. Where a browser
+// does not (no document.fragmentDirective), the fragment is found and highlighted here for a while.
+const fragmentPart = text => encodeURIComponent(text).replace(/-/g, "%2D").replace(/,/g, "%2C").replace(/&/g, "%26");
+const squash = text => text.replace(/\s+/g, " ").trim();
+
+function textFragment(range, column) {
+  // Text fragments match whole words: a selection starting or ending inside a word takes all of it.
+  range = range.cloneRange();
+  const word = /[\p{L}\p{N}]/u;
+  const { startContainer: from, endContainer: to } = range;
+  if (from.nodeType === 3) {
+    let i = range.startOffset;
+    while (i > 0 && word.test(from.data[i - 1])) i--;
+    range.setStart(from, i);
+  }
+  if (to.nodeType === 3) {
+    let i = range.endOffset;
+    while (i < to.data.length && word.test(to.data[i])) i++;
+    range.setEnd(to, i);
+  }
+  const lines = range.toString().split(/\n+/).map(squash).filter(Boolean);
+  if (!lines.length) return "";
+  const words = text => text.split(" ");
+  const all = squash(column.textContent);
+  const before = range.cloneRange();
+  before.selectNodeContents(column);
+  before.setEnd(range.startContainer, range.startOffset);
+  const preceding = squash(before.toString());
+  // One short line is matched whole; anything longer by its first and last few words (each within one
+  // paragraph, as a match requires).
+  const single = lines.length === 1 && lines[0].length <= 80;
+  const start = single ? lines[0] : words(lines[0]).slice(0, 4).join(" ");
+  const end = single ? "" : words(lines[lines.length - 1]).slice(-4).join(" ");
+  // When the same words come earlier in the notice, a few words before the selection pin it down.
+  const first = all.indexOf(start);
+  const at = preceding.length ? all.indexOf(start, Math.max(0, preceding.length - 2)) : first;
+  const prefix = first !== at && first >= 0 ? words(preceding).slice(-3).join(" ") : "";
+  return "#:~:text=" + (prefix ? fragmentPart(prefix) + "-," : "") + fragmentPart(start) + (end ? "," + fragmentPart(end) : "");
+}
+
+function initHighlightLinks() {
+  const column = document.getElementById("noticeContent");
+  if (!column || !window.getSelection) return;
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "highlight-link";
+  button.hidden = true;
+  const label = "Copy link to highlight";
+  button.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg><span>${label}</span>`;
+  document.body.appendChild(button);
+  let fragment = "";
+  let timer = 0;
+  const hide = () => { button.hidden = true; };
+  const place = () => {
+    const selection = window.getSelection();
+    if (!selection.rangeCount || selection.isCollapsed) return hide();
+    const range = selection.getRangeAt(0);
+    if (!column.contains(range.commonAncestorContainer) || !squash(range.toString())) return hide();
+    fragment = textFragment(range, column);
+    if (!fragment) return hide();
+    const rects = [...range.getClientRects()].filter(rect => rect.width && rect.height);
+    const last = rects[rects.length - 1] || range.getBoundingClientRect();
+    button.querySelector("span").textContent = label;
+    button.hidden = false;
+    // Below the end of the selection (phones show their own menu above it), kept on screen.
+    const width = button.offsetWidth;
+    const left = Math.min(Math.max(8, last.right - width / 2), document.documentElement.clientWidth - width - 8);
+    button.style.left = `${left + window.scrollX}px`;
+    button.style.top = `${last.bottom + window.scrollY + 10}px`;
+  };
+  document.addEventListener("selectionchange", () => { clearTimeout(timer); timer = setTimeout(place, 180); });
+  window.addEventListener("resize", () => { if (!button.hidden) place(); });
+  button.addEventListener("pointerdown", event => event.preventDefault());  // keep the selection
+  button.addEventListener("click", async () => {
+    const link = location.origin + location.pathname + fragment;
+    try {
+      await navigator.clipboard.writeText(link);
+      button.querySelector("span").textContent = "Link copied";
+    } catch {
+      window.prompt("Copy this link:", link);
+    }
+  });
+}
+try { initHighlightLinks(); } catch (error) { /* selection links optional */ }
+
+function highlightFromFragment() {
+  if (document.fragmentDirective) return;  // the browser does it
+  const match = location.hash.match(/:~:text=([^&]+)/);
+  const column = document.getElementById("noticeContent");
+  if (!match || !column) return;
+  const parts = match[1].split(",").map(part => decodeURIComponent(part));
+  const prefix = parts[0].endsWith("-") ? parts.shift().slice(0, -1) : "";
+  const [start, end = ""] = parts;
+  // The column's text, whitespace squashed, with each character's text node and offset.
+  const nodes = [];
+  let text = "";
+  const walker = document.createTreeWalker(column, NodeFilter.SHOW_TEXT);
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+    for (let i = 0; i < node.data.length; i++) {
+      const space = /\s/.test(node.data[i]);
+      if (space && (!text || text.endsWith(" "))) continue;
+      text += space ? " " : node.data[i];
+      nodes.push([node, i]);
+    }
+  }
+  const lower = text.toLowerCase();
+  let from = lower.indexOf((prefix ? squash(prefix) + " " : "").toLowerCase() + squash(start).toLowerCase());
+  if (from < 0) return;
+  if (prefix) from += squash(prefix).length + 1;
+  let to = from + squash(start).length;
+  if (end) {
+    const found = lower.indexOf(squash(end).toLowerCase(), to);
+    if (found >= 0) to = found + squash(end).length;
+  }
+  const range = document.createRange();
+  range.setStart(nodes[from][0], nodes[from][1]);
+  range.setEnd(nodes[to - 1][0], nodes[to - 1][1] + 1);
+  range.startContainer.parentElement.scrollIntoView({ block: "center" });
+  if (window.CSS?.highlights && window.Highlight) {
+    CSS.highlights.set("passage", new Highlight(range));
+    setTimeout(() => CSS.highlights.delete("passage"), 6000);
+  } else {
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+  }
+}
+try { highlightFromFragment(); } catch (error) { /* the page still opens at the top */ }
 
 initNavigation();

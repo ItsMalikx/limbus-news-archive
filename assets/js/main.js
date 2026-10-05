@@ -1,9 +1,9 @@
-import { SITE_CONFIG, TAG_COLORS } from "/assets/js/config.js?v=9b10988a44";
+import { SITE_CONFIG, TAG_COLORS } from "/assets/js/config.js?v=f79448758d";
 import {
   buildNoticeUrl, fetchNotices, initThemeToggle, initShell, normalizeNotice, sortNotices,
   stripHtml, debounce, escapeHtml, formatDate
-} from "/assets/js/utils.js?v=ba2deb1b4c";
-import { buildSearchIndex, listIndex, startSearchIndex, noticePlainText, searchNotices, highlight, excerpt } from "/assets/js/search.js?v=1b29f24b5e";
+} from "/assets/js/utils.js?v=1aaa0d34d7";
+import { buildSearchIndex, listIndex, startSearchIndex, noticePlainText, searchNotices, highlight, excerpt } from "/assets/js/search.js?v=5f5adafee2";
 
 const noticeList = document.getElementById("noticeList");
 const searchInput = document.getElementById("searchInput");
@@ -198,9 +198,9 @@ function renderFromLocation({ syncInput = true } = {}) {
   const requested = filteredView ? Number(params.get("page") || 1) : archivePage;
   const page = Math.min(pages, Math.max(1, Number.isSafeInteger(requested) ? requested : 1));
   // Must match the server-rendered titles in build_site.py; crawlers render this script.
-  const title = query ? `Search: ${query} | ${SITE_CONFIG.siteName}`
-    : filterLabel ? `${filterLabel} | ${SITE_CONFIG.siteName}` : SITE_CONFIG.siteName;
-  document.title = page === 1 ? title : `${title} | Page ${page}`;
+  const short = SITE_CONFIG.shortName || "LCNA";
+  const title = query ? `${query} | ${short}` : filterLabel ? `${filterLabel} | ${short}` : short;
+  document.title = page === 1 ? title : `Page ${page} | ${title}`;
   const fragment = document.createDocumentFragment();
   const offset = (page - 1) * pageSize;
   filtered.slice(offset, page * pageSize).forEach((notice, index) => {
@@ -316,78 +316,102 @@ function initSortMenu(select) {
 }
 let syncSortMenu = null;
 
-async function init() {
-  const initialQuery = new URLSearchParams(window.location.search).get("q") || "";
-  searchInput.value = initialQuery;
-  try {
-    const raw = await fetchNotices(SITE_CONFIG.dataUrl);
+// The served page already shows its list, filters and page links, so the notice data (a few MB) is
+// only fetched when something needs it: a search, filter, sort or results page, or an address that
+// asks for one. (Fetching and indexing it at load was most of the start-up time on phones.)
+let loading = null;
+function loadNotices() {
+  loading ||= fetchNotices(SITE_CONFIG.dataUrl).then(raw => {
     allNotices = sortNotices(raw.map(normalizeNotice), "date-desc");
-    // The search index: at once when the page opens on a search; otherwise built in slices after the
-    // list has shown (it was most of the page's start-up time).
-    searchIndex = initialQuery ? buildSearchIndex(allNotices) : listIndex(allNotices);
+    // The search index: at once when the page opens on a search; otherwise built in slices.
+    const query = new URLSearchParams(window.location.search).get("q") || searchInput.value.trim();
+    searchIndex = query ? buildSearchIndex(allNotices) : listIndex(allNotices);
     if (!searchIndex.ready) indexing = startSearchIndex(allNotices, (built, later) => {
       searchIndex = built;
       if (later && new URLSearchParams(window.location.search).get("q")) renderFromLocation({ syncInput: false });
     });
-    syncSortMenu = initSortMenu(sortSelect) || null;
+  });
+  return loading;
+}
+
+function searchUnavailable(error) {
+  console.error(error);
+  // Static cards and page links remain usable when the search data cannot load.
+  resultsSummary.textContent = "Search is temporarily unavailable. Browse the archive below.";
+  if (document.documentElement?.dataset) delete document.documentElement.dataset.pending;
+}
+
+// Runs `action` with the data: at once once loaded (so later updates stay synchronous), else after it loads.
+function withNotices(action) {
+  return (...args) => {
+    if (searchIndex) return action(...args);
+    return loadNotices().then(() => action(...args), searchUnavailable);
+  };
+}
+
+async function init() {
+  const initialQuery = new URLSearchParams(window.location.search).get("q") || "";
+  searchInput.value = initialQuery;
+  syncSortMenu = initSortMenu(sortSelect) || null;
+  if (window.history && "scrollRestoration" in window.history) window.history.scrollRestoration = "manual";
+  window.addEventListener("pagehide", saveScroll);
+  noticeList.addEventListener?.("click", saveScroll);
+  sortSelect?.addEventListener("change", withNotices(() => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("sort", sortSelect.value);
+    animateNext = true;
+    url.searchParams.delete("page");
+    window.history.replaceState(null, "", url.pathname + url.search);
     renderFromLocation();
-    if (window.history && "scrollRestoration" in window.history) window.history.scrollRestoration = "manual";
-    restoreScroll(true);
-    window.addEventListener("pagehide", saveScroll);
-    noticeList.addEventListener?.("click", saveScroll);
-    sortSelect?.addEventListener("change", () => {
-      const url = new URL(window.location.href);
-      url.searchParams.set("sort", sortSelect.value);
-      animateNext = true;
-      url.searchParams.delete("page");
-      window.history.replaceState(null, "", url.pathname + url.search);
-      renderFromLocation();
-    });
-    // The box stays usable while the data loads (no dimming); anything typed meanwhile is applied now.
-    searchInput.addEventListener("input", debounce(applySearch, 100));
-    if (searchInput.value !== initialQuery) applySearch();
-    window.addEventListener("popstate", () => { renderFromLocation(); restoreScroll(); });
-    const onFilterClick = event => {
-      const button = event.target.closest("button[data-type], button[data-tag], button[data-clear]");
-      if (!button) return;
-      const url = new URL(window.location.href);
-      const pressed = button.getAttribute("aria-pressed") === "true";
-      if ("clear" in button.dataset) {
-        url.searchParams.delete("tag");
-      } else if ("type" in button.dataset) {
-        if (pressed) return;
-        if (!button.dataset.type) url.searchParams.delete("type");
-        else url.searchParams.set("type", button.dataset.type);
-      } else {
-        const topics = new Set((url.searchParams.get("tag") || "").split(",").filter(Boolean));
-        if (pressed) topics.delete(button.dataset.tag); else topics.add(button.dataset.tag);
-        if (topics.size) url.searchParams.set("tag", [...topics].join(","));
-        else url.searchParams.delete("tag");
-      }
-      url.searchParams.delete("page");
-      saveScroll();
-      animateNext = true;
-      window.history.pushState(null, "", url.pathname + url.search);
-      renderFromLocation();
-    };
-    tagFilters?.addEventListener("click", onFilterClick);
-    for (const nav of navigation) {
-      nav.addEventListener("click", event => {
-        const link = event.target.closest("a[data-search-page]");
-        if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-        event.preventDefault();
-        saveScroll();
-        window.history.pushState(null, "", link.href);
-        renderFromLocation();
-        noticeList.scrollIntoView({ block: "start" });
-      });
+  }));
+  // The box stays usable while the data loads (no dimming); anything typed meanwhile is applied then.
+  // Focusing it starts the download, so it is usually ready by the first letter.
+  searchInput.addEventListener("focus", () => { loadNotices().catch(() => {}); });
+  searchInput.addEventListener("input", debounce(withNotices(applySearch), 100));
+  window.addEventListener("popstate", withNotices(() => { renderFromLocation(); restoreScroll(); }));
+  const onFilterClick = event => {
+    const button = event.target.closest("button[data-type], button[data-tag], button[data-clear]");
+    if (!button) return;
+    const url = new URL(window.location.href);
+    const pressed = button.getAttribute("aria-pressed") === "true";
+    if ("clear" in button.dataset) {
+      url.searchParams.delete("tag");
+    } else if ("type" in button.dataset) {
+      if (pressed) return;
+      if (!button.dataset.type) url.searchParams.delete("type");
+      else url.searchParams.set("type", button.dataset.type);
+    } else {
+      const topics = new Set((url.searchParams.get("tag") || "").split(",").filter(Boolean));
+      if (pressed) topics.delete(button.dataset.tag); else topics.add(button.dataset.tag);
+      if (topics.size) url.searchParams.set("tag", [...topics].join(","));
+      else url.searchParams.delete("tag");
     }
-  } catch (error) {
-    console.error(error);
-    // Static cards and page links remain usable when the search data cannot load.
-    resultsSummary.textContent = "Search is temporarily unavailable. Browse the archive below.";
-    if (document.documentElement?.dataset) delete document.documentElement.dataset.pending;
+    url.searchParams.delete("page");
+    saveScroll();
+    animateNext = true;
+    window.history.pushState(null, "", url.pathname + url.search);
+    return withNotices(() => renderFromLocation())();
+  };
+  tagFilters?.addEventListener("click", onFilterClick);
+  for (const nav of navigation) {
+    nav.addEventListener("click", event => {
+      const link = event.target.closest("a[data-search-page]");
+      if (!link || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      saveScroll();
+      window.history.pushState(null, "", link.href);
+      return withNotices(() => { renderFromLocation(); noticeList.scrollIntoView({ block: "start" }); })();
+    });
   }
+  // An address with a search, filter, sort or results page is shown from the data (the served list
+  // is hidden meanwhile: html[data-pending]); a plain page keeps what was served.
+  if (/[?&](q|type|tag|sort|page)=/.test(window.location.search)) {
+    await withNotices(() => {
+      renderFromLocation();
+      if (searchInput.value.trim() !== initialQuery.trim()) applySearch();
+    })();
+  }
+  restoreScroll(true);
 }
 
 init();

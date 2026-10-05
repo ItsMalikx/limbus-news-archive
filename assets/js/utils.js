@@ -223,21 +223,14 @@ export function initShell() {
   scrim?.addEventListener("click", () => setDrawer(false));
   rail.addEventListener("click", event => { if (!wide() && event.target.closest("a")) setDrawer(false); });
   window.addEventListener("keydown", event => { if (event.key === "Escape") setDrawer(false); });
-  // Browser zoom past the breakpoint keeps an open sidebar open (as a drawer, and back);
-  // an ordinary resize to a narrow window leaves the drawer closed.
+  // Crossing the breakpoint (a resize or browser zoom) always leaves the drawer closed, so the page
+  // reflows like any other zoom level instead of opening under a scrim.
   let wasWide = wide();
-  let ratio = window.devicePixelRatio;
   window.addEventListener("resize", () => {
     const now = wide();
-    const zoomed = window.devicePixelRatio !== ratio;
-    ratio = window.devicePixelRatio;
     if (now === wasWide) return;
-    if (now) {
-      if (document.body.classList.contains("drawer-open")) delete root.dataset.rail;
-      setDrawer(false);
-    } else {
-      setDrawer(zoomed && root.dataset.rail !== "collapsed");
-    }
+    if (now && document.body.classList.contains("drawer-open")) delete root.dataset.rail;
+    setDrawer(false);
     wasWide = now;
   });
 }
