@@ -21,11 +21,13 @@
 
 const NO_PAN = "button, a, input, select, textarea, label, [data-no-pan]";
 
-export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = viewport, onChange = () => {} } = {}) {
+// `rubberBand: false` keeps the content inside its limits while dragging (so a fitted image doesn't move at all).
+export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = viewport, onChange = () => {}, rubberBand = true } = {}) {
   const camera = { scale: 1, x: 0, y: 0, fit: 1, min: 1, max: 1, width: 0, height: 0, contentWidth: 0, contentHeight: 0 };
   const pad = { top: 0, right: 0, bottom: 0, left: 0 };
   let zoomTarget = null;      // { scale, ax, ay }: an eased zoom anchored at viewport point (ax, ay)
   let settle = null;          // easing back inside the pan limits after a drag: { start, fromX, fromY, duration }
+  let fly = null;             // a glide to a point and zoom (flyTo): { start, duration, from, to } (scale, centre point)
   let velocity = null;        // { x, y } px per ms: momentum after a flick
   let frame = 0, rect = null, dragged = false, lastTime = 0;
   const pointers = new Map(); // pointerId -> { x, y } (viewport coordinates)
@@ -93,6 +95,16 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
     const elapsed = Math.min(64, now - (lastTime || now)) || 16;
     lastTime = now;
     let busy = false;
+    // A glide: zoom in log space and the centred point in a straight line, on one ease-out curve.
+    if (fly) {
+      fly.start ??= now;
+      const progress = Math.min(1, (now - fly.start) / fly.duration), eased = 1 - (1 - progress) ** 3, c = center();
+      const scale = Math.exp(Math.log(fly.from.scale) + (Math.log(fly.to.scale) - Math.log(fly.from.scale)) * eased);
+      const px = fly.from.x + (fly.to.x - fly.from.x) * eased, py = fly.from.y + (fly.to.y - fly.from.y) * eased;
+      Object.assign(camera, { scale, x: c.x - px * scale, y: c.y - py * scale });
+      if (progress >= 1) fly = null;
+      else busy = true;
+    }
     if (zoomTarget) {
       const ratio = zoomTarget.scale / camera.scale;
       if (Math.abs(Math.log(ratio)) < 0.002) { zoomAbout(zoomTarget.scale, zoomTarget.ax, zoomTarget.ay); zoomTarget = null; }
@@ -133,7 +145,7 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
     else lastTime = 0;
   }
   const schedule = () => { frame ||= requestAnimationFrame(step); };
-  const stopMotion = () => { zoomTarget = null; velocity = null; settle = null; };
+  const stopMotion = () => { zoomTarget = null; velocity = null; settle = null; fly = null; };
 
   const center = () => ({ x: pad.left + (camera.width - pad.left - pad.right) / 2, y: pad.top + (camera.height - pad.top - pad.bottom) / 2 });
 
@@ -245,8 +257,9 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
       gesture.raw.x += point.x - gesture.x;
       gesture.raw.y += point.y - gesture.y;
       const b = bounds();
-      camera.x = rubber(gesture.raw.x, b.minX, b.maxX, camera.width);
-      camera.y = rubber(gesture.raw.y, b.minY, b.maxY, camera.height);
+      const limit = rubberBand ? rubber : (value, low, high) => Math.min(high, Math.max(low, value));
+      camera.x = limit(gesture.raw.x, b.minX, b.maxX, camera.width);
+      camera.y = limit(gesture.raw.y, b.minY, b.maxY, camera.height);
       if (!dragged && Math.hypot(point.x - gesture.start.x, point.y - gesture.start.y) > 4) {
         dragged = true;
         viewport.classList.add("is-panning");
@@ -267,7 +280,7 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
       // A flick carries on a little (velocity over the last 100 ms); a slow release just stops.
       const first = pan?.samples[0], last = pan?.samples[pan.samples.length - 1];
       const span = first && last ? last.time - first.time : 0;
-      if (dragged && span > 0 && event.type === "pointerup" && event.timeStamp - last.time < 50) {
+      if (dragged && rubberBand && span > 0 && event.type === "pointerup" && event.timeStamp - last.time < 50) {
         const v = { x: (last.x - first.x) / span, y: (last.y - first.y) / span };
         if (Math.hypot(v.x, v.y) > 0.25) velocity = v;
       }
@@ -303,6 +316,25 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
     fitToView: () => fitToView(true),
     resetView: () => fitToView(true),
     setZoom,
+    // Glide so content point (x, y) is centred (as far as the limits allow) at `scale`.
+    flyTo(x, y, scale, duration = 380) {
+      if (!camera.contentWidth) return;
+      stopMotion();
+      const c = center(), from = { scale: camera.scale, x: (c.x - camera.x) / camera.scale, y: (c.y - camera.y) / camera.scale };
+      // Where the camera ends up once kept inside the limits, and the point that is then centred.
+      const saved = { ...camera };
+      camera.scale = clampScale(scale);
+      camera.x = c.x - x * camera.scale;
+      camera.y = c.y - y * camera.scale;
+      clampPan();
+      const to = { scale: camera.scale, x: (c.x - camera.x) / camera.scale, y: (c.y - camera.y) / camera.scale };
+      Object.assign(camera, saved);
+      const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      fly = { duration: still ? 1 : duration, from, to };
+      schedule();
+    },
+    // Content coordinates of a viewport point (for hit-testing clicks).
+    toContent(event) { rect = null; const p = local(event); return { x: (p.x - camera.x) / camera.scale, y: (p.y - camera.y) / camera.scale }; },
     // Put content point (x, y) at the centre of the view.
     panTo(x, y) { stopMotion(); const c = center(); camera.x = c.x - x * camera.scale; camera.y = c.y - y * camera.scale; clampPan(); schedule(); },
     getViewportState,
