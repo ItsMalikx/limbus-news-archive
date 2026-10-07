@@ -69,7 +69,7 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
 <p>The issue with this passive was that the &quot;Cumulatively Consumed Charge Count&quot; reset that needs to occur upon gaining Charge Potency was missing. (&quot;Cumulatively Consumed Charge Count&quot; is an internally tracked value that is exclusively used to calculate the Charge Potency gain based on Charge Count.)</p>
 <p>This means that, when gaining 2 or more Charge Potency at once, <span class="notice-color-gold">which is supposed to spend 20 of the &quot;Cumulatively Consumed Charge Count&quot; (because it needs to be Charge Potency gained x 10), it spends only 10 of it.</span> In other words, the <span class="notice-color-gold">remaining &quot;Cumulatively Consumed Charge Count&quot; was carried over</span> to the next instance of Charge Potency gain.</p>
 <p>Maintaining this error without fixing it means that, in more extreme examples, some instances of gaining Charge Potency could cause the game to read &quot;31 Cumulatively Consumed Charge Count&quot; instead of &quot;1 Cumulatively Consumed Charge Count&quot; when only a single Charge Count has been consumed, thereby granting 3 Charge Potency despite spending only 1 Charge Count. This could excessively increase the speed at which Charge Potency is gained, which is why we intend to fix this issue.</p>
-<p><span class="notice-color-gold">&lt;Issue Example&gt;</span></p>
+<p><span class="notice-color-gold"><strong>&lt;Issue Example&gt;</strong></span></p>
 <h2 class="notice-section-heading" id="section-2">Consumes 20 Charge Count</h2><hr class="notice-section-divider">
 <div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">Cumulatively {gold}Consumed Charge Count{/gold}</th><td><span class="notice-color-gold">20</span></td></tr><tr><th scope="row">{gold}Charge Potency gained{/gold}</th><td><span class="notice-color-gold">2</span></td></tr><tr><th scope="row">{gold}Remaining Consumed Charge Count{/gold}</th><td><span class="notice-color-gold">10</span></td></tr><tr><th scope="row">Resulting Charge Potency</th><td><span class="notice-color-gold">3</span></td></tr></tbody></table></div>
 <h2 class="notice-section-heading" id="section-3">Consumes 20 Charge Count</h2><hr class="notice-section-divider">
@@ -87,7 +87,7 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
 <p>This means that, when Lobotomy E.G.O::In the Name of Love and Hate Don Quixote was used alongside this E.G.O, this E.G.O could be used to raise <span class="notice-color-gold">double the amount of Charge Potency</span> as it triggered twice in a row. Maintaining this error also means that it has the potential to affect the upcoming Identities or E.G.O, so we intend to correct this issue.</p>
 <p>Once again, we sincerely apologize for the confusion and inconvenience caused by these errors with Identities and E.G.O.</p>
 <h2 class="notice-section-heading" id="section-6">Skill Changes</h2><hr class="notice-section-divider">
-<p>1) Skill 2 - With Love! Hyah!</p>
+<p><strong>1) Skill 2 - With Love! Hyah!</strong></p>
 <p>- Before</p>
 <div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">{brown}UT2{/brown}</th><td><span class="notice-color-brown">[On Use] Deal +6% damage for every Love/Hate (max 30%)</span></td></tr><tr><th scope="row">UT4</th><td>[On Use] Deal +10% damage for every Love/Hate (max 50%)</td></tr></tbody></table></div>
 <p>- After</p>
@@ -99,7 +99,7 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
 <p>- After</p>
 <p><span class="notice-color-gold">UT3</span><br><span class="notice-color-gold">[On Use] At 2+ Love/Hate, deal +(Love/Hate x 20)% damage (max 80%)</span><br><span class="notice-color-gold">[On Use] At 2+ Love/Hate, Base Power +1</span></p>
 <p>UT4<br><span class="notice-color-gold">[On Use] At 2+ Love/Hate, deal +(Love/Hate x 25)% damage (max 125%)</span><br><span class="notice-color-gold">[On Use] At 2+ Love/Hate, Base Power +2</span></p>
-<p>3) Skill 3 - Reversed Beats / Reversed Arcana Slave</p>
+<p><strong>3) Skill 3 - Reversed Beats / Reversed Arcana Slave</strong></p>
 <p>- Before</p>
 <div class="notice-table-wrap"><table class="notice-table notice-table--pairs"><tbody><tr><th scope="row">{brown}UT3{/brown}</th><td><span class="notice-color-brown">[On Use] Deal +12% damage for every Love/Hate on self (max 60%)</span></td></tr><tr><th scope="row">{brown}UT4{/brown}</th><td><span class="notice-color-brown">[On Use] Deal +24% damage for every Love/Hate on self (max 120%)</span></td></tr></tbody></table></div>
 <p>- After</p>
@@ -108,7 +108,7 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
 <p><span class="notice-color-gold">- Improve the internal, mutual confirmation &amp; communication process between relevant personnel</span></p>
 <p>We will improve the communication process between the implementation personnel and other relevant individuals to ensure that we can identify any missing functions or unexpected issues that may occur when used in conjunction with other parts of the game.</p>
 <h2 class="notice-section-heading" id="section-8">Lobotomy E.G.O::In the Name of Love and Hate Don Quixote Error Compensation</h2><hr class="notice-section-divider">
-<figure class="notice-figure notice-figure--crop"><a href="/assets/notice-images/7c71bed432a67d44.webp" target="_blank" rel="noopener"><img src="/assets/notice-images/7c71bed432a67d44.webp" alt="Image from the official notice" width="253" height="141" loading="lazy" decoding="async"></a></figure>
+<figure class="notice-figure notice-figure--crop"><a href="/assets/notice-images/7c71bed432a67d44.webp" style="width: 41.1%" target="_blank" rel="noopener"><img src="/assets/notice-images/7c71bed432a67d44.webp" alt="Image from the official notice" width="253" height="141" style="width: 100%" loading="lazy" decoding="async"></a></figure>
 <p><span class="notice-color-gold">- Content</span> : <span class="notice-color-gold">Lunacy x1300</span><br><span class="notice-color-gold">- Recipients</span> : <span class="notice-color-gold">All users whose game accounts were created before 10:00 Aug. 7th, 2025 (KST)</span><br><span class="notice-color-gold">- When</span> : <span class="notice-color-gold">After July 28th, 2025 (Mon) 21:00 (KST)</span><br><span class="notice-color-gold">- Can be claimed once per account</span></p>
 <p><span class="notice-color-gold">Error Compensation can be claimed until Aug. 7th, (Thu) 2025, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</span></p></div>
 
