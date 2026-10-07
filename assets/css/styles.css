@@ -1556,6 +1556,10 @@ html[data-theme=dark] .notice-layout {
 .notice-table--pairs th {
   width: 30%
 }
+/* [Table brown]: some notices draw their tables in the notices' brown instead of gold. */
+.notice-table--brown {
+  --gold-cell: #a16a3b
+}
 .toc {
   margin: 0 0 calc(20 * var(--u));
   padding: calc(14 * var(--u)) calc(16 * var(--u));

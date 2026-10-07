@@ -11,7 +11,7 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
   <title>Notice: An issue with certain skills with &quot;Damage +M% for every N Keyword&quot; effect | LCNA</title>
   <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=3b6b617d1a" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=cf9aab8071" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/2025-10-27-notice-an-issue-with-certain-skills-with-damage-m-for-every-n-keyword-effect/">
 <meta name="description" content="Covers Error Details, Causes of the Issue, Subsequent Measures, and 1 more topics.">
 <meta property="og:site_name" content="Limbus Company News Archive">
@@ -60,10 +60,10 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
 <h2 class="notice-section-heading" id="section-1">Error Details</h2><hr class="notice-section-divider">
 <p>An issue where the damage of Skills with the effect &quot;[On Use] Damage +M% for every N Keyword&quot; is not determined at the intended timing, but instead increases or decreases in real-time depending on changes in the value of Keywords gained or lost after using the Skills</p>
 <h2 class="notice-section-heading" id="section-2">Bug Fixes</h2><hr class="notice-section-divider">
-<p>- The Skill tag &quot;[On Use]&quot; will be deleted for the affected Skill effects to maintain and correctly reflect their current behavior</p>
-<p><span class="notice-before">Before: [On Use] Damage +M% for every N Keyword</span><br><span class="notice-after">After: Damage +M% for every N Keyword</span></p>
-<p><span class="notice-note">※ As a considerable amount of time has passed since the release of the affected Identities, users may perceive the Identities&#x27; current performance as the intended design. We are aware that altering the performance of Identities to match their textual description would change how those Identities are used in Encounters, and under certain conditions, this would be a downward balance adjustment from the Identities&#x27; current performance.</span></p>
-<p>As such, for this issue, we plan to make an exception to our standard bugfix guideline (fixing issues to match textual descriptions) and instead, adjust the text to match the Identities&#x27; current performance. We sincerely apologize for the confusion and inconvenience caused by this issue.</p>
+<p><span class="notice-color-gold">- The Skill tag &quot;[On Use]&quot; will be deleted for the affected Skill effects</span> to maintain and correctly reflect their current behavior</p>
+<p><span class="notice-color-brown">Before: [On Use] Damage +M% for every N Keyword</span><br><span class="notice-color-gold">After: Damage +M% for every N Keyword</span></p>
+<p><span class="notice-color-plain">※ As a considerable amount of time has passed since the release of the affected Identities,</span> <span class="notice-color-gold">users may perceive the Identities&#x27; current performance as the intended design.</span> We are aware that <span class="notice-color-gold">altering the performance of Identities to match their textual description would change how those Identities are used in Encounters, and under certain conditions, this would be a downward balance adjustment from the Identities&#x27; current performance.</span></p>
+<p>As such, for this issue, we plan to <span class="notice-color-orange">make an exception to our standard bugfix guideline (fixing issues to match textual descriptions) and instead, adjust the text to match the Identities&#x27; current performance.</span> We sincerely apologize for the confusion and inconvenience caused by this issue.</p>
 <h2 class="notice-section-heading" id="section-3">Issue Fix Date</h2><hr class="notice-section-divider">
 <p>October 30th (Thu), 2025 Scheduled Update</p>
 <h2 class="notice-section-heading" id="section-4">Causes of the Issue</h2><hr class="notice-section-divider">
@@ -72,47 +72,48 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
 <h2 class="notice-section-heading" id="section-5">Subsequent Measures</h2><hr class="notice-section-divider">
 <p>Going forward, we will further analyze sections where identical errors may recur during production and in-house reviews of Identities.<br>We will also develop and implement additional programs and tools to further stabilize our content-production process.</p>
 <h2 class="notice-section-heading" id="section-6">Skills Affected by the Error</h2><hr class="notice-section-divider">
-<p>In-game description: Strengthens damage output based on Keyword on target only at the On Use timing<br>Actual effect: Damage output increases or decreases in real-time when the target gains or loses the Keyword</p>
-<p>In-game description: Strengthens damage output based on Keyword on self only at the On Use timing<br>Actual effect: Damage output increases or decreases in real-time when the affected unit gains or loses the Keyword on self</p>
-<p><span class="notice-note">※ This issue has been affecting the following Identities&#x27; Skills.</span><br>Please continue reading for more case-by-case information.</p>
+<p>In-game description: Strengthens damage output based on Keyword on target only at the On Use timing<br><span class="notice-color-gold">Actual effect: Damage output increases or decreases in real-time when the target gains or loses the Keyword</span></p>
+<p>In-game description: Strengthens damage output based on Keyword on self only at the On Use timing<br><span class="notice-color-gold">Actual effect: Damage output increases or decreases in real-time when the affected unit gains or loses the Keyword on self</span></p>
+<p><span class="notice-color-plain">※ This issue has been affecting the following Identities&#x27; Skills.</span><br><span class="notice-color-plain">Please continue reading for more case-by-case information.</span></p>
 <p>· Seven South Section 4 Faust<br>· Dieci South Section 4 Hong Lu<br>· Wild Hunt Heathcliff<br>· The Princess of La Manchaland Rodion<br>· The Manager of La Manchaland Don Quixote<br>· LCE E.G.O::Ardor Blossom Star Faust<br>· N Corp. E.G.O::Fell Bullet Yi Sang<br>· Lobotomy E.G.O::In the Name of Love and Hate Don Quixote</p>
-<p>1. Identities whose Skills and/or Passives are independently affected by this bug</p>
-<p><span class="notice-note">※ The actual damage calculation formula will remain unchanged and exactly as it is written below.</span></p>
+<p><span class="notice-color-gold">1. Identities whose Skills and/or Passives are</span><br><span class="notice-color-gold">independently affected by this bug</span></p>
+<p><span class="notice-color-plain">※ The actual damage calculation formula will remain unchanged and exactly as it is written below.</span></p>
 <p>1) Seven South Section 4 Faust</p>
 <h3 class="notice-subsection-heading notice-label-heading">[ Profiling ]</h3>
-<p>Strengthens damage output based on the target&#x27;s Rupture Potency at the On Use timing. If the target gains Rupture Potency due to either this Skill&#x27;s On Hit effects or other outside reasons, the damage output is further increased; if the target loses Rupture Potency, this Skill&#x27;s damage output decreases.</p>
+<p>Strengthens damage output based on the target&#x27;s Rupture Potency at the On Use timing. If the target gains Rupture Potency due to either this Skill&#x27;s On Hit effects or other outside reasons, the damage output is <span class="notice-color-gold">further increased;</span> if the target loses Rupture Potency, this Skill&#x27;s damage output <span class="notice-color-red">decreases.</span></p>
 <p>2) Wild Hunt Heathcliff</p>
 <h3 class="notice-subsection-heading notice-label-heading">[ Requiem ]</h3>
-<p>Strengths damage output based on Coffin Stack on self. When, after the On Use timing, this unit gains more Coffin Stack due to Coffin-gaining effects on this Skill, the damage output is further increased.</p>
+<p>Strengths damage output based on Coffin Stack on self. When, after the On Use timing, this unit gains more Coffin Stack due to Coffin-gaining effects on this Skill, the damage output is <span class="notice-color-gold">further increased.</span></p>
 <h3 class="notice-subsection-heading notice-label-heading">[ Lament, Mourn, and Despair ]</h3>
-<p>Strengthens damage output based on Coffin and Dullahan Stack on self at the On Use timing. While Dullahan Stack does not change in the combat phase, this Skill has Coffin-gaining effects On Use, which will further increase the damage output.</p>
+<p>Strengthens damage output based on Coffin and Dullahan Stack on self at the On Use timing. While Dullahan Stack does not change in the combat phase, this Skill has Coffin-gaining effects On Use, which will <span class="notice-color-gold">further increase</span> the damage output.</p>
 <p>3) N Corp. E.G.O::Fell Bullet Yi Sang</p>
 <h3 class="notice-subsection-heading notice-label-heading">[ See Through Defenses ]</h3>
-<p>Strengthens damage output based on Torn Memory Stack on self at the On Use timing. As this Skill gains more Torn Memory Stack On Use, the damage output is further increased.</p>
+<p>Strengthens damage output based on Torn Memory Stack on self at the On Use timing. As this Skill gains more Torn Memory Stack On Use, the damage output is <span class="notice-color-gold">further increased.</span></p>
 <p>4) Lobotomy E.G.O::In the Name of Love and Hate Don Quixote</p>
 <h3 class="notice-subsection-heading notice-label-heading">[ With Love! Hyah! ]</h3>
-<p>Strengthens damage output based on Love/Hate Potency on self at the On Use timing. As this Skill has an effect that consumes Charge Count On Use, if the Charge Potency is increased due to consuming Charge Count, the damage output is further increased.</p>
-<p>2. Identities whose Skills and/or Passives can be affected by this bug due to outside reasons, such as E.G.O Gift effects</p>
-<p><span class="notice-note">※ The actual damage calculation formula will remain unchanged and exactly as it is written below.</span></p>
+<p>Strengthens damage output based on Love/Hate Potency on self at the On Use timing. As this Skill has an effect that consumes Charge Count On Use, if the Charge Potency is increased due to consuming Charge Count, the damage output is <span class="notice-color-gold">further increased.</span></p>
+<p><span class="notice-color-gold">2. Identities whose Skills and/or Passives can be affected by this bug due to outside reasons, such as E.G.O Gift effects</span></p>
+<p><span class="notice-color-plain">※ The actual damage calculation formula will remain unchanged</span> and exactly as it is written below.</p>
 <p>1) Dieci South Section 4 Hong Lu</p>
 <h3 class="notice-subsection-heading notice-label-heading">[ Cyclical Knowledge ]</h3>
-<p>Strengthens damage output based on the target&#x27;s Sinking Potency at the On Use timing. While this Skill does not inflict further Sinking Potency On Hit afterward, if the target&#x27;s Sinking Potency is increased due to external effects, this Skill&#x27;s damage output is further increased; if the target loses Sinking Potency due to external effects, the damage output is decreased.</p>
+<p>Strengthens damage output based on the target&#x27;s Sinking Potency at the On Use timing. While this Skill does not inflict further Sinking Potency On Hit afterward, if the target&#x27;s Sinking Potency is increased due to external effects, this Skill&#x27;s damage output is <span class="notice-color-gold">further increased;</span> if the target loses Sinking Potency due to external effects, the damage output is <span class="notice-color-red">decreased.</span></p>
 <p>2) The Princess of La Manchaland Rodion</p>
 <h3 class="notice-subsection-heading notice-label-heading">[ Ascendant Don Quixote Hardblood Arts - The Finale ]</h3>
-<p>Strengthens damage output based on Bloodfeast Consumed by this unit at the On Use timing.<br>While this Skill does not consume further Bloodfeast afterward, if Bloodfeast is consumed due to external effects, the damage output may be further increased.</p>
+<p>Strengthens damage output based on Bloodfeast Consumed by this unit at the On Use timing.<br>While this Skill does not consume further Bloodfeast afterward, if Bloodfeast is consumed due to external effects, the damage output may be <span class="notice-color-gold">further increased.</span></p>
 <p>3) The Manager of La Manchaland Don Quixote</p>
 <h3 class="notice-subsection-heading notice-label-heading">[ I Shall Impale ]</h3>
-<p>Strengthens damage output based on Bloodfeast Consumed by this unit and the target&#x27;s Bleed Potency at the On Use timing. While this Skill does not consume further Bloodfeast or inflict Bleed Potency afterward, if the target gains Bleed Potency or if Bloodfeast is consumed due to external effects, the damage output may be further increased.</p>
+<p>Strengthens damage output based on Bloodfeast Consumed by this unit and the target&#x27;s Bleed Potency at the On Use timing. While this Skill does not consume further Bloodfeast or inflict Bleed Potency afterward, if the target gains Bleed Potency or if Bloodfeast is consumed due to external effects, the damage output may be <span class="notice-color-gold">further increased.</span></p>
 <h3 class="notice-subsection-heading notice-label-heading">[ Ascendant Sancho Hardblood Arts - La Sangre ]</h3>
-<p>Strengthens damage output based on the target&#x27;s Bleed Potency at the On Use timing. While this Skill does not inflict Bleed Potency afterward, if the target gains Bleed Potency due to external effects, the damage output may be further increased.</p>
+<p>Strengthens damage output based on the target&#x27;s Bleed Potency at the On Use timing. While this Skill does not inflict Bleed Potency afterward, if the target gains Bleed Potency due to external effects, the damage output may be <span class="notice-color-gold">further increased.</span></p>
 <p>4) LCE E.G.O::Ardor Blossom Star Faust</p>
 <h3 class="notice-subsection-heading notice-label-heading">[ E.G.O - A.B.S Activation ]</h3>
-<p>Strengthens damage output based on Burn Potency on self at the On Use timing. While this Skill does not have effects that gain Burn Potency afterward, if this unit gains Burn Potency due to external effects, the damage output may be further increased.</p>
+<p>Strengthens damage output based on Burn Potency on self at the On Use timing. While this Skill does not have effects that gain Burn Potency afterward, if this unit gains Burn Potency due to external effects, the damage output may be <span class="notice-color-gold">further increased.</span></p>
 <h3 class="notice-subsection-heading notice-label-heading">[ Drawn by Flame ]</h3>
-<p>Strengthens damage output based on Burn Potency on self at the On Use timing. While this Skill does not have effects that gain Burn Potency afterward, if this unit gains Burn Potency due to external effects, the damage output may be further increased.</p>
+<p>Strengthens damage output based on Burn Potency on self at the On Use timing. While this Skill does not have effects that gain Burn Potency afterward, if this unit gains Burn Potency due to external effects, the damage output may be <span class="notice-color-gold">further increased.</span></p>
 <p>Once again, we sincerely apologize for the inconvenience.</p>
 <h2 class="notice-section-heading" id="section-7">&quot;[On Use] Deal more damage&quot; Effect Error Compensation</h2><hr class="notice-section-divider">
-<p>- <span class="notice-label">Content:</span> Lunacy x500<br>- <span class="notice-label">Recipients:</span> All users whose game accounts were created before 10:00 Nov. 6th, 2025 (KST)<br>- <span class="notice-label">When:</span> After Oct. 30th, 2025 (Thu) 12:00 (KST)<br>- Can be claimed once per account</p>
+<figure class="notice-figure notice-figure--crop"><a href="/assets/notice-images/f7766d08556bb7bc.webp" target="_blank" rel="noopener"><img src="/assets/notice-images/f7766d08556bb7bc.webp" alt="Image from the official notice" width="242" height="141" loading="lazy" decoding="async"></a></figure>
+<p><span class="notice-color-gold">- Content</span> : <span class="notice-color-gold">Lunacy x500</span><br><span class="notice-color-gold">- Recipients</span> : <span class="notice-color-gold">All users whose game accounts were created before 10:00 Nov. 6th, 2025 (KST)</span><br><span class="notice-color-gold">- When</span> : <span class="notice-color-gold">After Oct. 30th, 2025 (Thu) 12:00 (KST)</span><br><span class="notice-color-gold">- Can be claimed once per account</span></p>
 <p>Maintenance Compensation can be claimed until Nov. 6th, (Thu) 2025, 10:00 (KST) via the in-game Mailbox. (Mail available for 7 days)</p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>

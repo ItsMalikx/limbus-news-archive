@@ -11,7 +11,7 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
   <title>Notice: In-combat Crashing Issue Fix | LCNA</title>
   <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
-  <link rel="stylesheet" href="/assets/css/styles.css?v=3b6b617d1a" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=cf9aab8071" />
 <link rel="canonical" href="https://lcna.whosmalikx.com/notices/2023-10-19-notice-in-combat-crashing-issue-fix/">
 <meta name="description" content="In version 1.24.0, we have identified an issue where the game could freeze during combat encounters.">
 <meta property="og:site_name" content="Limbus Company News Archive">
@@ -57,19 +57,20 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
         <div id="noticeContent" class="article-content"><div class="notice-title-block"><p class="notice-kicker"><span class="category-badge" data-icon="fixes" style="--tag-color: #FF8577">Fixes</span></p><h1 class="notice-inline-title" id="notice-title">Notice: In-combat Crashing Issue Fix</h1><div class="notice-date"><time datetime="2023-10-19">October 19, 2023</time></div><div class="tag-list"></div><hr class="notice-title-divider"></div><p>In version 1.24.0, we have identified an issue where the game could freeze during combat encounters.<br>We have identified the cause, and have corrected it.</p>
 <p>The fix will be deployed on the STEAM build of the game today (Oct. 19th) at 19:00 (KST),<br>But iOS and Android builds require us to go through the app review before the fix is deployed.<br>We will make an additional notice once each version passes the app reviews.</p>
 <p>Please refer below for further details.</p>
-<p>■ Cause<br>-This issue was caused because when a Skill was equipped, the data from the last battle failed to initialize when ordering the Skill&#x27;s targets.</p>
+<p><span class="notice-color-gold">■ Cause</span><br>-This issue was caused because when a Skill was equipped, the data from the last battle failed to initialize when ordering the Skill&#x27;s targets.</p>
 <p>-When we were adding a combat system logic to the game, we should have added a function to initialize all relevant data - which we neglected to do so. This has caused an issue with a function that used to work without issue.</p>
-<p>■ Error Conditions<br>-Restart the stage with the &#x27;retry stage&#x27; option during the combat phase. Then, re-enter the same encounter or any other encounter.</p>
+<p><span class="notice-color-gold">■ Error Conditions</span><br>-Restart the stage with the &#x27;retry stage&#x27; option during the combat phase. Then, re-enter the same encounter or any other encounter.</p>
 <p>-In the encounter, attempt to equip an E.G.O Skill or a Defense Skill</p>
-<p>■ Error Symptoms<br>The game would freeze, and the player would have no other option than to force close the game</p>
-<p>■ Error Correction<br>Added a function to initialize all data relevant to the last encounter upon entering a new encounter</p>
-<p>■ Future Measures<br>We will prioritize stability when adding a new logic to the game in the development stage.<br>We will take care to add and enhance validation logic so that no older, issue-free logic is affected negatively.</p>
+<p><span class="notice-color-gold">■ Error Symptoms</span><br>The game would freeze, and the player would have no other option than to force close the game</p>
+<p><span class="notice-color-gold">■ Error Correction</span><br>Added a function to initialize all data relevant to the last encounter upon entering a new encounter</p>
+<p><span class="notice-color-gold">■ Future Measures</span><br>We will prioritize stability when adding a new logic to the game in the development stage.<br>We will take care to add and enhance validation logic so that no older, issue-free logic is affected negatively.</p>
 <h2 class="notice-section-heading" id="section-1">Error Fix Build(1.24.1) Deployment Schedule</h2><hr class="notice-section-divider">
-<p>-<span class="notice-label">STEAM:</span> 10.19 (Thu) 19:00 (KST)<br>iOS, Android: iOS and Android builds require us to go through the app review before the fix is deployed.<br>We will make an additional notice once each version passes the app reviews.</p>
+<p>-<span class="notice-label">STEAM:</span> 10.19 (Thu) 19:00 (KST)<br><span class="notice-color-gold">iOS, Android: iOS and Android builds require us to go through the app review before the fix is deployed.</span><br><span class="notice-color-gold">We will make an additional notice once each version passes the app reviews.</span></p>
 <p>After starting the game, check the bottom right end of the title screen. If the version number displayed is 1.24.1, it is the version with the error corrected.</p>
 <p>We apologize for causing inconvenience to your enjoyment of our game.<br>We will endeavor to ensure that your experience with our game is more stable.</p>
 <h2 class="notice-section-heading" id="section-2">In-combat Crashing Issue Compensation</h2><hr class="notice-section-divider">
-<p>- <span class="notice-label">Compensation:</span> Lunacy x 300<br>- <span class="notice-label">Recipients:</span> All users whose accounts have been created before Oct. 26th, 2023 09:59<br>- Can be claimed once per account<br>- <span class="notice-label">When:</span> After Oct. 19th, 19:00 (KST)</p></div>
+<figure class="notice-figure notice-figure--crop"><a href="/assets/notice-images/4880e69a422c5369.webp" target="_blank" rel="noopener"><img src="/assets/notice-images/4880e69a422c5369.webp" alt="Image from the official notice" width="271" height="159" loading="lazy" decoding="async"></a></figure>
+<p><span class="notice-color-gold">- Compensation</span> : <span class="notice-color-gold">Lunacy x 300</span><br><span class="notice-color-gold">- Recipients</span> : <span class="notice-color-gold">All users whose accounts have been created before Oct. 26th, 2023 09:59</span><br><span class="notice-color-gold">- Can be claimed once per account</span><br><span class="notice-color-gold">- When</span> : <span class="notice-color-gold">After Oct. 19th, 19:00 (KST)</span></p></div>
 
         <nav id="noticePagination" class="notice-pagination" aria-label="Notice navigation"></nav>
       </article>
