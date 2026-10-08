@@ -40,13 +40,11 @@ indexing guarantee.
 
 ## Routing
 
-`/notice?id=N` and `/notice.html?id=N` redirect permanently to `/notices/N/` for
-existing notices. Invalid IDs return HTTP 404. Unknown static paths use `404.html`.
-Keep the top-level error page and avoid a catch-all homepage rewrite.
-
-The Worker runs only on legacy notice and explicit 404 routes. Other pages and
-assets use normal Cloudflare Pages static serving. On other hosts, implement
-equivalent query-aware redirects and real 404 responses.
+Static files only (nothing runs on Cloudflare for a visit). `/notices/N/` and retired duplicates
+redirect permanently through `_redirects`. `/notice?id=N` and `/notice.html?id=N` are the static
+`notice.html`, whose first script goes on to `/notices/N/` (or `/404`); Cloudflare Redirect Rules
+make them real 301s (see docs/PIPELINE.md, Hosting and redirects). Unknown static paths use
+`404.html` with a 404 status. Keep the top-level error page and avoid a catch-all homepage rewrite.
 
 ## Editing
 
