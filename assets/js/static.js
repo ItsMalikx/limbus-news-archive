@@ -18,7 +18,8 @@ window.addEventListener("keydown", event => {
 async function initNavigation() {
   const navigation = document.getElementById("noticePagination");
   const match = window.location.pathname.match(/^\/notices\/([a-z0-9-]+)\/$/);
-  if (!navigation || !match) return;
+  // The build writes the links into the page; only a page without them looks them up.
+  if (!navigation || !match || navigation.children.length) return;
   try {
     const response = await fetch("/data/notice-order.json", { cache: "no-cache" });
     if (!response.ok) throw new Error("Notice order unavailable");

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>var id = new URLSearchParams(location.search).get("id");location.replace(/^[1-9][0-9]*$/.test(id || "") ? "/notices/" + id + "/" : "/404");</script>
 <script>try { const theme = localStorage.getItem("limbus-archive-theme");
 if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
 if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElement.dataset.pending = "";
@@ -13,7 +14,7 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
   <link rel="preload" href="/assets/fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
   <link rel="stylesheet" href="/assets/css/styles.css?v=92cfaeb468" />
-<meta name="robots" content="noindex"></head>
+</head>
 <body>
   <div class="site-shell">
     <header class="topbar">
@@ -53,7 +54,5 @@ if (/[?&](q|type|tag|sort|page)=/.test(location.search)) document.documentElemen
       </div>
     </footer>
   </div>
-
-  <script type="module" src="/assets/js/notice.js?v=63013b755b"></script>
 </body>
 </html>
