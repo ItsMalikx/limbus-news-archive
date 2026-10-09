@@ -1,14 +1,13 @@
 {
   "version": 1,
   "files": {
-    "LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
     "index.html": "ad430e19e6be2f0517ab823b2e11a1bbba4e16150c2737afb718ae6a3f390a49",
     "favicon.ico": "75646e6d75eb7b980caca28a630a929263282539cad6feeb231e3e6c025a1ead",
     "robots.txt": "f68b600fee5d43e4b0cf574c215b54271c39f3ce939fad0277bcf2fcb57e0ca7",
     "_headers": "4879ad8a8bffab8ccd96eeb3bfce1d16106800fa85d9689964304ca42cc6c939",
     "_redirects": "a6c8b4e59a3716e96f78a66dbb8cf783b1f1e5f1a1e87fd2f04037bde1017651",
     "404.html": "202a682e813dc7909669c038c4ff0dc6deab7da01f701ae4eaea75d6c0a65442",
-    "README.md": "2b6d375506d15646e16056366bb4f087494b05f7f7c3f9deb18535bf64e4a2f9",
+    "README.md": "a08437024cef1411402626e3168acc9ef2284104ffdc85fca68ea5e8fd6da00e",
     "sitemap.xml": "741fa10900850a0876a0100676e23ac30f31a3f774987b59ba3552ba102b19da",
     "notice.html": "d473384aa5fb9ff160d1416916bef90707ac2c202580364c9c0ec241ab686cdb",
     "data/notices.json": "937b06cc7ef7af102f00c49812319984465933763da7e5c21f5245a0232c5ecb",

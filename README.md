@@ -54,7 +54,3 @@ and icons in this repository's `assets/` are reused by the pipeline.
 
 Classification and date review reports live in the pipeline's `z_Output/` directory.
 See its README for stable-ID recovery, manual title overrides, tests, and backups.
-
-## License
-
-GNU General Public License v3.0; see [LICENSE](LICENSE).
