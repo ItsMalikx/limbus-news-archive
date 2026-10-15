@@ -1,5 +1,24 @@
 [
   {
+    "id": 682,
+    "source_id": 682,
+    "title": "Notice: Ver. 1.117.0 Known Issues and Hotfix ETA",
+    "content": "Hello, this is Project Moon.\n\nWe would like to inform you of additional changes made with the Oct. 15th, 2026 Scheduled Update, as well as the known issues identified thus far, the hotfix schedule, and further details.\n\nPlease refer below for more information.\n\n**[ Additional Changes Made with the Oct. 15th Scheduled Update ]**\n▶  The Façades of the following Identities can now be crafted and projected.\n→ Relevant Identities: LCB Sinner Ryōshū, LCB Sinner Heathcliff\n\n▶  Fixed an issue where, when using Haute Couture::Le Noir Brand Manager Don Quixote's Skill 3, \"With Each Smite, I Sever Thine Advent!\", the Skill would be displayed differently based on the location where it was used\n\n**[ To-be Hotfixed ]**\n▶ Fixed an issue where the Weekly Bonus would appear to remain on the Mirror Dungeon screen after being used in the Mirror of Sisyphe\n※ The Weekly Bonus itself was consumed normally, and the corresponding bonus rewards were distributed without any issues.\n\n▶ Fixed an issue where the text related to the E.G.O Gift \"Universal Instinct\" and \"Universal Skeleton\" is displayed as \"Gain a Keywordless E.G.O Gift\" in an Event choice from the Mirror Dungeon Theme Pack \"Twining Threads\"\n- Before: Lust Advantage check. Pass to gain a Keywordless E.G.O Gift.\n- After: Lust Advantage check. Pass to gain a Bleed E.G.O Gift.\n\n**[ Hotfix ETA ]**\n- Oct. 15th (Thu) 19:30 (KST)\n- There may be a delay of approximately 10 minutes.\n\n※ The Hotfix will be deployed upon restarting the game and does not require a separate client update. However, please note that additional in-game downloads may occur.\n\n**[ Issues to be Resolved with the Next Scheduled Update ]**\n▶ An issue where hit effects are not displayed when using Skills while the Façade of \"Haute Couture::The Crimson God of Le Rouge Sinclair\" is projected onto another Identity\n\n▶ An issue where the camera behaves differently than intended during Combat Encounters in the Mirror Dungeon Theme Pack \"Hatred and Despair\"\n\nWe sincerely apologize for the inconvenience.",
+    "date": "2026-10-15",
+    "type": "Fixes",
+    "tags": [
+      "Balance",
+      "Mirror Dungeon"
+    ],
+    "date_source": "steam-posted",
+    "order": 927,
+    "match_method": "linked",
+    "lastmod": "2026-10-15",
+    "slug": "2026-10-15-notice-ver-1-117-0-known-issues-and-hotfix-eta",
+    "number": 682,
+    "summary": "Additional changes made with the Oct. 15th, 2026 Scheduled Update, as well as the known issues identified thus far, the hotfix schedule, and further details.\nFixes an issue where the Weekly Bonus would appear to remain on the Mirror Dungeon screen after being used in the Mirror of Sisyphe.\nIncludes 2 more bug fixes."
+  },
+  {
     "id": 681,
     "source_id": 681,
     "title": "New Content - Mirror of Sisyphe",
@@ -12,7 +31,7 @@
       "Events",
       "New Content"
     ],
-    "date_source": "steam-event-start",
+    "date_source": "steam-posted",
     "order": 925,
     "match_method": "linked",
     "lastmod": "2026-10-14",
@@ -33,7 +52,7 @@
       "Mirror Dungeon",
       "New Content"
     ],
-    "date_source": "steam-event-start",
+    "date_source": "steam-posted",
     "order": 924,
     "match_method": "linked",
     "lastmod": "2026-10-12",
