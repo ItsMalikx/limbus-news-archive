@@ -4203,3 +4203,98 @@ html[data-rail=collapsed] body:has(.notice-layout.has-toc) {
 :root[data-theme="light"] .notice-box--red { --box-line: #c0352c }
 :root[data-theme="light"] .notice-box--filled { --box-line: #c0352c; background: #f6dcd6 }
 :root[data-theme="light"] .notice-box--filled .notice-box__title { background: #c0352c; color: #fff4d6 }
+/* Archive controls (2026-10-19): sort button, active filters on phones, empty and loading states. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap
+}
+.archive-search .input {
+  padding-left: calc(28 * var(--u) + 18px)
+}
+.notice-card__id {
+  opacity: 1
+}
+.active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(8 * var(--u));
+  margin-top: calc(14 * var(--u))
+}
+.active-filters[hidden] {
+  display: none
+}
+@media (min-width:760px) {
+  .active-filters {
+    display: none
+  }
+}
+.filter-chip {
+  cursor: pointer;
+  font: inherit
+}
+.filter-chip .icon {
+  margin-left: calc(6 * var(--u));
+  color: var(--text-muted)
+}
+.active-filters .filter-clear {
+  min-height: 24px
+}
+.browse-item[aria-disabled=true] {
+  cursor: default
+}
+.browse-item[aria-disabled=true]:hover {
+  background: transparent
+}
+.empty-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(10 * var(--u));
+  margin-top: calc(16 * var(--u))
+}
+.empty-card__actions:empty {
+  display: none
+}
+.pill-button {
+  appearance: none;
+  height: calc(38 * var(--u));
+  padding: 0 calc(14 * var(--u));
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-row);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 160ms
+}
+.pill-button:hover {
+  background: var(--surface-2)
+}
+html[data-pending] #resultsSummary {
+  position: relative
+}
+html[data-pending] #resultsSummary::after {
+  content: "Loading notices…";
+  position: absolute;
+  inset: 0;
+  visibility: visible
+}
+/* Smaller headings inside a section (#### to ###### in a transcript): each a step under the ### one */
+.article-content .notice-subsection-heading--4 {
+  margin: 1.6em 0 .45em;
+  font-size: 1.0625rem
+}
+.article-content .notice-subsection-heading--5 {
+  margin: 1.5em 0 .4em;
+  font-size: 1rem
+}
+.article-content .notice-subsection-heading--6 {
+  margin: 1.4em 0 .4em;
+  font-size: .9375rem;
+  color: var(--text-soft)
+}

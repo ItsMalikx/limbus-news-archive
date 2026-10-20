@@ -63,7 +63,13 @@ Tag pill: neutral outline, colored solid icon, 24px.
 
 Hero: "The [ Limbus Company ] News Archive" (one line on desktop; "The [ Limbus Company ]" sized to
 fit the first line on phones), brackets muted, "[ Limbus Company ]" one weight heavier. Below it
-the description and search; the results line shows only "Page X of Y".
+the description, the search box and one sort button that switches "Newest first" / "Oldest first"
+(no relevance sort: a search lists its close matches first and the rest after a "Less closely
+related" divider, both in the chosen date order). The results line shows only "Page X of Y" (or the
+count on a single page) and reads "Loading notices…" while a search address loads. Below 760px,
+where the filters are in the drawer, the chosen type and tags show under the search as removable
+chips (tag-pill style, × icon, Clear all for more than one). Tags and types with no results are
+dimmed and can't be chosen; the empty list offers Clear search / Clear filters.
 
 ## Shell
 
