@@ -84,7 +84,7 @@ function initContents() {
   if (linkedHeadings.length === links.length) headings.splice(0, headings.length, ...linkedHeadings);
   toc.hidden = false;
   document.querySelector(".notice-layout")?.classList.add("has-toc");
-  const setActive = index => links.forEach((link, i) => link.toggleAttribute("aria-current", i === index));
+  const setActive = index => links.forEach((link, i) => i === index ? link.setAttribute("aria-current", "location") : link.removeAttribute("aria-current"));
   // Current section: the last heading scrolled past the top band; at the page bottom, the last one.
   let pinned = null;
   const update = () => {

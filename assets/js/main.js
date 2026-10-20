@@ -9,7 +9,8 @@ const noticeList = document.getElementById("noticeList");
 const searchInput = document.getElementById("searchInput");
 const resultsSummary = document.getElementById("resultsSummary");
 const tagFilters = document.getElementById("tagFilters");
-const sortSelect = document.getElementById("searchSort");
+const sortButton = document.getElementById("searchSort");
+const activeFilters = document.getElementById("activeFilters");
 const navigation = [...document.querySelectorAll('[aria-label="Archive pages"]')];
 const archivePage = Number(noticeList.dataset.archivePage) || 1;
 const pageSize = Number(noticeList.dataset.pageSize) || SITE_CONFIG.pageSize || 50;
@@ -122,6 +123,7 @@ function renderFilters(filters, pool) {
     button.dataset[kind] = slug;
     button.setAttribute("aria-pressed", String(pressed));
     if (count === 0) button.dataset.empty = "";
+    if (count === 0 && !pressed) button.setAttribute("aria-disabled", "true");
     const color = TAG_COLORS[slug];
     if (color) button.style.setProperty("--tag-color", color);
     button.dataset.icon = slug || "all";
@@ -156,6 +158,34 @@ function renderFilters(filters, pool) {
   tagFilters.replaceChildren(group("Type", types), group("Tags", tags, clear));
 }
 
+// The chosen type and tags, each removable, plus Clear all for more than one.
+function renderActiveFilters(filters, labelFor) {
+  if (!activeFilters) return;
+  const chip = (kind, slug) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "tag-pill filter-chip";
+    button.dataset[kind === "type" ? "removeType" : "removeTag"] = slug;
+    button.dataset.tag = slug;
+    const color = TAG_COLORS[slug];
+    if (color) button.style.setProperty("--tag-color", color);
+    const name = labelFor(slug) || slug;
+    button.setAttribute("aria-label", `Remove ${name}`);
+    button.innerHTML = `${escapeHtml(name)}<svg class="icon" viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
+    return button;
+  };
+  const chips = [...(filters.type ? [chip("type", filters.type)] : []), ...filters.topics.map(slug => chip("tag", slug))];
+  if (chips.length > 1) {
+    const clear = document.createElement("button");
+    clear.type = "button";
+    clear.className = "filter-clear";
+    clear.dataset.clearAll = "";
+    clear.textContent = "Clear all";
+    chips.push(clear);
+  }
+  activeFilters.replaceChildren(...chips);
+  activeFilters.hidden = !chips.length;
+}
 
 function renderFromLocation({ syncInput = true } = {}) {
   const params = new URLSearchParams(window.location.search);
@@ -166,32 +196,29 @@ function renderFromLocation({ syncInput = true } = {}) {
     .find(name => name && tagSlug(name) === slug) || "";
   const filterLabel = [filters.type, ...filters.topics].filter(Boolean).map(labelFor).filter(Boolean).join(", ");
   if (syncInput) searchInput.value = query;
-  const defaultSort = query ? "relevance" : "newest";
-  const requestedSort = params.get("sort");
-  const sort = ["newest", "oldest"].includes(requestedSort) || (requestedSort === "relevance" && query) ? requestedSort : defaultSort;
+  // Date order always; a search puts its close matches first and the weaker ones after a divider.
+  const defaultSort = "newest";
+  const sort = params.get("sort") === "oldest" ? "oldest" : defaultSort;
   if (query && !searchIndex.ready) indexing?.finishNow();
   const { results } = searchNotices(searchIndex, query);
-  const ranked = sort === "newest" && query ? [...results].sort((a, b) => a.doc.order - b.doc.order)
-    : sort === "oldest" ? [...results].sort((a, b) => b.doc.order - a.doc.order) : results;
-  const matching = ranked.filter(({ doc: { notice } }) => {
+  const matching = results.filter(({ doc: { notice } }) => {
     const slugs = noticeTags(notice).map(tagSlug);
     return (!filters.type || tagSlug(notice.type || "") === filters.type) && filters.topics.every(slug => slugs.includes(slug));
   });
+  const byDate = sort === "oldest" ? (a, b) => b.doc.order - a.doc.order : (a, b) => a.doc.order - b.doc.order;
   const top = matching.reduce((best, result) => Math.max(best, result.score), 0);
-  // Weak matches follow the strong ones under a divider (relevance order only).
-  const strongCount = query && sort === "relevance"
-    ? matching.filter(result => result.score >= top * LOOSE_RATIO).length : matching.length;
-  const ordered = query && sort === "relevance"
-    ? [...matching.filter(result => result.score >= top * LOOSE_RATIO), ...matching.filter(result => result.score < top * LOOSE_RATIO)]
-    : matching;
+  // (Without a search every score is 0, so everything is a close match.)
+  const strong = matching.filter(result => result.score >= top * LOOSE_RATIO).sort(byDate);
+  const loose = matching.filter(result => result.score < top * LOOSE_RATIO).sort(byDate);
+  const strongCount = strong.length;
+  const ordered = [...strong, ...loose];
   const filtered = ordered.map(result => result.doc.notice);
   const wordsById = new Map(ordered.map(result => [result.doc.notice.id, result.words]));
-  if (sortSelect) {
-    const relevance = sortSelect.querySelector?.('option[value="relevance"]');
-    if (relevance) { relevance.hidden = !query; relevance.disabled = !query; }
-    sortSelect.value = sort;
-    syncSortMenu?.();
+  if (sortButton) {
+    sortButton.dataset.sort = sort;
+    sortButton.querySelector(".sort-button__label").textContent = sort === "oldest" ? "Oldest first" : "Newest first";
   }
+  renderActiveFilters(filters, labelFor);
   const sortParam = sort === defaultSort ? "" : sort;
   const filteredView = Boolean(query || filters.type || filters.topics.length || sortParam);
   const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
@@ -220,7 +247,12 @@ function renderFromLocation({ syncInput = true } = {}) {
     requestAnimationFrame?.(() => noticeList.classList?.add("is-updating"));
   }
   if (!filtered.length) {
-    noticeList.innerHTML = '<div class="empty-card"><h2 class="section-title">No notices matched your search.</h2><p>Try different words or fewer filters.</p></div>';
+    const filtering = Boolean(filters.type || filters.topics.length);
+    const heading = query ? "No notices matched your search." : "No notices have all of these tags.";
+    const hint = query && filtering ? "Try different words or fewer filters." : query ? "Try different or fewer words." : "Try fewer filters.";
+    noticeList.innerHTML = `<div class="empty-card"><h2 class="section-title">${heading}</h2><p>${hint}</p><div class="empty-card__actions">`
+      + (query ? '<button type="button" class="pill-button" data-clear-search>Clear search</button>' : "")
+      + (filtering ? '<button type="button" class="pill-button" data-clear-all>Clear filters</button>' : "") + "</div></div>";
   }
   // Just where you are in the list; a single page of matches gives its count instead.
   const noun = filtered.length === 1 ? "result" : "results";
@@ -262,59 +294,6 @@ function applySearch() {
   renderFromLocation({ syncInput: false });
 }
 
-// Small screens: a panel becomes a drawer opened (and closed) by an icon button in the header.
-// Sort menu: a button that opens a styled list (replaces the native select popup).
-function initSortMenu(select) {
-  if (!select || !select.parentElement) return;
-  const wrapper = select.parentElement;
-  // The button and menu are served in the page; build them only if missing.
-  let button = wrapper.querySelector(".sort-button");
-  let menu = wrapper.querySelector(".sort-menu");
-  if (!button) {
-    button = document.createElement("button");
-    button.type = "button";
-    button.className = "sort-button";
-    button.setAttribute("aria-haspopup", "listbox");
-    button.setAttribute("aria-expanded", "false");
-    button.append(document.createElement("span"));
-    wrapper.append(button);
-  }
-  if (!menu) {
-    menu = document.createElement("ul");
-    menu.className = "sort-menu";
-    menu.setAttribute("role", "listbox");
-    wrapper.append(menu);
-  }
-  const label = button.querySelector("span");
-  select.hidden = true;
-  const sync = () => {
-    label.textContent = select.selectedOptions?.[0]?.textContent || "";
-    menu.replaceChildren(...[...select.options].filter(option => !option.hidden).map(option => {
-      const item = document.createElement("li");
-      item.setAttribute("role", "option");
-      item.dataset.value = option.value;
-      item.setAttribute("aria-selected", String(option.value === select.value));
-      item.innerHTML = `<span>${escapeHtml(option.textContent)}</span><svg class="sort-menu__check" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>`;
-      return item;
-    }));
-  };
-  const setOpen = open => {
-    wrapper.classList.toggle("is-open", open);
-    button.setAttribute("aria-expanded", String(open));
-  };
-  button.addEventListener("click", () => { sync(); setOpen(!wrapper.classList.contains("is-open")); });
-  menu.addEventListener("click", event => {
-    const item = event.target.closest("li[data-value]");
-    if (!item) return;
-    select.value = item.dataset.value;
-    setOpen(false);
-    select.dispatchEvent(new Event("change"));
-  });
-  document.addEventListener("click", event => { if (!wrapper.contains(event.target)) setOpen(false); });
-  window.addEventListener("keydown", event => { if (event.key === "Escape") setOpen(false); });
-  return sync;
-}
-let syncSortMenu = null;
 
 // The served page already shows its list, filters and page links, so the notice data (a few MB) is
 // only fetched when something needs it: a search, filter, sort or results page, or an address that
@@ -352,16 +331,17 @@ function withNotices(action) {
 async function init() {
   const initialQuery = new URLSearchParams(window.location.search).get("q") || "";
   searchInput.value = initialQuery;
-  syncSortMenu = initSortMenu(sortSelect) || null;
   if (window.history && "scrollRestoration" in window.history) window.history.scrollRestoration = "manual";
   window.addEventListener("pagehide", saveScroll);
   noticeList.addEventListener?.("click", saveScroll);
-  sortSelect?.addEventListener("change", withNotices(() => {
+  // Sort: one button switching between newest and oldest first (a history step, like a filter).
+  sortButton?.addEventListener("click", withNotices(() => {
     const url = new URL(window.location.href);
-    url.searchParams.set("sort", sortSelect.value);
+    if (sortButton.dataset.sort === "oldest") url.searchParams.delete("sort");
+    else url.searchParams.set("sort", "oldest");
     animateNext = true;
     url.searchParams.delete("page");
-    window.history.replaceState(null, "", url.pathname + url.search);
+    window.history.pushState(null, "", url.pathname + url.search);
     renderFromLocation();
   }));
   // The box stays usable while the data loads (no dimming); anything typed meanwhile is applied then.
@@ -370,11 +350,23 @@ async function init() {
   searchInput.addEventListener("input", debounce(withNotices(applySearch), 100));
   window.addEventListener("popstate", withNotices(() => { renderFromLocation(); restoreScroll(); }));
   const onFilterClick = event => {
-    const button = event.target.closest("button[data-type], button[data-tag], button[data-clear]");
-    if (!button) return;
+    const button = event.target.closest("button[data-remove-type], button[data-remove-tag], button[data-clear-all], button[data-clear-search], button[data-type], button[data-tag], button[data-clear]");
+    if (!button || button.getAttribute("aria-disabled") === "true") return;
     const url = new URL(window.location.href);
-    const pressed = button.getAttribute("aria-pressed") === "true";
-    if ("clear" in button.dataset) {
+    const pressed = button.getAttribute("aria-pressed") === "true" || "removeType" in button.dataset || "removeTag" in button.dataset;
+    if ("clearSearch" in button.dataset) {
+      url.searchParams.delete("q");
+    } else if ("clearAll" in button.dataset) {
+      url.searchParams.delete("type");
+      url.searchParams.delete("tag");
+    } else if ("removeType" in button.dataset) {
+      url.searchParams.delete("type");
+    } else if ("removeTag" in button.dataset) {
+      const topics = new Set((url.searchParams.get("tag") || "").split(",").filter(Boolean));
+      topics.delete(button.dataset.removeTag);
+      if (topics.size) url.searchParams.set("tag", [...topics].join(","));
+      else url.searchParams.delete("tag");
+    } else if ("clear" in button.dataset) {
       url.searchParams.delete("tag");
     } else if ("type" in button.dataset) {
       if (pressed) return;
@@ -393,6 +385,8 @@ async function init() {
     return withNotices(() => renderFromLocation())();
   };
   tagFilters?.addEventListener("click", onFilterClick);
+  activeFilters?.addEventListener("click", onFilterClick);
+  noticeList.addEventListener?.("click", event => { if (event.target.closest?.("button")) onFilterClick(event); });
   for (const nav of navigation) {
     nav.addEventListener("click", event => {
       const link = event.target.closest("a[data-search-page]");
