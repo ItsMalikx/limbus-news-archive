@@ -48,8 +48,9 @@ try { initShell(); } catch (error) { /* shell menu optional */ }
 // Same slug rule as slugify() in scripts/build_site.py ("Identities & E.G.O" -> "identities-e-g-o").
 const tagSlug = tag => String(tag).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 
-// Summary lines, one sentence per line (same as summary_html() in build_site.py).
-const summaryHtml = text => String(text).split("\n").map(escapeHtml).join("\n");
+// Summary lines, one sentence per line, 「」『』 trimmed to half width (same as summary_html() in build_site.py).
+const summaryHtml = text => String(text).split("\n").map(line => escapeHtml(line)
+  .replace(/([「」『』])/g, '<span class="notice-bracket" lang="ja">$1</span>')).join("\n");
 
 // Same structure as card() in scripts/build_site.py.
 function renderNoticeCard(notice, featured = false, words = []) {
