@@ -454,6 +454,9 @@ a.notice-pagination__link:hover:not(.active) {
   line-height: 1.15;
   scroll-margin-top: calc(var(--topbar) + calc(24 * var(--u)))
 }
+.article-content .notice-section-heading--plain {
+  margin-bottom: .6em
+}
 .article-content .notice-section-divider {
   border: 0;
   border-top: 1px solid var(--line);
