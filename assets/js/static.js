@@ -110,7 +110,14 @@ function initContents() {
   }, { passive: true });
   const unpin = () => { if (pinned !== null) { pinned = null; update(); } };
   ["wheel", "touchstart", "keydown"].forEach(type => window.addEventListener(type, unpin, { passive: true }));
-  links.forEach((link, index) => link.addEventListener("click", () => {
+  links.forEach((link, index) => link.addEventListener("click", event => {
+    // The title's entry goes back to the top of the page (the tags above the title in view, nothing
+    // under the top bar).
+    if (link.getAttribute("href") === "#notice-title") {
+      event.preventDefault();
+      history.pushState(null, "", "#notice-title");
+      window.scrollTo({ top: 0 });
+    }
     setActive(index);
     // Set after the click's own event handling so it is not cleared by the unpin listeners.
     setTimeout(() => { pinned = index; release(); }, 0);
