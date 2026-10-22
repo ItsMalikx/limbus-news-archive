@@ -422,6 +422,7 @@ a.notice-pagination__link:hover:not(.active) {
 }
 .notice-inline-title {
   margin: calc(6 * var(--u)) 0 calc(12 * var(--u));
+  scroll-margin-top: calc(var(--topbar) + calc(64 * var(--u)));
   font-size: clamp(2.1rem, 5vw, 3.25rem);
   font-weight: 800;
   line-height: 1;
