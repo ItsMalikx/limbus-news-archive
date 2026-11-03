@@ -1,5 +1,21 @@
 [
   {
+    "id": 685,
+    "source_id": 685,
+    "title": "Notice: Enhanced Monitoring for Unauthorized Account Creation Programs",
+    "content": "Hello, this is Project Moon.\n\nWe have recently identified multiple cases in which unauthorized programs were used to mass-generate new accounts for our game.\n\nThe \"unauthorized programs\" in question refer to programs that utilize abnormal game access methods, such as automating account creation, tutorial playthroughs, and Extractions in order to mass-generate new accounts for our game.\n\nSuch behavior may cause unexpected stress on our servers, disrupting gameplay experiences for our Managers.\n\nOnce the relevant records have been reviewed, accounts created using the aforementioned unauthorized programs may, without prior warning, be permanently restricted from accessing our game.\n\nWe will continue to improve our monitoring for similar abnormal game access records.\n\nThank you.",
+    "date": "2026-11-03",
+    "type": "Announcements",
+    "tags": [],
+    "date_source": "steam-posted",
+    "order": 932,
+    "match_method": "linked",
+    "lastmod": "2026-11-03",
+    "slug": "2026-11-03-notice-enhanced-monitoring-for-unauthorized-account-creation-programs",
+    "number": 685,
+    "summary": "We have recently identified multiple cases in which unauthorized programs were used to mass-generate new accounts for our game.\nSuch behavior may cause unexpected stress on our servers, disrupting gameplay experiences for our Managers."
+  },
+  {
     "id": 684,
     "source_id": 684,
     "title": "2026, Oct. 29th Scheduled Update Notice",
@@ -12,7 +28,7 @@
       "New Content",
       "Balance"
     ],
-    "date_source": "steam-event-start",
+    "date_source": "steam-posted",
     "order": 930,
     "match_method": "linked",
     "lastmod": "2026-10-26",
