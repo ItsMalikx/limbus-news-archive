@@ -1,5 +1,24 @@
 [
   {
+    "id": 687,
+    "source_id": 687,
+    "title": "Hotfix: Mirror Dungeon Achievement Adjustment & Text Clarification",
+    "content": "Hello, this is Project Moon.\n\nAfter the Nov. 5th, 2026 Scheduled Update, we have identified an issue where a certain achievement is overly reliant on luck, while another has an unclear description that may be confusing and open to interpretation.\n\nAs such, we will be making the first Achievement easier to clear, and updating the other with a clearer description.\n\n# 1. Achievement regarding the E.G.O Gift \"Rebate Token\" Adjusted\n\n- Before: Clear Mirror Dungeon after triggering the Rebate Token E.G.O Gift effect 3 times in a row during a single run\n- After: Clear Mirror Dungeon after triggering the Rebate Token E.G.O Gift effect for a total of 3 times during a single run\n\nIt was determined that the above achievement was far too reliant on luck and may be difficult to clear even on multiple attempts.\nThis was deemed unacceptable for an achievement that is a must-clear to obtain the achievement banner.\n\nTherefore, we will be adjusting its \"consecutive activation\" condition to a \"total activation count\", making it easier to clear.\n\n# 2. Shop Refresh Achievement Text Clarification\n- Before: Clear Floor 10 or above in the Mirror Dungeon without using the Refresh function\n- After: Clear Floor 10 or above in the Mirror Dungeon using neither the Refresh nor the Keyword Refresh functions in the shop\n\nThe previous wording could be read as including Floor Refresh. We will clarify that the condition applies only to Refresh and Keyword Refresh in Shops.\n\nThe actual completion condition will not change. Using Floor Refresh does not affect whether this Achievement is completed.\n\nWe will consider the burden imposed by RNG more carefully when designing future Achievements. We will also write their conditions more clearly to avoid confusion with other requirements.\n\nWe sincerely apologize for the inconvenience.\n\n[Hotfix Time]\n- Nov. 5th (Thu) 19:30 (KST)\n- There may be a delay of approximately 10 minutes.\n※ The hotfix will be applied when restarting the game and does not require a separate version update. Please note that an additional download may occur.\n\n※ For Mirror Dungeon runs played before the hotfix, only the number of consecutive activations of the E.G.O Gift \"Rebate Token\" will be applied retroactively.\n\n__Example__\n- Before Hotfix: The \"Rebate Token\" effect count reset after activating 2 times in a row\n- After Hotfix: Those 2 activations will be counted toward the cumulative total\n\nWe sincerely apologize for the inconvenience.",
+    "date": "2026-11-05",
+    "type": "Fixes",
+    "tags": [
+      "Mirror Dungeon",
+      "Balance"
+    ],
+    "date_source": "steam-posted",
+    "order": 934,
+    "match_method": "linked",
+    "lastmod": "2026-11-05",
+    "slug": "2026-11-05-hotfix-mirror-dungeon-achievement-adjustment-text-clarification",
+    "number": 687,
+    "summary": "We have identified an issue where a certain achievement is overly reliant on luck, while another has an unclear description that may be confusing and open to interpretation.\nWe will be making the first Achievement easier to clear, and updating the other with a clearer description."
+  },
+  {
     "id": 686,
     "source_id": 686,
     "title": "2026, Nov. 5th Scheduled Update Notice",
@@ -12,7 +31,7 @@
       "New Content",
       "Balance"
     ],
-    "date_source": "steam-event-start",
+    "date_source": "steam-posted",
     "order": 933,
     "match_method": "linked",
     "lastmod": "2026-11-03",
