@@ -1,5 +1,23 @@
 [
   {
+    "id": 688,
+    "source_id": 688,
+    "title": "Apology & Next Steps on Yi Sang and Don Quixote's JP Translation Changes",
+    "content": "Hello, this is Project Moon.\n\nWe would like to apologize for the changes to Yi Sang's and Don Quixote's speech in the Japanese translation introduced with the Oct. 29th (KST) update, and explain how we will address them.\n\nOn Oct. 29th, we revised the Japanese lines for the following characters to improve readability for the Managers.\n\n**1) Yi Sang**\nYi Sang's Japanese dialogue contained elements of classical grammar that we felt made some lines difficult to follow. As a result, in recent chapters, we had instead expressed his voice through literary phrasing that incorporated Korean words and expressions. In the Oct. 29th update, we also revised his dialogue from the early story to match that style.\n\n**2) Don Quixote**\nFor Don Quixote, we used archaic sentence endings to convey her knightly manner of speaking. However, some of those endings could have come across as a parody of a samurai's speech, which led to the recent revision.\n\nThese changes led to broader adjustments to both characters' voices, but we did not clearly explain them in the patch notes before making them. We failed to anticipate how confusing an unannounced change to familiar voices would be, and we realize that we should have considered the impact of the revisions more carefully.\n\nConsequently, we will revert the changes to Yi Sang's and Don Quixote's speech with this update. Corrections to mistranslations that do not affect their manner of speech will be retained.\n\n**[Application Time]**\nAfter Nov. 12th, 12:00 (KST)\n\nWe apologize for the confusion and inconvenience caused by the sudden changes to these elements. During the revision process, we failed to pay enough attention to the characters' distinct voices or the Managers' experience of them.\n\nGoing forward, before making further improvements to the Japanese text, we will take the time to reassess our approach so that each character's distinct voice and personality are preserved in revisions. If a future revision is expected to substantially change how characters express themselves, we will explain the reasons for the change in detailed patch notes before deploying it.\nWe will continue to endeavor to deliver our textual changes in a more prudent and transparent manner.",
+    "date": "2026-11-09",
+    "type": "Announcements",
+    "tags": [
+      "Balance"
+    ],
+    "date_source": "steam-posted",
+    "order": 936,
+    "match_method": "linked",
+    "lastmod": "2026-11-10",
+    "slug": "2026-11-09-apology-next-steps-on-yi-sang-and-don-quixote-s-jp-translation-changes",
+    "number": 688,
+    "summary": "Consequently, we will revert the changes to Yi Sang's and Don Quixote's speech with this update.\nCorrections to mistranslations that do not affect their manner of speech will be retained."
+  },
+  {
     "id": 687,
     "source_id": 687,
     "title": "Hotfix: Mirror Dungeon Achievement Adjustment & Text Clarification",
