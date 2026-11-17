@@ -34,7 +34,7 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
   let gesture = null;         // a pan { x, y, start, samples } or a pinch { mid, distance }
 
   content.draggable = false;
-  Object.assign(content.style, { position: "absolute", left: "0", top: "0", maxWidth: "none", maxHeight: "none", transformOrigin: "0 0", willChange: "transform" });
+  Object.assign(content.style, { position: "absolute", left: "0", top: "0", maxWidth: "none", maxHeight: "none", transformOrigin: "0 0" });
   Object.assign(viewport.style, { touchAction: "none", overflow: "hidden", userSelect: "none" });
   // Reads a CSS length the browser has fully resolved (calc(), var(), any unit) through a hidden probe,
   // in layout pixels (offsetWidth), the same units as clientWidth, whatever zoom the page has.
@@ -83,8 +83,13 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
     clampPan();
   }
 
-  function render() {
-    content.style.transform = `translate3d(${camera.x}px, ${camera.y}px, 0) scale(${camera.scale})`;
+  // While it moves, the content is its own compositor layer (smooth); at rest it is drawn again at its
+  // current size, so the image and the marks over it stay sharp at any zoom instead of a stretched copy
+  // of the layer as first drawn.
+  function render(moving = true) {
+    content.style.willChange = moving ? "transform" : "auto";
+    content.style.transform = moving ? `translate3d(${camera.x}px, ${camera.y}px, 0) scale(${camera.scale})`
+      : `translate(${camera.x}px, ${camera.y}px) scale(${camera.scale})`;
     onChange(getViewportState());
   }
 
@@ -140,7 +145,7 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
         else busy = true;
       }
     } else if (settle) busy = true;
-    render();
+    render(busy || pointers.size > 0);
     if (busy) frame = requestAnimationFrame(step);
     else lastTime = 0;
   }
@@ -257,7 +262,10 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
       gesture.raw.x += point.x - gesture.x;
       gesture.raw.y += point.y - gesture.y;
       const b = bounds();
-      const limit = rubberBand ? rubber : (value, low, high) => Math.min(high, Math.max(low, value));
+      // Along an axis where the image fits, it stays put (no rubber band): only an image larger than the
+      // view can be moved, and only so far past its edges.
+      const hard = (value, low, high) => Math.min(high, Math.max(low, value));
+      const limit = (value, low, high, size) => (rubberBand && high - low > 0.5 ? rubber : hard)(value, low, high, size);
       camera.x = limit(gesture.raw.x, b.minX, b.maxX, camera.width);
       camera.y = limit(gesture.raw.y, b.minY, b.maxY, camera.height);
       if (!dragged && Math.hypot(point.x - gesture.start.x, point.y - gesture.start.y) > 4) {
@@ -281,7 +289,7 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
       const first = pan?.samples[0], last = pan?.samples[pan.samples.length - 1];
       const span = first && last ? last.time - first.time : 0;
       if (dragged && rubberBand && span > 0 && event.type === "pointerup" && event.timeStamp - last.time < 50) {
-        const v = { x: (last.x - first.x) / span, y: (last.y - first.y) / span };
+        const b = bounds(), v = { x: b.maxX - b.minX > 0.5 ? (last.x - first.x) / span : 0, y: b.maxY - b.minY > 0.5 ? (last.y - first.y) / span : 0 };
         if (Math.hypot(v.x, v.y) > 0.25) velocity = v;
       }
       settle = {};
