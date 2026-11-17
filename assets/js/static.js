@@ -1,6 +1,6 @@
 import { initThemeToggle, initShell } from "/assets/js/utils.js?v=1aaa0d34d7";
 import { TAG_COLORS } from "/assets/js/config.js?v=f79448758d";
-import { createZoomView } from "/assets/js/zoomview.js?v=7025cb59ca";
+import { createZoomView } from "/assets/js/zoomview.js?v=da9415dd23";
 try { initThemeToggle(); } catch (error) { console.warn("Theme preference unavailable", error); }
 try { initShell(); } catch (error) { /* shell menu optional */ }
 for (const tag of document.querySelectorAll("[data-tag]")) {

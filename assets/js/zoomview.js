@@ -89,6 +89,10 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
   // of the layer as first drawn.
   function render(moving = true) {
     content.style.willChange = moving ? "transform" : "auto";
+    // "can-pan" while the image is larger than the view along an axis: only then is there anything to drag
+    // to, so only then does the pointer show a hand (a small image zoomed to 270% can still fit).
+    const b = bounds();
+    viewport.classList.toggle("can-pan", b.maxX - b.minX > 0.5 || b.maxY - b.minY > 0.5);
     content.style.transform = moving ? `translate3d(${camera.x}px, ${camera.y}px, 0) scale(${camera.scale})`
       : `translate(${camera.x}px, ${camera.y}px) scale(${camera.scale})`;
     onChange(getViewportState());
