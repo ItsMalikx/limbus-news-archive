@@ -25,7 +25,7 @@
 }
 /* Proportional scaling (desktop monitors): sizes below are in --u. An inline script in each page's
    <head> sets it from the monitor's width: (screen width / 2560) ^ 0.565, so 1px on a 2560-wide
-   monitor (1440p), 0.85px on 1920 (1080p), 0.68px on 1280, up to 1.5px; 1px on phones and tablets.
+   monitor (1440p), 0.85px on 1920 (1080p), at least 0.85px on smaller monitors, up to 1.5px; 1px on phones and tablets.
    Based on the monitor, not the window: a snapped half-width window keeps its monitor's size, and
    browser zoom works as usual. Without the script everything is 1px. 1px hairlines and viewport units
    are left as they are. */
@@ -834,6 +834,8 @@ html[data-theme=dark] {
 .notice-color-purple { color: #a07ce8 }
 .notice-color-brown { color: #a16a3b }
 .notice-color-gray { color: var(--text-muted) }
+/* Preserve the luminance ratio of #a9947e to #ebcaa2 against our #f2f2f2 text. */
+html[data-theme=dark] .notice-color-gray { color: #b1b1b1 }
 .notice-color-plain { color: var(--text) }
 :root[data-theme="light"] .notice-color-gold { color: #8a5a06 }
 :root[data-theme="light"] .notice-color-red { color: #c0352c }
@@ -3269,7 +3271,7 @@ html[data-theme] .tag-pill::before {
 }
 @media (min-width:1200px) {
   html {
-    font-size: calc(17 * var(--u))
+    font-size: max(1rem, calc(17 * var(--u)))
   }
 }
 .browse-group[aria-label=Type] .browse-item--type,

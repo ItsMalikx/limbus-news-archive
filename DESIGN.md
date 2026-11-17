@@ -46,6 +46,10 @@ Motion: 160–220ms `cubic-bezier(0.2, 0, 0, 1)`; transitions are disabled while
 
 ## Type and scale
 
+Desktop monitor scaling has a 0.85 floor; the root font never falls below the browser's default (normally 16px). This keeps 1280×1024 library monitors readable. Resizing a window on a wider monitor is not an equivalent test; test both screen and viewport dimensions.
+
+Dark notice `{gray}` is #b1b1b1 against #f2f2f2 body text, preserving the source #a9947e / #ebcaa2 luminance ratio (0.49784). Light-theme gray remains the existing dark muted text.
+
 **Schibsted Grotesk** (variable, self-hosted). Base text 16px, 17px at 1200px+; the whole layout
 zooms 1.08 at 1920px+ (large displays).
 
