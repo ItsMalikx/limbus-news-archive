@@ -49,11 +49,12 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
     return { x: event.clientX - rect.left, y: event.clientY - rect.top };
   };
 
-  // Where the content may sit on one axis. Fitted (or smaller), it is centred in the padded area; as it
-  // grows its edges may move out to the viewport's own edges, never leaving a gap inside them.
+  // Where the content may sit on one axis. Fitted (or smaller), it is centred in the padded area. Once it
+  // is larger than the padded area (even a little), it pans far enough to show each edge clear of the
+  // controls: the range opens from the first bit of zoom, not only once it outgrows the whole viewport.
   function limits(size, viewSize, before, after) {
     const centred = before + (viewSize - before - after - size) / 2;
-    return [Math.min(centred, viewSize - size), Math.max(centred, 0)];
+    return [Math.min(centred, viewSize - after - size), Math.max(centred, before)];
   }
   function bounds() {
     const [minX, maxX] = limits(camera.contentWidth * camera.scale, camera.width, pad.left, pad.right);
