@@ -890,6 +890,21 @@ html[data-theme=dark] {
   line-height: 1.5;
   text-align: center
 }
+/* Pictures on consecutive lines: one row, each with its label above; one per row on a narrow screen. */
+.notice-figure-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 1.25em calc(16 * var(--u));
+  align-items: end;
+  margin: 1.75em 0
+}
+.notice-figure-row .notice-figure {
+  margin: 0;
+  min-width: 0
+}
+.notice-figure-row .notice-figure figcaption {
+  margin: 0 0 calc(10 * var(--u))
+}
 /* Full-size image viewer (static.js) */
 body:has(.image-viewer[open]) {
   overflow: hidden
