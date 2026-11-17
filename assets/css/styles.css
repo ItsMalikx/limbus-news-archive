@@ -955,7 +955,10 @@ body:has(.image-viewer[open]) {
   --zoom-pad-bottom: calc(84 * var(--u));
   --zoom-pad-left: calc(72 * var(--u));
   overflow: hidden;
-  touch-action: none;
+  touch-action: none
+}
+/* The hand only when there is somewhere to drag the image (larger than the view): zoomview.js sets can-pan. */
+.image-viewer__stage.can-pan {
   cursor: grab
 }
 .image-viewer__stage.is-panning {
