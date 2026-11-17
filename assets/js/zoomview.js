@@ -49,12 +49,14 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
     return { x: event.clientX - rect.left, y: event.clientY - rect.top };
   };
 
-  // Where the content may sit on one axis. Fitted (or smaller), it is centred in the padded area. Once it
-  // is larger than the padded area (even a little), it pans far enough to show each edge clear of the
-  // controls: the range opens from the first bit of zoom, not only once it outgrows the whole viewport.
+  // Where the content may sit on one axis. At fit it stays centred in the padded area (the area clear of
+  // the controls). Zoomed in at all, it can be dragged: while smaller than that area, anywhere inside it;
+  // once larger, far enough to show each of its edges clear of the controls.
+  const zoomed = () => camera.scale > camera.fit * 1.005;
   function limits(size, viewSize, before, after) {
-    const centred = before + (viewSize - before - after - size) / 2;
-    return [Math.min(centred, viewSize - after - size), Math.max(centred, before)];
+    const room = viewSize - before - after;
+    if (size <= room) return zoomed() ? [before, viewSize - after - size] : Array(2).fill(before + (room - size) / 2);
+    return [viewSize - after - size, before];
   }
   function bounds() {
     const [minX, maxX] = limits(camera.contentWidth * camera.scale, camera.width, pad.left, pad.right);
@@ -275,7 +277,8 @@ export function createZoomView(viewport, content, { maxZoom = 8, wheelArea = vie
       camera.y = limit(gesture.raw.y, b.minY, b.maxY, camera.height);
       if (!dragged && Math.hypot(point.x - gesture.start.x, point.y - gesture.start.y) > 4) {
         dragged = true;
-        viewport.classList.add("is-panning");
+        // (The grabbing hand only for a drag that moves the image.)
+        if (viewport.classList.contains("can-pan")) viewport.classList.add("is-panning");
       }
       gesture.x = point.x;
       gesture.y = point.y;
